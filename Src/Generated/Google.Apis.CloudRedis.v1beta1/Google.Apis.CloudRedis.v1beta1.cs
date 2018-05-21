@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180423 (1208)
+ *      <tr><th>API Rev<td>20180518 (1233)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -407,8 +407,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                 /// <summary>Creates a Redis instance based on the specified tier and memory size.
                 ///
-                /// By default, the instance is peered to the project's [default network](/compute/docs/networks-and-
-                /// firewalls#networks).
+                /// By default, the instance is accessible from the project's [default network](/compute/docs/networks-
+                /// and-firewalls#networks).
                 ///
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
@@ -426,8 +426,8 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                 /// <summary>Creates a Redis instance based on the specified tier and memory size.
                 ///
-                /// By default, the instance is peered to the project's [default network](/compute/docs/networks-and-
-                /// firewalls#networks).
+                /// By default, the instance is accessible from the project's [default network](/compute/docs/networks-
+                /// and-firewalls#networks).
                 ///
                 /// The creation is executed asynchronously and callers may check the returned operation to track its
                 /// progress. Once the operation is completed the Redis instance will be fully functional. Completed
@@ -758,8 +758,8 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// form:     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
                 ///
                 /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region;
-                /// however, users get to choose which specific zone (or collection of zones for cross-zone instances) an instance
-                /// should be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more details.</param>
+                /// however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should
+                /// be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more details.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1beta1.Data.Instance body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -786,15 +786,16 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
                     ///
                     /// Note: Redis instances are managed and addressed at regional level so location_id here refers to
-                    /// a GCP region; however, users get to choose which specific zone (or collection of zones for
-                    /// cross-zone instances) an instance should be provisioned in. Refer to [location_id] and
+                    /// a GCP region; however, users may choose which specific zone (or collection of zones for cross-
+                    /// zone instances) an instance should be provisioned in. Refer to [location_id] and
                     /// [alternative_location_id] fields for more details.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// The elements of the repeated paths field may only include these fields from Instance: *
-                    /// `display_name` * `labels` * `redis_config` * `redis_version`</summary>
+                    /// The elements of the repeated paths field may only include these fields from Instance:
+                    ///
+                    /// *   `displayName` *   `labels` *   `memorySizeGb` *   `redisConfig`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -973,6 +974,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -980,10 +985,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1019,6 +1020,15 @@ namespace Google.Apis.CloudRedis.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1031,15 +1041,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1294,10 +1295,10 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Output only. The current zone where the Redis endpoint is placed. In single zone deployments, this
-        /// will always be the same as [location_id] provided by the user at creation time. In cross-zone instances
-        /// (only applicable in STANDARD_HA tier), this can be either [location_id] or [alternative_location_id] and can
-        /// change on a failover event.</summary>
+        /// <summary>Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this
+        /// will always be the same as the [location_id] provided by the user at creation time. For Standard Tier
+        /// instances, this can be either [location_id] or [alternative_location_id] and can change after a failover
+        /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocationId")]
         public virtual string CurrentLocationId { get; set; } 
 
@@ -1316,12 +1317,12 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
 
         /// <summary>Optional. The zone where the instance will be provisioned. If not provided, the service will choose
         /// a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection
-        /// against zonal failures. if [alternative_location_id] is also provided, it must be different from
+        /// against zonal failures. If [alternative_location_id] is also provided, it must be different from
         /// [location_id].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>Required. Redis memory size in GB, up to 200GB.</summary>
+        /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
         public virtual System.Nullable<int> MemorySizeGb { get; set; } 
 
@@ -1329,8 +1330,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
         ///
         /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP
-        /// region; however, users get to choose which specific zone (or collection of zones for cross-zone instances)
-        /// an instance should be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more
+        /// region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an
+        /// instance should be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -1340,7 +1341,9 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual System.Nullable<int> Port { get; set; } 
 
         /// <summary>Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently,
-        /// the only supported parameters are: * maxmemory-policy * notify-keyspace-events</summary>
+        /// the only supported parameters are:
+        ///
+        /// *   maxmemory-policy *   notify-keyspace-events</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
         public virtual System.Collections.Generic.IDictionary<string,string> RedisConfigs { get; set; } 
 
@@ -1352,7 +1355,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
 
         /// <summary>Optional. The CIDR range of internal addresses that are reserved for this instance. If not
         /// provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges
-        /// must be unique and non-overlapping with existing subnets in a network.</summary>
+        /// must be unique and non-overlapping with existing subnets in an authorized network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; } 
 

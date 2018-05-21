@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180429 (1214)
+ *      <tr><th>API Rev<td>20180510 (1225)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3822,7 +3822,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>[Experimental] The geographic location of the job. Required except for US and EU.</summary>
+        /// <summary>[Experimental] The geographic location of the job. Required except for US and EU. See details at
+        /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4716,13 +4717,15 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class TimePartitioning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Number of milliseconds for which to keep the storage for a partition.</summary>
+        /// <summary>[Optional] Number of milliseconds for which to keep the storage for partitions in the table. The
+        /// storage in a partition will have an expiration time of its partition time plus this value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
         public virtual System.Nullable<long> ExpirationMs { get; set; } 
 
-        /// <summary>[Experimental] [Optional] If not set, the table is partitioned by pseudo column '_PARTITIONTIME';
-        /// if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its
-        /// mode must be NULLABLE or REQUIRED.</summary>
+        /// <summary>[Experimental] [Optional] If not set, the table is partitioned by pseudo column, referenced via
+        /// either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the
+        /// table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode
+        /// must be NULLABLE or REQUIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180509 (1224)
+ *      <tr><th>API Rev<td>20180514 (1229)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.Analytics.v3
             management = new ManagementResource(this);
             metadata = new MetadataResource(this);
             provisioning = new ProvisioningResource(this);
+            userDeletion = new UserDeletionResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -129,6 +130,9 @@ namespace Google.Apis.Analytics.v3
             /// <summary>View your Google Analytics data</summary>
             public static string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
 
+            /// <summary>Manage Google Analytics user deletion requests</summary>
+            public static string AnalyticsUserDeletion = "https://www.googleapis.com/auth/analytics.user.deletion";
+
         }
 
 
@@ -163,6 +167,14 @@ namespace Google.Apis.Analytics.v3
         public virtual ProvisioningResource Provisioning
         {
             get { return provisioning; }
+        }
+
+        private readonly UserDeletionResource userDeletion;
+
+        /// <summary>Gets the UserDeletion resource.</summary>
+        public virtual UserDeletionResource UserDeletion
+        {
+            get { return userDeletion; }
         }
     }
 
@@ -9659,6 +9671,101 @@ namespace Google.Apis.Analytics.v3
 
         }
     }
+
+    /// <summary>The "userDeletion" collection of methods.</summary>
+    public class UserDeletionResource
+    {
+        private const string Resource = "userDeletion";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UserDeletionResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            userDeletionRequest = new UserDeletionRequestResource(service);
+
+        }
+
+        private readonly UserDeletionRequestResource userDeletionRequest;
+
+        /// <summary>Gets the UserDeletionRequest resource.</summary>
+        public virtual UserDeletionRequestResource UserDeletionRequest
+        {
+            get { return userDeletionRequest; }
+        }
+
+        /// <summary>The "userDeletionRequest" collection of methods.</summary>
+        public class UserDeletionRequestResource
+        {
+            private const string Resource = "userDeletionRequest";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UserDeletionRequestResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Insert or update a user deletion requests.</summary>
+            /// <param name="body">The body of the request.</param>
+            public virtual UpsertRequest Upsert(Google.Apis.Analytics.v3.Data.UserDeletionRequest body)
+            {
+                return new UpsertRequest(service, body);
+            }
+
+            /// <summary>Insert or update a user deletion requests.</summary>
+            public class UpsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.UserDeletionRequest>
+            {
+                /// <summary>Constructs a new Upsert request.</summary>
+                public UpsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.UserDeletionRequest body)
+                    : base(service)
+                {
+                    Body = body;
+                    InitParameters();
+                }
+
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Analytics.v3.Data.UserDeletionRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "upsert"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "userDeletion/userDeletionRequests:upsert"; }
+                }
+
+                /// <summary>Initializes Upsert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.Analytics.v3.Data
@@ -13219,6 +13326,61 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a user deletion request resource.</summary>
+    public class UserDeletionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This marks the point in time for which all user data before should be deleted</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionRequestTime")]
+        public virtual string DeletionRequestTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DeletionRequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> DeletionRequestTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(DeletionRequestTimeRaw);
+            }
+            set
+            {
+                DeletionRequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>Firebase Project Id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firebaseProjectId")]
+        public virtual string FirebaseProjectId { get; set; } 
+
+        /// <summary>User ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual UserDeletionRequest.IdData Id { get; set; } 
+
+        /// <summary>Value is "analytics#userDeletionRequest".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
+        public virtual string WebPropertyId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>User ID.</summary>
+        public class IdData
+        {
+            /// <summary>Type of user</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type { get; set; } 
+
+            /// <summary>The User's id</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+            public virtual string UserId { get; set; } 
+
+        }
     }    
 
     /// <summary>JSON template for a user reference.</summary>

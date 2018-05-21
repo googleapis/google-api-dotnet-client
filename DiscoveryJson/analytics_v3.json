@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/0X5eq1A8RZv5UHZPwERUEGMzwZM\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/AHLSBPz3If26VBakaAZdjeRmPvY\"",
  "discoveryVersion": "v1",
  "id": "analytics:v3",
  "name": "analytics",
  "version": "v3",
- "revision": "20180509",
+ "revision": "20180514",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",
@@ -86,6 +86,9 @@
     },
     "https://www.googleapis.com/auth/analytics.readonly": {
      "description": "View your Google Analytics data"
+    },
+    "https://www.googleapis.com/auth/analytics.user.deletion": {
+     "description": "Manage Google Analytics user deletion requests"
     }
    }
   }
@@ -3418,6 +3421,45 @@
      "type": "integer",
      "description": "The total number of results for the query, regardless of the number of resources in the result.",
      "format": "int32"
+    }
+   }
+  },
+  "UserDeletionRequest": {
+   "id": "UserDeletionRequest",
+   "type": "object",
+   "description": "JSON template for a user deletion request resource.",
+   "properties": {
+    "deletionRequestTime": {
+     "type": "string",
+     "description": "This marks the point in time for which all user data before should be deleted",
+     "format": "date-time"
+    },
+    "firebaseProjectId": {
+     "type": "string",
+     "description": "Firebase Project Id"
+    },
+    "id": {
+     "type": "object",
+     "description": "User ID.",
+     "properties": {
+      "type": {
+       "type": "string",
+       "description": "Type of user"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The User's id"
+      }
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Value is \"analytics#userDeletionRequest\".",
+     "default": "analytics#userDeletionRequest"
+    },
+    "webPropertyId": {
+     "type": "string",
+     "description": "Web property ID of the form UA-XXXXX-YY."
     }
    }
   },
@@ -7359,6 +7401,29 @@
      "scopes": [
       "https://www.googleapis.com/auth/analytics.provision"
      ]
+    }
+   }
+  },
+  "userDeletion": {
+   "resources": {
+    "userDeletionRequest": {
+     "methods": {
+      "upsert": {
+       "id": "analytics.userDeletion.userDeletionRequest.upsert",
+       "path": "userDeletion/userDeletionRequests:upsert",
+       "httpMethod": "POST",
+       "description": "Insert or update a user deletion requests.",
+       "request": {
+        "$ref": "UserDeletionRequest"
+       },
+       "response": {
+        "$ref": "UserDeletionRequest"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/analytics.user.deletion"
+       ]
+      }
+     }
     }
    }
   }

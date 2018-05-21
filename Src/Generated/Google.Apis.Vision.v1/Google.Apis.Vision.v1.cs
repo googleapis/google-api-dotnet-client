@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180420 (1205)
+ *      <tr><th>API Rev<td>20180515 (1230)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.Vision.v1
         public VisionService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            files = new FilesResource(this);
             images = new ImagesResource(this);
             locations = new LocationsResource(this);
             operations = new OperationsResource(this);
@@ -119,6 +120,14 @@ namespace Google.Apis.Vision.v1
         }
 
 
+
+        private readonly FilesResource files;
+
+        /// <summary>Gets the Files resource.</summary>
+        public virtual FilesResource Files
+        {
+            get { return files; }
+        }
 
         private readonly ImagesResource images;
 
@@ -358,6 +367,82 @@ namespace Google.Apis.Vision.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "files" collection of methods.</summary>
+    public class FilesResource
+    {
+        private const string Resource = "files";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+        /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved through
+        /// the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata).
+        /// `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body)
+        {
+            return new AsyncBatchAnnotateRequest(service, body);
+        }
+
+        /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+        /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved through
+        /// the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata).
+        /// `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+        public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "asyncBatchAnnotate"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/files:asyncBatchAnnotate"; }
+            }
+
+            /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
         }
     }
 
@@ -792,6 +877,10 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -799,10 +888,6 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -838,6 +923,15 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -855,15 +949,6 @@ namespace Google.Apis.Vision.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -872,6 +957,22 @@ namespace Google.Apis.Vision.v1
 
 namespace Google.Apis.Vision.v1.Data
 {    
+
+    /// <summary>Response to a single file annotation request. A file may contain one or more images, which individually
+    /// have their own responses.</summary>
+    public class AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the file for which this response is generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual InputConfig InputConfig { get; set; } 
+
+        /// <summary>Individual responses to images found within the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<AnnotateImageResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested
     /// features.</summary>
@@ -896,6 +997,10 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Response to an image annotation request.</summary>
     public class AnnotateImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If present, contextual information is needed to understand where this image comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual ImageAnnotationContext Context { get; set; } 
+
         /// <summary>If present, crop hints have completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cropHintsAnnotation")]
         public virtual CropHintsAnnotation CropHintsAnnotation { get; set; } 
@@ -941,6 +1046,63 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>If present, web detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webDetection")]
         public virtual WebDetection WebDetection { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An offline file annotation request.</summary>
+    public class AsyncAnnotateFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Requested features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<Feature> Features { get; set; } 
+
+        /// <summary>Additional context that may accompany the image(s) in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageContext")]
+        public virtual ImageContext ImageContext { get; set; } 
+
+        /// <summary>Required. Information about the input file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual InputConfig InputConfig { get; set; } 
+
+        /// <summary>Required. The desired output location and metadata (e.g. format).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for a single offline file annotation request.</summary>
+    public class AsyncAnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The output location and metadata from AsyncAnnotateFileRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Multiple async file annotation requests are batched into a single service call.</summary>
+    public class AsyncBatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Individual async file annotation requests for this batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<AsyncAnnotateFileRequest> Requests { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to an async batch file annotation request.</summary>
+    public class AsyncBatchAnnotateFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of file annotation responses, one for each request in
+        /// AsyncBatchAnnotateFilesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<AsyncAnnotateFileResponse> Responses { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1010,6 +1172,10 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A bounding polygon for the detected image annotation.</summary>
     public class BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The bounding polygon normalized vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedVertices")]
+        public virtual System.Collections.Generic.IList<NormalizedVertex> NormalizedVertices { get; set; } 
+
         /// <summary>The bounding polygon vertices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
         public virtual System.Collections.Generic.IList<Vertex> Vertices { get; set; } 
@@ -1374,6 +1540,40 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>The feature type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
+    public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
+        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
+        /// multiple outputs. Prefixes must end in a `/`.
+        ///
+        /// Examples:
+        ///
+        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
+        /// name/prefix/here
+        ///
+        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
+        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
+        /// large and overflows into multiple sharded files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the input will be read from.</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI for the input file. This must only be a Google Cloud Storage object.
+        /// Wildcards are not currently supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2255,6 +2455,132 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata for the batch operations such as the current state.
+    ///
+    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
+    /// `google::longrunning::Operations` service.</summary>
+    public class GoogleCloudVisionV1p3beta1BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
+        /// true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the batch request was submitted to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
+        public virtual object SubmitTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A bounding polygon for the detected image annotation.</summary>
+    public class GoogleCloudVisionV1p3beta1BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon normalized vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedVertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1NormalizedVertex> NormalizedVertices { get; set; } 
+
+        /// <summary>The bounding polygon vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1Vertex> Vertices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ImportProductSets` method.
+    ///
+    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
+    /// google.longrunning.Operation.response field.</summary>
+    public class GoogleCloudVisionV1p3beta1ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of reference_images that are imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ReferenceImage> ReferenceImages { get; set; } 
+
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
+        ///
+        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
+        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class GoogleCloudVisionV1p3beta1NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `ReferenceImage` represents a product image and its associated metadata, such as bounding
+    /// boxes.</summary>
+    public class GoogleCloudVisionV1p3beta1ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bounding polygons around the areas of interest in the reference image. Optional. If this field is
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
+        ///
+        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
+        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
+        /// 1:5 is not).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1BoundingPoly> BoundingPolys { get; set; } 
+
+        /// <summary>The resource name of the reference image.
+        ///
+        /// Format is:
+        ///
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+        ///
+        /// This field is ignored when creating a reference image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The Google Cloud Storage URI of the reference image.
+        ///
+        /// The URI must start with `gs://`.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the
+    /// original image.</summary>
+    public class GoogleCloudVisionV1p3beta1Vertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<int> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<int> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2268,6 +2594,23 @@ namespace Google.Apis.Vision.v1.Data
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual ImageSource Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>If an image was produced from a file (e.g. a PDF), this message gives information about the source of
+    /// that image.</summary>
+    public class ImageAnnotationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the file was a PDF or TIFF, this field gives the page number within the file used to produce the
+        /// image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; } 
+
+        /// <summary>The URI of the file used to produce the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2337,6 +2680,22 @@ namespace Google.Apis.Vision.v1.Data
         /// When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired input location and metadata.</summary>
+    public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage location to read the input from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; } 
+
+        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
+        /// are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2415,6 +2774,22 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2446,6 +2821,48 @@ namespace Google.Apis.Vision.v1.Data
         /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains metadata for the BatchAnnotateImages operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the operation result was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired output location and metadata.</summary>
+    public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
+        /// valid range is [1, 100]. If not specified, the default value is 20.
+        ///
+        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
+        /// then 5 json files each containing 20 response protos will be written under the prefix
+        /// `gcs_destination`.`uri`.
+        ///
+        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
+        /// configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; } 
+
+        /// <summary>The Google Cloud Storage location to write the output(s) to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

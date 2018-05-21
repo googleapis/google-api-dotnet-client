@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20180420 (1205)
+ *      <tr><th>API Rev<td>20180515 (1230)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.Vision.v1p1beta1
         public VisionService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            files = new FilesResource(this);
             images = new ImagesResource(this);
         }
 
@@ -117,6 +118,14 @@ namespace Google.Apis.Vision.v1p1beta1
         }
 
 
+
+        private readonly FilesResource files;
+
+        /// <summary>Gets the Files resource.</summary>
+        public virtual FilesResource Files
+        {
+            get { return files; }
+        }
 
         private readonly ImagesResource images;
 
@@ -343,6 +352,82 @@ namespace Google.Apis.Vision.v1p1beta1
         }
     }
 
+    /// <summary>The "files" collection of methods.</summary>
+    public class FilesResource
+    {
+        private const string Resource = "files";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FilesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+        /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved through
+        /// the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata).
+        /// `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body)
+        {
+            return new AsyncBatchAnnotateRequest(service, body);
+        }
+
+        /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+        /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved through
+        /// the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata).
+        /// `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+        public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1p1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+            public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Vision.v1p1beta1.Data.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "asyncBatchAnnotate"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1p1beta1/files:asyncBatchAnnotate"; }
+            }
+
+            /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+    }
+
     /// <summary>The "images" collection of methods.</summary>
     public class ImagesResource
     {
@@ -416,6 +501,156 @@ namespace Google.Apis.Vision.v1p1beta1
 
 namespace Google.Apis.Vision.v1p1beta1.Data
 {    
+
+    /// <summary>Response to a single file annotation request. A file may contain one or more images, which individually
+    /// have their own responses.</summary>
+    public class AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the file for which this response is generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual InputConfig InputConfig { get; set; } 
+
+        /// <summary>Individual responses to images found within the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<AnnotateImageResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to an image annotation request.</summary>
+    public class AnnotateImageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If present, contextual information is needed to understand where this image comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual ImageAnnotationContext Context { get; set; } 
+
+        /// <summary>If present, crop hints have completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cropHintsAnnotation")]
+        public virtual CropHintsAnnotation CropHintsAnnotation { get; set; } 
+
+        /// <summary>If set, represents the error message for the operation. Note that filled-in image annotations are
+        /// guaranteed to be correct, even when `error` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>If present, face detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faceAnnotations")]
+        public virtual System.Collections.Generic.IList<FaceAnnotation> FaceAnnotations { get; set; } 
+
+        /// <summary>If present, text (OCR) detection or document (OCR) text detection has completed successfully. This
+        /// annotation provides the structural hierarchy for the OCR detected text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullTextAnnotation")]
+        public virtual TextAnnotation FullTextAnnotation { get; set; } 
+
+        /// <summary>If present, image properties were extracted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagePropertiesAnnotation")]
+        public virtual ImageProperties ImagePropertiesAnnotation { get; set; } 
+
+        /// <summary>If present, label detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelAnnotations")]
+        public virtual System.Collections.Generic.IList<EntityAnnotation> LabelAnnotations { get; set; } 
+
+        /// <summary>If present, landmark detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landmarkAnnotations")]
+        public virtual System.Collections.Generic.IList<EntityAnnotation> LandmarkAnnotations { get; set; } 
+
+        /// <summary>If present, logo detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
+        public virtual System.Collections.Generic.IList<EntityAnnotation> LogoAnnotations { get; set; } 
+
+        /// <summary>If present, safe-search annotation has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
+        public virtual SafeSearchAnnotation SafeSearchAnnotation { get; set; } 
+
+        /// <summary>If present, text (OCR) detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnnotations")]
+        public virtual System.Collections.Generic.IList<EntityAnnotation> TextAnnotations { get; set; } 
+
+        /// <summary>If present, web detection has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webDetection")]
+        public virtual WebDetection WebDetection { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for a single offline file annotation request.</summary>
+    public class AsyncAnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The output location and metadata from AsyncAnnotateFileRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to an async batch file annotation request.</summary>
+    public class AsyncBatchAnnotateFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of file annotation responses, one for each request in
+        /// AsyncBatchAnnotateFilesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<AsyncAnnotateFileResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Logical element on the page.</summary>
+    public class Block : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detected block type (text, image etc) for this block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockType")]
+        public virtual string BlockType { get; set; } 
+
+        /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
+        /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
+        /// left corner as defined when the text is read in the 'natural' orientation. For example:
+        ///
+        /// * when the text is horizontal it might look like:
+        ///
+        /// 0----1 |    | 3----2
+        ///
+        /// * when it's rotated 180 degrees around the top-left corner it becomes:
+        ///
+        /// 2----3 |    | 1----0
+        ///
+        /// and the vertice order will still be (0, 1, 2, 3).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
+        public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results on the block. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>List of paragraphs in this block (if this blocks is of type text).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paragraphs")]
+        public virtual System.Collections.Generic.IList<Paragraph> Paragraphs { get; set; } 
+
+        /// <summary>Additional information detected for the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual TextProperty Property { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A bounding polygon for the detected image annotation.</summary>
+    public class BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon normalized vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedVertices")]
+        public virtual System.Collections.Generic.IList<NormalizedVertex> NormalizedVertices { get; set; } 
+
+        /// <summary>The bounding polygon vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
+        public virtual System.Collections.Generic.IList<Vertex> Vertices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Represents a color in the RGBA color space. This representation is designed for simplicity of
     /// conversion to/from color representations in various languages over compactness; for example, the fields of this
@@ -500,6 +735,263 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Color information consists of RGB channels, score, and the fraction of the image that the color
+    /// occupies in the image.</summary>
+    public class ColorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RGB components of the color.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; } 
+
+        /// <summary>The fraction of pixels the color occupies in the image. Value in range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pixelFraction")]
+        public virtual System.Nullable<float> PixelFraction { get; set; } 
+
+        /// <summary>Image-specific score for this color. Value in range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Single crop hint that is used to generate a new crop when serving an image.</summary>
+    public class CropHint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon for the crop region. The coordinates of the bounding box are in the original
+        /// image's scale, as returned in `ImageParams`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>Confidence of this being a salient region.  Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Fraction of importance of this salient region with respect to the original image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importanceFraction")]
+        public virtual System.Nullable<float> ImportanceFraction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of crop hints that are used to generate new crops when serving images.</summary>
+    public class CropHintsAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Crop hint results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cropHints")]
+        public virtual System.Collections.Generic.IList<CropHint> CropHints { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detected start or end of a structural component.</summary>
+    public class DetectedBreak : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if break prepends the element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrefix")]
+        public virtual System.Nullable<bool> IsPrefix { get; set; } 
+
+        /// <summary>Detected break type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detected language for a structural component.</summary>
+    public class DetectedLanguage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence of detected language. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of dominant colors and their corresponding scores.</summary>
+    public class DominantColorsAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>RGB color values with their score and pixel fraction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colors")]
+        public virtual System.Collections.Generic.IList<ColorInfo> Colors { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of detected entity features.</summary>
+    public class EntityAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>**Deprecated. Use `score` instead.** The accuracy of the entity detection in an image. For example,
+        /// for an image in which the "Eiffel Tower" entity is detected, this field represents the confidence that there
+        /// is a tower in the query image. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Entity textual description, expressed in its `locale` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The language code for the locale in which the entity textual `description` is expressed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+        public virtual string Locale { get; set; } 
+
+        /// <summary>The location information for the detected entity. Multiple `LocationInfo` elements can be present
+        /// because one location may indicate the location of the scene in the image, and another location may indicate
+        /// the location of the place where the image was taken. Location information is usually present for
+        /// landmarks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<LocationInfo> Locations { get; set; } 
+
+        /// <summary>Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
+        /// API](https://developers.google.com/knowledge-graph/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Some entities may have optional user-supplied `Property` (name/value) fields, such a score or
+        /// string that qualifies the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<Property> Properties { get; set; } 
+
+        /// <summary>Overall score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The relevancy of the ICA (Image Content Annotation) label to the image. For example, the relevancy
+        /// of "tower" is likely higher to an image containing the detected "Eiffel Tower" than to an image containing a
+        /// detected distant towering building, even though the confidence that there is a tower in each image may be
+        /// the same. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicality")]
+        public virtual System.Nullable<float> Topicality { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A face annotation object contains the results of face detection.</summary>
+    public class FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Anger likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
+        public virtual string AngerLikelihood { get; set; } 
+
+        /// <summary>Blurred likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blurredLikelihood")]
+        public virtual string BlurredLikelihood { get; set; } 
+
+        /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
+        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
+        /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
+        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
+        /// the image to be annotated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>Detection confidence. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectionConfidence")]
+        public virtual System.Nullable<float> DetectionConfidence { get; set; } 
+
+        /// <summary>The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the
+        /// skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the
+        /// "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face
+        /// detection, hence the fd (face detection) prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fdBoundingPoly")]
+        public virtual BoundingPoly FdBoundingPoly { get; set; } 
+
+        /// <summary>Headwear likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
+        public virtual string HeadwearLikelihood { get; set; } 
+
+        /// <summary>Joy likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
+        public virtual string JoyLikelihood { get; set; } 
+
+        /// <summary>Face landmarking confidence. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landmarkingConfidence")]
+        public virtual System.Nullable<float> LandmarkingConfidence { get; set; } 
+
+        /// <summary>Detected face landmarks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landmarks")]
+        public virtual System.Collections.Generic.IList<Landmark> Landmarks { get; set; } 
+
+        /// <summary>Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the
+        /// vertical plane perpendicular to the image. Range [-180,180].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("panAngle")]
+        public virtual System.Nullable<float> PanAngle { get; set; } 
+
+        /// <summary>Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to
+        /// the image vertical about the axis perpendicular to the face. Range [-180,180].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
+        public virtual System.Nullable<float> RollAngle { get; set; } 
+
+        /// <summary>Sorrow likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
+        public virtual string SorrowLikelihood { get; set; } 
+
+        /// <summary>Surprise likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
+        public virtual string SurpriseLikelihood { get; set; } 
+
+        /// <summary>Pitch angle, which indicates the upwards/downwards angle that the face is pointing relative to the
+        /// image's horizontal plane. Range [-180,180].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tiltAngle")]
+        public virtual System.Nullable<float> TiltAngle { get; set; } 
+
+        /// <summary>Under-exposed likelihood.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underExposedLikelihood")]
+        public virtual string UnderExposedLikelihood { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
+    public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
+        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
+        /// multiple outputs. Prefixes must end in a `/`.
+        ///
+        /// Examples:
+        ///
+        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
+        /// name/prefix/here
+        ///
+        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
+        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
+        /// large and overflows into multiple sharded files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the input will be read from.</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI for the input file. This must only be a Google Cloud Storage object.
+        /// Wildcards are not currently supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested
     /// features.</summary>
     public class GoogleCloudVisionV1p1beta1AnnotateImageRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -523,6 +1015,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>Response to an image annotation request.</summary>
     public class GoogleCloudVisionV1p1beta1AnnotateImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If present, contextual information is needed to understand where this image comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GoogleCloudVisionV1p1beta1ImageAnnotationContext Context { get; set; } 
+
         /// <summary>If present, crop hints have completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cropHintsAnnotation")]
         public virtual GoogleCloudVisionV1p1beta1CropHintsAnnotation CropHintsAnnotation { get; set; } 
@@ -568,6 +1064,40 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>If present, web detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webDetection")]
         public virtual GoogleCloudVisionV1p1beta1WebDetection WebDetection { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An offline file annotation request.</summary>
+    public class GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Requested features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1Feature> Features { get; set; } 
+
+        /// <summary>Additional context that may accompany the image(s) in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageContext")]
+        public virtual GoogleCloudVisionV1p1beta1ImageContext ImageContext { get; set; } 
+
+        /// <summary>Required. Information about the input file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual GoogleCloudVisionV1p1beta1InputConfig InputConfig { get; set; } 
+
+        /// <summary>Required. The desired output location and metadata (e.g. format).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudVisionV1p1beta1OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Multiple async file annotation requests are batched into a single service call.</summary>
+    public class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Individual async file annotation requests for this batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1AsyncAnnotateFileRequest> Requests { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -888,6 +1418,40 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
+    public class GoogleCloudVisionV1p1beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
+        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
+        /// multiple outputs. Prefixes must end in a `/`.
+        ///
+        /// Examples:
+        ///
+        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
+        /// name/prefix/here
+        ///
+        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
+        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
+        /// large and overflows into multiple sharded files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the input will be read from.</summary>
+    public class GoogleCloudVisionV1p1beta1GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI for the input file. This must only be a Google Cloud Storage object.
+        /// Wildcards are not currently supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class GoogleCloudVisionV1p1beta1Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -901,6 +1465,23 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual GoogleCloudVisionV1p1beta1ImageSource Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>If an image was produced from a file (e.g. a PDF), this message gives information about the source of
+    /// that image.</summary>
+    public class GoogleCloudVisionV1p1beta1ImageAnnotationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the file was a PDF or TIFF, this field gives the page number within the file used to produce the
+        /// image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; } 
+
+        /// <summary>The URI of the file used to produce the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -975,6 +1556,22 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The desired input location and metadata.</summary>
+    public class GoogleCloudVisionV1p1beta1InputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage location to read the input from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudVisionV1p1beta1GcsSource GcsSource { get; set; } 
+
+        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
+        /// are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Rectangle determined by min and max `LatLng` pairs.</summary>
     public class GoogleCloudVisionV1p1beta1LatLongRect : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -996,6 +1593,29 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>lat/long location coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
         public virtual LatLng LatLng { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired output location and metadata.</summary>
+    public class GoogleCloudVisionV1p1beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
+        /// valid range is [1, 100]. If not specified, the default value is 20.
+        ///
+        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
+        /// then 5 json files each containing 20 response protos will be written under the prefix
+        /// `gcs_destination`.`uri`.
+        ///
+        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
+        /// configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; } 
+
+        /// <summary>The Google Cloud Storage location to write the output(s) to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudVisionV1p1beta1GcsDestination GcsDestination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2260,6 +2880,191 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata for the batch operations such as the current state.
+    ///
+    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
+    /// `google::longrunning::Operations` service.</summary>
+    public class GoogleCloudVisionV1p3beta1BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
+        /// true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the batch request was submitted to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
+        public virtual object SubmitTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A bounding polygon for the detected image annotation.</summary>
+    public class GoogleCloudVisionV1p3beta1BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon normalized vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedVertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1NormalizedVertex> NormalizedVertices { get; set; } 
+
+        /// <summary>The bounding polygon vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1Vertex> Vertices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ImportProductSets` method.
+    ///
+    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
+    /// google.longrunning.Operation.response field.</summary>
+    public class GoogleCloudVisionV1p3beta1ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of reference_images that are imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ReferenceImage> ReferenceImages { get; set; } 
+
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
+        ///
+        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
+        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class GoogleCloudVisionV1p3beta1NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `ReferenceImage` represents a product image and its associated metadata, such as bounding
+    /// boxes.</summary>
+    public class GoogleCloudVisionV1p3beta1ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bounding polygons around the areas of interest in the reference image. Optional. If this field is
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
+        ///
+        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
+        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
+        /// 1:5 is not).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1BoundingPoly> BoundingPolys { get; set; } 
+
+        /// <summary>The resource name of the reference image.
+        ///
+        /// Format is:
+        ///
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+        ///
+        /// This field is ignored when creating a reference image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The Google Cloud Storage URI of the reference image.
+        ///
+        /// The URI must start with `gs://`.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the
+    /// original image.</summary>
+    public class GoogleCloudVisionV1p3beta1Vertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<int> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<int> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>If an image was produced from a file (e.g. a PDF), this message gives information about the source of
+    /// that image.</summary>
+    public class ImageAnnotationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the file was a PDF or TIFF, this field gives the page number within the file used to produce the
+        /// image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; } 
+
+        /// <summary>The URI of the file used to produce the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stores image properties, such as dominant colors.</summary>
+    public class ImageProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If present, dominant colors completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dominantColors")]
+        public virtual DominantColorsAnnotation DominantColors { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired input location and metadata.</summary>
+    public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage location to read the input from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; } 
+
+        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
+        /// are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A face-specific landmark (for example, a face feature).</summary>
+    public class Landmark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Face landmark position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual Position Position { get; set; } 
+
+        /// <summary>Face landmark type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
     /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
     /// Values must be within normalized ranges.</summary>
@@ -2272,6 +3077,237 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
         public virtual System.Nullable<double> Longitude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detected entity location information.</summary>
+    public class LocationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>lat/long location coordinates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
+        public virtual LatLng LatLng { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
+        /// completed, and either `error` or `response` is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; } 
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
+        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
+        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+        /// If you use the default HTTP mapping, the `name` should have the format of
+        /// `operations/some/unique/name`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
+        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains metadata for the BatchAnnotateImages operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the operation result was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired output location and metadata.</summary>
+    public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The max number of response protos to put into each output JSON file on Google Cloud Storage. The
+        /// valid range is [1, 100]. If not specified, the default value is 20.
+        ///
+        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
+        /// then 5 json files each containing 20 response protos will be written under the prefix
+        /// `gcs_destination`.`uri`.
+        ///
+        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
+        /// configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; } 
+
+        /// <summary>The Google Cloud Storage location to write the output(s) to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detected page from OCR.</summary>
+    public class Page : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of blocks of text, images etc on this page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<Block> Blocks { get; set; } 
+
+        /// <summary>Confidence of the OCR results on the page. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Page height. For PDFs the unit is points. For images (including TIFFs) the unit is
+        /// pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>Additional information detected on the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual TextProperty Property { get; set; } 
+
+        /// <summary>Page width. For PDFs the unit is points. For images (including TIFFs) the unit is pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structural unit of text representing a number of words in certain order.</summary>
+    public class Paragraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding box for the paragraph. The vertices are in the order of top-left, top-right, bottom-
+        /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
+        /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
+        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
+        public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results for the paragraph. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Additional information detected for the paragraph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual TextProperty Property { get; set; } 
+
+        /// <summary>List of words in this paragraph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<Word> Words { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A 3D position in the image, used primarily for Face detection landmarks. A valid Position must have
+    /// both x and y coordinates. The position coordinates are in the same scale as the original image.</summary>
+    public class Position : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>Z coordinate (or depth).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("z")]
+        public virtual System.Nullable<float> Z { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
+    public class Property : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Value of numeric properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uint64Value")]
+        public virtual System.Nullable<ulong> Uint64Value { get; set; } 
+
+        /// <summary>Value of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of features pertaining to the image, computed by computer vision methods over safe-search verticals
+    /// (for example, adult, spoof, medical, violence).</summary>
+    public class SafeSearchAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the adult content likelihood for the image. Adult content may contain elements such as
+        /// nudity, pornographic images or cartoons, or sexual activities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adult")]
+        public virtual string Adult { get; set; } 
+
+        /// <summary>Likelihood that this is a medical image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medical")]
+        public virtual string Medical { get; set; } 
+
+        /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
+        /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
+        /// of sensitive body areas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racy")]
+        public virtual string Racy { get; set; } 
+
+        /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
+        /// make it appear funny or offensive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
+        public virtual string Spoof { get; set; } 
+
+        /// <summary>Likelihood that this image contains violent content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violence")]
+        public virtual string Violence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2335,6 +3371,221 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single symbol representation.</summary>
+    public class Symbol : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding box for the symbol. The vertices are in the order of top-left, top-right, bottom-
+        /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
+        /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
+        /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
+        public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results for the symbol. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Additional information detected for the symbol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual TextProperty Property { get; set; } 
+
+        /// <summary>The actual UTF-8 representation of the symbol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>TextAnnotation contains a structured representation of OCR extracted text. The hierarchy of an OCR
+    /// extracted text structure is like this: TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol Each
+    /// structural component, starting from Page, may further have their own properties. Properties describe detected
+    /// languages, breaks etc.. Please refer to the TextAnnotation.TextProperty message definition below for more
+    /// detail.</summary>
+    public class TextAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of pages detected by OCR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pages")]
+        public virtual System.Collections.Generic.IList<Page> Pages { get; set; } 
+
+        /// <summary>UTF-8 text detected on the pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional information detected on the structural component.</summary>
+    public class TextProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detected start or end of a text segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedBreak")]
+        public virtual DetectedBreak DetectedBreak { get; set; } 
+
+        /// <summary>A list of detected languages together with confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<DetectedLanguage> DetectedLanguages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the
+    /// original image.</summary>
+    public class Vertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<int> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<int> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Relevant information for the image from the Internet.</summary>
+    public class WebDetection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Best guess text labels for the request image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestGuessLabels")]
+        public virtual System.Collections.Generic.IList<WebLabel> BestGuessLabels { get; set; } 
+
+        /// <summary>Fully matching images from the Internet. Can include resized copies of the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> FullMatchingImages { get; set; } 
+
+        /// <summary>Web pages containing the matching images from the Internet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pagesWithMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebPage> PagesWithMatchingImages { get; set; } 
+
+        /// <summary>Partial matching images from the Internet. Those images are similar enough to share some key-point
+        /// features. For example an original image will likely have partial matching for its crops.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> PartialMatchingImages { get; set; } 
+
+        /// <summary>The visually similar image results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visuallySimilarImages")]
+        public virtual System.Collections.Generic.IList<WebImage> VisuallySimilarImages { get; set; } 
+
+        /// <summary>Deduced entities from similar images on the Internet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webEntities")]
+        public virtual System.Collections.Generic.IList<WebEntity> WebEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Entity deduced from similar images on the Internet.</summary>
+    public class WebEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Canonical description of the entity, in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Opaque entity ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; } 
+
+        /// <summary>Overall relevancy score for the entity. Not normalized and not comparable across different image
+        /// queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for online images.</summary>
+    public class WebImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>(Deprecated) Overall relevancy score for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The result image URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Label to provide extra metadata for the web detection.</summary>
+    public class WebLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label for extra metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for web pages.</summary>
+    public class WebPage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully matching images on the page. Can include resized copies of the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> FullMatchingImages { get; set; } 
+
+        /// <summary>Title for the web page, may contain HTML markups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageTitle")]
+        public virtual string PageTitle { get; set; } 
+
+        /// <summary>Partial matching images on the page. Those images are similar enough to share some key-point
+        /// features. For example an original image will likely have partial matching for its crops.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> PartialMatchingImages { get; set; } 
+
+        /// <summary>(Deprecated) Overall relevancy score for the web page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The result web page URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A word representation.</summary>
+    public class Word : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right,
+        /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
+        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
+        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
+        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
+        public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results for the word. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Additional information detected for the word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual TextProperty Property { get; set; } 
+
+        /// <summary>List of symbols in the word. The order of the symbols follows the natural reading order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symbols")]
+        public virtual System.Collections.Generic.IList<Symbol> Symbols { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

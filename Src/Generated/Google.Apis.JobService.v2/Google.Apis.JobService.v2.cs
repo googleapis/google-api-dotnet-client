@@ -766,6 +766,13 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
+            /// provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// Set to true if the companies request must have open jobs.
             ///
             /// Defaults to false.
@@ -780,13 +787,6 @@ namespace Google.Apis.JobService.v2
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
-            /// provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -813,6 +813,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mustHaveOpenJobs",
@@ -825,15 +834,6 @@ namespace Google.Apis.JobService.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1011,14 +1011,18 @@ namespace Google.Apis.JobService.v2
 
         }
 
-        /// <summary>Creates a new job.</summary>
+        /// <summary>Creates a new job.
+        ///
+        /// Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.JobService.v2.Data.CreateJobRequest body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new job.</summary>
+        /// <summary>Creates a new job.
+        ///
+        /// Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.</summary>
         public class CreateRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1064,8 +1068,9 @@ namespace Google.Apis.JobService.v2
 
         }
 
-        /// <summary>Deletes the specified job. You can specify whether to synchronously wait for validation, indexing,
-        /// and general processing to be completed before the response is returned.</summary>
+        /// <summary>Deletes the specified job.
+        ///
+        /// Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
         /// <param name="name">Required.
         ///
         /// The resource name of the job to be deleted, such as "jobs/11111111".</param>
@@ -1074,8 +1079,9 @@ namespace Google.Apis.JobService.v2
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Deletes the specified job. You can specify whether to synchronously wait for validation, indexing,
-        /// and general processing to be completed before the response is returned.</summary>
+        /// <summary>Deletes the specified job.
+        ///
+        /// Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
         public class DeleteRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1208,7 +1214,8 @@ namespace Google.Apis.JobService.v2
 
         }
 
-        /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED in 60 days.</summary>
+        /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90
+        /// days.</summary>
         /// <param name="name">Required.
         ///
         /// The resource name of the job to retrieve, such as "jobs/11111111".</param>
@@ -1217,7 +1224,8 @@ namespace Google.Apis.JobService.v2
             return new GetRequest(service, name);
         }
 
-        /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED in 60 days.</summary>
+        /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90
+        /// days.</summary>
         public class GetRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1360,6 +1368,27 @@ namespace Google.Apis.JobService.v2
             }
 
 
+            /// <summary>Optional.
+            ///
+            /// The maximum number of jobs to be returned per page of results.
+            ///
+            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+            /// size is 100.
+            ///
+            /// Default is 100 if empty or a number < 1 is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be returned.
+            ///
+            /// A typical use case is to synchronize job repositories.
+            ///
+            /// Defaults to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IdsOnly { get; set; }
+
             /// <summary>Required.
             ///
             /// The filter string specifies the jobs to be enumerated.
@@ -1381,27 +1410,6 @@ namespace Google.Apis.JobService.v2
             /// The starting point of a query result.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of jobs to be returned per page of results.
-            ///
-            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
-            /// size is 100.
-            ///
-            /// Default is 100 if empty or a number < 1 is specified.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be returned.
-            ///
-            /// A typical use case is to synchronize job repositories.
-            ///
-            /// Defaults to false.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IdsOnly { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1428,24 +1436,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1463,15 +1453,32 @@ namespace Google.Apis.JobService.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Updates the specified job. You can specify whether to synchronously wait for validation, indexing,
-        /// and general processing to be completed before the response is returned.
+        /// <summary>Updates the specified job.
         ///
-        /// If this call is executed synchronously, the returned job is guaranteed to be fully processed and complete
-        /// upon response. The `companyName` and `distributorCompanyId` job fields cannot be updated.</summary>
+        /// Typically, the updated contents become visible in search results within 10 seconds, but it may take up to 5
+        /// minutes.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required during job update.
         ///
@@ -1482,11 +1489,10 @@ namespace Google.Apis.JobService.v2
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Updates the specified job. You can specify whether to synchronously wait for validation, indexing,
-        /// and general processing to be completed before the response is returned.
+        /// <summary>Updates the specified job.
         ///
-        /// If this call is executed synchronously, the returned job is guaranteed to be fully processed and complete
-        /// upon response. The `companyName` and `distributorCompanyId` job fields cannot be updated.</summary>
+        /// Typically, the updated contents become visible in search results within 10 seconds, but it may take up to 5
+        /// minutes.</summary>
         public class PatchRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1711,6 +1717,12 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Required.
             ///
+            /// Completion result count. The maximum allowed page size is 10.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Required.
+            ///
             /// The query used to generate suggestions.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1776,12 +1788,6 @@ namespace Google.Apis.JobService.v2
                 PUBLIC__,
             }
 
-            /// <summary>Required.
-            ///
-            /// Completion result count. The maximum allowed page size is 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1806,6 +1812,15 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "query", new Google.Apis.Discovery.Parameter
                     {
@@ -1846,15 +1861,6 @@ namespace Google.Apis.JobService.v2
                     "scope", new Google.Apis.Discovery.Parameter
                     {
                         Name = "scope",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2417,10 +2423,7 @@ namespace Google.Apis.JobService.v2.Data
 
     /// <summary>Input only.
     ///
-    /// Create job request.
-    ///
-    /// The job typically becomes searchable within 10 seconds, but it may take up to 5 minutes for the job to become
-    /// searchable.</summary>
+    /// Create job request.</summary>
     public class CreateJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set to `true`, the service will not attempt to resolve a more precise address for the
@@ -2586,8 +2589,7 @@ namespace Google.Apis.JobService.v2.Data
     ///
     /// Delete job by filter request.
     ///
-    /// The job typically becomes unsearchable within 10 seconds, but it may take up to 5 minutes for the job to become
-    /// unsearchable.</summary>
+    /// The job typically becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
     public class DeleteJobsByFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional.
@@ -4405,10 +4407,7 @@ namespace Google.Apis.JobService.v2.Data
 
     /// <summary>Input only.
     ///
-    /// Update job request.
-    ///
-    /// The job typically becomes searchable within 10 seconds, but it may take up to 5 minutes for the job to become
-    /// searchable.</summary>
+    /// Update job request.</summary>
     public class UpdateJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set to `true`, the service will not attempt resolve a more precise address for the

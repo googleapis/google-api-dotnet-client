@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/bsZWH9C_7_SF_W1gElvJfpQCjcI\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/g6v3916IY0fUnA_DercnjfZ1FVw\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180429",
+ "revision": "20180510",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1226,7 +1226,7 @@
     },
     "location": {
      "type": "string",
-     "description": "[Experimental] The geographic location of the job. Required except for US and EU."
+     "description": "[Experimental] The geographic location of the job. Required except for US and EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location."
     },
     "projectId": {
      "type": "string",
@@ -2173,12 +2173,12 @@
    "properties": {
     "expirationMs": {
      "type": "string",
-     "description": "[Optional] Number of milliseconds for which to keep the storage for a partition.",
+     "description": "[Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.",
      "format": "int64"
     },
     "field": {
      "type": "string",
-     "description": "[Experimental] [Optional] If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED."
+     "description": "[Experimental] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED."
     },
     "requirePartitionFilter": {
      "type": "boolean",
