@@ -89,9 +89,18 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Controllers
 
             var returnUrl = Request.Url.ToString();
             returnUrl = returnUrl.Substring(0, returnUrl.IndexOf("?"));
+            
+            // If include granted scopes is specified, then pass the current scopes
+            // to ExchangeCodeForTokenAsync.
+            string[] grantedScopes = null;
+            if (Flow.IncludeGrantedScopes.HasValue && Flow.IncludeGrantedScopes.Value)
+            {
+                var token = await Flow.LoadTokenAsync(UserId, taskCancellationToken).ConfigureAwait(false);
+                grantedScopes = token.Scope?.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            }
 
-            var token = await Flow.ExchangeCodeForTokenAsync(UserId, authorizationCode.Code, returnUrl,
-                taskCancellationToken).ConfigureAwait(false);
+            await Flow.ExchangeCodeForTokenAsync(UserId, authorizationCode.Code, grantedScopes, 
+                returnUrl, taskCancellationToken).ConfigureAwait(false);
 
             // Extract the right state.
             var oauthState = await AuthWebUtility.ExtracRedirectFromState(Flow.DataStore, UserId,

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,7 +37,13 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         /// <summary>Gets the data store used to store the credentials.</summary>
         IDataStore DataStore { get; }
+        
+        /// <summary>Gets the include granted scopes indicator.</summary>
+        bool? IncludeGrantedScopes { get; }
 
+        /// <summary>Gets the scopes which indicate the API access your application is requesting.</summary>
+        IEnumerable<string> Scopes { get; }
+        
         /// <summary>
         /// Asynchronously loads the user's token using the flow's
         /// <see cref="Google.Apis.Util.Store.IDataStore"/>.
@@ -60,11 +67,12 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Asynchronously exchanges code with a token.</summary>
         /// <param name="userId">User identifier.</param>
         /// <param name="code">Authorization code received from the authorization server.</param>
+        /// <param name="grantedScopes">Previously granted scopes if include granted scopes specified.</param>
         /// <param name="redirectUri">Redirect URI which is used in the token request.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns>Token response which contains the access token.</returns>
-        Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri,
-            CancellationToken taskCancellationToken);
+        Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, IEnumerable<string> grantedScopes, 
+            string redirectUri, CancellationToken taskCancellationToken);
 
         /// <summary>Asynchronously refreshes an access token using a refresh token.</summary>
         /// <param name="userId">User identifier.</param>

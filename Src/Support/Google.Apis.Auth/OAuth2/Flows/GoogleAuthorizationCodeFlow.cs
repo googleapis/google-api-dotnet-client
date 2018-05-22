@@ -31,33 +31,22 @@ namespace Google.Apis.Auth.OAuth2.Flows
     /// </summary>
     public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow
     {
-        private readonly string revokeTokenUrl;
-
         /// <summary>Gets the token revocation URL.</summary>
-        public string RevokeTokenUrl { get { return revokeTokenUrl; } }
+        public string RevokeTokenUrl { get; private set; }
 
-        /// <summary>Gets or sets the include granted scopes indicator.
-        /// Do not use, use <see cref="IncludeGrantedScopes"/> instead.</summary>
-        public readonly bool? includeGrantedScopes;
-
-        /// <summary>Gets or sets the include granted scopes indicator.</summary>
-        public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
-
-        private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
+        /// <summary>Gets or sets the login_hint.</summary>
+        public string LoginHint { get; set; }
 
         /// <summary>Gets the user defined query parameters.</summary>
-        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams
-        { 
-            get { return userDefinedQueryParams; } 
-        }
+        public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; private set; }
 
         /// <summary>Constructs a new Google authorization code flow.</summary>
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
-            revokeTokenUrl = initializer.RevokeTokenUrl;
-            includeGrantedScopes = initializer.IncludeGrantedScopes;
-            userDefinedQueryParams = initializer.UserDefinedQueryParams;
+            LoginHint = initializer.LoginHint;
+            RevokeTokenUrl = initializer.RevokeTokenUrl;
+            UserDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
         /// <inheritdoc/>
@@ -70,6 +59,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 RedirectUri = redirectUri,
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
+                LoginHint = LoginHint,
                 UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
@@ -107,10 +97,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
 
-            /// <summary>
-            /// Gets or sets the optional indicator for including granted scopes for incremental authorization.
-            /// </summary>
-            public bool? IncludeGrantedScopes { get; set; }
+            /// <summary>Gets or sets the login_hint.
+            /// Set the parameter value to an email address or sub identifier.</summary>
+            public string LoginHint { get; set; }
 
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
             public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
