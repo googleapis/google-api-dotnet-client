@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180520 (1235)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -609,10 +609,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -620,6 +616,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -655,15 +655,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -676,6 +667,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1430,10 +1430,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; } 
 
-        /// <summary>Configuration for custom authentication.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customAuth")]
-        public virtual CustomAuthRequirements CustomAuth { get; set; } 
-
         /// <summary>The requirements for OAuth credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth")]
         public virtual OAuthRequirements Oauth { get; set; } 
@@ -1687,18 +1683,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// otherwise the call will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenancyUnitId")]
         public virtual string TenancyUnitId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration for a custom authentication provider.</summary>
-    public class CustomAuthRequirements : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A configuration string containing connection information for the authentication provider, typically
-        /// formatted as a SmartService string (go/smartservice).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual string Provider { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

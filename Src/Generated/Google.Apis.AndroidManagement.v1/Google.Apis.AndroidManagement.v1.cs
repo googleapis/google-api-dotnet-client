@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180507 (1222)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -750,10 +750,6 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -761,6 +757,10 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -796,15 +796,6 @@ namespace Google.Apis.AndroidManagement.v1
                                 Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -817,6 +808,15 @@ namespace Google.Apis.AndroidManagement.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2135,6 +2135,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An app-related event.</summary>
+    public class ApplicationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>App event type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A permission required by the app.</summary>
     public class ApplicationPermission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2205,6 +2220,81 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information reported about an installed app.</summary>
+    public class ApplicationReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationSource")]
+        public virtual string ApplicationSource { get; set; } 
+
+        /// <summary>The display name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>List of app events. The most recent 20 events are stored in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<ApplicationEvent> Events { get; set; } 
+
+        /// <summary>The package name of the app that installed this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installerPackageName")]
+        public virtual string InstallerPackageName { get; set; } 
+
+        /// <summary>Package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified.
+        /// Each byte of the hash value is represented as a two-digit hexadecimal number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageSha256Hash")]
+        public virtual string PackageSha256Hash { get; set; } 
+
+        /// <summary>The SHA-1 hash of each android.content.pm.Signature
+        /// (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package.
+        /// Each byte of each hash value is represented as a two-digit hexadecimal number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyCertFingerprints")]
+        public virtual System.Collections.Generic.IList<string> SigningKeyCertFingerprints { get; set; } 
+
+        /// <summary>Application state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The app version code, which can be used to determine whether one version is more recent than
+        /// another.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; } 
+
+        /// <summary>The app version as displayed to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A rule for automatically choosing a private key and certificate to authenticate the device to a
+    /// server.</summary>
+    public class ChoosePrivateKeyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The package names for which outgoing requests are subject to this rule. If no package names are
+        /// specified, then the rule applies to all packages. For each package name listed, the rule applies to that
+        /// package and all other packages that shared the same Android UID. The SHA256 hash of the signing key
+        /// signatures of each package_name will be verified against those provided by Play</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNames")]
+        public virtual System.Collections.Generic.IList<string> PackageNames { get; set; } 
+
+        /// <summary>The alias of the private key to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyAlias")]
+        public virtual string PrivateKeyAlias { get; set; } 
+
+        /// <summary>The URL pattern to match against the URL of the outgoing request. The pattern may contain asterisk
+        /// (*) wildcards. Any URL is matched if unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlPattern")]
+        public virtual string UrlPattern { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A command.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2268,6 +2358,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceDetailCondition")]
         public virtual NonComplianceDetailCondition NonComplianceDetailCondition { get; set; } 
 
+        /// <summary>If set, the rule includes a mitigating action to disable apps specified in the list, but app data
+        /// is preserved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNamesToDisable")]
+        public virtual System.Collections.Generic.IList<string> PackageNamesToDisable { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2279,6 +2374,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The API level of the Android platform version running on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<int> ApiLevel { get; set; } 
+
+        /// <summary>Reports for apps installed on the device. This information is only available when
+        /// application_reports_enabled is true in the device's policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationReports")]
+        public virtual System.Collections.Generic.IList<ApplicationReport> ApplicationReports { get; set; } 
 
         /// <summary>The name of the policy currently applied to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedPolicyName")]
@@ -3139,6 +3239,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cellBroadcastsConfigDisabled")]
         public virtual System.Nullable<bool> CellBroadcastsConfigDisabled { get; set; } 
 
+        /// <summary>Rules for automatically choosing a private key and certificate to authenticate the device to a
+        /// server. The rules are ordered by increasing precedence, so if an outgoing request matches more than one
+        /// rule, the last rule defines which private key to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choosePrivateKeyRules")]
+        public virtual System.Collections.Generic.IList<ChoosePrivateKeyRule> ChoosePrivateKeyRules { get; set; } 
+
         /// <summary>Rules declaring which mitigating actions to take when a device is not compliant with its policy.
         /// When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken.
         /// There is a maximum limit of 100 rules.</summary>
@@ -3283,6 +3389,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Default intent handler activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentPreferredActivities")]
         public virtual System.Collections.Generic.IList<PersistentPreferredActivity> PersistentPreferredActivities { get; set; } 
+
+        /// <summary>Allows showing UI on a device for a user to choose a private key alias if there are no matching
+        /// rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys
+        /// vulnerable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeySelectionEnabled")]
+        public virtual System.Nullable<bool> PrivateKeySelectionEnabled { get; set; } 
 
         /// <summary>The network-independent global HTTP proxy. Typically proxies should be configured per-network in
         /// open_network_configuration. However for unusual configurations like general internal filtering a global HTTP
@@ -3543,6 +3655,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Settings controlling the behavior of status reports.</summary>
     public class StatusReportingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether app reports are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationReportsEnabled")]
+        public virtual System.Nullable<bool> ApplicationReportsEnabled { get; set; } 
+
         /// <summary>Whether device settings reporting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSettingsEnabled")]
         public virtual System.Nullable<bool> DeviceSettingsEnabled { get; set; } 

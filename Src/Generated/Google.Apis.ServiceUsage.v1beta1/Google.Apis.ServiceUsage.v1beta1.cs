@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180520 (1235)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1172,10 +1172,6 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; } 
 
-        /// <summary>Configuration for custom authentication.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customAuth")]
-        public virtual CustomAuthRequirements CustomAuth { get; set; } 
-
         /// <summary>The requirements for OAuth credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth")]
         public virtual OAuthRequirements Oauth { get; set; } 
@@ -1433,18 +1429,6 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// will be enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration for a custom authentication provider.</summary>
-    public class CustomAuthRequirements : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A configuration string containing connection information for the authentication provider, typically
-        /// formatted as a SmartService string (go/smartservice).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual string Provider { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
