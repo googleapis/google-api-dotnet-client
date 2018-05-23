@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180514 (1229)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -731,6 +731,38 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>How the input data should be interpreted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
+
+                /// <summary>How the input data should be interpreted.</summary>
+                public enum ValueInputOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
+                    INPUTVALUEOPTIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("RAW")]
+                    RAW,
+                    [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
+                    USERENTERED,
+                }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum ResponseDateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
+                }
+
                 /// <summary>Determines if the update response should include the values of the cells that were
                 /// appended. By default, responses do not include the updated values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
@@ -764,38 +796,6 @@ namespace Google.Apis.Sheets.v4
                     OVERWRITE,
                     [Google.Apis.Util.StringValueAttribute("INSERT_ROWS")]
                     INSERTROWS,
-                }
-
-                /// <summary>How the input data should be interpreted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
-
-                /// <summary>How the input data should be interpreted.</summary>
-                public enum ValueInputOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
-                    INPUTVALUEOPTIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("RAW")]
-                    RAW,
-                    [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
-                    USERENTERED,
-                }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum ResponseDateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
                 }
 
 
@@ -847,6 +847,24 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "valueInputOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
@@ -868,24 +886,6 @@ namespace Google.Apis.Sheets.v4
                         "insertDataOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "insertDataOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueInputOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueInputOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2269,15 +2269,15 @@ namespace Google.Apis.Sheets.v4.Data
 
     /// <summary>Creates a group over the specified range.
     ///
-    /// If the requested range is a superset of the range of an existing group G, then the depth of G will be
-    /// incremented and this new group G' will have the depth of that group. For example, a group [C:D, depth 1] + [B:E]
-    /// results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range is a subset of the range of an
-    /// existing group G, then the depth of the new group G' will be one greater than the depth of G. For example, a
-    /// group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range starts
-    /// before and ends within, or starts within and ends after, the range of an existing group G, then the range of the
-    /// existing group G will become the union of the ranges, and the new group G' will have depth one greater than the
-    /// depth of G and range as the intersection of the ranges. For example, a group [B:D, depth 1] + [C:E] results in
-    /// groups [B:E, depth 1] and [C:D, depth 2].</summary>
+    /// If the requested range is a superset of the range of an existing group G, then the depth of G is incremented and
+    /// this new group G' has the depth of that group. For example, a group [C:D, depth 1] + [B:E] results in groups
+    /// [B:E, depth 1] and [C:D, depth 2]. If the requested range is a subset of the range of an existing group G, then
+    /// the depth of the new group G' becomes one greater than the depth of G. For example, a group [B:E, depth 1] +
+    /// [C:D] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range starts before and ends within,
+    /// or starts within and ends after, the range of an existing group G, then the range of the existing group G
+    /// becomes the union of the ranges, and the new group G' has depth one greater than the depth of G and range as the
+    /// intersection of the ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E, depth 1] and
+    /// [C:D, depth 2].</summary>
     public class AddDimensionGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range over which to create a group.</summary>
@@ -2496,8 +2496,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
         public virtual System.Nullable<int> BandedRangeId { get; set; } 
 
-        /// <summary>Properties for column bands. These properties will be applied on a column- by-column basis
-        /// throughout all the columns in the range. At least one of row_properties or column_properties must be
+        /// <summary>Properties for column bands. These properties are applied on a column- by-column basis throughout
+        /// all the columns in the range. At least one of row_properties or column_properties must be
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
         public virtual BandingProperties ColumnProperties { get; set; } 
@@ -2506,7 +2506,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; } 
 
-        /// <summary>Properties for row bands. These properties will be applied on a row-by-row basis throughout all the
+        /// <summary>Properties for row bands. These properties are applied on a row-by-row basis throughout all the
         /// rows in the range. At least one of row_properties or column_properties must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowProperties")]
         public virtual BandingProperties RowProperties { get; set; } 
@@ -2597,7 +2597,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class BasicChartSeries : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The color for elements (i.e. bars, lines, points) associated with this series.  If empty, a default
-        /// color will be used.</summary>
+        /// color is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
 
@@ -3025,8 +3025,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A rule that may or may not match, depending on the condition.</summary>
     public class BooleanRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition of the rule. If the condition evaluates to true, the format will be
-        /// applied.</summary>
+        /// <summary>The condition of the rule. If the condition evaluates to true, the format is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual BooleanCondition Condition { get; set; } 
 
@@ -3122,9 +3121,9 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual ChartData Domain { get; set; } 
 
-        /// <summary>The data containing the bubble group IDs. All bubbles with the same group ID will be drawn in the
-        /// same color. If bubble_sizes is specified then this field must also be specified but may contain blank
-        /// values. This field is optional.</summary>
+        /// <summary>The data containing the bubble group IDs. All bubbles with the same group ID are drawn in the same
+        /// color. If bubble_sizes is specified then this field must also be specified but may contain blank values.
+        /// This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
         public virtual ChartData GroupIds { get; set; } 
 
@@ -3228,8 +3227,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveFormat")]
         public virtual CellFormat EffectiveFormat { get; set; } 
 
-        /// <summary>The effective value of the cell. For cells with formulas, this will be the calculated value.  For
-        /// cells with literals, this will be the same as the user_entered_value. This field is read-only.</summary>
+        /// <summary>The effective value of the cell. For cells with formulas, this is the calculated value.  For cells
+        /// with literals, this is the same as the user_entered_value. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveValue")]
         public virtual ExtendedValue EffectiveValue { get; set; } 
 
@@ -3260,7 +3259,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// run will continue the properties of the cell unless explicitly changed).
         ///
         /// When writing, the new runs will overwrite any prior runs.  When writing a new user_entered_value, previous
-        /// runs will be erased.</summary>
+        /// runs are erased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormatRuns")]
         public virtual System.Collections.Generic.IList<TextFormatRun> TextFormatRuns { get; set; } 
 
@@ -3576,8 +3575,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDate")]
         public virtual string RelativeDate { get; set; } 
 
-        /// <summary>A value the condition is based on. The value will be parsed as if the user typed into a cell.
-        /// Formulas are supported (and must begin with an `=` or a '+').</summary>
+        /// <summary>A value the condition is based on. The value is parsed as if the user typed into a cell. Formulas
+        /// are supported (and must begin with an `=` or a '+').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEnteredValue")]
         public virtual string UserEnteredValue { get; set; } 
 
@@ -3596,7 +3595,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gradientRule")]
         public virtual GradientRule GradientRule { get; set; } 
 
-        /// <summary>The ranges that will be formatted if the condition is true. All the ranges must be on the same
+        /// <summary>The ranges that are formatted if the condition is true. All the ranges must be on the same
         /// grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
         public virtual System.Collections.Generic.IList<GridRange> Ranges { get; set; } 
@@ -3833,7 +3832,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Deletes a group over the specified range by decrementing the depth of the dimensions in the range.
     ///
     /// For example, assume the sheet has a depth-1 group over B:E and a depth-2 group over C:D. Deleting a group over
-    /// D:E would leave the sheet with a depth-1 group over B:D and a depth-2 group over C:C.</summary>
+    /// D:E leaves the sheet with a depth-1 group over B:D and a depth-2 group over C:C.</summary>
     public class DeleteDimensionGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range of the group to be deleted.</summary>
@@ -3943,7 +3942,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// locations as they move around and the spreadsheet is edited.  For example, if developer metadata is associated
     /// with row 5 and another row is then subsequently inserted above row 5, that original metadata will still be
     /// associated with the row it was first associated with (what is now row 6). If the associated object is deleted
-    /// its metadata will be deleted too.</summary>
+    /// its metadata is deleted too.</summary>
     public class DeveloperMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The location where the metadata is associated.</summary>
@@ -4057,13 +4056,12 @@ namespace Google.Apis.Sheets.v4.Data
     /// groups. A group can be collapsed or expanded as a unit on the sheet.</summary>
     public class DimensionGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if this group is collapsed. A collapsed group will remain collapsed if an overlapping group at
-        /// a shallower depth is expanded.
+        /// <summary>This field is true if this group is collapsed. A collapsed group remains collapsed if an
+        /// overlapping group at a shallower depth is expanded.
         ///
-        /// collapsed == true does not imply that all dimensions within the group are hidden, since a dimension's
-        /// visibility can change independently from this group property. However, when this property is updated, all
-        /// dimensions within it will be set to hidden if collapsed == true, or set to visible if collapsed ==
-        /// false.</summary>
+        /// A true value does not imply that all dimensions within the group are hidden, since a dimension's visibility
+        /// can change independently from this group property. However, when this property is updated, all dimensions
+        /// within it are set to hidden if this field is true, or set to visible if this field is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
         public virtual System.Nullable<bool> Collapsed { get; set; } 
 
@@ -4228,7 +4226,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The position of an embedded object such as a chart.</summary>
     public class EmbeddedObjectPosition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the embedded object will be put on a new sheet whose ID is chosen for you. Used only when
+        /// <summary>If true, the embedded object is put on a new sheet whose ID is chosen for you. Used only when
         /// writing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSheet")]
         public virtual System.Nullable<bool> NewSheet { get; set; } 
@@ -4621,11 +4619,11 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Allows you to organize the numeric values in a source data column into buckets of a constant size. All
-    /// values from HistogramRule.start to HistogramRule.end will be placed into groups of size HistogramRule.interval.
-    /// In addition, all values below HistogramRule.start will be placed in one group, and all values above
-    /// HistogramRule.end will be placed in another. Only HistogramRule.interval is required, though if
-    /// HistogramRule.start and HistogramRule.end are both provided, HistogramRule.start must be less than
-    /// HistogramRule.end. For example, a pivot table showing average purchase amount by age that has 50+ rows:
+    /// values from HistogramRule.start to HistogramRule.end are placed into groups of size HistogramRule.interval. In
+    /// addition, all values below HistogramRule.start are placed in one group, and all values above HistogramRule.end
+    /// are placed in another. Only HistogramRule.interval is required, though if HistogramRule.start and
+    /// HistogramRule.end are both provided, HistogramRule.start must be less than HistogramRule.end. For example, a
+    /// pivot table showing average purchase amount by age that has 50+ rows:
     ///
     /// +-----+-------------------+ | Age | AVERAGE of Amount | +-----+-------------------+ | 16  |            $27.13 |
     /// | 17  |             $5.24 | | 18  |            $20.15 | ... +-----+-------------------+ could be turned into a
@@ -4638,17 +4636,17 @@ namespace Google.Apis.Sheets.v4.Data
     /// +-------------+-------------------+</summary>
     public class HistogramRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum value at which items will be placed into buckets of constant size. Values above end
-        /// will be lumped into a single bucket. This field is optional.</summary>
+        /// <summary>The maximum value at which items are placed into buckets of constant size. Values above end are
+        /// lumped into a single bucket. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<double> End { get; set; } 
 
-        /// <summary>The size of the buckets that will be created. Must be positive.</summary>
+        /// <summary>The size of the buckets that are created. Must be positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual System.Nullable<double> Interval { get; set; } 
 
-        /// <summary>The minimum value at which items will be placed into buckets of constant size. Values below start
-        /// will be lumped into a single bucket. This field is optional.</summary>
+        /// <summary>The minimum value at which items are placed into buckets of constant size. Values below start are
+        /// lumped into a single bucket. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual System.Nullable<double> Start { get; set; } 
 
@@ -4766,9 +4764,9 @@ namespace Google.Apis.Sheets.v4.Data
     ///
     /// +-------+-------------------+ | State | SUM of Population | +-------+-------------------+ | AK    |
     /// 0.7 | | AL    |               4.8 | | AR    |               2.9 | ... +-------+-------------------+ could be
-    /// turned into a pivot table that aggregates population by time zone by providing a list of groups (e.g. groupName
-    /// = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual group rule. Note that a similar effect could be
-    /// achieved by adding a time zone column to the source data and adjusting the pivot table.
+    /// turned into a pivot table that aggregates population by time zone by providing a list of groups (for example,
+    /// groupName = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual group rule. Note that a similar effect could
+    /// be achieved by adding a time zone column to the source data and adjusting the pivot table.
     ///
     /// +-----------+-------------------+ | Time Zone | SUM of Population | +-----------+-------------------+ | Central
     /// |             106.3 | | Eastern   |             151.9 | | Mountain  |              17.4 | ...
@@ -5083,7 +5081,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string Label { get; set; } 
 
         /// <summary>True if the headings in this pivot group should be repeated. This is only valid for row groupings
-        /// and will be ignored by columns.
+        /// and is ignored by columns.
         ///
         /// By default, we minimize repitition of headings by not showing higher level headings where they are the same.
         /// For example, even though the third row below corresponds to "Q1 Mar", "Q1" is not shown because it is
@@ -5192,8 +5190,8 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>An optional mapping of filters per source column offset.
         ///
-        /// The filters will be applied before aggregating data into the pivot table. The map's key is the column offset
-        /// of the source range that you want to filter, and the value is the criteria for that column.
+        /// The filters are applied before aggregating data into the pivot table. The map's key is the column offset of
+        /// the source range that you want to filter, and the value is the criteria for that column.
         ///
         /// For example, if the source was `C10:E15`, a key of `0` will have the filter for column `C`, whereas the key
         /// `1` is for column `D`.</summary>
@@ -5225,8 +5223,8 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>If specified, indicates that pivot values should be displayed as the result of a calculation with
         /// another pivot value. For example, if calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
-        /// pivot values will be displayed as the percentage of the grand total. In the Sheets UI, this is referred to
-        /// as "Show As" in the value section of a pivot table.</summary>
+        /// pivot values are displayed as the percentage of the grand total. In the Sheets UI, this is referred to as
+        /// "Show As" in the value section of a pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculatedDisplayType")]
         public virtual string CalculatedDisplayType { get; set; } 
 
@@ -5720,7 +5718,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A sheet in a spreadsheet.</summary>
     public class Sheet : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The banded (i.e. alternating colors) ranges on this sheet.</summary>
+        /// <summary>The banded (alternating colors) ranges on this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRanges")]
         public virtual System.Collections.Generic.IList<BandedRange> BandedRanges { get; set; } 
 
@@ -5792,10 +5790,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<bool> Hidden { get; set; } 
 
         /// <summary>The index of the sheet within the spreadsheet. When adding or updating sheet properties, if this
-        /// field is excluded then the sheet will be added or moved to the end of the sheet list. When updating sheet
-        /// indices or inserting sheets, movement is considered in "before the move" indexes. For example, if there were
-        /// 3 sheets (S1, S2, S3) in order to move S1 ahead of S2 the index would have to be set to 2. A sheet index
-        /// update request will be ignored if the requested index is identical to the sheets current index or if the
+        /// field is excluded then the sheet is added or moved to the end of the sheet list. When updating sheet indices
+        /// or inserting sheets, movement is considered in "before the move" indexes. For example, if there were 3
+        /// sheets (S1, S2, S3) in order to move S1 ahead of S2 the index would have to be set to 2. A sheet index
+        /// update request is ignored if the requested index is identical to the sheets current index or if the
         /// requested new index is equal to the current sheet index + 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; } 
@@ -6083,8 +6081,8 @@ namespace Google.Apis.Sheets.v4.Data
     public class TreemapChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data that determines the background color of each treemap data cell. This field is optional. If
-        /// not specified, size_data will be used to determine background colors. If specified, the data is expected to
-        /// be numeric. color_scale will determine how the values in this data map to data cell background
+        /// not specified, size_data is used to determine background colors. If specified, the data is expected to be
+        /// numeric. color_scale will determine how the values in this data map to data cell background
         /// colors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorData")]
         public virtual ChartData ColorData { get; set; } 
@@ -6140,7 +6138,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>The data that determines the size of each treemap data cell. This data is expected to be numeric.
         /// The cells corresponding to non-numeric or missing data will not be rendered. If color_data is not specified,
-        /// this data will be used to determine data cell background colors as well.</summary>
+        /// this data is used to determine data cell background colors as well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeData")]
         public virtual ChartData SizeData { get; set; } 
 

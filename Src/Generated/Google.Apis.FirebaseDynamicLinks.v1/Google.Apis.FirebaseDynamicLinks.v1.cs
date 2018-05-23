@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180518 (1233)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -1044,6 +1044,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchMessage")]
         public virtual string MatchMessage { get; set; } 
+
+        /// <summary>Which IP version the request was made from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestIpVersion")]
+        public virtual string RequestIpVersion { get; set; } 
 
         /// <summary>Entire FDL (short or long) attributed post-install via one of several techniques (fingerprint, copy
         /// unique).</summary>

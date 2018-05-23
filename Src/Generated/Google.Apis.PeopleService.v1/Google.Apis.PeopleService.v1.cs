@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180517 (1232)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -777,11 +777,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
-            /// the sync token was created will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
-
             /// <summary>The next_page_token value returned from a previous call to
             /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
             /// resources.</summary>
@@ -791,6 +786,11 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>The maximum number of resources to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -817,15 +817,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -838,6 +829,15 @@ namespace Google.Apis.PeopleService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1012,15 +1012,15 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
-                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object RequestMaskIncludeField { get; set; }
-
                 /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
                 /// inclusive. Defaults to 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
+                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object RequestMaskIncludeField { get; set; }
 
                 /// <summary>A sync token returned by a previous call to `people.connections.list`. Only resources
                 /// changed since the sync token was created will be returned. Sync requests that specify `sync_token`
@@ -1034,7 +1034,7 @@ namespace Google.Apis.PeopleService.v1
                 /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
                 /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
                 /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-                /// relationshipStatuses * residences * skills * taglines * urls * userDefined</summary>
+                /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
 
@@ -1099,18 +1099,18 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1309,7 +1309,7 @@ namespace Google.Apis.PeopleService.v1
             /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
             /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
             /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-            /// relationshipStatuses * residences * skills * taglines * urls * userDefined</summary>
+            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
@@ -1396,16 +1396,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
-            /// fields can be specified by separating them with commas. Valid values are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-            /// relationshipStatuses * residences * skills * taglines * urls * userDefined</summary>
-            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PersonFields { get; set; }
-
             /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
@@ -1421,6 +1411,16 @@ namespace Google.Apis.PeopleService.v1
             /// You can include up to 50 resource names in one request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
+            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
+            /// fields can be specified by separating them with commas. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1447,15 +1447,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "personFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "personFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
@@ -1468,6 +1459,15 @@ namespace Google.Apis.PeopleService.v1
                     "resourceNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1524,8 +1524,8 @@ namespace Google.Apis.PeopleService.v1
             /// can be specified by separating them with commas. All updated fields will be replaced. Valid values are:
             ///
             /// * addresses * biographies * birthdays * emailAddresses * events * genders * imClients * interests *
-            /// locales * names * nicknames * occupations * organizations * phoneNumbers * relations * residences * urls
-            /// * userDefined</summary>
+            /// locales * names * nicknames * occupations * organizations * phoneNumbers * relations * residences *
+            /// sipAddresses * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("updatePersonFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdatePersonFields { get; set; }
 
@@ -1636,8 +1636,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; } 
 
-        /// <summary>The type of the address. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following:
+        /// <summary>The type of the address. The type can be custom or one of these predefined values:
         ///
         /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -1774,8 +1773,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A Google contact group membership.</summary>
     public class ContactGroupMembership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contact group ID for the contact group membership. The contact group ID can be custom or
-        /// predefined. Possible values include, but are not limited to, the following:
+        /// <summary>The contact group ID for the contact group membership. The contact group ID can be custom or one of
+        /// these predefined values:
         ///
         /// *  `myContacts` *  `starred` *  A numerical ID for user-created groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupId")]
@@ -1903,8 +1902,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the email address. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following:
+        /// <summary>The type of the email address. The type can be custom or one of these predefined values:
         ///
         /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -1946,8 +1944,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the event. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following:
+        /// <summary>The type of the event. The type can be custom or one of these predefined values:
         ///
         /// * `anniversary` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -1989,8 +1986,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The gender for the person. The gender can be custom or predefined. Possible values include, but are
-        /// not limited to, the following:
+        /// <summary>The gender for the person. The gender can be custom or one of these predefined values:
         ///
         /// * `male` * `female` * `other` * `unknown`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -2027,15 +2023,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The protocol of the IM client. The protocol can be custom or predefined. Possible values include,
-        /// but are not limited to, the following:
+        /// <summary>The protocol of the IM client. The protocol can be custom or one of these predefined values:
         ///
         /// * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
-        /// <summary>The type of the IM client. The type can be custom or predefined. Possible values include, but are
-        /// not limited to, the following:
+        /// <summary>The type of the IM client. The type can be custom or one of these predefined values:
         ///
         /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -2335,8 +2329,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The type of the organization. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following:
+        /// <summary>The type of the organization. The type can be custom or  one of these predefined values:
         ///
         /// * `work` * `school`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -2465,6 +2458,10 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
+        /// <summary>The person's SIP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sipAddresses")]
+        public virtual System.Collections.Generic.IList<SipAddress> SipAddresses { get; set; } 
+
         /// <summary>The person's skills.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
         public virtual System.Collections.Generic.IList<Skill> Skills { get; set; } 
@@ -2565,8 +2562,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the phone number. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following:
+        /// <summary>The type of the phone number. The type can be custom or one of these predefined values:
         ///
         /// * `home` * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` *
         /// `main` * `googleVoice` * `other`</summary>
@@ -2634,8 +2630,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
         public virtual string Person { get; set; } 
 
-        /// <summary>The person's relation to the other person. The type can be custom or predefined. Possible values
-        /// include, but are not limited to, the following values:
+        /// <summary>The person's relation to the other person. The type can be custom or one of these predefined
+        /// values:
         ///
         /// * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative` *
         /// `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`</summary>
@@ -2658,8 +2654,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The kind of relationship the person is looking for. The value can be custom or predefined. Possible
-        /// values include, but are not limited to, the following values:
+        /// <summary>The kind of relationship the person is looking for. The value can be custom or one of these
+        /// predefined values:
         ///
         /// * `friend` * `date` * `relationship` * `networking`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -2681,8 +2677,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The relationship status. The value can be custom or predefined. Possible values include, but are
-        /// not limited to, the following:
+        /// <summary>The relationship status. The value can be custom or one of these predefined values:
         ///
         /// * `single` * `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` *
         /// `inDomesticPartnership` * `inCivilUnion`</summary>
@@ -2706,6 +2701,34 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The address of the residence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A person's SIP address. Session Initial Protocol addresses are used for VoIP communications to make
+    /// voice or video calls over the internet.</summary>
+    public class SipAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The read-only type of the SIP address translated and formatted in the viewer's account locale or
+        /// the `Accept-Language` HTTP header locale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
+        public virtual string FormattedType { get; set; } 
+
+        /// <summary>Metadata about the SIP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual FieldMetadata Metadata { get; set; } 
+
+        /// <summary>The type of the SIP address. The type can be custom or or one of these predefined values:
+        ///
+        /// * `home` * `work` * `mobile` * `other`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The SIP address in the [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
+        /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -2861,8 +2884,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The type of the URL. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following:
+        /// <summary>The type of the URL. The type can be custom or one of these predefined values:
         ///
         /// * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for
         /// a Google+ application. * `other`</summary>

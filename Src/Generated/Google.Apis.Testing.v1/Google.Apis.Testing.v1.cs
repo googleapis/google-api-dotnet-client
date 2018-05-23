@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180518 (1233)
+ *      <tr><th>API Rev<td>20180522 (1237)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -803,6 +803,8 @@ namespace Google.Apis.Testing.v1
                 ANDROID,
                 [Google.Apis.Util.StringValueAttribute("NETWORK_CONFIGURATION")]
                 NETWORKCONFIGURATION,
+                [Google.Apis.Util.StringValueAttribute("PROVIDED_SOFTWARE")]
+                PROVIDEDSOFTWARE,
             }
 
             /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog. Optional</summary>
@@ -1560,6 +1562,18 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The currently provided software environment on the devices under test.</summary>
+    public class ProvidedSoftwareCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string representing the current version of Android Test Orchestrator that is provided by
+        /// TestExecutionService. Example: "1.0.2 beta"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orchestratorVersion")]
+        public virtual string OrchestratorVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A file or directory to install on the device before the test starts</summary>
     public class RegularFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1697,6 +1711,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Supported network configurations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfigurationCatalog")]
         public virtual NetworkConfigurationCatalog NetworkConfigurationCatalog { get; set; } 
+
+        /// <summary>The software test environment provided by TestExecutionService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareCatalog")]
+        public virtual ProvidedSoftwareCatalog SoftwareCatalog { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

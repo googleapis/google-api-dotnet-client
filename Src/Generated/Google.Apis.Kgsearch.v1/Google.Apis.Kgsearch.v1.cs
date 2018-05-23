@@ -369,10 +369,6 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
-            /// <summary>Enables indenting of json results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Indent { get; set; }
-
             /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
@@ -400,6 +396,10 @@ namespace Google.Apis.Kgsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
 
+            /// <summary>Enables indenting of json results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Indent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -424,15 +424,6 @@ namespace Google.Apis.Kgsearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "indent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "indent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "languages", new Google.Apis.Discovery.Parameter
                     {
@@ -482,6 +473,15 @@ namespace Google.Apis.Kgsearch.v1
                     "types", new Google.Apis.Discovery.Parameter
                     {
                         Name = "types",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "indent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "indent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

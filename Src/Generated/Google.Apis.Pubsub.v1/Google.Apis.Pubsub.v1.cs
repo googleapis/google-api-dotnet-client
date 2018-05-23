@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180507 (1222)
+ *      <tr><th>API Rev<td>20180514 (1229)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -385,14 +385,14 @@ namespace Google.Apis.Pubsub.v1
             }
 
 
-            /// <summary>[ALPHA] This method is a part of a closed Alpha API. Creates a snapshot from the requested
-            /// subscription. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription
-            /// doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting
-            /// snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
-            /// `Snapshot.expire_time` field.
-            ///
-            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
-            /// the same project as the subscription, conforming to the [resource name
+            /// <summary>Creates a snapshot from the requested subscription. Lists the names of the snapshots on this
+            /// topic. ALPHA: This feature is part of an alpha release. This API might be changed in backward-
+            /// incompatible ways and is not recommended for production use. It is not subject to any SLA or deprecation
+            /// policy. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't
+            /// exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot
+            /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
+            /// `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a
+            /// random name for this snapshot on the same project as the subscription, conforming to the [resource name
             /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
             /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
@@ -405,14 +405,14 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>[ALPHA] This method is a part of a closed Alpha API. Creates a snapshot from the requested
-            /// subscription. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription
-            /// doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting
-            /// snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
-            /// `Snapshot.expire_time` field.
-            ///
-            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
-            /// the same project as the subscription, conforming to the [resource name
+            /// <summary>Creates a snapshot from the requested subscription. Lists the names of the snapshots on this
+            /// topic. ALPHA: This feature is part of an alpha release. This API might be changed in backward-
+            /// incompatible ways and is not recommended for production use. It is not subject to any SLA or deprecation
+            /// policy. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't
+            /// exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot
+            /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
+            /// `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a
+            /// random name for this snapshot on the same project as the subscription, conforming to the [resource name
             /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
             /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
@@ -478,10 +478,12 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
-            /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
-            /// association with the old snapshot or its subscription, unless the same subscription is specified.
-            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Removes an existing snapshot. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy. When the snapshot is
+            /// deleted, all messages retained in the snapshot are immediately dropped. After a snapshot is deleted, a
+            /// new one may be created with the same name, but the new one has no association with the old snapshot or
+            /// its subscription, unless the same subscription is specified.</summary>
             /// <param name="snapshot">The name of the snapshot to delete. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual DeleteRequest Delete(string snapshot)
@@ -489,10 +491,12 @@ namespace Google.Apis.Pubsub.v1
                 return new DeleteRequest(service, snapshot);
             }
 
-            /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
-            /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
-            /// association with the old snapshot or its subscription, unless the same subscription is specified.
-            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Removes an existing snapshot. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy. When the snapshot is
+            /// deleted, all messages retained in the snapshot are immediately dropped. After a snapshot is deleted, a
+            /// new one may be created with the same name, but the new one has no association with the old snapshot or
+            /// its subscription, unless the same subscription is specified.</summary>
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -546,8 +550,9 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Gets the configuration details of a snapshot. [ALPHA] This method is a part of a closed Alpha
-            /// API.</summary>
+            /// <summary>Gets the configuration details of a snapshot. Lists the names of the snapshots on this topic.
+            /// ALPHA: This feature is part of an alpha release. This API might be changed in backward-incompatible ways
+            /// and is not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
             /// <param name="snapshot">The name of the snapshot to get. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual GetRequest Get(string snapshot)
@@ -555,8 +560,9 @@ namespace Google.Apis.Pubsub.v1
                 return new GetRequest(service, snapshot);
             }
 
-            /// <summary>Gets the configuration details of a snapshot. [ALPHA] This method is a part of a closed Alpha
-            /// API.</summary>
+            /// <summary>Gets the configuration details of a snapshot. Lists the names of the snapshots on this topic.
+            /// ALPHA: This feature is part of an alpha release. This API might be changed in backward-incompatible ways
+            /// and is not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -673,7 +679,9 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Lists the existing snapshots. [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Lists the existing snapshots. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
             /// <param name="project">The name of the cloud project that snapshots belong to. Format is
             /// `projects/{project}`.</param>
             public virtual ListRequest List(string project)
@@ -681,7 +689,9 @@ namespace Google.Apis.Pubsub.v1
                 return new ListRequest(service, project);
             }
 
-            /// <summary>Lists the existing snapshots. [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Lists the existing snapshots. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSnapshotsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -763,8 +773,10 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not modifiable.
-            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Updates an existing snapshot. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy. Note that certain
+            /// properties of a snapshot are not modifiable.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the snapshot.</param>
             public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest body, string name)
@@ -772,8 +784,10 @@ namespace Google.Apis.Pubsub.v1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not modifiable.
-            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// <summary>Updates an existing snapshot. Lists the names of the snapshots on this topic. ALPHA: This
+            /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+            /// recommended for production use. It is not subject to any SLA or deprecation policy. Note that certain
+            /// properties of a snapshot are not modifiable.</summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1393,15 +1407,15 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
+                /// <summary>Maximum number of subscriptions to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The value returned by the last `ListSubscriptionsResponse`; indicates that this is a
                 /// continuation of a prior `ListSubscriptions` call, and that the system should return the next page of
                 /// data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of subscriptions to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1437,18 +1451,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1765,7 +1779,9 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request. [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// in the request. Lists the names of the snapshots on this topic. ALPHA: This feature is part of an alpha
+            /// release. This API might be changed in backward-incompatible ways and is not recommended for production
+            /// use. It is not subject to any SLA or deprecation policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The subscription to affect.</param>
             public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
@@ -1774,7 +1790,9 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request. [ALPHA] This method is a part of a closed Alpha API.</summary>
+            /// in the request. Lists the names of the snapshots on this topic. ALPHA: This feature is part of an alpha
+            /// release. This API might be changed in backward-incompatible ways and is not recommended for production
+            /// use. It is not subject to any SLA or deprecation policy.</summary>
             public class SeekRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.SeekResponse>
             {
                 /// <summary>Constructs a new Seek request.</summary>
@@ -2033,8 +2051,9 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Lists the names of the snapshots on this topic. [ALPHA] This method is a part of a closed
-                /// Alpha API.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. ALPHA: This feature is part of an alpha
+                /// release. This API might be changed in backward-incompatible ways and is not recommended for
+                /// production use. It is not subject to any SLA or deprecation policy.</summary>
                 /// <param name="topic">The name of the topic that snapshots are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -2042,8 +2061,9 @@ namespace Google.Apis.Pubsub.v1
                     return new ListRequest(service, topic);
                 }
 
-                /// <summary>Lists the names of the snapshots on this topic. [ALPHA] This method is a part of a closed
-                /// Alpha API.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. ALPHA: This feature is part of an alpha
+                /// release. This API might be changed in backward-incompatible ways and is not recommended for
+                /// production use. It is not subject to any SLA or deprecation policy.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSnapshotsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2174,15 +2194,15 @@ namespace Google.Apis.Pubsub.v1
                     [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Topic { get; private set; }
 
-                    /// <summary>Maximum number of subscription names to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The value returned by the last `ListTopicSubscriptionsResponse`; indicates that this is
                     /// a continuation of a prior `ListTopicSubscriptions` call, and that the system should return the
                     /// next page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum number of subscription names to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2218,18 +2238,18 @@ namespace Google.Apis.Pubsub.v1
                                 Pattern = @"^projects/[^/]+/topics/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2871,7 +2891,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the `CreateSnapshot` method.</summary>
+    /// <summary>Request for the `CreateSnapshot` method. ALPHA: This feature is part of an alpha release. This API
+    /// might be changed in backward-incompatible ways and is not recommended for production use. It is not subject to
+    /// any SLA or deprecation policy.</summary>
     public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The subscription whose backlog the snapshot retains. Specifically, the created snapshot is
@@ -2899,7 +2921,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for the `ListSnapshots` method.</summary>
+    /// <summary>Response for the `ListSnapshots` method. Lists the names of the snapshots on this topic. ALPHA: This
+    /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+    /// recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
     public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more snapshot that match the request; this value should
@@ -2931,8 +2955,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for the `ListTopicSnapshots` method. [ALPHA] This method is a part of a closed Alpha
-    /// API.</summary>
+    /// <summary>Response for the `ListTopicSnapshots` method. Lists the names of the snapshots on this topic. ALPHA:
+    /// This feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+    /// recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
     public class ListTopicSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more snapshots that match the request; this value should
@@ -3188,7 +3213,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the `Seek` method.</summary>
+    /// <summary>Request for the `Seek` method. Lists the names of the snapshots on this topic. ALPHA: This feature is
+    /// part of an alpha release. This API might be changed in backward-incompatible ways and is not recommended for
+    /// production use. It is not subject to any SLA or deprecation policy.</summary>
     public class SeekRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot to seek to. The snapshot's topic must be the same as that of the provided
@@ -3229,7 +3256,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A snapshot resource.</summary>
+    /// <summary>A snapshot resource. Lists the names of the snapshots on this topic. ALPHA: This feature is part of an
+    /// alpha release. This API might be changed in backward-incompatible ways and is not recommended for production
+    /// use. It is not subject to any SLA or deprecation policy.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later
@@ -3278,7 +3307,9 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>How long to retain unacknowledged messages in the subscription's backlog, from the moment a message
         /// is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged
         /// messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more
-        /// than 7 days or less than 10 minutes. [ALPHA] This field is a part of a closed Alpha API.</summary>
+        /// than 7 days or less than 10 minutes. Lists the names of the snapshots on this topic. ALPHA: This feature is
+        /// part of an alpha release. This API might be changed in backward-incompatible ways and is not recommended for
+        /// production use. It is not subject to any SLA or deprecation policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetentionDuration")]
         public virtual object MessageRetentionDuration { get; set; } 
 
@@ -3297,7 +3328,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
-        /// `message_retention_duration` window. [ALPHA] This field is a part of a closed Alpha API.</summary>
+        /// `message_retention_duration` window. Lists the names of the snapshots on this topic. ALPHA: This feature is
+        /// part of an alpha release. This API might be changed in backward-incompatible ways and is not recommended for
+        /// production use. It is not subject to any SLA or deprecation policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 
@@ -3349,10 +3382,12 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the UpdateSnapshot method.</summary>
+    /// <summary>Request for the UpdateSnapshot method. Lists the names of the snapshots on this topic. ALPHA: This
+    /// feature is part of an alpha release. This API might be changed in backward-incompatible ways and is not
+    /// recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
     public class UpdateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated snpashot object.</summary>
+        /// <summary>The updated snapshot object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
         public virtual Snapshot Snapshot { get; set; } 
 

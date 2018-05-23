@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -3056,11 +3056,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The properties of Page that are only relevant for pages with page_type SLIDE.</summary>
     public class SlideProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The object ID of the layout that this slide is based on.</summary>
+        /// <summary>The object ID of the layout that this slide is based on. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutObjectId")]
         public virtual string LayoutObjectId { get; set; } 
 
-        /// <summary>The object ID of the master that this slide is based on.</summary>
+        /// <summary>The object ID of the master that this slide is based on. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterObjectId")]
         public virtual string MasterObjectId { get; set; } 
 
@@ -3068,7 +3068,7 @@ namespace Google.Apis.Slides.v1.Data
         /// when printing or exporting slides with speaker notes. A notes page inherits properties from the notes
         /// master. The placeholder shape with type BODY on the notes page contains the speaker notes for this slide.
         /// The ID of this shape is identified by the speakerNotesObjectId field. The notes page is read-only except for
-        /// the text content and styles of the speaker notes shape.</summary>
+        /// the text content and styles of the speaker notes shape. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesPage")]
         public virtual Page NotesPage { get; set; } 
 
