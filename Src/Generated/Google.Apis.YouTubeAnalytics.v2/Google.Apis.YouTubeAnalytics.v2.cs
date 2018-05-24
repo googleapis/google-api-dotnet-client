@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180520 (1235)
+ *      <tr><th>API Rev<td>20180522 (1237)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -1008,6 +1008,11 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>If set to true historical data (i.e. channel data from before the linking of the channel to the
+            /// content owner) will be retrieved.",</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeHistoricalChannelData { get; set; }
+
             /// <summary>Identifies the YouTube channel or content owner for which you are retrieving YouTube Analytics
             /// data.
             ///
@@ -1017,11 +1022,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// content owner. required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Ids { get; set; }
-
-            /// <summary>If set to true historical data (i.e. channel data from before the linking of the channel to the
-            /// content owner) will be retrieved.",</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeHistoricalChannelData { get; set; }
 
             /// <summary>The currency to which financial metrics should be converted. The default is US Dollar (USD). If
             /// the result contains no financial metrics, this flag will be ignored. Responds with an error if the
@@ -1105,18 +1105,18 @@ namespace Google.Apis.YouTubeAnalytics.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
+                    "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "ids",
+                        Name = "includeHistoricalChannelData",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
+                    "ids", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeHistoricalChannelData",
+                        Name = "ids",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

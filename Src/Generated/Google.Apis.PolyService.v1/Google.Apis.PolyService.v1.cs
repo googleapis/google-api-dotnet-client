@@ -440,6 +440,20 @@ namespace Google.Apis.PolyService.v1
             }
 
 
+            /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
+            /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
+            /// `GLTF2`, `OBJ`, `TILT`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Format { get; set; }
+
+            /// <summary>Return only assets that have been curated by the Poly team.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Curated { get; set; }
+
             /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
             /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
@@ -480,20 +494,6 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Keywords { get; set; }
 
-            /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
-            /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
-            /// `GLTF2`, `OBJ`, `TILT`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Format { get; set; }
-
-            /// <summary>Return only assets that have been curated by the Poly team.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Curated { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -518,6 +518,33 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "format", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "format",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "curated", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "curated",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "category", new Google.Apis.Discovery.Parameter
                     {
@@ -558,33 +585,6 @@ namespace Google.Apis.PolyService.v1
                     "keywords", new Google.Apis.Discovery.Parameter
                     {
                         Name = "keywords",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "format", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "format",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "curated", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "curated",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180521 (1236)
+ *      <tr><th>API Rev<td>20180523 (1238)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -1772,10 +1772,6 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SignupUrlName { get; set; }
-
             /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
@@ -1783,6 +1779,10 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
+
+            /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SignupUrlName { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1815,15 +1815,6 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "signupUrlName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "signupUrlName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1836,6 +1827,15 @@ namespace Google.Apis.AndroidManagement.v1
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "signupUrlName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "signupUrlName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2183,6 +2183,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedScopes")]
         public virtual System.Collections.Generic.IList<string> DelegatedScopes { get; set; } 
 
+        /// <summary>Whether the app should be disabled, but app data is preserved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
         /// <summary>The type of installation to perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installType")]
         public virtual string InstallType { get; set; } 
@@ -2357,11 +2361,6 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceDetailCondition")]
         public virtual NonComplianceDetailCondition NonComplianceDetailCondition { get; set; } 
-
-        /// <summary>If set, the rule includes a mitigating action to disable apps specified in the list, but app data
-        /// is preserved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("packageNamesToDisable")]
-        public virtual System.Collections.Generic.IList<string> PackageNamesToDisable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
