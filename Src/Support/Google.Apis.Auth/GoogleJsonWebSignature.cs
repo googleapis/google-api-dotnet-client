@@ -86,6 +86,8 @@ namespace Google.Apis.Auth
                 HostedDomain = other.HostedDomain;
                 Clock = other.Clock;
                 ForceGoogleCertRefresh = other.ForceGoogleCertRefresh;
+                IssuedAtClockTolerance = other.IssuedAtClockTolerance;
+                ExpirationTimeClockTolerance = other.ExpirationTimeClockTolerance;
             }
 
             /// <summary>
@@ -108,6 +110,20 @@ namespace Google.Apis.Auth
             /// </summary>
             public bool ForceGoogleCertRefresh { get; set; }
 
+            /// <summary>
+            /// Clock tolerance for the issued-at check.
+            /// Causes a JWT to pass validation up to this duration before it is really valid;
+            /// this is to allow for possible local-client clock skew. Defaults to 30 seconds.
+            /// </summary>
+            public TimeSpan IssuedAtClockTolerance { get; set; } = TimeSpan.FromSeconds(30);
+
+            /// <summary>
+            /// Clock tolerance for the expiration check.
+            /// Causes a JWT to pass validation up to this duration after it really expired;
+            /// this is to allow for possible local-client clock skew. Defaults to zero seconds.
+            /// </summary>
+            public TimeSpan ExpirationTimeClockTolerance { get; set; } = TimeSpan.FromSeconds(0);
+
             internal ValidationSettings Clone() => new ValidationSettings(this);
         }
 
@@ -118,6 +134,17 @@ namespace Google.Apis.Auth
         /// <remarks>
         /// <para>Follows the procedure to
         /// <see href="https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken">validate a JWT ID token</see>.
+        /// </para>
+        /// <para>
+        /// Issued-at validation and expiry validation is performed using the clock on this local client,
+        /// so local clock inaccuracies can lead to incorrect validation results.
+        /// Use <see cref="ValidationSettings.IssuedAtClockTolerance"/> and <see cref="ValidationSettings.ExpirationTimeClockTolerance"/>
+        /// to allow for local clock inaccuracy
+        /// <c>IssuedAtClockTolerance</c> defaults to 30 seconds; it is very unlikely a JWT will be issued that isn't already valid.
+        /// <c>ExpirationTimeClockTolerance</c> defaults to zero seconds; in some use-cases it may be useful to set this to a negative
+        /// value to help ensure that passing local validation means it will pass server validation.
+        /// Regardless of whether local validation passed, code must always correctly handle an invalid JWT error
+        /// from the server.
         /// </para>
         /// <para>Google certificates are cached, and refreshed once per hour. This can be overridden by setting
         /// <see cref="ValidationSettings.ForceGoogleCertRefresh"/> to true.</para>
@@ -208,16 +235,18 @@ namespace Google.Apis.Auth
             }
 
             // Step 4: Verify that the expiry time (exp) of the ID token has not passed.
+            // And the issued-at time (iat) *is* passed.
+            // Both checks are performed with tolerance for local clock skew.
             if (payload.IssuedAtTimeSeconds == null || payload.ExpirationTimeSeconds == null)
             {
                 throw new InvalidJwtException("JWT must contain 'iat' and 'exp' claims");
             }
             var nowSeconds = (clock.UtcNow - UnixEpoch).TotalSeconds;
-            if (nowSeconds < payload.IssuedAtTimeSeconds.Value)
+            if (nowSeconds + settings.IssuedAtClockTolerance.TotalSeconds < payload.IssuedAtTimeSeconds.Value)
             {
                 throw new InvalidJwtException("JWT is not yet valid.");
             }
-            if (nowSeconds > payload.ExpirationTimeSeconds.Value)
+            if (nowSeconds - settings.ExpirationTimeClockTolerance.TotalSeconds > payload.ExpirationTimeSeconds.Value)
             {
                 throw new InvalidJwtException("JWT has expired.");
             }
