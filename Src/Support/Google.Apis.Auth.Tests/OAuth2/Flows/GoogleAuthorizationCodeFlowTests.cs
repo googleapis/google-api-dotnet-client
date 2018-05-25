@@ -42,6 +42,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         {
             string revokeTokenUrl = "Revoke Token Url";
             bool? includeGrantedScopes = true;
+            string loginHint = "user@dom.ain";
             userDefinedParams = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string,string>("customParam1","customVal1"),
@@ -52,6 +53,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             {
                 RevokeTokenUrl = revokeTokenUrl,
                 IncludeGrantedScopes = includeGrantedScopes,
+                LoginHint = loginHint,
                 UserDefinedQueryParams = userDefinedParams,
                 ClientSecrets = new ClientSecrets()
             };
@@ -64,6 +66,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
 
             Assert.Equal(initializer.RevokeTokenUrl, flow.RevokeTokenUrl);
             Assert.Equal(initializer.IncludeGrantedScopes, flow.IncludeGrantedScopes);
+            Assert.Equal(initializer.LoginHint, flow.LoginHint);
             Assert.Equal(initializer.UserDefinedQueryParams, flow.UserDefinedQueryParams);
         }
         
@@ -76,6 +79,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
 
             Assert.Equal("offline", request.AccessType);
             Assert.Equal("true", request.IncludeGrantedScopes);
+            Assert.Equal("user@dom.ain", request.LoginHint);
             Assert.Equal(userDefinedParams, request.UserDefinedQueryParams);
             Assert.Equal("TestRedirectUri", request.RedirectUri);
         }
