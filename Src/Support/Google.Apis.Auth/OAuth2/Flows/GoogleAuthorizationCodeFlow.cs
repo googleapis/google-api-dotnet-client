@@ -43,6 +43,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
 
+        /// <summary>Gets the login_hint.</summary>
+        public string LoginHint { get; private set; }
+
         private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
 
         /// <summary>Gets the user defined query parameters.</summary>
@@ -57,6 +60,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             revokeTokenUrl = initializer.RevokeTokenUrl;
             includeGrantedScopes = initializer.IncludeGrantedScopes;
+            LoginHint = initializer.LoginHint;
             userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
@@ -70,6 +74,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 RedirectUri = redirectUri,
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
+                LoginHint = LoginHint,
                 UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
@@ -111,6 +116,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// Gets or sets the optional indicator for including granted scopes for incremental authorization.
             /// </summary>
             public bool? IncludeGrantedScopes { get; set; }
+
+            /// <summary>Gets or sets the login_hint.</summary>
+            public string LoginHint { get; set; }
 
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
             public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
