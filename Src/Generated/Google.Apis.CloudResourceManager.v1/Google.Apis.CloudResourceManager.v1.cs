@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180517 (1232)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -990,10 +990,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1001,6 +997,10 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1027,15 +1027,6 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1048,6 +1039,15 @@ namespace Google.Apis.CloudResourceManager.v1
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2029,7 +2029,11 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
         /// for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a
-        /// type, such as organization.</summary>
+        /// type, such as organization.
+        ///
+        /// This method does not associate the new project with a billing account. You can set or update the billing
+        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Project body)
         {
@@ -2046,7 +2050,11 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
         /// for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a
-        /// type, such as organization.</summary>
+        /// type, such as organization.
+        ///
+        /// This method does not associate the new project with a billing account. You can set or update the billing
+        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>

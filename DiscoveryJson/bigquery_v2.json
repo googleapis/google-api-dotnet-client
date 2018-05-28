@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/g6v3916IY0fUnA_DercnjfZ1FVw\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/8jEn866sPoaPUUPCxgWGHadHMUQ\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180510",
+ "revision": "20180517",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1327,6 +1327,24 @@
       "$ref": "TableReference"
      }
     },
+    "reservationUsage": {
+     "type": "array",
+     "description": "[Output-only] Job resource usage breakdown by reservation.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string",
+        "description": "[Output-only] Reservation name or \"unreserved\" for on-demand resources usage."
+       },
+       "slotMs": {
+        "type": "string",
+        "description": "[Output-only] Slot-milliseconds the job spent in the given reservation.",
+        "format": "int64"
+       }
+      }
+     }
+    },
     "schema": {
      "$ref": "TableSchema",
      "description": "[Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries."
@@ -2454,7 +2472,7 @@
       },
       "location": {
        "type": "string",
-       "description": "[Experimental] The geographic location of the job. Required except for US and EU.",
+       "description": "[Experimental] The geographic location of the job. Required except for US and EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.",
        "location": "query"
       },
       "projectId": {
@@ -2490,7 +2508,7 @@
       },
       "location": {
        "type": "string",
-       "description": "[Experimental] The geographic location of the job. Required except for US and EU.",
+       "description": "[Experimental] The geographic location of the job. Required except for US and EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.",
        "location": "query"
       },
       "projectId": {
@@ -2527,7 +2545,7 @@
       },
       "location": {
        "type": "string",
-       "description": "[Experimental] The geographic location where the job should run. Required except for US and EU.",
+       "description": "[Experimental] The geographic location where the job should run. Required except for US and EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.",
        "location": "query"
       },
       "maxResults": {

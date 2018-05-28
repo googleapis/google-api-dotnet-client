@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180514 (1229)
+ *      <tr><th>API Rev<td>20180518 (1233)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5386,6 +5386,11 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("delimiter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Delimiter { get; set; }
 
+            /// <summary>If true, objects that end in exactly one instance of delimiter will have their metadata
+            /// included in items in addition to prefixes.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeTrailingDelimiter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTrailingDelimiter { get; set; }
+
             /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
             /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
             /// parameter or 1,000 items, whichever is smaller.</summary>
@@ -5464,6 +5469,15 @@ namespace Google.Apis.Storage.v1
                     "delimiter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "delimiter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeTrailingDelimiter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6633,6 +6647,11 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("delimiter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Delimiter { get; set; }
 
+            /// <summary>If true, objects that end in exactly one instance of delimiter will have their metadata
+            /// included in items in addition to prefixes.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeTrailingDelimiter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTrailingDelimiter { get; set; }
+
             /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
             /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
             /// parameter or 1,000 items, whichever is smaller.</summary>
@@ -6717,6 +6736,15 @@ namespace Google.Apis.Storage.v1
                     "delimiter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "delimiter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeTrailingDelimiter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeTrailingDelimiter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6915,14 +6943,15 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cors")]
         public virtual System.Collections.Generic.IList<Bucket.CorsData> Cors { get; set; } 
 
-        /// <summary>Defines the default value for Event-Based hold on newly created objects in this bucket. Event-Based
-        /// hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After
-        /// being released, such objects will be subject to bucket-level retention (if any). One sample use case of this
-        /// flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here bucket-level
-        /// retention is 3 years and the event is loan being paid in full. In this example these objects will be held
-        /// intact for any number of years until the event has occurred (hold is released) and then 3 more years after
-        /// that. Objects under Event-Based hold cannot be deleted, overwritten or archived until the hold is
-        /// removed.</summary>
+        /// <summary>The default value for event-based hold on newly created objects in this bucket. Event-based hold is
+        /// a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being
+        /// released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag
+        /// is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level
+        /// retention is 3 years and the event is loan being paid in full. In this example, these objects will be held
+        /// intact for any number of years until the event has occurred (event-based hold on the object is released) and
+        /// then 3 more years after that. That means retention duration of the objects begins from the moment event-
+        /// based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or
+        /// archived until the hold is removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEventBasedHold")]
         public virtual System.Nullable<bool> DefaultEventBasedHold { get; set; } 
 
@@ -6980,12 +7009,12 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<ulong> ProjectNumber { get; set; } 
 
-        /// <summary>Defines the retention policy for a bucket. The Retention policy enforces a minimum retention time
-        /// for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete
-        /// objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention
-        /// policy can be modified or removed from the bucket via the UpdateBucketMetadata RPC. A locked retention
-        /// policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or
-        /// decrease period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
+        /// <summary>The bucket's retention policy. The retention policy enforces a minimum retention time for all
+        /// objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects
+        /// younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can
+        /// be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy
+        /// cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease
+        /// period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
         public virtual Bucket.RetentionPolicyData RetentionPolicy { get; set; } 
 
@@ -7188,15 +7217,16 @@ namespace Google.Apis.Storage.v1.Data
 
         }    
 
-        /// <summary>Defines the retention policy for a bucket. The Retention policy enforces a minimum retention time
-        /// for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete
-        /// objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention
-        /// policy can be modified or removed from the bucket via the UpdateBucketMetadata RPC. A locked retention
-        /// policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or
-        /// decrease period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
+        /// <summary>The bucket's retention policy. The retention policy enforces a minimum retention time for all
+        /// objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects
+        /// younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can
+        /// be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy
+        /// cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease
+        /// period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
         public class RetentionPolicyData
         {
-            /// <summary>The time from which policy was enforced and effective. RFC 3339 format.</summary>
+            /// <summary>Server-determined value that indicates the time from which policy was enforced and effective.
+            /// This value is in RFC 3339 format.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
             public virtual string EffectiveTimeRaw { get; set; }
 
@@ -7218,7 +7248,7 @@ namespace Google.Apis.Storage.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("isLocked")]
             public virtual System.Nullable<bool> IsLocked { get; set; } 
 
-            /// <summary>Specifies the duration that objects need to be retained. Retention duration must be greater
+            /// <summary>The duration in seconds that objects need to be retained. Retention duration must be greater
             /// than zero and less than 100 years. Note that enforcement of retention periods less than a day is not
             /// guaranteed. Such periods should only be used for testing purposes.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
@@ -7570,12 +7600,14 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Defines the Event-Based hold for an object. Event-Based hold is a way to retain objects
-        /// indefinitely until an event occurs, signified by the hold's release. After being released, such objects will
-        /// be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan
-        /// documents for at least 3 years after loan is paid in full. Here bucket-level retention is 3 years and the
-        /// event is loan being paid in full. In this example these objects will be held intact for any number of years
-        /// until the event has occurred (hold is released) and then 3 more years after that.</summary>
+        /// <summary>Whether an object is under event-based hold. Event-based hold is a way to retain objects until an
+        /// event occurs, which is signified by the hold's release (i.e. this value is set to false). After being
+        /// released (set to false), such objects will be subject to bucket-level retention (if any). One sample use
+        /// case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here,
+        /// bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these
+        /// objects will be held intact for any number of years until the event has occurred (event-based hold on the
+        /// object is released) and then 3 more years after that. That means retention duration of the objects begins
+        /// from the moment event-based hold transitioned from true to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventBasedHold")]
         public virtual System.Nullable<bool> EventBasedHold { get; set; } 
 
@@ -7623,11 +7655,11 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual Object.OwnerData Owner { get; set; } 
 
-        /// <summary>Specifies the earliest time that the object's retention period expires. This value is server-
-        /// determined and is in RFC 3339 format. Note 1: This field is not provided for objects with an active Event-
-        /// Based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be
-        /// provided even when TemporaryHold is set (so that the user can reason about policy without having to first
-        /// unset the TemporaryHold).</summary>
+        /// <summary>A server-determined value that specifies the earliest time that the object's retention period
+        /// expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active
+        /// event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be
+        /// provided even when temporary hold is set (so that the user can reason about policy without having to first
+        /// unset the temporary hold).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionExpirationTime")]
         public virtual string RetentionExpirationTimeRaw { get; set; }
 
@@ -7657,10 +7689,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; } 
 
-        /// <summary>Defines the temporary hold for an object. This flag is used to enforce a temporary hold on an
-        /// object. While it is set to true, the object is protected against deletion and overwrites. A common use case
-        /// of this flag is regulatory investigations where objects need to be retained while the investigation is
-        /// ongoing.</summary>
+        /// <summary>Whether an object is under temporary hold. While this flag is set to true, the object is protected
+        /// against deletion and overwrites. A common use case of this flag is regulatory investigations where objects
+        /// need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold
+        /// does not impact retention expiration time of an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temporaryHold")]
         public virtual System.Nullable<bool> TemporaryHold { get; set; } 
 

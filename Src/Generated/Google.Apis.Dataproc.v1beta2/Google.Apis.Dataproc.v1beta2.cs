@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180515 (1230)
+ *      <tr><th>API Rev<td>20180522 (1237)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1386,11 +1386,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
-
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1400,6 +1395,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
+
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1453,18 +1453,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1766,10 +1766,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Optional. The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1785,6 +1781,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1829,15 +1829,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1850,6 +1841,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3393,10 +3393,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3404,6 +3400,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3439,15 +3439,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3460,6 +3451,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4993,6 +4993,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
 
+        /// <summary>Optional. Map from parameter names to values that should be used for those parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
+
         /// <summary>Optional. The version of workflow template to instantiate. If specified, the workflow will be
         /// instantiated only if the current version of the workflow template has the supplied version.This option
         /// cannot be used to instantiate a previous version of workflow template.</summary>
@@ -5394,6 +5398,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for parameter validation.</summary>
+    public class ParameterValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Validation based on regular expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual RegexValidation Regex { get; set; } 
+
+        /// <summary>Validation based on a list of allowed values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual ValueValidation Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.</summary>
     public class PigJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5520,6 +5539,18 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// "query1", "query2", "query3;query4", ] } } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<string> Queries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Validation based on regular expressions.</summary>
+    public class RegexValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. RE2 regular expressions used to validate the parameter's value. The provided value must
+        /// match the regexes in its entirety, e.g. substring matches are not enough.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
+        public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5699,6 +5730,49 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A configurable parameter that replaces one or more fields in the template.</summary>
+    public class TemplateParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-friendly description of the parameter. Must not exceed 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Required. Paths to all fields that this parameter replaces. Each field may appear in at most one
+        /// Parameter's fields list.Field path syntax:A field path is similar to a FieldMask. For example, a field path
+        /// that references the zone field of the template's cluster selector would look
+        /// like:placement.clusterSelector.zoneThe only differences between field paths and standard field masks are
+        /// that: Values in maps can be referenced by key.Example: placement.clusterSelector.clusterLabels'key' Jobs in
+        /// the jobs list can be referenced by step id.Example: jobs'step-id'.hadoopJob.mainJarFileUri Items in repeated
+        /// fields can be referenced by zero-based index.Example: jobs'step-id'.sparkJob.args0NOTE: Maps and repeated
+        /// fields may not be parameterized in their entirety. Only individual map values and items in repeated fields
+        /// may be referenced. For example, the following field paths are invalid: -
+        /// placement.clusterSelector.clusterLabels - jobs'step-id'.sparkJob.argsParameterizable fields:Only certain
+        /// types of fields may be parameterized, specifically: - Labels - File uris - Job properties - Job arguments -
+        /// Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)Examples of
+        /// parameterizable fields:Labels:labels'key' placement.managedCluster.labels'key'
+        /// placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key'File uris:jobs'step-
+        /// id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri
+        /// jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0
+        /// jobs'step-id'.pySparkJob.pythonFileUris0Other:jobs'step-id'.hadoopJob.properties'key' jobs'step-
+        /// id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri
+        /// placement.clusterSelector.zone</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<string> Fields { get; set; } 
+
+        /// <summary>Required. User-friendly parameter name. This name is used as a key when providing a value for this
+        /// parameter when the template is instantiated. Must contain only capital letters (A-Z), numbers (0-9), and
+        /// underscores (_), and must not start with a number. The maximum length is 40 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. Validation rules to be applied to this parameter's value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validation")]
+        public virtual ParameterValidation Validation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for TestIamPermissions method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5718,6 +5792,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>A subset of TestPermissionsRequest.permissions that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Validation based on a list of allowed values.</summary>
+    public class ValueValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of allowed values for this parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5830,6 +5915,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Optional. Template parameters whose values are substituted into the template. Values for these
+        /// parameters must be provided when the template is instantiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<TemplateParameter> Parameters { get; set; } 
 
         /// <summary>Required. WorkflowTemplate scheduling information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180510 (1225)
+ *      <tr><th>API Rev<td>20180517 (1232)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -893,7 +893,8 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU.</summary>
+            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU. See details
+            /// at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -984,7 +985,8 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU.</summary>
+            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU. See details
+            /// at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -1073,8 +1075,9 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location where the job should run. Required except for US and
-            /// EU.</summary>
+            /// <summary>[Experimental] The geographic location where the job should run. Required except for US and EU.
+            /// See details at https://cloud.google.com/bigquery/docs/dataset-
+            /// locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -3918,6 +3921,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
         public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; } 
 
+        /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
+        public virtual System.Collections.Generic.IList<JobStatistics2.ReservationUsageData> ReservationUsage { get; set; } 
+
         /// <summary>[Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL
         /// queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
@@ -3962,6 +3969,19 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        public class ReservationUsageData
+        {
+            /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; } 
+
+            /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
+            public virtual System.Nullable<long> SlotMs { get; set; } 
+
+        }
     }    
 
     public class JobStatistics3 : Google.Apis.Requests.IDirectResponseSchema

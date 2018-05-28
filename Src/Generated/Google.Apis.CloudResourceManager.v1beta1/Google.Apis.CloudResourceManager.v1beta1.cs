@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180517 (1232)
+ *      <tr><th>API Rev<td>20180521 (1236)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -854,7 +854,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         ///
         /// Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is
         /// identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or
-        /// organization.</summary>
+        /// organization.
+        ///
+        /// This method does not associate the new project with a billing account. You can set or update the billing
+        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1beta1.Data.Project body)
         {
@@ -868,7 +872,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         ///
         /// Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is
         /// identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or
-        /// organization.</summary>
+        /// organization.
+        ///
+        /// This method does not associate the new project with a billing account. You can set or update the billing
+        /// account associated with a project using the [`projects.updateBillingInfo`]
+        /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Project>
         {
             /// <summary>Constructs a new Create request.</summary>

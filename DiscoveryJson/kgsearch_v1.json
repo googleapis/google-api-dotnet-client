@@ -1,13 +1,23 @@
 {
+  "ownerDomain": "google.com",
+  "name": "kgsearch",
+  "batchPath": "batch",
+  "revision": "20180104",
+  "documentationLink": "https://developers.google.com/knowledge-graph/",
+  "id": "kgsearch:v1",
+  "title": "Knowledge Graph Search API",
+  "discoveryVersion": "v1",
+  "ownerName": "Google",
+  "version_module": true,
   "resources": {
     "entities": {
       "methods": {
         "search": {
-          "httpMethod": "GET",
-          "parameterOrder": [],
           "response": {
             "$ref": "SearchResponse"
           },
+          "parameterOrder": [],
+          "httpMethod": "GET",
           "parameters": {
             "prefix": {
               "location": "query",
@@ -20,10 +30,10 @@
               "type": "string"
             },
             "types": {
-              "repeated": true,
-              "location": "query",
               "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
-              "type": "string"
+              "type": "string",
+              "repeated": true,
+              "location": "query"
             },
             "indent": {
               "description": "Enables indenting of json results.",
@@ -50,8 +60,8 @@
             }
           },
           "flatPath": "v1/entities:search",
-          "id": "kgsearch.entities.search",
           "path": "v1/entities:search",
+          "id": "kgsearch.entities.search",
           "description": "Searches Knowledge Graph for entities that match the constraints.\nA list of matched entities will be returned in response, which will be in\nJSON-LD format and compatible with http://schema.org"
         }
       }
@@ -64,20 +74,20 @@
       "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
       "location": "query"
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -119,9 +129,9 @@
       "type": "string"
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "quotaUser": {
       "location": "query",
@@ -129,10 +139,10 @@
       "type": "string"
     },
     "pp": {
+      "location": "query",
       "description": "Pretty-print response.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
+      "default": "true"
     },
     "oauth_token": {
       "location": "query",
@@ -148,6 +158,10 @@
   "schemas": {
     "SearchResponse": {
       "properties": {
+        "@type": {
+          "description": "The schema type of top-level JSON-LD object, e.g. ItemList.",
+          "type": "any"
+        },
         "@context": {
           "description": "The local context applicable for the response. See more details at\nhttp://www.w3.org/TR/json-ld/#context-definitions.",
           "type": "any"
@@ -158,10 +172,6 @@
           "items": {
             "type": "any"
           }
-        },
-        "@type": {
-          "description": "The schema type of top-level JSON-LD object, e.g. ItemList.",
-          "type": "any"
         }
       },
       "id": "SearchResponse",
@@ -169,26 +179,16 @@
       "type": "object"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
+  "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://kgsearch.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Searches the Google Knowledge Graph for entities.",
   "servicePath": "",
+  "description": "Searches the Google Knowledge Graph for entities.",
+  "kind": "discovery#restDescription",
   "rootUrl": "https://kgsearch.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "kgsearch",
-  "batchPath": "batch",
-  "revision": "20180104",
-  "documentationLink": "https://developers.google.com/knowledge-graph/",
-  "id": "kgsearch:v1",
-  "title": "Knowledge Graph Search API",
-  "discoveryVersion": "v1",
-  "ownerName": "Google",
-  "version_module": true
+  "basePath": ""
 }
