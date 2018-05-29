@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20180523 (1238)
+ *      <tr><th>API Rev<td>20180528 (1243)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -644,15 +644,6 @@ namespace Google.Apis.Genomics.v2alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value
-                /// is 2048.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
                 ///
                 /// * createTime The time this job was created * events The set of event (names) that have occurred
@@ -675,6 +666,15 @@ namespace Google.Apis.Genomics.v2alpha1
                 /// labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value
+                /// is 2048.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -710,6 +710,15 @@ namespace Google.Apis.Genomics.v2alpha1
                             Pattern = @"^projects/[^/]+/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -722,15 +731,6 @@ namespace Google.Apis.Genomics.v2alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -861,6 +861,14 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// to run inside the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commands")]
         public virtual System.Collections.Generic.IList<string> Commands { get; set; } 
+
+        /// <summary>If the specified image is hosted on a private repository other than Google Container Registry, the
+        /// credentials required to pull the image must be specified here as a encrypted secret.
+        ///
+        /// The secret must decrypt to a JSON encoded dictionary containing both `username` and `password`
+        /// keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
+        public virtual Secret Credentials { get; set; } 
 
         /// <summary>If specified, overrides the ENTRYPOINT specified in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
@@ -1439,6 +1447,24 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>Execution information specific to Google Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngine")]
         public virtual ComputeEngine ComputeEngine { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Secret holds encrypted information that is only decrypted and stored in RAM by the worker VM when
+    /// running the pipeline.</summary>
+    public class Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the cipherText response from the `encrypt` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cipherText")]
+        public virtual string CipherText { get; set; } 
+
+        /// <summary>The name of the Cloud KMS key that will be used to decrypt the secret value.  The VM service
+        /// account must have the required permissions and authentication scopes to invoke the `decrypt` method on the
+        /// specified key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

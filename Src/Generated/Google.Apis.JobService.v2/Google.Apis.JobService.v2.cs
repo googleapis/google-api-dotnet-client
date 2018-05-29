@@ -1753,6 +1753,12 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// If provided, restricts completion to the specified company.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
@@ -1769,12 +1775,6 @@ namespace Google.Apis.JobService.v2
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
             }
-
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to the specified company.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
 
             /// <summary>Required.
             ///
@@ -1831,18 +1831,18 @@ namespace Google.Apis.JobService.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
+                    "companyName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "scope",
+                        Name = "companyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
+                    "scope", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "companyName",
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

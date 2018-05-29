@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v4/getting-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180315 (1169)
+ *      <tr><th>API Rev<td>20180508 (1223)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v4/getting-started'>
  *              https://developers.google.com/speed/docs/insights/v4/getting-started</a>
@@ -356,7 +356,7 @@ namespace Google.Apis.Pagespeedonline.v4
                         IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"(?i)http(s)?://.*",
+                        Pattern = @"(?i)(site:)?http(s)?://.*",
                     });
                 RequestParameters.Add(
                     "filter_third_party_resources", new Google.Apis.Discovery.Parameter

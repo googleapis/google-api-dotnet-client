@@ -526,13 +526,13 @@ namespace Google.Apis.Translate.v2
             }
 
 
-            /// <summary>The model type for which supported languages should be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Model { get; set; }
-
             /// <summary>The language to use to return localized, human readable names of supported languages.</summary>
             [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Target { get; set; }
+
+            /// <summary>The model type for which supported languages should be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Model { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -559,18 +559,18 @@ namespace Google.Apis.Translate.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
+                    "target", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "model",
+                        Name = "target",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
+                    "model", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "target",
+                        Name = "model",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
