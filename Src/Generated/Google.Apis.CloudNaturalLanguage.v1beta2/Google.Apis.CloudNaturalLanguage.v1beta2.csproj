@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudNaturalLanguage.v1beta2 Client Library</Title>
-    <Version>1.33.1.1236</Version>
+    <Version>1.33.1.1243</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180523 (1238)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>
@@ -459,13 +459,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>A token that, if specified, blocks the method call until the list of active breakpoints
-                    /// has changed, or a server-selected timeout has expired. The value should be set from the
-                    /// `next_wait_token` field in the last response. The initial value should be set to
-                    /// `"init"`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string WaitToken { get; set; }
-
                     /// <summary>If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets the
                     /// `wait_expired` response field to `true` when the server-selected timeout has expired.
                     ///
@@ -473,6 +466,13 @@ namespace Google.Apis.CloudDebugger.v2
                     /// selected timeout has expired.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
+
+                    /// <summary>A token that, if specified, blocks the method call until the list of active breakpoints
+                    /// has changed, or a server-selected timeout has expired. The value should be set from the
+                    /// `next_wait_token` field in the last response. The initial value should be set to
+                    /// `"init"`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WaitToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -508,18 +508,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "successOnTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "successOnTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
+                            "waitToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "successOnTimeout",
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

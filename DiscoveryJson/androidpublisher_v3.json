@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/zJKEi9IzuIBjiuIURgbNxnm6zbw\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/ZV_PKsheEhUqDyBog8EJFYQZiVc\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20180516",
+ "revision": "20180528",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -1045,7 +1045,7 @@
     },
     "track": {
      "type": "string",
-     "description": "Identifier for this track. One of \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\"."
+     "description": "Identifier for this track."
     }
    }
   },
@@ -1070,7 +1070,7 @@
     },
     "userFraction": {
      "type": "number",
-     "description": "Fraction of users who are eligible to receive the release. 0 \u003c= fraction \u003c 1. To be set, release status must be \"inProgress\" or \"halted\".",
+     "description": "Fraction of users who are eligible to receive the release. 0 \u003c fraction \u003c 1. To be set, release status must be \"inProgress\" or \"halted\".",
      "format": "double"
     },
     "versionCodes": {

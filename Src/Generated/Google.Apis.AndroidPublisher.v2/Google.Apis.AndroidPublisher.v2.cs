@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180528 (1243)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7821,7 +7821,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
     public class Track : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier for this track. One of "alpha", "beta", "production", "rollout" or "internal".</summary>
+        /// <summary>Identifier for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string TrackValue { get; set; } 
 

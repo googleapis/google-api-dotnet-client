@@ -970,12 +970,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The continuation token, which is used to page through large result sets. To get the next
-                /// page of results, set this parameter to the value of `nextPageToken` from the previous
-                /// response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -983,6 +977,12 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>Filter expression over tenancy resources field. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The continuation token, which is used to page through large result sets. To get the next
+                /// page of results, set this parameter to the value of `nextPageToken` from the previous
+                /// response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1018,15 +1018,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1039,6 +1030,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1148,21 +1148,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Set a query `{expression}` for querying tenancy units. Your `{expression}` must be in the
-            /// format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
-            /// Supported fields are `tenant_resources.tag` and `tenant_resources.resource`.
-            ///
-            /// For example, to search tenancy units that contain at least one tenant resource with given tag 'xyz', use
-            /// query `tenant_resources.tag=xyz`. To search tenancy units that contain at least one tenant resource with
-            /// given resource name 'projects/123456', use query `tenant_resources.resource=projects/123456`.
-            ///
-            /// Multiple expressions can be joined with `AND`s. Tenancy units must match all expressions to be included
-            /// in the result set. For example, `tenant_resources.tag=xyz AND tenant_resources.resource=projects/123456`
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
             /// <summary>The continuation token, which is used to page through large result sets. To get the next page
             /// of results, set this parameter to the value of `nextPageToken` from the previous response.
             ///
@@ -1177,6 +1162,21 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Set a query `{expression}` for querying tenancy units. Your `{expression}` must be in the
+            /// format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
+            /// Supported fields are `tenant_resources.tag` and `tenant_resources.resource`.
+            ///
+            /// For example, to search tenancy units that contain at least one tenant resource with given tag 'xyz', use
+            /// query `tenant_resources.tag=xyz`. To search tenancy units that contain at least one tenant resource with
+            /// given resource name 'projects/123456', use query `tenant_resources.resource=projects/123456`.
+            ///
+            /// Multiple expressions can be joined with `AND`s. Tenancy units must match all expressions to be included
+            /// in the result set. For example, `tenant_resources.tag=xyz AND tenant_resources.resource=projects/123456`
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1212,15 +1212,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^services/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1233,6 +1224,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

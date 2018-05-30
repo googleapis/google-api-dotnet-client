@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180528 (1243)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7137,7 +7137,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
         public virtual System.Collections.Generic.IList<TrackRelease> Releases { get; set; } 
 
-        /// <summary>Identifier for this track. One of "alpha", "beta", "production", "rollout" or "internal".</summary>
+        /// <summary>Identifier for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string TrackValue { get; set; } 
 
@@ -7160,7 +7160,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>Fraction of users who are eligible to receive the release. 0 <= fraction < 1. To be set, release
+        /// <summary>Fraction of users who are eligible to receive the release. 0 < fraction < 1. To be set, release
         /// status must be "inProgress" or "halted".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userFraction")]
         public virtual System.Nullable<double> UserFraction { get; set; } 

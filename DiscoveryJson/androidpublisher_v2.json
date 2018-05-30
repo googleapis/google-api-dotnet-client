@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/cryaoVlekSriO8wqD0pKFfqG7wE\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/FCDs-fu4LahM1PMpG-sfgAI4WsE\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180516",
+ "revision": "20180528",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -1055,7 +1055,7 @@
    "properties": {
     "track": {
      "type": "string",
-     "description": "Identifier for this track. One of \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\"."
+     "description": "Identifier for this track."
     },
     "userFraction": {
      "type": "number",
