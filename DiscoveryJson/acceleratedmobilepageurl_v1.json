@@ -1,9 +1,4 @@
 {
-  "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
-  "servicePath": "",
-  "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
   "name": "acceleratedmobilepageurl",
@@ -19,28 +14,28 @@
     "ampUrls": {
       "methods": {
         "batchGet": {
-          "flatPath": "v1/ampUrls:batchGet",
-          "path": "v1/ampUrls:batchGet",
-          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
           "request": {
             "$ref": "BatchGetAmpUrlsRequest"
           },
-          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
           "response": {
             "$ref": "BatchGetAmpUrlsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
-          "parameters": {}
+          "parameters": {},
+          "flatPath": "v1/ampUrls:batchGet",
+          "path": "v1/ampUrls:batchGet",
+          "id": "acceleratedmobilepageurl.ampUrls.batchGet"
         }
       }
     }
   },
   "parameters": {
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
       "location": "query",
@@ -49,17 +44,12 @@
       "default": "true"
     },
     "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
-      "description": "JSONP",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -76,7 +66,13 @@
       "description": "V1 error format.",
       "type": "string"
     },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
     "alt": {
+      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -89,8 +85,7 @@
         "json",
         "media",
         "proto"
-      ],
-      "type": "string"
+      ]
     },
     "access_token": {
       "location": "query",
@@ -113,15 +108,15 @@
       "type": "boolean",
       "default": "true"
     },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
     "oauth_token": {
       "location": "query",
       "description": "OAuth 2.0 token for the current user.",
       "type": "string"
+    },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
     }
   },
   "schemas": {
@@ -232,5 +227,10 @@
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "version": "v1"
+  "version": "v1",
+  "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
+  "servicePath": "",
+  "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/"
 }

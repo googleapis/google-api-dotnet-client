@@ -1008,6 +1008,35 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
+            /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
+            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
+            /// dimensions. If a request uses multiple filters, join them together with a semicolon (`;`), and the
+            /// returned result table will satisfy both filters. For example, a filters parameter value of
+            /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data for the given video in
+            /// Italy.",</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filters { get; set; }
+
+            /// <summary>A comma-separated list of dimensions or metrics that determine the sort order for YouTube
+            /// Analytics data. By default the sort order is ascending. The '`-`' prefix causes descending sort order.",
+            /// pattern: [-0-9a-zA-Z,]+</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Sort { get; set; }
+
+            /// <summary>The start date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
+            /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StartDate { get; set; }
+
+            /// <summary>A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See
+            /// the [Available Reports](/youtube/analytics/v2/available_reports)  document for a list of the reports
+            /// that you can retrieve and the metrics available in each report, and see the
+            /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required:
+            /// true, pattern: [0-9a-zA-Z,]+</summary>
+            [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Metrics { get; set; }
+
             /// <summary>Identifies the YouTube channel or content owner for which you are retrieving YouTube Analytics
             /// data.
             ///
@@ -1051,35 +1080,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
-            /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
-            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
-            /// dimensions. If a request uses multiple filters, join them together with a semicolon (`;`), and the
-            /// returned result table will satisfy both filters. For example, a filters parameter value of
-            /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data for the given video in
-            /// Italy.",</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filters { get; set; }
-
-            /// <summary>A comma-separated list of dimensions or metrics that determine the sort order for YouTube
-            /// Analytics data. By default the sort order is ascending. The '`-`' prefix causes descending sort order.",
-            /// pattern: [-0-9a-zA-Z,]+</summary>
-            [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Sort { get; set; }
-
-            /// <summary>The start date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
-            /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string StartDate { get; set; }
-
-            /// <summary>A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See
-            /// the [Available Reports](/youtube/analytics/v2/available_reports)  document for a list of the reports
-            /// that you can retrieve and the metrics available in each report, and see the
-            /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required:
-            /// true, pattern: [0-9a-zA-Z,]+</summary>
-            [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Metrics { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1104,6 +1104,42 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sort", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sort",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "startDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "ids", new Google.Apis.Discovery.Parameter
                     {
@@ -1162,42 +1198,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sort", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sort",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metrics", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metrics",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180523 (1238)
+ *      <tr><th>API Rev<td>20180529 (1244)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -71,6 +71,8 @@ namespace Google.Apis.ShoppingContent.v2
             datafeedstatuses = new DatafeedstatusesResource(this);
             inventory = new InventoryResource(this);
             liasettings = new LiasettingsResource(this);
+            orderinvoices = new OrderinvoicesResource(this);
+            orderpayments = new OrderpaymentsResource(this);
             orders = new OrdersResource(this);
             pos = new PosResource(this);
             products = new ProductsResource(this);
@@ -180,6 +182,22 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual LiasettingsResource Liasettings
         {
             get { return liasettings; }
+        }
+
+        private readonly OrderinvoicesResource orderinvoices;
+
+        /// <summary>Gets the Orderinvoices resource.</summary>
+        public virtual OrderinvoicesResource Orderinvoices
+        {
+            get { return orderinvoices; }
+        }
+
+        private readonly OrderpaymentsResource orderpayments;
+
+        /// <summary>Gets the Orderpayments resource.</summary>
+        public virtual OrderpaymentsResource Orderpayments
+        {
+            get { return orderpayments; }
         }
 
         private readonly OrdersResource orders;
@@ -3849,6 +3867,550 @@ namespace Google.Apis.ShoppingContent.v2
                         Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "orderinvoices" collection of methods.</summary>
+    public class OrderinvoicesResource
+    {
+        private const string Resource = "orderinvoices";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrderinvoicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated
+        /// payment orders.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
+        public virtual CreatechargeinvoiceRequest Createchargeinvoice(Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateChargeInvoiceRequest body, ulong merchantId, string orderId)
+        {
+            return new CreatechargeinvoiceRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated
+        /// payment orders.</summary>
+        public class CreatechargeinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateChargeInvoiceResponse>
+        {
+            /// <summary>Constructs a new Createchargeinvoice request.</summary>
+            public CreatechargeinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateChargeInvoiceRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateChargeInvoiceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createchargeinvoice"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderinvoices/{orderId}/createChargeInvoice"; }
+            }
+
+            /// <summary>Initializes Createchargeinvoice parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
+        /// payment orders.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
+        public virtual CreaterefundinvoiceRequest Createrefundinvoice(Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceRequest body, ulong merchantId, string orderId)
+        {
+            return new CreaterefundinvoiceRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
+        /// payment orders.</summary>
+        public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceResponse>
+        {
+            /// <summary>Constructs a new Createrefundinvoice request.</summary>
+            public CreaterefundinvoiceRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createrefundinvoice"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderinvoices/{orderId}/createRefundInvoice"; }
+            }
+
+            /// <summary>Initializes Createrefundinvoice parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "orderpayments" collection of methods.</summary>
+    public class OrderpaymentsResource
+    {
+        private const string Resource = "orderpayments";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrderpaymentsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Notify about successfully authorizing user's payment method for a given amount.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order for for which payment authorization is
+        /// happening.</param>
+        public virtual NotifyauthapprovedRequest Notifyauthapproved(Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthApprovedRequest body, ulong merchantId, string orderId)
+        {
+            return new NotifyauthapprovedRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Notify about successfully authorizing user's payment method for a given amount.</summary>
+        public class NotifyauthapprovedRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthApprovedResponse>
+        {
+            /// <summary>Constructs a new Notifyauthapproved request.</summary>
+            public NotifyauthapprovedRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthApprovedRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order for for which payment authorization is happening.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthApprovedRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "notifyauthapproved"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderpayments/{orderId}/notifyAuthApproved"; }
+            }
+
+            /// <summary>Initializes Notifyauthapproved parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Notify about failure to authorize user's payment method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order for which payment authorization was
+        /// declined.</param>
+        public virtual NotifyauthdeclinedRequest Notifyauthdeclined(Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthDeclinedRequest body, ulong merchantId, string orderId)
+        {
+            return new NotifyauthdeclinedRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Notify about failure to authorize user's payment method.</summary>
+        public class NotifyauthdeclinedRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthDeclinedResponse>
+        {
+            /// <summary>Constructs a new Notifyauthdeclined request.</summary>
+            public NotifyauthdeclinedRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthDeclinedRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order for which payment authorization was declined.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyAuthDeclinedRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "notifyauthdeclined"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderpayments/{orderId}/notifyAuthDeclined"; }
+            }
+
+            /// <summary>Initializes Notifyauthdeclined parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Notify about charge on user's selected payments method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order for which charge is happening.</param>
+        public virtual NotifychargeRequest Notifycharge(Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyChargeRequest body, ulong merchantId, string orderId)
+        {
+            return new NotifychargeRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Notify about charge on user's selected payments method.</summary>
+        public class NotifychargeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyChargeResponse>
+        {
+            /// <summary>Constructs a new Notifycharge request.</summary>
+            public NotifychargeRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyChargeRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order for which charge is happening.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyChargeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "notifycharge"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderpayments/{orderId}/notifyCharge"; }
+            }
+
+            /// <summary>Initializes Notifycharge parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Notify about refund on user's selected payments method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order for which charge is happening.</param>
+        public virtual NotifyrefundRequest Notifyrefund(Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyRefundRequest body, ulong merchantId, string orderId)
+        {
+            return new NotifyrefundRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Notify about refund on user's selected payments method.</summary>
+        public class NotifyrefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyRefundResponse>
+        {
+            /// <summary>Constructs a new Notifyrefund request.</summary>
+            public NotifyrefundRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyRefundRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order for which charge is happening.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrderpaymentsNotifyRefundRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "notifyrefund"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderpayments/{orderId}/notifyRefund"; }
+            }
+
+            /// <summary>Initializes Notifyrefund parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -8239,6 +8801,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Amount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value before taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pretax")]
+        public virtual Price Pretax { get; set; } 
+
+        /// <summary>Tax value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tax")]
+        public virtual Price Tax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Carrier service, such as "UPS" or "Fedex". The list of supported carriers can be retrieved via the
@@ -9144,6 +9720,56 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class InvoiceSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary of the total amounts of the additional charges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeSummaries")]
+        public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; } 
+
+        /// <summary>Customer balance on this invoice. A positive amount means the customer is paying, a negative one
+        /// means the customer is receiving money. Note that it must always be true that merchant_balance +
+        /// customer_balance + google_balance = 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerBalance")]
+        public virtual Amount CustomerBalance { get; set; } 
+
+        /// <summary>Google balance on this invoice. A positive amount means Google is paying, a negative one means
+        /// Google is receiving money. Note that it must always be true that merchant_balance + customer_balance +
+        /// google_balance = 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleBalance")]
+        public virtual Amount GoogleBalance { get; set; } 
+
+        /// <summary>Merchant balance on this invoice. A positive amount means the merchant is paying, a negative one
+        /// means the merchant is receiving money. Note that it must always be true that merchant_balance +
+        /// customer_balance + google_balance = 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantBalance")]
+        public virtual Amount MerchantBalance { get; set; } 
+
+        /// <summary>Total price for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTotal")]
+        public virtual Amount ProductTotal { get; set; } 
+
+        /// <summary>Summary for each promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionSummaries")]
+        public virtual System.Collections.Generic.IList<Promotion> PromotionSummaries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InvoiceSummaryAdditionalChargeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total additional charge for this type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmount")]
+        public virtual Amount TotalAmount { get; set; } 
+
+        /// <summary>Type of the additional charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class LiaAboutPageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status of the verification process for the About page.</summary>
@@ -9290,13 +9916,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
+        /// <summary>The ID of POS data provider. Required only for SetPosProvider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posDataProviderId")]
+        public virtual System.Nullable<ulong> PosDataProviderId { get; set; } 
+
         /// <summary>The account ID by which this merchant is known to the POS provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posExternalAccountId")]
         public virtual string PosExternalAccountId { get; set; } 
-
-        /// <summary>The ID of POS provider. Required only for SetPosProvider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("posProviderId")]
-        public virtual System.Nullable<ulong> PosProviderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9340,9 +9966,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
         public virtual LiaSettings LiaSettings { get; set; } 
 
-        /// <summary>The list of POS providers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("posProviders")]
-        public virtual System.Collections.Generic.IList<PosProviders> PosProviders { get; set; } 
+        /// <summary>The list of POS data providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]
+        public virtual System.Collections.Generic.IList<PosDataProviders> PosDataProviders { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10093,6 +10719,228 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrderinvoicesCreateChargeInvoiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
+        public virtual string InvoiceId { get; set; } 
+
+        /// <summary>Invoice summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceSummary")]
+        public virtual InvoiceSummary InvoiceSummary { get; set; } 
+
+        /// <summary>Invoice details per line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
+        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
+
+        /// <summary>The ID of the operation, unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>ID of the shipment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
+        public virtual string ShipmentGroupId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderinvoicesCreateChargeInvoiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderinvoicesCreateChargeInvoiceResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderinvoicesCreateRefundInvoiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
+        public virtual string InvoiceId { get; set; } 
+
+        /// <summary>The ID of the operation, unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Option to create a refund-only invoice. Exactly one of refund_option and return_option must be
+        /// provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundOnlyOption")]
+        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption RefundOnlyOption { get; set; } 
+
+        /// <summary>Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly
+        /// one of refund_option and return_option must be provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnOption")]
+        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption ReturnOption { get; set; } 
+
+        /// <summary>Invoice details for different shipment groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentInvoices")]
+        public virtual System.Collections.Generic.IList<ShipmentInvoice> ShipmentInvoices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderinvoicesCreateRefundInvoiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderinvoicesCreateRefundInvoiceResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional description of the refund reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Reason for the refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional description of the return reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Reason for the return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyAuthApprovedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("authAmountPretax")]
+        public virtual Price AuthAmountPretax { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("authAmountTax")]
+        public virtual Price AuthAmountTax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyAuthApprovedResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderpaymentsNotifyAuthApprovedResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyAuthDeclinedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reason why payment authorization was declined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("declineReason")]
+        public virtual string DeclineReason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyAuthDeclinedResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderpaymentsNotifyAuthDeclinedResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyChargeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether charge was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chargeState")]
+        public virtual string ChargeState { get; set; } 
+
+        /// <summary>Invoice ID from orderInvoice service that corresponds to the charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
+        public virtual string InvoiceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyChargeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderpaymentsNotifyChargeResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyRefundRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Invoice ID from orderInvoice service that corresponds to the charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
+        public virtual string InvoiceId { get; set; } 
+
+        /// <summary>Whether refund was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundState")]
+        public virtual string RefundState { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderpaymentsNotifyRefundResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderpaymentsNotifyRefundResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
@@ -10578,6 +11426,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
 
+        /// <summary>ID of the shipment group. Required for orders that use the orderinvoices service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
+        public virtual string ShipmentGroupId { get; set; } 
+
         /// <summary>Deprecated. Please use shipmentInfo instead. The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; } 
@@ -11052,6 +11904,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
+        /// <summary>ID of the shipment group. Required for orders that use the orderinvoices service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
+        public virtual string ShipmentGroupId { get; set; } 
+
         /// <summary>Deprecated. Please use shipmentInfo instead. The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; } 
@@ -11219,7 +12075,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual PosInventory Inventory { get; set; } 
 
-        /// <summary>The ID of the POS provider.</summary>
+        /// <summary>The ID of the POS data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
 
@@ -11287,6 +12143,38 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The retrieved or updated store information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual PosStore Store { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosDataProviders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>A list of POS data providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]
+        public virtual System.Collections.Generic.IList<PosDataProvidersPosDataProvider> PosDataProvidersValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosDataProvidersPosDataProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of Pos data Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The full name of this POS data Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
+        public virtual string FullName { get; set; } 
+
+        /// <summary>The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
+        public virtual System.Nullable<ulong> ProviderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11428,38 +12316,6 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<PosStore> Resources { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class PosProviders : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Country code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
-
-        /// <summary>A list of POS providers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("posProviders")]
-        public virtual System.Collections.Generic.IList<PosProvidersPosProvider> PosProvidersValue { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class PosProvidersPosProvider : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The display name of Pos Provider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>The full name of this POS Provider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
-        public virtual string FullName { get; set; } 
-
-        /// <summary>The ID of the account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
-        public virtual System.Nullable<ulong> ProviderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12531,6 +13387,21 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Promotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of the promotion. The values here are the promotion applied to the unit price pretax and to
+        /// the total of the tax amounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionAmount")]
+        public virtual Amount PromotionAmount { get; set; } 
+
+        /// <summary>ID of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
+        public virtual string PromotionId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RateGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of shipping labels defining the products to which this rate group applies to. This is a
@@ -12609,6 +13480,47 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
         public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShipmentInvoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Invoice summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceSummary")]
+        public virtual InvoiceSummary InvoiceSummary { get; set; } 
+
+        /// <summary>Invoice details per line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
+        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
+
+        /// <summary>ID of the shipment group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
+        public virtual string ShipmentGroupId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShipmentInvoiceLineItemInvoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the line item. Either lineItemId or productId must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>ID of the product. This is the REST ID used in the products service. Either lineItemId or productId
+        /// must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>Unit IDs to define specific units within the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentUnitIds")]
+        public virtual System.Collections.Generic.IList<string> ShipmentUnitIds { get; set; } 
+
+        /// <summary>Invoice details for a single unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitInvoice")]
+        public virtual UnitInvoice UnitInvoice { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12973,6 +13885,64 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// accepted by createTestOrder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UnitInvoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional charges for a unit, e.g. shipping costs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalCharges")]
+        public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; } 
+
+        /// <summary>Promotions applied to a unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
+        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; } 
+
+        /// <summary>Price of the unit, before applying taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitPricePretax")]
+        public virtual Price UnitPricePretax { get; set; } 
+
+        /// <summary>Tax amounts to apply to the unit price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitPriceTaxes")]
+        public virtual System.Collections.Generic.IList<UnitInvoiceTaxLine> UnitPriceTaxes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UnitInvoiceAdditionalCharge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of the additional charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeAmount")]
+        public virtual Amount AdditionalChargeAmount { get; set; } 
+
+        /// <summary>Promotions applied to the additional charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalChargePromotions")]
+        public virtual System.Collections.Generic.IList<Promotion> AdditionalChargePromotions { get; set; } 
+
+        /// <summary>Type of the additional charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UnitInvoiceTaxLine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tax amount for the tax type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
+        public virtual Price TaxAmount { get; set; } 
+
+        /// <summary>Optional name of the tax type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxName")]
+        public virtual string TaxName { get; set; } 
+
+        /// <summary>Type of the tax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxType")]
+        public virtual string TaxType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

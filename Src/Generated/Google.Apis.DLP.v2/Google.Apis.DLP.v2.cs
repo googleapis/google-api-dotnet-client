@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180522 (1237)
+ *      <tr><th>API Rev<td>20180529 (1244)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -716,15 +716,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListDeidentifyTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListDeidentifyTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -760,18 +760,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2188,27 +2188,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
-                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2231,6 +2210,27 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
+
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
+                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2266,15 +2266,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2296,6 +2287,15 @@ namespace Google.Apis.DLP.v2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2646,15 +2646,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2690,18 +2690,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3210,6 +3210,9 @@ namespace Google.Apis.DLP.v2.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]
         public virtual GooglePrivacyDlpV2CategoricalStatsResult CategoricalStatsResult { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationResult")]
+        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationResult DeltaPresenceEstimationResult { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
         public virtual GooglePrivacyDlpV2KAnonymityResult KAnonymityResult { get; set; } 
@@ -4042,6 +4045,97 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given
+    /// individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence
+    /// exactly without knowing the attack dataset, so we use a statistical model instead.</summary>
+    public class GooglePrivacyDlpV2DeltaPresenceEstimationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
+        /// identifiers field must appear in exactly one field of one auxiliary table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StatisticalTable> AuxiliaryTables { get; set; } 
+
+        /// <summary>Fields considered to be quasi-identifiers. No two fields can have the same tag.
+        /// [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiId> QuasiIds { get; set; } 
+
+        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Required if no column is tagged
+        /// with a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1
+    /// max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important
+    /// particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-
+    /// identifier combination is in the dataset.</summary>
+    public class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of records within these probability bounds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
+        public virtual System.Nullable<long> BucketSize { get; set; } 
+
+        /// <summary>Total number of distinct quasi-identifier tuple values in this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
+        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+
+        /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
+        /// bucket is capped at 20.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> BucketValues { get; set; } 
+
+        /// <summary>Always greater than or equal to min_probability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxProbability")]
+        public virtual System.Nullable<double> MaxProbability { get; set; } 
+
+        /// <summary>Between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minProbability")]
+        public virtual System.Nullable<double> MinProbability { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A tuple of values for the quasi-identifier columns.</summary>
+    public class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The estimated probability that a given individual sharing these quasi-identifier values is in the
+        /// dataset. This value, typically called δ, is the ratio between the number of records in the dataset with
+        /// these quasi-identifier values, and the total number of individuals (inside *and* outside the dataset) with
+        /// these quasi-identifier values. For example, if there are 15 individuals in the dataset who share the same
+        /// quasi-identifier values, and an estimated 100 people in the entire population with these values, then δ is
+        /// 0.15.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedProbability")]
+        public virtual System.Nullable<double> EstimatedProbability { get; set; } 
+
+        /// <summary>The quasi-identifier values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> QuasiIdsValues { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Result of the δ-presence computation. Note that these results are an estimation, not exact
+    /// values.</summary>
+    public class GooglePrivacyDlpV2DeltaPresenceEstimationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to
+        /// any such interval, the associated frequency is zero. For example, the following records: {min_probability:
+        /// 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42}
+        /// {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated
+        /// probability in [0.1, 0.2) nor larger or equal to 0.4.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationHistogram")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> DeltaPresenceEstimationHistogram { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Rule for modifying a CustomInfoType to alter behavior under certain circumstances, depending on the
     /// specific details of the rule. Not supported for the `surrogate_type` custom info type.</summary>
     public class GooglePrivacyDlpV2DetectionRule : Google.Apis.Requests.IDirectResponseSchema
@@ -4326,8 +4420,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Detection rule that adjusts the likelihood of findings within a certain proximity of
-    /// hotwords.</summary>
+    /// <summary>The rule that adjusts the likelihood of findings within a certain proximity of hotwords.</summary>
     public class GooglePrivacyDlpV2HotwordRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Regular expression pattern defining what qualifies as a hotword.</summary>
@@ -5242,6 +5335,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsConfig")]
         public virtual GooglePrivacyDlpV2CategoricalStatsConfig CategoricalStatsConfig { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationConfig")]
+        public virtual GooglePrivacyDlpV2DeltaPresenceEstimationConfig DeltaPresenceEstimationConfig { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityConfig")]
         public virtual GooglePrivacyDlpV2KAnonymityConfig KAnonymityConfig { get; set; } 
 
@@ -5297,9 +5393,51 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A column with a semantic tag attached.</summary>
+    public class GooglePrivacyDlpV2QuasiId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
+        /// that contains statistical information on the possible values of this column (below).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
+        public virtual string CustomTag { get; set; } 
+
+        /// <summary>Identifies the column. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+
+        /// <summary>If no semantic tag is indicated, we infer the statistical model from the distribution of values in
+        /// the input data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
+        public virtual GoogleProtobufEmpty Inferred { get; set; } 
+
+        /// <summary>A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of
+        /// population, if available. We currently support US ZIP codes, region codes, ages and genders. To
+        /// programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the
+        /// supported_by=RISK_ANALYSIS filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which
     /// column in the statistical model.</summary>
     public class GooglePrivacyDlpV2QuasiIdField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
+        public virtual string CustomTag { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which
+    /// column in the statistical model.</summary>
+    public class GooglePrivacyDlpV2QuasiIdentifierField : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; } 
@@ -5616,6 +5754,29 @@ namespace Google.Apis.DLP.v2.Data
         /// days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrencePeriodDuration")]
         public virtual object RecurrencePeriodDuration { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An auxiliary table containing statistical information on the relative frequency of different quasi-
+    /// identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative
+    /// frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the
+    /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
+    public class GooglePrivacyDlpV2StatisticalTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Quasi-identifier columns. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdentifierField> QuasiIds { get; set; } 
+
+        /// <summary>The relative frequency column must contain a floating-point number between 0 and 1 (inclusive).
+        /// Null values are assumed to be zero. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
+        public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; } 
+
+        /// <summary>Auxiliary table location. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
