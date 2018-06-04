@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180518 (1233)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -31719,7 +31719,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Returns the specified NodeGroup. Gets a list of available NodeGroups by making a list()
+        /// <summary>Returns the specified NodeGroup. Get a list of available NodeGroups by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -31730,7 +31730,7 @@ namespace Google.Apis.Compute.alpha
             return new GetRequest(service, project, zone, nodeGroup);
         }
 
-        /// <summary>Returns the specified NodeGroup. Gets a list of available NodeGroups by making a list()
+        /// <summary>Returns the specified NodeGroup. Get a list of available NodeGroups by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.NodeGroup>
         {
@@ -48605,6 +48605,92 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Sets the labels on a security policy. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.alpha.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on a security policy. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -62595,6 +62681,16 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
+        /// <summary>The source snapshot to create this disk. When creating a new instance, one of
+        /// initializeParams.sourceSnapshot or disks.source is required except for local SSD.
+        ///
+        /// To create a disk with a snapshot that you created, specify the snapshot name in the following format:
+        /// global/snapshots/my-backup
+        ///
+        /// If the source snapshot is deleted later, this field will not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -63732,12 +63828,35 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
         public virtual string Oauth2ClientId { get; set; } 
 
+        /// <summary>[Input Only] OAuth client info required to generate client id to be used for IAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientInfo")]
+        public virtual BackendServiceIAPOAuth2ClientInfo Oauth2ClientInfo { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
         public virtual string Oauth2ClientSecret { get; set; } 
 
         /// <summary>[Output Only] SHA256 hash value for the field oauth2_client_secret above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
         public virtual string Oauth2ClientSecretSha256 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BackendServiceIAPOAuth2ClientInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Application name to be used in OAuth consent screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
+        public virtual string ApplicationName { get; set; } 
+
+        /// <summary>Name of the client to be generated. Optional - If not provided, the name will be autogenerated by
+        /// the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientName")]
+        public virtual string ClientName { get; set; } 
+
+        /// <summary>Developer's information to be used in OAuth consent screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerEmailAddress")]
+        public virtual string DeveloperEmailAddress { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64036,8 +64155,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string StatusMessage { get; set; } 
 
         /// <summary>The type of commitment, which affects the discount rate and the eligible resources. Type
-        /// MEMORY_OPTIMIZED_VM specifies a commitment that will only apply to memory optimized VMs. Type NORMAL
-        /// specifies a commitment that applies to all other resources.</summary>
+        /// MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -65186,8 +65304,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>This field denotes whether to enable logging for a particular firewall rule. If logging is enabled,
-        /// logs will be exported to the configured export destination for all firewall logs in the network. Logs may be
-        /// exported to BigQuery or Pub/Sub.</summary>
+        /// logs will be exported to Stackdriver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
         public virtual System.Nullable<bool> EnableLogging { get; set; } 
 
@@ -67596,6 +67713,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmIntegrityPolicy")]
         public virtual ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicy { get; set; } 
 
+        /// <summary>Source machine image</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMachineImage")]
+        public virtual string SourceMachineImage { get; set; } 
+
         /// <summary>[Output Only] Whether a VM has been restricted for start because Compute Engine has detected
         /// suspicious activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRestricted")]
@@ -67958,7 +68079,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when
         /// inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the
-        /// InstanceGroupManager or the field need to be unset.</summary>
+        /// InstanceGroupManager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -72036,6 +72157,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
+        /// <summary>The name of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The type of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; } 
@@ -72059,6 +72184,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Indexes of the nodes to be deleted from the node group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIndexes")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> NodeIndexes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<string> Nodes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74822,8 +74950,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A list of Nat services created in this router. The maximum number of Nat services within a Router
-        /// is 3 for Alpha.</summary>
+        /// <summary>A list of Nat services created in this router.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nats")]
         public virtual System.Collections.Generic.IList<RouterNat> Nats { get; set; } 
 
@@ -75517,7 +75644,7 @@ namespace Google.Apis.Compute.alpha.Data
     }    
 
     /// <summary>A security policy is comprised of one or more rules. It can also be associated with one or more
-    /// 'targets'.</summary>
+    /// 'targets'. Next available tag: 11</summary>
     public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -75546,6 +75673,20 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output only] Type of the resource. Always compute#securityPolicyfor security policies</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this security policy, which is essentially a hash of
+        /// the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and
+        /// changes after every request to modify or update labels. You must always provide an up-to-date fingerprint
+        /// hash in order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make get() request to the security policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this security policy resource. These can be later modified by the setLabels
+        /// method. Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -75868,7 +76009,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Integer license codes indicating which licenses are attached to this snapshot.</summary>
+        /// <summary>[Output Only] Integer license codes indicating which licenses are attached to this
+        /// snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 

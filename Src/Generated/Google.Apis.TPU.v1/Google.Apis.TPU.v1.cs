@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Cloud TPU API Version v1alpha1
+ *   Cloud TPU API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
- *      <tr><th>API Version<td>v1alpha1
+ *      <tr><th>API Version<td>v1
  *      <tr><th>API Rev<td>20180601 (1247)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.TPU.v1alpha1
+namespace Google.Apis.TPU.v1
 {
     /// <summary>The TPU Service.</summary>
     public class TPUService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1alpha1";
+        public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -388,7 +388,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Gets AcceleratorType.</summary>
-                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.AcceleratorType>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.AcceleratorType>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -419,7 +419,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -448,7 +448,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Lists accelerator types supported by this API.</summary>
-                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListAcceleratorTypesResponse>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.ListAcceleratorTypesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -463,6 +463,10 @@ namespace Google.Apis.TPU.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>List filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -474,10 +478,6 @@ namespace Google.Apis.TPU.v1alpha1
                     /// <summary>Sort results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
-
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -495,7 +495,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/acceleratorTypes"; }
+                        get { return "v1/{+parent}/acceleratorTypes"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -511,6 +511,15 @@ namespace Google.Apis.TPU.v1alpha1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
@@ -534,15 +543,6 @@ namespace Google.Apis.TPU.v1alpha1
                             "orderBy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -579,16 +579,16 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Creates a node.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource name.</param>
-                public virtual CreateRequest Create(Google.Apis.TPU.v1alpha1.Data.Node body, string parent)
+                public virtual CreateRequest Create(Google.Apis.TPU.v1.Data.Node body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a node.</summary>
-                public class CreateRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class CreateRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.Node body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1.Data.Node body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -607,7 +607,7 @@ namespace Google.Apis.TPU.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v1alpha1.Data.Node Body { get; set; }
+                    Google.Apis.TPU.v1.Data.Node Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -627,7 +627,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/nodes"; }
+                        get { return "v1/{+parent}/nodes"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -665,7 +665,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Deletes a node.</summary>
-                public class DeleteRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class DeleteRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -696,7 +696,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -725,7 +725,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Gets the details of a node.</summary>
-                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Node>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Node>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -756,7 +756,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -785,7 +785,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Lists nodes.</summary>
-                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListNodesResponse>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.ListNodesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -824,7 +824,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/nodes"; }
+                        get { return "v1/{+parent}/nodes"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -866,16 +866,16 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Reimages a node's OS.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual ReimageRequest Reimage(Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest body, string name)
+                public virtual ReimageRequest Reimage(Google.Apis.TPU.v1.Data.ReimageNodeRequest body, string name)
                 {
                     return new ReimageRequest(service, body, name);
                 }
 
                 /// <summary>Reimages a node's OS.</summary>
-                public class ReimageRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class ReimageRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Reimage request.</summary>
-                    public ReimageRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest body, string name)
+                    public ReimageRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1.Data.ReimageNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -890,7 +890,7 @@ namespace Google.Apis.TPU.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest Body { get; set; }
+                    Google.Apis.TPU.v1.Data.ReimageNodeRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -910,7 +910,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}:reimage"; }
+                        get { return "v1/{+name}:reimage"; }
                     }
 
                     /// <summary>Initializes Reimage parameter list.</summary>
@@ -934,16 +934,16 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Resets a node, which stops and starts the VM.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual ResetRequest Reset(Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest body, string name)
+                public virtual ResetRequest Reset(Google.Apis.TPU.v1.Data.ResetNodeRequest body, string name)
                 {
                     return new ResetRequest(service, body, name);
                 }
 
                 /// <summary>Resets a node, which stops and starts the VM.</summary>
-                public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Reset request.</summary>
-                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest body, string name)
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1.Data.ResetNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -958,7 +958,7 @@ namespace Google.Apis.TPU.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest Body { get; set; }
+                    Google.Apis.TPU.v1.Data.ResetNodeRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -978,7 +978,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}:reset"; }
+                        get { return "v1/{+name}:reset"; }
                     }
 
                     /// <summary>Initializes Reset parameter list.</summary>
@@ -1002,16 +1002,16 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Starts a node.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual StartRequest Start(Google.Apis.TPU.v1alpha1.Data.StartNodeRequest body, string name)
+                public virtual StartRequest Start(Google.Apis.TPU.v1.Data.StartNodeRequest body, string name)
                 {
                     return new StartRequest(service, body, name);
                 }
 
                 /// <summary>Starts a node.</summary>
-                public class StartRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class StartRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Start request.</summary>
-                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.StartNodeRequest body, string name)
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1.Data.StartNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -1026,7 +1026,7 @@ namespace Google.Apis.TPU.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v1alpha1.Data.StartNodeRequest Body { get; set; }
+                    Google.Apis.TPU.v1.Data.StartNodeRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1046,7 +1046,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}:start"; }
+                        get { return "v1/{+name}:start"; }
                     }
 
                     /// <summary>Initializes Start parameter list.</summary>
@@ -1070,16 +1070,16 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Stops a node.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual StopRequest Stop(Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
+                public virtual StopRequest Stop(Google.Apis.TPU.v1.Data.StopNodeRequest body, string name)
                 {
                     return new StopRequest(service, body, name);
                 }
 
                 /// <summary>Stops a node.</summary>
-                public class StopRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class StopRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Stop request.</summary>
-                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1.Data.StopNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -1094,7 +1094,7 @@ namespace Google.Apis.TPU.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TPU.v1alpha1.Data.StopNodeRequest Body { get; set; }
+                    Google.Apis.TPU.v1.Data.StopNodeRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1114,7 +1114,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}:stop"; }
+                        get { return "v1/{+name}:stop"; }
                     }
 
                     /// <summary>Initializes Stop parameter list.</summary>
@@ -1179,7 +1179,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
-                public class CancelRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Empty>
+                public class CancelRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
                     public CancelRequest(Google.Apis.Services.IClientService service, string name)
@@ -1210,7 +1210,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}:cancel"; }
+                        get { return "v1/{+name}:cancel"; }
                     }
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -1243,7 +1243,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
                 /// interested in the operation result. It does not cancel the operation. If the server doesn't support
                 /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-                public class DeleteRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Empty>
+                public class DeleteRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1274,7 +1274,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1305,7 +1305,7 @@ namespace Google.Apis.TPU.v1alpha1
 
                 /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1336,7 +1336,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1379,7 +1379,7 @@ namespace Google.Apis.TPU.v1alpha1
                 /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
                 /// default name includes the operations collection id, however overriding users must ensure the name
                 /// binding is the parent resource, without the operations collection id.</summary>
-                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListOperationsResponse>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -1394,6 +1394,10 @@ namespace Google.Apis.TPU.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1401,10 +1405,6 @@ namespace Google.Apis.TPU.v1alpha1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1422,7 +1422,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}/operations"; }
+                        get { return "v1/{+name}/operations"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1440,6 +1440,15 @@ namespace Google.Apis.TPU.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1452,15 +1461,6 @@ namespace Google.Apis.TPU.v1alpha1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1502,7 +1502,7 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Gets TensorFlow Version.</summary>
-                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.TensorFlowVersion>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.TensorFlowVersion>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1533,7 +1533,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+name}"; }
+                        get { return "v1/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1554,15 +1554,15 @@ namespace Google.Apis.TPU.v1alpha1
 
                 }
 
-                /// <summary>Lists TensorFlow versions supported by this API.</summary>
+                /// <summary>List TensorFlow versions supported by this API.</summary>
                 /// <param name="parent">The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists TensorFlow versions supported by this API.</summary>
-                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListTensorFlowVersionsResponse>
+                /// <summary>List TensorFlow versions supported by this API.</summary>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.ListTensorFlowVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1609,7 +1609,7 @@ namespace Google.Apis.TPU.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/tensorflowVersions"; }
+                        get { return "v1/{+parent}/tensorflowVersions"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1675,7 +1675,7 @@ namespace Google.Apis.TPU.v1alpha1
             }
 
             /// <summary>Gets information about a location.</summary>
-            public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Location>
+            public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1706,7 +1706,7 @@ namespace Google.Apis.TPU.v1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha1/{+name}"; }
+                    get { return "v1/{+name}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1735,7 +1735,7 @@ namespace Google.Apis.TPU.v1alpha1
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListLocationsResponse>
+            public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -1750,6 +1750,10 @@ namespace Google.Apis.TPU.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1757,10 +1761,6 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1778,7 +1778,7 @@ namespace Google.Apis.TPU.v1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha1/{+name}/locations"; }
+                    get { return "v1/{+name}/locations"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1794,6 +1794,15 @@ namespace Google.Apis.TPU.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -1813,15 +1822,6 @@ namespace Google.Apis.TPU.v1alpha1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -1829,7 +1829,7 @@ namespace Google.Apis.TPU.v1alpha1
     }
 }
 
-namespace Google.Apis.TPU.v1alpha1.Data
+namespace Google.Apis.TPU.v1.Data
 {    
 
     /// <summary>A accelerator type that a Node can be configured with.</summary>

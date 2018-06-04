@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/s90n6728dFH_0KALoBMTlH05FXc\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/PbOl5zh9XyiHW1B4ZXQHhUQtpkA\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20180523",
+ "revision": "20180529",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -77,6 +77,20 @@
   }
  },
  "schemas": {
+  "Amount": {
+   "id": "Amount",
+   "type": "object",
+   "properties": {
+    "pretax": {
+     "$ref": "Price",
+     "description": "Value before taxes."
+    },
+    "tax": {
+     "$ref": "Price",
+     "description": "Tax value."
+    }
+   }
+  },
   "Error": {
    "id": "Error",
    "type": "object",
@@ -116,6 +130,56 @@
     "message": {
      "type": "string",
      "description": "The message of the first error in errors."
+    }
+   }
+  },
+  "InvoiceSummary": {
+   "id": "InvoiceSummary",
+   "type": "object",
+   "properties": {
+    "additionalChargeSummaries": {
+     "type": "array",
+     "description": "Summary of the total amounts of the additional charges.",
+     "items": {
+      "$ref": "InvoiceSummaryAdditionalChargeSummary"
+     }
+    },
+    "customerBalance": {
+     "$ref": "Amount",
+     "description": "Customer balance on this invoice. A positive amount means the customer is paying, a negative one means the customer is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+    },
+    "googleBalance": {
+     "$ref": "Amount",
+     "description": "Google balance on this invoice. A positive amount means Google is paying, a negative one means Google is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+    },
+    "merchantBalance": {
+     "$ref": "Amount",
+     "description": "Merchant balance on this invoice. A positive amount means the merchant is paying, a negative one means the merchant is receiving money. Note that it must always be true that merchant_balance + customer_balance + google_balance = 0."
+    },
+    "productTotal": {
+     "$ref": "Amount",
+     "description": "Total price for the product."
+    },
+    "promotionSummaries": {
+     "type": "array",
+     "description": "Summary for each promotion.",
+     "items": {
+      "$ref": "Promotion"
+     }
+    }
+   }
+  },
+  "InvoiceSummaryAdditionalChargeSummary": {
+   "id": "InvoiceSummaryAdditionalChargeSummary",
+   "type": "object",
+   "properties": {
+    "totalAmount": {
+     "$ref": "Amount",
+     "description": "Total additional charge for this type."
+    },
+    "type": {
+     "type": "string",
+     "description": "Type of the additional charge."
     }
    }
   },
@@ -833,6 +897,232 @@
     }
    }
   },
+  "OrderinvoicesCreateChargeInvoiceRequest": {
+   "id": "OrderinvoicesCreateChargeInvoiceRequest",
+   "type": "object",
+   "properties": {
+    "invoiceId": {
+     "type": "string",
+     "description": "The ID of the invoice."
+    },
+    "invoiceSummary": {
+     "$ref": "InvoiceSummary",
+     "description": "Invoice summary."
+    },
+    "lineItemInvoices": {
+     "type": "array",
+     "description": "Invoice details per line item.",
+     "items": {
+      "$ref": "ShipmentInvoiceLineItemInvoice"
+     }
+    },
+    "operationId": {
+     "type": "string",
+     "description": "The ID of the operation, unique across all operations for a given order."
+    },
+    "shipmentGroupId": {
+     "type": "string",
+     "description": "ID of the shipment group."
+    }
+   }
+  },
+  "OrderinvoicesCreateChargeInvoiceResponse": {
+   "id": "OrderinvoicesCreateChargeInvoiceResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderinvoicesCreateChargeInvoiceResponse\".",
+     "default": "content#orderinvoicesCreateChargeInvoiceResponse"
+    }
+   }
+  },
+  "OrderinvoicesCreateRefundInvoiceRequest": {
+   "id": "OrderinvoicesCreateRefundInvoiceRequest",
+   "type": "object",
+   "properties": {
+    "invoiceId": {
+     "type": "string",
+     "description": "The ID of the invoice."
+    },
+    "operationId": {
+     "type": "string",
+     "description": "The ID of the operation, unique across all operations for a given order."
+    },
+    "refundOnlyOption": {
+     "$ref": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption",
+     "description": "Option to create a refund-only invoice. Exactly one of refund_option and return_option must be provided."
+    },
+    "returnOption": {
+     "$ref": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption",
+     "description": "Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly one of refund_option and return_option must be provided."
+    },
+    "shipmentInvoices": {
+     "type": "array",
+     "description": "Invoice details for different shipment groups.",
+     "items": {
+      "$ref": "ShipmentInvoice"
+     }
+    }
+   }
+  },
+  "OrderinvoicesCreateRefundInvoiceResponse": {
+   "id": "OrderinvoicesCreateRefundInvoiceResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderinvoicesCreateRefundInvoiceResponse\".",
+     "default": "content#orderinvoicesCreateRefundInvoiceResponse"
+    }
+   }
+  },
+  "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption": {
+   "id": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string",
+     "description": "Optional description of the refund reason."
+    },
+    "reason": {
+     "type": "string",
+     "description": "Reason for the refund."
+    }
+   }
+  },
+  "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption": {
+   "id": "OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string",
+     "description": "Optional description of the return reason."
+    },
+    "reason": {
+     "type": "string",
+     "description": "Reason for the return."
+    }
+   }
+  },
+  "OrderpaymentsNotifyAuthApprovedRequest": {
+   "id": "OrderpaymentsNotifyAuthApprovedRequest",
+   "type": "object",
+   "properties": {
+    "authAmountPretax": {
+     "$ref": "Price"
+    },
+    "authAmountTax": {
+     "$ref": "Price"
+    }
+   }
+  },
+  "OrderpaymentsNotifyAuthApprovedResponse": {
+   "id": "OrderpaymentsNotifyAuthApprovedResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyAuthApprovedResponse\".",
+     "default": "content#orderpaymentsNotifyAuthApprovedResponse"
+    }
+   }
+  },
+  "OrderpaymentsNotifyAuthDeclinedRequest": {
+   "id": "OrderpaymentsNotifyAuthDeclinedRequest",
+   "type": "object",
+   "properties": {
+    "declineReason": {
+     "type": "string",
+     "description": "Reason why payment authorization was declined."
+    }
+   }
+  },
+  "OrderpaymentsNotifyAuthDeclinedResponse": {
+   "id": "OrderpaymentsNotifyAuthDeclinedResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyAuthDeclinedResponse\".",
+     "default": "content#orderpaymentsNotifyAuthDeclinedResponse"
+    }
+   }
+  },
+  "OrderpaymentsNotifyChargeRequest": {
+   "id": "OrderpaymentsNotifyChargeRequest",
+   "type": "object",
+   "properties": {
+    "chargeState": {
+     "type": "string",
+     "description": "Whether charge was successful."
+    },
+    "invoiceId": {
+     "type": "string",
+     "description": "Invoice ID from orderInvoice service that corresponds to the charge."
+    }
+   }
+  },
+  "OrderpaymentsNotifyChargeResponse": {
+   "id": "OrderpaymentsNotifyChargeResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyChargeResponse\".",
+     "default": "content#orderpaymentsNotifyChargeResponse"
+    }
+   }
+  },
+  "OrderpaymentsNotifyRefundRequest": {
+   "id": "OrderpaymentsNotifyRefundRequest",
+   "type": "object",
+   "properties": {
+    "invoiceId": {
+     "type": "string",
+     "description": "Invoice ID from orderInvoice service that corresponds to the charge."
+    },
+    "refundState": {
+     "type": "string",
+     "description": "Whether refund was successful."
+    }
+   }
+  },
+  "OrderpaymentsNotifyRefundResponse": {
+   "id": "OrderpaymentsNotifyRefundResponse",
+   "type": "object",
+   "properties": {
+    "executionStatus": {
+     "type": "string",
+     "description": "The status of the execution."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderpaymentsNotifyRefundResponse\".",
+     "default": "content#orderpaymentsNotifyRefundResponse"
+    }
+   }
+  },
   "OrdersAcknowledgeRequest": {
    "id": "OrdersAcknowledgeRequest",
    "type": "object",
@@ -1315,6 +1605,10 @@
      "items": {
       "$ref": "OrderShipmentLineItemShipment"
      }
+    },
+    "shipmentGroupId": {
+     "type": "string",
+     "description": "ID of the shipment group. Required for orders that use the orderinvoices service."
     },
     "shipmentId": {
      "type": "string",
@@ -1800,6 +2094,10 @@
      "type": "string",
      "description": "The ID of the operation. Unique across all operations for a given order."
     },
+    "shipmentGroupId": {
+     "type": "string",
+     "description": "ID of the shipment group. Required for orders that use the orderinvoices service."
+    },
     "shipmentId": {
      "type": "string",
      "description": "Deprecated. Please use shipmentInfo instead. The ID of the shipment."
@@ -1954,6 +2252,66 @@
     "value": {
      "type": "string",
      "description": "The price represented as a number."
+    }
+   }
+  },
+  "Promotion": {
+   "id": "Promotion",
+   "type": "object",
+   "properties": {
+    "promotionAmount": {
+     "$ref": "Amount",
+     "description": "Amount of the promotion. The values here are the promotion applied to the unit price pretax and to the total of the tax amounts."
+    },
+    "promotionId": {
+     "type": "string",
+     "description": "ID of the promotion."
+    }
+   }
+  },
+  "ShipmentInvoice": {
+   "id": "ShipmentInvoice",
+   "type": "object",
+   "properties": {
+    "invoiceSummary": {
+     "$ref": "InvoiceSummary",
+     "description": "Invoice summary."
+    },
+    "lineItemInvoices": {
+     "type": "array",
+     "description": "Invoice details per line item.",
+     "items": {
+      "$ref": "ShipmentInvoiceLineItemInvoice"
+     }
+    },
+    "shipmentGroupId": {
+     "type": "string",
+     "description": "ID of the shipment group."
+    }
+   }
+  },
+  "ShipmentInvoiceLineItemInvoice": {
+   "id": "ShipmentInvoiceLineItemInvoice",
+   "type": "object",
+   "properties": {
+    "lineItemId": {
+     "type": "string",
+     "description": "ID of the line item. Either lineItemId or productId must be set."
+    },
+    "productId": {
+     "type": "string",
+     "description": "ID of the product. This is the REST ID used in the products service. Either lineItemId or productId must be set."
+    },
+    "shipmentUnitIds": {
+     "type": "array",
+     "description": "Unit IDs to define specific units within the line item.",
+     "items": {
+      "type": "string"
+     }
+    },
+    "unitInvoice": {
+     "$ref": "UnitInvoice",
+     "description": "Invoice details for a single unit."
     }
    }
   },
@@ -2261,9 +2619,291 @@
      "description": "The type of instrument. Note that real orders might have different values than the four values accepted by createTestOrder."
     }
    }
+  },
+  "UnitInvoice": {
+   "id": "UnitInvoice",
+   "type": "object",
+   "properties": {
+    "additionalCharges": {
+     "type": "array",
+     "description": "Additional charges for a unit, e.g. shipping costs.",
+     "items": {
+      "$ref": "UnitInvoiceAdditionalCharge"
+     }
+    },
+    "promotions": {
+     "type": "array",
+     "description": "Promotions applied to a unit.",
+     "items": {
+      "$ref": "Promotion"
+     }
+    },
+    "unitPricePretax": {
+     "$ref": "Price",
+     "description": "Price of the unit, before applying taxes."
+    },
+    "unitPriceTaxes": {
+     "type": "array",
+     "description": "Tax amounts to apply to the unit price.",
+     "items": {
+      "$ref": "UnitInvoiceTaxLine"
+     }
+    }
+   }
+  },
+  "UnitInvoiceAdditionalCharge": {
+   "id": "UnitInvoiceAdditionalCharge",
+   "type": "object",
+   "properties": {
+    "additionalChargeAmount": {
+     "$ref": "Amount",
+     "description": "Amount of the additional charge."
+    },
+    "additionalChargePromotions": {
+     "type": "array",
+     "description": "Promotions applied to the additional charge.",
+     "items": {
+      "$ref": "Promotion"
+     }
+    },
+    "type": {
+     "type": "string",
+     "description": "Type of the additional charge."
+    }
+   }
+  },
+  "UnitInvoiceTaxLine": {
+   "id": "UnitInvoiceTaxLine",
+   "type": "object",
+   "properties": {
+    "taxAmount": {
+     "$ref": "Price",
+     "description": "Tax amount for the tax type."
+    },
+    "taxName": {
+     "type": "string",
+     "description": "Optional name of the tax type."
+    },
+    "taxType": {
+     "type": "string",
+     "description": "Type of the tax."
+    }
+   }
   }
  },
  "resources": {
+  "orderinvoices": {
+   "methods": {
+    "createchargeinvoice": {
+     "id": "content.orderinvoices.createchargeinvoice",
+     "path": "{merchantId}/orderinvoices/{orderId}/createChargeInvoice",
+     "httpMethod": "POST",
+     "description": "Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated payment orders.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderinvoicesCreateChargeInvoiceRequest"
+     },
+     "response": {
+      "$ref": "OrderinvoicesCreateChargeInvoiceResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "createrefundinvoice": {
+     "id": "content.orderinvoices.createrefundinvoice",
+     "path": "{merchantId}/orderinvoices/{orderId}/createRefundInvoice",
+     "httpMethod": "POST",
+     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated payment orders.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderinvoicesCreateRefundInvoiceRequest"
+     },
+     "response": {
+      "$ref": "OrderinvoicesCreateRefundInvoiceResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }
+   }
+  },
+  "orderpayments": {
+   "methods": {
+    "notifyauthapproved": {
+     "id": "content.orderpayments.notifyauthapproved",
+     "path": "{merchantId}/orderpayments/{orderId}/notifyAuthApproved",
+     "httpMethod": "POST",
+     "description": "Notify about successfully authorizing user's payment method for a given amount.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order for for which payment authorization is happening.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderpaymentsNotifyAuthApprovedRequest"
+     },
+     "response": {
+      "$ref": "OrderpaymentsNotifyAuthApprovedResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "notifyauthdeclined": {
+     "id": "content.orderpayments.notifyauthdeclined",
+     "path": "{merchantId}/orderpayments/{orderId}/notifyAuthDeclined",
+     "httpMethod": "POST",
+     "description": "Notify about failure to authorize user's payment method.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order for which payment authorization was declined.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderpaymentsNotifyAuthDeclinedRequest"
+     },
+     "response": {
+      "$ref": "OrderpaymentsNotifyAuthDeclinedResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "notifycharge": {
+     "id": "content.orderpayments.notifycharge",
+     "path": "{merchantId}/orderpayments/{orderId}/notifyCharge",
+     "httpMethod": "POST",
+     "description": "Notify about charge on user's selected payments method.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order for which charge is happening.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderpaymentsNotifyChargeRequest"
+     },
+     "response": {
+      "$ref": "OrderpaymentsNotifyChargeResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "notifyrefund": {
+     "id": "content.orderpayments.notifyrefund",
+     "path": "{merchantId}/orderpayments/{orderId}/notifyRefund",
+     "httpMethod": "POST",
+     "description": "Notify about refund on user's selected payments method.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order for which charge is happening.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrderpaymentsNotifyRefundRequest"
+     },
+     "response": {
+      "$ref": "OrderpaymentsNotifyRefundResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }
+   }
+  },
   "orders": {
    "methods": {
     "acknowledge": {

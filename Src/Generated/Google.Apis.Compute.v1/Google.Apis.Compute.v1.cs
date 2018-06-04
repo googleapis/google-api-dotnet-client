@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180516 (1231)
+ *      <tr><th>API Rev<td>20180518 (1233)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -18405,6 +18405,130 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Updates the specified interconnect attachment with the data included in the request. This method
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="interconnectAttachment">Name of the interconnect attachment to
+        /// patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.InterconnectAttachment body, string project, string region, string interconnectAttachment)
+        {
+            return new PatchRequest(service, body, project, region, interconnectAttachment);
+        }
+
+        /// <summary>Updates the specified interconnect attachment with the data included in the request. This method
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InterconnectAttachment body, string project, string region, string interconnectAttachment)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InterconnectAttachment = interconnectAttachment;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the interconnect attachment to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("interconnectAttachment", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InterconnectAttachment { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InterconnectAttachment Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "interconnectAttachment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interconnectAttachment",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "interconnectLocations" collection of methods.</summary>
@@ -33109,6 +33233,113 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetHttpsProxy">Name of the
+        /// TargetHttpsProxy resource to set the QUIC override policy for. The name should conform to RFC1035.</param>
+        public virtual SetQuicOverrideRequest SetQuicOverride(Google.Apis.Compute.v1.Data.TargetHttpsProxiesSetQuicOverrideRequest body, string project, string targetHttpsProxy)
+        {
+            return new SetQuicOverrideRequest(service, body, project, targetHttpsProxy);
+        }
+
+        /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
+        public class SetQuicOverrideRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetQuicOverride request.</summary>
+            public SetQuicOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TargetHttpsProxiesSetQuicOverrideRequest body, string project, string targetHttpsProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetHttpsProxy = targetHttpsProxy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetHttpsProxy resource to set the QUIC override policy for. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetHttpsProxy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TargetHttpsProxiesSetQuicOverrideRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setQuicOverride"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetHttpsProxies/{targetHttpsProxy}/setQuicOverride"; }
+            }
+
+            /// <summary>Initializes SetQuicOverride parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetHttpsProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetHttpsProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -44226,7 +44457,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when
         /// inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the
-        /// InstanceGroupManager or the field need to be unset.</summary>
+        /// InstanceGroupManager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -45402,6 +45633,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output Only] The current state of whether or not this Interconnect is functional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -45411,6 +45646,24 @@ namespace Google.Apis.Compute.v1.Data
     /// ==)</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
+        public virtual System.Nullable<bool> AdminEnabled { get; set; } 
+
+        /// <summary>Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to update
+        /// the customer's provisioned bandwidth. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not
+        /// available for DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
+        public virtual string Bandwidth { get; set; } 
+
+        /// <summary>Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
+        /// customerRouterIpAddress for this attachment. All prefixes must be within link-local address space
+        /// (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
+        /// from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google?s
+        /// edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateSubnets")]
+        public virtual System.Collections.Generic.IList<string> CandidateSubnets { get; set; } 
+
         /// <summary>[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this
         /// interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRouterIpAddress")]
@@ -45428,6 +45681,14 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>An optional description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Desired availability domain for the attachment. Only available for type PARTNER, at creation time.
+        /// For improved reliability, customers should configure a pair of attachments with one per availability domain.
+        /// The selected availability domain will be provided to the Partner via the pairing key so that the provisioned
+        /// circuit will lie in the specified domain. If not specified, the value will default to
+        /// AVAILABILITY_DOMAIN_ANY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeAvailabilityDomain")]
+        public virtual string EdgeAvailabilityDomain { get; set; } 
 
         /// <summary>[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise
         /// to debug backend connectivity issues.</summary>
@@ -45462,6 +45723,23 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
+        /// <summary>[Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The
+        /// opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the
+        /// form "XXXXX/region/domain"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
+        public virtual string PairingKey { get; set; } 
+
+        /// <summary>Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they configured BGP
+        /// on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for
+        /// DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerAsn")]
+        public virtual System.Nullable<long> PartnerAsn { get; set; } 
+
+        /// <summary>Informational metadata about Partner attachments from Partners to display to customers. Output only
+        /// for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMetadata")]
+        public virtual InterconnectAttachmentPartnerMetadata PartnerMetadata { get; set; } 
+
         /// <summary>[Output Only] Information specific to an InterconnectAttachment. This property is populated if the
         /// interconnect that this is attached to is of type DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInterconnectInfo")]
@@ -45482,6 +45760,19 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] The current state of this attachment's functionality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this attachment, in the
+        /// range 2-4094. This field refers to 802.1q VLAN tag, also known as IEEE 802.1Q Only specified at creation
+        /// time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vlanTag8021q")]
+        public virtual System.Nullable<int> VlanTag8021q { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45630,6 +45921,30 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>Informational metadata about Partner attachments from Partners to display to customers. These fields
+    /// are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.</summary>
+    public class InterconnectAttachmentPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner?s
+        /// portal. For instance ?Chicago 1?. This value may be validated to match approved Partner values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectName")]
+        public virtual string InterconnectName { get; set; } 
+
+        /// <summary>Plain text name of the Partner providing this attachment. This value may be validated to match
+        /// approved Partner values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerName")]
+        public virtual string PartnerName { get; set; } 
+
+        /// <summary>URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep-link to
+        /// the specific resource on the Partner portal. This value may be validated to match approved Partner
+        /// values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portalUrl")]
+        public virtual string PortalUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Information for an interconnect attachment when this belongs to an interconnect of type
@@ -48543,6 +48858,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
+        /// <summary>[Output Only] Type of how the resource/configuration of the BGP peer is managed. MANAGED_BY_USER is
+        /// the default value; MANAGED_BY_ATTACHMENT represents an BGP peer that is automatically created for PARTNER
+        /// interconnectAttachment, Google will automatically create/delete this type of BGP peer when the PARTNER
+        /// interconnectAttachment is created/deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; } 
+
         /// <summary>Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -48578,6 +48900,13 @@ namespace Google.Apis.Compute.v1.Data
         /// at most one linked resource and it could either be a VPN Tunnel or an interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
         public virtual string LinkedVpnTunnel { get; set; } 
+
+        /// <summary>[Output Only] Type of how the resource/configuration of the interface is managed. MANAGED_BY_USER
+        /// is the default value; MANAGED_BY_ATTACHMENT represents an interface that is automatically created for
+        /// PARTNER type interconnectAttachment, Google will automatically create/update/delete this type of interface
+        /// when the PARTNER interconnectAttachment is created/provisioned/deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; } 
 
         /// <summary>Name of this interface entry. The name must be 1-63 characters long and comply with
         /// RFC1035.</summary>
@@ -48948,7 +49277,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Integer license codes indicating which licenses are attached to this snapshot.</summary>
+        /// <summary>[Output Only] Integer license codes indicating which licenses are attached to this
+        /// snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 
@@ -49892,6 +50222,16 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    public class TargetHttpsProxiesSetQuicOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>QUIC policy for the TargetHttpsProxy resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quicOverride")]
+        public virtual string QuicOverride { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class TargetHttpsProxiesSetSslCertificatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>New set of SslCertificate resources to associate with this TargetHttpsProxy resource. Currently
@@ -49932,6 +50272,14 @@ namespace Google.Apis.Compute.v1.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Specifies the QUIC override policy for this TargetHttpsProxy resource. This determines whether the
+        /// load balancer will attempt to negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or
+        /// DISABLE. Specify ENABLE to always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when set
+        /// to DISABLE. If NONE is specified, uses the QUIC policy with no user overrides, which is equivalent to
+        /// DISABLE. Not specifying this field is equivalent to specifying NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quicOverride")]
+        public virtual string QuicOverride { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

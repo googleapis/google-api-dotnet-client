@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180524 (1239)
+ *      <tr><th>API Rev<td>20180531 (1246)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -435,11 +435,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// The worker must acknowledge a task within the lease_duration or the lease will expire and the
                     /// task will become available to be leased again. After the task is acknowledged, it will not be
-                    /// returned by a later LeaseTasks, GetTask, or ListTasks.
-                    ///
-                    /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
-                    /// /how-tos/batch) or the batching documentation for your client library, for example
-                    /// https://developers.google.com/api-client-library/python/guide/batch.</summary>
+                    /// returned by a later LeaseTasks, GetTask, or ListTasks.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -456,11 +452,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// The worker must acknowledge a task within the lease_duration or the lease will expire and the
                     /// task will become available to be leased again. After the task is acknowledged, it will not be
-                    /// returned by a later LeaseTasks, GetTask, or ListTasks.
-                    ///
-                    /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
-                    /// /how-tos/batch) or the batching documentation for your client library, for example
-                    /// https://developers.google.com/api-client-library/python/guide/batch.</summary>
+                    /// returned by a later LeaseTasks, GetTask, or ListTasks.</summary>
                     public class AcknowledgeRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
                     {
                         /// <summary>Constructs a new Acknowledge request.</summary>
@@ -604,10 +596,6 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Creates a task and adds it to a queue.
                     ///
-                    /// To add multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1/how-
-                    /// tos/batch) or the batching documentation for your client library, for example
-                    /// https://developers.google.com/api-client-library/python/guide/batch.
-                    ///
                     /// Tasks cannot be updated after creation; there is no UpdateTask command.
                     ///
                     /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), the maximum task size
@@ -625,10 +613,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     }
 
                     /// <summary>Creates a task and adds it to a queue.
-                    ///
-                    /// To add multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1/how-
-                    /// tos/batch) or the batching documentation for your client library, for example
-                    /// https://developers.google.com/api-client-library/python/guide/batch.
                     ///
                     /// Tasks cannot be updated after creation; there is no UpdateTask command.
                     ///
@@ -1664,6 +1648,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1680,18 +1676,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// response to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1727,6 +1711,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1739,15 +1732,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/2Sihb9fRr0FXDJb4Sf8e4q9OvYg\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/rcMTQpIOHgWYetp22aQ7_LoqIH4\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20180516",
+ "revision": "20180518",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -6037,7 +6037,7 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager or the field need to be unset.",
+     "description": "Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager.",
      "format": "byte"
     },
     "id": {
@@ -7572,9 +7572,11 @@
      "description": "Type of interconnect. Note that \"IT_PRIVATE\" has been deprecated in favor of \"DEDICATED\"",
      "enum": [
       "DEDICATED",
-      "IT_PRIVATE"
+      "IT_PRIVATE",
+      "PARTNER"
      ],
      "enumDescriptions": [
+      "",
       "",
       ""
      ]
@@ -7641,6 +7643,18 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "state": {
+     "type": "string",
+     "description": "[Output Only] The current state of whether or not this Interconnect is functional.",
+     "enum": [
+      "ACTIVE",
+      "UNPROVISIONED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -7649,6 +7663,45 @@
    "type": "object",
    "description": "Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)",
    "properties": {
+    "adminEnabled": {
+     "type": "boolean",
+     "description": "Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER."
+    },
+    "bandwidth": {
+     "type": "string",
+     "description": "Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to update the customer's provisioned bandwidth. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.",
+     "enum": [
+      "BPS_100M",
+      "BPS_10G",
+      "BPS_1G",
+      "BPS_200M",
+      "BPS_2G",
+      "BPS_300M",
+      "BPS_400M",
+      "BPS_500M",
+      "BPS_50M",
+      "BPS_5G"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "candidateSubnets": {
+     "type": "array",
+     "description": "Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google?s edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.",
+     "items": {
+      "type": "string"
+     }
+    },
     "cloudRouterIpAddress": {
      "type": "string",
      "description": "[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment."
@@ -7664,6 +7717,20 @@
     "description": {
      "type": "string",
      "description": "An optional description of this resource."
+    },
+    "edgeAvailabilityDomain": {
+     "type": "string",
+     "description": "Desired availability domain for the attachment. Only available for type PARTNER, at creation time. For improved reliability, customers should configure a pair of attachments with one per availability domain. The selected availability domain will be provided to the Partner via the pairing key so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.",
+     "enum": [
+      "AVAILABILITY_DOMAIN_1",
+      "AVAILABILITY_DOMAIN_2",
+      "AVAILABILITY_DOMAIN_ANY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
     },
     "googleReferenceId": {
      "type": "string",
@@ -7700,6 +7767,19 @@
       ""
      ]
     },
+    "pairingKey": {
+     "type": "string",
+     "description": "[Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form \"XXXXX/region/domain\""
+    },
+    "partnerAsn": {
+     "type": "string",
+     "description": "Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.",
+     "format": "int64"
+    },
+    "partnerMetadata": {
+     "$ref": "InterconnectAttachmentPartnerMetadata",
+     "description": "Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED."
+    },
     "privateInterconnectInfo": {
      "$ref": "InterconnectAttachmentPrivateInfo",
      "description": "[Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED."
@@ -7715,6 +7795,46 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "state": {
+     "type": "string",
+     "description": "[Output Only] The current state of this attachment's functionality.",
+     "enum": [
+      "ACTIVE",
+      "DEFUNCT",
+      "PARTNER_REQUEST_RECEIVED",
+      "PENDING_CUSTOMER",
+      "PENDING_PARTNER",
+      "STATE_UNSPECIFIED",
+      "UNPROVISIONED"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "DEDICATED",
+      "PARTNER",
+      "PARTNER_PROVIDER"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
+    "vlanTag8021q": {
+     "type": "integer",
+     "description": "Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this attachment, in the range 2-4094. This field refers to 802.1q VLAN tag, also known as IEEE 802.1Q Only specified at creation time.",
+     "format": "int32"
     }
    }
   },
@@ -7939,6 +8059,25 @@
        "description": "[Output Only] A human-readable description of the warning code."
       }
      }
+    }
+   }
+  },
+  "InterconnectAttachmentPartnerMetadata": {
+   "id": "InterconnectAttachmentPartnerMetadata",
+   "type": "object",
+   "description": "Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.",
+   "properties": {
+    "interconnectName": {
+     "type": "string",
+     "description": "Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner?s portal. For instance ?Chicago 1?. This value may be validated to match approved Partner values."
+    },
+    "partnerName": {
+     "type": "string",
+     "description": "Plain text name of the Partner providing this attachment. This value may be validated to match approved Partner values."
+    },
+    "portalUrl": {
+     "type": "string",
+     "description": "URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep-link to the specific resource on the Partner portal. This value may be validated to match approved Partner values."
     }
    }
   },
@@ -10378,6 +10517,7 @@
       "PREEMPTIBLE_LOCAL_SSD_GB",
       "PREEMPTIBLE_NVIDIA_K80_GPUS",
       "PREEMPTIBLE_NVIDIA_P100_GPUS",
+      "PREEMPTIBLE_NVIDIA_V100_GPUS",
       "REGIONAL_AUTOSCALERS",
       "REGIONAL_INSTANCE_GROUP_MANAGERS",
       "ROUTERS",
@@ -10400,6 +10540,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -11990,6 +12131,18 @@
      "type": "string",
      "description": "IP address of the interface inside Google Cloud Platform. Only IPv4 is supported."
     },
+    "managementType": {
+     "type": "string",
+     "description": "[Output Only] Type of how the resource/configuration of the BGP peer is managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT represents an BGP peer that is automatically created for PARTNER interconnectAttachment, Google will automatically create/delete this type of BGP peer when the PARTNER interconnectAttachment is created/deleted.",
+     "enum": [
+      "MANAGED_BY_ATTACHMENT",
+      "MANAGED_BY_USER"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "name": {
      "type": "string",
      "description": "Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.",
@@ -12021,6 +12174,18 @@
     "linkedVpnTunnel": {
      "type": "string",
      "description": "URI of the linked VPN tunnel. It must be in the same region as the router. Each interface can have at most one linked resource and it could either be a VPN Tunnel or an interconnect attachment."
+    },
+    "managementType": {
+     "type": "string",
+     "description": "[Output Only] Type of how the resource/configuration of the interface is managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT represents an interface that is automatically created for PARTNER type interconnectAttachment, Google will automatically create/update/delete this type of interface when the PARTNER interconnectAttachment is created/provisioned/deleted.",
+     "enum": [
+      "MANAGED_BY_ATTACHMENT",
+      "MANAGED_BY_USER"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "name": {
      "type": "string",
@@ -12501,7 +12666,7 @@
     },
     "licenseCodes": {
      "type": "array",
-     "description": "Integer license codes indicating which licenses are attached to this snapshot.",
+     "description": "[Output Only] Integer license codes indicating which licenses are attached to this snapshot.",
      "items": {
       "type": "string",
       "format": "int64"
@@ -13768,6 +13933,26 @@
     }
    }
   },
+  "TargetHttpsProxiesSetQuicOverrideRequest": {
+   "id": "TargetHttpsProxiesSetQuicOverrideRequest",
+   "type": "object",
+   "properties": {
+    "quicOverride": {
+     "type": "string",
+     "description": "QUIC policy for the TargetHttpsProxy resource.",
+     "enum": [
+      "DISABLE",
+      "ENABLE",
+      "NONE"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    }
+   }
+  },
   "TargetHttpsProxiesSetSslCertificatesRequest": {
    "id": "TargetHttpsProxiesSetSslCertificatesRequest",
    "type": "object",
@@ -13808,6 +13993,20 @@
      "type": "string",
      "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
      "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?"
+    },
+    "quicOverride": {
+     "type": "string",
+     "description": "Specifies the QUIC override policy for this TargetHttpsProxy resource. This determines whether the load balancer will attempt to negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. Specify ENABLE to always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when set to DISABLE. If NONE is specified, uses the QUIC policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying NONE.",
+     "enum": [
+      "DISABLE",
+      "ENABLE",
+      "NONE"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
     },
     "selfLink": {
      "type": "string",
@@ -23355,6 +23554,55 @@
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
      ]
+    },
+    "patch": {
+     "id": "compute.interconnectAttachments.patch",
+     "path": "{project}/regions/{region}/interconnectAttachments/{interconnectAttachment}",
+     "httpMethod": "PATCH",
+     "description": "Updates the specified interconnect attachment with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+     "parameters": {
+      "interconnectAttachment": {
+       "type": "string",
+       "description": "Name of the interconnect attachment to patch.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "interconnectAttachment"
+     ],
+     "request": {
+      "$ref": "InterconnectAttachment"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
     }
    }
   },
@@ -28950,6 +29198,46 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setQuicOverride": {
+     "id": "compute.targetHttpsProxies.setQuicOverride",
+     "path": "{project}/global/targetHttpsProxies/{targetHttpsProxy}/setQuicOverride",
+     "httpMethod": "POST",
+     "description": "Sets the QUIC override policy for TargetHttpsProxy.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "targetHttpsProxy": {
+       "type": "string",
+       "description": "Name of the TargetHttpsProxy resource to set the QUIC override policy for. The name should conform to RFC1035.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "targetHttpsProxy"
+     ],
+     "request": {
+      "$ref": "TargetHttpsProxiesSetQuicOverrideRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "setSslCertificates": {

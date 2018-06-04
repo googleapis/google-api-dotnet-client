@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/LViJdR-g6I1-HKEOOooFSt9eAl4\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/o6301AdEUdYKKDf8tjUTJlAw-Wk\"",
  "discoveryVersion": "v1",
  "id": "appsactivity:v1",
  "name": "appsactivity",
  "version": "v1",
- "revision": "20180528",
+ "revision": "20180531",
  "title": "G Suite Activity API",
  "description": "Provides a historical view of activity.",
  "ownerDomain": "google.com",
