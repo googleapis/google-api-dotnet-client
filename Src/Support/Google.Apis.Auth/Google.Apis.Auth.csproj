@@ -37,6 +37,7 @@ Supported Platforms:
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
