@@ -31,6 +31,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
     /// </summary>
     public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow
     {
+        /// <summary>
+        /// The project ID associated with the credential using this flow.
+        /// </summary>
+        public string ProjectId { get; private set; }
+
         private readonly string revokeTokenUrl;
 
         /// <summary>Gets the token revocation URL.</summary>
@@ -58,6 +63,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         public GoogleAuthorizationCodeFlow(Initializer initializer)
             : base(initializer)
         {
+            ProjectId = initializer.ProjectId;
             revokeTokenUrl = initializer.RevokeTokenUrl;
             includeGrantedScopes = initializer.IncludeGrantedScopes;
             LoginHint = initializer.LoginHint;
@@ -109,6 +115,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>An initializer class for Google authorization code flow. </summary>
         public new class Initializer : AuthorizationCodeFlow.Initializer
         {
+            /// <summary>
+            /// The project ID associated with the credential using this flow.
+            /// </summary>
+            public string ProjectId { get; set; }
+
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; set; }
 

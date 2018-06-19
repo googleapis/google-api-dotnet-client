@@ -25,6 +25,7 @@ using Xunit;
 using System.Threading;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using Google.Apis.Auth.OAuth2.Flows;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -36,6 +37,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 ""client_id"": ""CLIENT_ID"",
 ""client_secret"": ""CLIENT_SECRET"",
 ""refresh_token"": ""REFRESH_TOKEN"",
+""project_id"": ""PROJECT_ID"",
 ""type"": ""authorized_user""}";
         private const string DummyServiceAccountCredentialFileContents = @"{
 ""private_key_id"": ""PRIVATE_KEY_ID"",
@@ -57,6 +59,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 -----END PRIVATE KEY-----"",
 ""client_email"": ""CLIENT_EMAIL"",
 ""client_id"": ""CLIENT_ID"",
+""project_id"": ""PROJECT_ID"",
 ""type"": ""service_account""}";
 
         [Fact]
@@ -64,7 +67,14 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes(DummyUserCredentialFileContents));
             var credential = GoogleCredential.FromStream(stream);
+            Assert.IsType<UserCredential>(credential.UnderlyingCredential);
             Assert.False(credential.IsCreateScopedRequired);
+            var userCred = (UserCredential)credential.UnderlyingCredential;
+            Assert.Equal("REFRESH_TOKEN", userCred.Token.RefreshToken);
+            var flow = (GoogleAuthorizationCodeFlow)userCred.Flow;
+            Assert.Equal("CLIENT_ID", flow.ClientSecrets.ClientId);
+            Assert.Equal("CLIENT_SECRET", flow.ClientSecrets.ClientSecret);
+            Assert.Equal("PROJECT_ID", flow.ProjectId);
         }
 
         [Fact]
@@ -74,6 +84,9 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             var credential = GoogleCredential.FromStream(stream);
             Assert.IsType<ServiceAccountCredential>(credential.UnderlyingCredential);
             Assert.True(credential.IsCreateScopedRequired);
+            var serviceCred = (ServiceAccountCredential)credential.UnderlyingCredential;
+            Assert.Equal("CLIENT_EMAIL", serviceCred.Id);
+            Assert.Equal("PROJECT_ID", serviceCred.ProjectId);
         }
 
         [Fact]

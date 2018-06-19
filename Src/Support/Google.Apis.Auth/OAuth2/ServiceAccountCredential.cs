@@ -64,6 +64,11 @@ namespace Google.Apis.Auth.OAuth2
             public string Id { get; private set; }
 
             /// <summary>
+            /// The project ID associated with this credential.
+            /// </summary>
+            public string ProjectId { get; set; }
+
+            /// <summary>
             /// Gets or sets the email address of the user the application is trying to impersonate in the service 
             /// account flow or <c>null</c>.
             /// </summary>
@@ -128,6 +133,11 @@ namespace Google.Apis.Auth.OAuth2
         public string Id { get { return id; } }
 
         /// <summary>
+        /// The project ID associated with this credential.
+        /// </summary>
+        public string ProjectId { get; private set; }
+
+        /// <summary>
         /// Gets the email address of the user the application is trying to impersonate in the service account flow 
         /// or <c>null</c>.
         /// </summary>
@@ -149,6 +159,7 @@ namespace Google.Apis.Auth.OAuth2
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
             id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
+            ProjectId = initializer.ProjectId;
             user = initializer.User;
             scopes = initializer.Scopes;
             key = initializer.Key.ThrowIfNull("initializer.Key");

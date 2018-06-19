@@ -48,6 +48,12 @@ namespace Google.Apis.Auth.OAuth2
         public string Type { get; set; }
 
         /// <summary>
+        /// Project ID associated with this credential.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("project_id")]
+        public string ProjectId { get; set; }
+
+        /// <summary>
         /// Client Id associated with UserCredential created by
         /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
         /// </summary>
