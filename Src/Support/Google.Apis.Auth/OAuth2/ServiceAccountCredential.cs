@@ -221,29 +221,89 @@ namespace Google.Apis.Auth.OAuth2
         {
             if (!HasScopes && authUri != null)
             {
-                // TODO(jtattermusch): support caching of JWT access tokens per authUri, currently a new 
-                // JWT access token is created each time, which can hurt performance.
-                return CreateJwtAccessToken(authUri);
+                return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
             }
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
-    
+
+        private class JwtCacheEntry
+        {
+            public JwtCacheEntry(Task<string> jwtTask, string uri, DateTime expiryUtc)
+            {
+                JwtTask = jwtTask;
+                Uri = uri;
+                ExpiryUtc = expiryUtc;
+            }
+
+            public Task<string> JwtTask { get; }
+            public string Uri { get; }
+            public DateTime ExpiryUtc { get; }
+        }
+
+        // Internal for testing.
+        internal static readonly TimeSpan JwtLifetime = TimeSpan.FromMinutes(60);
+        internal static readonly TimeSpan JwtCacheExpiryWindow = TimeSpan.FromMinutes(5);
+        internal const int JwtCacheMaxSize = 100;
+        private readonly object _jwtLock = new object();
+        private LinkedList<JwtCacheEntry> _jwts = null;
+        private Dictionary<string, LinkedListNode<JwtCacheEntry>> _jwtCache = null;
+
+        private Task<string> GetOrCreateJwtAccessTokenAsync(string authUri)
+        {
+            var nowUtc = Clock.UtcNow;
+            lock (_jwtLock)
+            {
+                if (_jwtCache == null)
+                {
+                    // Create cache on demand, as many service credentials won't ever need one.
+                    _jwtCache = new Dictionary<string, LinkedListNode<JwtCacheEntry>>();
+                    _jwts = new LinkedList<JwtCacheEntry>();
+                }
+                if (_jwtCache.TryGetValue(authUri, out var cachedJwtNode))
+                {
+                    var jwtEntry = cachedJwtNode.Value;
+                    if (jwtEntry.ExpiryUtc - JwtCacheExpiryWindow > nowUtc)
+                    {
+                        // Cached JWT not expired, return it.
+                        return jwtEntry.JwtTask;
+                    }
+                    // Cached JWT is expired; remove it.
+                    _jwtCache.Remove(authUri);
+                    _jwts.Remove(cachedJwtNode);
+                }
+                // Create a new JWT.
+                var expiryUtc = nowUtc + JwtLifetime;
+                var jwtTask = Task.Run(() => CreateJwtAccessToken(authUri, nowUtc, expiryUtc));
+                var jwtNode = _jwts.AddFirst(new JwtCacheEntry(jwtTask, authUri, expiryUtc));
+                _jwtCache.Add(authUri, jwtNode);
+                // If cache is too large, remove oldest JWT (for any uri)
+                if (_jwtCache.Count > JwtCacheMaxSize)
+                {
+                    var oldestJwtNode = _jwts.Last;
+                    _jwts.RemoveLast();
+                    _jwtCache.Remove(oldestJwtNode.Value.Uri);
+                }
+                return jwtTask;
+            }
+        }
+
         /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
         /// This is achieved by signing a special JWT using this service account's private key.
         /// <param name="authUri">The URI for which the access token will be valid.</param>
+        /// <param name="issueUtc">The issue time of the JWT.</param>
+        /// <param name="expiryUtc">The expiry time of the JWT.</param>
         /// </summary>
-        private string CreateJwtAccessToken(string authUri)
+        private string CreateJwtAccessToken(string authUri, DateTime issueUtc, DateTime expiryUtc)
         {
-            var issuedDateTime = Clock.UtcNow;
-            var issued = (int)(issuedDateTime - UnixEpoch).TotalSeconds;
+            var issued = (int)(issueUtc - UnixEpoch).TotalSeconds;
             var payload = new JsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Subject = Id,
                 Audience = authUri,
-                IssuedAtTimeSeconds = issued,
-                ExpirationTimeSeconds = issued + 3600,
+                IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
+                ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
             };
 
             return CreateAssertionFromPayload(payload);

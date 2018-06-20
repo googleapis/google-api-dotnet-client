@@ -1,6 +1,5 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Json;
-using Google.Apis.Tests;
 using Google.Apis.Tests.Mocks;
 using System;
 using System.Linq;
@@ -213,6 +212,68 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
                 "4naYG2ItcfBEFg7Gbdkr1cIAyipuhEd2yLfPmWGwhOwVcBRNyK_J5w8RodS44mxNJwau0" +
                 "jKy4x1K20ybLqcnNgzE0wag6fi5GHwdNIB0URdHDTiC88CRYdl1CIdk";
             Assert.Equal(expectedToken, accessToken);
+        }
+
+        private const string PrivateKey = @"-----BEGIN PRIVATE KEY-----
+MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
+2x4zrzrwSUtmtR37XTTi0sPARTDF8uzmXy8UnE5RcVJzEH5T2Ssz/ylX4Sl/CI4L
+no1l8j9GiHJb49LSRjWe4Yx936q0Xj9H0R1HTxvjUPqwAsTwy2fKBTog+q1frqc9
+o8s2r6LYivUGDVbhuUzCaMJsf+x3AgMBAAECgYEAi0FTXsu/zRswAUGaViQiHjrL
+uU65BSHXNVjV/2fLNEKnGWGqpli68z1IXY+S2nwbUak7rnGsq9/0F6jtsW+hZbLk
+KXUOuuExpeC5Kd6ngWX/f2jqmhlUabiQijU9cVk7pMq8EHkRtvlosnMTUAEzempu
+QUPwn1PZHhmJkBvZ4lECQQDCErrxl+e3BwUDcS0yVEEmCNSG6xdXs2878b8rzbe7
+3Mmi6SuuOLi3PU92J+j+f/MOdtYrk13mEDdYmd5dhrt5AkEAwPvDEsDT/W4y4h5n
+gv1awGBA5aLFE1JNWM/Gwn4D1cGpEDHKFREaBtxMDCASpHJuw8r7zUywpKhmBZcf
+GS37bwJANdSAKfbafLfjuhqwUJ9yGpykZm/a36aTmerp/bpn1iHdg+RtCzwMcDb/
+TWSwibbvsflgWmHbz657y4WSWhq+8QJAWrpCNN/ZCk2zuGDo80lfUBAwkoVat8G6
+wWU1oZyS+vzIGef+hLb8kHsjeZPej9eIwZ39kcBbT54oELrCkRjwGwJAQ8V2A7lT
+ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
+4Z5p2prkjWTLcA==
+-----END PRIVATE KEY-----";
+
+        [Fact]
+        public async Task JwtCache_Size()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.False(cred.HasScopes); // Must be false for the remainder of this test to be valid.
+            // Check JWTs removed from cache once cache fills up.
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
+            for (int i = 0; i < ServiceAccountCredential.JwtCacheMaxSize; i++)
+            {
+                await cred.GetAccessTokenForRequestAsync($"uri{i}");
+                // Check jwt is retrieved from cache.
+                var jwt0Cached = await cred.GetAccessTokenForRequestAsync("uri0");
+                Assert.Same(jwt0, jwt0Cached);
+            }
+            // Add one more JWT to cache that should remove jwt0 from the cache.
+            await cred.GetAccessTokenForRequestAsync("uri_too_much");
+            var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri0");
+            Assert.NotSame(jwt0, jwt0Uncached);
+        }
+
+        [Fact]
+        public async Task JwtCache_Expiry()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.False(cred.HasScopes); // Must be false for the remainder of this test to be valid.
+            // Check JWTs are only cached until the expiry minus the expiry window.
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri");
+            clock.UtcNow += ServiceAccountCredential.JwtLifetime - ServiceAccountCredential.JwtCacheExpiryWindow - TimeSpan.FromSeconds(1);
+            var jwt0Cached = await cred.GetAccessTokenForRequestAsync("uri");
+            Assert.Same(jwt0, jwt0Cached);
+            clock.UtcNow += TimeSpan.FromSeconds(2);
+            var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri");
+            Assert.NotSame(jwt0, jwt0Uncached);
         }
     }
 }
