@@ -296,7 +296,6 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         private string CreateJwtAccessToken(string authUri, DateTime issueUtc, DateTime expiryUtc)
         {
-            var issued = (int)(issueUtc - UnixEpoch).TotalSeconds;
             var payload = new JsonWebSignature.Payload()
             {
                 Issuer = Id,
