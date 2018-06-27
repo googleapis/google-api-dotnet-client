@@ -43,7 +43,7 @@ namespace IntegrationTests
             var ok = credential.UnderlyingCredential.GetAccessTokenForRequestAsync().Result;
             Assert.NotNull(ok);
 
-            // Following line will throw is authentication fails.
+            // Following line will throw if authentication fails.
             Buckets buckets = client.Buckets.List(Helper.GetProjectId()).Execute();
 
             // A final sanity-check.
