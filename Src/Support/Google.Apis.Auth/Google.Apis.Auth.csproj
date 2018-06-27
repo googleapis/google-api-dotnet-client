@@ -4,8 +4,8 @@
 
   <!-- build configuration -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
 
   <!-- nupkg information -->
@@ -36,21 +36,29 @@ Supported Platforms:
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+  </ItemGroup>
+
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
+  <!-- build and include the (empty) platformservices dll in package; required for binary backward compatibility -->
   <!-- There must be a better way of doing this... -->
   <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec" Condition="'$(OS)' == 'Windows_NT'">
     <MSBuild Projects="..\Google.Apis.Auth.PlatformServices\Google.Apis.Auth.PlatformServices.csproj" />
     <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\netstandard1.3\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)netstandard1.3" />
+    <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\netstandard2.0\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)netstandard2.0" />
     <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\net45\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
   </Target>
   <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
     <None Include="$(OutputPath)netstandard1.3\Google.Apis.Auth.PlatformServices.dll">
       <Pack>true</Pack>
       <PackagePath>lib\netstandard1.3</PackagePath>
+    </None>
+    <None Include="$(OutputPath)netstandard2.0\Google.Apis.Auth.PlatformServices.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\netstandard2.0</PackagePath>
     </None>
     <None Include="$(OutputPath)net45\Google.Apis.Auth.PlatformServices.dll">
       <Pack>true</Pack>
