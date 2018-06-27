@@ -42,14 +42,16 @@ Supported Platforms:
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   
-  <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
+  <!-- build and include the (empty) platformservices dll in package; required for binary backward compatibility -->
   <!-- There must be a better way of doing this... -->
   <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec" Condition="'$(OS)' == 'Windows_NT'">
     <MSBuild Projects="..\Google.Apis.PlatformServices\Google.Apis.PlatformServices.csproj" />
     <Copy SourceFiles="..\Google.Apis.PlatformServices\bin\$(Configuration)\net45\Google.Apis.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
   </Target>
   <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
-    <!-- netstandard2.0 not required; it's a newly supported framework, so binary compatilibity is not needed. -->
+    <!-- netstandard2.0 not required. To use the netstandard2.0 assemblies in this packages requires a re-build of the dependant code,
+         which will then use references directly to the new location of the classes in the Google.Apis.Auth assembly,
+         rather than the PlatformServices assembly. The PlatformServices assembly now only contains type redirects. -->
     <None Include="$(OutputPath)net45\Google.Apis.PlatformServices.dll">
       <Pack>true</Pack>
       <PackagePath>lib\net45</PackagePath>
