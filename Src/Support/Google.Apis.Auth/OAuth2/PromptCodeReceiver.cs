@@ -41,7 +41,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             var authorizationUrl = url.Build().AbsoluteUri;
 
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
             Logger.Debug("Requested user open a browser with \"{0}\" URL", authorizationUrl);
             Console.WriteLine("Please visit the following URL in a web browser, then enter the code shown after authorization:");
             Console.WriteLine(authorizationUrl);

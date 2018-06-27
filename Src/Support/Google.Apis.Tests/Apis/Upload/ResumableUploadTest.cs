@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Too slow in net core
-#if !NETCOREAPP1_0 && !NETCOREAPP1_1
+// Too slow in net core 1.x
+// Flakey in net core 2.0 due to https://github.com/dotnet/corefx/issues/25016
+// Should be OK in net core 2.1, but we don't test on that (yet).
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1 && !NETCOREAPP2_0
 
 using Google.Apis.Json;
 using Google.Apis.Services;

@@ -27,7 +27,7 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
 
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
 using RsaKey = System.Security.Cryptography.RSA;
 #elif NET45
 using RsaKey = System.Security.Cryptography.RSACryptoServiceProvider;
@@ -106,7 +106,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
                 Key = certificate.GetRSAPrivateKey();
 #elif NET45
                 // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
@@ -338,7 +338,7 @@ namespace Google.Apis.Auth.OAuth2
             using (var hashAlg = SHA256.Create())
             {
                 byte[] assertionHash = hashAlg.ComputeHash(data);
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
                 var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #elif NET45
                 var sigBytes = key.SignHash(assertionHash, Sha256Oid);
