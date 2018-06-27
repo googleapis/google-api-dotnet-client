@@ -48,15 +48,17 @@ Supported Platforms:
   <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec" Condition="'$(OS)' == 'Windows_NT'">
     <MSBuild Projects="..\Google.Apis.Auth.PlatformServices\Google.Apis.Auth.PlatformServices.csproj" />
     <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\netstandard1.3\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)netstandard1.3" />
+    <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\netstandard2.0\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)netstandard2.0" />
     <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\net45\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
   </Target>
   <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
-    <!-- netstandard2.0 not required. To use the netstandard2.0 assemblies in this packages requires a re-build of the dependant code,
-         which will then use references directly to the new location of the classes in the Google.Apis.Auth assembly,
-         rather than the PlatformServices assembly. The PlatformServices assembly now only contains type redirects. -->
     <None Include="$(OutputPath)netstandard1.3\Google.Apis.Auth.PlatformServices.dll">
       <Pack>true</Pack>
       <PackagePath>lib\netstandard1.3</PackagePath>
+    </None>
+    <None Include="$(OutputPath)netstandard2.0\Google.Apis.Auth.PlatformServices.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\netstandard2.0</PackagePath>
     </None>
     <None Include="$(OutputPath)net45\Google.Apis.Auth.PlatformServices.dll">
       <Pack>true</Pack>
