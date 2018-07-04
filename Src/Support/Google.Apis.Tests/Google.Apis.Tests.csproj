@@ -6,7 +6,6 @@
     <!-- On non-Windows platforms only net core can be built -->
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp1.0;netcoreapp1.1;netcoreapp2.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
