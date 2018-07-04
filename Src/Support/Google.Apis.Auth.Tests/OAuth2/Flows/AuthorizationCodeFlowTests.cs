@@ -55,7 +55,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             }
             catch (ArgumentException ex)
             {
-                Assert.True(ex.Message.Contains("You MUST set ClientSecret or ClientSecretStream"));
+                Assert.Contains("You MUST set ClientSecret or ClientSecretStream", ex.Message);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             // MessageHandler no longer provides a supported way for clients to query the list of handlers,
             // but we rely on the obsolete property as an implementation detail here.
             #pragma warning disable 618
-            Assert.Equal(1, flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.Count());
+            Assert.Single(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers);
             Assert.IsType<BackOffHandler>(flow.HttpClient.MessageHandler.UnsuccessfulResponseHandlers.First());
             #pragma warning restore 618
         }

@@ -299,8 +299,8 @@ Content-Length: 202
                 var httpMessage = tuple.Item3; // HTTP message
                 Assert.Equal("application/json", httpMessage.Content.Headers.ContentType.MediaType);
                 Assert.Equal(505, httpMessage.Content.Headers.ContentLength);
-                Assert.True(httpMessage.Headers.Vary.Contains("Accept-Encoding"));
-                Assert.True(httpMessage.Headers.Vary.Contains("Referer"));
+                Assert.Contains("Accept-Encoding", httpMessage.Headers.Vary);
+                Assert.Contains("Referer", httpMessage.Headers.Vary);
 
                 tuple = responses[1];
                 if (successful2ndReponse)
