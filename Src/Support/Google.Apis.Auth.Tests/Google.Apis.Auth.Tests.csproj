@@ -6,18 +6,17 @@
     <!-- On non-Windows platforms only net core can be built -->
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp1.0;netcoreapp1.1;netcoreapp2.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="xunit" Version="2.3.0-beta2-build3683" />
-    <PackageReference Include="Xunit.Combinatorial" Version="1.2.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta2-build1317" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="Xunit.Combinatorial" Version="1.2.7" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="Moq" Version="4.7.8" />
+    <PackageReference Include="Moq" Version="4.8.3" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
@@ -25,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
-    <PackageReference Include="BouncyCastle" Version="1.8.1" />
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="BouncyCastle" Version="1.8.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -73,7 +73,7 @@ namespace Google.Apis.Tests.Apis.Requests.Parameters
             Assert.Contains("customParam2=customVal2", result);
 
             //The parameter name for the custom parameters does not carry through to the resulting URI.
-            Assert.False(result.Contains("query_param_attribute_name"));
+            Assert.DoesNotContain("query_param_attribute_name", result);
         }
     }
 }

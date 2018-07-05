@@ -28,7 +28,7 @@ namespace Google.Apis.Tests.Apis.Util
         public void ThrowIfNullTest()
         {
             string str = null;
-            Assert.Throws(typeof(ArgumentNullException), () => str.ThrowIfNull("str"));
+            Assert.Throws<ArgumentNullException>(() => str.ThrowIfNull("str"));
             str = "123";
             str.ThrowIfNull("Not throwen");
         }

@@ -92,8 +92,8 @@ namespace Google.Apis.Tests.Apis.Http
                 {
                     // First call the message should contain If-* headers
                     Assert.Equal(new Uri(Location), request.RequestUri);
-                    Assert.Equal(1, request.Headers.IfMatch.Count);
-                    Assert.Equal(1, request.Headers.IfNoneMatch.Count);
+                    Assert.Single(request.Headers.IfMatch);
+                    Assert.Single(request.Headers.IfNoneMatch);
                     Assert.True(request.Headers.IfModifiedSince.HasValue);
                     Assert.True(request.Headers.IfUnmodifiedSince.HasValue);
                 }
@@ -101,8 +101,8 @@ namespace Google.Apis.Tests.Apis.Http
                 {
                     // After first call the message should not contain If-* headers
                     Assert.Equal(new Uri(Location + (Calls - 1)), request.RequestUri);
-                    Assert.Equal(0, request.Headers.IfMatch.Count);
-                    Assert.Equal(0, request.Headers.IfNoneMatch.Count);
+                    Assert.Empty(request.Headers.IfMatch);
+                    Assert.Empty(request.Headers.IfNoneMatch);
                     Assert.Null(request.Headers.IfModifiedSince);
                     Assert.Null(request.Headers.IfUnmodifiedSince);
                 }
@@ -935,7 +935,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
+                Assert.Contains("Parameter name: NumTries", ex.Message);
             }
             try
             {
@@ -944,7 +944,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
+                Assert.Contains("Parameter name: NumTries", ex.Message);
             }
             try
             {
@@ -953,7 +953,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
+                Assert.Contains("Parameter name: NumTries", ex.Message);
             }
         }
 

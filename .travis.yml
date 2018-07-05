@@ -1,6 +1,6 @@
 language: csharp
 mono: none
-dotnet: 2.0.3
+dotnet: 2.1.101
 dist: trusty
 
 # Install the .NET Core 1.0 runtime as that's what we build and test against

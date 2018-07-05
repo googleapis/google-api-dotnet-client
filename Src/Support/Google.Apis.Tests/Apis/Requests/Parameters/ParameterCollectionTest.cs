@@ -39,12 +39,12 @@ namespace Google.Apis.Tests.Apis.Requests.Parameters
             var col = new ParameterCollection();
 
             // 1. Empty case.
-            Assert.Equal(0, col.Count);
+            Assert.Empty(col);
             Assert.Equal(new string[0], col.GetAllMatches("test"));
 
             // 2. One element.
             col.Add("black", "hole");
-            Assert.Equal(1, col.Count);
+            Assert.Single(col);
             Assert.Equal(new[] { "hole" }, col.GetAllMatches("black"));
 
             // 3. Another element.
