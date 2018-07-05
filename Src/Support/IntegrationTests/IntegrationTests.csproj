@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <PropertyGroup>
-    <!--<OutputType>Exe</OutputType>-->
     <!-- net452 is the earliest desktop version supported by xunit runner -->
     <TargetFrameworks>netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;net452;net46</TargetFrameworks>
     <!-- On non-Windows platforms only net core can be built -->
