@@ -74,7 +74,6 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   # Download all discovery docs
   python -u get_discovery_documents.py --destination_dir $DISCOVERY_DOC_DIR
   # Patch discovery docs
-  dotnet restore $TOOLS_DIR/DiscoveryDocPatcher/DiscoveryDocPatcher.csproj
   dotnet run --project $TOOLS_DIR/DiscoveryDocPatcher/DiscoveryDocPatcher.csproj -- $DISCOVERY_DOC_DIR
 fi
 
