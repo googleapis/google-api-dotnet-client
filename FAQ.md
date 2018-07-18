@@ -61,3 +61,35 @@ In this case make sure to Dispose of each instance when finished with it.
 ### How do I create a nuget package from a discovery doc?
 
 See [HowToGenerateAPackage.md](HowToGenerateAPackage.md).
+
+### How do I populate a property of type `GoogleApiHttpBody` in a request?
+
+Some libraries (e.g. Cloud Machine Learning Engine) require un-typed
+JSON to be passed through to the server; ignoring the strongly-typed
+generated code. This un-typed JSON is represented via the `GoogleApiHttpBody`
+type, usually for a property called `HttpBody`.
+
+Setting the data in this property directly does not work as
+expected. The workaround is to set the content directly in the
+`HttpRequestMessage` via an interceptor. For example:
+
+```csharp
+DemoService service = new DemoService(...);
+
+// The JSON we want in our HTTP request body
+string json = "{ \"property\": 5 }";
+
+// Create an empty body part for the request
+DemoRequestBody emptyBody = new DemoRequestBody { HttpBody = new GoogleApiHttpBody() };
+
+// Create the service request as normal
+DemoRequest demoRequest = service.Demo(emptyBody);
+
+// Add an interceptor to modify the request before sending it.
+demoRequest.ModifyRequest = httpRequestMessage =>
+{
+    httpRequestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
+};
+// Execute the request.
+GoogleApiHttpBody response = demoRequest.Execute();
+```
