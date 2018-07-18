@@ -93,3 +93,5 @@ demoRequest.ModifyRequest = httpRequestMessage =>
 // Execute the request.
 GoogleApiHttpBody response = demoRequest.Execute();
 ```
+
+See issue [#1068](https://github.com/google/google-api-dotnet-client/issues/1068) for more details.
