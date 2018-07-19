@@ -116,6 +116,9 @@ namespace Google.Apis.Auth.OAuth2
         {
             codeReceiver = codeReceiver ?? new LocalServerCodeReceiver();
 
+            // Delete token, which forces a user-interactive re-auth to occur.
+            await userCredential.Flow.DeleteTokenAsync(userCredential.UserId, taskCancellationToken).ConfigureAwait(false);
+
             // Create an authorization code installed app instance and authorize the user.
             UserCredential newUserCredential = await new AuthorizationCodeInstalledApp(userCredential.Flow,
                 codeReceiver).AuthorizeAsync
