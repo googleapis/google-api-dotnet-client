@@ -94,6 +94,15 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = new List<string>();
             }
 
+            internal Initializer(ServiceAccountCredential other) : base(other)
+            {
+                Id = other.Id;
+                ProjectId = other.ProjectId;
+                User = other.User;
+                Scopes = other.Scopes;
+                Key = other.Key;
+            }
+
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
             public Initializer FromPrivateKey(string privateKey)
             {

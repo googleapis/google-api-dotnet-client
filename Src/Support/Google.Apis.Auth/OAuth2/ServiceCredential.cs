@@ -86,6 +86,15 @@ namespace Google.Apis.Auth.OAuth2
                 Clock = SystemClock.Default;
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
             }
+
+            internal Initializer(ServiceCredential other)
+            {
+                TokenServerUrl = other.TokenServerUrl;
+                Clock = other.Clock;
+                AccessMethod = other.AccessMethod;
+                HttpClientFactory = other.HttpClientFactory;
+                DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
+            }
         }
 
         /// <summary>Gets the token server URL.</summary>
@@ -99,6 +108,10 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
         public ConfigurableHttpClient HttpClient { get; }
+
+        internal IHttpClientFactory HttpClientFactory { get; }
+
+        internal ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; }
 
         private readonly TokenRefreshManager _refreshManager;
 
@@ -126,6 +139,7 @@ namespace Google.Apis.Auth.OAuth2
                     new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
                         () => new BackOffHandler(new ExponentialBackOff())));
             }
+            HttpClientFactory = initializer.HttpClientFactory;
             HttpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
             _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
         }
