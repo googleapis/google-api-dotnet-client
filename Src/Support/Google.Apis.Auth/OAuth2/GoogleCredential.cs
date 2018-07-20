@@ -264,10 +264,8 @@ namespace Google.Apis.Auth.OAuth2
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
                 var serviceAccountCredential = credential as ServiceAccountCredential;
-                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential.Id)
+                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential)
                 {
-                    User = serviceAccountCredential.User,
-                    Key = serviceAccountCredential.Key,
                     Scopes = scopes
                 };
                 return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
@@ -276,11 +274,9 @@ namespace Google.Apis.Auth.OAuth2
             public override GoogleCredential CreateWithUser(string user)
             {
                 var serviceAccountCredential = credential as ServiceAccountCredential;
-                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential.Id)
+                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential)
                 {
-                    User = user,
-                    Key = serviceAccountCredential.Key,
-                    Scopes = serviceAccountCredential.Scopes
+                    User = user
                 };
                 return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }

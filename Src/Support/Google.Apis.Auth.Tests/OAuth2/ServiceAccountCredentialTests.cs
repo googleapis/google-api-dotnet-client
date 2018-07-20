@@ -1,8 +1,10 @@
 ﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using System;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -274,6 +276,87 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             clock.UtcNow += TimeSpan.FromSeconds(2);
             var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri");
             Assert.NotSame(jwt0, jwt0Uncached);
+        }
+
+        private class DummyAccessMethod : IAccessMethod
+        {
+            public string GetAccessToken(HttpRequestMessage request) => throw new NotImplementedException();
+            public void Intercept(HttpRequestMessage request, string accessToken) => throw new NotImplementedException();
+        }
+
+        private class DummyHttpClientFactory : IHttpClientFactory
+        {
+            public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args) => null;
+        }
+
+        [Fact]
+        public void CreateWithScopes()
+        {
+            var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+            {
+                Clock = new MockClock(),
+                AccessMethod = new DummyAccessMethod(),
+                HttpClientFactory = new DummyHttpClientFactory(),
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
+                ProjectId = "a_project_id",
+                User = "a_user",
+                Scopes = new[] { "scope1" },
+            }.FromPrivateKey(PrivateKey));
+            var cred1 = GoogleCredential.FromCredential(serviceAccountCred);
+            var cred2 = cred1.CreateScoped("scope2");
+
+            var svc1 = (ServiceAccountCredential)cred1.UnderlyingCredential;
+            var svc2 = (ServiceAccountCredential)cred2.UnderlyingCredential;
+
+            Assert.Same(serviceAccountCred, svc1);
+            Assert.NotSame(serviceAccountCred, svc2);
+
+            Assert.Same(svc1.Id, svc2.Id);
+            Assert.Same(svc1.TokenServerUrl, svc2.TokenServerUrl);
+            Assert.Same(svc1.Clock, svc2.Clock);
+            Assert.Same(svc1.AccessMethod, svc2.AccessMethod);
+            Assert.Same(svc1.HttpClientFactory, svc2.HttpClientFactory);
+            Assert.Equal(svc1.DefaultExponentialBackOffPolicy, svc2.DefaultExponentialBackOffPolicy);
+            Assert.Same(svc1.ProjectId, svc2.ProjectId);
+            Assert.Same(svc1.User, svc2.User);
+            Assert.NotSame(svc1.Scopes, svc2.Scopes);
+            Assert.Equal(new[] { "scope1" }, svc1.Scopes);
+            Assert.Equal(new[] { "scope2" }, svc2.Scopes);
+        }
+
+        [Fact]
+        public void CreateWithUser()
+        {
+            var serviceAccountCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId", "MyTokenServerUrl")
+            {
+                Clock = new MockClock(),
+                AccessMethod = new DummyAccessMethod(),
+                HttpClientFactory = new DummyHttpClientFactory(),
+                DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception, // This is not the default
+                ProjectId = "a_project_id",
+                User = "user1",
+                Scopes = new[] { "scope1" },
+            }.FromPrivateKey(PrivateKey));
+            var cred1 = GoogleCredential.FromCredential(serviceAccountCred);
+            var cred2 = cred1.CreateWithUser("user2");
+
+            var svc1 = (ServiceAccountCredential)cred1.UnderlyingCredential;
+            var svc2 = (ServiceAccountCredential)cred2.UnderlyingCredential;
+
+            Assert.Same(serviceAccountCred, svc1);
+            Assert.NotSame(serviceAccountCred, svc2);
+
+            Assert.Same(svc1.Id, svc2.Id);
+            Assert.Same(svc1.TokenServerUrl, svc2.TokenServerUrl);
+            Assert.Same(svc1.Clock, svc2.Clock);
+            Assert.Same(svc1.AccessMethod, svc2.AccessMethod);
+            Assert.Same(svc1.HttpClientFactory, svc2.HttpClientFactory);
+            Assert.Equal(svc1.DefaultExponentialBackOffPolicy, svc2.DefaultExponentialBackOffPolicy);
+            Assert.Same(svc1.ProjectId, svc2.ProjectId);
+            Assert.NotSame(svc1.User, svc2.User);
+            Assert.Same(svc1.Scopes, svc2.Scopes);
+            Assert.Equal("user1", svc1.User);
+            Assert.Equal("user2", svc2.User);
         }
     }
 }
