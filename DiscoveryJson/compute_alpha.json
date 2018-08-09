@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/uu5Fb8xKeF9Z7ooFYwXgp7bFFJg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1XfhYNiAlNj5Ikwu5Q7C1vp1YM4\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20180518",
+ "revision": "20180716",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -664,9 +664,11 @@
      "description": "[Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.",
      "enum": [
       "IN_USE",
-      "RESERVED"
+      "RESERVED",
+      "RESERVING"
      ],
      "enumDescriptions": [
+      "",
       "",
       ""
      ]
@@ -1063,10 +1065,12 @@
      "type": "string",
      "description": "Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.",
      "enum": [
+      "NVDIMM",
       "NVME",
       "SCSI"
      ],
      "enumDescriptions": [
+      "",
       "",
       ""
      ]
@@ -1132,7 +1136,7 @@
    "properties": {
     "diskName": {
      "type": "string",
-     "description": "Specifies the disk name. If not specified, the default is to use the name of the instance."
+     "description": "Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated."
     },
     "diskSizeGb": {
      "type": "string",
@@ -1173,6 +1177,10 @@
     "sourceSnapshot": {
      "type": "string",
      "description": "The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or disks.source is required except for local SSD.\n\nTo create a disk with a snapshot that you created, specify the snapshot name in the following format:\nglobal/snapshots/my-backup\n\n\nIf the source snapshot is deleted later, this field will not be set."
+    },
+    "sourceSnapshotEncryptionKey": {
+     "$ref": "CustomerEncryptionKey",
+     "description": "The customer-supplied encryption key of the source snapshot."
     }
    }
   },
@@ -1945,7 +1953,7 @@
     },
     "cdnPolicy": {
      "$ref": "BackendBucketCdnPolicy",
-     "description": "Cloud CDN Coniguration for this BackendBucket."
+     "description": "Cloud CDN configuration for this BackendBucket."
     },
     "creationTimestamp": {
      "type": "string",
@@ -1987,12 +1995,12 @@
    "properties": {
     "signedUrlCacheMaxAgeSec": {
      "type": "string",
-     "description": "Number of seconds up to which the response to a signed URL request will be cached in the CDN. After this time period, the Signed URL will be revalidated before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN will internally act as though all responses from this bucket had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.",
+     "description": "Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.",
      "format": "int64"
     },
     "signedUrlKeyNames": {
      "type": "array",
-     "description": "[Output Only] Names of the keys currently configured for Cloud CDN Signed URL on this backend bucket.",
+     "description": "[Output Only] Names of the keys for signing request URLs.",
      "items": {
       "type": "string"
      }
@@ -2167,7 +2175,7 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService.",
+     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService.\n\nTo see the latest fingerprint, make a get() request to retrieve a BackendService.",
      "format": "byte"
     },
     "healthChecks": {
@@ -2420,12 +2428,12 @@
     },
     "signedUrlCacheMaxAgeSec": {
      "type": "string",
-     "description": "Number of seconds up to which the response to a signed URL request will be cached in the CDN. After this time period, the Signed URL will be revalidated before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN will internally act as though all responses from this backend had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.",
+     "description": "Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.",
      "format": "int64"
     },
     "signedUrlKeyNames": {
      "type": "array",
-     "description": "[Output Only] Names of the keys currently configured for Cloud CDN Signed URL on this backend service.",
+     "description": "[Output Only] Names of the keys for signing request URLs.",
      "items": {
       "type": "string"
      }
@@ -2747,7 +2755,7 @@
    "properties": {
     "condition": {
      "$ref": "Expr",
-     "description": "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently. This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER."
+     "description": "Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."
     },
     "members": {
      "type": "array",
@@ -4368,6 +4376,7 @@
    "properties": {
     "zones": {
      "type": "array",
+     "description": "Zones where the regional managed instance group will create and manage instances.",
      "items": {
       "$ref": "DistributionPolicyZoneConfiguration"
      }
@@ -4380,7 +4389,7 @@
    "properties": {
     "zone": {
      "type": "string",
-     "description": "URL of the zone where managed instance group is spawning instances (for regional resources). Zone has to belong to the region where managed instance group is located.",
+     "description": "The URL of the zone. The zone must exist in the region where the managed instance group is located.",
      "annotations": {
       "required": [
        "compute.regionInstanceGroupManagers.insert",
@@ -4705,11 +4714,11 @@
    "properties": {
     "IPAddress": {
      "type": "string",
-     "description": "The IP address that this forwarding rule is serving on behalf of.\n\nAddresses are restricted based on the forwarding rule's load balancing scheme (EXTERNAL or INTERNAL) and scope (global or regional).\n\nWhen the load balancing scheme is EXTERNAL, for global forwarding rules, the address must be a global IP, and for regional forwarding rules, the address must live in the same region as the forwarding rule. If this field is empty, an ephemeral IPv4 address from the same scope (global or regional) will be assigned. A regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.\n\nWhen the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal IP address will be automatically allocated from the IP range of the subnet or network configured for this forwarding rule.\n\nAn address can be specified either by a literal IP address or a URL reference to an existing Address resource. The following examples are all valid:  \n- 100.1.2.3 \n- https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address \n- projects/project/regions/region/addresses/address \n- regions/region/addresses/address \n- global/addresses/address \n- address"
+     "description": "The IP address that this forwarding rule is serving on behalf of.\n\nAddresses are restricted based on the forwarding rule's load balancing scheme (EXTERNAL or INTERNAL) and scope (global or regional).\n\nWhen the load balancing scheme is EXTERNAL, for global forwarding rules, the address must be a global IP, and for regional forwarding rules, the address must live in the same region as the forwarding rule. If this field is empty, an ephemeral IPv4 address from the same scope (global or regional) will be assigned. A regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.\n\nWhen the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address resource ( internal regional static IP address).\n\nWhen the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal IP address will be automatically allocated from the IP range of the subnet or network configured for this forwarding rule.\n\nAn address can be specified either by a literal IP address or a URL reference to an existing Address resource. The following examples are all valid:  \n- 100.1.2.3 \n- https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address \n- projects/project/regions/region/addresses/address \n- regions/region/addresses/address \n- global/addresses/address \n- address"
     },
     "IPProtocol": {
      "type": "string",
-     "description": "The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP.\n\nWhen the load balancing scheme is INTERNAL, only TCP and UDP are valid.",
+     "description": "The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP.\n\nWhen the load balancing scheme is INTERNAL, only TCP and UDP are valid. When the load balancing scheme is INTERNAL_SELF_MANAGED, only TCPis valid.",
      "enum": [
       "AH",
       "ESP",
@@ -4727,9 +4736,13 @@
       ""
      ]
     },
+    "allPorts": {
+     "type": "boolean",
+     "description": "This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.\n\nWhen the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule."
+    },
     "backendService": {
      "type": "string",
-     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the BackendService resource to receive the matched traffic."
+     "description": "This field is only used for INTERNAL load balancing.\n\nFor internal load balancing, this field identifies the BackendService resource to receive the matched traffic."
     },
     "creationTimestamp": {
      "type": "string",
@@ -4751,7 +4764,7 @@
     },
     "ipVersion": {
      "type": "string",
-     "description": "The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for a global forwarding rule.",
+     "description": "The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.",
      "enum": [
       "IPV4",
       "IPV6",
@@ -4782,7 +4795,7 @@
     },
     "loadBalancingScheme": {
      "type": "string",
-     "description": "This signifies what the ForwardingRule will be used for and can only take the following values: INTERNAL, EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)",
+     "description": "This signifies what the ForwardingRule will be used for and can only take the following values: INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value of INTERNAL means that this will be used for Internal Network Load Balancing (TCP, UDP). The value of INTERNAL_SELF_MANAGED means that this will be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)",
      "enum": [
       "EXTERNAL",
       "INTERNAL",
@@ -4803,7 +4816,7 @@
     },
     "network": {
      "type": "string",
-     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used."
+     "description": "This field is not used for external load balancing.\n\nFor INTERNAL and INTERNAL_SELF_MANAGED load balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used."
     },
     "networkTier": {
      "type": "string",
@@ -4849,11 +4862,11 @@
     },
     "subnetwork": {
      "type": "string",
-     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule.\n\nIf the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified."
+     "description": "This field is only used for INTERNAL load balancing.\n\nFor internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule.\n\nIf the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified."
     },
     "target": {
      "type": "string",
-     "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object."
+     "description": "The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must live in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED\" load balancing, only HTTP and HTTPS targets are valid."
     }
    }
   },
@@ -7216,7 +7229,7 @@
     },
     "sourceDiskId": {
      "type": "string",
-     "description": "The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name."
+     "description": "[Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name."
     },
     "sourceImage": {
      "type": "string",
@@ -7976,9 +7989,6 @@
    "type": "object",
    "description": "An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)",
    "properties": {
-    "activities": {
-     "$ref": "InstanceGroupManagerActivities"
-    },
     "autoHealingPolicies": {
      "type": "array",
      "description": "The autohealing policy for this managed instance group. You can specify only one value.",
@@ -8010,7 +8020,7 @@
     },
     "distributionPolicy": {
      "$ref": "DistributionPolicy",
-     "description": "Policy valid only for regional managed instance groups."
+     "description": "Policy specifying intended distribution of instances in regional managed instance group."
     },
     "failoverAction": {
      "type": "string",
@@ -8026,7 +8036,7 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager.",
+     "description": "Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager.\n\nTo see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.",
      "format": "byte"
     },
     "id": {
@@ -8084,6 +8094,10 @@
     "statefulPolicy": {
      "$ref": "StatefulPolicy",
      "description": "Stateful configuration for this Instanced Group Manager"
+    },
+    "status": {
+     "$ref": "InstanceGroupManagerStatus",
+     "description": "[Output Only] The status of this managed instance group."
     },
     "targetPools": {
      "type": "array",
@@ -8168,89 +8182,6 @@
      "type": "integer",
      "description": "[Output Only] The number of instances in the managed instance group that are being verified. See the managedInstances[].currentAction property in the listManagedInstances method documentation.",
      "format": "int32"
-    }
-   }
-  },
-  "InstanceGroupManagerActivities": {
-   "id": "InstanceGroupManagerActivities",
-   "type": "object",
-   "properties": {
-    "autohealing": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "autohealingHealthCheckBased": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "autoscalingDown": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "autoscalingUp": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "creatingInstances": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "deletingInstances": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "recreatingInstances": {
-     "type": "string",
-     "enum": [
-      "PERMITTED",
-      "PROHIBITED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
     }
    }
   },
@@ -8369,6 +8300,7 @@
   "InstanceGroupManagerAutoHealingPolicy": {
    "id": "InstanceGroupManagerAutoHealingPolicy",
    "type": "object",
+   "description": "",
    "properties": {
     "healthCheck": {
      "type": "string",
@@ -8382,18 +8314,6 @@
     "maxUnavailable": {
      "$ref": "FixedOrPercent",
      "description": "Maximum number of instances that can be unavailable when autohealing. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's liveness health check result was observed to be HEALTHY at least once. By default, a percent value of 100% is used."
-    },
-    "mode": {
-     "type": "string",
-     "description": "Defines operating mode for this policy.",
-     "enum": [
-      "OFF",
-      "ON"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
     }
    }
   },
@@ -8535,6 +8455,16 @@
     }
    }
   },
+  "InstanceGroupManagerStatus": {
+   "id": "InstanceGroupManagerStatus",
+   "type": "object",
+   "properties": {
+    "isStable": {
+     "type": "boolean",
+     "description": "[Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified."
+    }
+   }
+  },
   "InstanceGroupManagerUpdatePolicy": {
    "id": "InstanceGroupManagerUpdatePolicy",
    "type": "object",
@@ -8543,11 +8473,9 @@
      "type": "string",
      "enum": [
       "NONE",
-      "PROACTIVE",
-      "UNSPECIFIED_TYPE"
+      "PROACTIVE"
      ],
      "enumDescriptions": [
-      "",
       "",
       ""
      ]
@@ -10743,6 +10671,129 @@
     }
    }
   },
+  "InterconnectDiagnostics": {
+   "id": "InterconnectDiagnostics",
+   "type": "object",
+   "description": "Diagnostics information about interconnect, contains detailed and current technical information about Google?s side of the connection.",
+   "properties": {
+    "arpCaches": {
+     "type": "array",
+     "description": "A list of InterconnectDiagnostics.ARPEntry objects, describing individual neighbors currently seen by the Google router in the ARP cache for the Interconnect. This will be empty when the Interconnect is not bundled.",
+     "items": {
+      "$ref": "InterconnectDiagnosticsARPEntry"
+     }
+    },
+    "links": {
+     "type": "array",
+     "description": "A list of InterconnectDiagnostics.LinkStatus objects, describing the status for each link on the Interconnect.",
+     "items": {
+      "$ref": "InterconnectDiagnosticsLinkStatus"
+     }
+    },
+    "macAddress": {
+     "type": "string",
+     "description": "The MAC address of the Interconnect's bundle interface."
+    }
+   }
+  },
+  "InterconnectDiagnosticsARPEntry": {
+   "id": "InterconnectDiagnosticsARPEntry",
+   "type": "object",
+   "description": "Describing the ARP neighbor entries seen on this link",
+   "properties": {
+    "ipAddress": {
+     "type": "string",
+     "description": "The IP address of this ARP neighbor."
+    },
+    "macAddress": {
+     "type": "string",
+     "description": "The MAC address of this ARP neighbor."
+    }
+   }
+  },
+  "InterconnectDiagnosticsLinkLACPStatus": {
+   "id": "InterconnectDiagnosticsLinkLACPStatus",
+   "type": "object",
+   "properties": {
+    "googleSystemId": {
+     "type": "string",
+     "description": "System ID of the port on Google?s side of the LACP exchange."
+    },
+    "neighborSystemId": {
+     "type": "string",
+     "description": "System ID of the port on the neighbor?s side of the LACP exchange."
+    },
+    "state": {
+     "type": "string",
+     "enum": [
+      "ACTIVE",
+      "DETACHED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    }
+   }
+  },
+  "InterconnectDiagnosticsLinkOpticalPower": {
+   "id": "InterconnectDiagnosticsLinkOpticalPower",
+   "type": "object",
+   "properties": {
+    "state": {
+     "type": "string",
+     "enum": [
+      "HIGH_ALARM",
+      "HIGH_WARNING",
+      "LOW_ALARM",
+      "LOW_WARNING",
+      "OK"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "value": {
+     "type": "number",
+     "description": "Value of the current optical power, read in dBm.",
+     "format": "float"
+    }
+   }
+  },
+  "InterconnectDiagnosticsLinkStatus": {
+   "id": "InterconnectDiagnosticsLinkStatus",
+   "type": "object",
+   "properties": {
+    "arpCaches": {
+     "type": "array",
+     "description": "A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP neighbor entries seen on this link. This will be empty if the link is bundled",
+     "items": {
+      "$ref": "InterconnectDiagnosticsARPEntry"
+     }
+    },
+    "circuitId": {
+     "type": "string",
+     "description": "The unique ID for this link assigned during turn up by Google."
+    },
+    "googleDemarc": {
+     "type": "string",
+     "description": "The Demarc address assigned by Google and provided in the LoA."
+    },
+    "lacpStatus": {
+     "$ref": "InterconnectDiagnosticsLinkLACPStatus"
+    },
+    "receivingOpticalPower": {
+     "$ref": "InterconnectDiagnosticsLinkOpticalPower"
+    },
+    "transmittingOpticalPower": {
+     "$ref": "InterconnectDiagnosticsLinkOpticalPower"
+    }
+   }
+  },
   "InterconnectList": {
    "id": "InterconnectList",
    "type": "object",
@@ -11167,6 +11218,60 @@
     }
    }
   },
+  "InterconnectsGetDiagnosticsResponse": {
+   "id": "InterconnectsGetDiagnosticsResponse",
+   "type": "object",
+   "description": "Response for the InterconnectsGetDiagnosticsRequest.",
+   "properties": {
+    "result": {
+     "$ref": "InterconnectDiagnostics"
+    }
+   }
+  },
+  "InternalIpAddress": {
+   "id": "InternalIpAddress",
+   "type": "object",
+   "properties": {
+    "cidr": {
+     "type": "string",
+     "description": "IP CIDR address or range."
+    },
+    "owner": {
+     "type": "string",
+     "description": "The owner of the internal IP address."
+    },
+    "purpose": {
+     "type": "string",
+     "description": "The purpose of the internal IP address if applicable."
+    },
+    "region": {
+     "type": "string",
+     "description": "The region of the internal IP address if applicable."
+    },
+    "type": {
+     "type": "string",
+     "description": "The type of the internal IP address.",
+     "enum": [
+      "PEER_RESERVED",
+      "PEER_USED",
+      "REMOTE_RESERVED",
+      "REMOTE_USED",
+      "RESERVED",
+      "SUBNETWORK",
+      "TYPE_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    }
+   }
+  },
   "InternalIpOwner": {
    "id": "InternalIpOwner",
    "type": "object",
@@ -11185,6 +11290,117 @@
     "systemOwned": {
      "type": "boolean",
      "description": "Whether this IP CIDR range is reserved for system use."
+    }
+   }
+  },
+  "IpAddressesList": {
+   "id": "IpAddressesList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of InternalIpOwner resources.",
+     "items": {
+      "$ref": "InternalIpAddress"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource. Always compute#ipAddressesList for IP addresses lists.",
+     "default": "compute#ipAddressesList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
     }
    }
   },
@@ -12023,7 +12239,7 @@
   "ManagedInstance": {
    "id": "ManagedInstance",
    "type": "object",
-   "description": "Next available tag: 12",
+   "description": "A Managed Instance resource.",
    "properties": {
     "currentAction": {
      "type": "string",
@@ -12242,7 +12458,7 @@
    "properties": {
     "fingerprint": {
      "type": "string",
-     "description": "Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata.",
+     "description": "Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata.\n\nTo see the latest fingerprint, make a get() request to retrieve the resource.",
      "format": "byte"
     },
     "items": {
@@ -12400,7 +12616,7 @@
    "properties": {
     "instance": {
      "type": "string",
-     "description": "The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type GCE_VM_IP and GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.\n\nThe name must be 1-63 characters long, and comply with RFC1035."
+     "description": "The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.\n\nThe name must be 1-63 characters long, and comply with RFC1035."
     },
     "ipAddress": {
      "type": "string",
@@ -12438,7 +12654,7 @@
     },
     "loadBalancer": {
      "$ref": "NetworkEndpointGroupLbNetworkEndpointGroup",
-     "description": "This field is only valid when the network endpoint group type is LOAD_BALANCING."
+     "description": "This field is only valid when the network endpoint group is used for load balancing."
     },
     "name": {
      "type": "string",
@@ -12446,7 +12662,7 @@
     },
     "networkEndpointType": {
      "type": "string",
-     "description": "Type of network endpoints in this network endpoint group. Only supported values for LOAD_BALANCING are GCE_VM_IP or GCE_VM_IP_PORT.",
+     "description": "Type of network endpoints in this network endpoint group. Currently the only supported value is GCE_VM_IP_PORT.",
      "enum": [
       "GCE_VM_IP_PORT"
      ],
@@ -12590,11 +12806,11 @@
   "NetworkEndpointGroupLbNetworkEndpointGroup": {
    "id": "NetworkEndpointGroupLbNetworkEndpointGroup",
    "type": "object",
-   "description": "Load balancing specific fields for network endpoint group of type LOAD_BALANCING.",
+   "description": "Load balancing specific fields for network endpoint group.",
    "properties": {
     "defaultPort": {
      "type": "integer",
-     "description": "The default port used if the port number is not specified in the network endpoint. If the network endpoint type is GCE_VM_IP, this field must not be specified.",
+     "description": "The default port used if the port number is not specified in the network endpoint.",
      "format": "int32"
     },
     "network": {
@@ -13279,7 +13495,7 @@
     },
     "nodes": {
      "type": "array",
-     "description": "[Output Only] A list of nodes in this node group.",
+     "description": "[Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes in this node group.",
      "items": {
       "$ref": "NodeGroupNode"
      }
@@ -13287,6 +13503,11 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "size": {
+     "type": "integer",
+     "description": "[Output Only] The total number of nodes in the node group.",
+     "format": "int32"
     },
     "status": {
      "type": "string",
@@ -13537,10 +13758,6 @@
    "id": "NodeGroupNode",
    "type": "object",
    "properties": {
-    "index": {
-     "type": "integer",
-     "format": "int32"
-    },
     "instances": {
      "type": "array",
      "description": "Instances scheduled on this node.",
@@ -13555,6 +13772,21 @@
     "nodeType": {
      "type": "string",
      "description": "The type of this node."
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "CREATING",
+      "DELETING",
+      "INVALID",
+      "READY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -13573,18 +13805,121 @@
    "id": "NodeGroupsDeleteNodesRequest",
    "type": "object",
    "properties": {
-    "nodeIndexes": {
-     "type": "array",
-     "description": "Indexes of the nodes to be deleted from the node group.",
-     "items": {
-      "type": "integer",
-      "format": "int32"
-     }
-    },
     "nodes": {
      "type": "array",
      "items": {
       "type": "string"
+     }
+    }
+   }
+  },
+  "NodeGroupsListNodes": {
+   "id": "NodeGroupsListNodes",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of Node resources.",
+     "items": {
+      "$ref": "NodeGroupNode"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] The resource type, which is always compute.nodeGroupsListNodes for the list of nodes in the specified node group.",
+     "default": "compute#nodeGroupsListNodes"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
      }
     }
    }
@@ -15331,17 +15666,24 @@
       "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS",
       "INTERNAL_ADDRESSES",
       "IN_USE_ADDRESSES",
+      "IN_USE_BACKUP_SCHEDULES",
       "IN_USE_MAINTENANCE_WINDOWS",
       "LOCAL_SSD_TOTAL_GB",
       "NETWORKS",
+      "NETWORK_ENDPOINT_GROUPS",
       "NVIDIA_K80_GPUS",
       "NVIDIA_P100_GPUS",
       "NVIDIA_P100_VWS_GPUS",
+      "NVIDIA_P4_GPUS",
+      "NVIDIA_P4_VWS_GPUS",
       "NVIDIA_V100_GPUS",
       "PREEMPTIBLE_CPUS",
       "PREEMPTIBLE_LOCAL_SSD_GB",
       "PREEMPTIBLE_NVIDIA_K80_GPUS",
       "PREEMPTIBLE_NVIDIA_P100_GPUS",
+      "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS",
+      "PREEMPTIBLE_NVIDIA_P4_GPUS",
+      "PREEMPTIBLE_NVIDIA_P4_VWS_GPUS",
       "PREEMPTIBLE_NVIDIA_V100_GPUS",
       "PRIVATE_V6_ACCESS_SUBNETWORKS",
       "REGIONAL_AUTOSCALERS",
@@ -15367,6 +15709,13 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "",
       "",
@@ -15737,6 +16086,32 @@
        "type": "string",
        "description": "[Output Only] A human-readable description of the warning code."
       }
+     }
+    }
+   }
+  },
+  "RegionDisksAddResourcePoliciesRequest": {
+   "id": "RegionDisksAddResourcePoliciesRequest",
+   "type": "object",
+   "properties": {
+    "resourcePolicies": {
+     "type": "array",
+     "description": "Resource policies to be added to this disk.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "RegionDisksRemoveResourcePoliciesRequest": {
+   "id": "RegionDisksRemoveResourcePoliciesRequest",
+   "type": "object",
+   "properties": {
+    "resourcePolicies": {
+     "type": "array",
+     "description": "Resource policies to be removed from this disk.",
+     "items": {
+      "type": "string"
      }
     }
    }
@@ -16548,6 +16923,19 @@
     }
    }
   },
+  "RegionTargetHttpsProxiesSetSslCertificatesRequest": {
+   "id": "RegionTargetHttpsProxiesSetSslCertificatesRequest",
+   "type": "object",
+   "properties": {
+    "sslCertificates": {
+     "type": "array",
+     "description": "New set of SslCertificate resources to associate with this TargetHttpsProxy resource. Currently exactly one SslCertificate resource must be specified.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
   "RegionUrlMapsValidateRequest": {
    "id": "RegionUrlMapsValidateRequest",
    "type": "object",
@@ -17030,6 +17418,13 @@
      "additionalProperties": {
       "type": "string"
      }
+    },
+    "storageLocations": {
+     "type": "array",
+     "description": "GCS bucket storage location of the auto snapshot (regional or multi-regional).",
+     "items": {
+      "type": "string"
+     }
     }
    }
   },
@@ -17077,20 +17472,6 @@
    "id": "ResourcePolicyVmMaintenancePolicy",
    "type": "object",
    "properties": {
-    "maintenanceEnvironment": {
-     "type": "string",
-     "description": "A hint about the environment this VM belongs to (production vs develoment)",
-     "enum": [
-      "DEVELOPMENT",
-      "MAINTENANCE_ENVIRONMENT_UNSPECIFIED",
-      "PRODUCTION"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      ""
-     ]
-    },
     "maintenanceWindow": {
      "$ref": "ResourcePolicyVmMaintenancePolicyMaintenanceWindow",
      "description": "Maintenance windows that are applied to VMs covered by this policy."
@@ -17949,6 +18330,16 @@
       "type": "string"
      }
     },
+    "icmpIdleTimeoutSec": {
+     "type": "integer",
+     "description": "Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.",
+     "format": "int32"
+    },
+    "minPortsPerVm": {
+     "type": "integer",
+     "description": "Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This gets rounded up to the nearest power of 2. Eg. if the value of this field is 50, at least 64 ports will be allocated to a VM.",
+     "format": "int32"
+    },
     "name": {
      "type": "string",
      "description": "Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.",
@@ -17993,6 +18384,21 @@
      "items": {
       "$ref": "RouterNatSubnetworkToNat"
      }
+    },
+    "tcpEstablishedIdleTimeoutSec": {
+     "type": "integer",
+     "description": "Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.",
+     "format": "int32"
+    },
+    "tcpTransitoryIdleTimeoutSec": {
+     "type": "integer",
+     "description": "Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.",
+     "format": "int32"
+    },
+    "udpIdleTimeoutSec": {
+     "type": "integer",
+     "description": "Timeout (in seconds) for UDP connections. Defaults to 30s if not set.",
+     "format": "int32"
     }
    }
   },
@@ -18012,7 +18418,7 @@
       "type": "string"
      }
     },
-    "sourceIpRangesToNats": {
+    "sourceIpRangesToNat": {
      "type": "array",
      "description": "Specify the options for NAT ranges in the Subnetwork. All usages of single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: [\"PRIMARY_IP_RANGE\", \"LIST_OF_SECONDARY_IP_RANGES\"] Default: [ALL_IP_RANGES]",
      "items": {
@@ -18489,7 +18895,7 @@
   "SecurityPolicy": {
    "id": "SecurityPolicy",
    "type": "object",
-   "description": "A security policy is comprised of one or more rules. It can also be associated with one or more 'targets'. Next available tag: 11",
+   "description": "A security policy is comprised of one or more rules. It can also be associated with one or more 'targets'. Next available tag: 11 (== resource_for beta.securityPolicies ==)",
    "properties": {
     "creationTimestamp": {
      "type": "string",
@@ -19139,6 +19545,10 @@
      "type": "string",
      "description": "A write-only private key in PEM format. Only insert requests will include this field."
     },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate."
+    },
     "selfLink": {
      "type": "string",
      "description": "[Output only] Server-defined URL for the resource."
@@ -19167,6 +19577,118 @@
       "",
       ""
      ]
+    }
+   }
+  },
+  "SslCertificateAggregatedList": {
+   "id": "SslCertificateAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of SslCertificatesScopedList resources.",
+     "additionalProperties": {
+      "$ref": "SslCertificatesScopedList",
+      "description": "Name of the scope containing this set of SslCertificates."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource. Always compute#sslCertificateAggregatedList for lists of SSL Certificates.",
+     "default": "compute#sslCertificateAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
     }
    }
   },
@@ -19354,6 +19876,100 @@
     }
    }
   },
+  "SslCertificatesScopedList": {
+   "id": "SslCertificatesScopedList",
+   "type": "object",
+   "properties": {
+    "sslCertificates": {
+     "type": "array",
+     "description": "List of SslCertificates contained in this scope.",
+     "items": {
+      "$ref": "SslCertificate"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "Informational warning which replaces the list of backend services when the list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
   "SslPoliciesList": {
    "id": "SslPoliciesList",
    "type": "object",
@@ -19506,7 +20122,7 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy.",
+     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy.\n\nTo see the latest fingerprint, make a get() request to retrieve an SslPolicy.",
      "format": "byte"
     },
     "id": {
@@ -19692,6 +20308,26 @@
    "type": "object",
    "description": "A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)",
    "properties": {
+    "aggregationInterval": {
+     "type": "string",
+     "description": "Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.",
+     "enum": [
+      "INTERVAL_10_MIN",
+      "INTERVAL_15_MIN",
+      "INTERVAL_1_MIN",
+      "INTERVAL_30_SEC",
+      "INTERVAL_5_MIN",
+      "INTERVAL_5_SEC"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
     "allowSubnetCidrRoutesOverlap": {
      "type": "boolean",
      "description": "Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.\n\nAlso, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.\n\nThe default value is false and applies to all existing subnetworks and automatically created subnetworks.\n\nThis field cannot be set to true at resource creation time."
@@ -19714,8 +20350,13 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork.",
+     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork.\n\nTo see the latest fingerprint, make a get() request to retrieve a Subnetwork.",
      "format": "byte"
+    },
+    "flowSampling": {
+     "type": "number",
+     "description": "Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 which means half of all collected logs are reported.",
+     "format": "float"
     },
     "gatewayAddress": {
      "type": "string",
@@ -19738,6 +20379,18 @@
      "type": "string",
      "description": "[Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.",
      "default": "compute#subnetwork"
+    },
+    "metadata": {
+     "type": "string",
+     "description": "Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.",
+     "enum": [
+      "EXCLUDE_ALL_METADATA",
+      "INCLUDE_ALL_METADATA"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "name": {
      "type": "string",
@@ -19790,6 +20443,18 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "state": {
+     "type": "string",
+     "description": "[Output Only] The state of the subnetwork, which can be one of READY or DRAINING. A subnetwork that is READY is ready to be used. The state of DRAINING is only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY.",
+     "enum": [
+      "DRAINING",
+      "READY"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -20573,6 +21238,100 @@
     }
    }
   },
+  "TargetHttpsProxiesScopedList": {
+   "id": "TargetHttpsProxiesScopedList",
+   "type": "object",
+   "properties": {
+    "targetHttpsProxies": {
+     "type": "array",
+     "description": "A list of TargetHttpsProxies contained in this scope.",
+     "items": {
+      "$ref": "TargetHttpsProxy"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "Informational warning which replaces the list of backend services when the list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
   "TargetHttpsProxiesSetQuicOverrideRequest": {
    "id": "TargetHttpsProxiesSetQuicOverrideRequest",
    "type": "object",
@@ -20648,6 +21407,10 @@
       ""
      ]
     },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies."
+    },
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
@@ -20666,6 +21429,118 @@
     "urlMap": {
      "type": "string",
      "description": "A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  \n- https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map \n- projects/project/global/urlMaps/url-map \n- global/urlMaps/url-map"
+    }
+   }
+  },
+  "TargetHttpsProxyAggregatedList": {
+   "id": "TargetHttpsProxyAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of TargetHttpsProxiesScopedList resources.",
+     "additionalProperties": {
+      "$ref": "TargetHttpsProxiesScopedList",
+      "description": "Name of the scope containing this set of TargetHttpsProxies."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource. Always compute#targetHttpsProxyAggregatedList for lists of Target HTTP Proxies.",
+     "default": "compute#targetHttpsProxyAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
     }
    }
   },
@@ -22062,7 +22937,7 @@
     },
     "labelFingerprint": {
      "type": "string",
-     "description": "A fingerprint for the labels being applied to this TargetVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.\n\nTo see the latest fingerprint, make a get() request to retrieve an TargetVpnGateway.",
+     "description": "A fingerprint for the labels being applied to this TargetVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.\n\nTo see the latest fingerprint, make a get() request to retrieve a TargetVpnGateway.",
      "format": "byte"
     },
     "labels": {
@@ -22528,7 +23403,7 @@
     },
     "fingerprint": {
      "type": "string",
-     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap.",
+     "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap.\n\nTo see the latest fingerprint, make a get() request to retrieve a UrlMap.",
      "format": "byte"
     },
     "hostRules": {
@@ -22748,6 +23623,212 @@
     }
    }
   },
+  "UrlMapsAggregatedList": {
+   "id": "UrlMapsAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of UrlMapsScopedList resources.",
+     "additionalProperties": {
+      "$ref": "UrlMapsScopedList",
+      "description": "Name of the scope containing this set of UrlMaps."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Type of resource.",
+     "default": "compute#urlMapsAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "UrlMapsScopedList": {
+   "id": "UrlMapsScopedList",
+   "type": "object",
+   "properties": {
+    "UrlMaps": {
+     "type": "array",
+     "description": "A list of UrlMaps contained in this scope.",
+     "items": {
+      "$ref": "UrlMap"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "Informational warning which replaces the list of backend services when the list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
   "UrlMapsValidateRequest": {
    "id": "UrlMapsValidateRequest",
    "type": "object",
@@ -22934,6 +24015,162 @@
     }
    }
   },
+  "VmEndpointNatMappings": {
+   "id": "VmEndpointNatMappings",
+   "type": "object",
+   "description": "Contain information of Nat mapping for a VM endpoint (i.e., NIC).",
+   "properties": {
+    "instanceName": {
+     "type": "string",
+     "description": "Name of the VM instance which the endpoint belongs to"
+    },
+    "interfaceNatMappings": {
+     "type": "array",
+     "items": {
+      "$ref": "VmEndpointNatMappingsInterfaceNatMappings"
+     }
+    }
+   }
+  },
+  "VmEndpointNatMappingsInterfaceNatMappings": {
+   "id": "VmEndpointNatMappingsInterfaceNatMappings",
+   "type": "object",
+   "description": "Contain information of Nat mapping for an interface of this endpoint.",
+   "properties": {
+    "natIpPortRanges": {
+     "type": "array",
+     "description": "A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that is, both the first and the last ports can be used for NAT. Example: [\"2.2.2.2:12345-12355\", \"1.1.1.1:2234-2234\"].",
+     "items": {
+      "type": "string"
+     }
+    },
+    "numTotalNatPorts": {
+     "type": "integer",
+     "description": "Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated port number in the field nat_ip_port_ranges.",
+     "format": "int32"
+    },
+    "sourceAliasIpRange": {
+     "type": "string",
+     "description": "Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP range. Examples: \"10.33.4.55/32\", or \"192.168.5.0/24\"."
+    },
+    "sourceVirtualIp": {
+     "type": "string",
+     "description": "Primary IP of the VM for this NIC."
+    }
+   }
+  },
+  "VmEndpointNatMappingsList": {
+   "id": "VmEndpointNatMappingsList",
+   "type": "object",
+   "description": "Contains a list of VmEndpointNatMappings.",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource. Always compute#vmEndpointNatMappingsList for lists of Nat mappings of VM endpoints.",
+     "default": "compute#vmEndpointNatMappingsList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "result": {
+     "type": "array",
+     "description": "[Output Only] A list of Nat mapping information of VM endpoints.",
+     "items": {
+      "$ref": "VmEndpointNatMappings"
+     }
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
   "VpnGateway": {
    "id": "VpnGateway",
    "type": "object",
@@ -22987,20 +24224,6 @@
        "compute.vpnGateways.insert"
       ]
      }
-    },
-    "redundancy": {
-     "type": "string",
-     "description": "The redundancy mode configured for this VPN gateway. Possible values are ACTIVE_ACTIVE and NONE. If set to ACTIVE_ACTIVE, two VPN interfaces are created thereby providing higher availability. If set to NONE, only one interface is created with a lower availability SLA.\n\nIf this field is specified, either 2 or 1 external IP addresses (depending on the value of specified redundancy) are automatically allocated for use with this VPN gateway, and incoming traffic on the external addresses to ports ESP, UDP:500 and UDP:4500 are automatically forwarded to this gateway.",
-     "enum": [
-      "ACTIVE_ACTIVE",
-      "NONE",
-      "REDUNDANCY_UNSPECIFIED"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      ""
-     ]
     },
     "region": {
      "type": "string",
@@ -23483,11 +24706,11 @@
     },
     "vpnGateway": {
      "type": "string",
-     "description": "URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a VPN gateway resource is created with redundancy.\n\nVPN gateway resource provides a way to create a highly available VPN setup."
+     "description": "URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created."
     },
     "vpnGatewayInterface": {
      "type": "integer",
-     "description": "The interface ID of the VPN gateway with which this VPN tunnel is associated. If the VPN gateway has redundancy other than NONE, this field is required to identify which interface of the VPN gateway to use.",
+     "description": "The interface ID of the VPN gateway with which this VPN tunnel is associated.",
      "format": "int32"
     }
    }
@@ -25061,7 +26284,7 @@
      "id": "compute.backendBuckets.addSignedUrlKey",
      "path": "{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey",
      "httpMethod": "POST",
-     "description": "Adds the given Signed URL Key to the backend bucket.",
+     "description": "Adds a key for validating requests with signed URLs for this backend bucket.",
      "parameters": {
       "backendBucket": {
        "type": "string",
@@ -25139,7 +26362,7 @@
      "id": "compute.backendBuckets.deleteSignedUrlKey",
      "path": "{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey",
      "httpMethod": "POST",
-     "description": "Deletes the given Signed URL Key from the backend bucket.",
+     "description": "Deletes a key for validating requests with signed URLs for this backend bucket.",
      "parameters": {
       "backendBucket": {
        "type": "string",
@@ -25492,7 +26715,7 @@
      "id": "compute.backendServices.addSignedUrlKey",
      "path": "{project}/global/backendServices/{backendService}/addSignedUrlKey",
      "httpMethod": "POST",
-     "description": "Adds the given Signed URL Key to the specified backend service.",
+     "description": "Adds a key for validating requests with signed URLs for this backend service.",
      "parameters": {
       "backendService": {
        "type": "string",
@@ -25619,7 +26842,7 @@
      "id": "compute.backendServices.deleteSignedUrlKey",
      "path": "{project}/global/backendServices/{backendService}/deleteSignedUrlKey",
      "httpMethod": "POST",
-     "description": "Deletes the given Signed URL Key from the specified backend service.",
+     "description": "Deletes a key for validating requests with signed URLs for this backend service.",
      "parameters": {
       "backendService": {
        "type": "string",
@@ -30402,6 +31625,7 @@
      "parameters": {
       "filter": {
        "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
        "location": "query"
       },
       "instanceGroupManager": {
@@ -30412,6 +31636,7 @@
       },
       "maxResults": {
        "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
        "default": "500",
        "format": "uint32",
        "minimum": "0",
@@ -30419,10 +31644,12 @@
       },
       "order_by": {
        "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
        "location": "query"
       },
       "pageToken": {
        "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
        "location": "query"
       },
       "project": {
@@ -31550,6 +32777,40 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getIamPolicy": {
+     "id": "compute.instanceTemplates.getIamPolicy",
+     "path": "{project}/global/instanceTemplates/{resource}/getIamPolicy",
+     "httpMethod": "GET",
+     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "insert": {
      "id": "compute.instanceTemplates.insert",
      "path": "{project}/global/instanceTemplates",
@@ -31630,6 +32891,42 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setIamPolicy": {
+     "id": "compute.instanceTemplates.setIamPolicy",
+     "path": "{project}/global/instanceTemplates/{resource}/setIamPolicy",
+     "httpMethod": "POST",
+     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "request": {
+      "$ref": "GlobalSetPolicyRequest"
+     },
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "testIamPermissions": {
@@ -34250,6 +35547,40 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getDiagnostics": {
+     "id": "compute.interconnects.getDiagnostics",
+     "path": "{project}/global/interconnects/{interconnect}/getDiagnostics",
+     "httpMethod": "GET",
+     "description": "Returns the interconnectDiagnostics for the specified interconnect.",
+     "parameters": {
+      "interconnect": {
+       "type": "string",
+       "description": "Name of the interconnect resource to query.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "interconnect"
+     ],
+     "response": {
+      "$ref": "InterconnectsGetDiagnosticsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "getIamPolicy": {
      "id": "compute.interconnects.getIamPolicy",
      "path": "{project}/global/interconnects/{resource}/getIamPolicy",
@@ -35718,6 +37049,68 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "listIpAddresses": {
+     "id": "compute.networks.listIpAddresses",
+     "path": "{project}/global/networks/{network}/listIpAddresses",
+     "httpMethod": "GET",
+     "description": "Lists the internal IP addresses in the specified network.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "network": {
+       "type": "string",
+       "description": "Name of the network for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "types": {
+       "type": "string",
+       "description": "(Optional) types filter separate by comma, valid values are: SUBNETWORK, RESERVED, PEER_USED, PEER_RESERVED, REMOTE_USED, REMOTE_RESERVED.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "network"
+     ],
+     "response": {
+      "$ref": "IpAddressesList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "listIpOwners": {
      "id": "compute.networks.listIpOwners",
      "path": "{project}/global/networks/{network}/listIpOwners",
@@ -36016,7 +37409,7 @@
      "id": "compute.nodeGroups.aggregatedList",
      "path": "{project}/aggregated/nodeGroups",
      "httpMethod": "GET",
-     "description": "Retrieves an aggregated list of node groups.",
+     "description": "Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes for more details about each group.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -36160,7 +37553,7 @@
      "id": "compute.nodeGroups.get",
      "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}",
      "httpMethod": "GET",
-     "description": "Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request.",
+     "description": "Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the \"nodes\" field should not be used. Use nodeGroups.listNodes instead.",
      "parameters": {
       "nodeGroup": {
        "type": "string",
@@ -36293,7 +37686,7 @@
      "id": "compute.nodeGroups.list",
      "path": "{project}/zones/{zone}/nodeGroups",
      "httpMethod": "GET",
-     "description": "Retrieves a list of node groups available to the specified project.",
+     "description": "Retrieves a list of node groups available to the specified project. Note: use nodeGroups.listNodes for more details about each group.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -36339,6 +37732,71 @@
      ],
      "response": {
       "$ref": "NodeGroupList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "listNodes": {
+     "id": "compute.nodeGroups.listNodes",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}/listNodes",
+     "httpMethod": "POST",
+     "description": "Lists nodes in the node group.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the NodeGroup resource whose nodes you want to list.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "response": {
+      "$ref": "NodeGroupsListNodes"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -37195,10 +38653,12 @@
      "parameters": {
       "filter": {
        "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
        "location": "query"
       },
       "maxResults": {
        "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
        "default": "500",
        "format": "uint32",
        "minimum": "0",
@@ -37206,10 +38666,12 @@
       },
       "order_by": {
        "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
        "location": "query"
       },
       "pageToken": {
        "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
        "location": "query"
       },
       "project": {
@@ -37239,10 +38701,12 @@
      "parameters": {
       "filter": {
        "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
        "location": "query"
       },
       "maxResults": {
        "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
        "default": "500",
        "format": "uint32",
        "minimum": "0",
@@ -37250,10 +38714,12 @@
       },
       "order_by": {
        "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
        "location": "query"
       },
       "pageToken": {
        "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
        "location": "query"
       },
       "project": {
@@ -38530,6 +39996,55 @@
   },
   "regionDisks": {
    "methods": {
+    "addResourcePolicies": {
+     "id": "compute.regionDisks.addResourcePolicies",
+     "path": "{project}/regions/{region}/disks/{disk}/addResourcePolicies",
+     "httpMethod": "POST",
+     "description": "Adds existing resource policies to a regional disk. You can only add one policy which will be applied to this disk for scheduling snapshot creation.",
+     "parameters": {
+      "disk": {
+       "type": "string",
+       "description": "The disk name for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "request": {
+      "$ref": "RegionDisksAddResourcePoliciesRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "createSnapshot": {
      "id": "compute.regionDisks.createSnapshot",
      "path": "{project}/regions/{region}/disks/{disk}/createSnapshot",
@@ -38771,6 +40286,55 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "removeResourcePolicies": {
+     "id": "compute.regionDisks.removeResourcePolicies",
+     "path": "{project}/regions/{region}/disks/{disk}/removeResourcePolicies",
+     "httpMethod": "POST",
+     "description": "Removes resource policies from a regional disk.",
+     "parameters": {
+      "disk": {
+       "type": "string",
+       "description": "The disk name for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "disk"
+     ],
+     "request": {
+      "$ref": "RegionDisksRemoveResourcePoliciesRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "resize": {
@@ -39619,6 +41183,7 @@
      "parameters": {
       "filter": {
        "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
        "location": "query"
       },
       "instanceGroupManager": {
@@ -39629,6 +41194,7 @@
       },
       "maxResults": {
        "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
        "default": "500",
        "format": "uint32",
        "minimum": "0",
@@ -39636,10 +41202,12 @@
       },
       "order_by": {
        "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
        "location": "query"
       },
       "pageToken": {
        "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
        "location": "query"
       },
       "project": {
@@ -40137,6 +41705,11 @@
        "description": "Name of the region scoping this request, should conform to RFC1035.",
        "required": true,
        "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -40598,6 +42171,241 @@
     }
    }
   },
+  "regionSslCertificates": {
+   "methods": {
+    "delete": {
+     "id": "compute.regionSslCertificates.delete",
+     "path": "{project}/regions/{region}/sslCertificates/{sslCertificate}",
+     "httpMethod": "DELETE",
+     "description": "Deletes the specified SslCertificate resource in the region.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "sslCertificate": {
+       "type": "string",
+       "description": "Name of the SslCertificate resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "sslCertificate"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "id": "compute.regionSslCertificates.get",
+     "path": "{project}/regions/{region}/sslCertificates/{sslCertificate}",
+     "httpMethod": "GET",
+     "description": "Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "sslCertificate": {
+       "type": "string",
+       "description": "Name of the SslCertificate resource to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "sslCertificate"
+     ],
+     "response": {
+      "$ref": "SslCertificate"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "id": "compute.regionSslCertificates.insert",
+     "path": "{project}/regions/{region}/sslCertificates",
+     "httpMethod": "POST",
+     "description": "Creates a SslCertificate resource in the specified project and region using the data included in the request",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "request": {
+      "$ref": "SslCertificate"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "id": "compute.regionSslCertificates.list",
+     "path": "{project}/regions/{region}/sslCertificates",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of SslCertificate resources available to the specified project in the specified region.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "response": {
+      "$ref": "SslCertificateList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "testIamPermissions": {
+     "id": "compute.regionSslCertificates.testIamPermissions",
+     "path": "{project}/regions/{region}/sslCertificates/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "description": "Returns permissions that a caller has on the specified resource and region.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
   "regionTargetHttpProxies": {
    "methods": {
     "delete": {
@@ -40882,6 +42690,339 @@
     }
    }
   },
+  "regionTargetHttpsProxies": {
+   "methods": {
+    "delete": {
+     "id": "compute.regionTargetHttpsProxies.delete",
+     "path": "{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
+     "httpMethod": "DELETE",
+     "description": "Deletes the specified TargetHttpsProxy resource.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "targetHttpsProxy": {
+       "type": "string",
+       "description": "Name of the TargetHttpsProxy resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetHttpsProxy"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "id": "compute.regionTargetHttpsProxies.get",
+     "path": "{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}",
+     "httpMethod": "GET",
+     "description": "Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "targetHttpsProxy": {
+       "type": "string",
+       "description": "Name of the TargetHttpsProxy resource to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetHttpsProxy"
+     ],
+     "response": {
+      "$ref": "TargetHttpsProxy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "id": "compute.regionTargetHttpsProxies.insert",
+     "path": "{project}/regions/{region}/targetHttpsProxies",
+     "httpMethod": "POST",
+     "description": "Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "request": {
+      "$ref": "TargetHttpsProxy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "id": "compute.regionTargetHttpsProxies.list",
+     "path": "{project}/regions/{region}/targetHttpsProxies",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of TargetHttpsProxy resources available to the specified project in the specified region.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "response": {
+      "$ref": "TargetHttpsProxyList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setSslCertificates": {
+     "id": "compute.regionTargetHttpsProxies.setSslCertificates",
+     "path": "{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates",
+     "httpMethod": "POST",
+     "description": "Replaces SslCertificates for TargetHttpsProxy.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "targetHttpsProxy": {
+       "type": "string",
+       "description": "Name of the TargetHttpsProxy resource to set an SslCertificates resource for.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetHttpsProxy"
+     ],
+     "request": {
+      "$ref": "RegionTargetHttpsProxiesSetSslCertificatesRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setUrlMap": {
+     "id": "compute.regionTargetHttpsProxies.setUrlMap",
+     "path": "{project}/regions/{region}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap",
+     "httpMethod": "POST",
+     "description": "Changes the URL map for TargetHttpsProxy.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "targetHttpsProxy": {
+       "type": "string",
+       "description": "Name of the TargetHttpsProxy to set a URL map for.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "targetHttpsProxy"
+     ],
+     "request": {
+      "$ref": "UrlMapReference"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "id": "compute.regionTargetHttpsProxies.testIamPermissions",
+     "path": "{project}/regions/{region}/targetHttpsProxies/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
   "regionUrlMaps": {
    "methods": {
     "delete": {
@@ -41004,6 +43145,55 @@
      ],
      "request": {
       "$ref": "UrlMap"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "invalidateCache": {
+     "id": "compute.regionUrlMaps.invalidateCache",
+     "path": "{project}/regions/{region}/urlMaps/{urlMap}/invalidateCache",
+     "httpMethod": "POST",
+     "description": "Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      },
+      "urlMap": {
+       "type": "string",
+       "description": "Name of the UrlMap scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "urlMap"
+     ],
+     "request": {
+      "$ref": "CacheInvalidationRule"
      },
      "response": {
       "$ref": "Operation"
@@ -41848,6 +44038,71 @@
      ],
      "response": {
       "$ref": "Router"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getNatMappingInfo": {
+     "id": "compute.routers.getNatMappingInfo",
+     "path": "{project}/regions/{region}/routers/{router}/getNatMappingInfo",
+     "httpMethod": "GET",
+     "description": "Retrieves runtime Nat mapping information of VM endpoints.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "router": {
+       "type": "string",
+       "description": "Name of the Router resource to query for Nat Mapping information of VM endpoints.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "router"
+     ],
+     "response": {
+      "$ref": "VmEndpointNatMappingsList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -43142,6 +45397,55 @@
   },
   "sslCertificates": {
    "methods": {
+    "aggregatedList": {
+     "id": "compute.sslCertificates.aggregatedList",
+     "path": "{project}/aggregated/sslCertificates",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of all SslCertificate resources, regional and global, available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Name of the project scoping this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "SslCertificateAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "delete": {
      "id": "compute.sslCertificates.delete",
      "path": "{project}/global/sslCertificates/{sslCertificate}",
@@ -44000,6 +46304,12 @@
      "httpMethod": "PATCH",
      "description": "Patches the specified subnetwork with the data included in the request. Only the following fields within the subnetwork resource can be specified in the request: secondary_ip_range, allow_subnet_cidr_routes_overlap and role. It is also mandatory to specify the current fingeprint of the subnetwork resource being patched.",
      "parameters": {
+      "drainTimeoutSeconds": {
+       "type": "integer",
+       "description": "The drain timeout specifies the upper bound in seconds on the amount of time allowed to drain connections from the current ACTIVE subnetwork to the current BACKUP subnetwork. The drain timeout is only applicable when the following conditions are true: - the subnetwork being patched has purpose = INTERNAL_HTTPS_LOAD_BALANCER - the subnetwork being patched has role = BACKUP - the patch request is setting the role to ACTIVE. Note that after this patch operation the roles of the ACTIVE and BACKUP subnetworks will be swapped.",
+       "format": "int32",
+       "location": "query"
+      },
       "project": {
        "type": "string",
        "description": "Project ID for this request.",
@@ -44470,6 +46780,55 @@
   },
   "targetHttpsProxies": {
    "methods": {
+    "aggregatedList": {
+     "id": "compute.targetHttpsProxies.aggregatedList",
+     "path": "{project}/aggregated/targetHttpsProxies",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Name of the project scoping this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "TargetHttpsProxyAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "delete": {
      "id": "compute.targetHttpsProxies.delete",
      "path": "{project}/global/targetHttpsProxies/{targetHttpsProxy}",
@@ -46659,6 +49018,55 @@
   },
   "urlMaps": {
    "methods": {
+    "aggregatedList": {
+     "id": "compute.urlMaps.aggregatedList",
+     "path": "{project}/aggregated/urlMaps",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of all UrlMap resources, regional and global, available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Name of the project scoping this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "UrlMapsAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "delete": {
      "id": "compute.urlMaps.delete",
      "path": "{project}/global/urlMaps/{urlMap}",

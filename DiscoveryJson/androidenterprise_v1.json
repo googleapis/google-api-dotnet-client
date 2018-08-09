@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/gVSjDW5WnG6EeMfEjGnyszXOqfI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/h2MiT2GQ9o6Szn_12UOJatWVB_Q\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20180523",
+ "revision": "20180802",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -424,12 +424,7 @@
     },
     "primaryDomain": {
      "type": "string",
-     "description": "The enterprise's primary domain, such as \"example.com\".",
-     "annotations": {
-      "required": [
-       "androidenterprise.enterprises.insert"
-      ]
-     }
+     "description": "The enterprise's primary domain, such as \"example.com\"."
     }
    }
   },
@@ -2008,26 +2003,6 @@
       "https://www.googleapis.com/auth/androidenterprise"
      ]
     },
-    "delete": {
-     "id": "androidenterprise.enterprises.delete",
-     "path": "enterprises/{enterpriseId}",
-     "httpMethod": "DELETE",
-     "description": "Deletes the binding between the EMM and enterprise. This is now deprecated. Use this method only to unenroll customers that were previously enrolled with the insert call, then enroll them again with the enroll call.",
-     "parameters": {
-      "enterpriseId": {
-       "type": "string",
-       "description": "The ID of the enterprise.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "enterpriseId"
-     ],
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
     "enroll": {
      "id": "androidenterprise.enterprises.enroll",
      "path": "enterprises/enroll",
@@ -2173,32 +2148,6 @@
      ],
      "response": {
       "$ref": "StoreLayout"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
-    "insert": {
-     "id": "androidenterprise.enterprises.insert",
-     "path": "enterprises",
-     "httpMethod": "POST",
-     "description": "Establishes the binding between the EMM and an enterprise. This is now deprecated; use enroll instead.",
-     "parameters": {
-      "token": {
-       "type": "string",
-       "description": "The token provided by the enterprise to register the EMM.",
-       "required": true,
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "token"
-     ],
-     "request": {
-      "$ref": "Enterprise"
-     },
-     "response": {
-      "$ref": "Enterprise"
      },
      "scopes": [
       "https://www.googleapis.com/auth/androidenterprise"

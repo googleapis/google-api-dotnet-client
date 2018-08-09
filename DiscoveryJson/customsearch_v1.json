@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/YQXvlzpWen0G9mij6bxvm-ak7ls\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ztgjlQ5bv4-PExM5zD6k0Pnqwmg\"",
  "discoveryVersion": "v1",
  "id": "customsearch:v1",
  "name": "customsearch",
  "version": "v1",
- "revision": "20180501",
+ "revision": "20180725",
  "title": "CustomSearch API",
  "description": "Searches over a website or collection of websites",
  "ownerDomain": "google.com",
@@ -808,7 +808,7 @@
        "id": "search.cse.siterestrict.list",
        "path": "v1/siterestrict",
        "httpMethod": "GET",
-       "description": "(Closed Beta API) Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results only for site-restrict cses.",
+       "description": "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results. Uses a small set of url patterns.",
        "parameters": {
         "c2coff": {
          "type": "string",

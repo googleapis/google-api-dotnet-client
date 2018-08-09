@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/cqLS0IwH2Is5IhWrKMNCt4VPtGQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/-x7rE_DJIJvDNGcfZs68y92KTwA\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20180423",
+ "revision": "20180705",
  "title": "Admin Directory API",
  "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -2173,6 +2173,10 @@
       "type": "string"
      }
     },
+    "archived": {
+     "type": "boolean",
+     "description": "Indicates if user is archived"
+    },
     "changePasswordAtNextLogin": {
      "type": "boolean",
      "description": "Boolean indicating if the user should change password in next login"
@@ -3227,7 +3231,7 @@
       },
       "query": {
        "type": "string",
-       "description": "Search string in the format given at http://support.google.com/chromeos/a/bin/answer.py?hl=en&answer=1698333",
+       "description": "Search string in the format given at http://support.google.com/chromeos/a/bin/answer.py?answer=1698333",
        "location": "query"
       },
       "sortOrder": {
@@ -3790,7 +3794,7 @@
       },
       "query": {
        "type": "string",
-       "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/admin-sdk/directory/v1/guides/search-users",
+       "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/admin-sdk/directory/v1/guides/search-groups",
        "location": "query"
       },
       "sortOrder": {
@@ -4368,7 +4372,7 @@
       },
       "query": {
        "type": "string",
-       "description": "Search string in the format given at http://support.google.com/a/bin/answer.py?hl=en&answer=1408863#search",
+       "description": "Search string in the format given at http://support.google.com/a/bin/answer.py?answer=1408863#search",
        "location": "query"
       },
       "sortOrder": {

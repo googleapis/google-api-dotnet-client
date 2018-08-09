@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/y77xRILjlSdl2_MjDK7JC1BJie8\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/SiWkvSmR4d8Oc_03c8PvrexpI1w\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.0",
  "name": "dfareporting",
  "version": "v3.0",
- "revision": "20180514",
+ "revision": "20180720",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -4135,9 +4135,11 @@
      "type": "string",
      "description": "The date range relative to the date of when the report is run.",
      "enum": [
+      "LAST_14_DAYS",
       "LAST_24_MONTHS",
       "LAST_30_DAYS",
       "LAST_365_DAYS",
+      "LAST_60_DAYS",
       "LAST_7_DAYS",
       "LAST_90_DAYS",
       "MONTH_TO_DATE",
@@ -4152,6 +4154,8 @@
       "YESTERDAY"
      ],
      "enumDescriptions": [
+      "",
+      "",
       "",
       "",
       "",

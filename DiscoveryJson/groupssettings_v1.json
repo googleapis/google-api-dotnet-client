@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/GfziMf-yuHbuK8ebZWiYhJ8rjhg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/JTtDAAAquqLhZ0B9WBwfhO06fxE\"",
  "discoveryVersion": "v1",
  "id": "groupssettings:v1",
  "name": "groupssettings",
  "version": "v1",
- "revision": "20180404",
+ "revision": "20180615",
  "title": "Groups Settings API",
  "description": "Lets you manage permission levels and related settings of a group.",
  "ownerDomain": "google.com",
@@ -119,6 +119,10 @@
      "type": "string",
      "description": "Email id of the group"
     },
+    "favoriteRepliesOnTop": {
+     "type": "string",
+     "description": "If favorite replies should be displayed above other replies."
+    },
     "includeCustomFooter": {
      "type": "string",
      "description": "Whether to include custom footer."
@@ -181,9 +185,21 @@
      "type": "string",
      "description": "Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD ALL_OWNERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD"
     },
+    "whoCanAddReferences": {
+     "type": "string",
+     "description": "Permission to add references to a topic. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanAssignTopics": {
+     "type": "string",
+     "description": "Permission to assign topics in a forum to another user. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
     "whoCanContactOwner": {
      "type": "string",
      "description": "Permission to contact owner of the group via web UI. Possible values are: ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT"
+    },
+    "whoCanEnterFreeFormTags": {
+     "type": "string",
+     "description": "Permission to enter free form tags for topics in a forum. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanInvite": {
      "type": "string",
@@ -197,9 +213,41 @@
      "type": "string",
      "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE"
     },
+    "whoCanMarkDuplicate": {
+     "type": "string",
+     "description": "Permission to mark a topic as a duplicate of another topic. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMarkFavoriteReplyOnAnyTopic": {
+     "type": "string",
+     "description": "Permission to mark any other user's post as a favorite reply. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMarkFavoriteReplyOnOwnTopic": {
+     "type": "string",
+     "description": "Permission to mark a post for a topic they started as a favorite reply. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMarkNoResponseNeeded": {
+     "type": "string",
+     "description": "Permission to mark a topic as not needing a response. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanModifyTagsAndCategories": {
+     "type": "string",
+     "description": "Permission to change tags and categories. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
     "whoCanPostMessage": {
      "type": "string",
      "description": "Permissions to post messages to the group. Possible values are: NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST"
+    },
+    "whoCanTakeTopics": {
+     "type": "string",
+     "description": "Permission to take topics in a forum. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanUnassignTopic": {
+     "type": "string",
+     "description": "Permission to unassign any topic in a forum. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanUnmarkFavoriteReplyOnAnyTopic": {
+     "type": "string",
+     "description": "Permission to unmark any post from a favorite reply. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanViewGroup": {
      "type": "string",
