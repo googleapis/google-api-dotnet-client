@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180803 (1310)
+ *      <tr><th>API Rev<td>20180813 (1320)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -555,13 +555,13 @@ namespace Google.Apis.ServiceUser.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested size of the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Requested size of the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -597,18 +597,18 @@ namespace Google.Apis.ServiceUser.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1572,9 +1572,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string Put { get; set; } 
 
         /// <summary>Optional. The name of the response field whose value is mapped to the HTTP body of response. Other
-        /// response fields are ignored. When not set, the response message will be used as HTTP body of response. NOTE:
-        /// the referred field must be not a repeated field and must be present at the top-level of response message
-        /// type.</summary>
+        /// response fields are ignored. When not set, the response message will be used as HTTP body of
+        /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBody")]
         public virtual string ResponseBody { get; set; } 
 

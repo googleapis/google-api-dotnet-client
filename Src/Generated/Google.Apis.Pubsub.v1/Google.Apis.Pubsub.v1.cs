@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180723 (1299)
+ *      <tr><th>API Rev<td>20180806 (1313)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -655,8 +655,8 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Lists the existing snapshots. ALPHA: This feature is part of an alpha release. This API might
             /// be changed in backward-incompatible ways and is not recommended for production use. It is not subject to
             /// any SLA or deprecation policy.</summary>
-            /// <param name="project">The name of the cloud project that snapshots belong to. Format is
-            /// `projects/{project}`.</param>
+            /// <param name="project">The name of the project in which to list snapshots. Format is `projects/{project-
+            /// id}`.</param>
             public virtual ListRequest List(string project)
             {
                 return new ListRequest(service, project);
@@ -676,8 +676,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the cloud project that snapshots belong to. Format is
-                /// `projects/{project}`.</summary>
+                /// <summary>The name of the project in which to list snapshots. Format is `projects/{project-
+                /// id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
@@ -1354,8 +1354,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Lists matching subscriptions.</summary>
-            /// <param name="project">The name of the cloud project that subscriptions belong to. Format is
-            /// `projects/{project}`.</param>
+            /// <param name="project">The name of the project in which to list subscriptions. Format is `projects/{project-
+            /// id}`.</param>
             public virtual ListRequest List(string project)
             {
                 return new ListRequest(service, project);
@@ -1373,8 +1373,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the cloud project that subscriptions belong to. Format is
-                /// `projects/{project}`.</summary>
+                /// <summary>The name of the project in which to list subscriptions. Format is `projects/{project-
+                /// id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
@@ -2494,8 +2494,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Lists matching topics.</summary>
-            /// <param name="project">The name of the cloud project that topics belong to. Format is
-            /// `projects/{project}`.</param>
+            /// <param name="project">The name of the project in which to list topics. Format is `projects/{project-
+            /// id}`.</param>
             public virtual ListRequest List(string project)
             {
                 return new ListRequest(service, project);
@@ -2513,8 +2513,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>The name of the cloud project that topics belong to. Format is
-                /// `projects/{project}`.</summary>
+                /// <summary>The name of the project in which to list topics. Format is `projects/{project-
+                /// id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
@@ -3229,8 +3229,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>If this field set to true, the system will respond immediately even if it there are no messages
         /// available to return in the `Pull` response. Otherwise, the system may wait (for a bounded amount of time)
-        /// until at least one message is available, rather than returning no messages. The client may cancel the
-        /// request if it does not wish to wait any longer for the response.</summary>
+        /// until at least one message is available, rather than returning no messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnImmediately")]
         public virtual System.Nullable<bool> ReturnImmediately { get; set; } 
 

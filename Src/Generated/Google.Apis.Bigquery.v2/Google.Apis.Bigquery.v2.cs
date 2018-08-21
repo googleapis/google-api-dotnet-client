@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180729 (1305)
+ *      <tr><th>API Rev<td>20180809 (1316)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2846,8 +2846,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The labels associated with this dataset. You can use these to organize and group your datasets. You
-        /// can set this property when inserting or updating a dataset. See Labeling Datasets for more
-        /// information.</summary>
+        /// can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for
+        /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

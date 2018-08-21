@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>CustomSearch API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180725 (1301)
+ *      <tr><th>API Rev<td>20180815 (1322)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>
  *              https://developers.google.com/custom-search/v1/using_rest</a>
@@ -390,13 +390,13 @@ namespace Google.Apis.Customsearch.v1
                     Mono,
                 }
 
-                /// <summary>Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink,
-                /// white, gray, black and brown.</summary>
+                /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue,
+                /// purple, pink, white, gray, black and brown.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
 
-                /// <summary>Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink,
-                /// white, gray, black and brown.</summary>
+                /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue,
+                /// purple, pink, white, gray, black and brown.</summary>
                 public enum ImgDominantColorEnum
                 {
                     /// <summary>black</summary>
@@ -414,12 +414,18 @@ namespace Google.Apis.Customsearch.v1
                     /// <summary>green</summary>
                     [Google.Apis.Util.StringValueAttribute("green")]
                     Green,
+                    /// <summary>orange</summary>
+                    [Google.Apis.Util.StringValueAttribute("orange")]
+                    Orange,
                     /// <summary>pink</summary>
                     [Google.Apis.Util.StringValueAttribute("pink")]
                     Pink,
                     /// <summary>purple</summary>
                     [Google.Apis.Util.StringValueAttribute("purple")]
                     Purple,
+                    /// <summary>red</summary>
+                    [Google.Apis.Util.StringValueAttribute("red")]
+                    Red,
                     /// <summary>teal</summary>
                     [Google.Apis.Util.StringValueAttribute("teal")]
                     Teal,
@@ -1108,13 +1114,13 @@ namespace Google.Apis.Customsearch.v1
                 Mono,
             }
 
-            /// <summary>Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink, white,
-            /// gray, black and brown.</summary>
+            /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple,
+            /// pink, white, gray, black and brown.</summary>
             [Google.Apis.Util.RequestParameterAttribute("imgDominantColor", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ImgDominantColorEnum> ImgDominantColor { get; set; }
 
-            /// <summary>Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink, white,
-            /// gray, black and brown.</summary>
+            /// <summary>Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple,
+            /// pink, white, gray, black and brown.</summary>
             public enum ImgDominantColorEnum
             {
                 /// <summary>black</summary>
@@ -1132,12 +1138,18 @@ namespace Google.Apis.Customsearch.v1
                 /// <summary>green</summary>
                 [Google.Apis.Util.StringValueAttribute("green")]
                 Green,
+                /// <summary>orange</summary>
+                [Google.Apis.Util.StringValueAttribute("orange")]
+                Orange,
                 /// <summary>pink</summary>
                 [Google.Apis.Util.StringValueAttribute("pink")]
                 Pink,
                 /// <summary>purple</summary>
                 [Google.Apis.Util.StringValueAttribute("purple")]
                 Purple,
+                /// <summary>red</summary>
+                [Google.Apis.Util.StringValueAttribute("red")]
+                Red,
                 /// <summary>teal</summary>
                 [Google.Apis.Util.StringValueAttribute("teal")]
                 Teal,
@@ -1357,10 +1369,13 @@ namespace Google.Apis.Customsearch.v1
             /// <summary>Search safety level</summary>
             public enum SafeEnum
             {
-                /// <summary>Enables highest level of safe search filtering.</summary>
+                /// <summary>Enables safe search filtering.</summary>
+                [Google.Apis.Util.StringValueAttribute("active")]
+                Active,
+                /// <summary>(Deprecated) Same as active.</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
                 High,
-                /// <summary>Enables moderate safe search filtering.</summary>
+                /// <summary>(Deprecated) Same as active.</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
                 Medium,
                 /// <summary>Disables safe search filtering.</summary>

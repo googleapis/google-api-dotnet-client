@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180807 (1314)
+ *      <tr><th>API Rev<td>20180820 (1327)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -515,6 +515,10 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -522,10 +526,6 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -561,6 +561,15 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -573,15 +582,6 @@ namespace Google.Apis.CloudBuild.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1963,6 +1963,26 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
+        /// <summary>ignored_files and included_files are file glob matches using http://godoc/pkg/path/filepath#Match
+        /// extended with support for "**".
+        ///
+        /// If ignored_files and changed files are both empty, then they are not used to determine whether or not to
+        /// trigger a build.
+        ///
+        /// If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the
+        /// change has no files that are outside of the ignored_files globs, then we do not trigger a build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredFiles")]
+        public virtual System.Collections.Generic.IList<string> IgnoredFiles { get; set; } 
+
+        /// <summary>If any of the files altered in the commit pass the ignored_files filter and included_files is
+        /// empty, then as far as this filter is concerned, we should trigger the build.
+        ///
+        /// If any of the files altered in the commit pass the ignored_files filter and included_files is not empty,
+        /// then we make sure that at least one of those files matches a included_files glob. If not, then we do not
+        /// trigger a build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedFiles")]
+        public virtual System.Collections.Generic.IList<string> IncludedFiles { get; set; } 
+
         /// <summary>Substitutions data for Build resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
@@ -2177,8 +2197,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>List of build step outputs, produced by builder images, in the order corresponding to build step
         /// indices.
         ///
-        /// Builders can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is
-        /// stored.</summary>
+        /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; } 
 

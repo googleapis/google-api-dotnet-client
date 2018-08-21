@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180805 (1312)
+ *      <tr><th>API Rev<td>20180814 (1321)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -5205,7 +5205,9 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual Event.OrganizerData Organizer { get; set; } 
 
         /// <summary>For an instance of a recurring event, this is the time at which this event would start according to
-        /// the recurrence data in the recurring event identified by recurringEventId. Immutable.</summary>
+        /// the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the
+        /// instance within the recurring event series even if the instance was moved to a different time.
+        /// Immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalStartTime")]
         public virtual EventDateTime OriginalStartTime { get; set; } 
 

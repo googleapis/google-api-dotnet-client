@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180804 (1311)
+ *      <tr><th>API Rev<td>20180814 (1321)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -437,6 +437,7 @@ namespace Google.Apis.DLP.v2
             this.service = service;
             deidentifyTemplates = new DeidentifyTemplatesResource(service);
             inspectTemplates = new InspectTemplatesResource(service);
+            storedInfoTypes = new StoredInfoTypesResource(service);
 
         }
 
@@ -697,15 +698,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListDeidentifyTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListDeidentifyTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -741,18 +742,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1089,15 +1090,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListInspectTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListInspectTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1133,18 +1134,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1227,6 +1228,399 @@ namespace Google.Apis.DLP.v2
 
             }
         }
+        private readonly StoredInfoTypesResource storedInfoTypes;
+
+        /// <summary>Gets the StoredInfoTypes resource.</summary>
+        public virtual StoredInfoTypesResource StoredInfoTypes
+        {
+            get { return storedInfoTypes; }
+        }
+
+        /// <summary>The "storedInfoTypes" collection of methods.</summary>
+        public class StoredInfoTypesResource
+        {
+            private const string Resource = "storedInfoTypes";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public StoredInfoTypesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a pre-built stored infoType to be used for inspection. See
+            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
+            /// id.</param>
+            public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a pre-built stored infoType to be used for inspection. See
+            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
+            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id or organizations/my-org-
+                /// id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/storedInfoTypes"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="name">Resource name of the organization and storedInfoType to be deleted, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the organization and storedInfoType to be deleted, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="name">Resource name of the organization and storedInfoType to be read, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the organization and storedInfoType to be read, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
+            /// id.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id or organizations/my-org-
+                /// id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListStoredInfoTypes`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/storedInfoTypes"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the stored infoType by creating a new version. The existing version will continue to be
+            /// used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name of organization and storedInfoType to be updated, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the stored infoType by creating a new version. The existing version will continue to be
+            /// used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of organization and storedInfoType to be updated, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
+                        });
+                }
+
+            }
+        }
     }
 
     /// <summary>The "projects" collection of methods.</summary>
@@ -1247,6 +1641,7 @@ namespace Google.Apis.DLP.v2
             image = new ImageResource(service);
             inspectTemplates = new InspectTemplatesResource(service);
             jobTriggers = new JobTriggersResource(service);
+            storedInfoTypes = new StoredInfoTypesResource(service);
 
         }
 
@@ -2707,15 +3102,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListInspectTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListInspectTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2751,18 +3146,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3092,6 +3487,10 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
                 /// `order_by` field must not change for subsequent calls.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3109,10 +3508,6 @@ namespace Google.Apis.DLP.v2
                 /// time the triggeredJob was last updated. - `name`: corresponds to JobTrigger's name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by a server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3148,6 +3543,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3160,15 +3564,6 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3245,6 +3640,399 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/jobTriggers/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly StoredInfoTypesResource storedInfoTypes;
+
+        /// <summary>Gets the StoredInfoTypes resource.</summary>
+        public virtual StoredInfoTypesResource StoredInfoTypes
+        {
+            get { return storedInfoTypes; }
+        }
+
+        /// <summary>The "storedInfoTypes" collection of methods.</summary>
+        public class StoredInfoTypesResource
+        {
+            private const string Resource = "storedInfoTypes";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public StoredInfoTypesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a pre-built stored infoType to be used for inspection. See
+            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
+            /// id.</param>
+            public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a pre-built stored infoType to be used for inspection. See
+            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.</summary>
+            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id or organizations/my-org-
+                /// id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/storedInfoTypes"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="name">Resource name of the organization and storedInfoType to be deleted, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the organization and storedInfoType to be deleted, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/storedInfoTypes/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="name">Resource name of the organization and storedInfoType to be read, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the organization and storedInfoType to be read, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/storedInfoTypes/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
+            /// id.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id or organizations/my-org-
+                /// id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListStoredInfoTypes`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/storedInfoTypes"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the stored infoType by creating a new version. The existing version will continue to be
+            /// used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name of organization and storedInfoType to be updated, for example
+            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.</param>
+            public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the stored infoType by creating a new version. The existing version will continue to be
+            /// used until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+            /// learn more.</summary>
+            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of organization and storedInfoType to be updated, for example
+                /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+                /// id/storedInfoTypes/432452342.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/storedInfoTypes/[^/]+$",
                         });
                 }
 
@@ -3332,6 +4120,21 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message defining a field of a BigQuery table.</summary>
+    public class GooglePrivacyDlpV2BigQueryField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Designated field in the BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+
+        /// <summary>Source table of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Row key for identifying a record in BigQuery table.</summary>
     public class GooglePrivacyDlpV2BigQueryKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3356,10 +4159,16 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; } 
 
         /// <summary>Max number of rows to scan. If the table has more rows than this value, the rest of the rows are
-        /// omitted. If not set, or if set to 0, all rows will be scanned. Cannot be used in conjunction with
-        /// TimespanConfig.</summary>
+        /// omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent
+        /// can be specified. Cannot be used in conjunction with TimespanConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimit")]
         public virtual System.Nullable<long> RowsLimit { get; set; } 
+
+        /// <summary>Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+        /// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit
+        /// and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowsLimitPercent")]
+        public virtual System.Nullable<int> RowsLimitPercent { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
         public virtual string SampleMethod { get; set; } 
@@ -3574,14 +4383,32 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message representing a set of files in Cloud Storage.</summary>
+    public class GooglePrivacyDlpV2CloudStorageFileSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The url, in the format `gs:`. Trailing wildcard in the path is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Options defining a file or a set of files (path ending with *) within a Google Cloud Storage
     /// bucket.</summary>
     public class GooglePrivacyDlpV2CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then
-        /// the rest of the bytes are omitted.</summary>
+        /// the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
         public virtual System.Nullable<long> BytesLimitPerFile { get; set; } 
+
+        /// <summary>Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is
+        /// rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one
+        /// of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFilePercent")]
+        public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("fileSet")]
         public virtual GooglePrivacyDlpV2FileSet FileSet { get; set; } 
@@ -3802,6 +4629,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for CreateStoredInfoType.</summary>
+    public class GooglePrivacyDlpV2CreateStoredInfoTypeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration of the storedInfoType to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
+
+        /// <summary>The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is,
+        /// it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to
+        /// allow the system to generate one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypeId")]
+        public virtual string StoredInfoTypeId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size
     /// must be either 32 or 64 bytes. Outputs a 32 byte digest as an uppercase hex string (for example,
     /// 41D1567F7F99F1DC2A5FAB886DEE5BEE). Currently, only string and integer values can be hashed.</summary>
@@ -3931,6 +4775,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Regular expression based CustomInfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
         public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
+
+        /// <summary>Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported
+        /// in `InspectContent`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedType")]
+        public virtual GooglePrivacyDlpV2StoredType StoredType { get; set; } 
 
         /// <summary>Message for detecting output from deidentification transformations that support
         /// reversing.</summary>
@@ -4235,7 +5084,9 @@ namespace Google.Apis.DLP.v2.Data
     /// "jen123" but will return no matches for "jennifer".
     ///
     /// Dictionary words containing a large number of characters that are not letters or digits may result in unexpected
-    /// findings because such characters are treated as whitespace.</summary>
+    /// findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits)
+    /// page contains details about the size limits of dictionaries. For dictionaries that do not fit within these
+    /// constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.</summary>
     public class GooglePrivacyDlpV2Dictionary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Newline-delimited file of words in Cloud Storage. Only a single file is accepted.</summary>
@@ -5165,6 +6016,30 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for a custom dictionary created from a data source of any size up to the maximum size
+    /// defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are
+    /// stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller
+    /// dictionaries that satisfy the size requirements.</summary>
+    public class GooglePrivacyDlpV2LargeCustomDictionaryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Field in a BigQuery table where each cell represents a dictionary phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryField")]
+        public virtual GooglePrivacyDlpV2BigQueryField BigQueryField { get; set; } 
+
+        /// <summary>Set of files containing newline-delimited lists of dictionary phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageFileSet")]
+        public virtual GooglePrivacyDlpV2CloudStorageFileSet CloudStorageFileSet { get; set; } 
+
+        /// <summary>Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible
+        /// by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered
+        /// invalid and can no longer be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
+        public virtual GooglePrivacyDlpV2CloudStoragePath OutputPath { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Message for specifying an adjustment to the likelihood of a finding as part of a detection
     /// rule.</summary>
     public class GooglePrivacyDlpV2LikelihoodAdjustment : Google.Apis.Requests.IDirectResponseSchema
@@ -5254,6 +6129,22 @@ namespace Google.Apis.DLP.v2.Data
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListStoredInfoTypes.</summary>
+    public class GooglePrivacyDlpV2ListStoredInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the next page is available then the next page token to be used in following ListStoredInfoTypes
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoType> StoredInfoTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5907,6 +6798,95 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>StoredInfoType resource message that contains information about the current version and any pending
+    /// updates.</summary>
+    public class GooglePrivacyDlpV2StoredInfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current version of the stored info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
+        public virtual GooglePrivacyDlpV2StoredInfoTypeVersion CurrentVersion { get; set; } 
+
+        /// <summary>Resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Pending versions of the stored info type. Empty if no versions are pending.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingVersions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoTypeVersion> PendingVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for a StoredInfoType.</summary>
+    public class GooglePrivacyDlpV2StoredInfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the StoredInfoType (max 256 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Display name of the StoredInfoType (max 256 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>StoredInfoType where findings are defined by a dictionary of phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeCustomDictionary")]
+        public virtual GooglePrivacyDlpV2LargeCustomDictionaryConfig LargeCustomDictionary { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Version of a StoredInfoType, including the configuration used to build it, create timestamp, and
+    /// current state.</summary>
+    public class GooglePrivacyDlpV2StoredInfoTypeVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>StoredInfoType configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
+
+        /// <summary>Create timestamp of the version. Read-only, determined by the system when the version is
+        /// created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Errors that occurred when creating this storedInfoType version, or anomalies detected in the
+        /// storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the
+        /// most recent error appearing first. For example, some of the data for stored custom dictionaries is put in
+        /// the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another
+        /// system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message
+        /// and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue
+        /// using it, reusing the same `config` if it was not the source of the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
+
+        /// <summary>Stored info type version state. Read-only, updated by the system during dictionary
+        /// creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to a StoredInfoType to use with scanning.</summary>
+    public class GooglePrivacyDlpV2StoredType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp indicating when the version of the `StoredInfoType` used for inspection was created.
+        /// Output-only field, populated by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Resource name of the requested `StoredInfoType`, for example
+        /// `organizations/433245324/storedInfoTypes/432452342` or `projects/project-
+        /// id/storedInfoTypes/432452342`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A collection that informs the user the number of times a particular `TransformationResultCode` and
     /// error details occurred.</summary>
     public class GooglePrivacyDlpV2SummaryResult : Google.Apis.Requests.IDirectResponseSchema
@@ -6166,6 +7146,22 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>New JobTrigger value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
         public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
+
+        /// <summary>Mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for UpdateStoredInfoType.</summary>
+    public class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Updated configuration for the storedInfoType. If not provided, a new version of the storedInfoType
+        /// will be created with the existing configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]

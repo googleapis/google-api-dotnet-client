@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180716 (1292)
+ *      <tr><th>API Rev<td>20180730 (1306)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -20896,8 +20896,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the Shielded VM integrity policy for an instance. This method supports PATCH semantics and
-        /// uses the JSON merge patch format and processing rules.</summary>
+        /// <summary>Sets the Shielded VM integrity policy for a VM instance. You can only use this method on a running
+        /// VM instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20908,8 +20909,9 @@ namespace Google.Apis.Compute.beta
             return new SetShieldedVmIntegrityPolicyRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets the Shielded VM integrity policy for an instance. This method supports PATCH semantics and
-        /// uses the JSON merge patch format and processing rules.</summary>
+        /// <summary>Sets the Shielded VM integrity policy for a VM instance. You can only use this method on a running
+        /// VM instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         public class SetShieldedVmIntegrityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetShieldedVmIntegrityPolicy request.</summary>
@@ -21965,8 +21967,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the Shielded VM config for an instance. This method supports PATCH semantics and uses the
-        /// JSON merge patch format and processing rules.</summary>
+        /// <summary>Updates the Shielded VM config for a VM instance. You can only use this method on a stopped VM
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -21977,8 +21980,9 @@ namespace Google.Apis.Compute.beta
             return new UpdateShieldedVmConfigRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Updates the Shielded VM config for an instance. This method supports PATCH semantics and uses the
-        /// JSON merge patch format and processing rules.</summary>
+        /// <summary>Updates the Shielded VM config for a VM instance. You can only use this method on a stopped VM
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         public class UpdateShieldedVmConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new UpdateShieldedVmConfig request.</summary>
@@ -41475,6 +41479,92 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the labels on a security policy. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on a security policy. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -54242,11 +54332,11 @@ namespace Google.Apis.Compute.beta.Data
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
-        /// example, specify family/debian-8 to use the latest Debian 8 image: projects/debian-
-        /// cloud/global/images/family/debian-8
+        /// example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-
+        /// cloud/global/images/family/debian-9
         ///
         /// Alternatively, use a specific version of a public operating system image: projects/debian-
-        /// cloud/global/images/debian-8-jessie-vYYYYMMDD
+        /// cloud/global/images/debian-9-stretch-vYYYYMMDD
         ///
         /// To create a disk with a custom image that you created, specify the image name in the following format:
         /// global/images/my-custom-image
@@ -55949,7 +56039,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 
-        /// <summary>Any applicable publicly visible licenses.</summary>
+        /// <summary>A list of publicly visible licenses. Reserved for Google's use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
@@ -55998,11 +56088,11 @@ namespace Google.Apis.Compute.beta.Data
         /// set.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
-        /// example, specify family/debian-8 to use the latest Debian 8 image: projects/debian-
-        /// cloud/global/images/family/debian-8
+        /// example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-
+        /// cloud/global/images/family/debian-9
         ///
         /// Alternatively, use a specific version of a public operating system image: projects/debian-
-        /// cloud/global/images/debian-8-jessie-vYYYYMMDD
+        /// cloud/global/images/debian-9-stretch-vYYYYMMDD
         ///
         /// To create a disk with a custom image that you created, specify the image name in the following format:
         /// global/images/my-custom-image
@@ -58410,9 +58500,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>A list of tags to apply to this instance. Tags are used to identify valid sources or targets for
-        /// network firewalls and are specified by the client during instance creation. The tags can be later modified
-        /// by the setTags method. Each tag within the list must comply with RFC1035.</summary>
+        /// <summary>Tags to apply to this instance. Tags are used to identify valid sources or targets for network
+        /// firewalls and are specified by the client during instance creation. The tags can be later modified by the
+        /// setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the
+        /// 'tags.items' field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual Tags Tags { get; set; } 
 
@@ -59121,10 +59212,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Nullable<int> MinReadySec { get; set; } 
 
         /// <summary>Minimal action to be taken on an instance. You can specify either RESTART to restart existing
-        /// instances or REPLACE to delete and create new instances from the target template. If you specify a
-        /// code>RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that
-        /// the minimal action you specify is not enough to perform the update, it might perform a more disruptive
-        /// action.</summary>
+        /// instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART,
+        /// the Updater will attempt to perform that action only. However, if the Updater determines that the minimal
+        /// action you specify is not enough to perform the update, it might perform a more disruptive action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
@@ -65736,7 +65826,7 @@ namespace Google.Apis.Compute.beta.Data
     }    
 
     /// <summary>A security policy is comprised of one or more rules. It can also be associated with one or more
-    /// 'targets'. Next available tag: 11 (== resource_for beta.securityPolicies ==)</summary>
+    /// 'targets'. (== resource_for beta.securityPolicies ==)</summary>
     public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65765,6 +65855,20 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output only] Type of the resource. Always compute#securityPolicyfor security policies</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this security policy, which is essentially a hash of
+        /// the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and
+        /// changes after every request to modify or update labels. You must always provide an up-to-date fingerprint
+        /// hash in order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make get() request to the security policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this security policy resource. These can be later modified by the setLabels
+        /// method. Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -65989,15 +66093,15 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>A set of Shielded VM options.</summary>
     public class ShieldedVmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines whether the instance should have integrity monitoring enabled.</summary>
+        /// <summary>Defines whether the instance has integrity monitoring enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
         public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
 
-        /// <summary>Defines whether the instance should have secure boot enabled.</summary>
+        /// <summary>Defines whether the instance has Secure Boot enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
 
-        /// <summary>Defines whether the instance should have the TPM enabled.</summary>
+        /// <summary>Defines whether the instance has the vTPM enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; } 
 
@@ -66005,11 +66109,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The policy describes how boot integrity measurements are evaluated.</summary>
+    /// <summary>The policy describes the baseline against which VM instance boot integrity is measured.</summary>
     public class ShieldedVmIntegrityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Triggers an auto relearn event: the integrity monitoring module copies existing guest measurements
-        /// to the baseline.</summary>
+        /// <summary>Updates the integrity policy baseline using the measurements from the VM instance's most recent
+        /// boot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateAutoLearnPolicy")]
         public virtual System.Nullable<bool> UpdateAutoLearnPolicy { get; set; } 
 

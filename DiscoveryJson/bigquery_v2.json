@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/NZaNvTukd0FkgQtobCGnhXo6onw\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/17qyy65XM3WiN-92N5y9ScNNzA8\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180729",
+ "revision": "20180809",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -315,7 +315,7 @@
     },
     "labels": {
      "type": "object",
-     "description": "The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for more information.",
+     "description": "The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.",
      "additionalProperties": {
       "type": "string"
      }

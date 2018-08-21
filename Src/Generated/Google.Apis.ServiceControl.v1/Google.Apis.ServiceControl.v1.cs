@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180805 (1312)
+ *      <tr><th>API Rev<td>20180815 (1322)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1398,6 +1398,85 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification.
+    /// Product-specific logging information MUST be defined in a separate message.
+    ///
+    /// This is an exact copy of HttpRequest message defined in Stackdriver.</summary>
+    public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of HTTP response bytes inserted into cache. Set only when a cache fill was
+        /// attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillBytes")]
+        public virtual System.Nullable<long> CacheFillBytes { get; set; } 
+
+        /// <summary>Whether or not an entity was served from cache (with or without validation).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
+        public virtual System.Nullable<bool> CacheHit { get; set; } 
+
+        /// <summary>Whether or not a cache lookup was attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheLookup")]
+        public virtual System.Nullable<bool> CacheLookup { get; set; } 
+
+        /// <summary>Whether or not the response was validated with the origin server before being served from cache.
+        /// This field is only meaningful if `cache_hit` is True.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheValidatedWithOriginServer")]
+        public virtual System.Nullable<bool> CacheValidatedWithOriginServer { get; set; } 
+
+        /// <summary>The request processing latency on the server, from the time the request was received until the
+        /// response was sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latency")]
+        public virtual object Latency { get; set; } 
+
+        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; } 
+
+        /// <summary>The referer URL of the request, as defined in [HTTP/1.1 Header Field
+        /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referer")]
+        public virtual string Referer { get; set; } 
+
+        /// <summary>The IP address (IPv4 or IPv6) of the client that issued the HTTP request. Examples:
+        /// `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
+        public virtual string RemoteIp { get; set; } 
+
+        /// <summary>The request method. Examples: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
+        public virtual string RequestMethod { get; set; } 
+
+        /// <summary>The size of the HTTP request message in bytes, including the request headers and the request
+        /// body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestSize")]
+        public virtual System.Nullable<long> RequestSize { get; set; } 
+
+        /// <summary>The scheme (http, https), the host name, the path and the query portion of the URL that was
+        /// requested. Example: `"http://example.com/some/info?color=red"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestUrl")]
+        public virtual string RequestUrl { get; set; } 
+
+        /// <summary>The size of the HTTP response message sent back to the client, in bytes, including the response
+        /// headers and the response body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseSize")]
+        public virtual System.Nullable<long> ResponseSize { get; set; } 
+
+        /// <summary>The IP address (IPv4 or IPv6) of the origin server that the request was sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverIp")]
+        public virtual string ServerIp { get; set; } 
+
+        /// <summary>The response code indicating the status of response. Examples: 200, 404.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<int> Status { get; set; } 
+
+        /// <summary>The user agent sent by the client. Example: `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98;
+        /// Q312461; .NET CLR 1.0.3705)"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Describing buckets with constant width.</summary>
     public class LinearBuckets : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1423,6 +1502,11 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>An individual log entry.</summary>
     public class LogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Information about the HTTP request associated with this log entry, if
+        /// applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
+        public virtual HttpRequest HttpRequest { get; set; } 
+
         /// <summary>A unique ID for the log entry used for deduplication. If omitted, the implementation will generate
         /// one based on operation_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
@@ -1462,6 +1546,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
+
+        /// <summary>Optional. Resource name of the trace associated with the log entry, if any. If it contains a
+        /// relative resource name, the name is assumed to be relative to `//tracing.googleapis.com`. Example: `projects
+        /// /my-projectid/traces/06796866738c859f2f19b7cfb3214824`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trace")]
+        public virtual string Trace { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1664,6 +1754,43 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// 1000 user labels per consumer project are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message defines attributes for a node that handles a network request. The node can be either a
+    /// service or an application that sends, forwards, or receives the request. Service peers should fill in the
+    /// `service`, `principal`, and `labels` as appropriate.</summary>
+    public class Peer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address of the peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
+        public virtual string Ip { get; set; } 
+
+        /// <summary>The labels associated with the peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The network port of the peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<long> Port { get; set; } 
+
+        /// <summary>The identity of this peer. Similar to `Request.auth.principal`, but relative to the peer instead of
+        /// the request. For example, the idenity associated with a load balancer that forwared the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; } 
+
+        /// <summary>The CLDR country/region code associated with the above IP address. If the IP address is private,
+        /// the `region_code` should reflect the physical location where this peer is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>The canonical service name of the peer.
+        ///
+        /// NOTE: different systems may have different service naming schemes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2021,6 +2148,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// made from the `my-project` App Engine app. NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
+
+        /// <summary>The destination of a network activity, such as accepting a TCP connection. In a multi hop network
+        /// activity, the destination represents the receiver of the last hop. Only two fields are used in this message,
+        /// Peer.port and Peer.ip. These fields are optionally populated by those services utilizing the IAM condition
+        /// feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationAttributes")]
+        public virtual Peer DestinationAttributes { get; set; } 
 
         /// <summary>Request attributes used in IAM condition evaluation. This field contains request attributes like
         /// request time and access levels associated with the request.

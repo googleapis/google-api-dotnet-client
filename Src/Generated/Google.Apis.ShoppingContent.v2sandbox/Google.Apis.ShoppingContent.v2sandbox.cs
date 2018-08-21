@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20180731 (1307)
+ *      <tr><th>API Rev<td>20180809 (1316)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -365,7 +365,9 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         }
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders.</summary>
+        /// payment orders. This can only be used for line items that have previously been charged using
+        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// invoice.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -376,7 +378,9 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         }
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders.</summary>
+        /// payment orders. This can only be used for line items that have previously been charged using
+        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// invoice.</summary>
         public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrderinvoicesCreateRefundInvoiceResponse>
         {
             /// <summary>Constructs a new Createrefundinvoice request.</summary>
@@ -1819,7 +1823,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Deprecated, please use returnRefundLineItem instead.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -1829,7 +1833,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new RefundRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Deprecated, please use returnRefundLineItem instead.</summary>
         public class RefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersRefundResponse>
         {
             /// <summary>Constructs a new Refund request.</summary>
@@ -2640,20 +2644,23 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeSummaries")]
         public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; } 
 
-        /// <summary>[required] Customer balance on this invoice. A positive amount means the customer is paying, a
-        /// negative one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and
-        /// google_balance must always be zero.</summary>
+        /// <summary>[required] Customer balance on this invoice. A negative amount means the customer is paying, a
+        /// positive one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and
+        /// google_balance must always be zero.
+        ///
+        /// Furthermore the absolute value of this amount is expected to be equal to the sum of product amount and
+        /// additional charges, minus promotions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerBalance")]
         public virtual Amount CustomerBalance { get; set; } 
 
-        /// <summary>[required] Google balance on this invoice. A positive amount means Google is paying, a negative one
+        /// <summary>[required] Google balance on this invoice. A negative amount means Google is paying, a positive one
         /// means Google is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must
         /// always be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleBalance")]
         public virtual Amount GoogleBalance { get; set; } 
 
-        /// <summary>[required] Merchant balance on this invoice. A positive amount means the merchant is paying, a
-        /// negative one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and
+        /// <summary>[required] Merchant balance on this invoice. A negative amount means the merchant is paying, a
+        /// positive one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and
         /// google_balance must always be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantBalance")]
         public virtual Amount MerchantBalance { get; set; } 
@@ -3976,8 +3983,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrdersCustomBatchRequestEntryReturnRefundLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be
-        /// set.</summary>
+        /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
+        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
@@ -4417,8 +4424,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrdersReturnRefundLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be
-        /// set.</summary>
+        /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
+        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 

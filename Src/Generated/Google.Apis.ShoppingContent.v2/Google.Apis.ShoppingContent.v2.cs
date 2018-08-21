@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180731 (1307)
+ *      <tr><th>API Rev<td>20180809 (1316)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -4233,7 +4233,9 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders.</summary>
+        /// payment orders. This can only be used for line items that have previously been charged using
+        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// invoice.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -4244,7 +4246,9 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders.</summary>
+        /// payment orders. This can only be used for line items that have previously been charged using
+        /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
+        /// invoice.</summary>
         public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceResponse>
         {
             /// <summary>Constructs a new Createrefundinvoice request.</summary>
@@ -5687,7 +5691,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Deprecated, please use returnRefundLineItem instead.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -5697,7 +5701,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new RefundRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Deprecated, please use returnRefundLineItem instead.</summary>
         public class RefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersRefundResponse>
         {
             /// <summary>Constructs a new Refund request.</summary>
@@ -8554,6 +8558,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>List of product-related data by channel, destination, and country. Data in this field may be
+        /// delayed by up to 30 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<AccountStatusProducts> Products { get; set; } 
+
         /// <summary>Whether the account's website is claimed or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteClaimed")]
         public virtual System.Nullable<bool> WebsiteClaimed { get; set; } 
@@ -8665,6 +8674,92 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The actual value on the landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueOnLandingPage")]
         public virtual string ValueOnLandingPage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; } 
+
+        /// <summary>The error code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>A short issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>A detailed issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
+        /// <summary>The URL of a web page to help with resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual string Documentation { get; set; } 
+
+        /// <summary>Number of items with this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numItems")]
+        public virtual System.Nullable<long> NumItems { get; set; } 
+
+        /// <summary>Whether the issue can be resolved by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; } 
+
+        /// <summary>How this issue affects serving of the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servability")]
+        public virtual string Servability { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountStatusProducts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The channel the data applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; } 
+
+        /// <summary>The country the data applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The destination the data applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
+        /// <summary>List of item-level issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemLevelIssues")]
+        public virtual System.Collections.Generic.IList<AccountStatusItemLevelIssue> ItemLevelIssues { get; set; } 
+
+        /// <summary>Aggregated product statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
+        public virtual AccountStatusStatistics Statistics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountStatusStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of active offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<long> Active { get; set; } 
+
+        /// <summary>Number of disapproved offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapproved")]
+        public virtual System.Nullable<long> Disapproved { get; set; } 
+
+        /// <summary>Number of expiring offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiring")]
+        public virtual System.Nullable<long> Expiring { get; set; } 
+
+        /// <summary>Number of pending offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pending")]
+        public virtual System.Nullable<long> Pending { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10087,20 +10182,23 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeSummaries")]
         public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; } 
 
-        /// <summary>[required] Customer balance on this invoice. A positive amount means the customer is paying, a
-        /// negative one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and
-        /// google_balance must always be zero.</summary>
+        /// <summary>[required] Customer balance on this invoice. A negative amount means the customer is paying, a
+        /// positive one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and
+        /// google_balance must always be zero.
+        ///
+        /// Furthermore the absolute value of this amount is expected to be equal to the sum of product amount and
+        /// additional charges, minus promotions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerBalance")]
         public virtual Amount CustomerBalance { get; set; } 
 
-        /// <summary>[required] Google balance on this invoice. A positive amount means Google is paying, a negative one
+        /// <summary>[required] Google balance on this invoice. A negative amount means Google is paying, a positive one
         /// means Google is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must
         /// always be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleBalance")]
         public virtual Amount GoogleBalance { get; set; } 
 
-        /// <summary>[required] Merchant balance on this invoice. A positive amount means the merchant is paying, a
-        /// negative one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and
+        /// <summary>[required] Merchant balance on this invoice. A negative amount means the merchant is paying, a
+        /// positive one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and
         /// google_balance must always be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantBalance")]
         public virtual Amount MerchantBalance { get; set; } 
@@ -11772,8 +11870,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryReturnRefundLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be
-        /// set.</summary>
+        /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
+        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
@@ -12213,8 +12311,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersReturnRefundLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount that is refunded. Optional, but if filled then both amountPretax and amountTax must be
-        /// set.</summary>
+        /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
+        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 

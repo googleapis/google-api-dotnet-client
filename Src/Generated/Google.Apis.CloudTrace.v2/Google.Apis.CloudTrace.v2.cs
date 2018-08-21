@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180728 (1304)
+ *      <tr><th>API Rev<td>20180813 (1320)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -716,10 +716,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual System.Nullable<int> ChildSpanCount { get; set; } 
 
         /// <summary>A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description
-        /// in the {% dynamic print site_values.console_name %}. For example, the display name can be a qualified method
-        /// name or a file name and a line number where the operation is called. A best practice is to use the same
-        /// display name within an application and at the same call point. This makes it easier to correlate spans in
-        /// different traces.</summary>
+        /// in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file
+        /// name and a line number where the operation is called. A best practice is to use the same display name within
+        /// an application and at the same call point. This makes it easier to correlate spans in different
+        /// traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; } 
 

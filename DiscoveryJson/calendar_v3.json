@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/BWfTPmIEozd8pbADypWxnqQAueo\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/UfSqMqLGclhjNS9q0g-j705eXE8\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20180805",
+ "revision": "20180814",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -860,7 +860,7 @@
     },
     "originalStartTime": {
      "$ref": "EventDateTime",
-     "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. Immutable."
+     "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."
     },
     "privateCopy": {
      "type": "boolean",

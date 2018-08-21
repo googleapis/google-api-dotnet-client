@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ztgjlQ5bv4-PExM5zD6k0Pnqwmg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Nz7EqsJaWIDJp3FUTW78pyd2v30\"",
  "discoveryVersion": "v1",
  "id": "customsearch:v1",
  "name": "customsearch",
  "version": "v1",
- "revision": "20180725",
+ "revision": "20180815",
  "title": "CustomSearch API",
  "description": "Searches over a website or collection of websites",
  "ownerDomain": "google.com",
@@ -550,15 +550,17 @@
       },
       "imgDominantColor": {
        "type": "string",
-       "description": "Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
+       "description": "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
        "enum": [
         "black",
         "blue",
         "brown",
         "gray",
         "green",
+        "orange",
         "pink",
         "purple",
+        "red",
         "teal",
         "white",
         "yellow"
@@ -569,8 +571,10 @@
         "brown",
         "gray",
         "green",
+        "orange",
         "pink",
         "purple",
+        "red",
         "teal",
         "white",
         "yellow"
@@ -741,13 +745,15 @@
        "description": "Search safety level",
        "default": "off",
        "enum": [
+        "active",
         "high",
         "medium",
         "off"
        ],
        "enumDescriptions": [
-        "Enables highest level of safe search filtering.",
-        "Enables moderate safe search filtering.",
+        "Enables safe search filtering.",
+        "(Deprecated) Same as active.",
+        "(Deprecated) Same as active.",
         "Disables safe search filtering."
        ],
        "location": "query"
@@ -900,15 +906,17 @@
         },
         "imgDominantColor": {
          "type": "string",
-         "description": "Returns images of a specific dominant color: yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
+         "description": "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown.",
          "enum": [
           "black",
           "blue",
           "brown",
           "gray",
           "green",
+          "orange",
           "pink",
           "purple",
+          "red",
           "teal",
           "white",
           "yellow"
@@ -919,8 +927,10 @@
           "brown",
           "gray",
           "green",
+          "orange",
           "pink",
           "purple",
+          "red",
           "teal",
           "white",
           "yellow"

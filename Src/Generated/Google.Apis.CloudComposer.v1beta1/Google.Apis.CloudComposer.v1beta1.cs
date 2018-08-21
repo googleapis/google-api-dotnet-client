@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180718 (1294)
+ *      <tr><th>API Rev<td>20180815 (1322)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -595,13 +595,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of environments to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -637,18 +637,18 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1183,7 +1183,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
         public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
 
-        /// <summary>The page token used to query for the next page if one exists</summary>
+        /// <summary>The page token used to query for the next page if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1248,10 +1248,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
         /// "projects/{projectId}/global/networks/{networkId}".
         ///
-        /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's
-        /// project. If unspecified, the "default" network ID in the environment's project is used.  If a [Custom Subnet
+        /// If unspecified, the default network in the environment's project is used. If a [Custom Subnet
         /// Network]((/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be
-        /// provided.</summary>
+        /// provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see
+        /// `nodeConfig.subnetwork`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
@@ -1271,7 +1271,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}"
         ///
         /// If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to
-        /// the enclosing environment's project and location.</summary>
+        /// the same project as the network.
+        ///
+        /// For Shared VPC, you must configure the subnetwork with secondary ranges named composer-pods and composer-
+        /// services to support Alias IPs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 

@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Memorystore for Redis API Version v1beta1
+ *   Google Cloud Memorystore for Redis API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Cloud Memorystore for Redis API</a>
+ *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180717 (1293)
+ *      <tr><th>API Rev<td>20180816 (1323)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Memorystore for Redis API can be found at
+ * The complete API documentation for using Google Cloud Memorystore for Redis API can be found at
  * <a href='https://cloud.google.com/memorystore/docs/redis/'>https://cloud.google.com/memorystore/docs/redis/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudRedis.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Memorystore for Redis API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Memorystore for Redis API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -653,6 +653,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>The maximum number of items to return.
                     ///
                     /// If not specified, a default value of 1000 will be used by the service. Regardless of the
@@ -661,10 +665,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// queried.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -700,18 +700,18 @@ namespace Google.Apis.CloudRedis.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -848,6 +848,142 @@ namespace Google.Apis.CloudRedis.v1beta1
                 }
 
 
+                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
+                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// `Code.CANCELLED`.</summary>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(service, name);
+                }
+
+                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
+                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
+                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// `Code.CANCELLED`.</summary>
+                public class CancelRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "cancel"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}:cancel"; }
+                    }
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
+                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
+                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                public class DeleteRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
@@ -947,6 +1083,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -954,10 +1094,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -993,6 +1129,15 @@ namespace Google.Apis.CloudRedis.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1005,15 +1150,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1188,6 +1324,18 @@ namespace Google.Apis.CloudRedis.v1beta1
 
 namespace Google.Apis.CloudRedis.v1beta1.Data
 {    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudCommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1414,16 +1562,18 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        /// <summary>Resource ID for the region. For example: "us-east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        /// <summary>Output only. The set of available zones in the location. The map is keyed by the lowercase ID of
+        /// each zone, as defined by Compute Engine. These keys can be specified in `location_id` or
+        /// `alternative_location_id` fields when creating a Redis instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
+        /// <summary>Full resource name for the region. For example: "projects/example-project/locations/us-
+        /// east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1443,9 +1593,25 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>{
+        ///
+        /// `createTime`: The time the operation was created.
+        ///
+        /// `endTime`: The time the operation finished running.
+        ///
+        /// `target`: Server-defined resource path for the target of the operation.
+        ///
+        /// `verb`: Name of the verb executed by the operation.
+        ///
+        /// `statusDetail`: Human-readable status of the operation, if any.
+        ///
+        /// `cancelRequested`: Identifies whether the user has requested cancellation of the operation. Operations that
+        /// have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
+        ///
+        /// `apiVersion`: API version used to start the operation.
+        ///
+        /// }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 

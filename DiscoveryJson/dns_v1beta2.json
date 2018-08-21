@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/elaNLnWLaMqc53nSJ8m-QtPHsGI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/nz4rMSs8lcAZelhiOIB-lCYsb-A\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",
  "version": "v1beta2",
- "revision": "20180802",
+ "revision": "20180813",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -592,10 +592,6 @@
    "type": "object",
    "description": "Limits associated with a Project.",
    "properties": {
-    "blackHoleHidesSystemZones": {
-     "type": "boolean",
-     "description": "Whether a black hole zone should suppress system zones for this project."
-    },
     "dnsKeysPerManagedZone": {
      "type": "integer",
      "description": "Maximum allowed number of DnsKeys per ManagedZone.",

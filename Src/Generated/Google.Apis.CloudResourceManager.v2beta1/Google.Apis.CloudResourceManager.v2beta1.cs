@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180806 (1313)
+ *      <tr><th>API Rev<td>20180815 (1322)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -675,11 +675,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             }
 
 
-            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
-            /// This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
             /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
             /// listing should continue from. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -694,6 +689,11 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
+            /// This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -720,15 +720,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -750,6 +741,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -849,7 +849,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         ///
         /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
         /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
-        /// [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
+        /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
         /// permission on the identified folder.
         ///
         /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
@@ -868,7 +868,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         ///
         /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
         /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
-        /// [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
+        /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
         /// permission on the identified folder.
         ///
         /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
@@ -1458,7 +1458,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         /// <summary>The folder’s display name. A folder’s display name must be unique amongst its siblings, e.g. no two
         /// folders with the same parent can share the same display name. The display name must start and end with a
         /// letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30
-        /// characters. This is captured by the regular expression: [\p{L}\p{N}]({\p{L}\p{N}_-
+        /// characters. This is captured by the regular expression: [\p{L}\p{N}]([\p{L}\p{N}_-
         /// ]{0,28}[\p{L}\p{N}])?.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 

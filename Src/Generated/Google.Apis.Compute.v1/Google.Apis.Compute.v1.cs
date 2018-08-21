@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180716 (1292)
+ *      <tr><th>API Rev<td>20180730 (1306)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17636,6 +17636,97 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Simulates a maintenance event on the instance.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual SimulateMaintenanceEventRequest SimulateMaintenanceEvent(string project, string zone, string instance)
+        {
+            return new SimulateMaintenanceEventRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Simulates a maintenance event on the instance.</summary>
+        public class SimulateMaintenanceEventRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SimulateMaintenanceEvent request.</summary>
+            public SimulateMaintenanceEventRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "simulateMaintenanceEvent"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent"; }
+            }
+
+            /// <summary>Initializes SimulateMaintenanceEvent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -43611,11 +43702,11 @@ namespace Google.Apis.Compute.v1.Data
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
-        /// example, specify family/debian-8 to use the latest Debian 8 image: projects/debian-
-        /// cloud/global/images/family/debian-8
+        /// example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-
+        /// cloud/global/images/family/debian-9
         ///
         /// Alternatively, use a specific version of a public operating system image: projects/debian-
-        /// cloud/global/images/debian-8-jessie-vYYYYMMDD
+        /// cloud/global/images/debian-9-stretch-vYYYYMMDD
         ///
         /// To create a disk with a custom image that you created, specify the image name in the following format:
         /// global/images/my-custom-image
@@ -45092,7 +45183,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 
-        /// <summary>Any applicable publicly visible licenses.</summary>
+        /// <summary>A list of publicly visible licenses. Reserved for Google's use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
@@ -45137,11 +45228,11 @@ namespace Google.Apis.Compute.v1.Data
         /// set.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
-        /// example, specify family/debian-8 to use the latest Debian 8 image: projects/debian-
-        /// cloud/global/images/family/debian-8
+        /// example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-
+        /// cloud/global/images/family/debian-9
         ///
         /// Alternatively, use a specific version of a public operating system image: projects/debian-
-        /// cloud/global/images/debian-8-jessie-vYYYYMMDD
+        /// cloud/global/images/debian-9-stretch-vYYYYMMDD
         ///
         /// To create a disk with a custom image that you created, specify the image name in the following format:
         /// global/images/my-custom-image
@@ -47287,9 +47378,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>A list of tags to apply to this instance. Tags are used to identify valid sources or targets for
-        /// network firewalls and are specified by the client during instance creation. The tags can be later modified
-        /// by the setTags method. Each tag within the list must comply with RFC1035.</summary>
+        /// <summary>Tags to apply to this instance. Tags are used to identify valid sources or targets for network
+        /// firewalls and are specified by the client during instance creation. The tags can be later modified by the
+        /// setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the
+        /// 'tags.items' field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual Tags Tags { get; set; } 
 

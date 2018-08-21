@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ServiceUser.v1 Client Library</Title>
-    <Version>1.35.1.1310</Version>
+    <Version>1.35.1.1320</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -68,12 +68,11 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
     <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
-    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
     <AppConfig>app.netstandard10.config</AppConfig>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
-    <PackageReference Include="Google.Apis" Version="[1.25.0]" />
-    <PackageReference Include="Google.Apis.Auth" Version="[1.25.0]" />
+    <PackageReference Include="Google.Apis" Version="[1.25.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.25.0]" ExcludeAssets="build" />
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
   </ItemGroup>
 
@@ -87,8 +86,8 @@
     <AppConfig>app.net40.config</AppConfig>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
-    <PackageReference Include="Google.Apis" Version="[1.10.0]" />
-    <PackageReference Include="Google.Apis.Auth" Version="[1.10.0]" />
+    <PackageReference Include="Google.Apis" Version="[1.10.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.10.0]" ExcludeAssets="build" />
   </ItemGroup>
 
 </Project>

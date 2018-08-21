@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/B4aXxIhRLBHpEBerYr1Z1zB_7ok\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/76kDbNvsClwCFP6NXuYbeq_-TWY\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20180716",
+ "revision": "20180730",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1135,7 +1135,7 @@
     },
     "sourceImage": {
      "type": "string",
-     "description": "The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or disks.source is required except for local SSD.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:\nprojects/debian-cloud/global/images/family/debian-8\n\n\nAlternatively, use a specific version of a public operating system image:\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD\n\n\nTo create a disk with a custom image that you created, specify the image name in the following format:\nglobal/images/my-custom-image\n\n\nYou can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\nglobal/images/family/my-image-family\n\n\nIf the source image is deleted later, this field will not be set."
+     "description": "The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or disks.source is required except for local SSD.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:\nprojects/debian-cloud/global/images/family/debian-9\n\n\nAlternatively, use a specific version of a public operating system image:\nprojects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD\n\n\nTo create a disk with a custom image that you created, specify the image name in the following format:\nglobal/images/my-custom-image\n\n\nYou can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\nglobal/images/family/my-image-family\n\n\nIf the source image is deleted later, this field will not be set."
     },
     "sourceImageEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
@@ -3259,7 +3259,7 @@
     },
     "licenses": {
      "type": "array",
-     "description": "Any applicable publicly visible licenses.",
+     "description": "A list of publicly visible licenses. Reserved for Google's use.",
      "items": {
       "type": "string"
      }
@@ -3307,7 +3307,7 @@
     },
     "sourceImage": {
      "type": "string",
-     "description": "The source image used to create this disk. If the source image is deleted, this field will not be set.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:\nprojects/debian-cloud/global/images/family/debian-8\n\n\nAlternatively, use a specific version of a public operating system image:\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD\n\n\nTo create a disk with a custom image that you created, specify the image name in the following format:\nglobal/images/my-custom-image\n\n\nYou can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\nglobal/images/family/my-image-family"
+     "description": "The source image used to create this disk. If the source image is deleted, this field will not be set.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:\nprojects/debian-cloud/global/images/family/debian-9\n\n\nAlternatively, use a specific version of a public operating system image:\nprojects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD\n\n\nTo create a disk with a custom image that you created, specify the image name in the following format:\nglobal/images/my-custom-image\n\n\nYou can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\nglobal/images/family/my-image-family"
     },
     "sourceImageEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
@@ -6306,7 +6306,7 @@
     },
     "tags": {
      "$ref": "Tags",
-     "description": "A list of tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035."
+     "description": "Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field."
     },
     "zone": {
      "type": "string",
@@ -7200,7 +7200,7 @@
     },
     "minimalAction": {
      "type": "string",
-     "description": "Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a code\u003eRESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.",
+     "description": "Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.",
      "enum": [
       "REPLACE",
       "RESTART"
@@ -13521,6 +13521,7 @@
       "DISKS_TOTAL_GB",
       "FIREWALLS",
       "FORWARDING_RULES",
+      "GPUS_ALL_REGIONS",
       "HEALTH_CHECKS",
       "IMAGES",
       "INSTANCES",
@@ -13573,6 +13574,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -16354,7 +16356,7 @@
   "SecurityPolicy": {
    "id": "SecurityPolicy",
    "type": "object",
-   "description": "A security policy is comprised of one or more rules. It can also be associated with one or more 'targets'. Next available tag: 11 (== resource_for beta.securityPolicies ==)",
+   "description": "A security policy is comprised of one or more rules. It can also be associated with one or more 'targets'. (== resource_for beta.securityPolicies ==)",
    "properties": {
     "creationTimestamp": {
      "type": "string",
@@ -16378,6 +16380,18 @@
      "type": "string",
      "description": "[Output only] Type of the resource. Always compute#securityPolicyfor security policies",
      "default": "compute#securityPolicy"
+    },
+    "labelFingerprint": {
+     "type": "string",
+     "description": "A fingerprint for the labels being applied to this security policy, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.\n\nTo see the latest fingerprint, make get() request to the security policy.",
+     "format": "byte"
+    },
+    "labels": {
+     "type": "object",
+     "description": "Labels to apply to this security policy resource. These can be later modified by the setLabels method. Each label key/value must comply with RFC1035. Label values may be empty.",
+     "additionalProperties": {
+      "type": "string"
+     }
     },
     "name": {
      "type": "string",
@@ -16648,26 +16662,26 @@
    "properties": {
     "enableIntegrityMonitoring": {
      "type": "boolean",
-     "description": "Defines whether the instance should have integrity monitoring enabled."
+     "description": "Defines whether the instance has integrity monitoring enabled."
     },
     "enableSecureBoot": {
      "type": "boolean",
-     "description": "Defines whether the instance should have secure boot enabled."
+     "description": "Defines whether the instance has Secure Boot enabled."
     },
     "enableVtpm": {
      "type": "boolean",
-     "description": "Defines whether the instance should have the TPM enabled."
+     "description": "Defines whether the instance has the vTPM enabled."
     }
    }
   },
   "ShieldedVmIntegrityPolicy": {
    "id": "ShieldedVmIntegrityPolicy",
    "type": "object",
-   "description": "The policy describes how boot integrity measurements are evaluated.",
+   "description": "The policy describes the baseline against which VM instance boot integrity is measured.",
    "properties": {
     "updateAutoLearnPolicy": {
      "type": "boolean",
-     "description": "Triggers an auto relearn event: the integrity monitoring module copies existing guest measurements to the baseline."
+     "description": "Updates the integrity policy baseline using the measurements from the VM instance's most recent boot."
     }
    }
   },
@@ -28962,7 +28976,7 @@
      "id": "compute.instances.setShieldedVmIntegrityPolicy",
      "path": "{project}/zones/{zone}/instances/{instance}/setShieldedVmIntegrityPolicy",
      "httpMethod": "PATCH",
-     "description": "Sets the Shielded VM integrity policy for an instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+     "description": "Sets the Shielded VM integrity policy for a VM instance. You can only use this method on a running VM instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
      "parameters": {
       "instance": {
        "type": "string",
@@ -29399,7 +29413,7 @@
      "id": "compute.instances.updateShieldedVmConfig",
      "path": "{project}/zones/{zone}/instances/{instance}/updateShieldedVmConfig",
      "httpMethod": "PATCH",
-     "description": "Updates the Shielded VM config for an instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+     "description": "Updates the Shielded VM config for a VM instance. You can only use this method on a stopped VM instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
      "parameters": {
       "instance": {
        "type": "string",
@@ -36927,6 +36941,42 @@
       "project",
       "securityPolicy"
      ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setLabels": {
+     "id": "compute.securityPolicies.setLabels",
+     "path": "{project}/global/securityPolicies/{resource}/setLabels",
+     "httpMethod": "POST",
+     "description": "Sets the labels on a security policy. To learn more about labels, read the Labeling Resources documentation.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "resource"
+     ],
+     "request": {
+      "$ref": "GlobalSetLabelsRequest"
+     },
      "response": {
       "$ref": "Operation"
      },
