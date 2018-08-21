@@ -78,12 +78,11 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
     <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
-    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
     <AppConfig>app.netstandard10.config</AppConfig>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
-    <PackageReference Include="Google.Apis" Version="[{{ features.pclSupportVersion }}]" />{% if api.authscopes %}
-    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.pclSupportVersion }}]" />{% endif %}
+    <PackageReference Include="Google.Apis" Version="[{{ features.pclSupportVersion }}]" ExcludeAssets="build" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.pclSupportVersion }}]" ExcludeAssets="build" />{% endif %}
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
   </ItemGroup>
 
@@ -97,8 +96,8 @@
     <AppConfig>app.net40.config</AppConfig>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
-    <PackageReference Include="Google.Apis" Version="[{{ features.net40SupportVersion }}]" />{% if api.authscopes %}
-    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.net40SupportVersion }}]" />{% endif %}
+    <PackageReference Include="Google.Apis" Version="[{{ features.net40SupportVersion }}]" ExcludeAssets="build" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.net40SupportVersion }}]" ExcludeAssets="build" />{% endif %}
   </ItemGroup>
 
 </Project>
