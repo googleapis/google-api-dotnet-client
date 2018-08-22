@@ -9,18 +9,18 @@
     "violatingSites": {
       "methods": {
         "list": {
+          "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "GET",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "parameters": {},
           "flatPath": "v1/violatingSites",
-          "path": "v1/violatingSites",
           "id": "abusiveexperiencereport.violatingSites.list",
+          "path": "v1/violatingSites",
           "description": "Lists sites with Abusive Experience Report statuses of \"Failing\"."
         }
       }
@@ -28,6 +28,8 @@
     "sites": {
       "methods": {
         "get": {
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get",
           "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
@@ -36,74 +38,46 @@
             "name"
           ],
           "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "pattern": "^sites/[^/]+$",
+              "location": "path",
+              "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
+              "required": true,
+              "type": "string"
+            }
+          },
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "parameters": {
-            "name": {
-              "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
-              "required": true,
-              "type": "string",
-              "pattern": "^sites/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get"
+          "flatPath": "v1/sites/{sitesId}"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
       "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
     },
     "oauth_token": {
       "location": "query",
       "description": "OAuth 2.0 token for the current user.",
       "type": "string"
     },
-    "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
     },
     "alt": {
       "enumDescriptions": [
@@ -121,15 +95,41 @@
       ],
       "type": "string"
     },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     }
   },
   "version": "v1",
@@ -138,14 +138,13 @@
   "description": "View Abusive Experience Report data, and get a list of sites that have a significant number of abusive experiences.",
   "servicePath": "",
   "basePath": "",
-  "revision": "20180807",
-  "documentationLink": "https://developers.google.com/abusive-experience-report/",
   "id": "abusiveexperiencereport:v1",
+  "documentationLink": "https://developers.google.com/abusive-experience-report/",
+  "revision": "20180807",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
         "violatingSites": {
@@ -156,13 +155,21 @@
           }
         }
       },
-      "id": "ViolatingSitesResponse"
+      "id": "ViolatingSitesResponse",
+      "description": "Response message for ListViolatingSites."
     },
     "SiteSummaryResponse": {
       "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.ads.experiencereport.v1",
       "type": "object",
       "properties": {
         "filterStatus": {
+          "enumDescriptions": [
+            "N/A.",
+            "Ad filtering is on.",
+            "Ad filtering is off.",
+            "Ad filtering is paused.",
+            "Ad filtering is pending."
+          ],
           "enum": [
             "UNKNOWN",
             "ON",
@@ -171,14 +178,7 @@
             "PENDING"
           ],
           "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
-          "enumDescriptions": [
-            "N/A.",
-            "Ad filtering is on.",
-            "Ad filtering is off.",
-            "Ad filtering is paused.",
-            "Ad filtering is pending."
-          ]
+          "type": "string"
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -188,28 +188,28 @@
           "description": "A link that leads to a full abusive experience report.",
           "type": "string"
         },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
         "lastChangeTime": {
           "description": "The last time that the site changed status.",
           "format": "google-datetime",
           "type": "string"
         },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
+        },
         "abusiveStatus": {
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
+          ],
           "enum": [
             "UNKNOWN",
             "PASSING",
             "FAILING"
           ],
           "description": "The status of the site reviewed for the abusive experiences.",
-          "type": "string",
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ]
+          "type": "string"
         },
         "enforcementTime": {
           "description": "The date on which enforcement begins.",
