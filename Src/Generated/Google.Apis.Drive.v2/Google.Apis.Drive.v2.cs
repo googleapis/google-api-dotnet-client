@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180809 (1316)
+ *      <tr><th>API Rev<td>20180816 (1323)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -9316,6 +9316,11 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
             public virtual System.Nullable<bool> CanDelete { get; set; } 
 
+            /// <summary>Whether the current user can delete children of this folder. This is false when the item is not
+            /// a folder. Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+
             /// <summary>Whether the current user can download this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
             public virtual System.Nullable<bool> CanDownload { get; set; } 
@@ -9329,14 +9334,34 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
             public virtual System.Nullable<bool> CanListChildren { get; set; } 
 
+            /// <summary>Whether the current user can move children of this folder outside of the Team Drive. This is
+            /// false when the item is not a folder. Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfTeamDrive")]
+            public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; } 
+
+            /// <summary>Whether the current user can move children of this folder within the Team Drive. This is false
+            /// when the item is not a folder. Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinTeamDrive")]
+            public virtual System.Nullable<bool> CanMoveChildrenWithinTeamDrive { get; set; } 
+
             /// <summary>Whether the current user can move this item into a Team Drive. If the item is in a Team Drive,
             /// this field is equivalent to canMoveTeamDriveItem.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemIntoTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move this Team Drive item by changing its parent. Note that a
-            /// request to change the parent for this item may still fail depending on the new parent that is being
-            /// added. Only populated for Team Drive files.</summary>
+            /// <summary>Whether the current user can move this Team Drive item outside of this Team Drive by changing
+            /// its parent. Note that a request to change the parent of the item may still fail depending on the new
+            /// parent that is being added. Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfTeamDrive")]
+            public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; } 
+
+            /// <summary>Whether the current user can move this Team Drive item within this Team Drive. Note that a
+            /// request to change the parent of the item may still fail depending on the new parent that is being added.
+            /// Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinTeamDrive")]
+            public virtual System.Nullable<bool> CanMoveItemWithinTeamDrive { get; set; } 
+
+            /// <summary>Deprecated - use canMoveItemWithinTeamDrive or canMoveItemOutOfTeamDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveTeamDriveItem")]
             public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; } 
 
@@ -9352,7 +9377,7 @@ namespace Google.Apis.Drive.v2.Data
             public virtual System.Nullable<bool> CanReadTeamDrive { get; set; } 
 
             /// <summary>Whether the current user can remove children from this folder. This is always false when the
-            /// item is not a folder.</summary>
+            /// item is not a folder. For Team Drive items, use canDeleteChildren or canTrashChildren instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
 
@@ -9367,6 +9392,11 @@ namespace Google.Apis.Drive.v2.Data
             /// <summary>Whether the current user can move this file to trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrash")]
             public virtual System.Nullable<bool> CanTrash { get; set; } 
+
+            /// <summary>Whether the current user can trash children of this folder. This is false when the item is not
+            /// a folder. Only populated for Team Drive items.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
 
             /// <summary>Whether the current user can restore this file from trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canUntrash")]
@@ -10166,6 +10196,10 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; } 
 
+            /// <summary>Whether the current user can delete children from folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+
             /// <summary>Whether the current user can delete this Team Drive. Attempting to delete the Team Drive may
             /// still fail if there are untrashed items inside the Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteTeamDrive")]
@@ -10192,7 +10226,7 @@ namespace Google.Apis.Drive.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
 
-            /// <summary>Whether the current user can remove children from folders in this Team Drive.</summary>
+            /// <summary>Deprecated - use canDeleteChildren or canTrashChildren instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
 
@@ -10207,6 +10241,10 @@ namespace Google.Apis.Drive.v2.Data
             /// <summary>Whether the current user can share files or folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
             public virtual System.Nullable<bool> CanShare { get; set; } 
+
+            /// <summary>Whether the current user can trash children from folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
 
         }    
 
