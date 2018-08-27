@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20180809 (1316)
+ *      <tr><th>API Rev<td>20180821 (1328)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1534,7 +1534,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Notifies that item return and refund was handled directly in store.</summary>
+        /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
+        /// processing (e.g. cash refund done in store).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -1544,7 +1545,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new InstorerefundlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Notifies that item return and refund was handled directly in store.</summary>
+        /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
+        /// processing (e.g. cash refund done in store).</summary>
         public class InstorerefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersInStoreRefundLineItemResponse>
         {
             /// <summary>Constructs a new Instorerefundlineitem request.</summary>

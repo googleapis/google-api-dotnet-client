@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/job-discovery/docs'>Cloud Talent Solution API</a>
+ *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180820 (1327)
+ *      <tr><th>API Rev<td>20180821 (1328)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/job-discovery/docs'>
- *              https://cloud.google.com/job-discovery/docs</a>
+ *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
+ *              https://cloud.google.com/talent-solution/job-search/docs/</a>
  *      <tr><th>Discovery Name<td>jobs
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud Talent Solution API can be found at
- * <a href='https://cloud.google.com/job-discovery/docs'>https://cloud.google.com/job-discovery/docs</a>.
+ * <a href='https://cloud.google.com/talent-solution/job-search/docs/'>https://cloud.google.com/talent-solution/job-search/docs/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -426,6 +426,16 @@ namespace Google.Apis.JobService.v2
 
                 /// <summary>Optional.
                 ///
+                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
+                ///
+                /// A typical use is to synchronize job repositories.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The maximum number of jobs to be returned per page of results.
                 ///
                 /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed
@@ -434,16 +444,6 @@ namespace Google.Apis.JobService.v2
                 /// Default is 100 if empty or a number < 1 is specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
-                ///
-                /// A typical use is to synchronize job repositories.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IdsOnly { get; set; }
 
                 /// <summary>Optional.
                 ///
@@ -505,18 +505,18 @@ namespace Google.Apis.JobService.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "idsOnly", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "idsOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "idsOnly",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1341,22 +1341,6 @@ namespace Google.Apis.JobService.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Optional.
             ///
             /// The starting point of a query result.</summary>
@@ -1384,6 +1368,22 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
 
+            /// <summary>Required.
+            ///
+            /// The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1409,15 +1409,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1439,6 +1430,15 @@ namespace Google.Apis.JobService.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1913,7 +1913,9 @@ namespace Google.Apis.JobService.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobLocation")]
         public virtual JobLocation JobLocation { get; set; } 
 
-        /// <summary>Travel time to reach the job.</summary>
+        /// <summary>The number of seconds required to travel to the job location from the query location. A duration of
+        /// 0 seconds indicates that the job is not reachable within the requested duration, but was returned as part of
+        /// an expanded query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("travelDuration")]
         public virtual object TravelDuration { get; set; } 
 

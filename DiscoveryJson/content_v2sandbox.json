@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/KvnwY7Xj6smoEY6Txpg_A-_ULmE\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kgPtidcipbzhbCRh7x96H2hAeIM\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20180809",
+ "revision": "20180821",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -3211,7 +3211,7 @@
      "id": "content.orders.instorerefundlineitem",
      "path": "{merchantId}/orders/{orderId}/inStoreRefundLineItem",
      "httpMethod": "POST",
-     "description": "Notifies that item return and refund was handled directly in store.",
+     "description": "Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).",
      "parameters": {
       "merchantId": {
        "type": "string",

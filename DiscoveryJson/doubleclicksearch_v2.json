@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/X_mgdtTE1fjs-fGQaC6-Rq6IwUM\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GcfJIDLEqFtVNDPxcArTmibrxb4\"",
  "discoveryVersion": "v1",
  "id": "doubleclicksearch:v2",
  "name": "doubleclicksearch",
  "version": "v2",
- "revision": "20180814",
+ "revision": "20180821",
  "title": "DoubleClick Search API",
  "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
  "ownerDomain": "google.com",

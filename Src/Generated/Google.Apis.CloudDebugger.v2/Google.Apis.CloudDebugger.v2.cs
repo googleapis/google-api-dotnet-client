@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180815 (1322)
+ *      <tr><th>API Rev<td>20180822 (1329)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>
@@ -960,15 +960,15 @@ namespace Google.Apis.CloudDebugger.v2
                         LOG,
                     }
 
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
-
                     /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
                     /// it includes only active breakpoints.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
                     /// <summary>This field is deprecated. The following fields are always stripped out of the result:
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
@@ -1036,18 +1036,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            "includeInactive", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeAllUsers",
+                                Name = "includeInactive",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeInactive",
+                                Name = "includeAllUsers",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

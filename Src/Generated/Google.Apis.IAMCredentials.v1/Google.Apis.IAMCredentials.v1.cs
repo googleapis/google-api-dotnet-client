@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>IAM Service Account Credentials API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180727 (1303)
+ *      <tr><th>API Rev<td>20180820 (1327)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>
  *              https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials</a>
