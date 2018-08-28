@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20180827 (1334)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -5005,7 +5005,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// `datetime.datetime` object can be converted to this format using
     /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
     /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`](
-    /// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime-- ) to obtain a
+    /// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
     /// formatter capable of generating timestamps in this format.</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {

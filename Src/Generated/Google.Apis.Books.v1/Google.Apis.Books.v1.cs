@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180810 (1317)
+ *      <tr><th>API Rev<td>20180824 (1331)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -8857,6 +8857,10 @@ namespace Google.Apis.Books.v1.Data
             /// <summary>A list of subject categories, such as "Fiction", "Suspense", etc.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("categories")]
             public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
+
+            /// <summary>Whether the volume has comics content.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("comicsContent")]
+            public virtual System.Nullable<bool> ComicsContent { get; set; } 
 
             /// <summary>An identifier for the version of the volume content (text & images). (In LITE
             /// projection)</summary>

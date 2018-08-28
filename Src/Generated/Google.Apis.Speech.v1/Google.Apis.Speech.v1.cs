@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180713 (1289)
+ *      <tr><th>API Rev<td>20180823 (1330)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -587,8 +587,8 @@ namespace Google.Apis.Speech.v1.Data
     }    
 
     /// <summary>Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri`
-    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [audio
-    /// limits](https://cloud.google.com/speech/limits#content).</summary>
+    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content limits
+    /// ](/speech-to-text/quotas#content).</summary>
     public class RecognitionAudio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields,
@@ -596,10 +596,11 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
-        /// <summary>URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`.
-        /// Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format:
-        /// `gs://bucket_name/object_name` (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more
-        /// information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris).</summary>
+        /// <summary>URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`. The
+        /// file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported,
+        /// which must be specified in the following format: `gs://bucket_name/object_name` (other URI formats return
+        /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
+        /// URIs](https://cloud.google.com/storage/docs/reference-uris).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -622,9 +623,8 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string Encoding { get; set; } 
 
         /// <summary>*Required* The language of the supplied audio as a [BCP-47](https://www.rfc-
-        /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
-        /// Support](https://cloud.google.com/speech/docs/languages) for a list of the currently supported language
-        /// codes.</summary>
+        /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language Support](/speech-to-
+        /// text/docs/languages) for a list of the currently supported language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -649,7 +649,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
-        /// <summary>*Optional* A means to provide context to assist the speech recognition.</summary>
+        /// <summary>*Optional* array of SpeechContext. A means to provide context to assist the speech recognition. For
+        /// more information, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; } 
 
@@ -692,8 +693,7 @@ namespace Google.Apis.Speech.v1.Data
         /// <summary>*Optional* A list of strings containing words and phrases "hints" so that the speech recognition is
         /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
-        /// words to the vocabulary of the recognizer. See [usage
-        /// limits](https://cloud.google.com/speech/limits#content).</summary>
+        /// words to the vocabulary of the recognizer. See [usage limits](/speech-to-text/quotas#content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
         public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
 
@@ -717,7 +717,7 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string Transcript { get; set; } 
 
         /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
-        /// enable_speaker_diarization is true, you will see all the words from the beginning of the audio.</summary>
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
 

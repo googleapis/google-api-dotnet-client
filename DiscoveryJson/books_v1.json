@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/zXlUtLtKmfs06RsIv8__fGNx7_k\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/8P7g5wNCVmRGHn94JiqOIxt3z6w\"",
  "discoveryVersion": "v1",
  "id": "books:v1",
  "name": "books",
  "version": "v1",
- "revision": "20180810",
+ "revision": "20180824",
  "title": "Books API",
  "description": "Searches for books and manages your Google Books library.",
  "ownerDomain": "google.com",
@@ -1956,6 +1956,10 @@
        "items": {
         "type": "string"
        }
+      },
+      "comicsContent": {
+       "type": "boolean",
+       "description": "Whether the volume has comics content."
       },
       "contentVersion": {
        "type": "string",

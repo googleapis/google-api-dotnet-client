@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180730 (1306)
+ *      <tr><th>API Rev<td>20180817 (1324)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -18119,14 +18119,16 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves aggregated list of instances.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
+        /// zones.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves aggregated list of instances.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
+        /// zones.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InstanceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -18974,7 +18976,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified instance's serial port output.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18984,7 +18986,7 @@ namespace Google.Apis.Compute.beta
             return new GetSerialPortOutputRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the specified instance's serial port output.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
         public class GetSerialPortOutputRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.SerialPortOutput>
         {
             /// <summary>Constructs a new GetSerialPortOutput request.</summary>
@@ -54297,6 +54299,10 @@ namespace Google.Apis.Compute.beta.Data
     /// both.</summary>
     public class AttachedDiskInitializeParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An optional description. Provide this property when creating the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>Specifies the disk name. If not specified, the default is to use the name of the instance. If the
         /// disk with the instance name exists already in the given zone/region, a new name will be automatically
         /// generated.</summary>
@@ -54306,10 +54312,6 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Specifies the size of the disk in base-2 GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
-
-        /// <summary>[Deprecated] Storage type of the disk.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskStorageType")]
-        public virtual string DiskStorageType { get; set; } 
 
         /// <summary>Specifies the disk type to use to create the instance. If not specified, the default is pd-
         /// standard, specified using the full URL. For example:
@@ -60737,8 +60739,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>[Output Only] Availability zone for this location. Within a metropolitan area (metro), maintenance
-        /// will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
+        /// <summary>[Output Only] Availability zone for this InterconnectLocation. Within a metropolitan area (metro),
+        /// maintenance will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
         /// "zone2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityZone")]
         public virtual string AvailabilityZone { get; set; } 
@@ -65826,7 +65828,7 @@ namespace Google.Apis.Compute.beta.Data
     }    
 
     /// <summary>A security policy is comprised of one or more rules. It can also be associated with one or more
-    /// 'targets'. (== resource_for beta.securityPolicies ==)</summary>
+    /// 'targets'. (== resource_for v1.securityPolicies ==) (== resource_for beta.securityPolicies ==)</summary>
     public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -66365,6 +66367,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>[Output Only] Expire time of the certificate. RFC3339</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTime { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -66373,6 +66379,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Configuration and status of a managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
+        public virtual SslCertificateManagedSslCertificate Managed { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -66389,6 +66399,19 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Configuration and status of a self-managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfManaged")]
+        public virtual SslCertificateSelfManagedSslCertificate SelfManaged { get; set; } 
+
+        /// <summary>[Output Only] Domains associated with the certificate via Subject Alternative Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> SubjectAlternativeNames { get; set; } 
+
+        /// <summary>(Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not
+        /// specified, the certificate is self-managed and the fields certificate and private_key are used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66464,6 +66487,43 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    /// <summary>Configuration and status of a managed SSL certificate.</summary>
+    public class SslCertificateManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] Detailed statuses of the domains specified for managed certificate
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainStatus")]
+        public virtual System.Collections.Generic.IDictionary<string,string> DomainStatus { get; set; } 
+
+        /// <summary>The domains for which a managed SSL certificate will be generated. Currently only single-domain
+        /// certs are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; } 
+
+        /// <summary>[Output only] Status of the managed certificate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration and status of a self-managed SSL certificate.</summary>
+    public class SslCertificateSelfManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
+        /// greater than 5 certs long. The chain must include at least one intermediate cert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; } 
+
+        /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class SslPoliciesList : Google.Apis.Requests.IDirectResponseSchema

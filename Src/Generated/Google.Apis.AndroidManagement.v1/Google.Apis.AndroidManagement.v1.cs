@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180813 (1320)
+ *      <tr><th>API Rev<td>20180820 (1327)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -723,10 +723,6 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -734,6 +730,10 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -769,15 +769,6 @@ namespace Google.Apis.AndroidManagement.v1
                                 Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -790,6 +781,15 @@ namespace Google.Apis.AndroidManagement.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2505,6 +2505,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>The user who owns the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; } 
+
         /// <summary>The resource name of the user that owns this device in the form
         /// enterprises/{enterpriseId}/users/{userId}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
@@ -2638,6 +2642,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// java.util.Properties representation of the properties in the JSON.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qrCode")]
         public virtual string QrCode { get; set; } 
+
+        /// <summary>The user associated with this enrollment token. If it's specified when the enrollment token is
+        /// created and the user does not exist, the user will be created. This field must not contain personally
+        /// identifiable information. Only the account_identifier field needs to be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; } 
 
         /// <summary>The token value that's passed to the device and authorizes the device to enroll. This is a read-
         /// only field generated by the server.</summary>
@@ -3407,6 +3417,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("persistentPreferredActivities")]
         public virtual System.Collections.Generic.IList<PersistentPreferredActivity> PersistentPreferredActivities { get; set; } 
 
+        /// <summary>This mode controls which apps are available to the user in the Play Store and the behavior on the
+        /// device when apps are removed from the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playStoreMode")]
+        public virtual string PlayStoreMode { get; set; } 
+
         /// <summary>Allows showing UI on a device for a user to choose a private key alias if there are no matching
         /// rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys
         /// vulnerable.</summary>
@@ -3746,6 +3761,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>A short header which appears above the HTML content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual UserFacingMessage Header { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A user belonging to an enterprise.</summary>
+    public class User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A unique identifier you create for this user, such as user342 or asset#44418. This field must be
+        /// set when the user is created and can't be updated. This field must not contain personally identifiable
+        /// information (PII). This identifier must be 1024 characters or less; otherwise, the update policy request
+        /// will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountIdentifier")]
+        public virtual string AccountIdentifier { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

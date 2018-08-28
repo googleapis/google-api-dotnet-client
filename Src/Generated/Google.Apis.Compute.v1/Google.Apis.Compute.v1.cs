@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180730 (1306)
+ *      <tr><th>API Rev<td>20180817 (1324)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -106,6 +106,7 @@ namespace Google.Apis.Compute.v1
             regions = new RegionsResource(this);
             routers = new RoutersResource(this);
             routes = new RoutesResource(this);
+            securityPolicies = new SecurityPoliciesResource(this);
             snapshots = new SnapshotsResource(this);
             sslCertificates = new SslCertificatesResource(this);
             sslPolicies = new SslPoliciesResource(this);
@@ -520,6 +521,14 @@ namespace Google.Apis.Compute.v1
         public virtual RoutesResource Routes
         {
             get { return routes; }
+        }
+
+        private readonly SecurityPoliciesResource securityPolicies;
+
+        /// <summary>Gets the SecurityPolicies resource.</summary>
+        public virtual SecurityPoliciesResource SecurityPolicies
+        {
+            get { return securityPolicies; }
         }
 
         private readonly SnapshotsResource snapshots;
@@ -4500,6 +4509,113 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the security policy for the specified backend service.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendService">Name of the
+        /// BackendService resource to which the security policy should be set. The name should conform to RFC1035.</param>
+        public virtual SetSecurityPolicyRequest SetSecurityPolicy(Google.Apis.Compute.v1.Data.SecurityPolicyReference body, string project, string backendService)
+        {
+            return new SetSecurityPolicyRequest(service, body, project, backendService);
+        }
+
+        /// <summary>Sets the security policy for the specified backend service.</summary>
+        public class SetSecurityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetSecurityPolicy request.</summary>
+            public SetSecurityPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SecurityPolicyReference body, string project, string backendService)
+                : base(service)
+            {
+                Project = project;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the security policy should be set. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SecurityPolicyReference Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setSecurityPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendServices/{backendService}/setSecurityPolicy"; }
+            }
+
+            /// <summary>Initializes SetSecurityPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -14935,14 +15051,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves aggregated list of instances.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
+        /// zones.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves aggregated list of instances.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
+        /// zones.</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -15697,7 +15815,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified instance's serial port output.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -15707,7 +15825,7 @@ namespace Google.Apis.Compute.v1
             return new GetSerialPortOutputRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the specified instance's serial port output.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
         public class GetSerialPortOutputRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SerialPortOutput>
         {
             /// <summary>Constructs a new GetSerialPortOutput request.</summary>
@@ -32734,6 +32852,893 @@ namespace Google.Apis.Compute.v1
         }
     }
 
+    /// <summary>The "securityPolicies" collection of methods.</summary>
+    public class SecurityPoliciesResource
+    {
+        private const string Resource = "securityPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SecurityPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Inserts a rule into a security policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to update.</param>
+        public virtual AddRuleRequest AddRule(Google.Apis.Compute.v1.Data.SecurityPolicyRule body, string project, string securityPolicy)
+        {
+            return new AddRuleRequest(service, body, project, securityPolicy);
+        }
+
+        /// <summary>Inserts a rule into a security policy.</summary>
+        public class AddRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddRule request.</summary>
+            public AddRuleRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SecurityPolicyRule body, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SecurityPolicyRule Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addRule"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}/addRule"; }
+            }
+
+            /// <summary>Initializes AddRule parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified policy.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to delete.</param>
+        public virtual DeleteRequest Delete(string project, string securityPolicy)
+        {
+            return new DeleteRequest(service, project, securityPolicy);
+        }
+
+        /// <summary>Deletes the specified policy.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to get.</param>
+        public virtual GetRequest Get(string project, string securityPolicy)
+        {
+            return new GetRequest(service, project, securityPolicy);
+        }
+
+        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a rule at the specified priority.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to which the queried rule belongs.</param>
+        public virtual GetRuleRequest GetRule(string project, string securityPolicy)
+        {
+            return new GetRuleRequest(service, project, securityPolicy);
+        }
+
+        /// <summary>Gets a rule at the specified priority.</summary>
+        public class GetRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicyRule>
+        {
+            /// <summary>Constructs a new GetRule request.</summary>
+            public GetRuleRequest(Google.Apis.Services.IClientService service, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to which the queried rule belongs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+            /// <summary>The priority of the rule to get from the security policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("priority", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Priority { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getRule"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}/getRule"; }
+            }
+
+            /// <summary>Initializes GetRule parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "priority", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "priority",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.SecurityPolicy body, string project)
+        {
+            return new InsertRequest(service, body, project);
+        }
+
+        /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SecurityPolicy body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SecurityPolicy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>List all the policies that have been configured for the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>List all the policies that have been configured for the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Patches the specified policy with the data included in the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to update.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.SecurityPolicy body, string project, string securityPolicy)
+        {
+            return new PatchRequest(service, body, project, securityPolicy);
+        }
+
+        /// <summary>Patches the specified policy with the data included in the request.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SecurityPolicy body, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SecurityPolicy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Patches a rule at the specified priority.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to update.</param>
+        public virtual PatchRuleRequest PatchRule(Google.Apis.Compute.v1.Data.SecurityPolicyRule body, string project, string securityPolicy)
+        {
+            return new PatchRuleRequest(service, body, project, securityPolicy);
+        }
+
+        /// <summary>Patches a rule at the specified priority.</summary>
+        public class PatchRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new PatchRule request.</summary>
+            public PatchRuleRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SecurityPolicyRule body, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+            /// <summary>The priority of the rule to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("priority", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Priority { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SecurityPolicyRule Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patchRule"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}/patchRule"; }
+            }
+
+            /// <summary>Initializes PatchRule parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "priority", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "priority",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes a rule at the specified priority.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="securityPolicy">Name of the security
+        /// policy to update.</param>
+        public virtual RemoveRuleRequest RemoveRule(string project, string securityPolicy)
+        {
+            return new RemoveRuleRequest(service, project, securityPolicy);
+        }
+
+        /// <summary>Deletes a rule at the specified priority.</summary>
+        public class RemoveRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RemoveRule request.</summary>
+            public RemoveRuleRequest(Google.Apis.Services.IClientService service, string project, string securityPolicy)
+                : base(service)
+            {
+                Project = project;
+                SecurityPolicy = securityPolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the security policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SecurityPolicy { get; private set; }
+
+            /// <summary>The priority of the rule to remove from the security policy.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("priority", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Priority { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removeRule"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/securityPolicies/{securityPolicy}/removeRule"; }
+            }
+
+            /// <summary>Initializes RemoveRule parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "securityPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "securityPolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "priority", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "priority",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "snapshots" collection of methods.</summary>
     public class SnapshotsResource
     {
@@ -43671,6 +44676,10 @@ namespace Google.Apis.Compute.v1.Data
     /// both.</summary>
     public class AttachedDiskInitializeParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An optional description. Provide this property when creating the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>Specifies the disk name. If not specified, the default is to use the name of the instance. If the
         /// disk with the instance name exists already in the given zone/region, a new name will be automatically
         /// generated.</summary>
@@ -44440,6 +45449,11 @@ namespace Google.Apis.Compute.v1.Data
         /// not settable as a field in the request body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] The resource URL for the security policy associated with this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual string SecurityPolicy { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -45862,6 +46876,12 @@ namespace Google.Apis.Compute.v1.Data
         /// sourceRanges OR sourceTags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
+
+        /// <summary>Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated
+        /// with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If
+        /// this is unspecified, the firewall rule will be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -49387,8 +50407,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>[Output Only] Availability zone for this location. Within a metropolitan area (metro), maintenance
-        /// will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
+        /// <summary>[Output Only] Availability zone for this InterconnectLocation. Within a metropolitan area (metro),
+        /// maintenance will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
         /// "zone2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityZone")]
         public virtual string AvailabilityZone { get; set; } 
@@ -53401,6 +54421,202 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Corresponds to the label values of Node resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A security policy is comprised of one or more rules. It can also be associated with one or more
+    /// 'targets'. (== resource_for v1.securityPolicies ==) (== resource_for beta.securityPolicies ==)</summary>
+    public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents
+        /// and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
+        /// every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order
+        /// to update or change metadata.
+        ///
+        /// To see the latest fingerprint, make get() request to the security policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output only] Type of the resource. Always compute#securityPolicyfor security policies</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A list of rules that belong to this policy. There must always be a default rule (rule with priority
+        /// 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with
+        /// action "allow" will be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<SecurityPolicyRule> Rules { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SecurityPolicyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of SecurityPolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<SecurityPolicy> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#securityPolicyList for listsof
+        /// securityPolicies</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual SecurityPolicyList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class SecurityPolicyReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual string SecurityPolicy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a rule that describes one or more match conditions along with the action to be taken when
+    /// traffic matches this condition (allow or deny).</summary>
+    public class SecurityPolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Action to preform when the client connection triggers the rule. Can currently be either "allow"
+        /// or "deny()" where valid values for status are 403, 404, and 502.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output only] Type of the resource. Always compute#securityPolicyRule for security policy
+        /// rules</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A match condition that incoming traffic is evaluated against. If it evaluates to true, the
+        /// corresponding ?action? is enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("match")]
+        public virtual SecurityPolicyRuleMatcher Match { get; set; } 
+
+        /// <summary>If set to true, the specified action is not enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preview")]
+        public virtual System.Nullable<bool> Preview { get; set; } 
+
+        /// <summary>An integer indicating the priority of a rule in the list. The priority must be a positive value
+        /// between 0 and 2147483647. Rules are evaluated in the increasing order of priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a match condition that incoming traffic is evaluated against. Exactly one field must be
+    /// specified.</summary>
+    public class SecurityPolicyRuleMatcher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration options available when specifying versioned_expr. This field must be specified if
+        /// versioned_expr is specified and cannot be specified if versioned_expr is not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual SecurityPolicyRuleMatcherConfig Config { get; set; } 
+
+        /// <summary>Preconfigured versioned expression. If this field is specified, config must also be specified.
+        /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the
+        /// corresponding src_ip_range field in config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionedExpr")]
+        public virtual string VersionedExpr { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SecurityPolicyRuleMatcherConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CIDR IP address range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]
+        public virtual System.Collections.Generic.IList<string> SrcIpRanges { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

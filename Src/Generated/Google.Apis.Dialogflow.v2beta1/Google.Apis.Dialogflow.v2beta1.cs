@@ -1537,15 +1537,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
-                                /// <summary>Optional. The next_page_token value returned from a previous list
-                                /// request.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
                                 /// <summary>Optional. The maximum number of items to return in a single page. By
                                 /// default 100 and at most 1000.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>Optional. The next_page_token value returned from a previous list
+                                /// request.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
 
 
                                 ///<summary>Gets the method name.</summary>
@@ -1581,18 +1581,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                             Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
                                         });
                                     RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        "pageSize", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageToken",
+                                            Name = "pageSize",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
                                             Pattern = null,
                                         });
                                     RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        "pageToken", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageSize",
+                                            Name = "pageToken",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
@@ -1951,15 +1951,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
-                                /// <summary>Optional. The maximum number of items to return in a single page. By
-                                /// default 100 and at most 1000.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual System.Nullable<int> PageSize { get; set; }
-
                                 /// <summary>Optional. The next_page_token value returned from a previous list
                                 /// request.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
+
+                                /// <summary>Optional. The maximum number of items to return in a single page. By
+                                /// default 100 and at most 1000.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                                 ///<summary>Gets the method name.</summary>
@@ -1995,18 +1995,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                             Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
                                         });
                                     RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        "pageToken", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageSize",
+                                            Name = "pageToken",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
                                             Pattern = null,
                                         });
                                     RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        "pageSize", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageToken",
+                                            Name = "pageSize",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
@@ -2715,6 +2715,17 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
+                    /// not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2732,17 +2743,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
-                    /// not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2778,24 +2778,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -2808,6 +2790,24 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4263,15 +4263,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The next_page_token value returned from a previous list
-                        /// request.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>Optional. The maximum number of items to return in a single page. By default 100
                         /// and at most 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The next_page_token value returned from a previous list
+                        /// request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -4307,18 +4307,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
