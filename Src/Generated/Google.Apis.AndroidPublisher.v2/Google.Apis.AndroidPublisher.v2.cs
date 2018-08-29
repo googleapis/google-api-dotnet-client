@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180821 (1328)
+ *      <tr><th>API Rev<td>20180827 (1334)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7756,7 +7756,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string OrderId { get; set; } 
 
         /// <summary>The payment state of the subscription. Possible values are: - Payment pending - Payment received -
-        /// Free trial</summary>
+        /// Free trial - Pending deferred upgrade/downgrade</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
         public virtual System.Nullable<int> PaymentState { get; set; } 
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/uiWHXJDpd2144ICbMThiu3khhQU\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/sOzpDxeoqeSYI7pE0XzyOUls9Ts\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180821",
+ "revision": "20180827",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -967,7 +967,7 @@
     },
     "paymentState": {
      "type": "integer",
-     "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received \n- Free trial",
+     "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received \n- Free trial \n- Pending deferred upgrade/downgrade",
      "format": "int32"
     },
     "priceAmountMicros": {

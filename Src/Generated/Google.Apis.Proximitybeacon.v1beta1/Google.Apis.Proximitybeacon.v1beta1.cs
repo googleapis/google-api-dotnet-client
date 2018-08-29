@@ -822,17 +822,17 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BeaconName { get; private set; }
 
-                /// <summary>Specifies the namespace and type of attachment to include in response in namespace/type
-                /// format. Accepts `*` to specify "all types in all namespaces".</summary>
-                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string NamespacedType { get; set; }
-
                 /// <summary>The project id to list beacon attachments under. This field can be used when "*" is
                 /// specified to mean all attachment namespaces. Projects may have multiple attachments with multiple
                 /// namespaces. If "*" is specified and the projectId string is empty, then the project making the
                 /// request is used. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
+
+                /// <summary>Specifies the namespace and type of attachment to include in response in namespace/type
+                /// format. Accepts `*` to specify "all types in all namespaces".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string NamespacedType { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -868,18 +868,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "namespacedType", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "namespacedType",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "namespacedType", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "namespacedType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1550,10 +1550,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
 
-            /// <summary>A pagination token obtained from a previous request to list beacons.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Filter query string that supports the following field filters:
             ///
             /// * **description:`""`** For example: **description:"Room 3"** Returns beacons whose description matches
@@ -1606,6 +1602,10 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
+            /// <summary>A pagination token obtained from a previous request to list beacons.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1631,15 +1631,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "q", new Google.Apis.Discovery.Parameter
                     {
                         Name = "q",
@@ -1661,6 +1652,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
