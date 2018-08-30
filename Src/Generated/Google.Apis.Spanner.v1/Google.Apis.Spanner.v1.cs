@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180809 (1316)
+ *      <tr><th>API Rev<td>20180823 (1330)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -447,15 +447,15 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Number of instance configurations to be returned in the response. If 0 or less, defaults to
-                /// the server's maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
                 /// ListInstanceConfigsResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instance configurations to be returned in the response. If 0 or less, defaults to
+                /// the server's maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -491,18 +491,18 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -823,10 +823,6 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The standard list page token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>The standard list page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -834,6 +830,10 @@ namespace Google.Apis.Spanner.v1
                         /// <summary>The standard list filter.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -869,15 +869,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -890,6 +881,15 @@ namespace Google.Apis.Spanner.v1
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1561,8 +1561,12 @@ namespace Google.Apis.Spanner.v1
                     /// parallel.  Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a
                     /// subset of the query result to read.  The same session and read-only transaction must be used by
                     /// the PartitionQueryRequest used to create the partition tokens and the ExecuteSqlRequests that
-                    /// use the partition tokens. Partition tokens become invalid when the session used to create them
-                    /// is deleted or begins a new transaction.</summary>
+                    /// use the partition tokens.
+                    ///
+                    /// Partition tokens become invalid when the session used to create them is deleted, is idle for too
+                    /// long, begins a new transaction, or becomes too old.  When any of these happen, it is not
+                    /// possible to resume the query, and the whole operation must be restarted from the
+                    /// beginning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session used to create the partitions.</param>
                     public virtual PartitionQueryRequest PartitionQuery(Google.Apis.Spanner.v1.Data.PartitionQueryRequest body, string session)
@@ -1574,8 +1578,12 @@ namespace Google.Apis.Spanner.v1
                     /// parallel.  Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a
                     /// subset of the query result to read.  The same session and read-only transaction must be used by
                     /// the PartitionQueryRequest used to create the partition tokens and the ExecuteSqlRequests that
-                    /// use the partition tokens. Partition tokens become invalid when the session used to create them
-                    /// is deleted or begins a new transaction.</summary>
+                    /// use the partition tokens.
+                    ///
+                    /// Partition tokens become invalid when the session used to create them is deleted, is idle for too
+                    /// long, begins a new transaction, or becomes too old.  When any of these happen, it is not
+                    /// possible to resume the query, and the whole operation must be restarted from the
+                    /// beginning.</summary>
                     public class PartitionQueryRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.PartitionResponse>
                     {
                         /// <summary>Constructs a new PartitionQuery request.</summary>
@@ -1639,8 +1647,14 @@ namespace Google.Apis.Spanner.v1
                     /// parallel.  Each of the returned partition tokens can be used by StreamingRead to specify a
                     /// subset of the read result to read.  The same session and read-only transaction must be used by
                     /// the PartitionReadRequest used to create the partition tokens and the ReadRequests that use the
-                    /// partition tokens. Partition tokens become invalid when the session used to create them is
-                    /// deleted or begins a new transaction.</summary>
+                    /// partition tokens.  There are no ordering guarantees on rows returned among the returned
+                    /// partition tokens, or even within each individual StreamingRead call issued with a
+                    /// partition_token.
+                    ///
+                    /// Partition tokens become invalid when the session used to create them is deleted, is idle for too
+                    /// long, begins a new transaction, or becomes too old.  When any of these happen, it is not
+                    /// possible to resume the read, and the whole operation must be restarted from the
+                    /// beginning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session used to create the partitions.</param>
                     public virtual PartitionReadRequest PartitionRead(Google.Apis.Spanner.v1.Data.PartitionReadRequest body, string session)
@@ -1652,8 +1666,14 @@ namespace Google.Apis.Spanner.v1
                     /// parallel.  Each of the returned partition tokens can be used by StreamingRead to specify a
                     /// subset of the read result to read.  The same session and read-only transaction must be used by
                     /// the PartitionReadRequest used to create the partition tokens and the ReadRequests that use the
-                    /// partition tokens. Partition tokens become invalid when the session used to create them is
-                    /// deleted or begins a new transaction.</summary>
+                    /// partition tokens.  There are no ordering guarantees on rows returned among the returned
+                    /// partition tokens, or even within each individual StreamingRead call issued with a
+                    /// partition_token.
+                    ///
+                    /// Partition tokens become invalid when the session used to create them is deleted, is idle for too
+                    /// long, begins a new transaction, or becomes too old.  When any of these happen, it is not
+                    /// possible to resume the read, and the whole operation must be restarted from the
+                    /// beginning.</summary>
                     public class PartitionReadRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.PartitionResponse>
                     {
                         /// <summary>Constructs a new PartitionRead request.</summary>
@@ -2313,15 +2333,15 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                    /// ListDatabasesResponse.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Number of databases to be returned in the response. If 0 or less, defaults to the
                     /// server's maximum allowed page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListDatabasesResponse.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2357,18 +2377,18 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3303,6 +3323,16 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstancesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3318,16 +3348,6 @@ namespace Google.Apis.Spanner.v1
                 /// "dev".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                /// ListInstancesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3363,15 +3383,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3384,6 +3395,15 @@ namespace Google.Apis.Spanner.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3693,6 +3713,12 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
+        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// independently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -3717,8 +3743,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        /// Required</summary>
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
+        /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
@@ -3965,6 +3991,38 @@ namespace Google.Apis.Spanner.v1.Data
         /// strong concurrency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual TransactionSelector Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

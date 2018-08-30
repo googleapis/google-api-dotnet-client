@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180620 (1266)
+ *      <tr><th>API Rev<td>20180824 (1331)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5003,7 +5003,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
             /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any. Limited availability; usable only by enabled projects.</summary>
+            /// kms_key_name value, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
@@ -5287,7 +5287,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
             /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any. Limited availability; usable only by enabled projects.</summary>
+            /// kms_key_name value, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
@@ -7174,6 +7174,14 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("isLive")]
                     public virtual System.Nullable<bool> IsLive { get; set; } 
 
+                    /// <summary>A regular expression that satisfies the RE2 syntax language. This condition is
+                    /// satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently
+                    /// in the "Early Access" launch stage and is only available to a whitelisted set of users; that
+                    /// means that this feature may changed in backward-incompatible ways and that it is not guaranteed
+                    /// to be released.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("matchesPattern")]
+                    public virtual string MatchesPattern { get; set; } 
+
                     /// <summary>Objects having any of the storage classes specified by this condition will be matched.
                     /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and
                     /// DURABLE_REDUCED_AVAILABILITY.</summary>
@@ -7623,8 +7631,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key. Limited
-        /// availability; usable only by enabled projects.</summary>
+        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 

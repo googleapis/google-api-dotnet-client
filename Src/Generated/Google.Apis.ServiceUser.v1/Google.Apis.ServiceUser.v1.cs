@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180817 (1324)
+ *      <tr><th>API Rev<td>20180824 (1331)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -2481,7 +2481,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual Http Http { get; set; } 
 
         /// <summary>A unique ID for a specific instance of this message, typically assigned by the client for tracking
-        /// purpose. If empty, the server may choose to generate one instead.</summary>
+        /// purpose. If empty, the server may choose to generate one instead. Must be no longer than 60
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 

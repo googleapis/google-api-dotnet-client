@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180822 (1329)
+ *      <tr><th>API Rev<td>20180825 (1332)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1009,6 +1009,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// "shelves/SHELF_ID/books" "shelves/SHELF_ID/books/BOOK_ID"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
+
+        /// <summary>The resource's original state before mutation. Present only for operations which have successfully
+        /// modified the targeted resource(s). In general, this field should contain all changed fields, except those
+        /// that are already been included in `request`, `response`, `metadata` or `service_data` fields. When the JSON
+        /// object represented here has a proto equivalent, the proto name will be indicated in the `@type`
+        /// property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOriginalState")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ResourceOriginalState { get; set; } 
 
         /// <summary>The operation response. This may not include all response elements, such as those that are too
         /// large, privacy-sensitive, or duplicated elsewhere in the log record. It should never include user-generated

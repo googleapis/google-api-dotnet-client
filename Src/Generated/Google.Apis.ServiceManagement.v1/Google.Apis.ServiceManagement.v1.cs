@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180817 (1324)
+ *      <tr><th>API Rev<td>20180825 (1332)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -648,7 +648,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
             /// requirements.  For example: `example.googleapis.com`.</param>
             /// <param name="configId">The id of the service
-            /// configuration resource.</param>
+            /// configuration resource.
+            ///
+            /// This field must be specified for the server to return all fields, including `SourceInfo`.</param>
             public virtual GetRequest Get(string serviceName, string configId)
             {
                 return new GetRequest(service, serviceName, configId);
@@ -672,7 +674,9 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The id of the service configuration resource.</summary>
+                /// <summary>The id of the service configuration resource.
+                ///
+                /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ConfigId { get; private set; }
 
@@ -1899,7 +1903,9 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.</summary>
+            /// <summary>The id of the service configuration resource.
+            ///
+            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConfigId { get; set; }
 
@@ -4596,7 +4602,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual Http Http { get; set; } 
 
         /// <summary>A unique ID for a specific instance of this message, typically assigned by the client for tracking
-        /// purpose. If empty, the server may choose to generate one instead.</summary>
+        /// purpose. If empty, the server may choose to generate one instead. Must be no longer than 60
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 

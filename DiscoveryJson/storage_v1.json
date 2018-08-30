@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/XZ6Xpc1c07Y9sR1lBGe-k1txL6M\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/xdKZYE7J0j8r4Yn83tamAAsa-ZE\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20180620",
+ "revision": "20180824",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -236,6 +236,10 @@
            "isLive": {
             "type": "boolean",
             "description": "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects."
+           },
+           "matchesPattern": {
+            "type": "string",
+            "description": "A regular expression that satisfies the RE2 syntax language. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the \"Early Access\" launch stage and is only available to a whitelisted set of users; that means that this feature may changed in backward-incompatible ways and that it is not guaranteed to be released."
            },
            "matchesStorageClass": {
             "type": "array",
@@ -761,7 +765,7 @@
     },
     "kmsKeyName": {
      "type": "string",
-     "description": "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key. Limited availability; usable only by enabled projects."
+     "description": "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key."
     },
     "md5Hash": {
      "type": "string",
@@ -3044,7 +3048,7 @@
       },
       "kmsKeyName": {
        "type": "string",
-       "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. Limited availability; usable only by enabled projects.",
+       "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
        "location": "query"
       },
       "name": {
