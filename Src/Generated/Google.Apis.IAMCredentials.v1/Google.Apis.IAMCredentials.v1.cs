@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>IAM Service Account Credentials API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180820 (1327)
+ *      <tr><th>API Rev<td>20180824 (1331)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>
  *              https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials</a>
@@ -497,6 +497,78 @@ namespace Google.Apis.IAMCredentials.v1
 
             }
 
+
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the service account for which the credentials are requested, in the
+            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. Using `-` as a wildcard for the project
+            /// will infer the project from the account.</param>
+            public virtual GenerateIdentityBindingAccessTokenRequest GenerateIdentityBindingAccessToken(Google.Apis.IAMCredentials.v1.Data.GenerateIdentityBindingAccessTokenRequest body, string name)
+            {
+                return new GenerateIdentityBindingAccessTokenRequest(service, body, name);
+            }
+
+
+            public class GenerateIdentityBindingAccessTokenRequest : IAMCredentialsBaseServiceRequest<Google.Apis.IAMCredentials.v1.Data.GenerateIdentityBindingAccessTokenResponse>
+            {
+                /// <summary>Constructs a new GenerateIdentityBindingAccessToken request.</summary>
+                public GenerateIdentityBindingAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.IAMCredentials.v1.Data.GenerateIdentityBindingAccessTokenRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the service account for which the credentials are requested, in the
+                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. Using `-` as a wildcard
+                /// for the project will infer the project from the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.IAMCredentials.v1.Data.GenerateIdentityBindingAccessTokenRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "generateIdentityBindingAccessToken"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:generateIdentityBindingAccessToken"; }
+                }
+
+                /// <summary>Initializes GenerateIdentityBindingAccessToken parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account for which the credentials are requested, in the
@@ -719,6 +791,56 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// <summary>The OpenId Connect ID token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GenerateIdentityBindingAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input token. Must be in JWT format according to RFC7523
+        /// (https://tools.ietf.org/html/rfc7523) and must have 'kid' field in the header. Supported signing algorithms:
+        /// RS256 (RS512, ES256, ES512 coming soon). Mandatory payload fields (along the lines of RFC 7523, section 3):
+        /// - iss: issuer of the token. Must provide a discovery document at $iss/.well-known/openid-configuration . The
+        /// document needs to be formatted according to section 4.2 of the OpenID Connect Discovery 1.0 specification. -
+        /// iat: Issue time in seconds since epoch. Must be in the past. - exp: Expiration time in seconds since epoch.
+        /// Must be less than 48 hours after iat. We recommend to create tokens that last shorter than 6 hours to
+        /// improve security unless business reasons mandate longer expiration times. Shorter token lifetimes are
+        /// generally more secure since tokens that have been exfiltrated by attackers can be used for a shorter time.
+        /// you can configure the maximum lifetime of the incoming token in the configuration of the mapper. The
+        /// resulting Google token will expire within an hour or at "exp", whichever is earlier. - sub: JWT subject,
+        /// identity asserted in the JWT. - aud: Configured in the mapper policy. By default the service account email.
+        ///
+        /// Claims from the incoming token can be transferred into the output token accoding to the mapper
+        /// configuration. The outgoing claim size is limited. Outgoing claims size must be less than 4kB serialized as
+        /// JSON without whitespace.
+        ///
+        /// Example header: { "alg": "RS256", "kid": "92a4265e14ab04d4d228a48d10d4ca31610936f8" } Example payload: {
+        /// "iss": "https://accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud":
+        /// "https://iamcredentials.googleapis.com/google.iam.credentials.v1.CloudGaia", "sub": "113475438248934895348",
+        /// "my_claims": { "additional_claim": "value" } }</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
+        public virtual string Jwt { get; set; } 
+
+        /// <summary>Code to identify the scopes to be included in the OAuth 2.0 access token. See
+        /// https://developers.google.com/identity/protocols/googlescopes for more information. At least one value
+        /// required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual System.Collections.Generic.IList<string> Scope { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GenerateIdentityBindingAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OAuth 2.0 access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; } 
+
+        /// <summary>Token expiration time. The expiration time is always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kgPtidcipbzhbCRh7x96H2hAeIM\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GgBKM4eW6PbUI0IwUflHrQshXJ4\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20180821",
+ "revision": "20180829",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1247,6 +1247,27 @@
      "type": "string",
      "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCancelResponse\".",
      "default": "content#ordersCancelResponse"
+    }
+   }
+  },
+  "OrdersCancelTestOrderByCustomerRequest": {
+   "id": "OrdersCancelTestOrderByCustomerRequest",
+   "type": "object",
+   "properties": {
+    "reason": {
+     "type": "string",
+     "description": "The reason for the cancellation."
+    }
+   }
+  },
+  "OrdersCancelTestOrderByCustomerResponse": {
+   "id": "OrdersCancelTestOrderByCustomerResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCancelTestOrderByCustomerResponse\".",
+     "default": "content#ordersCancelTestOrderByCustomerResponse"
     }
    }
   },
@@ -3050,6 +3071,40 @@
      },
      "response": {
       "$ref": "OrdersCancelLineItemResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "canceltestorderbycustomer": {
+     "id": "content.orders.canceltestorderbycustomer",
+     "path": "{merchantId}/testorders/{orderId}/cancelByCustomer",
+     "httpMethod": "POST",
+     "description": "Sandbox only. Cancels a test order for customer-initiated cancellation.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the test order to cancel.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrdersCancelTestOrderByCustomerRequest"
+     },
+     "response": {
+      "$ref": "OrdersCancelTestOrderByCustomerResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

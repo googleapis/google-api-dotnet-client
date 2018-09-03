@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/8dCK3nvQp8pbwe4wpGUE7zwlXx0\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/QF07rEPTnP4y6xu7pxBI9RDU640\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180816",
+ "revision": "20180826",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -886,6 +886,10 @@
      "description": "[Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.",
      "format": "int64"
     },
+    "jobType": {
+     "type": "string",
+     "description": "[Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN."
+    },
     "labels": {
      "type": "object",
      "description": "The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.",
@@ -1075,7 +1079,7 @@
     },
     "defaultDataset": {
      "$ref": "DatasetReference",
-     "description": "[Optional] Specifies the default dataset to use for unqualified table names in the query."
+     "description": "[Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names."
     },
     "destinationEncryptionConfiguration": {
      "$ref": "EncryptionConfiguration",
@@ -1356,11 +1360,11 @@
     },
     "ddlOperationPerformed": {
      "type": "string",
-     "description": "[Output-only, Beta] The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): \"CREATE\": The query created the DDL target. \"SKIP\": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. \"REPLACE\": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. \"DROP\": The query deleted the DDL target."
+     "description": "The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): \"CREATE\": The query created the DDL target. \"SKIP\": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. \"REPLACE\": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. \"DROP\": The query deleted the DDL target."
     },
     "ddlTargetTable": {
      "$ref": "TableReference",
-     "description": "[Output-only, Beta] The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries."
+     "description": "The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries."
     },
     "estimatedBytesProcessed": {
      "type": "string",
@@ -1424,7 +1428,7 @@
     },
     "statementType": {
      "type": "string",
-     "description": "[Output-only, Beta] The type of query statement, if valid. Possible values (new values might be added in the future): \"SELECT\": SELECT query. \"INSERT\": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"UPDATE\": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"DELETE\": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"MERGE\": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"CREATE_TABLE\": CREATE [OR REPLACE] TABLE without AS SELECT. \"CREATE_TABLE_AS_SELECT\": CREATE [OR REPLACE] TABLE ... AS SELECT ... \"DROP_TABLE\": DROP TABLE query. \"CREATE_VIEW\": CREATE [OR REPLACE] VIEW ... AS SELECT ... \"DROP_VIEW\": DROP VIEW query."
+     "description": "The type of query statement, if valid. Possible values (new values might be added in the future): \"SELECT\": SELECT query. \"INSERT\": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"UPDATE\": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"DELETE\": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"MERGE\": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language \"CREATE_TABLE\": CREATE [OR REPLACE] TABLE without AS SELECT. \"CREATE_TABLE_AS_SELECT\": CREATE [OR REPLACE] TABLE ... AS SELECT ... \"DROP_TABLE\": DROP TABLE query. \"CREATE_VIEW\": CREATE [OR REPLACE] VIEW ... AS SELECT ... \"DROP_VIEW\": DROP VIEW query."
     },
     "timeline": {
      "type": "array",
@@ -1455,7 +1459,7 @@
     },
     "undeclaredQueryParameters": {
      "type": "array",
-     "description": "[Output-only, Beta] Standard SQL only: list of undeclared query parameters detected during a dry run validation.",
+     "description": "Standard SQL only: list of undeclared query parameters detected during a dry run validation.",
      "items": {
       "$ref": "QueryParameter"
      }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20180821 (1328)
+ *      <tr><th>API Rev<td>20180829 (1336)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1128,6 +1128,90 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             }
 
             /// <summary>Initializes Cancellineitem parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sandbox only. Cancels a test order for customer-initiated cancellation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the test order to cancel.</param>
+        public virtual CanceltestorderbycustomerRequest Canceltestorderbycustomer(Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
+        {
+            return new CanceltestorderbycustomerRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Sandbox only. Cancels a test order for customer-initiated cancellation.</summary>
+        public class CanceltestorderbycustomerRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelTestOrderByCustomerResponse>
+        {
+            /// <summary>Constructs a new Canceltestorderbycustomer request.</summary>
+            public CanceltestorderbycustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the test order to cancel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelTestOrderByCustomerRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "canceltestorderbycustomer"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/testorders/{orderId}/cancelByCustomer"; }
+            }
+
+            /// <summary>Initializes Canceltestorderbycustomer parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -3682,6 +3766,27 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCancelResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCancelTestOrderByCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for the cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCancelTestOrderByCustomerResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersCancelTestOrderByCustomerResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

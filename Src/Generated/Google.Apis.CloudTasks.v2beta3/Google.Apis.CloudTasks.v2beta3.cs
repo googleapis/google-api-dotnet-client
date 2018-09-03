@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20180827 (1334)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -1266,6 +1266,18 @@ namespace Google.Apis.CloudTasks.v2beta3
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "state: PAUSED".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested page_size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1282,18 +1294,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                     /// response to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "state: PAUSED".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested page_size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1329,6 +1329,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1341,15 +1350,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2663,15 +2663,15 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by
         /// `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be
         /// dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new
-        /// tokens based on max_tasks_dispatched_per_second.
+        /// tokens based on max_dispatches_per_second.
         ///
-        /// Cloud Tasks will pick the value of `max_burst_size` based on the value of max_tasks_dispatched_per_second.
+        /// Cloud Tasks will pick the value of `max_burst_size` based on the value of max_dispatches_per_second.
         ///
         /// For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
         /// [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). Since
         /// `max_burst_size` is output only, if UpdateQueue is called on a queue created by `queue.yaml/xml`,
-        /// `max_burst_size` will be reset based on the value of max_tasks_dispatched_per_second, regardless of whether
-        /// max_tasks_dispatched_per_second is updated. </summary>
+        /// `max_burst_size` will be reset based on the value of max_dispatches_per_second, regardless of whether
+        /// max_dispatches_per_second is updated. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
         public virtual System.Nullable<int> MaxBurstSize { get; set; } 
 
@@ -2715,10 +2715,17 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// These settings determine when a failed task attempt is retried.</summary>
     public class RetryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of attempts for a task.
+        /// <summary>Number of attempts per task.
         ///
         /// Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will
-        /// be `max_attempts - 1` retries).  Must be > 0.</summary>
+        /// be `max_attempts - 1` retries). Must be >= -1.
+        ///
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// -1 indicates unlimited attempts.
+        ///
+        /// This field has the same meaning as [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/d
+        /// ocs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
         public virtual System.Nullable<int> MaxAttempts { get; set; } 
 
@@ -2777,10 +2784,6 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// e/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoff")]
         public virtual object MinBackoff { get; set; } 
-
-        /// <summary>If true, then the number of attempts is unlimited.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unlimitedAttempts")]
-        public virtual System.Nullable<bool> UnlimitedAttempts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2904,8 +2907,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
 
         /// <summary>Output only. The status of the task's first attempt.
         ///
-        /// Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud
-        /// Tasks.</summary>
+        /// Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAttempt")]
         public virtual Attempt FirstAttempt { get; set; } 
 

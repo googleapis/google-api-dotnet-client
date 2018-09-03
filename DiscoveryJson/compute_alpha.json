@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ywyVu5AtiGvJAHrRgKunuMjQuw4\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/7LFTKICOr3FRwporNcF4ghCt4dg\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
@@ -11025,7 +11025,7 @@
     },
     "items": {
      "type": "array",
-     "description": "A list of InternalIpOwner resources.",
+     "description": "A list of InternalIpAddress resources.",
      "items": {
       "$ref": "InternalIpAddress"
      }
@@ -13370,6 +13370,15 @@
     }
    }
   },
+  "NetworksUpdatePeeringRequest": {
+   "id": "NetworksUpdatePeeringRequest",
+   "type": "object",
+   "properties": {
+    "networkPeering": {
+     "$ref": "NetworkPeering"
+    }
+   }
+  },
   "NodeGroup": {
    "id": "NodeGroup",
    "type": "object",
@@ -13681,6 +13690,10 @@
      "type": "string",
      "description": "The type of this node."
     },
+    "serverBinding": {
+     "$ref": "ServerBinding",
+     "description": "Binding properties for the physical server."
+    },
     "status": {
      "type": "string",
      "enum": [
@@ -13985,6 +13998,10 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "serverBinding": {
+     "$ref": "ServerBinding",
+     "description": "Binding properties for the physical server."
     },
     "status": {
      "type": "string",
@@ -16896,120 +16913,6 @@
     }
    }
   },
-  "ResourcePoliciesList": {
-   "id": "ResourcePoliciesList",
-   "type": "object",
-   "properties": {
-    "etag": {
-     "type": "string"
-    },
-    "id": {
-     "type": "string",
-     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
-    },
-    "items": {
-     "type": "array",
-     "description": "[Output Only] A list of ResourcePolicy resources.",
-     "items": {
-      "$ref": "ResourcePolicy"
-     }
-    },
-    "kind": {
-     "type": "string",
-     "description": "[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof resourcePolicies",
-     "default": "compute#resourcePoliciesList"
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
-    },
-    "selfLink": {
-     "type": "string",
-     "description": "[Output Only] Server-defined URL for this resource."
-    },
-    "warning": {
-     "type": "object",
-     "description": "[Output Only] Informational warning message.",
-     "properties": {
-      "code": {
-       "type": "string",
-       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-       "enum": [
-        "CLEANUP_FAILED",
-        "DEPRECATED_RESOURCE_USED",
-        "DEPRECATED_TYPE_USED",
-        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-        "EXPERIMENTAL_TYPE_USED",
-        "EXTERNAL_API_WARNING",
-        "FIELD_VALUE_OVERRIDEN",
-        "INJECTED_KERNELS_DEPRECATED",
-        "MISSING_TYPE_DEPENDENCY",
-        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-        "NEXT_HOP_CANNOT_IP_FORWARD",
-        "NEXT_HOP_INSTANCE_NOT_FOUND",
-        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-        "NEXT_HOP_NOT_RUNNING",
-        "NOT_CRITICAL_ERROR",
-        "NO_RESULTS_ON_PAGE",
-        "REQUIRED_TOS_AGREEMENT",
-        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-        "RESOURCE_NOT_DELETED",
-        "SCHEMA_VALIDATION_IGNORED",
-        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-        "UNDECLARED_PROPERTIES",
-        "UNREACHABLE"
-       ],
-       "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-       ]
-      },
-      "data": {
-       "type": "array",
-       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
-       "items": {
-        "type": "object",
-        "properties": {
-         "key": {
-          "type": "string",
-          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
-         },
-         "value": {
-          "type": "string",
-          "description": "[Output Only] A warning data value corresponding to the key."
-         }
-        }
-       }
-      },
-      "message": {
-       "type": "string",
-       "description": "[Output Only] A human-readable description of the warning code."
-      }
-     }
-    }
-   }
-  },
   "ResourcePoliciesScopedList": {
    "id": "ResourcePoliciesScopedList",
    "type": "object",
@@ -17377,6 +17280,120 @@
     "startTime": {
      "type": "string",
      "description": "Time within the window to start the operations. It must be in format \"HH:MM?, where HH : [00-23] and MM : [00-59] GMT."
+    }
+   }
+  },
+  "ResourcePolicyList": {
+   "id": "ResourcePolicyList",
+   "type": "object",
+   "properties": {
+    "etag": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "[Output Only] A list of ResourcePolicy resources.",
+     "items": {
+      "$ref": "ResourcePolicy"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof resourcePolicies",
+     "default": "compute#resourcePolicyList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
     }
    }
   },
@@ -18232,13 +18249,6 @@
    "type": "object",
    "description": "Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.",
    "properties": {
-    "autoAllocatedNatIps": {
-     "type": "array",
-     "description": "[Output Only] A list of IPs allocated automatically by GCP for this Nat service. They will be raw IP strings like \"179.12.26.133\". They are ephemeral IPs allocated from the IP blocks managed by the NAT manager. This list can grow and shrink based on the number of VMs configured to use NAT.",
-     "items": {
-      "type": "string"
-     }
-    },
     "icmpIdleTimeoutSec": {
      "type": "integer",
      "description": "Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.",
@@ -19207,6 +19217,25 @@
      "type": "string",
      "description": "The starting byte position of the output that was returned. This should match the start parameter sent with the request. If the serial console output exceeds the size of the buffer, older output will be overwritten by newer content and the start values will be mismatched.",
      "format": "int64"
+    }
+   }
+  },
+  "ServerBinding": {
+   "id": "ServerBinding",
+   "type": "object",
+   "properties": {
+    "type": {
+     "type": "string",
+     "enum": [
+      "RESTART_NODE_ON_ANY_SERVER",
+      "RESTART_NODE_ON_MINIMAL_SERVERS",
+      "SERVER_BINDING_TYPE_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -37592,6 +37621,47 @@
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
      ]
+    },
+    "updatePeering": {
+     "id": "compute.networks.updatePeering",
+     "path": "{project}/global/networks/{network}/updatePeering",
+     "httpMethod": "PATCH",
+     "description": "Updates the specified network peering with the data included in the request Only the following fields can be modified: NetworkPeering.export_custom_routes, and NetworkPeering.import_custom_routes",
+     "parameters": {
+      "network": {
+       "type": "string",
+       "description": "Name of the network resource which the updated peering is belonging to.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "network"
+     ],
+     "request": {
+      "$ref": "NetworksUpdatePeeringRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
     }
    }
   },
@@ -44048,7 +44118,7 @@
       "region"
      ],
      "response": {
-      "$ref": "ResourcePoliciesList"
+      "$ref": "ResourcePolicyList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",

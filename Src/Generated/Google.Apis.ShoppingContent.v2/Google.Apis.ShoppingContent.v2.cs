@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180821 (1328)
+ *      <tr><th>API Rev<td>20180829 (1336)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5292,6 +5292,90 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
+        /// <summary>Sandbox only. Cancels a test order for customer-initiated cancellation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the test order to cancel.</param>
+        public virtual CanceltestorderbycustomerRequest Canceltestorderbycustomer(Google.Apis.ShoppingContent.v2.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
+        {
+            return new CanceltestorderbycustomerRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Sandbox only. Cancels a test order for customer-initiated cancellation.</summary>
+        public class CanceltestorderbycustomerRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCancelTestOrderByCustomerResponse>
+        {
+            /// <summary>Constructs a new Canceltestorderbycustomer request.</summary>
+            public CanceltestorderbycustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrdersCancelTestOrderByCustomerRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the test order to cancel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrdersCancelTestOrderByCustomerRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "canceltestorderbycustomer"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/testorders/{orderId}/cancelByCustomer"; }
+            }
+
+            /// <summary>Initializes Canceltestorderbycustomer parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Sandbox only. Creates a test order.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that should manage the order. This cannot be a multi-client
@@ -8714,6 +8798,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adwordsLinks")]
         public virtual System.Collections.Generic.IList<AccountAdwordsLink> AdwordsLinks { get; set; } 
 
+        /// <summary>The business information of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
+        public virtual AccountBusinessInformation BusinessInformation { get; set; } 
+
         /// <summary>The GMB account which is linked or in the process of being linked with the Merchant Center
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMyBusinessLink")]
@@ -8759,6 +8847,34 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class AccountAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CLDR country code (e.g. "US").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
+        /// or suburbs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; } 
+
+        /// <summary>Postal code or ZIP (e.g. "94043").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; } 
+
+        /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
+        /// a province like Quebec ("QC").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>Street-level part of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+        public virtual string StreetAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class AccountAdwordsLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Customer ID of the AdWords account.</summary>
@@ -8774,6 +8890,42 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// request if it was pending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountBusinessInformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The address of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual AccountAddress Address { get; set; } 
+
+        /// <summary>The customer service information of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerService")]
+        public virtual AccountCustomerService CustomerService { get; set; } 
+
+        /// <summary>The phone number of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountCustomerService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customer service email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>Customer service phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>Customer service URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11945,6 +12097,27 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCancelResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCancelTestOrderByCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for the cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCancelTestOrderByCustomerResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersCancelTestOrderByCustomerResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

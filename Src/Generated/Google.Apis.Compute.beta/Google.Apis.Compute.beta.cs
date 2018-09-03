@@ -38535,7 +38535,7 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>A list all the resource policies that have been configured for the specified project in specified
         /// region.</summary>
-        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ResourcePoliciesList>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ResourcePolicyList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
@@ -64601,80 +64601,6 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class ResourcePoliciesList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>[Output Only] A list of ResourcePolicy resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ResourcePolicy> Items { get; set; } 
-
-        /// <summary>[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
-        /// resourcePolicies</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ResourcePoliciesList.WarningData Warning { get; set; } 
-
-        
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        public class WarningData
-        {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
-
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
-
-            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
-
-            
-
-            public class DataData
-            {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
-
-                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
-
-            }
-        }
-    }    
-
     public class ResourcePoliciesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of resourcePolicies contained in this scope.</summary>
@@ -64950,6 +64876,80 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class ResourcePolicyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of ResourcePolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ResourcePolicy> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
+        /// resourcePolicies</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ResourcePolicyList.WarningData Warning { get; set; } 
+
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     /// <summary>Time window specified for weekly operations.</summary>

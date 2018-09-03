@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180818 (1325)
+ *      <tr><th>API Rev<td>20180827 (1334)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -1005,7 +1005,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
     }    
 
     /// <summary>All available features for sentiment, syntax, and semantic analysis. Setting each one to true will
-    /// enable that specific analysis for the input.</summary>
+    /// enable that specific analysis for the input. Next ID: 10</summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Classify the full document into categories. If this is true, the API will use the default model
@@ -1104,7 +1104,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the feeling associated with the entire text or entities in the text.</summary>
+    /// <summary>Represents the feeling associated with the entire text or entities in the text. Next ID: 5</summary>
     public class Sentiment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment

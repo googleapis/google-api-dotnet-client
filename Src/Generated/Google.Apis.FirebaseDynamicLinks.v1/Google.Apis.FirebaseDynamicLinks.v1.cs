@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -642,6 +642,59 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             }
 
         }
+
+        /// <summary>Get iOS reopen attribution for app universal link open deeplinking.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ReopenAttributionRequest ReopenAttribution(Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest body)
+        {
+            return new ReopenAttributionRequest(service, body);
+        }
+
+        /// <summary>Get iOS reopen attribution for app universal link open deeplinking.</summary>
+        public class ReopenAttributionRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionResponse>
+        {
+            /// <summary>Constructs a new ReopenAttribution request.</summary>
+            public ReopenAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosReopenAttributionRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "reopenAttribution"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/reopenAttribution"; }
+            }
+
+            /// <summary>Initializes ReopenAttribution parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
     }
 }
 
@@ -1043,6 +1096,58 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string UtmMedium { get; set; } 
 
         /// <summary>Scion source value to be propagated by iSDK to Scion at post-install.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
+        public virtual string UtmSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is
+    /// meant for only iOS requests.</summary>
+    public class GetIosReopenAttributionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>APP bundle ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; } 
+
+        /// <summary>FDL link to be verified from an app universal link open. The FDL link can be one of: 1) short FDL.
+        /// e.g. .page.link/, or 2) long FDL. e.g. .page.link/?{query params}, or 3) Invite FDL. e.g.
+        /// .page.link/i/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
+        public virtual string RequestedLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is
+    /// meant for only iOS requests.</summary>
+    public class GetIosReopenAttributionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deep-link attributed the app universal link open. For both regular FDL links and invite FDL
+        /// links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deepLink")]
+        public virtual string DeepLink { get; set; } 
+
+        /// <summary>Optional invitation ID, for only invite typed requested FDL links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
+        public virtual string InvitationId { get; set; } 
+
+        /// <summary>The entire FDL, expanded from a short link. It is the same as the requested_link, if it is
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedLink")]
+        public virtual string ResolvedLink { get; set; } 
+
+        /// <summary>Scion campaign value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
+        public virtual string UtmCampaign { get; set; } 
+
+        /// <summary>Scion medium value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
+        public virtual string UtmMedium { get; set; } 
+
+        /// <summary>Scion source value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
         public virtual string UtmSource { get; set; } 
 

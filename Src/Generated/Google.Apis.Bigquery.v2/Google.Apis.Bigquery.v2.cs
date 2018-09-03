@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180816 (1323)
+ *      <tr><th>API Rev<td>20180826 (1333)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3435,6 +3435,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
         public virtual System.Nullable<long> JobTimeoutMs { get; set; } 
 
+        /// <summary>[Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
+        public virtual string JobType { get; set; } 
+
         /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
         /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
@@ -3671,7 +3675,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; } 
 
-        /// <summary>[Optional] Specifies the default dataset to use for unqualified table names in the query.</summary>
+        /// <summary>[Optional] Specifies the default dataset to use for unqualified table names in the query. Note that
+        /// this does not alter behavior of unqualified dataset names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; } 
 
@@ -3952,17 +3957,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
 
-        /// <summary>[Output-only, Beta] The DDL operation performed, possibly dependent on the pre-existence of the DDL
-        /// target. Possible values (new values might be added in the future): "CREATE": The query created the DDL
-        /// target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already
-        /// exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced
-        /// the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP":
-        /// The query deleted the DDL target.</summary>
+        /// <summary>The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible
+        /// values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op.
+        /// Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP
+        /// TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case:
+        /// the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL
+        /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; } 
 
-        /// <summary>[Output-only, Beta] The DDL target table. Present only for CREATE/DROP TABLE/VIEW
-        /// queries.</summary>
+        /// <summary>The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; } 
 
@@ -4005,15 +4009,15 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
 
-        /// <summary>[Output-only, Beta] The type of query statement, if valid. Possible values (new values might be
-        /// added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
-        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "UPDATE": UPDATE
-        /// query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
-        /// "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
-        /// language "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
-        /// manipulation-language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT":
-        /// CREATE [OR REPLACE] TABLE ... AS SELECT ... "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR
-        /// REPLACE] VIEW ... AS SELECT ... "DROP_VIEW": DROP VIEW query.</summary>
+        /// <summary>The type of query statement, if valid. Possible values (new values might be added in the future):
+        /// "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference
+        /// /standard-sql/data-manipulation-language "UPDATE": UPDATE query; see
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "DELETE": DELETE
+        /// query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "MERGE":
+        /// MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+        /// "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE]
+        /// TABLE ... AS SELECT ... "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS
+        /// SELECT ... "DROP_VIEW": DROP VIEW query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; } 
 
@@ -4038,8 +4042,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
         public virtual System.Nullable<long> TotalSlotMs { get; set; } 
 
-        /// <summary>[Output-only, Beta] Standard SQL only: list of undeclared query parameters detected during a dry
-        /// run validation.</summary>
+        /// <summary>Standard SQL only: list of undeclared query parameters detected during a dry run
+        /// validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; } 
 

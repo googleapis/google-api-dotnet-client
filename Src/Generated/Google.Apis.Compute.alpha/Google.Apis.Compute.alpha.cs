@@ -31976,6 +31976,116 @@ namespace Google.Apis.Compute.alpha
             }
 
         }
+
+        /// <summary>Updates the specified network peering with the data included in the request Only the following
+        /// fields can be modified: NetworkPeering.export_custom_routes, and
+        /// NetworkPeering.import_custom_routes</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource which the updated peering is belonging to.</param>
+        public virtual UpdatePeeringRequest UpdatePeering(Google.Apis.Compute.alpha.Data.NetworksUpdatePeeringRequest body, string project, string network)
+        {
+            return new UpdatePeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Updates the specified network peering with the data included in the request Only the following
+        /// fields can be modified: NetworkPeering.export_custom_routes, and
+        /// NetworkPeering.import_custom_routes</summary>
+        public class UpdatePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdatePeering request.</summary>
+            public UpdatePeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.NetworksUpdatePeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource which the updated peering is belonging to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.NetworksUpdatePeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updatePeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/updatePeering"; }
+            }
+
+            /// <summary>Initializes UpdatePeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "nodeGroups" collection of methods.</summary>
@@ -48356,7 +48466,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>A list all the resource policies that have been configured for the specified project in specified
         /// region.</summary>
-        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ResourcePoliciesList>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ResourcePolicyList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
@@ -73825,7 +73935,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of InternalIpOwner resources.</summary>
+        /// <summary>A list of InternalIpAddress resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InternalIpAddress> Items { get; set; } 
 
@@ -75576,6 +75686,15 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class NetworksUpdatePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
+        public virtual NetworkPeering NetworkPeering { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A NodeGroup resource.</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -75791,6 +75910,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; } 
 
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -76004,6 +76127,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
 
         /// <summary>[Output Only] The status of the node template. One of the following values: CREATING, READY, and
         /// DELETING.</summary>
@@ -78005,80 +78132,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class ResourcePoliciesList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>[Output Only] A list of ResourcePolicy resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ResourcePolicy> Items { get; set; } 
-
-        /// <summary>[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
-        /// resourcePolicies</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual ResourcePoliciesList.WarningData Warning { get; set; } 
-
-        
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        public class WarningData
-        {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
-
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
-
-            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
-
-            
-
-            public class DataData
-            {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
-
-                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
-
-            }
-        }
-    }    
-
     public class ResourcePoliciesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of resourcePolicies contained in this scope.</summary>
@@ -78358,6 +78411,80 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class ResourcePolicyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of ResourcePolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ResourcePolicy> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
+        /// resourcePolicies</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ResourcePolicyList.WarningData Warning { get; set; } 
+
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     public class ResourcePolicyVmMaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -78982,12 +79109,6 @@ namespace Google.Apis.Compute.alpha.Data
     /// no external IPs are provided.</summary>
     public class RouterNat : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A list of IPs allocated automatically by GCP for this Nat service. They will be raw
-        /// IP strings like "179.12.26.133". They are ephemeral IPs allocated from the IP blocks managed by the NAT
-        /// manager. This list can grow and shrink based on the number of VMs configured to use NAT.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoAllocatedNatIps")]
-        public virtual System.Collections.Generic.IList<string> AutoAllocatedNatIps { get; set; } 
-
         /// <summary>Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
         public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
@@ -79753,6 +79874,15 @@ namespace Google.Apis.Compute.alpha.Data
         /// overwritten by newer content and the start values will be mismatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ServerBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
