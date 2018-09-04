@@ -1,4 +1,7 @@
 {
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Speech API",
+  "ownerName": "Google",
   "resources": {
     "operations": {
       "methods": {
@@ -10,18 +13,18 @@
             "name"
           ],
           "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "parameters": {
             "name": {
-              "location": "path",
               "description": "The name of the operation resource.",
               "required": true,
               "type": "string",
-              "pattern": "^[^/]+$"
+              "pattern": "^[^/]+$",
+              "location": "path"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "flatPath": "v1beta1/operations/{operationsId}",
           "path": "v1beta1/operations/{+name}",
           "id": "speech.operations.get",
@@ -32,90 +35,54 @@
     "speech": {
       "methods": {
         "asyncrecognize": {
-          "path": "v1beta1/speech:asyncrecognize",
-          "id": "speech.speech.asyncrecognize",
+          "description": "Performs asynchronous speech recognition: receive results via the\n[google.longrunning.Operations]\n(/speech/reference/rest/v1beta1/operations#Operation)\ninterface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
           "request": {
             "$ref": "AsyncRecognizeRequest"
           },
-          "description": "Performs asynchronous speech recognition: receive results via the\n[google.longrunning.Operations]\n(/speech/reference/rest/v1beta1/operations#Operation)\ninterface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "Operation"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {},
-          "flatPath": "v1beta1/speech:asyncrecognize"
+          "flatPath": "v1beta1/speech:asyncrecognize",
+          "id": "speech.speech.asyncrecognize",
+          "path": "v1beta1/speech:asyncrecognize"
         },
         "syncrecognize": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
           "response": {
             "$ref": "SyncRecognizeResponse"
           },
-          "parameters": {},
+          "parameterOrder": [],
+          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {},
           "flatPath": "v1beta1/speech:syncrecognize",
-          "id": "speech.speech.syncrecognize",
           "path": "v1beta1/speech:syncrecognize",
-          "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
+          "id": "speech.speech.syncrecognize",
           "request": {
             "$ref": "SyncRecognizeRequest"
-          }
+          },
+          "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed."
         }
       }
     }
   },
   "parameters": {
-    "key": {
+    "fields": {
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
     },
     "$.xgafv": {
       "description": "V1 error format.",
@@ -130,13 +97,17 @@
         "2"
       ]
     },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -144,24 +115,54 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
     }
   },
   "version": "v1beta1",
   "baseUrl": "https://speech.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Converts audio to text by applying powerful neural network models.",
   "servicePath": "",
+  "description": "Converts audio to text by applying powerful neural network models.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20180713",
   "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
   "id": "speech:v1beta1",
+  "revision": "20180713",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "SpeechRecognitionAlternative": {
-      "description": "Alternative hypotheses (a.k.a. n-best list).",
-      "type": "object",
       "properties": {
         "confidence": {
           "description": "*Output-only* The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is typically provided only for the top hypothesis, and\nonly for `is_final=true` results. Clients should not rely on the\n`confidence` field as it is not guaranteed to be accurate, or even set, in\nany of the results.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
@@ -173,7 +174,9 @@
           "type": "string"
         }
       },
-      "id": "SpeechRecognitionAlternative"
+      "id": "SpeechRecognitionAlternative",
+      "description": "Alternative hypotheses (a.k.a. n-best list).",
+      "type": "object"
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
@@ -225,8 +228,6 @@
       "id": "SpeechContext"
     },
     "SpeechRecognitionResult": {
-      "description": "A speech recognition result corresponding to a portion of the audio.",
-      "type": "object",
       "properties": {
         "alternatives": {
           "description": "*Output-only* May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).",
@@ -236,17 +237,14 @@
           }
         }
       },
-      "id": "SpeechRecognitionResult"
+      "id": "SpeechRecognitionResult",
+      "description": "A speech recognition result corresponding to a portion of the audio.",
+      "type": "object"
     },
     "RecognitionConfig": {
       "description": "Provides information to the recognizer that specifies how to process the\nrequest.",
       "type": "object",
       "properties": {
-        "maxAlternatives": {
-          "description": "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one.",
-          "format": "int32",
-          "type": "integer"
-        },
         "sampleRate": {
           "description": "*Required* Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).",
           "format": "int32",
@@ -265,6 +263,14 @@
           "$ref": "SpeechContext"
         },
         "encoding": {
+          "enum": [
+            "ENCODING_UNSPECIFIED",
+            "LINEAR16",
+            "FLAC",
+            "MULAW",
+            "AMR",
+            "AMR_WB"
+          ],
           "description": "*Required* Encoding of audio data sent in all `RecognitionAudio` messages.",
           "type": "string",
           "enumDescriptions": [
@@ -274,15 +280,12 @@
             "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
             "Adaptive Multi-Rate Narrowband codec. `sample_rate` must be 8000 Hz.",
             "Adaptive Multi-Rate Wideband codec. `sample_rate` must be 16000 Hz."
-          ],
-          "enum": [
-            "ENCODING_UNSPECIFIED",
-            "LINEAR16",
-            "FLAC",
-            "MULAW",
-            "AMR",
-            "AMR_WB"
           ]
+        },
+        "maxAlternatives": {
+          "description": "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechRecognitionResult`.\nThe server may return fewer than `max_alternatives`.\nValid values are `0`-`30`. A value of `0` or `1` will return a maximum of\none. If omitted, will return a maximum of one.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "id": "RecognitionConfig"
@@ -303,8 +306,6 @@
       "type": "object"
     },
     "RecognitionAudio": {
-      "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[audio limits](https://cloud.google.com/speech/limits#content).",
-      "type": "object",
       "properties": {
         "content": {
           "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, protobuffers use a\npure binary representation, whereas JSON representations use base64.",
@@ -316,7 +317,9 @@
           "type": "string"
         }
       },
-      "id": "RecognitionAudio"
+      "id": "RecognitionAudio",
+      "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[audio limits](https://cloud.google.com/speech/limits#content).",
+      "type": "object"
     },
     "AsyncRecognizeRequest": {
       "description": "The top-level message sent by the client for the `AsyncRecognize` method.",
@@ -361,6 +364,8 @@
       "id": "Status"
     },
     "SyncRecognizeResponse": {
+      "description": "The only message returned to the client by `SyncRecognize`. method. It\ncontains the result as zero or more sequential `SpeechRecognitionResult`\nmessages.",
+      "type": "object",
       "properties": {
         "results": {
           "description": "*Output-only* Sequential list of transcription results corresponding to\nsequential portions of audio.",
@@ -370,15 +375,13 @@
           }
         }
       },
-      "id": "SyncRecognizeResponse",
-      "description": "The only message returned to the client by `SyncRecognize`. method. It\ncontains the result as zero or more sequential `SpeechRecognitionResult`\nmessages.",
-      "type": "object"
+      "id": "SyncRecognizeResponse"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Speech",
   "auth": {
@@ -393,8 +396,5 @@
   "rootUrl": "https://speech.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "speech",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Speech API",
-  "ownerName": "Google"
+  "batchPath": "batch"
 }

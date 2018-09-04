@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180830 (1337)
+ *      <tr><th>API Rev<td>20180903 (1341)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3669,9 +3669,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class Any : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A URL/resource name that uniquely identifies the type of the serialized protocol buffer message.
-        /// The last segment of the URL's path must represent the fully qualified name of the type (as in
-        /// `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not
-        /// accepted).
+        /// This string must contain at least one "/" character. The last segment of the URL's path must represent the
+        /// fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical
+        /// form (e.g., leading "." is not accepted).
         ///
         /// In practice, teams usually precompile into the binary all types that they expect it to use in the context of
         /// Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type

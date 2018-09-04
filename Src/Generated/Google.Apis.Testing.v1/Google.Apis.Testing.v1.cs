@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180830 (1337)
+ *      <tr><th>API Rev<td>20180901 (1339)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1822,7 +1822,9 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filesToPush")]
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; } 
 
-        /// <summary>The network traffic profile used for running the test. Optional</summary>
+        /// <summary>Optional. The network traffic profile used for running the test. Available network profiles can be
+        /// queried by using the NETWORK_CONFIGURATION environment type when calling
+        /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; } 
 

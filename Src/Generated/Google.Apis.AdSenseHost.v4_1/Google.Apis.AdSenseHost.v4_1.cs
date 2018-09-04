@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/host/'>AdSense Host API</a>
  *      <tr><th>API Version<td>v4.1
- *      <tr><th>API Rev<td>20180829 (1336)
+ *      <tr><th>API Rev<td>20180831 (1338)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/host/'>
  *              https://developers.google.com/adsense/host/</a>
