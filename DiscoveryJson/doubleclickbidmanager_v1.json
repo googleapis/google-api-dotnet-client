@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/aeqE65OvZZ6FdXY2G_0kVB4zmis\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/wt31bQU3QIh3FtuHSYPOcRgOq78\"",
  "discoveryVersion": "v1",
  "id": "doubleclickbidmanager:v1",
  "name": "doubleclickbidmanager",
  "canonicalName": "DoubleClick Bid Manager",
  "version": "v1",
- "revision": "20180215",
+ "revision": "20180821",
  "title": "DoubleClick Bid Manager API",
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
  "ownerDomain": "google.com",
@@ -143,11 +143,11 @@
   "DownloadRequest": {
    "id": "DownloadRequest",
    "type": "object",
-   "description": "Request to fetch stored insertion orders, line items, TrueView ad groups and ads.",
+   "description": "Request to fetch stored campaigns, insertion orders, line items, TrueView ad groups and ads.",
    "properties": {
     "fileTypes": {
      "type": "array",
-     "description": "File types that will be returned.",
+     "description": "File types that will be returned.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"LINE_ITEM\"",
      "items": {
       "type": "string",
       "enum": [
@@ -168,7 +168,7 @@
     },
     "filterIds": {
      "type": "array",
-     "description": "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified. Only one ID is allowed for the ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter types, all IDs must be from the same Advertiser.",
+     "description": "The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be specified.",
      "items": {
       "type": "string",
       "format": "int64"
@@ -176,7 +176,7 @@
     },
     "filterType": {
      "type": "string",
-     "description": "Filter type used to filter line items to fetch.",
+     "description": "Filter type used to filter entities to fetch.",
      "enum": [
       "ADVERTISER_ID",
       "CAMPAIGN_ID",
@@ -192,7 +192,7 @@
     },
     "version": {
      "type": "string",
-     "description": "SDF Version (column names, types, order) in which the entities will be returned. Default to 3."
+     "description": "SDF Version (column names, types, order) in which the entities will be returned. Default to 3.1."
     }
    }
   },
@@ -239,6 +239,7 @@
       "FILTER_ADVERTISER_TIMEZONE",
       "FILTER_AD_POSITION",
       "FILTER_AGE",
+      "FILTER_AUTHORIZED_SELLER_STATE_ID",
       "FILTER_BRANDSAFE_CHANNEL_ID",
       "FILTER_BROWSER",
       "FILTER_BUDGET_SEGMENT_DESCRIPTION",
@@ -257,9 +258,14 @@
       "FILTER_DATA_PROVIDER",
       "FILTER_DATE",
       "FILTER_DAY_OF_WEEK",
+      "FILTER_DEVICE_MAKE",
+      "FILTER_DEVICE_MODEL",
+      "FILTER_DEVICE_TYPE",
       "FILTER_DFP_ORDER_ID",
       "FILTER_DMA",
+      "FILTER_DV360_ACTIVITY_ID",
       "FILTER_EXCHANGE_ID",
+      "FILTER_FLOODLIGHT_ACTIVITY_ID",
       "FILTER_FLOODLIGHT_PIXEL_ID",
       "FILTER_GENDER",
       "FILTER_INSERTION_ORDER",
@@ -469,6 +475,12 @@
       "",
       "",
       "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       ""
      ]
     },
@@ -541,6 +553,7 @@
        "FILTER_ADVERTISER_TIMEZONE",
        "FILTER_AD_POSITION",
        "FILTER_AGE",
+       "FILTER_AUTHORIZED_SELLER_STATE_ID",
        "FILTER_BRANDSAFE_CHANNEL_ID",
        "FILTER_BROWSER",
        "FILTER_BUDGET_SEGMENT_DESCRIPTION",
@@ -559,9 +572,14 @@
        "FILTER_DATA_PROVIDER",
        "FILTER_DATE",
        "FILTER_DAY_OF_WEEK",
+       "FILTER_DEVICE_MAKE",
+       "FILTER_DEVICE_MODEL",
+       "FILTER_DEVICE_TYPE",
        "FILTER_DFP_ORDER_ID",
        "FILTER_DMA",
+       "FILTER_DV360_ACTIVITY_ID",
        "FILTER_EXCHANGE_ID",
+       "FILTER_FLOODLIGHT_ACTIVITY_ID",
        "FILTER_FLOODLIGHT_PIXEL_ID",
        "FILTER_GENDER",
        "FILTER_INSERTION_ORDER",
@@ -771,6 +789,12 @@
        "",
        "",
        "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
        ""
       ]
      }
@@ -815,6 +839,8 @@
        "METRIC_BILLABLE_COST_USD",
        "METRIC_CLICKS",
        "METRIC_CLICK_TO_POST_CLICK_CONVERSION_RATE",
+       "METRIC_CM_POST_CLICK_REVENUE",
+       "METRIC_CM_POST_VIEW_REVENUE",
        "METRIC_COMSCORE_VCE_AUDIENCE_AVG_FREQUENCY",
        "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS",
        "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS_SHARE",
@@ -845,6 +871,7 @@
        "METRIC_DATA_COST_ADVERTISER",
        "METRIC_DATA_COST_PARTNER",
        "METRIC_DATA_COST_USD",
+       "METRIC_DBM_ENGAGEMENT_RATE",
        "METRIC_FEE10_ADVERTISER",
        "METRIC_FEE10_PARTNER",
        "METRIC_FEE10_USD",
@@ -908,6 +935,7 @@
        "METRIC_FEE9_ADVERTISER",
        "METRIC_FEE9_PARTNER",
        "METRIC_FEE9_USD",
+       "METRIC_FLOODLIGHT_IMPRESSIONS",
        "METRIC_IMPRESSIONS",
        "METRIC_IMPRESSIONS_TO_CONVERSION_RATE",
        "METRIC_LAST_CLICKS",
@@ -1006,6 +1034,7 @@
        "METRIC_REVENUE_VIEWABLE_ECPM_ADVERTISER",
        "METRIC_REVENUE_VIEWABLE_ECPM_PARTNER",
        "METRIC_REVENUE_VIEWABLE_ECPM_USD",
+       "METRIC_RICH_MEDIA_SCROLLS",
        "METRIC_RICH_MEDIA_VIDEO_COMPLETIONS",
        "METRIC_RICH_MEDIA_VIDEO_FIRST_QUARTILE_COMPLETES",
        "METRIC_RICH_MEDIA_VIDEO_FULL_SCREENS",
@@ -1094,6 +1123,11 @@
        "METRIC_VIEWABLE_BID_REQUESTS"
       ],
       "enumDescriptions": [
+       "",
+       "",
+       "",
+       "",
+       "",
        "",
        "",
        "",

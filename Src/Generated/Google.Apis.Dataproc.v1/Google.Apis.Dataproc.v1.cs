@@ -793,6 +793,11 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -802,11 +807,6 @@ namespace Google.Apis.Dataproc.v1
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -860,18 +860,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1999,6 +1999,20 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
+                    /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
+                    /// the following syntax:field = value AND field = value ...where field is status.state or
+                    /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
+                    /// either ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-separated items
+                    /// are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND
+                    /// labels.env = staging AND labels.starred = *</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Optional. Specifies enumerated categories of jobs to list. (default = match ALL
                     /// jobs).If filter is provided, jobStateMatcher will be ignored.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobStateMatcher", Google.Apis.Util.RequestParameterType.Query)]
@@ -2024,20 +2038,6 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Optional. The number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
-                    /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
-                    /// the following syntax:field = value AND field = value ...where field is status.state or
-                    /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
-                    /// either ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-separated items
-                    /// are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND
-                    /// labels.env = staging AND labels.starred = *</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2082,6 +2082,24 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "jobStateMatcher", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "jobStateMatcher",
@@ -2103,24 +2121,6 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

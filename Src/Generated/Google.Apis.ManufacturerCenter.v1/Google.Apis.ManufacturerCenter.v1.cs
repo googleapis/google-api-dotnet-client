@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180810 (1317)
+ *      <tr><th>API Rev<td>20180903 (1341)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -509,19 +509,13 @@ namespace Google.Apis.ManufacturerCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The information to be included in the response. Only sections listed here will be returned.
-                ///
-                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
-                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
-                /// sections will be returned.</summary>
+                /// <summary>The information to be included in the response. Only sections listed here will be
+                /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<IncludeEnum> Include { get; set; }
 
-                /// <summary>The information to be included in the response. Only sections listed here will be returned.
-                ///
-                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
-                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
-                /// sections will be returned.</summary>
+                /// <summary>The information to be included in the response. Only sections listed here will be
+                /// returned.</summary>
                 public enum IncludeEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
@@ -616,19 +610,17 @@ namespace Google.Apis.ManufacturerCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The information to be included in the response. Only sections listed here will be returned.
-                ///
-                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
-                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
-                /// sections will be returned.</summary>
+                /// <summary>Maximum number of product statuses to return in the response, used for paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The information to be included in the response. Only sections listed here will be
+                /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<IncludeEnum> Include { get; set; }
 
-                /// <summary>The information to be included in the response. Only sections listed here will be returned.
-                ///
-                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
-                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
-                /// sections will be returned.</summary>
+                /// <summary>The information to be included in the response. Only sections listed here will be
+                /// returned.</summary>
                 public enum IncludeEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
@@ -644,10 +636,6 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// <summary>The token returned by the previous request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of product statuses to return in the response, used for paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -683,6 +671,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                             Pattern = @"^accounts/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "include", new Google.Apis.Discovery.Parameter
                         {
                             Name = "include",
@@ -695,15 +692,6 @@ namespace Google.Apis.ManufacturerCenter.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1196,7 +1184,8 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     /// <summary>Product data.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attributes of the product uploaded to the Manufacturer Center.</summary>
+        /// <summary>Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken
+        /// into account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; } 
 
@@ -1209,29 +1198,9 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
         public virtual System.Collections.Generic.IList<DestinationStatus> DestinationStatuses { get; set; } 
 
-        /// <summary>Final attributes of the product. The final attributes are obtained by overriding the uploaded
-        /// attributes with the manually provided and deleted attributes. Google systems only process, evaluate, review,
-        /// and/or use final attributes.
-        ///
-        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("finalAttributes")]
-        public virtual Attributes FinalAttributes { get; set; } 
-
         /// <summary>A server-generated list of issues associated with the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
         public virtual System.Collections.Generic.IList<Issue> Issues { get; set; } 
-
-        /// <summary>Names of the attributes of the product deleted manually via the Manufacturer Center UI.
-        ///
-        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("manuallyDeletedAttributes")]
-        public virtual System.Collections.Generic.IList<string> ManuallyDeletedAttributes { get; set; } 
-
-        /// <summary>Attributes of the product provided manually via the Manufacturer Center UI.
-        ///
-        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("manuallyProvidedAttributes")]
-        public virtual Attributes ManuallyProvidedAttributes { get; set; } 
 
         /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
         ///
@@ -1259,12 +1228,6 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>The target country of the product as a CLDR territory code (for example, US).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; } 
-
-        /// <summary>Attributes of the product uploaded via the Manufacturer Center API or via feeds.
-        ///
-        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadedAttributes")]
-        public virtual Attributes UploadedAttributes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

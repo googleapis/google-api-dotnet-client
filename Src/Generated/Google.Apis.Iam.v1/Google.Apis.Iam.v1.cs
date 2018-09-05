@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180814 (1321)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -1398,10 +1398,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1422,6 +1418,10 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
+
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1457,15 +1457,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1487,6 +1478,15 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2317,16 +2317,16 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Optional pagination token returned in an earlier
-                /// ListServiceAccountsResponse.next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
                 /// in a subsequent request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier
+                /// ListServiceAccountsResponse.next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2362,18 +2362,18 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2681,7 +2681,7 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>Updates a ServiceAccount.
             ///
-            /// Currently, only the following fields are updatable: `display_name`, `description`.</summary>
+            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
@@ -2698,7 +2698,7 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>Updates a ServiceAccount.
             ///
-            /// Currently, only the following fields are updatable: `display_name`, `description`.</summary>
+            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             public class UpdateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccount>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -2862,6 +2862,15 @@ namespace Google.Apis.Iam.v1
             }
 
 
+            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
+            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Include Roles that have been deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
             /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2882,15 +2891,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
-            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
-            /// <summary>Include Roles that have been deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2917,6 +2917,24 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2938,24 +2956,6 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3214,7 +3214,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string AccountId { get; set; } 
 
         /// <summary>The ServiceAccount resource to create. Currently, only the following values are user assignable:
-        /// `display_name`, and `description`.</summary>
+        /// `display_name` .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; } 
 
@@ -3335,13 +3335,12 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("debugMessage")]
         public virtual string DebugMessage { get; set; } 
 
-        /// <summary>The name of the field for which this lint result is about, relative to the input object to lint in
-        /// the request.
+        /// <summary>The name of the field for which this lint result is about.
         ///
         /// For nested messages, `field_name` consists of names of the embedded fields separated by period character.
-        /// For instance, if the lint request is on a google.iam.v1.Policy and this lint result is about a condition
-        /// expression of one of the input policy bindings, the field would be populated as
-        /// `bindings.condition.expression`.
+        /// The top-level qualifier is the input object to lint in the request. For instance, if the lint request is on
+        /// a google.iam.v1.Policy and this lint result is about a condition expression of one of the input policy
+        /// bindings, the field would be populated as `policy.bindings.condition.expression`.
         ///
         /// This field does not identify the ordinality of the repetitive fields (for instance bindings in a
         /// policy).</summary>
@@ -3665,7 +3664,7 @@ namespace Google.Apis.Iam.v1.Data
     /// account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A user-specified name for the service account. Must be less than or equal to 100 UTF-8
+        /// <summary>Optional. A user-specified description of the service account.  Must be fewer than 100 UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
@@ -3674,7 +3673,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>Optional. Not currently used.</summary>
+        /// <summary>Used to perform a consistent read-modify-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3713,8 +3712,10 @@ namespace Google.Apis.Iam.v1.Data
     /// periodically to ensure security of their service accounts.  Users retain the private key of these key-pairs, and
     /// Google retains ONLY the public key.
     ///
-    /// System-managed key-pairs are managed automatically by Google, and rotated daily without user intervention.  The
-    /// private key never leaves Google's servers to maximize security.
+    /// System-managed keys are automatically rotated by Google, and are used for signing for a maximum of two weeks.
+    /// The rotation process is probabilistic, and usage of the new key will gradually ramp up and down over the key's
+    /// lifetime. We recommend caching the public key set for a service account for no more than 24 hours to ensure you
+    /// have access to the latest keys.
     ///
     /// Public keys for all service accounts are also published at the OAuth2 Service Account API.</summary>
     public class ServiceAccountKey : Google.Apis.Requests.IDirectResponseSchema

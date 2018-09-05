@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180215 (1141)
+ *      <tr><th>API Rev<td>20180821 (1328)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -885,25 +885,26 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to fetch stored insertion orders, line items, TrueView ad groups and ads.</summary>
+    /// <summary>Request to fetch stored campaigns, insertion orders, line items, TrueView ad groups and ads.</summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File types that will be returned.</summary>
+        /// <summary>File types that will be returned.
+        ///
+        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "LINE_ITEM"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
 
         /// <summary>The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID
-        /// must be specified. Only one ID is allowed for the ADVERTISER_ID filter type. For INSERTION_ORDER_ID or
-        /// LINE_ITEM_ID filter types, all IDs must be from the same Advertiser.</summary>
+        /// must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
 
-        /// <summary>Filter type used to filter line items to fetch.</summary>
+        /// <summary>Filter type used to filter entities to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; } 
 
         /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
-        /// 3.</summary>
+        /// 3.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
