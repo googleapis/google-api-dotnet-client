@@ -1489,11 +1489,6 @@ namespace Google.Apis.CloudIot.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
-                            /// this field is ignored. Maximum IDs: 10,000</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
-
                             /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
                             /// 10,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
@@ -1516,6 +1511,11 @@ namespace Google.Apis.CloudIot.v1
                             /// available.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+                            /// this field is ignored. Maximum IDs: 10,000</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1551,15 +1551,6 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "deviceIds", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "deviceIds",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "deviceNumIds", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "deviceNumIds",
@@ -1590,6 +1581,15 @@ namespace Google.Apis.CloudIot.v1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "deviceIds", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deviceIds",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,

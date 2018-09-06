@@ -1401,13 +1401,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1420,6 +1413,13 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1461,18 +1461,18 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1664,13 +1664,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
-                    /// not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1692,6 +1685,13 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
+                    /// not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1727,15 +1727,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1757,6 +1748,15 @@ namespace Google.Apis.Dialogflow.v2
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

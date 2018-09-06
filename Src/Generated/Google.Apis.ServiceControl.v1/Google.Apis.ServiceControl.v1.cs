@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180825 (1332)
+ *      <tr><th>API Rev<td>20180901 (1339)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -2241,6 +2241,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocations")]
         public virtual System.Collections.Generic.IList<string> CurrentLocations { get; set; } 
+
+        /// <summary>The locations of a resource prior to the execution of the operation. For example:
+        ///
+        /// "europe-west1-a" "us-east1" "nam3"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalLocations")]
+        public virtual System.Collections.Generic.IList<string> OriginalLocations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

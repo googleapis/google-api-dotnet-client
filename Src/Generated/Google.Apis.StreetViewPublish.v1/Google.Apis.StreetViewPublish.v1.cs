@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180901 (1339)
+ *      <tr><th>API Rev<td>20180904 (1342)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -1049,6 +1049,16 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+            ///
+            /// The only filter supported at the moment is `placeId`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
             /// or is not provided, the default page size of 100 will be used. The number of photos returned in the
             /// response may be less than `pageSize` if the number of photos that belong to the user is less than
@@ -1070,16 +1080,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-            ///
-            /// The only filter supported at the moment is `placeId`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1106,24 +1106,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1136,6 +1118,24 @@ namespace Google.Apis.StreetViewPublish.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
