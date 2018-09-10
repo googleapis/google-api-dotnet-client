@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180902 (1340)
+ *      <tr><th>API Rev<td>20180906 (1344)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4984,6 +4984,11 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessCode")]
         public virtual string AccessCode { get; set; } 
 
+        /// <summary>Features of the entry point, such as being toll or toll-free. One entry point can have multiple
+        /// features. However, toll and toll-free cannot be both set on the same entry point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPointFeatures")]
+        public virtual System.Collections.Generic.IList<string> EntryPointFeatures { get; set; } 
+
         /// <summary>The type of the conference entry point. Possible values are: - "video" - joining a conference over
         /// HTTP. A conference can have zero or one video entry point. - "phone" - joining a conference by dialing a
         /// phone number. A conference can have zero or more phone entry points. - "sip" - joining a conference over
@@ -5026,6 +5031,11 @@ namespace Google.Apis.Calendar.v3.Data
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pin")]
         public virtual string Pin { get; set; } 
+
+        /// <summary>The CLDR/ISO 3166 region code for the country associated with this phone access. Example: "SE" for
+        /// Sweden. Calendar backend will populate this field only for EntryPointType.PHONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
 
         /// <summary>The URI of the entry point. The maximum length is 1300 characters. Format: - for video, http: or
         /// https: schema is required. - for phone, tel: schema is required. The URI should include the entire dial

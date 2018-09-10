@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/C3ziFMVvV9BKecEAOP3-Y80oFlc\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/IpWGMl9VbmiTG9s-ZaBZIrC4CgE\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20180823",
+ "revision": "20180830",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1687,7 +1687,7 @@
     },
     "role": {
      "type": "string",
-     "description": "The primary role for this user. While new values may be supported in the future, the following are currently allowed:  \n- organizer \n- owner \n- reader \n- writer",
+     "description": "The primary role for this user. While new values may be supported in the future, the following are currently allowed:  \n- owner \n- organizer \n- fileOrganizer \n- writer \n- reader",
      "annotations": {
       "required": [
        "drive.permissions.insert"
@@ -1721,7 +1721,7 @@
        },
        "role": {
         "type": "string",
-        "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- reader \n- writer"
+        "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- reader"
        },
        "teamDrivePermissionType": {
         "type": "string",
@@ -3576,7 +3576,7 @@
      "id": "drive.files.trash",
      "path": "files/{fileId}/trash",
      "httpMethod": "POST",
-     "description": "Moves a file to the trash. The currently authenticated user must own the file or be an organizer on the parent for Team Drive files.",
+     "description": "Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for Team Drive files.",
      "parameters": {
       "fileId": {
        "type": "string",

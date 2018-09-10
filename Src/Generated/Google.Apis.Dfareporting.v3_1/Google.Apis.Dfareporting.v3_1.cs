@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.1
- *      <tr><th>API Rev<td>20180720 (1296)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -10108,7 +10108,7 @@ namespace Google.Apis.Dfareporting.v3_1
             [Google.Apis.Util.RequestParameterAttribute("countryId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> CountryId { get; set; }
 
-            /// <summary>Select only directory sites with this DFP network code.</summary>
+            /// <summary>Select only directory sites with this Ad Manager network code.</summary>
             [Google.Apis.Util.RequestParameterAttribute("dfpNetworkCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DfpNetworkCode { get; set; }
 
@@ -22919,7 +22919,7 @@ namespace Google.Apis.Dfareporting.v3_1
 namespace Google.Apis.Dfareporting.v3_1.Data
 {    
 
-    /// <summary>Contains properties of a DCM account.</summary>
+    /// <summary>Contains properties of a Campaign Manager account.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account permissions assigned to this account.</summary>
@@ -23045,8 +23045,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>AccountPermissions contains information about a particular account permission. Some features of DCM
-    /// require an account permission to be present in the account.</summary>
+    /// <summary>AccountPermissions contains information about a particular account permission. Some features of
+    /// Campaign Manager require an account permission to be present in the account.</summary>
     public class AccountPermission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account profiles associated with this account permission.
@@ -23133,8 +23133,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>AccountUserProfiles contains properties of a DCM user profile. This resource is specifically for
-    /// managing user profiles, whereas UserProfiles is for accessing the API.</summary>
+    /// <summary>AccountUserProfiles contains properties of a Campaign Manager user profile. This resource is
+    /// specifically for managing user profiles, whereas UserProfiles is for accessing the API.</summary>
     public class AccountUserProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of the user profile. This is a read-only field that can be left blank.</summary>
@@ -23272,7 +23272,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DCM ad.</summary>
+    /// <summary>Contains properties of a Campaign Manager ad.</summary>
     public class Ad : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this ad. This is a read-only field that can be left blank.</summary>
@@ -23581,7 +23581,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DCM advertiser.</summary>
+    /// <summary>Contains properties of a Campaign Manager advertiser.</summary>
     public class Advertiser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this advertiser.This is a read-only field that can be left blank.</summary>
@@ -23848,7 +23848,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DCM campaign.</summary>
+    /// <summary>Contains properties of a Campaign Manager campaign.</summary>
     public class Campaign : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this campaign. This is a read-only field that can be left blank.</summary>
@@ -23885,7 +23885,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSegmentGroups")]
         public virtual System.Collections.Generic.IList<AudienceSegmentGroup> AudienceSegmentGroups { get; set; } 
 
-        /// <summary>Billing invoice code included in the DCM client billing invoices associated with the
+        /// <summary>Billing invoice code included in the Campaign Manager client billing invoices associated with the
         /// campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingInvoiceCode")]
         public virtual string BillingInvoiceCode { get; set; } 
@@ -24738,9 +24738,10 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>List of feature dependencies that will cause a backup image to be served if the browser that serves
         /// the ad does not support them. Feature dependencies are features that a browser must be able to support in
         /// order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all
-        /// features detected by DCM for all the assets of this creative and can then be modified by the client. To
-        /// reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative
-        /// types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
+        /// features detected by Campaign Manager for all the assets of this creative and can then be modified by the
+        /// client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the
+        /// following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
+        /// HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageFeatures")]
         public virtual System.Collections.Generic.IList<string> BackupImageFeatures { get; set; } 
 
@@ -24848,8 +24849,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("htmlCode")]
         public virtual string HtmlCode { get; set; } 
 
-        /// <summary>Whether HTML code is DCM-generated or manually entered. Set to true to ignore changes to htmlCode.
-        /// Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER.</summary>
+        /// <summary>Whether HTML code is generated by Campaign Manager or manually entered. Set to true to ignore
+        /// changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlCodeLocked")]
         public virtual System.Nullable<bool> HtmlCodeLocked { get; set; } 
 
@@ -24930,9 +24931,9 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFlashPluginVersion")]
         public virtual string RequiredFlashPluginVersion { get; set; } 
 
-        /// <summary>The internal Flash version for this creative as calculated by DoubleClick Studio. This is a read-
-        /// only field. Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID.
-        /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
+        /// <summary>The internal Flash version for this creative as calculated by Studio. This is a read-only field.
+        /// Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to
+        /// DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredFlashVersion")]
         public virtual System.Nullable<int> RequiredFlashVersion { get; set; } 
 
@@ -25098,10 +25099,10 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customStartTimeValue")]
         public virtual System.Nullable<int> CustomStartTimeValue { get; set; } 
 
-        /// <summary>List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies
-        /// are features that a browser must be able to support in order to render your HTML5 creative correctly. This
-        /// is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable
-        /// to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
+        /// <summary>List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature
+        /// dependencies are features that a browser must be able to support in order to render your HTML5 creative
+        /// correctly. This is a read-only, auto-generated field. Applicable to the following creative types:
+        /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedFeatures")]
         public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; } 
 
@@ -25181,8 +25182,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; } 
 
-        /// <summary>Whether the backup asset is original or changed by the user in DCM. Applicable to the following
-        /// creative types: all RICH_MEDIA.</summary>
+        /// <summary>Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the
+        /// following creative types: all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalBackup")]
         public virtual System.Nullable<bool> OriginalBackup { get; set; } 
 
@@ -25223,17 +25224,19 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and
         /// all VPAID creatives. BACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID
         /// creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. ADDITIONAL_IMAGE and
-        /// ADDITIONAL_FLASH apply to FLASH_INPAGE creatives. OTHER refers to assets from sources other than DCM, such
-        /// as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives. PARENT_VIDEO refers to
-        /// videos uploaded by the user in DCM and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.
-        /// TRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO assets and is applicable to
-        /// INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO refers to the DCM representation of child
-        /// asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or
-        /// removed within DCM. For VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO
-        /// assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO
-        /// assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to
-        /// audios uploaded by the user in DCM and is applicable to INSTREAM_AUDIO creatives. TRANSCODED_AUDIO refers to
-        /// audios transcoded by DCM from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.</summary>
+        /// ADDITIONAL_FLASH apply to FLASH_INPAGE creatives. OTHER refers to assets from sources other than Campaign
+        /// Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives. PARENT_VIDEO
+        /// refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and
+        /// VPAID_LINEAR_VIDEO creatives. TRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from
+        /// PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO
+        /// refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to
+        /// VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager. For
+        /// VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked
+        /// active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or
+        /// removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to audios uploaded by the
+        /// user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives. TRANSCODED_AUDIO refers to audios
+        /// transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO
+        /// creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
@@ -25326,9 +25329,9 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clickTags")]
         public virtual System.Collections.Generic.IList<ClickTag> ClickTags { get; set; } 
 
-        /// <summary>List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies
-        /// are features that a browser must be able to support in order to render your HTML5 creative correctly. This
-        /// is a read-only, auto-generated field.</summary>
+        /// <summary>List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature
+        /// dependencies are features that a browser must be able to support in order to render your HTML5 creative
+        /// correctly. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedFeatures")]
         public virtual System.Collections.Generic.IList<string> DetectedFeatures { get; set; } 
 
@@ -25504,8 +25507,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
     /// <summary>Creative Custom Event.</summary>
     public class CreativeCustomEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique ID of this event used by DDM Reporting and Data Transfer. This is a read-only
-        /// field.</summary>
+        /// <summary>Unique ID of this event used by Reporting and Data Transfer. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserCustomEventId")]
         public virtual System.Nullable<long> AdvertiserCustomEventId { get; set; } 
 
@@ -25517,8 +25519,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserCustomEventType")]
         public virtual string AdvertiserCustomEventType { get; set; } 
 
-        /// <summary>Artwork label column, used to link events in DCM back to events in Studio. This is a required field
-        /// and should not be modified after insertion.</summary>
+        /// <summary>Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a
+        /// required field and should not be modified after insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artworkLabel")]
         public virtual string ArtworkLabel { get; set; } 
 
@@ -26011,8 +26013,9 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual System.Nullable<bool> HardCutoff { get; set; } 
 
         /// <summary>Impression ratio for this ad. This ratio determines how often each ad is served relative to the
-        /// others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then DCM
-        /// will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive.</summary>
+        /// others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then
+        /// Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionRatio")]
         public virtual System.Nullable<long> ImpressionRatio { get; set; } 
 
@@ -26025,14 +26028,14 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>DFP Settings</summary>
+    /// <summary>Google Ad Manager Settings</summary>
     public class DfpSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>DFP network code for this directory site.</summary>
+        /// <summary>Ad Manager network code for this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpNetworkCode")]
         public virtual string DfpNetworkCode { get; set; } 
 
-        /// <summary>DFP network name for this directory site.</summary>
+        /// <summary>Ad Manager network name for this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpNetworkName")]
         public virtual string DfpNetworkName { get; set; } 
 
@@ -26044,7 +26047,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubPaidPlacementAccepted")]
         public virtual System.Nullable<bool> PubPaidPlacementAccepted { get; set; } 
 
-        /// <summary>Whether this directory site is available only via DoubleClick Publisher Portal.</summary>
+        /// <summary>Whether this directory site is available only via Publisher Portal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherPortalOnly")]
         public virtual System.Nullable<bool> PublisherPortalOnly { get; set; } 
 
@@ -26340,7 +26343,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewOptOut")]
         public virtual System.Nullable<bool> ActiveViewOptOut { get; set; } 
 
-        /// <summary>Directory site DFP settings.</summary>
+        /// <summary>Directory site Ad Manager settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dfpSettings")]
         public virtual DfpSettings DfpSettings { get; set; } 
 
@@ -26391,7 +26394,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
 
     /// <summary>Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly
     /// labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used
-    /// for targeting with DoubleClick Studio dynamic creatives. Use these labels instead of numeric DCM IDs (such as
+    /// for targeting with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as
     /// placement IDs) to save time and avoid errors in your dynamic feeds.</summary>
     public class DynamicTargetingKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26490,7 +26493,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabledByDefault")]
         public virtual System.Nullable<bool> EnabledByDefault { get; set; } 
 
-        /// <summary>Whether to remove this event tag from ads that are trafficked through DoubleClick Bid Manager to Ad
+        /// <summary>Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad
         /// Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or
         /// more networks, such as the Google Display Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFromAdxRequests")]
@@ -27066,7 +27069,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("naturalSearchConversionAttributionOption")]
         public virtual string NaturalSearchConversionAttributionOption { get; set; } 
 
-        /// <summary>Settings for DCM Omniture integration.</summary>
+        /// <summary>Settings for Campaign Manager Omniture integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omnitureSettings")]
         public virtual OmnitureSettings OmnitureSettings { get; set; } 
 
@@ -27220,7 +27223,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a buy from the DoubleClick Planning inventory store.</summary>
+    /// <summary>Represents a buy from the Planning inventory store.</summary>
     public class InventoryItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this inventory item.</summary>
@@ -27884,7 +27887,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes properties of a DoubleClick Planning order.</summary>
+    /// <summary>Describes properties of a Planning order.</summary>
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this order.</summary>
@@ -28000,7 +28003,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DoubleClick Planning order document.</summary>
+    /// <summary>Contains properties of a Planning order document.</summary>
     public class OrderDocument : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this order document.</summary>
@@ -28883,7 +28886,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DoubleClick Planning project.</summary>
+    /// <summary>Contains properties of a Planning project.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this project.</summary>
@@ -29991,7 +29994,7 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains properties of a DCM subaccount.</summary>
+    /// <summary>Contains properties of a Campaign Manager subaccount.</summary>
     public class Subaccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ID of the account that contains this subaccount. This is a read-only field that can be left

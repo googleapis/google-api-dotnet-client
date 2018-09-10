@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/X1Z-fR89uwJyJDBl_6UoNF9Hwog\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Cqta-KTztcICj-6AFsrj8XKuKc4\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.2",
  "name": "dfareporting",
  "version": "v3.2",
- "revision": "20180720",
+ "revision": "20180830",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -85,7 +85,7 @@
   "Account": {
    "id": "Account",
    "type": "object",
-   "description": "Contains properties of a DCM account.",
+   "description": "Contains properties of a Campaign Manager account.",
    "properties": {
     "accountPermissionIds": {
      "type": "array",
@@ -262,7 +262,7 @@
   "AccountPermission": {
    "id": "AccountPermission",
    "type": "object",
-   "description": "AccountPermissions contains information about a particular account permission. Some features of DCM require an account permission to be present in the account.",
+   "description": "AccountPermissions contains information about a particular account permission. Some features of Campaign Manager require an account permission to be present in the account.",
    "properties": {
     "accountProfiles": {
      "type": "array",
@@ -374,7 +374,7 @@
   "AccountUserProfile": {
    "id": "AccountUserProfile",
    "type": "object",
-   "description": "AccountUserProfiles contains properties of a DCM user profile. This resource is specifically for managing user profiles, whereas UserProfiles is for accessing the API.",
+   "description": "AccountUserProfiles contains properties of a Campaign Manager user profile. This resource is specifically for managing user profiles, whereas UserProfiles is for accessing the API.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -544,7 +544,7 @@
   "Ad": {
    "id": "Ad",
    "type": "object",
-   "description": "Contains properties of a DCM ad.",
+   "description": "Contains properties of a Campaign Manager ad.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -867,7 +867,7 @@
   "Advertiser": {
    "id": "Advertiser",
    "type": "object",
-   "description": "Contains properties of a DCM advertiser.",
+   "description": "Contains properties of a Campaign Manager advertiser.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -1142,7 +1142,7 @@
   "Campaign": {
    "id": "Campaign",
    "type": "object",
-   "description": "Contains properties of a DCM campaign.",
+   "description": "Contains properties of a Campaign Manager campaign.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -1187,7 +1187,7 @@
     },
     "billingInvoiceCode": {
      "type": "string",
-     "description": "Billing invoice code included in the DCM client billing invoices associated with the campaign."
+     "description": "Billing invoice code included in the Campaign Manager client billing invoices associated with the campaign."
     },
     "clickThroughUrlSuffixProperties": {
      "$ref": "ClickThroughUrlSuffixProperties",
@@ -1807,7 +1807,7 @@
     },
     "treatmentForUnderage": {
      "type": "boolean",
-     "description": "Whether this particular request may come from a user under the age of 16 (may differ by country), under compliance with the EU?s General Data Protection Regulation (GDPR)."
+     "description": "Whether this particular request may come from a user under the age of 16 (may differ by country), under compliance with the European Union's General Data Protection Regulation (GDPR)."
     },
     "value": {
      "type": "number",
@@ -2038,7 +2038,7 @@
     },
     "additionalSizes": {
      "type": "array",
-     "description": "Additional sizes associated with a responsive creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when the primary asset type is HTML_IMAGE",
+     "description": "Additional sizes associated with a responsive creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when the primary asset type is HTML_IMAGE.",
      "items": {
       "$ref": "Size"
      }
@@ -2112,7 +2112,7 @@
     },
     "backupImageFeatures": {
      "type": "array",
-     "description": "List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by DCM for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
+     "description": "List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by Campaign Manager for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
      "items": {
       "type": "string",
       "enum": [
@@ -2360,7 +2360,7 @@
     },
     "htmlCodeLocked": {
      "type": "boolean",
-     "description": "Whether HTML code is DCM-generated or manually entered. Set to true to ignore changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER."
+     "description": "Whether HTML code is generated by Campaign Manager or manually entered. Set to true to ignore changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER."
     },
     "id": {
      "type": "string",
@@ -2430,7 +2430,7 @@
     },
     "requiredFlashVersion": {
      "type": "integer",
-     "description": "The internal Flash version for this creative as calculated by DoubleClick Studio. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
+     "description": "The internal Flash version for this creative as calculated by Studio. This is a read-only field. Applicable to the following creative types: FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
      "format": "int32"
     },
     "size": {
@@ -2669,7 +2669,7 @@
     },
     "detectedFeatures": {
      "type": "array",
-     "description": "List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
+     "description": "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.",
      "items": {
       "type": "string",
       "enum": [
@@ -2921,7 +2921,7 @@
     },
     "originalBackup": {
      "type": "boolean",
-     "description": "Whether the backup asset is original or changed by the user in DCM. Applicable to the following creative types: all RICH_MEDIA."
+     "description": "Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the following creative types: all RICH_MEDIA."
     },
     "position": {
      "$ref": "OffsetPosition",
@@ -2970,7 +2970,7 @@
     },
     "role": {
      "type": "string",
-     "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than DCM, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in DCM and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by DCM from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the DCM representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within DCM.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in DCM and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by DCM from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.",
+     "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.",
      "enum": [
       "ADDITIONAL_FLASH",
       "ADDITIONAL_IMAGE",
@@ -3106,7 +3106,7 @@
     },
     "detectedFeatures": {
      "type": "array",
-     "description": "List of feature dependencies for the creative asset that are detected by DCM. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field.",
+     "description": "List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field.",
      "items": {
       "type": "string",
       "enum": [
@@ -3441,7 +3441,7 @@
    "properties": {
     "advertiserCustomEventId": {
      "type": "string",
-     "description": "Unique ID of this event used by DDM Reporting and Data Transfer. This is a read-only field.",
+     "description": "Unique ID of this event used by Reporting and Data Transfer. This is a read-only field.",
      "format": "int64"
     },
     "advertiserCustomEventName": {
@@ -3464,7 +3464,7 @@
     },
     "artworkLabel": {
      "type": "string",
-     "description": "Artwork label column, used to link events in DCM back to events in Studio. This is a required field and should not be modified after insertion."
+     "description": "Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion."
     },
     "artworkType": {
      "type": "string",
@@ -4315,7 +4315,7 @@
     },
     "impressionRatio": {
      "type": "string",
-     "description": "Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then DCM will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive.",
+     "description": "Impression ratio for this ad. This ratio determines how often each ad is served relative to the others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive.",
      "format": "int64"
     },
     "priority": {
@@ -4363,15 +4363,15 @@
   "DfpSettings": {
    "id": "DfpSettings",
    "type": "object",
-   "description": "DFP Settings",
+   "description": "Google Ad Manager Settings",
    "properties": {
     "dfpNetworkCode": {
      "type": "string",
-     "description": "DFP network code for this directory site."
+     "description": "Ad Manager network code for this directory site."
     },
     "dfpNetworkName": {
      "type": "string",
-     "description": "DFP network name for this directory site."
+     "description": "Ad Manager network name for this directory site."
     },
     "programmaticPlacementAccepted": {
      "type": "boolean",
@@ -4383,7 +4383,7 @@
     },
     "publisherPortalOnly": {
      "type": "boolean",
-     "description": "Whether this directory site is available only via DoubleClick Publisher Portal."
+     "description": "Whether this directory site is available only via Publisher Portal."
     }
    }
   },
@@ -4770,7 +4770,7 @@
     },
     "dfpSettings": {
      "$ref": "DfpSettings",
-     "description": "Directory site DFP settings."
+     "description": "Directory site Ad Manager settings."
     },
     "instreamVideoPlacementAccepted": {
      "type": "boolean",
@@ -4820,7 +4820,7 @@
   "DynamicTargetingKey": {
    "id": "DynamicTargetingKey",
    "type": "object",
-   "description": "Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with DoubleClick Studio dynamic creatives. Use these labels instead of numeric DCM IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds.",
+   "description": "Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds.",
    "properties": {
     "kind": {
      "type": "string",
@@ -4960,7 +4960,7 @@
     },
     "excludeFromAdxRequests": {
      "type": "boolean",
-     "description": "Whether to remove this event tag from ads that are trafficked through DoubleClick Bid Manager to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network."
+     "description": "Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network."
     },
     "id": {
      "type": "string",
@@ -5870,7 +5870,7 @@
     },
     "omnitureSettings": {
      "$ref": "OmnitureSettings",
-     "description": "Settings for DCM Omniture integration."
+     "description": "Settings for Campaign Manager Omniture integration."
     },
     "subaccountId": {
      "type": "string",
@@ -6054,7 +6054,7 @@
   "InventoryItem": {
    "id": "InventoryItem",
    "type": "object",
-   "description": "Represents a buy from the DoubleClick Planning inventory store.",
+   "description": "Represents a buy from the Planning inventory store.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -6815,7 +6815,7 @@
   "Order": {
    "id": "Order",
    "type": "object",
-   "description": "Describes properties of a DoubleClick Planning order.",
+   "description": "Describes properties of a Planning order.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -6961,7 +6961,7 @@
   "OrderDocument": {
    "id": "OrderDocument",
    "type": "object",
-   "description": "Contains properties of a DoubleClick Planning order document.",
+   "description": "Contains properties of a Planning order document.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -8040,7 +8040,7 @@
   "Project": {
    "id": "Project",
    "type": "object",
-   "description": "Contains properties of a DoubleClick Planning project.",
+   "description": "Contains properties of a Planning project.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -9446,7 +9446,7 @@
   "Subaccount": {
    "id": "Subaccount",
    "type": "object",
-   "description": "Contains properties of a DCM subaccount.",
+   "description": "Contains properties of a Campaign Manager subaccount.",
    "properties": {
     "accountId": {
      "type": "string",
@@ -11801,6 +11801,13 @@
       "archived": {
        "type": "boolean",
        "description": "Select only archived landing pages. Don't set this field to select both archived and non-archived landing pages.",
+       "location": "query"
+      },
+      "campaignIds": {
+       "type": "string",
+       "description": "Select only landing pages that are associated with these campaigns.",
+       "format": "int64",
+       "repeated": true,
        "location": "query"
       },
       "ids": {
@@ -14641,7 +14648,7 @@
       },
       "dfpNetworkCode": {
        "type": "string",
-       "description": "Select only directory sites with this DFP network code.",
+       "description": "Select only directory sites with this Ad Manager network code.",
        "location": "query"
       },
       "ids": {

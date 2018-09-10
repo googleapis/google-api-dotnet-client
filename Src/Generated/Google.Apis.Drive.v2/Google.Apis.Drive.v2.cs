@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3828,16 +3828,16 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be an organizer on
-        /// the parent for Team Drive files.</summary>
+        /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be at least a
+        /// fileOrganizer on the parent for Team Drive files.</summary>
         /// <param name="fileId">The ID of the file to trash.</param>
         public virtual TrashRequest Trash(string fileId)
         {
             return new TrashRequest(service, fileId);
         }
 
-        /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be an organizer on
-        /// the parent for Team Drive files.</summary>
+        /// <summary>Moves a file to the trash. The currently authenticated user must own the file or be at least a
+        /// fileOrganizer on the parent for Team Drive files.</summary>
         public class TrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Trash request.</summary>
@@ -9762,7 +9762,7 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string PhotoLink { get; set; } 
 
         /// <summary>The primary role for this user. While new values may be supported in the future, the following are
-        /// currently allowed: - organizer - owner - reader - writer</summary>
+        /// currently allowed: - owner - organizer - fileOrganizer - writer - reader</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
@@ -9809,7 +9809,7 @@ namespace Google.Apis.Drive.v2.Data
             public virtual string InheritedFrom { get; set; } 
 
             /// <summary>The primary role for this user. While new values may be added in the future, the following are
-            /// currently possible: - organizer - reader - writer</summary>
+            /// currently possible: - organizer - fileOrganizer - writer - reader</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; } 
 

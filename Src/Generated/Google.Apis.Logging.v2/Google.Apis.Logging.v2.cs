@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180827 (1334)
+ *      <tr><th>API Rev<td>20180831 (1338)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -7125,7 +7125,9 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Required. Names of one or more parent resources from which to retrieve log entries:
         /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]"
-        /// "folders/[FOLDER_ID]" Projects listed in the project_ids field are added to this list.</summary>
+        /// "folders/[FOLDER_ID]" Projects listed in the project_ids field are added to this list. Only one of the
+        /// permissions, logging.logEntries.list or logging.privateLogEntries.list, is needed for each parent
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
 
@@ -7966,8 +7968,10 @@ namespace Google.Apis.Logging.v2.Data
         /// specify a value for log_name: "projects/[PROJECT_ID]/logs/[LOG_ID]"
         /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
         /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-        /// id/logs/syslog" or "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
-        /// information about log names, see LogEntry.</summary>
+        /// id/logs/syslog" or "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". The
+        /// permission logging.logEntries.create is needed on each project, organization, billing account, or folder
+        /// that is receiving new log entries, whether the resource is specified in logName or in an individual log
+        /// entry. For more information about log names, see LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 

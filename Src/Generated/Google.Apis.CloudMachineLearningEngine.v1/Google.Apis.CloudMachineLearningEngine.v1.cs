@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180825 (1332)
+ *      <tr><th>API Rev<td>20180903 (1341)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2025,10 +2025,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2042,6 +2038,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2077,15 +2077,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2098,6 +2089,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3523,12 +3523,30 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         ///
         /// standard_p100
         ///
-        /// A machine equivalent to standard that also includes a single NVIDIA Tesla P100 GPU. The availability of
-        /// these GPUs is in the Beta launch stage.
+        /// A machine equivalent to standard that also includes a single NVIDIA Tesla P100 GPU.
         ///
         /// complex_model_m_p100
         ///
-        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla P100 GPUs. The availability of
+        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla P100 GPUs.
+        ///
+        /// standard_v100
+        ///
+        /// A machine equivalent to standard that also includes a single NVIDIA Tesla V100 GPU. The availability of
+        /// these GPUs is in the Beta launch stage.
+        ///
+        /// large_model_v100
+        ///
+        /// A machine equivalent to large_model that also includes a single NVIDIA Tesla V100 GPU. The availability of
+        /// these GPUs is in the Beta launch stage.
+        ///
+        /// complex_model_m_v100
+        ///
+        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla V100 GPUs. The availability of
+        /// these GPUs is in the Beta launch stage.
+        ///
+        /// complex_model_l_v100
+        ///
+        /// A machine equivalent to complex_model_l that also includes eight NVIDIA Tesla V100 GPUs. The availability of
         /// these GPUs is in the Beta launch stage.
         ///
         /// cloud_tpu

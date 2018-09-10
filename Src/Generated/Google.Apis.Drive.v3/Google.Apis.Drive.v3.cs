@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20180830 (1337)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5864,7 +5864,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string PhotoLink { get; set; } 
 
         /// <summary>The role granted by this permission. While new values may be supported in the future, the following
-        /// are currently allowed: - organizer - owner - writer - commenter - reader</summary>
+        /// are currently allowed: - owner - organizer - fileOrganizer - writer - commenter - reader</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
@@ -5894,7 +5894,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string InheritedFrom { get; set; } 
 
             /// <summary>The primary role for this user. While new values may be added in the future, the following are
-            /// currently possible: - organizer - writer - commenter - reader</summary>
+            /// currently possible: - organizer - fileOrganizer - writer - commenter - reader</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; } 
 
