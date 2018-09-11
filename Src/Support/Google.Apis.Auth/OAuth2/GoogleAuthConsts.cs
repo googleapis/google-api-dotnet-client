@@ -45,7 +45,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <see cref="TokenUrl"/>, so they are two distinct URLs.
         /// Internally within this library only this more up-to-date <see cref="OidcTokenUrl"/> is used.
         /// </remarks>
-        public const string OidcTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
+        public const string OidcTokenUrl = "https://oauth2.googleapis.com/token";
 
         /// <summary>The Compute Engine authorization token server URL</summary>
         /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
@@ -53,7 +53,7 @@ namespace Google.Apis.Auth.OAuth2
             "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token";
 
         /// <summary>The path to the Google revocation endpoint.</summary>
-        public const string RevokeTokenUrl = "https://accounts.google.com/o/oauth2/revoke";
+        public const string RevokeTokenUrl = "https://oauth2.googleapis.com/revoke";
 
         /// <summary>The OpenID Connect Json Web Key Set (jwks) URL.</summary>
         public const string JsonWebKeySetUrl = "https://www.googleapis.com/oauth2/v3/certs";
