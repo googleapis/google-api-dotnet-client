@@ -46,7 +46,7 @@ namespace IntegrationTests
             var response = translateRequest.Execute();
 
             Assert.Single(response.Translations);
-            Assert.Equal("Le temps froid sera bientôt terminé", response.Translations[0].TranslatedText);
+            Assert.Equal("Le temps froid sera bientôt fini", response.Translations[0].TranslatedText);
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace IntegrationTests
             var response = listRequest.Execute();
 
             Assert.Single(response.Translations);
-            Assert.Equal("Le temps froid sera bientôt terminé", response.Translations[0].TranslatedText);
+            Assert.Equal("Le temps froid sera bientôt fini", response.Translations[0].TranslatedText);
         }
 
         [Fact]
