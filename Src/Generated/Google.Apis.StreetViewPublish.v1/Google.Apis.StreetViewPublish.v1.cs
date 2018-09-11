@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180906 (1344)
+ *      <tr><th>API Rev<td>20180908 (1346)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -1049,12 +1049,6 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-            ///
-            /// The only filter supported at the moment is `placeId`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1081,6 +1075,12 @@ namespace Google.Apis.StreetViewPublish.v1
                 INCLUDEDOWNLOADURL,
             }
 
+            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+            ///
+            /// The only filter supported at the moment is `placeId`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1106,15 +1106,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1136,6 +1127,15 @@ namespace Google.Apis.StreetViewPublish.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

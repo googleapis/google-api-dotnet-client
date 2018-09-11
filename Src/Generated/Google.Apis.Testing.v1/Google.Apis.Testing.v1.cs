@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180904 (1342)
+ *      <tr><th>API Rev<td>20180906 (1344)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1284,11 +1284,11 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
-    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
-    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
+    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
+    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a

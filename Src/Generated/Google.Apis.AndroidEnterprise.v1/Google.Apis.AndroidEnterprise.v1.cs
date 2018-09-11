@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180829 (1336)
+ *      <tr><th>API Rev<td>20180907 (1345)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7659,6 +7659,62 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; } 
 
+        /// <summary>Options for displaying the Play Search page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playSearch")]
+        public virtual AdministratorWebTokenSpecPlaySearch PlaySearch { get; set; } 
+
+        /// <summary>Options for displaying the Private Apps page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateApps")]
+        public virtual AdministratorWebTokenSpecPrivateApps PrivateApps { get; set; } 
+
+        /// <summary>Options for displaying the Store Builder page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeBuilder")]
+        public virtual AdministratorWebTokenSpecStoreBuilder StoreBuilder { get; set; } 
+
+        /// <summary>Options for displaying the Web Apps page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webApps")]
+        public virtual AdministratorWebTokenSpecWebApps WebApps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AdministratorWebTokenSpecPlaySearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Play Search page is displayed. Default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AdministratorWebTokenSpecPrivateApps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Private Apps page is displayed. Default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AdministratorWebTokenSpecStoreBuilder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Store Builder is be displayed. Default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AdministratorWebTokenSpecWebApps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Web Apps page is displayed. Default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -9197,11 +9253,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Ordered list of pages a user should be able to reach from this page. The pages must exist, must not
-        /// be this page, and once a link is created the page linked to cannot be deleted until all links to it are
-        /// removed. It is recommended that the basic pages are created first, before adding the links between pages.
+        /// <summary>Ordered list of pages a user should be able to reach from this page. The list can't include this
+        /// page. It is recommended that the basic pages are created first, before adding the links between pages.
         ///
-        /// No attempt is made to verify that all pages are reachable from the homepage.</summary>
+        /// The API doesn't verify that the pages exist or the pages are reachable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual System.Collections.Generic.IList<string> Link { get; set; } 
 

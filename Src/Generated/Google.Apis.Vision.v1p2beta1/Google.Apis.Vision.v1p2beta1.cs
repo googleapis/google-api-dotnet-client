@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20180824 (1331)
+ *      <tr><th>API Rev<td>20180907 (1345)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -528,6 +528,11 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("landmarkAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LandmarkAnnotations { get; set; } 
 
+        /// <summary>If present, localized object detection has completed successfully. This will be sorted descending
+        /// by confidence score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedObjectAnnotations")]
+        public virtual System.Collections.Generic.IList<LocalizedObjectAnnotation> LocalizedObjectAnnotations { get; set; } 
+
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LogoAnnotations { get; set; } 
@@ -1018,6 +1023,11 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("landmarkAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1EntityAnnotation> LandmarkAnnotations { get; set; } 
 
+        /// <summary>If present, localized object detection has completed successfully. This will be sorted descending
+        /// by confidence score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedObjectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation> LocalizedObjectAnnotations { get; set; } 
+
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1EntityAnnotation> LogoAnnotations { get; set; } 
@@ -1391,6 +1401,34 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of detected objects with bounding boxes.</summary>
+    public class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image region to which this object belongs. This must be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1894,6 +1932,11 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         /// <summary>If present, landmark detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landmarkAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1EntityAnnotation> LandmarkAnnotations { get; set; } 
+
+        /// <summary>If present, localized object detection has completed successfully. This will be sorted descending
+        /// by confidence score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedObjectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation> LocalizedObjectAnnotations { get; set; } 
 
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
@@ -2455,6 +2498,34 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         /// <summary>Min lat/long pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLatLng")]
         public virtual LatLng MinLatLng { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of detected objects with bounding boxes.</summary>
+    public class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image region to which this object belongs. This must be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3659,9 +3730,7 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual GoogleCloudVisionV1p3beta1Product Product { get; set; } 
 
-        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).
-        ///
-        /// This field is returned only if `view` is set to `FULL` in the request.</summary>
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; } 
 
@@ -4073,6 +4142,34 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
         public virtual System.Nullable<double> Longitude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of detected objects with bounding boxes.</summary>
+    public class LocalizedObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image region to which this object belongs. This must be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
