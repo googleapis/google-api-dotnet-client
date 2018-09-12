@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/oRYnFqKzjv3gpz0SAKtU6YhQNBA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/q9oB3pUZxVIJoLf-eIcPa9tA6rY\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20180727",
+ "revision": "20180907",
  "title": "Cloud SQL Admin API",
- "description": "Cloud SQL provides the Cloud SQL Admin API, a REST API for administering your instances programmatically.",
+ "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -136,7 +136,7 @@
   "BackupRun": {
    "id": "BackupRun",
    "type": "object",
-   "description": "A database instance backup run resource.",
+   "description": "A BackupRun resource.",
    "properties": {
     "description": {
      "type": "string",
@@ -158,7 +158,7 @@
     },
     "id": {
      "type": "string",
-     "description": "A unique identifier for this backup run. Note that this is unique only within the scope of a particular Cloud SQL instance.",
+     "description": "The identifier for this backup run. Unique only for a specific Cloud SQL instance.",
      "format": "int64"
     },
     "instance": {
@@ -266,7 +266,7 @@
   "Database": {
    "id": "Database",
    "type": "object",
-   "description": "A database resource inside a Cloud SQL instance.",
+   "description": "Represents a SQL database on the Cloud SQL instance.",
    "properties": {
     "charset": {
      "type": "string",
@@ -278,7 +278,7 @@
     },
     "etag": {
      "type": "string",
-     "description": "HTTP 1.1 Entity tag for the resource."
+     "description": "This field is deprecated and will be removed from a future version of the API."
     },
     "instance": {
      "type": "string",
@@ -321,11 +321,11 @@
   "DatabaseFlags": {
    "id": "DatabaseFlags",
    "type": "object",
-   "description": "MySQL flags for Cloud SQL instances.",
+   "description": "Database flags for Cloud SQL instances.",
    "properties": {
     "name": {
      "type": "string",
-     "description": "The name of the flag. These flags are passed at instance startup, so include both MySQL server options and MySQL system variables. Flags should be specified with underscores, not hyphens. For more information, see Configuring MySQL Flags in the Google Cloud SQL documentation, as well as the official MySQL documentation for server options and system variables."
+     "description": "The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags should be specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation."
     },
     "value": {
      "type": "string",
@@ -340,7 +340,7 @@
    "properties": {
     "backendType": {
      "type": "string",
-     "description": "FIRST_GEN: Basic Cloud SQL instance that runs in a Google-managed container.\nSECOND_GEN: A newer Cloud SQL backend that runs in a Compute Engine VM.\nEXTERNAL: A MySQL server that is not managed by Google."
+     "description": "FIRST_GEN: First Generation instance. MySQL only.\nSECOND_GEN: Second Generation instance or PostgreSQL instance.\nEXTERNAL: A database server that is not managed by Google.\nThis property is read-only; use the tier property in the settings object to determine the database type and Second or First Generation."
     },
     "connectionName": {
      "type": "string",
@@ -348,7 +348,7 @@
     },
     "currentDiskSize": {
      "type": "string",
-     "description": "The current disk usage of the instance in bytes. This property has been deprecated. Users should use the \"cloudsql.googleapis.com/database/disk/bytes_used\" metric in Cloud Monitoring API instead. Please see https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ for details.",
+     "description": "The current disk usage of the instance in bytes. This property has been deprecated. Users should use the \"cloudsql.googleapis.com/database/disk/bytes_used\" metric in Cloud Monitoring API instead. Please see this announcement for details.",
      "format": "int64"
     },
     "databaseVersion": {
@@ -357,7 +357,7 @@
     },
     "etag": {
      "type": "string",
-     "description": "HTTP 1.1 Entity tag for the resource."
+     "description": "This field is deprecated and will be removed from a future version of the API. Use the settings.settingsVersion field instead."
     },
     "failoverReplica": {
      "type": "object",
@@ -429,7 +429,7 @@
     },
     "replicaConfiguration": {
      "$ref": "ReplicaConfiguration",
-     "description": "Configuration specific to read-replicas replicating from on-premises masters."
+     "description": "Configuration specific to failover replicas and read replicas."
     },
     "replicaNames": {
      "type": "array",
@@ -638,7 +638,7 @@
   "Flag": {
    "id": "Flag",
    "type": "object",
-   "description": "A Google Cloud SQL service flag resource.",
+   "description": "A flag resource.",
    "properties": {
     "allowedStringValues": {
      "type": "array",
@@ -1247,7 +1247,7 @@
     },
     "authorizedGaeApplications": {
      "type": "array",
-     "description": "The App Engine app IDs that can access this instance. This property is only applicable to First Generation instances.",
+     "description": "The App Engine app IDs that can access this instance. First Generation instances only.",
      "items": {
       "type": "string"
      }
@@ -1266,12 +1266,12 @@
     },
     "dataDiskSizeGb": {
      "type": "string",
-     "description": "The size of data disk, in GB. The data disk size minimum is 10GB. Applies only to Second Generation instances.",
+     "description": "The size of data disk, in GB. The data disk size minimum is 10GB. Not used for First Generation instances.",
      "format": "int64"
     },
     "dataDiskType": {
      "type": "string",
-     "description": "The type of data disk. Only supported for Second Generation instances. The default type is PD_SSD. Applies only to Second Generation instances."
+     "description": "The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances."
     },
     "databaseFlags": {
      "type": "array",
@@ -1299,7 +1299,7 @@
     },
     "maintenanceWindow": {
      "$ref": "MaintenanceWindow",
-     "description": "The maintenance window for this instance. This specifies when the instance may be restarted for maintenance purposes. Applies only to Second Generation instances."
+     "description": "The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes. Not used for First Generation instances."
     },
     "pricingPlan": {
      "type": "string",
@@ -1321,16 +1321,16 @@
     },
     "storageAutoResize": {
      "type": "boolean",
-     "description": "Configuration to increase storage size automatically. The default value is true. Applies only to Second Generation instances."
+     "description": "Configuration to increase storage size automatically. The default value is true. Not used for First Generation instances."
     },
     "storageAutoResizeLimit": {
      "type": "string",
-     "description": "The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. Applies only to Second Generation instances.",
+     "description": "The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. Not used for First Generation instances.",
      "format": "int64"
     },
     "tier": {
      "type": "string",
-     "description": "The tier of service for this instance, for example D1, D2. For more information, see pricing.",
+     "description": "The tier (or machine type) for this instance, for example db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL instances, this property determines whether the instance is First or Second Generation. For more information, see Instance Settings.",
      "annotations": {
       "required": [
        "sql.instances.insert",
@@ -1549,7 +1549,7 @@
    "properties": {
     "etag": {
      "type": "string",
-     "description": "HTTP 1.1 Entity tag for the resource."
+     "description": "This field is deprecated and will be removed from a future version of the API."
     },
     "host": {
      "type": "string",
@@ -1566,7 +1566,7 @@
     },
     "name": {
      "type": "string",
-     "description": "The name of the user in the Cloud SQL instance. Can be omitted for update since it is already specified on the URL."
+     "description": "The name of the user in the Cloud SQL instance. Can be omitted for update since it is already specified in the URL."
     },
     "password": {
      "type": "string",
@@ -1721,7 +1721,7 @@
      "id": "sql.backupRuns.list",
      "path": "projects/{project}/instances/{instance}/backupRuns",
      "httpMethod": "GET",
-     "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the enqueued time.",
+     "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the backup initiation time.",
      "parameters": {
       "instance": {
        "type": "string",
@@ -1998,7 +1998,7 @@
      "parameters": {
       "databaseVersion": {
        "type": "string",
-       "description": "Database version for flag retrieval. Flags are specific to the database version.",
+       "description": "Database type and version you want to retrieve flags for. By default, this method returns flags for all database types and versions.",
        "location": "query"
       }
      },
