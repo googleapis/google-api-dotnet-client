@@ -1,4 +1,5 @@
 {
+  "baseUrl": "https://texttospeech.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "Synthesizes natural-sounding speech by applying powerful neural network models.",
   "servicePath": "",
@@ -9,6 +10,37 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "SynthesizeSpeechResponse": {
+      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
+      "type": "object",
+      "properties": {
+        "audioContent": {
+          "description": "The audio data bytes encoded as specified in the request, including the\nheader (For LINEAR16 audio, we include the WAV header). Note: as\nwith all bytes fields, protobuffers use a pure binary representation,\nwhereas JSON representations use base64.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "id": "SynthesizeSpeechResponse"
+    },
+    "SynthesizeSpeechRequest": {
+      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
+      "type": "object",
+      "properties": {
+        "input": {
+          "description": "Required. The Synthesizer requires either plain text or SSML as input.",
+          "$ref": "SynthesisInput"
+        },
+        "voice": {
+          "description": "Required. The desired voice of the synthesized audio.",
+          "$ref": "VoiceSelectionParams"
+        },
+        "audioConfig": {
+          "$ref": "AudioConfig",
+          "description": "Required. The configuration of the synthesized audio."
+        }
+      },
+      "id": "SynthesizeSpeechRequest"
+    },
     "VoiceSelectionParams": {
       "description": "Description of which voice to use for a synthesis request.",
       "type": "object",
@@ -22,8 +54,6 @@
           "type": "string"
         },
         "ssmlGender": {
-          "description": "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request.",
-          "type": "string",
           "enumDescriptions": [
             "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
             "A male voice.",
@@ -35,12 +65,16 @@
             "MALE",
             "FEMALE",
             "NEUTRAL"
-          ]
+          ],
+          "description": "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request.",
+          "type": "string"
         }
       },
       "id": "VoiceSelectionParams"
     },
     "Voice": {
+      "description": "Description of a voice supported by the TTS service.",
+      "type": "object",
       "properties": {
         "languageCodes": {
           "description": "The languages that this voice supports, expressed as\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.\n\"en-US\", \"es-419\", \"cmn-tw\").",
@@ -59,8 +93,6 @@
           "type": "string"
         },
         "ssmlGender": {
-          "description": "The gender of this voice.",
-          "type": "string",
           "enumDescriptions": [
             "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
             "A male voice.",
@@ -72,12 +104,12 @@
             "MALE",
             "FEMALE",
             "NEUTRAL"
-          ]
+          ],
+          "description": "The gender of this voice.",
+          "type": "string"
         }
       },
-      "id": "Voice",
-      "description": "Description of a voice supported by the TTS service.",
-      "type": "object"
+      "id": "Voice"
     },
     "SynthesisInput": {
       "description": "Contains text input to be synthesized. Either `text` or `ssml` must be\nsupplied. Supplying both or neither returns\ngoogle.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000\ncharacters.",
@@ -95,28 +127,9 @@
       "id": "SynthesisInput"
     },
     "AudioConfig": {
+      "description": "Description of audio data to be synthesized.",
+      "type": "object",
       "properties": {
-        "speakingRate": {
-          "description": "Optional speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal\nnative speed supported by the specific voice. 2.0 is twice as fast, and\n0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any\nother values \u003c 0.25 or \u003e 4.0 will return an error.",
-          "format": "double",
-          "type": "number"
-        },
-        "audioEncoding": {
-          "enumDescriptions": [
-            "Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT.",
-            "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header.",
-            "MP3 audio.",
-            "Opus encoded audio wrapped in an ogg container. The result will be a\nfile which can be played natively on Android, and in browsers (at least\nChrome and Firefox). The quality of the encoding is considerably higher\nthan MP3 while using approximately the same bitrate."
-          ],
-          "enum": [
-            "AUDIO_ENCODING_UNSPECIFIED",
-            "LINEAR16",
-            "MP3",
-            "OGG_OPUS"
-          ],
-          "description": "Required. The format of the requested audio byte stream.",
-          "type": "string"
-        },
         "effectsProfileId": {
           "description": "An identifier which selects 'audio effects' profiles that are applied on\n(post synthesized) text to speech.\nEffects are applied on top of each other in the order they are given.",
           "type": "array",
@@ -138,13 +151,34 @@
           "description": "Optional speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20\nsemitones from the original pitch. -20 means decrease 20 semitones from the\noriginal pitch.",
           "format": "double",
           "type": "number"
+        },
+        "speakingRate": {
+          "description": "Optional speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal\nnative speed supported by the specific voice. 2.0 is twice as fast, and\n0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any\nother values \u003c 0.25 or \u003e 4.0 will return an error.",
+          "format": "double",
+          "type": "number"
+        },
+        "audioEncoding": {
+          "enumDescriptions": [
+            "Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT.",
+            "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header.",
+            "MP3 audio.",
+            "Opus encoded audio wrapped in an ogg container. The result will be a\nfile which can be played natively on Android, and in browsers (at least\nChrome and Firefox). The quality of the encoding is considerably higher\nthan MP3 while using approximately the same bitrate."
+          ],
+          "enum": [
+            "AUDIO_ENCODING_UNSPECIFIED",
+            "LINEAR16",
+            "MP3",
+            "OGG_OPUS"
+          ],
+          "description": "Required. The format of the requested audio byte stream.",
+          "type": "string"
         }
       },
-      "id": "AudioConfig",
-      "description": "Description of audio data to be synthesized.",
-      "type": "object"
+      "id": "AudioConfig"
     },
     "ListVoicesResponse": {
+      "description": "The message returned to the client by the `ListVoices` method.",
+      "type": "object",
       "properties": {
         "voices": {
           "description": "The list of voices.",
@@ -154,45 +188,12 @@
           }
         }
       },
-      "id": "ListVoicesResponse",
-      "description": "The message returned to the client by the `ListVoices` method.",
-      "type": "object"
-    },
-    "SynthesizeSpeechResponse": {
-      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
-      "type": "object",
-      "properties": {
-        "audioContent": {
-          "description": "The audio data bytes encoded as specified in the request, including the\nheader (For LINEAR16 audio, we include the WAV header). Note: as\nwith all bytes fields, protobuffers use a pure binary representation,\nwhereas JSON representations use base64.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "SynthesizeSpeechResponse"
-    },
-    "SynthesizeSpeechRequest": {
-      "properties": {
-        "input": {
-          "$ref": "SynthesisInput",
-          "description": "Required. The Synthesizer requires either plain text or SSML as input."
-        },
-        "voice": {
-          "description": "Required. The desired voice of the synthesized audio.",
-          "$ref": "VoiceSelectionParams"
-        },
-        "audioConfig": {
-          "description": "Required. The configuration of the synthesized audio.",
-          "$ref": "AudioConfig"
-        }
-      },
-      "id": "SynthesizeSpeechRequest",
-      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
-      "type": "object"
+      "id": "ListVoicesResponse"
     }
   },
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "protocol": "rest",
   "canonicalName": "Texttospeech",
@@ -216,17 +217,15 @@
     "voices": {
       "methods": {
         "list": {
-          "path": "v1beta1/voices",
+          "flatPath": "v1beta1/voices",
           "id": "texttospeech.voices.list",
+          "path": "v1beta1/voices",
           "description": "Returns a list of Voice supported for synthesis.",
+          "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "ListVoicesResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "parameters": {
             "languageCode": {
               "description": "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices.",
@@ -234,50 +233,36 @@
               "location": "query"
             }
           },
-          "flatPath": "v1beta1/voices"
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
         }
       }
     },
     "text": {
       "methods": {
         "synthesize": {
+          "path": "v1beta1/text:synthesize",
+          "id": "texttospeech.text.synthesize",
+          "request": {
+            "$ref": "SynthesizeSpeechRequest"
+          },
+          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
           "response": {
             "$ref": "SynthesizeSpeechResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1beta1/text:synthesize",
-          "path": "v1beta1/text:synthesize",
-          "id": "texttospeech.text.synthesize",
-          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
-          "request": {
-            "$ref": "SynthesizeSpeechRequest"
-          }
+          "parameters": {},
+          "flatPath": "v1beta1/text:synthesize"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
@@ -289,17 +274,17 @@
       "location": "query"
     },
     "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
       "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
-      "location": "query"
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
     },
     "oauth_token": {
       "location": "query",
@@ -307,9 +292,9 @@
       "type": "string"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "alt": {
       "enum": [
@@ -336,8 +321,23 @@
       "description": "OAuth access token.",
       "type": "string",
       "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
     }
   },
-  "version": "v1beta1",
-  "baseUrl": "https://texttospeech.googleapis.com/"
+  "version": "v1beta1"
 }
