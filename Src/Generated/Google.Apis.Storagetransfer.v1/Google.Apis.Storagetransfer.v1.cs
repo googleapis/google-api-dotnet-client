@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180903 (1341)
+ *      <tr><th>API Rev<td>20180910 (1348)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -577,14 +577,6 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
-            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
-            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
-            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
-            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -592,6 +584,14 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
+            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
+            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
+            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
+            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -618,15 +618,6 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -639,6 +630,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1211,11 +1211,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
-    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
-    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
+    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
+    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a

@@ -1,7 +1,4 @@
 {
-  "discoveryVersion": "v1",
-  "ownerName": "Google",
-  "version_module": true,
   "resources": {
     "urlTestingTools": {
       "resources": {
@@ -29,14 +26,14 @@
   },
   "parameters": {
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "quotaUser": {
-      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
       "description": "Returns response with indentations and line breaks.",
@@ -45,19 +42,19 @@
       "location": "query"
     },
     "fields": {
-      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "callback": {
+    "uploadType": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
     },
     "oauth_token": {
       "location": "query",
@@ -78,12 +75,6 @@
       "location": "query"
     },
     "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -91,7 +82,13 @@
         "media",
         "proto"
       ],
-      "type": "string"
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
     },
     "access_token": {
       "description": "OAuth access token.",
@@ -99,14 +96,47 @@
       "location": "query"
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     }
   },
   "schemas": {
+    "MobileFriendlyIssue": {
+      "description": "Mobile-friendly issue.",
+      "type": "object",
+      "properties": {
+        "rule": {
+          "enumDescriptions": [
+            "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken.",
+            "Plugins incompatible with mobile devices are being used. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#flash_usage).",
+            "Viewsport is not specified using the meta viewport tag. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#viewport_not_configured).",
+            "Viewport defined to a fixed width. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#fixed-width_viewport).",
+            "Content not sized to viewport. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#content_not_sized_to_viewport).",
+            "Font size is too small for easy reading on a small screen. [Learn More]\n(https://support.google.com/webmasters/answer/6352293#small_font_size).",
+            "Touch elements are too close to each other. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."
+          ],
+          "enum": [
+            "MOBILE_FRIENDLY_RULE_UNSPECIFIED",
+            "USES_INCOMPATIBLE_PLUGINS",
+            "CONFIGURE_VIEWPORT",
+            "FIXED_WIDTH_VIEWPORT",
+            "SIZE_CONTENT_TO_VIEWPORT",
+            "USE_LEGIBLE_FONT_SIZES",
+            "TAP_TARGETS_TOO_CLOSE"
+          ],
+          "description": "Rule violated.",
+          "type": "string"
+        }
+      },
+      "id": "MobileFriendlyIssue"
+    },
     "RunMobileFriendlyTestResponse": {
       "properties": {
+        "screenshot": {
+          "description": "Screenshot of the requested URL.",
+          "$ref": "Image"
+        },
         "testStatus": {
           "description": "Final state of the test, can be either complete or an error.",
           "$ref": "TestStatus"
@@ -138,10 +168,6 @@
           "items": {
             "$ref": "MobileFriendlyIssue"
           }
-        },
-        "screenshot": {
-          "description": "Screenshot of the requested URL.",
-          "$ref": "Image"
         }
       },
       "id": "RunMobileFriendlyTestResponse",
@@ -172,6 +198,10 @@
     },
     "TestStatus": {
       "properties": {
+        "details": {
+          "description": "Error details if applicable.",
+          "type": "string"
+        },
         "status": {
           "enumDescriptions": [
             "Internal error when running this test. Please try running the test again.",
@@ -186,10 +216,6 @@
             "PAGE_UNREACHABLE"
           ],
           "description": "Status of the test.",
-          "type": "string"
-        },
-        "details": {
-          "description": "Error details if applicable.",
           "type": "string"
         }
       },
@@ -214,8 +240,6 @@
       "type": "object"
     },
     "RunMobileFriendlyTestRequest": {
-      "description": "Mobile-friendly test request.",
-      "type": "object",
       "properties": {
         "url": {
           "description": "URL for inspection.",
@@ -226,42 +250,15 @@
           "type": "boolean"
         }
       },
-      "id": "RunMobileFriendlyTestRequest"
-    },
-    "MobileFriendlyIssue": {
-      "properties": {
-        "rule": {
-          "enumDescriptions": [
-            "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken.",
-            "Plugins incompatible with mobile devices are being used. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#flash_usage).",
-            "Viewsport is not specified using the meta viewport tag. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#viewport_not_configured).",
-            "Viewport defined to a fixed width. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#fixed-width_viewport).",
-            "Content not sized to viewport. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#content_not_sized_to_viewport).",
-            "Font size is too small for easy reading on a small screen. [Learn More]\n(https://support.google.com/webmasters/answer/6352293#small_font_size).",
-            "Touch elements are too close to each other. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."
-          ],
-          "enum": [
-            "MOBILE_FRIENDLY_RULE_UNSPECIFIED",
-            "USES_INCOMPATIBLE_PLUGINS",
-            "CONFIGURE_VIEWPORT",
-            "FIXED_WIDTH_VIEWPORT",
-            "SIZE_CONTENT_TO_VIEWPORT",
-            "USE_LEGIBLE_FONT_SIZES",
-            "TAP_TARGETS_TOO_CLOSE"
-          ],
-          "description": "Rule violated.",
-          "type": "string"
-        }
-      },
-      "id": "MobileFriendlyIssue",
-      "description": "Mobile-friendly issue.",
+      "id": "RunMobileFriendlyTestRequest",
+      "description": "Mobile-friendly test request.",
       "type": "object"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version": "v1",
   "baseUrl": "https://searchconsole.googleapis.com/",
@@ -277,5 +274,8 @@
   "revision": "20180903",
   "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
   "id": "searchconsole:v1",
-  "title": "Google Search Console URL Testing Tools API"
+  "title": "Google Search Console URL Testing Tools API",
+  "discoveryVersion": "v1",
+  "ownerName": "Google",
+  "version_module": true
 }

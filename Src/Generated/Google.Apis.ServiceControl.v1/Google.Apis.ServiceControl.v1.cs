@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180901 (1339)
+ *      <tr><th>API Rev<td>20180908 (1346)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1407,9 +1407,7 @@ namespace Google.Apis.ServiceControl.v1.Data
     }    
 
     /// <summary>A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification.
-    /// Product-specific logging information MUST be defined in a separate message.
-    ///
-    /// This is an exact copy of HttpRequest message defined in Stackdriver.</summary>
+    /// Product-specific logging information MUST be defined in a separate message.</summary>
     public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of HTTP response bytes inserted into cache. Set only when a cache fill was

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180905 (1343)
+ *      <tr><th>API Rev<td>20180815 (1322)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -595,13 +595,13 @@ namespace Google.Apis.CloudComposer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of environments to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -637,18 +637,18 @@ namespace Google.Apis.CloudComposer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -748,12 +748,12 @@ namespace Google.Apis.CloudComposer.v1
                     /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
                     /// config overrides.
                     ///
-                    /// config.softwareConfig.airflowConfigOverrides.section-name
+                    /// config.softwareConfig.properties.section-name
                     ///
-                    /// Override the Apache Airflow config property name in the section named section, preserving other
+                    /// Override the Apache Airflow property name in the section named section, preserving other
                     /// properties. To delete the property override, include it in `updateMask` and omit its mapping in
-                    /// `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a
-                    /// mask of this form and the "config.softwareConfig.airflowConfigOverrides" mask.
+                    /// `environment.config.softwareConfig.properties`. It is an error to provide both a mask of this
+                    /// form and the "config.softwareConfig.properties" mask.
                     ///
                     /// config.softwareConfig.envVariables Replace all environment variables. If a replacement
                     /// environment variable map is not included in `environment`, all custom environment variables  are
@@ -1250,7 +1250,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         ///
         /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's
         /// project. If unspecified, the "default" network ID in the environment's project is used.  If a [Custom Subnet
-        /// Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be
+        /// Network]((/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 

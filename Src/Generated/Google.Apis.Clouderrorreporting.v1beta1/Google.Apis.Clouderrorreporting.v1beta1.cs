@@ -669,6 +669,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
+                /// <summary>[Optional] A `next_page_token` provided by a previous response. To view additional results,
+                /// pass this token along with the identical query parameters as the first request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Restricts the query to the specified time range.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("timeRange.period", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TimeRangePeriodEnum> TimeRangePeriod { get; set; }
@@ -761,11 +766,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object TimedCountDuration { get; set; }
 
-                /// <summary>[Optional] A `next_page_token` provided by a previous response. To view additional results,
-                /// pass this token along with the identical query parameters as the first request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -798,6 +798,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "timeRange.period", new Google.Apis.Discovery.Parameter
@@ -884,15 +893,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "timedCountDuration", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timedCountDuration",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

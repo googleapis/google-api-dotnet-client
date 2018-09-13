@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180904 (1342)
+ *      <tr><th>API Rev<td>20180911 (1349)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -509,8 +509,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for GetSiteSummary. Do not confuse with same message in
-    /// google.chrome.abusiveexperiencereport.v1</summary>
+    /// <summary>Response message for GetSiteSummary.</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Summary for the desktop review of the site.</summary>
