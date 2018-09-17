@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20180907 (1345)
+ *      <tr><th>API Rev<td>20180912 (1350)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4100,24 +4100,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
         /// name="instance">Database instance ID. This does not include the project ID.</param>
-        /// <param name="host">Host
+        /// <param name="name">Name
         /// of the user in the instance.</param>
-        /// <param name="name">Name of the user in the instance.</param>
-        public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string host, string name)
+        public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string name)
         {
-            return new UpdateRequest(service, body, project, instance, host, name);
+            return new UpdateRequest(service, body, project, instance, name);
         }
 
         /// <summary>Updates an existing user in a Cloud SQL instance.</summary>
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string host, string name)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string name)
                 : base(service)
             {
                 Project = project;
                 Instance = instance;
-                Host = host;
                 Name = name;
                 Body = body;
                 InitParameters();
@@ -4132,13 +4130,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Host of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Host { get; private set; }
-
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; private set; }
+
+            /// <summary>Host of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4189,19 +4187,19 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
+                        Name = "name",
                         IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
-                        IsRequired = true,
+                        Name = "host",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,

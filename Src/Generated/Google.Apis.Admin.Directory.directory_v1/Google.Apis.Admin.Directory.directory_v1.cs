@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20180705 (1281)
+ *      <tr><th>API Rev<td>20180911 (1349)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -11390,6 +11390,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Member resource in Directory API.</summary>
     public class Member : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Delivery settings of member</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delivery_settings")]
+        public virtual string DeliverySettings { get; set; } 
+
         /// <summary>Email of member (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
@@ -12238,7 +12242,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
 
-        /// <summary>Indicates if user is archived</summary>
+        /// <summary>Indicates if user is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
         public virtual System.Nullable<bool> Archived { get; set; } 
 
@@ -12410,7 +12414,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
         public virtual object SshPublicKeys { get; set; } 
 
-        /// <summary>Indicates if user is suspended</summary>
+        /// <summary>Indicates if user is suspended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/xdKZYE7J0j8r4Yn83tamAAsa-ZE\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/akd8i6K-8A6ohXFVzxQZomL5PpA\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20180824",
+ "revision": "20180905",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -239,7 +239,7 @@
            },
            "matchesPattern": {
             "type": "string",
-            "description": "A regular expression that satisfies the RE2 syntax language. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the \"Early Access\" launch stage and is only available to a whitelisted set of users; that means that this feature may changed in backward-incompatible ways and that it is not guaranteed to be released."
+            "description": "A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the \"Early Access\" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released."
            },
            "matchesStorageClass": {
             "type": "array",
@@ -569,7 +569,7 @@
        },
        "name": {
         "type": "string",
-        "description": "The source object's name. The source object's bucket is implicitly the destination bucket.",
+        "description": "The source object's name. All source objects must reside in the same bucket.",
         "annotations": {
          "required": [
           "storage.objects.compose"
@@ -2600,7 +2600,7 @@
      "parameters": {
       "destinationBucket": {
        "type": "string",
-       "description": "Name of the bucket in which to store the new object.",
+       "description": "Name of the bucket containing the source objects. The destination object is stored in this bucket.",
        "required": true,
        "location": "path"
       },

@@ -1,4 +1,5 @@
 {
+  "title": "Google Search Console URL Testing Tools API",
   "discoveryVersion": "v1",
   "ownerName": "Google",
   "version_module": true,
@@ -8,6 +9,9 @@
         "mobileFriendlyTest": {
           "methods": {
             "run": {
+              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
               "request": {
                 "$ref": "RunMobileFriendlyTestRequest"
               },
@@ -17,10 +21,7 @@
               },
               "parameterOrder": [],
               "httpMethod": "POST",
-              "parameters": {},
-              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
-              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
-              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run"
+              "parameters": {}
             }
           }
         }
@@ -29,6 +30,8 @@
   },
   "parameters": {
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -37,9 +40,7 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
     },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
@@ -68,19 +69,19 @@
       ]
     },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
       "location": "query",
@@ -89,9 +90,9 @@
       "default": "true"
     },
     "quotaUser": {
+      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
@@ -99,9 +100,9 @@
       "location": "query"
     },
     "fields": {
-      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     }
   },
   "schemas": {
@@ -110,6 +111,8 @@
       "type": "object",
       "properties": {
         "rule": {
+          "description": "Rule violated.",
+          "type": "string",
           "enumDescriptions": [
             "Unknown rule. Sorry, we don't have any description for the rule that was\nbroken.",
             "Plugins incompatible with mobile devices are being used. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#flash_usage).",
@@ -127,9 +130,7 @@
             "SIZE_CONTENT_TO_VIEWPORT",
             "USE_LEGIBLE_FONT_SIZES",
             "TAP_TARGETS_TOO_CLOSE"
-          ],
-          "description": "Rule violated.",
-          "type": "string"
+          ]
         }
       },
       "id": "MobileFriendlyIssue"
@@ -139,8 +140,8 @@
       "type": "object",
       "properties": {
         "testStatus": {
-          "$ref": "TestStatus",
-          "description": "Final state of the test, can be either complete or an error."
+          "description": "Final state of the test, can be either complete or an error.",
+          "$ref": "TestStatus"
         },
         "resourceIssues": {
           "description": "Information about embedded resources issues.",
@@ -171,8 +172,8 @@
           }
         },
         "screenshot": {
-          "$ref": "Image",
-          "description": "Screenshot of the requested URL."
+          "description": "Screenshot of the requested URL.",
+          "$ref": "Image"
         }
       },
       "id": "RunMobileFriendlyTestResponse"
@@ -276,6 +277,5 @@
   "batchPath": "batch",
   "revision": "20180911",
   "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
-  "id": "searchconsole:v1",
-  "title": "Google Search Console URL Testing Tools API"
+  "id": "searchconsole:v1"
 }

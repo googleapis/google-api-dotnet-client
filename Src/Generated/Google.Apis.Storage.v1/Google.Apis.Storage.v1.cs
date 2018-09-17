@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180824 (1331)
+ *      <tr><th>API Rev<td>20180905 (1343)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -3930,10 +3930,10 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Concatenates a list of existing objects into a new object in the same bucket.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="destinationBucket">Name of the bucket in which to store the new object.</param>
-        /// <param
-        /// name="destinationObject">Name of the new object. For information about how to URL encode object names to be path
-        /// safe, see Encoding URI Path Parts.</param>
+        /// <param name="destinationBucket">Name of the bucket containing the source objects. The destination object is stored
+        /// in this bucket.</param>
+        /// <param name="destinationObject">Name of the new object. For information about how to
+        /// URL encode object names to be path safe, see Encoding URI Path Parts.</param>
         public virtual ComposeRequest Compose(Google.Apis.Storage.v1.Data.ComposeRequest body, string destinationBucket, string destinationObject)
         {
             return new ComposeRequest(service, body, destinationBucket, destinationObject);
@@ -3953,7 +3953,8 @@ namespace Google.Apis.Storage.v1
             }
 
 
-            /// <summary>Name of the bucket in which to store the new object.</summary>
+            /// <summary>Name of the bucket containing the source objects. The destination object is stored in this
+            /// bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationBucket { get; private set; }
 
@@ -7174,11 +7175,11 @@ namespace Google.Apis.Storage.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("isLive")]
                     public virtual System.Nullable<bool> IsLive { get; set; } 
 
-                    /// <summary>A regular expression that satisfies the RE2 syntax language. This condition is
-                    /// satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently
-                    /// in the "Early Access" launch stage and is only available to a whitelisted set of users; that
-                    /// means that this feature may changed in backward-incompatible ways and that it is not guaranteed
-                    /// to be released.</summary>
+                    /// <summary>A regular expression that satisfies the RE2 syntax. This condition is satisfied when
+                    /// the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early
+                    /// Access" launch stage and is only available to a whitelisted set of users; that means that this
+                    /// feature may be changed in backward-incompatible ways and that it is not guaranteed to be
+                    /// released.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesPattern")]
                     public virtual string MatchesPattern { get; set; } 
 
@@ -7472,8 +7473,7 @@ namespace Google.Apis.Storage.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("generation")]
             public virtual System.Nullable<long> Generation { get; set; } 
 
-            /// <summary>The source object's name. The source object's bucket is implicitly the destination
-            /// bucket.</summary>
+            /// <summary>The source object's name. All source objects must reside in the same bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; } 
 

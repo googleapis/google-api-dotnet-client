@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/-x7rE_DJIJvDNGcfZs68y92KTwA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/bJY6yaK7IUjX9b18cnF3M_RjDj0\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20180705",
+ "revision": "20180911",
  "title": "Admin Directory API",
  "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -447,11 +447,21 @@
     },
     "resourceId": {
      "type": "string",
-     "description": "The unique ID for the calendar resource."
+     "description": "The unique ID for the calendar resource.",
+     "annotations": {
+      "required": [
+       "directory.resources.calendars.insert"
+      ]
+     }
     },
     "resourceName": {
      "type": "string",
-     "description": "The name of the calendar resource. For example, \"Training Room 1A\"."
+     "description": "The name of the calendar resource. For example, \"Training Room 1A\".",
+     "annotations": {
+      "required": [
+       "directory.resources.calendars.insert"
+      ]
+     }
     },
     "resourceType": {
      "type": "string",
@@ -1191,6 +1201,10 @@
    "type": "object",
    "description": "JSON template for Member resource in Directory API.",
    "properties": {
+    "delivery_settings": {
+     "type": "string",
+     "description": "Delivery settings of member"
+    },
     "email": {
      "type": "string",
      "description": "Email of member (Read-only)"
@@ -2175,7 +2189,7 @@
     },
     "archived": {
      "type": "boolean",
-     "description": "Indicates if user is archived"
+     "description": "Indicates if user is archived."
     },
     "changePasswordAtNextLogin": {
      "type": "boolean",
@@ -2342,7 +2356,7 @@
     },
     "suspended": {
      "type": "boolean",
-     "description": "Indicates if user is suspended"
+     "description": "Indicates if user is suspended."
     },
     "suspensionReason": {
      "type": "string",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/profiler/'>Stackdriver Profiler API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180903 (1341)
+ *      <tr><th>API Rev<td>20180911 (1349)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/profiler/'>
  *              https://cloud.google.com/profiler/</a>

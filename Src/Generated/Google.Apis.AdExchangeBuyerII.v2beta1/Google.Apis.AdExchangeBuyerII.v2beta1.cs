@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180910 (1348)
+ *      <tr><th>API Rev<td>20180912 (1350)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -336,6 +336,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             this.service = service;
             clients = new ClientsResource(service);
             creatives = new CreativesResource(service);
+            finalizedProposals = new FinalizedProposalsResource(service);
+            products = new ProductsResource(service);
+            proposals = new ProposalsResource(service);
+            publisherProfiles = new PublisherProfilesResource(service);
 
         }
 
@@ -2239,6 +2243,1499 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             }
         }
+        private readonly FinalizedProposalsResource finalizedProposals;
+
+        /// <summary>Gets the FinalizedProposals resource.</summary>
+        public virtual FinalizedProposalsResource FinalizedProposals
+        {
+            get { return finalizedProposals; }
+        }
+
+        /// <summary>The "finalizedProposals" collection of methods.</summary>
+        public class FinalizedProposalsResource
+        {
+            private const string Resource = "finalizedProposals";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FinalizedProposalsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>List finalized proposals, regardless if a proposal is being renegotiated. A filter expression
+            /// (PQL query) may be specified to filter the results. The notes will not be returned.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>List finalized proposals, regardless if a proposal is being renegotiated. A filter expression
+            /// (PQL query) may be specified to filter the results. The notes will not be returned.</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProposalsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
+                /// it will be LIST_FILTER.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSyntax", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterSyntaxEnum> FilterSyntax { get; set; }
+
+                /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
+                /// it will be LIST_FILTER.</summary>
+                public enum FilterSyntaxEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FILTER_SYNTAX_UNSPECIFIED")]
+                    FILTERSYNTAXUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PQL")]
+                    PQL,
+                    [Google.Apis.Util.StringValueAttribute("LIST_FILTER")]
+                    LISTFILTER,
+                }
+
+                /// <summary>An optional PQL filter query used to query for proposals.
+                ///
+                /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The page token as returned from ListProposalsResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/finalizedProposals"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSyntax", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSyntax",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly ProductsResource products;
+
+        /// <summary>Gets the Products resource.</summary>
+        public virtual ProductsResource Products
+        {
+            get { return products; }
+        }
+
+        /// <summary>The "products" collection of methods.</summary>
+        public class ProductsResource
+        {
+            private const string Resource = "products";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProductsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the requested product by ID.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="productId">The ID for the product to
+            /// get the head revision for.</param>
+            public virtual GetRequest Get(string accountId, string productId)
+            {
+                return new GetRequest(service, accountId, productId);
+            }
+
+            /// <summary>Gets the requested product by ID.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Product>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string productId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID for the product to get the head revision for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/products/{productId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>List all products visible to the buyer (optionally filtered by the specified PQL
+            /// query).</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>List all products visible to the buyer (optionally filtered by the specified PQL
+            /// query).</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProductsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The page token as returned from ListProductsResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>An optional PQL query used to query for products. See https://developers.google.com
+                /// /doubleclick-publishers/docs/pqlreference for documentation about PQL and examples.
+                ///
+                /// Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/products"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly ProposalsResource proposals;
+
+        /// <summary>Gets the Proposals resource.</summary>
+        public virtual ProposalsResource Proposals
+        {
+            get { return proposals; }
+        }
+
+        /// <summary>The "proposals" collection of methods.</summary>
+        public class ProposalsResource
+        {
+            private const string Resource = "proposals";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProposalsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Mark the proposal as accepted at the given revision number. If the number does not match the
+            /// server's revision number an `ABORTED` error message will be returned. This call updates the
+            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// accept.</param>
+            public virtual AcceptRequest Accept(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest body, string accountId, string proposalId)
+            {
+                return new AcceptRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Mark the proposal as accepted at the given revision number. If the number does not match the
+            /// server's revision number an `ABORTED` error message will be returned. This call updates the
+            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.</summary>
+            public class AcceptRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Accept request.</summary>
+                public AcceptRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to accept.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.AcceptProposalRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "accept"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:accept"; }
+                }
+
+                /// <summary>Initializes Accept parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Create a new note and attach it to the proposal. The note is assigned a unique ID by the
+            /// server. The proposal revision number will not increase when associated with a new note.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// attach the note to.</param>
+            public virtual AddNoteRequest AddNote(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest body, string accountId, string proposalId)
+            {
+                return new AddNoteRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Create a new note and attach it to the proposal. The note is assigned a unique ID by the
+            /// server. The proposal revision number will not increase when associated with a new note.</summary>
+            public class AddNoteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Note>
+            {
+                /// <summary>Constructs a new AddNote request.</summary>
+                public AddNoteRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to attach the note to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddNoteRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "addNote"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote"; }
+                }
+
+                /// <summary>Initializes AddNote parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals
+            /// if the proposal has been finalized, but only cancels a negotiation unilaterally.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// cancel negotiation for.</param>
+            public virtual CancelNegotiationRequest CancelNegotiation(Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest body, string accountId, string proposalId)
+            {
+                return new CancelNegotiationRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals
+            /// if the proposal has been finalized, but only cancels a negotiation unilaterally.</summary>
+            public class CancelNegotiationRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new CancelNegotiation request.</summary>
+                public CancelNegotiationRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to cancel negotiation for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.CancelNegotiationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "cancelNegotiation"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation"; }
+                }
+
+                /// <summary>Initializes CancelNegotiation parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update the given proposal to indicate that setup has been completed. This method is called by
+            /// the buyer when the line items have been created on their end for a finalized proposal and all the
+            /// required creatives have been uploaded using the creatives API. This call updates the
+            /// `is_setup_completed` bit on the proposal and also notifies the seller. The server will advance the
+            /// revision number of the most recent proposal.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// mark as setup completed.</param>
+            public virtual CompleteSetupRequest CompleteSetup(Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest body, string accountId, string proposalId)
+            {
+                return new CompleteSetupRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Update the given proposal to indicate that setup has been completed. This method is called by
+            /// the buyer when the line items have been created on their end for a finalized proposal and all the
+            /// required creatives have been uploaded using the creatives API. This call updates the
+            /// `is_setup_completed` bit on the proposal and also notifies the seller. The server will advance the
+            /// revision number of the most recent proposal.</summary>
+            public class CompleteSetupRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new CompleteSetup request.</summary>
+                public CompleteSetupRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to mark as setup completed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.CompleteSetupRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "completeSetup"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup"; }
+                }
+
+                /// <summary>Initializes CompleteSetup parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Create the given proposal. Each created proposal and any deals it contains are assigned a
+            /// unique ID by the server.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId)
+            {
+                return new CreateRequest(service, body, accountId);
+            }
+
+            /// <summary>Create the given proposal. Each created proposal and any deals it contains are assigned a
+            /// unique ID by the server.</summary>
+            public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a proposal given its ID. The proposal is returned at its head revision.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The unique ID of the
+            /// proposal</param>
+            public virtual GetRequest Get(string accountId, string proposalId)
+            {
+                return new GetRequest(service, accountId, proposalId);
+            }
+
+            /// <summary>Gets a proposal given its ID. The proposal is returned at its head revision.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The unique ID of the proposal</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>List proposals. A filter expression (PQL query) may be specified to filter the results. To
+            /// retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the
+            /// FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A
+            /// Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the
+            /// request path.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>List proposals. A filter expression (PQL query) may be specified to filter the results. To
+            /// retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the
+            /// FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A
+            /// Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the
+            /// request path.</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListProposalsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
+                /// it will be LIST_FILTER.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSyntax", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterSyntaxEnum> FilterSyntax { get; set; }
+
+                /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
+                /// it will be LIST_FILTER.</summary>
+                public enum FilterSyntaxEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FILTER_SYNTAX_UNSPECIFIED")]
+                    FILTERSYNTAXUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PQL")]
+                    PQL,
+                    [Google.Apis.Util.StringValueAttribute("LIST_FILTER")]
+                    LISTFILTER,
+                }
+
+                /// <summary>An optional PQL filter query used to query for proposals.
+                ///
+                /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The page token as returned from ListProposalsResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSyntax", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSyntax",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update the given proposal to pause serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal.
+            ///
+            /// It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal
+            /// that is not finalized or renegotiating.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// pause.</param>
+            public virtual PauseRequest Pause(Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest body, string accountId, string proposalId)
+            {
+                return new PauseRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Update the given proposal to pause serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal.
+            ///
+            /// It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal
+            /// that is not finalized or renegotiating.</summary>
+            public class PauseRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Pause request.</summary>
+                public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to pause.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "pause"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:pause"; }
+                }
+
+                /// <summary>Initializes Pause parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update the given proposal to resume serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal.
+            ///
+            /// Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also
+            /// resumes.
+            ///
+            /// It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a
+            /// proposal that is not finalized or renegotiating.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The ID of the proposal to
+            /// resume.</param>
+            public virtual ResumeRequest Resume(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest body, string accountId, string proposalId)
+            {
+                return new ResumeRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Update the given proposal to resume serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal.
+            ///
+            /// Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also
+            /// resumes.
+            ///
+            /// It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a
+            /// proposal that is not finalized or renegotiating.</summary>
+            public class ResumeRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Resume request.</summary>
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the proposal to resume.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "resume"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}:resume"; }
+                }
+
+                /// <summary>Initializes Resume parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update the given proposal at the client known revision number. If the server revision has
+            /// advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned.
+            /// Only the buyer-modifiable fields of the proposal will be updated.
+            ///
+            /// Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal
+            /// does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal
+            /// has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the
+            /// passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at
+            /// head.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The unique ID of the
+            /// proposal.</param>
+            public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId, string proposalId)
+            {
+                return new UpdateRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>Update the given proposal at the client known revision number. If the server revision has
+            /// advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned.
+            /// Only the buyer-modifiable fields of the proposal will be updated.
+            ///
+            /// Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal
+            /// does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal
+            /// has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the
+            /// passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at
+            /// head.</summary>
+            public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal body, string accountId, string proposalId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The unique ID of the proposal.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/proposals/{proposalId}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "proposalId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proposalId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly PublisherProfilesResource publisherProfiles;
+
+        /// <summary>Gets the PublisherProfiles resource.</summary>
+        public virtual PublisherProfilesResource PublisherProfiles
+        {
+            get { return publisherProfiles; }
+        }
+
+        /// <summary>The "publisherProfiles" collection of methods.</summary>
+        public class PublisherProfilesResource
+        {
+            private const string Resource = "publisherProfiles";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PublisherProfilesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the requested publisher profile by id.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="publisherProfileId">The id for the
+            /// publisher profile to get.</param>
+            public virtual GetRequest Get(string accountId, string publisherProfileId)
+            {
+                return new GetRequest(service, accountId, publisherProfileId);
+            }
+
+            /// <summary>Gets the requested publisher profile by id.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.PublisherProfile>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string publisherProfileId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    PublisherProfileId = publisherProfileId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The id for the publisher profile to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("publisherProfileId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PublisherProfileId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "publisherProfileId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "publisherProfileId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>List all publisher profiles visible to the buyer</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>List all publisher profiles visible to the buyer</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListPublisherProfilesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The page token as return from ListPublisherProfilesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Specify the number of results to include per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/publisherProfiles"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
     }
 
     /// <summary>The "bidders" collection of methods.</summary>
@@ -2773,16 +4270,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call
                         /// to the filteredBidRequests.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2818,18 +4315,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3341,16 +4838,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to
                         /// the impressionMetrics.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3386,18 +4883,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4121,16 +5618,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListBidMetricsResponse.nextPageToken returned from the previous call to the
                     /// bidMetrics.list method.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. The server may return fewer results than requested. If
-                    /// unspecified, the server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4166,18 +5663,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4252,16 +5749,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the
                     /// bidResponseErrors.list method.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. The server may return fewer results than requested. If
-                    /// unspecified, the server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4297,18 +5794,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4383,16 +5880,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to
                     /// the bidResponsesWithoutBids.list method.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. The server may return fewer results than requested. If
-                    /// unspecified, the server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4428,18 +5925,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4681,16 +6178,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual int CreativeStatusId { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the
                         /// previous call to the filteredBids.creatives.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -4735,18 +6232,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -5788,12 +7285,55 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to accept a proposal.</summary>
+    public class AcceptProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The last known client revision number of the proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
+        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents size of a single ad slot, or a creative.</summary>
+    public class AdSize : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The height of the ad slot in pixels. This field will be present only when size type is
+        /// `PIXEL`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<long> Height { get; set; } 
+
+        /// <summary>The size type of the ad slot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
+        public virtual string SizeType { get; set; } 
+
+        /// <summary>The width of the ad slot in pixels. This field will be present only when size type is
+        /// `PIXEL`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<long> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A request for associating a deal and a creative.</summary>
     public class AddDealAssociationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The association between a creative and a deal that should be added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("association")]
         public virtual CreativeDealAssociation Association { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for adding a note to a given proposal.</summary>
+    public class AddNoteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the note to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual Note Note { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5879,6 +7419,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a buyer of inventory. Each buyer is identified by a unique Ad Exchange account ID.</summary>
+    public class Buyer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ad Exchange account ID of the buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The number of impressions with the specified dimension values where the corresponding bid request or
     /// bid response was not successful, as described by the specified callout status.</summary>
     public class CalloutStatusRow : Google.Apis.Requests.IDirectResponseSchema
@@ -5897,6 +7448,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
         public virtual RowDimensions RowDimensions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to cancel an ongoing negotiation.</summary>
+    public class CancelNegotiationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6019,6 +7577,28 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// ignored in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
         public virtual System.Nullable<long> InvitationId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for indicating that the proposal's setup step is complete.</summary>
+    public class CompleteSetupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information on how a buyer or seller can be reached.</summary>
+    public class ContactInformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address for the contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The name of the contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6192,6 +7772,77 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in DFP. This
+    /// doesn't apply to Private Auction and AdX Preferred Deals.</summary>
+    public class CreativeRestrictions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format of the environment that the creatives will be displayed in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeFormat")]
+        public virtual string CreativeFormat { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeSpecifications")]
+        public virtual System.Collections.Generic.IList<CreativeSpecification> CreativeSpecifications { get; set; } 
+
+        /// <summary>Skippable video ads allow viewers to skip ads after 5 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
+        public virtual string SkippableAdType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the size of the creative.</summary>
+    public class CreativeSize : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>What formats are allowed by the publisher. If this repeated field is empty then all formats are
+        /// allowed. E.g., if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio ad
+        /// (without any video).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedFormats")]
+        public virtual System.Collections.Generic.IList<string> AllowedFormats { get; set; } 
+
+        /// <summary>For video creatives specifies the sizes of companion ads (if present). Companion sizes may be
+        /// filled in only when creative_size_type = VIDEO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companionSizes")]
+        public virtual System.Collections.Generic.IList<Size> CompanionSizes { get; set; } 
+
+        /// <summary>The creative size type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeSizeType")]
+        public virtual string CreativeSizeType { get; set; } 
+
+        /// <summary>The native template for this creative. It will have a value only if creative_size_type =
+        /// CreativeSizeType.NATIVE. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeTemplate")]
+        public virtual string NativeTemplate { get; set; } 
+
+        /// <summary>For regular or video creative size type, specifies the size of the creative</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual Size Size { get; set; } 
+
+        /// <summary>The type of skippable ad for this creative. It will have a value only if creative_size_type =
+        /// CreativeSizeType.VIDEO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
+        public virtual string SkippableAdType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents information for a creative that is associated with a Programmatic Guaranteed/Preferred Deal
+    /// in DFP.</summary>
+    public class CreativeSpecification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Companion sizes may be filled in only when this is a video creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeCompanionSizes")]
+        public virtual System.Collections.Generic.IList<AdSize> CreativeCompanionSizes { get; set; } 
+
+        /// <summary>The size of the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeSize")]
+        public virtual AdSize CreativeSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The number of bids with the specified dimension values that did not win the auction (either were
     /// filtered pre-auction or lost the auction), as described by the specified creative status.</summary>
     public class CreativeStatusRow : Google.Apis.Requests.IDirectResponseSchema
@@ -6208,6 +7859,22 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
         public virtual RowDimensions RowDimensions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Generic targeting used for targeting dimensions that contains a list of included and excluded numeric
+    /// IDs.</summary>
+    public class CriteriaTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of numeric IDs to be excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedCriteriaIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedCriteriaIds { get; set; } 
+
+        /// <summary>A list of numeric IDs to be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedCriteriaIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> TargetedCriteriaIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6232,6 +7899,271 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Daypart targeting message that specifies if the ad can be shown only during certain parts of a
+    /// day/week.</summary>
+    public class DayPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The day of the week to target. If unspecified, applicable to all days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; } 
+
+        /// <summary>The ending time of the day for the ad to show (minute level granularity). The end time is
+        /// exclusive. This field is not available for filtering in PQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual TimeOfDay EndTime { get; set; } 
+
+        /// <summary>The starting time of day for the ad to show (minute level granularity). The start time is
+        /// inclusive. This field is not available for filtering in PQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the day part targeting criteria.</summary>
+    public class DayPartTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of day part targeting criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayParts")]
+        public virtual System.Collections.Generic.IList<DayPart> DayParts { get; set; } 
+
+        /// <summary>The timezone to use for interpreting the day part targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneType")]
+        public virtual string TimeZoneType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A deal represents a segment of inventory for displaying ads on. A proposal can contain multiple deals.
+    /// A deal contains the terms and targeting information that is used for serving.</summary>
+    public class Deal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Proposed flight end time of the deal. This will generally be stored in a granularity of a second. A
+        /// value is not required for Private Auction deals or Preferred Deals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableEndTime")]
+        public virtual object AvailableEndTime { get; set; } 
+
+        /// <summary>Optional proposed flight start time of the deal. This will generally be stored in the granularity
+        /// of one second since deal serving starts at seconds boundary. Any time specified with more granularity (e.g.,
+        /// in milliseconds) will be truncated towards the start of time in seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
+        public virtual object AvailableStartTime { get; set; } 
+
+        /// <summary>Buyer private data (hidden from seller).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
+        public virtual PrivateData BuyerPrivateData { get; set; } 
+
+        /// <summary>The product ID from which this deal was created.
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createProductId")]
+        public virtual string CreateProductId { get; set; } 
+
+        /// <summary>Optional revision number of the product that the deal was created from. If present on create, and
+        /// the server `product_revision` has advanced sinced the passed-in `create_product_revision`, an `ABORTED`
+        /// error will be returned.
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createProductRevision")]
+        public virtual System.Nullable<long> CreateProductRevision { get; set; } 
+
+        /// <summary>The time of the deal creation. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Specifies the creative pre-approval policy. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativePreApprovalPolicy")]
+        public virtual string CreativePreApprovalPolicy { get; set; } 
+
+        /// <summary>Restricitions about the creatives associated with the deal (i.e. size) This is available for
+        /// Programmatic Guaranteed/Preferred Deals in DFP. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeRestrictions")]
+        public virtual CreativeRestrictions CreativeRestrictions { get; set; } 
+
+        /// <summary>Specifies whether the creative is safeFrame compatible. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeSafeFrameCompatibility")]
+        public virtual string CreativeSafeFrameCompatibility { get; set; } 
+
+        /// <summary>A unique deal ID for the deal (server-assigned). @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
+        public virtual string DealId { get; set; } 
+
+        /// <summary>Metadata about the serving status of this deal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealServingMetadata")]
+        public virtual DealServingMetadata DealServingMetadata { get; set; } 
+
+        /// <summary>The negotiable terms of the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealTerms")]
+        public virtual DealTerms DealTerms { get; set; } 
+
+        /// <summary>The set of fields around delivery control that are interesting for a buyer to see but are non-
+        /// negotiable. These are set by the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryControl")]
+        public virtual DeliveryControl DeliveryControl { get; set; } 
+
+        /// <summary>Description for the deal terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The name of the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The external deal ID assigned to this deal once the deal is finalized. This is the deal ID that
+        /// shows up in serving/reporting etc. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDealId")]
+        public virtual string ExternalDealId { get; set; } 
+
+        /// <summary>True, if the buyside inventory setup is complete for this deal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
+        public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
+
+        /// <summary>Specifies the creative source for programmatic deals. PUBLISHER means creative is provided by
+        /// seller and ADVERTISER means creative is provided by buyer. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programmaticCreativeSource")]
+        public virtual string ProgrammaticCreativeSource { get; set; } 
+
+        /// <summary>ID of the proposal that this deal is part of. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
+        public virtual string ProposalId { get; set; } 
+
+        /// <summary>Seller contact information for the deal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
+        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; } 
+
+        /// <summary>The syndication product associated with the deal.
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syndicationProduct")]
+        public virtual string SyndicationProduct { get; set; } 
+
+        /// <summary>Specifies the subset of inventory targeted by the deal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual MarketplaceTargeting Targeting { get; set; } 
+
+        /// <summary>The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd
+        /// together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingCriterion")]
+        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; } 
+
+        /// <summary>The time when the deal was last updated. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The web property code for the seller copied over from the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyCode")]
+        public virtual string WebPropertyCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Tracks which parties (if any) have paused a deal. The deal is considered paused if either
+    /// hasBuyerPaused or hasSellPaused is true.</summary>
+    public class DealPauseStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The buyer's reason for pausing, if the buyer paused the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPauseReason")]
+        public virtual string BuyerPauseReason { get; set; } 
+
+        /// <summary>The role of the person who first paused this deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPausedBy")]
+        public virtual string FirstPausedBy { get; set; } 
+
+        /// <summary>True, if the buyer has paused the deal unilaterally.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasBuyerPaused")]
+        public virtual System.Nullable<bool> HasBuyerPaused { get; set; } 
+
+        /// <summary>True, if the seller has paused the deal unilaterally.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasSellerPaused")]
+        public virtual System.Nullable<bool> HasSellerPaused { get; set; } 
+
+        /// <summary>The seller's reason for pausing, if the seller paused the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
+        public virtual string SellerPauseReason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message captures metadata about the serving status of a deal.</summary>
+    public class DealServingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tracks which parties (if any) have paused a deal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealPauseStatus")]
+        public virtual DealPauseStatus DealPauseStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The deal terms specify the details of a Product/deal. They specify things like price per buyer, the
+    /// type of pricing model (e.g., fixed price, auction) and expected impressions from the publisher.</summary>
+    public class DealTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Visibility of the URL in bid requests. (default: BRANDED)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brandingType")]
+        public virtual string BrandingType { get; set; } 
+
+        /// <summary>Publisher provided description for the terms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Non-binding estimate of the estimated gross spend for this deal. Can be set by buyer or
+        /// seller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedGrossSpend")]
+        public virtual Price EstimatedGrossSpend { get; set; } 
+
+        /// <summary>Non-binding estimate of the impressions served per day. Can be set by buyer or seller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedImpressionsPerDay")]
+        public virtual System.Nullable<long> EstimatedImpressionsPerDay { get; set; } 
+
+        /// <summary>The terms for guaranteed fixed price deals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedFixedPriceTerms")]
+        public virtual GuaranteedFixedPriceTerms GuaranteedFixedPriceTerms { get; set; } 
+
+        /// <summary>The terms for non-guaranteed auction deals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedAuctionTerms")]
+        public virtual NonGuaranteedAuctionTerms NonGuaranteedAuctionTerms { get; set; } 
+
+        /// <summary>The terms for non-guaranteed fixed price deals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedFixedPriceTerms")]
+        public virtual NonGuaranteedFixedPriceTerms NonGuaranteedFixedPriceTerms { get; set; } 
+
+        /// <summary>The time zone name. For deals with Cost Per Day billing, defines the time zone used to mark the
+        /// boundaries of a day. It should be an IANA TZ name, such as "America/Los_Angeles". For more information, see
+        /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerTimeZone")]
+        public virtual string SellerTimeZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message contains details about how the deals will be paced.</summary>
+    public class DeliveryControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specified the creative blocking levels to be applied. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeBlockingLevel")]
+        public virtual string CreativeBlockingLevel { get; set; } 
+
+        /// <summary>Specifies how the impression delivery will be paced. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryRateType")]
+        public virtual string DeliveryRateType { get; set; } 
+
+        /// <summary>Specifies any frequency caps. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencyCaps")]
+        public virtual System.Collections.Generic.IList<FrequencyCap> FrequencyCaps { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6400,6 +8332,70 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a list of targeted and excluded mobile application IDs that publishers own. Mobile
+    /// application IDs are from App Store and Google Play Store. Android App ID, for example,
+    /// com.google.android.apps.maps, can be found in Google Play Store URL. iOS App ID (which is a number) can be found
+    /// at the end of iTunes store URL. First party mobile applications is either included or excluded.</summary>
+    public class FirstPartyMobileApplicationTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of application IDs to be excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedAppIds")]
+        public virtual System.Collections.Generic.IList<string> ExcludedAppIds { get; set; } 
+
+        /// <summary>A list of application IDs to be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedAppIds")]
+        public virtual System.Collections.Generic.IList<string> TargetedAppIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Frequency cap.</summary>
+    public class FrequencyCap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of impressions that can be served to a user within the specified time
+        /// period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
+        public virtual System.Nullable<int> MaxImpressions { get; set; } 
+
+        /// <summary>The amount of time, in the units specified by time_unit_type. Defines the amount of time over which
+        /// impressions per user are counted and capped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTimeUnits")]
+        public virtual System.Nullable<int> NumTimeUnits { get; set; } 
+
+        /// <summary>The time unit. Along with num_time_units defines the amount of time over which impressions per user
+        /// are counted and capped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeUnitType")]
+        public virtual string TimeUnitType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Terms for Programmatic Guaranteed Deals.</summary>
+    public class GuaranteedFixedPriceTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fixed price for the specified buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
+        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
+
+        /// <summary>Guaranteed impressions as a percentage. This is the percentage of guaranteed looks that the buyer
+        /// is guaranteeing to buy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedImpressions")]
+        public virtual System.Nullable<long> GuaranteedImpressions { get; set; } 
+
+        /// <summary>Count of guaranteed looks. Required for deal, optional for product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
+        public virtual System.Nullable<long> GuaranteedLooks { get; set; } 
+
+        /// <summary>Daily minimum looks for CPD deal types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumDailyLooks")]
+        public virtual System.Nullable<long> MinimumDailyLooks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>HTML content for a creative.</summary>
     public class HtmlContent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6469,6 +8465,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// Exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successfulResponses")]
         public virtual MetricValue SuccessfulResponses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the size of an ad unit that can be targeted on an ad request. It only applies to Private
+    /// Auction, AdX Preferred Deals and Auction Packages. This targeting does not apply to Programmatic Guaranteed and
+    /// Preferred Deals in DFP.</summary>
+    public class InventorySizeTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of inventory sizes to be excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedInventorySizes")]
+        public virtual System.Collections.Generic.IList<AdSize> ExcludedInventorySizes { get; set; } 
+
+        /// <summary>A list of inventory sizes to be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedInventorySizes")]
+        public virtual System.Collections.Generic.IList<AdSize> TargetedInventorySizes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6751,6 +8764,51 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for listing products visible to the buyer.</summary>
+    public class ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List pagination support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of matching products at their head revision number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing proposals.</summary>
+    public class ListProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of proposals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposals")]
+        public virtual System.Collections.Generic.IList<Proposal> Proposals { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for profiles visible to the buyer.</summary>
+    public class ListPublisherProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List pagination support</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of matching publisher profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProfiles")]
+        public virtual System.Collections.Generic.IList<PublisherProfile> PublisherProfiles { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>@OutputOnly The Geo criteria the restriction applies to.</summary>
     public class LocationContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6759,6 +8817,35 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// criteria IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoCriteriaIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Targeting represents different criteria that can be used by advertisers to target ad inventory. For
+    /// example, they can choose to target ad requests only if the user is in the US. Multiple types of targeting are
+    /// always applied as a logical AND, unless noted otherwise.</summary>
+    public class MarketplaceTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Geo criteria IDs to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
+        public virtual CriteriaTargeting GeoTargeting { get; set; } 
+
+        /// <summary>Inventory sizes to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
+        public virtual InventorySizeTargeting InventorySizeTargeting { get; set; } 
+
+        /// <summary>Placement targeting information, e.g. URL, mobile applications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
+        public virtual PlacementTargeting PlacementTargeting { get; set; } 
+
+        /// <summary>Technology targeting information, e.g. operating system, device category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
+        public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
+
+        /// <summary>Video targeting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoTargeting")]
+        public virtual VideoTargeting VideoTargeting { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6780,6 +8867,40 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// marginOfError = 100 * Z * sqrt(variance) / value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variance")]
         public virtual System.Nullable<long> Variance { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Mobile application targeting settings.</summary>
+    public class MobileApplicationTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Publisher owned apps to be targeted or excluded by the publisher to display the ads in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPartyTargeting")]
+        public virtual FirstPartyMobileApplicationTargeting FirstPartyTargeting { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; } 
+
+        /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
+        /// dollar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6864,12 +8985,422 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Terms for Private Auctions. Note that Private Auctions can be created only by the seller, but they can
+    /// be returned in a get or list request.</summary>
+    public class NonGuaranteedAuctionTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if open auction buyers are allowed to compete with invited buyers in this private
+        /// auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoOptimizePrivateAuction")]
+        public virtual System.Nullable<bool> AutoOptimizePrivateAuction { get; set; } 
+
+        /// <summary>Reserve price for the specified buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservePricesPerBuyer")]
+        public virtual System.Collections.Generic.IList<PricePerBuyer> ReservePricesPerBuyer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Terms for Preferred Deals. Note that Preferred Deals cannot be created via the API at this time, but
+    /// can be returned in a get or list request.</summary>
+    public class NonGuaranteedFixedPriceTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fixed price for the specified buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
+        public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A proposal may be associated to several notes.</summary>
+    public class Note : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp for when this note was created. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The role of the person (buyer/seller) creating the note. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorRole")]
+        public virtual string CreatorRole { get; set; } 
+
+        /// <summary>The actual note to attach. (max-length: 1024 unicode code units)
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string NoteValue { get; set; } 
+
+        /// <summary>The unique ID for the note. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noteId")]
+        public virtual string NoteId { get; set; } 
+
+        /// <summary>The revision number of the proposal when the note is created. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
+        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents targeting information for operating systems.</summary>
+    public class OperatingSystemTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IDs of operating systems to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemCriteria")]
+        public virtual CriteriaTargeting OperatingSystemCriteria { get; set; } 
+
+        /// <summary>IDs of operating system versions to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersionCriteria")]
+        public virtual CriteriaTargeting OperatingSystemVersionCriteria { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message to pause serving for an already-finalized proposal.</summary>
+    public class PauseProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason why the proposal is being paused. This human readable message will be displayed in the
+        /// seller's UI. (Max length: 100 unicode code units.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents targeting about where the ads can appear, e.g. certain sites or mobile applications.
+    /// Different placement targeting types will be logically OR'ed.</summary>
+    public class PlacementTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mobile application targeting information in a deal. This doesn't apply to Auction
+        /// Packages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileApplicationTargeting")]
+        public virtual MobileApplicationTargeting MobileApplicationTargeting { get; set; } 
+
+        /// <summary>URLs to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlTargeting")]
+        public virtual UrlTargeting UrlTargeting { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>@OutputOnly The type of platform the restriction applies to.</summary>
     public class PlatformContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The platforms this restriction applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
         public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a price and a pricing type for a product / deal.</summary>
+    public class Price : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual price with currency specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Money Amount { get; set; } 
+
+        /// <summary>The pricing type for the deal/product. (default: CPM)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
+        public virtual string PricingType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in a product can become 0 or 1
+    /// deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the
+    /// most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the
+    /// buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.</summary>
+    public class PricePerBuyer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of advertisers for this price when associated with this buyer. If empty, all advertisers
+        /// with this buyer pay this price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
+        public virtual System.Collections.Generic.IList<string> AdvertiserIds { get; set; } 
+
+        /// <summary>The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers
+        /// match, and there's no more specific rule matching the buyer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
+        public virtual Buyer Buyer { get; set; } 
+
+        /// <summary>The specified price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Buyers are allowed to store certain types of private data in a proposal/deal.</summary>
+    public class PrivateData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A buyer or seller specified reference ID. This can be queried in the list operations (max-length:
+        /// 1024 unicode code units).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
+    /// Marketplace resources.
+    ///
+    /// A product is a segment of inventory that a seller wishes to sell. It is associated with certain terms and
+    /// targeting information which helps the buyer know more about the inventory.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The proposed end time for the deal. The field will be truncated to the order of seconds during
+        /// serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableEndTime")]
+        public virtual object AvailableEndTime { get; set; } 
+
+        /// <summary>Inventory availability dates. The start time will be truncated to seconds during serving. Thus, a
+        /// field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to 3:23:34 when serving.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
+        public virtual object AvailableStartTime { get; set; } 
+
+        /// <summary>Creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional contact information for the creator of this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorContacts")]
+        public virtual System.Collections.Generic.IList<ContactInformation> CreatorContacts { get; set; } 
+
+        /// <summary>The display name for this product as set by the seller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>If the creator has already signed off on the product, then the buyer can finalize the deal by
+        /// accepting the product as is. When copying to a proposal, if any of the terms are changed, then auto_finalize
+        /// is automatically set to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasCreatorSignedOff")]
+        public virtual System.Nullable<bool> HasCreatorSignedOff { get; set; } 
+
+        /// <summary>The unique ID for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>The revision number of the product. (auto-assigned by marketplace)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productRevision")]
+        public virtual System.Nullable<long> ProductRevision { get; set; } 
+
+        /// <summary>An ID which can be used by the Publisher Profile API to get more information about the seller that
+        /// created this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
+        public virtual string PublisherProfileId { get; set; } 
+
+        /// <summary>Information about the seller that created this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seller")]
+        public virtual Seller Seller { get; set; } 
+
+        /// <summary>The syndication product associated with the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syndicationProduct")]
+        public virtual string SyndicationProduct { get; set; } 
+
+        /// <summary>Targeting that is shared between the buyer and the seller. Each targeting criterion has a specified
+        /// key and for each key there is a list of inclusion value or exclusion values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingCriterion")]
+        public virtual System.Collections.Generic.IList<TargetingCriteria> TargetingCriterion { get; set; } 
+
+        /// <summary>The negotiable terms of the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terms")]
+        public virtual DealTerms Terms { get; set; } 
+
+        /// <summary>Time of last update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The web-property code for the seller. This needs to be copied as is when adding a new deal to a
+        /// proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyCode")]
+        public virtual string WebPropertyCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
+    /// Marketplace resources.
+    ///
+    /// Represents a proposal in the marketplace. A proposal is the unit of negotiation between a seller and a buyer and
+    /// contains deals which are served.
+    ///
+    /// Note: you can not update, create, or otherwise modify Private Auction or Preferred Deals deals through the API.
+    ///
+    /// Fields are updatable unless noted otherwise.</summary>
+    public class Proposal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference to the buyer that will get billed for this proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billedBuyer")]
+        public virtual Buyer BilledBuyer { get; set; } 
+
+        /// <summary>Reference to the buyer on the proposal.
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
+        public virtual Buyer Buyer { get; set; } 
+
+        /// <summary>Contact information for the buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerContacts")]
+        public virtual System.Collections.Generic.IList<ContactInformation> BuyerContacts { get; set; } 
+
+        /// <summary>Private data for buyer. (hidden from seller).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
+        public virtual PrivateData BuyerPrivateData { get; set; } 
+
+        /// <summary>The deals associated with this proposal. For Private Auction proposals (whose deals have
+        /// NonGuaranteedAuctionTerms), there will only be one deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deals")]
+        public virtual System.Collections.Generic.IList<Deal> Deals { get; set; } 
+
+        /// <summary>The name for the proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>True if the proposal is being renegotiated. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRenegotiating")]
+        public virtual System.Nullable<bool> IsRenegotiating { get; set; } 
+
+        /// <summary>True, if the buyside inventory setup is complete for this proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
+        public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
+
+        /// <summary>The role of the last user that either updated the proposal or left a comment. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdaterOrCommentorRole")]
+        public virtual string LastUpdaterOrCommentorRole { get; set; } 
+
+        /// <summary>The notes associated with this proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual System.Collections.Generic.IList<Note> Notes { get; set; } 
+
+        /// <summary>Indicates whether the buyer/seller created the proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originatorRole")]
+        public virtual string OriginatorRole { get; set; } 
+
+        /// <summary>Private auction ID if this proposal is a private auction proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateAuctionId")]
+        public virtual string PrivateAuctionId { get; set; } 
+
+        /// <summary>The unique ID of the proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalId")]
+        public virtual string ProposalId { get; set; } 
+
+        /// <summary>The revision number for the proposal. Each update to the proposal or the deal causes the proposal
+        /// revision number to auto-increment. The buyer keeps track of the last revision number they know of and pass
+        /// it in when making an update. If the head revision number on the server has since incremented, then an
+        /// ABORTED error is returned during the update operation to let the buyer know that a subsequent update was
+        /// made. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalRevision")]
+        public virtual System.Nullable<long> ProposalRevision { get; set; } 
+
+        /// <summary>The current state of the proposal. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposalState")]
+        public virtual string ProposalState { get; set; } 
+
+        /// <summary>Reference to the seller on the proposal.
+        ///
+        /// Note: This field may be set only when creating the resource. Modifying this field while updating the
+        /// resource will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seller")]
+        public virtual Seller Seller { get; set; } 
+
+        /// <summary>Contact information for the seller. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
+        public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; } 
+
+        /// <summary>The time when the proposal was last revised. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
+    /// Marketplace resources.
+    ///
+    /// Represents a publisher profile in Marketplace.
+    ///
+    /// All fields are read only. All string fields are free-form text entered by the publisher unless noted
+    /// otherwise.</summary>
+    public class PublisherProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description on the publisher's audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceDescription")]
+        public virtual string AudienceDescription { get; set; } 
+
+        /// <summary>Statement explaining what's unique about publisher's business, and why buyers should partner with
+        /// the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPitchStatement")]
+        public virtual string BuyerPitchStatement { get; set; } 
+
+        /// <summary>Contact information for direct reservation deals. This is free text entered by the publisher and
+        /// may include information like names, phone numbers and email addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directDealsContact")]
+        public virtual string DirectDealsContact { get; set; } 
+
+        /// <summary>Name of the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The list of domains represented in this publisher profile. Empty if this is a parent profile. These
+        /// are top private domains, meaning that these will not contain a string like "photos.google.co.uk/123", but
+        /// will instead contain "google.co.uk".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; } 
+
+        /// <summary>URL to publisher's Google+ page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googlePlusUrl")]
+        public virtual string GooglePlusUrl { get; set; } 
+
+        /// <summary>A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or
+        /// GIF image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logoUrl")]
+        public virtual string LogoUrl { get; set; } 
+
+        /// <summary>URL to additional marketing and sales materials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaKitUrl")]
+        public virtual string MediaKitUrl { get; set; } 
+
+        /// <summary>Overview of the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; } 
+
+        /// <summary>Contact information for programmatic deals. This is free text entered by the publisher and may
+        /// include information like names, phone numbers and email addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programmaticDealsContact")]
+        public virtual string ProgrammaticDealsContact { get; set; } 
+
+        /// <summary>Unique ID for publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
+        public virtual string PublisherProfileId { get; set; } 
+
+        /// <summary>URL to a publisher rate card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateCardInfoUrl")]
+        public virtual string RateCardInfoUrl { get; set; } 
+
+        /// <summary>URL to a sample content page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplePageUrl")]
+        public virtual string SamplePageUrl { get; set; } 
+
+        /// <summary>Seller of the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seller")]
+        public virtual Seller Seller { get; set; } 
+
+        /// <summary>Up to three key metrics and rankings. Max 100 characters each. For example "#1 Mobile News Site for
+        /// 20 Straight Months".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topHeadlines")]
+        public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6935,6 +9466,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message to resume (unpause) serving for an already-finalized proposal.</summary>
+    public class ResumeProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A response may include multiple rows, breaking down along various dimensions. Encapsulates the values
     /// of all dimensions for a given row.</summary>
     public class RowDimensions : Google.Apis.Requests.IDirectResponseSchema
@@ -6953,6 +9491,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The security types in this context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securities")]
         public virtual System.Collections.Generic.IList<string> Securities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a seller of inventory. Each seller is identified by a unique Ad Exchange account
+    /// ID.</summary>
+    public class Seller : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID for the seller. The seller fills in this field. The seller account ID is then
+        /// available to buyer in the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>Optional sub-account ID for the seller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subAccountId")]
+        public virtual string SubAccountId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7018,9 +9573,90 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message depicting the size of the creative. The units of width and height depend on the type of the
+    /// targeting.</summary>
+    public class Size : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The height of the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>The width of the creative</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A request for stopping notifications for changes to creative Status.</summary>
     public class StopWatchingCreativeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Advertisers can target different attributes of an ad slot. For example, they can choose to show ads
+    /// only if the user is in the U.S. Such targeting criteria can be specified as part of Shared Targeting.</summary>
+    public class TargetingCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of values to exclude from targeting. Each value is AND'd together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<TargetingValue> Exclusions { get; set; } 
+
+        /// <summary>The list of value to include as part of the targeting. Each value is OR'd together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inclusions")]
+        public virtual System.Collections.Generic.IList<TargetingValue> Inclusions { get; set; } 
+
+        /// <summary>The key representing the shared targeting criterion. Targeting criteria defined by Google ad
+        /// servers will begin with GOOG_. Third parties may define their own keys. A list of permissible keys along
+        /// with the acceptable values will be provided as part of the external documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A polymorphic targeting value used as part of Shared Targeting.</summary>
+    public class TargetingValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creative size value to include/exclude. Filled in when key = GOOG_CREATIVE_SIZE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeSizeValue")]
+        public virtual CreativeSize CreativeSizeValue { get; set; } 
+
+        /// <summary>The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING. The
+        /// definition of this targeting is derived from the structure used by DFP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargetingValue")]
+        public virtual DayPartTargeting DayPartTargetingValue { get; set; } 
+
+        /// <summary>The long value to include/exclude.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
+        public virtual System.Nullable<long> LongValue { get; set; } 
+
+        /// <summary>The string value to include/exclude.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents targeting about various types of technology.</summary>
+    public class TechnologyTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IDs of device capabilities to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCapabilityTargeting")]
+        public virtual CriteriaTargeting DeviceCapabilityTargeting { get; set; } 
+
+        /// <summary>IDs of device categories to be included/excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCategoryTargeting")]
+        public virtual CriteriaTargeting DeviceCategoryTargeting { get; set; } 
+
+        /// <summary>Operating system related targeting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemTargeting")]
+        public virtual OperatingSystemTargeting OperatingSystemTargeting { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7040,6 +9676,50 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
+    /// An API may choose to allow leap seconds. Related types are google.type.Date and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
+        /// "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; } 
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; } 
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
+        /// allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a list of targeted and excluded URLs (e.g google.com). For Private Auction and AdX Preferred
+    /// Deals, URLs are either included or excluded. For DFP Programmatic Guaranteed and Preferred Deals, this doesn't
+    /// apply.</summary>
+    public class UrlTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of URLs to be excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedUrls")]
+        public virtual System.Collections.Generic.IList<string> ExcludedUrls { get; set; } 
+
+        /// <summary>A list of URLs to be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedUrls")]
+        public virtual System.Collections.Generic.IList<string> TargetedUrls { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Video content for a creative.</summary>
     public class VideoContent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7051,6 +9731,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// standard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoVastXml")]
         public virtual string VideoVastXml { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents targeting information about video.</summary>
+    public class VideoTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of video positions to be excluded. Position types can either be included or excluded
+        /// (XOR).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedPositionTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludedPositionTypes { get; set; } 
+
+        /// <summary>A list of video positions to be included. When the included list is present, the excluded list must
+        /// be empty. When the excluded list is present, the included list must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedPositionTypes")]
+        public virtual System.Collections.Generic.IList<string> TargetedPositionTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

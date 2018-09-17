@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/q9oB3pUZxVIJoLf-eIcPa9tA6rY\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/QJeloIS_ina-crFwRUPcF4y05nc\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20180907",
+ "revision": "20180912",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -3106,7 +3106,6 @@
       "host": {
        "type": "string",
        "description": "Host of the user in the instance.",
-       "required": true,
        "location": "query"
       },
       "instance": {
@@ -3131,7 +3130,6 @@
      "parameterOrder": [
       "project",
       "instance",
-      "host",
       "name"
      ],
      "request": {
