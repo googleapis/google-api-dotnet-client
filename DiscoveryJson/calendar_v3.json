@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/yQUo2-rkaAjffNSekg6D_UnI2Qg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1pi1xlsDPeAaquM7AeS5zY5HAb8\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
@@ -72,8 +72,17 @@
     "https://www.googleapis.com/auth/calendar": {
      "description": "Manage your calendars"
     },
+    "https://www.googleapis.com/auth/calendar.events": {
+     "description": "View and edit events on all your calendars"
+    },
+    "https://www.googleapis.com/auth/calendar.events.readonly": {
+     "description": "View events on all your calendars"
+    },
     "https://www.googleapis.com/auth/calendar.readonly": {
      "description": "View your calendars"
+    },
+    "https://www.googleapis.com/auth/calendar.settings.readonly": {
+     "description": "View your Calendar settings"
     }
    }
   }
@@ -1996,7 +2005,10 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ]
     }
    }
@@ -2049,7 +2061,8 @@
       "eventId"
      ],
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "get": {
@@ -2097,6 +2110,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ]
     },
@@ -2136,7 +2151,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "insert": {
@@ -2187,7 +2203,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "instances": {
@@ -2269,6 +2286,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2397,6 +2416,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2440,7 +2461,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "patch": {
@@ -2503,7 +2525,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "quickAdd": {
@@ -2538,7 +2561,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "update": {
@@ -2601,7 +2625,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "watch": {
@@ -2732,6 +2757,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2781,7 +2808,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ]
     },
     "list": {
@@ -2813,7 +2841,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ],
      "supportsSubscription": true
     },
@@ -2850,7 +2879,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ],
      "supportsSubscription": true
     }

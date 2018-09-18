@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20180905 (1343)
+ *      <tr><th>API Rev<td>20180914 (1352)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -347,7 +347,9 @@ namespace Google.Apis.Genomics.v1alpha2
         /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
         /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
         /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-        /// cancellation.</summary>
+        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.cancel`</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Genomics.v1alpha2.Data.CancelOperationRequest body, string name)
@@ -358,7 +360,9 @@ namespace Google.Apis.Genomics.v1alpha2
         /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
         /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
         /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-        /// cancellation.</summary>
+        /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.cancel`</summary>
         public class CancelRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -418,16 +422,22 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// operation result at intervals as recommended by the API service. Authorization requires the following
+        /// [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.get`</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// operation result at intervals as recommended by the API service. Authorization requires the following
+        /// [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.get`</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -480,14 +490,20 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Lists operations that match the specified filter in the request.</summary>
+        /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
+        /// following [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.list`</summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
             return new ListRequest(service, name);
         }
 
-        /// <summary>Lists operations that match the specified filter in the request.</summary>
+        /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
+        /// following [Google IAM](https://cloud.google.com/iam) permission
+        ///
+        /// * `genomics.operations.list`</summary>
         public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -502,6 +518,15 @@ namespace Google.Apis.Genomics.v1alpha2
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
             ///
@@ -525,15 +550,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// = *` * `projectId = my-project AND labels.color = red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -569,15 +585,6 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -590,6 +597,15 @@ namespace Google.Apis.Genomics.v1alpha2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -825,13 +841,13 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-            /// <summary>The operation to retrieve controller configuration for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OperationId { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> ValidationToken { get; set; }
+
+            /// <summary>The operation to retrieve controller configuration for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OperationId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -858,18 +874,18 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "operationId", new Google.Apis.Discovery.Parameter
+                    "validationToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "operationId",
+                        Name = "validationToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "validationToken", new Google.Apis.Discovery.Parameter
+                    "operationId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "validationToken",
+                        Name = "operationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -900,15 +916,6 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-            /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required. The name of the project to search for pipelines. Caller must have READ access to this
-            /// project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
             /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
             /// in the project, up to `pageSize`, will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
@@ -918,6 +925,15 @@ namespace Google.Apis.Genomics.v1alpha2
             /// of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Required. The name of the project to search for pipelines. Caller must have READ access to this
+            /// project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -944,24 +960,6 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "namePrefix", new Google.Apis.Discovery.Parameter
                     {
                         Name = "namePrefix",
@@ -974,6 +972,24 @@ namespace Google.Apis.Genomics.v1alpha2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180829 (1336)
+ *      <tr><th>API Rev<td>20180914 (1352)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5446,6 +5446,90 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
+        /// <summary>Sandbox only. Creates a test return.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
+        public virtual CreatetestreturnRequest Createtestreturn(Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestReturnRequest body, ulong merchantId, string orderId)
+        {
+            return new CreatetestreturnRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Sandbox only. Creates a test return.</summary>
+        public class CreatetestreturnRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestReturnResponse>
+        {
+            /// <summary>Constructs a new Createtestreturn request.</summary>
+            public CreatetestreturnRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestReturnRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestReturnRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createtestreturn"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orders/{orderId}/testreturn"; }
+            }
+
+            /// <summary>Initializes Createtestreturn parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.OrdersCustomBatchRequest body)
@@ -9406,7 +9490,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The status of the updated link. Only defined if the method is link.</summary>
+        /// <summary>Deprecated. This field is never set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkStatus")]
         public virtual string LinkStatus { get; set; } 
 
@@ -12162,6 +12246,31 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrdersCreateTestReturnRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Returned items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem> Items { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCreateTestReturnResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersCreateTestReturnResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ID of the newly created test order return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnId")]
+        public virtual string ReturnId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersCustomBatchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request entries to be processed in the batch.</summary>
@@ -12298,6 +12407,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
         public virtual string ReasonText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the line item to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>Quantity that is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13826,7 +13949,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
-        /// <summary>Whether an item is available for purchase only online.</summary>
+        /// <summary>Deprecated. Whether an item is available for purchase only online.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlineOnly")]
         public virtual System.Nullable<bool> OnlineOnly { get; set; } 
 
@@ -13919,7 +14042,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual ProductUnitPricingMeasure UnitPricingMeasure { get; set; } 
 
-        /// <summary>The read-only list of intended destinations which passed validation.</summary>
+        /// <summary>Deprecated. The read-only list of intended destinations which passed validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validatedDestinations")]
         public virtual System.Collections.Generic.IList<string> ValidatedDestinations { get; set; } 
 
@@ -13959,7 +14082,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Free-form unit of the attribute. Unit can only be used for values of type INT or FLOAT.</summary>
+        /// <summary>Free-form unit of the attribute. Unit can only be used for values of type int, float, or
+        /// price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 

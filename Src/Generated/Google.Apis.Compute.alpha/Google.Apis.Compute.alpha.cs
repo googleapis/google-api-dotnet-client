@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20180817 (1324)
+ *      <tr><th>API Rev<td>20180828 (1335)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -2576,7 +2576,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>A list all the allocations that have been configured for the specified project in specified
         /// zone.</summary>
-        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.AllocationsList>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.AllocationList>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project, string zone)
@@ -21591,9 +21591,9 @@ namespace Google.Apis.Compute.alpha
             ///
             /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
             /// to an instance template: -
-            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
-            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
-            /// global/instancesTemplates/instanceTemplate</summary>
+            /// https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate -
+            /// projects/project/global/instanceTemplates/instanceTemplate -
+            /// global/instanceTemplates/instanceTemplate</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceInstanceTemplate { get; set; }
 
@@ -66125,6 +66125,25 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>AllocationAffinity is the configuration of desired allocation which this instance could take capacity
+    /// from.</summary>
+    public class AllocationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeAllocationType")]
+        public virtual string ConsumeAllocationType { get; set; } 
+
+        /// <summary>Corresponds to the label key of allocation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Corresponds to the label values of allocation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains a list of allocations.</summary>
     public class AllocationAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -66154,6 +66173,78 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Informational warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
         public virtual AllocationAggregatedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class AllocationList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of Allocation resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Allocation> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource.Always compute#allocationsList for listsof allocations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual AllocationList.WarningData Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66254,78 +66345,6 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
-
-    public class AllocationsList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>[Output Only] A list of Allocation resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Allocation> Items { get; set; } 
-
-        /// <summary>[Output Only] Type of resource.Always compute#allocationsList for listsof allocations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual AllocationsList.WarningData Warning { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-        
-
-        /// <summary>[Output Only] Informational warning message.</summary>
-        public class WarningData
-        {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
-
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
-
-            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
-
-            
-
-            public class DataData
-            {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
-
-                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
-                [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
-
-            }
-        }
     }    
 
     public class AllocationsScopedList : Google.Apis.Requests.IDirectResponseSchema
@@ -70965,7 +70984,7 @@ namespace Google.Apis.Compute.alpha.Data
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("allocationAffinity")]
-        public virtual InstanceAllocationAffinity AllocationAffinity { get; set; } 
+        public virtual AllocationAffinity AllocationAffinity { get; set; } 
 
         /// <summary>Allows this instance to send and receive packets with non-matching destination or source IPs. This
         /// is required if you plan to use this instance to forward routes. For more information, see Enabling IP
@@ -71215,25 +71234,6 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
-    }    
-
-    /// <summary>AllocationAffinity is the configuration of desired allocation which this instance could take capacity
-    /// from.</summary>
-    public class InstanceAllocationAffinity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("consumeAllocationType")]
-        public virtual string ConsumeAllocationType { get; set; } 
-
-        /// <summary>Corresponds to the label key of Allocation resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>Corresponds to the label values of allocation resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }    
 
     /// <summary>InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (==
@@ -71851,6 +71851,12 @@ namespace Google.Apis.Compute.alpha.Data
         /// managed instance group; and the managed instance group itself is not being modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isStable")]
         public virtual System.Nullable<bool> IsStable { get; set; } 
+
+        /// <summary>[Output Only] A bit indicating whether version target has been reached in this managed instance
+        /// group, i.e. all instances are in their target version. Instances' target version are specified by version
+        /// field on Instance Group Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionTargetReached")]
+        public virtual System.Nullable<bool> VersionTargetReached { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73734,6 +73740,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output Only] The status of this InterconnectLocation. If the status is AVAILABLE, new
+        /// Interconnects may be provisioned in this InterconnectLocation. Otherwise, no new Interconnects may be
+        /// provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -75084,7 +75096,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>This field is only valid when the network endpoint group is used for load balancing.</summary>
+        /// <summary>This field is only valid when the network endpoint group is used for load balancing. [Deprecated]
+        /// This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
         public virtual NetworkEndpointGroupLbNetworkEndpointGroup LoadBalancer { get; set; } 
 
@@ -75192,20 +75205,23 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Load balancing specific fields for network endpoint group.</summary>
     public class NetworkEndpointGroupLbNetworkEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The default port used if the port number is not specified in the network endpoint.</summary>
+        /// <summary>The default port used if the port number is not specified in the network endpoint. [Deprecated]
+        /// This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPort")]
         public virtual System.Nullable<int> DefaultPort { get; set; } 
 
         /// <summary>The URL of the network to which all network endpoints in the NEG belong. Uses "default" project
-        /// network if unspecified.</summary>
+        /// network if unspecified. [Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong.</summary>
+        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This
+        /// field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This
+        /// field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -75727,11 +75743,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The URL of the node template to which this node group belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeTemplate")]
         public virtual string NodeTemplate { get; set; } 
-
-        /// <summary>[Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes in this node
-        /// group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<NodeGroupNode> Nodes { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

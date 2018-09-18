@@ -118,8 +118,17 @@ namespace Google.Apis.Calendar.v3
             /// <summary>Manage your calendars</summary>
             public static string Calendar = "https://www.googleapis.com/auth/calendar";
 
+            /// <summary>View and edit events on all your calendars</summary>
+            public static string CalendarEvents = "https://www.googleapis.com/auth/calendar.events";
+
+            /// <summary>View events on all your calendars</summary>
+            public static string CalendarEventsReadonly = "https://www.googleapis.com/auth/calendar.events.readonly";
+
             /// <summary>View your calendars</summary>
             public static string CalendarReadonly = "https://www.googleapis.com/auth/calendar.readonly";
+
+            /// <summary>View your Calendar settings</summary>
+            public static string CalendarSettingsReadonly = "https://www.googleapis.com/auth/calendar.settings.readonly";
 
         }
 

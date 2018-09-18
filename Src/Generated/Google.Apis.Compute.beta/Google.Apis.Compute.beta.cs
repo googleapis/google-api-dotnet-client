@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180817 (1324)
+ *      <tr><th>API Rev<td>20180828 (1335)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -19150,9 +19150,9 @@ namespace Google.Apis.Compute.beta
             ///
             /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
             /// to an instance template: -
-            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
-            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
-            /// global/instancesTemplates/instanceTemplate</summary>
+            /// https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate -
+            /// projects/project/global/instanceTemplates/instanceTemplate -
+            /// global/instanceTemplates/instanceTemplate</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceInstanceTemplate { get; set; }
 
@@ -23472,6 +23472,82 @@ namespace Google.Apis.Compute.beta
             }
 
             /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "interconnect", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interconnect",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="interconnect">Name of the
+        /// interconnect resource to query.</param>
+        public virtual GetDiagnosticsRequest GetDiagnostics(string project, string interconnect)
+        {
+            return new GetDiagnosticsRequest(service, project, interconnect);
+        }
+
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        public class GetDiagnosticsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InterconnectsGetDiagnosticsResponse>
+        {
+            /// <summary>Constructs a new GetDiagnostics request.</summary>
+            public GetDiagnosticsRequest(Google.Apis.Services.IClientService service, string project, string interconnect)
+                : base(service)
+            {
+                Project = project;
+                Interconnect = interconnect;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the interconnect resource to query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Interconnect { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getDiagnostics"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/interconnects/{interconnect}/getDiagnostics"; }
+            }
+
+            /// <summary>Initializes GetDiagnostics parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -58903,6 +58979,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
+        /// <summary>[Output Only] The status of this managed instance group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual InstanceGroupManagerStatus Status { get; set; } 
+
         /// <summary>The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The
         /// target pools automatically apply to all of the instances in the managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPools")]
@@ -59177,6 +59257,19 @@ namespace Google.Apis.Compute.beta.Data
         /// restarted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
         public virtual System.Nullable<int> Restarting { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstanceGroupManagerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] A bit indicating whether the managed instance group is in a stable state. A stable
+        /// state means that: none of the instances in the managed instance group is currently undergoing any type of
+        /// change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the
+        /// managed instance group; and the managed instance group itself is not being modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isStable")]
+        public virtual System.Nullable<bool> IsStable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60656,6 +60749,102 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Diagnostics information about interconnect, contains detailed and current technical information about
+    /// Google?s side of the connection.</summary>
+    public class InterconnectDiagnostics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of InterconnectDiagnostics.ARPEntry objects, describing individual neighbors currently seen
+        /// by the Google router in the ARP cache for the Interconnect. This will be empty when the Interconnect is not
+        /// bundled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arpCaches")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsARPEntry> ArpCaches { get; set; } 
+
+        /// <summary>A list of InterconnectDiagnostics.LinkStatus objects, describing the status for each link on the
+        /// Interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsLinkStatus> Links { get; set; } 
+
+        /// <summary>The MAC address of the Interconnect's bundle interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describing the ARP neighbor entries seen on this link</summary>
+    public class InterconnectDiagnosticsARPEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address of this ARP neighbor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The MAC address of this ARP neighbor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkLACPStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>System ID of the port on Google?s side of the LACP exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSystemId")]
+        public virtual string GoogleSystemId { get; set; } 
+
+        /// <summary>System ID of the port on the neighbor?s side of the LACP exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighborSystemId")]
+        public virtual string NeighborSystemId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkOpticalPower : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Value of the current optical power, read in dBm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP neighbor entries seen on
+        /// this link. This will be empty if the link is bundled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arpCaches")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsARPEntry> ArpCaches { get; set; } 
+
+        /// <summary>The unique ID for this link assigned during turn up by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circuitId")]
+        public virtual string CircuitId { get; set; } 
+
+        /// <summary>The Demarc address assigned by Google and provided in the LoA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDemarc")]
+        public virtual string GoogleDemarc { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lacpStatus")]
+        public virtual InterconnectDiagnosticsLinkLACPStatus LacpStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("receivingOpticalPower")]
+        public virtual InterconnectDiagnosticsLinkOpticalPower ReceivingOpticalPower { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("transmittingOpticalPower")]
+        public virtual InterconnectDiagnosticsLinkOpticalPower TransmittingOpticalPower { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response to the list request, and contains a list of interconnects.</summary>
     public class InterconnectList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60934,6 +61123,16 @@ namespace Google.Apis.Compute.beta.Data
         /// of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for the InterconnectsGetDiagnosticsRequest.</summary>
+    public class InterconnectsGetDiagnosticsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual InterconnectDiagnostics Result { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61743,7 +61942,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>This field is only valid when the network endpoint group is used for load balancing.</summary>
+        /// <summary>This field is only valid when the network endpoint group is used for load balancing. [Deprecated]
+        /// This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
         public virtual NetworkEndpointGroupLbNetworkEndpointGroup LoadBalancer { get; set; } 
 
@@ -61847,20 +62047,23 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Load balancing specific fields for network endpoint group.</summary>
     public class NetworkEndpointGroupLbNetworkEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The default port used if the port number is not specified in the network endpoint.</summary>
+        /// <summary>The default port used if the port number is not specified in the network endpoint. [Deprecated]
+        /// This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPort")]
         public virtual System.Nullable<int> DefaultPort { get; set; } 
 
         /// <summary>The URL of the network to which all network endpoints in the NEG belong. Uses "default" project
-        /// network if unspecified.</summary>
+        /// network if unspecified. [Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong.</summary>
+        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This
+        /// field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This
+        /// field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -62357,11 +62560,6 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The URL of the node template to which this node group belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeTemplate")]
         public virtual string NodeTemplate { get; set; } 
-
-        /// <summary>[Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes in this node
-        /// group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<NodeGroupNode> Nodes { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

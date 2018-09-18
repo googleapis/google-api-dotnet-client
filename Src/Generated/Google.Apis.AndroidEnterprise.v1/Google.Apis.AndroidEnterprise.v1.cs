@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180913 (1351)
+ *      <tr><th>API Rev<td>20180912 (1350)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7701,7 +7701,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     public class AdministratorWebTokenSpecStoreBuilder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the Store Builder is be displayed. Default is true.</summary>
+        /// <summary>Whether the Store Builder page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
 

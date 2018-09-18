@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/BHrSU9D3B6OA1Q17-906PS_R18E\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/wJ6op8HehvvrmPEffRA5vcCZodE\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20180829",
+ "revision": "20180914",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -742,7 +742,7 @@
     },
     "linkStatus": {
      "type": "string",
-     "description": "The status of the updated link. Only defined if the method is link."
+     "description": "Deprecated. This field is never set."
     }
    }
   },
@@ -3694,6 +3694,34 @@
     }
    }
   },
+  "OrdersCreateTestReturnRequest": {
+   "id": "OrdersCreateTestReturnRequest",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "description": "Returned items.",
+     "items": {
+      "$ref": "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem"
+     }
+    }
+   }
+  },
+  "OrdersCreateTestReturnResponse": {
+   "id": "OrdersCreateTestReturnResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCreateTestReturnResponse\".",
+     "default": "content#ordersCreateTestReturnResponse"
+    },
+    "returnId": {
+     "type": "string",
+     "description": "The ID of the newly created test order return."
+    }
+   }
+  },
   "OrdersCustomBatchRequest": {
    "id": "OrdersCustomBatchRequest",
    "type": "object",
@@ -3833,6 +3861,21 @@
     "reasonText": {
      "type": "string",
      "description": "The explanation of the reason."
+    }
+   }
+  },
+  "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem": {
+   "id": "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem",
+   "type": "object",
+   "properties": {
+    "lineItemId": {
+     "type": "string",
+     "description": "The ID of the line item to return."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "Quantity that is returned.",
+     "format": "uint32"
     }
    }
   },
@@ -5640,7 +5683,7 @@
     },
     "onlineOnly": {
      "type": "boolean",
-     "description": "Whether an item is available for purchase only online."
+     "description": "Deprecated. Whether an item is available for purchase only online."
     },
     "pattern": {
      "type": "string",
@@ -5750,7 +5793,7 @@
     },
     "validatedDestinations": {
      "type": "array",
-     "description": "The read-only list of intended destinations which passed validation.",
+     "description": "Deprecated. The read-only list of intended destinations which passed validation.",
      "items": {
       "type": "string"
      }
@@ -5796,7 +5839,7 @@
     },
     "unit": {
      "type": "string",
-     "description": "Free-form unit of the attribute. Unit can only be used for values of type INT or FLOAT."
+     "description": "Free-form unit of the attribute. Unit can only be used for values of type int, float, or price."
     },
     "value": {
      "type": "string",
@@ -9047,6 +9090,40 @@
      },
      "response": {
       "$ref": "OrdersCreateTestOrderResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "createtestreturn": {
+     "id": "content.orders.createtestreturn",
+     "path": "{merchantId}/orders/{orderId}/testreturn",
+     "httpMethod": "POST",
+     "description": "Sandbox only. Creates a test return.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrdersCreateTestReturnRequest"
+     },
+     "response": {
+      "$ref": "OrdersCreateTestReturnResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

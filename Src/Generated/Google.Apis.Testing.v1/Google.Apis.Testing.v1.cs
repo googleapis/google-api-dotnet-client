@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180913 (1351)
+ *      <tr><th>API Rev<td>20180914 (1352)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1007,7 +1007,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual string Form { get; set; } 
 
-        /// <summary>Whther this device is a phone, tablet, wearable, etc. @OutputOnly</summary>
+        /// <summary>Whether this device is a phone, tablet, wearable, etc. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
         public virtual string FormFactor { get; set; } 
 
@@ -1520,6 +1520,10 @@ namespace Google.Apis.Testing.v1.Data
         /// html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCapabilities")]
         public virtual System.Collections.Generic.IList<string> DeviceCapabilities { get; set; } 
+
+        /// <summary>Whether this device is a phone, tablet, wearable, etc. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
+        public virtual string FormFactor { get; set; } 
 
         /// <summary>Output only. The unique opaque id for this model. Use this for invoking the
         /// TestExecutionService.</summary>

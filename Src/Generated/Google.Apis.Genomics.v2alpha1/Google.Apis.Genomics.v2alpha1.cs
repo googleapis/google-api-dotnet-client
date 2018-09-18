@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20180905 (1343)
+ *      <tr><th>API Rev<td>20180914 (1352)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -355,7 +355,10 @@ namespace Google.Apis.Genomics.v2alpha1
         /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
         /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
         /// you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and re-enable the API to
-        /// grant the Genomics Service Agent the required permissions.
+        /// grant the Genomics Service Agent the required permissions. Authorization requires the following [Google
+        /// IAM](https://cloud.google.com/iam/) permission:
+        ///
+        /// * `genomics.operations.create`
         ///
         /// [1]: /genomics/gsa</summary>
         /// <param name="body">The body of the request.</param>
@@ -369,7 +372,10 @@ namespace Google.Apis.Genomics.v2alpha1
         /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
         /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
         /// you enabled the Cloud Genomics API before the v2alpha1 API launch, you must disable and re-enable the API to
-        /// grant the Genomics Service Agent the required permissions.
+        /// grant the Genomics Service Agent the required permissions. Authorization requires the following [Google
+        /// IAM](https://cloud.google.com/iam/) permission:
+        ///
+        /// * `genomics.operations.create`
         ///
         /// [1]: /genomics/gsa</summary>
         public class RunRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Operation>
@@ -461,7 +467,9 @@ namespace Google.Apis.Genomics.v2alpha1
             /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
             /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
             /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-            /// cancellation.</summary>
+            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.cancel`</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.Genomics.v2alpha1.Data.CancelOperationRequest body, string name)
@@ -472,7 +480,9 @@ namespace Google.Apis.Genomics.v2alpha1
             /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
             /// cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or
             /// Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite
-            /// cancellation.</summary>
+            /// cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.cancel`</summary>
             public class CancelRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -532,16 +542,22 @@ namespace Google.Apis.Genomics.v2alpha1
 
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service. Authorization requires the following
+            /// [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.get`</summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service. Authorization requires the following
+            /// [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.get`</summary>
             public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -594,14 +610,20 @@ namespace Google.Apis.Genomics.v2alpha1
 
             }
 
-            /// <summary>Lists operations that match the specified filter in the request.</summary>
+            /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
+            /// following [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.list`</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists operations that match the specified filter in the request.</summary>
+            /// <summary>Lists operations that match the specified filter in the request. Authorization requires the
+            /// following [Google IAM](https://cloud.google.com/iam) permission
+            ///
+            /// * `genomics.operations.list`</summary>
             public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

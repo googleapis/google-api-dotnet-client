@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180913 (1351)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -5001,7 +5001,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// In JavaScript, one can convert a Date object to this format using the standard
     /// [toISOString()](https://developer.mozilla.org/en-
-    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString] method. In Python, a standard
+    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) method. In Python, a standard
     /// `datetime.datetime` object can be converted to this format using
     /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
     /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`](

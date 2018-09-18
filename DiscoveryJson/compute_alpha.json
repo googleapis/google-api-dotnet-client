@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/7LFTKICOr3FRwporNcF4ghCt4dg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/IKMgQfNZPqdeWh4gOjrqOE-Nx5Q\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20180817",
+ "revision": "20180828",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1071,6 +1071,39 @@
     }
    }
   },
+  "AllocationAffinity": {
+   "id": "AllocationAffinity",
+   "type": "object",
+   "description": "AllocationAffinity is the configuration of desired allocation which this instance could take capacity from.",
+   "properties": {
+    "consumeAllocationType": {
+     "type": "string",
+     "enum": [
+      "ANY_ALLOCATION",
+      "NO_ALLOCATION",
+      "SPECIFIC_ALLOCATION",
+      "UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "key": {
+     "type": "string",
+     "description": "Corresponds to the label key of allocation resource."
+    },
+    "values": {
+     "type": "array",
+     "description": "Corresponds to the label values of allocation resource.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
   "AllocationAggregatedList": {
    "id": "AllocationAggregatedList",
    "type": "object",
@@ -1092,6 +1125,117 @@
      "type": "string",
      "description": "Type of resource.",
      "default": "compute#allocationAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "AllocationList": {
+   "id": "AllocationList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "[Output Only] A list of Allocation resources.",
+     "items": {
+      "$ref": "Allocation"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#allocationsList for listsof allocations",
+     "default": "compute#allocationList"
     },
     "nextPageToken": {
      "type": "string",
@@ -1255,117 +1399,6 @@
       "",
       ""
      ]
-    }
-   }
-  },
-  "AllocationsList": {
-   "id": "AllocationsList",
-   "type": "object",
-   "properties": {
-    "id": {
-     "type": "string",
-     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
-    },
-    "items": {
-     "type": "array",
-     "description": "[Output Only] A list of Allocation resources.",
-     "items": {
-      "$ref": "Allocation"
-     }
-    },
-    "kind": {
-     "type": "string",
-     "description": "[Output Only] Type of resource.Always compute#allocationsList for listsof allocations",
-     "default": "compute#allocationsList"
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
-    },
-    "selfLink": {
-     "type": "string",
-     "description": "[Output Only] Server-defined URL for this resource."
-    },
-    "warning": {
-     "type": "object",
-     "description": "[Output Only] Informational warning message.",
-     "properties": {
-      "code": {
-       "type": "string",
-       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-       "enum": [
-        "CLEANUP_FAILED",
-        "DEPRECATED_RESOURCE_USED",
-        "DEPRECATED_TYPE_USED",
-        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-        "EXPERIMENTAL_TYPE_USED",
-        "EXTERNAL_API_WARNING",
-        "FIELD_VALUE_OVERRIDEN",
-        "INJECTED_KERNELS_DEPRECATED",
-        "MISSING_TYPE_DEPENDENCY",
-        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-        "NEXT_HOP_CANNOT_IP_FORWARD",
-        "NEXT_HOP_INSTANCE_NOT_FOUND",
-        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-        "NEXT_HOP_NOT_RUNNING",
-        "NOT_CRITICAL_ERROR",
-        "NO_RESULTS_ON_PAGE",
-        "REQUIRED_TOS_AGREEMENT",
-        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-        "RESOURCE_NOT_DELETED",
-        "SCHEMA_VALIDATION_IGNORED",
-        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-        "UNDECLARED_PROPERTIES",
-        "UNREACHABLE"
-       ],
-       "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-       ]
-      },
-      "data": {
-       "type": "array",
-       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
-       "items": {
-        "type": "object",
-        "properties": {
-         "key": {
-          "type": "string",
-          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
-         },
-         "value": {
-          "type": "string",
-          "description": "[Output Only] A warning data value corresponding to the key."
-         }
-        }
-       }
-      },
-      "message": {
-       "type": "string",
-       "description": "[Output Only] A human-readable description of the warning code."
-      }
-     }
     }
    }
   },
@@ -7087,7 +7120,7 @@
    "description": "An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==)",
    "properties": {
     "allocationAffinity": {
-     "$ref": "InstanceAllocationAffinity"
+     "$ref": "AllocationAffinity"
     },
     "canIpForward": {
      "type": "boolean",
@@ -7373,39 +7406,6 @@
        "type": "string",
        "description": "[Output Only] A human-readable description of the warning code."
       }
-     }
-    }
-   }
-  },
-  "InstanceAllocationAffinity": {
-   "id": "InstanceAllocationAffinity",
-   "type": "object",
-   "description": "AllocationAffinity is the configuration of desired allocation which this instance could take capacity from.",
-   "properties": {
-    "consumeAllocationType": {
-     "type": "string",
-     "enum": [
-      "ANY_ALLOCATION",
-      "NO_ALLOCATION",
-      "SPECIFIC_ALLOCATION",
-      "UNSPECIFIED"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      "",
-      ""
-     ]
-    },
-    "key": {
-     "type": "string",
-     "description": "Corresponds to the label key of Allocation resource."
-    },
-    "values": {
-     "type": "array",
-     "description": "Corresponds to the label values of allocation resource.",
-     "items": {
-      "type": "string"
      }
     }
    }
@@ -8184,6 +8184,10 @@
     "isStable": {
      "type": "boolean",
      "description": "[Output Only] A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified."
+    },
+    "versionTargetReached": {
+     "type": "boolean",
+     "description": "[Output Only] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager."
     }
    }
   },
@@ -10717,6 +10721,18 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "status": {
+     "type": "string",
+     "description": "[Output Only] The status of this InterconnectLocation. If the status is AVAILABLE, new Interconnects may be provisioned in this InterconnectLocation. Otherwise, no new Interconnects may be provisioned.",
+     "enum": [
+      "AVAILABLE",
+      "CLOSED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -12562,7 +12578,7 @@
     },
     "loadBalancer": {
      "$ref": "NetworkEndpointGroupLbNetworkEndpointGroup",
-     "description": "This field is only valid when the network endpoint group is used for load balancing."
+     "description": "This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated."
     },
     "name": {
      "type": "string",
@@ -12718,20 +12734,20 @@
    "properties": {
     "defaultPort": {
      "type": "integer",
-     "description": "The default port used if the port number is not specified in the network endpoint.",
+     "description": "The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.",
      "format": "int32"
     },
     "network": {
      "type": "string",
-     "description": "The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified."
+     "description": "The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated."
     },
     "subnetwork": {
      "type": "string",
-     "description": "Optional URL of the subnetwork to which all network endpoints in the NEG belong."
+     "description": "Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated."
     },
     "zone": {
      "type": "string",
-     "description": "[Output Only] The URL of the zone where the network endpoint group is located."
+     "description": "[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated."
     }
    }
   },
@@ -13409,13 +13425,6 @@
     "nodeTemplate": {
      "type": "string",
      "description": "The URL of the node template to which this node group belongs."
-    },
-    "nodes": {
-     "type": "array",
-     "description": "[Deprecated] Use nodeGroups.listNodes instead. [Output Only] A list of nodes in this node group.",
-     "items": {
-      "$ref": "NodeGroupNode"
-     }
     },
     "selfLink": {
      "type": "string",
@@ -15580,6 +15589,7 @@
       "DISKS_TOTAL_GB",
       "FIREWALLS",
       "FORWARDING_RULES",
+      "GLOBAL_INTERNAL_ADDRESSES",
       "GPUS_ALL_REGIONS",
       "HEALTH_CHECKS",
       "IMAGES",
@@ -15636,6 +15646,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -26269,7 +26280,7 @@
       "zone"
      ],
      "response": {
-      "$ref": "AllocationsList"
+      "$ref": "AllocationList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -33540,7 +33551,7 @@
       },
       "sourceInstanceTemplate": {
        "type": "string",
-       "description": "Specifies instance template to create the instance.\n\nThis field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:  \n- https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate \n- projects/project/global/global/instanceTemplates/instanceTemplate \n- global/instancesTemplates/instanceTemplate",
+       "description": "Specifies instance template to create the instance.\n\nThis field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template:  \n- https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate \n- projects/project/global/instanceTemplates/instanceTemplate \n- global/instanceTemplates/instanceTemplate",
        "location": "query"
       },
       "sourceMachineImage": {

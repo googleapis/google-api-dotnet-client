@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180817 (1324)
+ *      <tr><th>API Rev<td>20180828 (1335)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -15989,9 +15989,9 @@ namespace Google.Apis.Compute.v1
             ///
             /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
             /// to an instance template: -
-            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
-            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
-            /// global/instancesTemplates/instanceTemplate</summary>
+            /// https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate -
+            /// projects/project/global/instanceTemplates/instanceTemplate -
+            /// global/instanceTemplates/instanceTemplate</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceInstanceTemplate { get; set; }
 

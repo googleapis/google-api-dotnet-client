@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180911 (1349)
+ *      <tr><th>API Rev<td>20180914 (1352)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -809,14 +809,16 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; } 
 
-        /// <summary>*Optional* Set to true to use an enhanced model for speech recognition. You must also set the
-        /// `model` field to a valid, enhanced model. If `use_enhanced` is set to true and the `model` field is not set,
-        /// then `use_enhanced` is ignored. If `use_enhanced` is true and an enhanced version of the specified model
-        /// does not exist, then the speech is recognized using the standard version of the specified model.
+        /// <summary>*Optional* Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to
+        /// true and the `model` field is not set, then an appropriate enhanced model is chosen if: 1. project is
+        /// eligible for requesting enhanced models 2. an enhanced model exists for the audio
+        ///
+        /// If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the speech is
+        /// recognized using the standard version of the specified model.
         ///
         /// Enhanced speech models require that you opt-in to data logging using instructions in the [documentation
-        /// ](/speech-to-text/enable-data-logging). If you set `use_enhanced` to true and you have not enabled audio
-        /// logging, then you will receive an error.</summary>
+        /// ](/speech-to-text/docs/enable-data-logging). If you set `use_enhanced` to true and you have not enabled
+        /// audio logging, then you will receive an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEnhanced")]
         public virtual System.Nullable<bool> UseEnhanced { get; set; } 
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GgBKM4eW6PbUI0IwUflHrQshXJ4\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/YP471yMxZRzFo0x6lmoLMOTwZBs\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20180829",
+ "revision": "20180914",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1304,6 +1304,34 @@
     }
    }
   },
+  "OrdersCreateTestReturnRequest": {
+   "id": "OrdersCreateTestReturnRequest",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "description": "Returned items.",
+     "items": {
+      "$ref": "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem"
+     }
+    }
+   }
+  },
+  "OrdersCreateTestReturnResponse": {
+   "id": "OrdersCreateTestReturnResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersCreateTestReturnResponse\".",
+     "default": "content#ordersCreateTestReturnResponse"
+    },
+    "returnId": {
+     "type": "string",
+     "description": "The ID of the newly created test order return."
+    }
+   }
+  },
   "OrdersCustomBatchRequest": {
    "id": "OrdersCustomBatchRequest",
    "type": "object",
@@ -1443,6 +1471,21 @@
     "reasonText": {
      "type": "string",
      "description": "The explanation of the reason."
+    }
+   }
+  },
+  "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem": {
+   "id": "OrdersCustomBatchRequestEntryCreateTestReturnReturnItem",
+   "type": "object",
+   "properties": {
+    "lineItemId": {
+     "type": "string",
+     "description": "The ID of the line item to return."
+    },
+    "quantity": {
+     "type": "integer",
+     "description": "Quantity that is returned.",
+     "format": "uint32"
     }
    }
   },
@@ -3132,6 +3175,40 @@
      },
      "response": {
       "$ref": "OrdersCreateTestOrderResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "createtestreturn": {
+     "id": "content.orders.createtestreturn",
+     "path": "{merchantId}/orders/{orderId}/testreturn",
+     "httpMethod": "POST",
+     "description": "Sandbox only. Creates a test return.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderId": {
+       "type": "string",
+       "description": "The ID of the order.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "orderId"
+     ],
+     "request": {
+      "$ref": "OrdersCreateTestReturnRequest"
+     },
+     "response": {
+      "$ref": "OrdersCreateTestReturnResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

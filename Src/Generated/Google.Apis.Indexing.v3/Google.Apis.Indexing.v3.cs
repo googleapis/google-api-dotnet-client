@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/search/apis/indexing-api/'>Indexing API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180905 (1343)
+ *      <tr><th>API Rev<td>20180911 (1349)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/search/apis/indexing-api/'>
  *              https://developers.google.com/search/apis/indexing-api/</a>
@@ -105,7 +105,13 @@ namespace Google.Apis.Indexing.v3
         }
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Indexing API.</summary>
+        public class Scope
+        {
+            /// <summary>Submit data to Google for indexing</summary>
+            public static string Indexing = "https://www.googleapis.com/auth/indexing";
 
+        }
 
 
 
