@@ -1494,16 +1494,16 @@ namespace Google.Apis.CloudIot.v1
                             [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
-                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object FieldMask { get; set; }
-
                             /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                             /// continuation of a prior `ListDevices` call and the system should return the next page of
                             /// data.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
+
+                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object FieldMask { get; set; }
 
                             /// <summary>The maximum number of devices to return in the response. If this value is zero,
                             /// the service will select a default size. A call may return fewer objects than requested.
@@ -1560,18 +1560,18 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "fieldMask", new Google.Apis.Discovery.Parameter
+                                    "pageToken", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "fieldMask",
+                                        Name = "pageToken",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    "fieldMask", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageToken",
+                                        Name = "fieldMask",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,

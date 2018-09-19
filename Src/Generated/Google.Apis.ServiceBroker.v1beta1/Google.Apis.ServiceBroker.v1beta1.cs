@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>Service Broker API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180713 (1289)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>
  *              https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker</a>
@@ -704,11 +704,6 @@ namespace Google.Apis.ServiceBroker.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>If `operation` was returned during mutation operation, this field must be populated
-                    /// with the provided value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Operation { get; set; }
-
                     /// <summary>Plan id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PlanId { get; set; }
@@ -716,6 +711,11 @@ namespace Google.Apis.ServiceBroker.v1beta1
                     /// <summary>Service id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceId { get; set; }
+
+                    /// <summary>If `operation` was returned during mutation operation, this field must be populated
+                    /// with the provided value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Operation { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -751,15 +751,6 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                 Pattern = @"^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "operation", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operation",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "planId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "planId",
@@ -772,6 +763,15 @@ namespace Google.Apis.ServiceBroker.v1beta1
                             "serviceId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "serviceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operation",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1299,13 +1299,13 @@ namespace Google.Apis.ServiceBroker.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Plan id.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PlanId { get; set; }
-
                             /// <summary>Service id.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ServiceId { get; set; }
+
+                            /// <summary>Plan id.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PlanId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1341,18 +1341,18 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                         Pattern = @"^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "planId", new Google.Apis.Discovery.Parameter
+                                    "serviceId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "planId",
+                                        Name = "serviceId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "serviceId", new Google.Apis.Discovery.Parameter
+                                    "planId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "serviceId",
+                                        Name = "planId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
