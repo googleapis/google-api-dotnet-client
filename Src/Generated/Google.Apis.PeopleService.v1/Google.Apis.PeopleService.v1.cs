@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20180918 (1356)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -474,13 +474,13 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource names of the contact groups to get.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
             /// <summary>Specifies the maximum number of members to return for each group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
+
+            /// <summary>The resource names of the contact groups to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -507,18 +507,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "maxMembers", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "maxMembers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxMembers",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -958,6 +958,16 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
+                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object RequestMaskIncludeField { get; set; }
+
                 /// <summary>A sync token returned by a previous call to `people.connections.list`. Only resources
                 /// changed since the sync token was created will be returned. Sync requests that specify `sync_token`
                 /// have an additional rate limit.</summary>
@@ -1001,16 +1011,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
-                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object RequestMaskIncludeField { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1043,6 +1043,24 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestMask.includeField",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "syncToken", new Google.Apis.Discovery.Parameter
@@ -1084,24 +1102,6 @@ namespace Google.Apis.PeopleService.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1831,12 +1831,12 @@ namespace Google.Apis.PeopleService.v1.Data
     /// example, anniversary date.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        /// year/month where the day is not significant.</summary>
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
+        /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a date without a month.</summary>
+        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 

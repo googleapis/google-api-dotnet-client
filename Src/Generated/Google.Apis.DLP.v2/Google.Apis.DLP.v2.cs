@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180911 (1349)
+ *      <tr><th>API Rev<td>20180918 (1356)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1113,6 +1113,11 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1131,11 +1136,6 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1171,6 +1171,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1183,15 +1192,6 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2206,11 +2206,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2229,6 +2224,11 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2264,15 +2264,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2285,6 +2276,15 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2697,6 +2697,27 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
+                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2719,27 +2740,6 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
-
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
-                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2775,6 +2775,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2796,15 +2805,6 @@ namespace Google.Apis.DLP.v2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4855,8 +4855,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
         public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
 
-        /// <summary>All CustomInfoTypes must have a name that does not conflict with built-in InfoTypes or other
-        /// CustomInfoTypes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionType")]
+        public virtual string ExclusionType { get; set; } 
+
+        /// <summary>CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name
+        /// matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field.
+        /// Specifying the latter adds findings to the one detected by the system. If built-in info type is not
+        /// specified in `InspectContent.info_types` list then the name is treated as a custom info type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; } 
 
@@ -5281,6 +5286,45 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>List of exclude infoTypes.</summary>
+    public class GooglePrivacyDlpV2ExcludeInfoTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a
+        /// finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing
+        /// "PHONE_NUMBER"` and `exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS" the
+        /// phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to
+        /// "555-222-2222@example.org" to generate only a single finding, namely email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are
+    /// removed from results.</summary>
+    public class GooglePrivacyDlpV2ExclusionRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dictionary which defines the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
+        public virtual GooglePrivacyDlpV2Dictionary Dictionary { get; set; } 
+
+        /// <summary>Set of infoTypes for which findings would affect this rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
+        public virtual GooglePrivacyDlpV2ExcludeInfoTypes ExcludeInfoTypes { get; set; } 
+
+        /// <summary>How the rule is applied, see MatchingType documentation for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingType")]
+        public virtual string MatchingType { get; set; } 
+
+        /// <summary>Regular expression which defines the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual GooglePrivacyDlpV2Regex Regex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An expression, consisting or an operator and conditions.</summary>
     public class GooglePrivacyDlpV2Expressions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5635,6 +5679,12 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
         public virtual string MinLikelihood { get; set; } 
 
+        /// <summary>Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set
+        /// are executed in the end, other rules are executed in the order they are specified for each info
+        /// type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleSet")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRuleSet> RuleSet { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5760,6 +5810,37 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The last update timestamp of a inspectTemplate, output only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.</summary>
+    public class GooglePrivacyDlpV2InspectionRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exclusion rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionRule")]
+        public virtual GooglePrivacyDlpV2ExclusionRule ExclusionRule { get; set; } 
+
+        /// <summary>Hotword-based detection rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotwordRule")]
+        public virtual GooglePrivacyDlpV2HotwordRule HotwordRule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on
+    /// the specific details of the rules within the set.</summary>
+    public class GooglePrivacyDlpV2InspectionRuleSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of infoTypes this rule set is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
+
+        /// <summary>Set of rules to be applied to infoTypes. The rules are applied in order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InspectionRule> Rules { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7402,19 +7483,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
-    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
-    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
-    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
+    /// represent:
+    ///
+    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
+    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
+    /// a credit card expiration date
+    ///
+    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        /// year/month where the day is not significant.</summary>
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
+        /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a date without a month.</summary>
+        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 

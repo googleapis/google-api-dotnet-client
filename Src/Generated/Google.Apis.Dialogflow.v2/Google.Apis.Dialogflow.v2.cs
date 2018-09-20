@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180908 (1346)
+ *      <tr><th>API Rev<td>20180918 (1356)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -404,8 +404,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Creates multiple new entities in the specified entity type (extends the existing
-                    /// collection of entries).
+                    /// <summary>Creates multiple new entities in the specified entity type.
                     ///
                     /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
@@ -416,8 +415,7 @@ namespace Google.Apis.Dialogflow.v2
                         return new BatchCreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates multiple new entities in the specified entity type (extends the existing
-                    /// collection of entries).
+                    /// <summary>Creates multiple new entities in the specified entity type.
                     ///
                     /// Operation </summary>
                     public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -554,20 +552,20 @@ namespace Google.Apis.Dialogflow.v2
 
                     }
 
-                    /// <summary>Updates entities in the specified entity type (replaces the existing collection of
-                    /// entries).
+                    /// <summary>Updates or creates multiple entities in the specified entity type. This method does not
+                    /// affect entities in the entity type that aren't explicitly specified in the request.
                     ///
                     /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The name of the entity type to update the entities in. Format:
+                    /// <param name="parent">Required. The name of the entity type to update or create entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
                     public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
                     {
                         return new BatchUpdateRequest(service, body, parent);
                     }
 
-                    /// <summary>Updates entities in the specified entity type (replaces the existing collection of
-                    /// entries).
+                    /// <summary>Updates or creates multiple entities in the specified entity type. This method does not
+                    /// affect entities in the entity type that aren't explicitly specified in the request.
                     ///
                     /// Operation </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
@@ -582,7 +580,7 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
 
-                        /// <summary>Required. The name of the entity type to update the entities in. Format:
+                        /// <summary>Required. The name of the entity type to update or create entities in. Format:
                         /// `projects//agent/entityTypes/`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1025,13 +1023,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
-                    /// default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1040,6 +1031,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
+                    /// default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1075,15 +1073,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1096,6 +1085,15 @@ namespace Google.Apis.Dialogflow.v2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1793,6 +1791,17 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1805,17 +1814,6 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1857,15 +1855,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1878,6 +1867,15 @@ namespace Google.Apis.Dialogflow.v2
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3453,7 +3451,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for EntityTypes.BatchCreateEntities.</summary>
     public class GoogleCloudDialogflowV2BatchCreateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The collection of entities to create.</summary>
+        /// <summary>Required. The entities to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
 
@@ -3508,10 +3506,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for EntityTypes.BatchCreateEntities.</summary>
+    /// <summary>The request message for EntityTypes.BatchUpdateEntities.</summary>
     public class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The collection of new entities to replace the existing entities.</summary>
+        /// <summary>Required. The entities to update or create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
 
@@ -3532,7 +3530,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for EntityTypes.BatchUpdateEntityTypes.</summary>
     public class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The collection of entity type to update or create.</summary>
+        /// <summary>The collection of entity types to update or create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchInline")]
         public virtual GoogleCloudDialogflowV2EntityTypeBatch EntityTypeBatchInline { get; set; } 
 

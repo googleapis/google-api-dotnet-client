@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180824 (1331)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -655,17 +655,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ProjectId { get; set; }
-
                         /// <summary>Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -676,6 +665,17 @@ namespace Google.Apis.Container.v1beta1
                         /// the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
+
+                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
+                        /// deprecated and replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ProjectId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -711,24 +711,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
@@ -741,6 +723,24 @@ namespace Google.Apis.Container.v1beta1
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2966,16 +2966,16 @@ namespace Google.Apis.Container.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
+                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Zone { get; set; }
+
                 /// <summary>Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                 /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
-
-                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Zone { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3011,18 +3011,18 @@ namespace Google.Apis.Container.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "zone", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "zone",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "zone", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "zone",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6904,7 +6904,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>If this is a private cluster setup. Private clusters are clusters that, by default have no external
         /// IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field
-        /// is deprecated, use private_cluster_config.enabled instead.</summary>
+        /// is deprecated, use private_cluster_config.enable_private_nodes instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateCluster")]
         public virtual System.Nullable<bool> PrivateCluster { get; set; } 
 
@@ -7968,13 +7968,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; } 
 
-        /// <summary>Whether nodes have only private IP addresses, and communicate with the master via private
-        /// networking.</summary>
+        /// <summary>Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918
+        /// private addresses and communicate with the master via private networking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
         public virtual System.Nullable<bool> EnablePrivateNodes { get; set; } 
 
-        /// <summary>The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for
-        /// assigning private IP addresses to the master or set of masters, as well as the ILB VIP.</summary>
+        /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
+        /// assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not
+        /// overlap with any other ranges in use within the cluster's network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; } 
 

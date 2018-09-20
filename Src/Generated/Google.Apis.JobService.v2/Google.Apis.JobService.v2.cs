@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180906 (1344)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -739,13 +739,6 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
-            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
-            /// provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
             /// Set to true if the companies request must have open jobs.
             ///
             /// Defaults to false.
@@ -760,6 +753,13 @@ namespace Google.Apis.JobService.v2
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
+            /// provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -786,15 +786,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mustHaveOpenJobs",
@@ -807,6 +798,15 @@ namespace Google.Apis.JobService.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1341,27 +1341,6 @@ namespace Google.Apis.JobService.v2
             }
 
 
-            /// <summary>Optional.
-            ///
-            /// The maximum number of jobs to be returned per page of results.
-            ///
-            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
-            /// size is 100.
-            ///
-            /// Default is 100 if empty or a number < 1 is specified.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be returned.
-            ///
-            /// A typical use case is to synchronize job repositories.
-            ///
-            /// Defaults to false.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IdsOnly { get; set; }
-
             /// <summary>Required.
             ///
             /// The filter string specifies the jobs to be enumerated.
@@ -1383,6 +1362,27 @@ namespace Google.Apis.JobService.v2
             /// The starting point of a query result.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The maximum number of jobs to be returned per page of results.
+            ///
+            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+            /// size is 100.
+            ///
+            /// Default is 100 if empty or a number < 1 is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be returned.
+            ///
+            /// A typical use case is to synchronize job repositories.
+            ///
+            /// Defaults to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IdsOnly { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1409,24 +1409,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "idsOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "idsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1439,6 +1421,24 @@ namespace Google.Apis.JobService.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "idsOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "idsOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1690,6 +1690,27 @@ namespace Google.Apis.JobService.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
             /// <summary>Optional.
             ///
             /// The completion topic. The default is CompletionType.COMBINED.</summary>
@@ -1742,27 +1763,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,6 +1787,24 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1818,24 +1836,6 @@ namespace Google.Apis.JobService.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2349,15 +2349,17 @@ namespace Google.Apis.JobService.v2.Data
     /// <summary>Compensation range.</summary>
     public class CompensationRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
+        /// <summary>Optional.
         ///
-        /// The maximum amount of compensation.</summary>
+        /// The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the
+        /// currency code is set to match the currency code of min_compensation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual Money Max { get; set; } 
 
-        /// <summary>Required.
+        /// <summary>Optional.
         ///
-        /// The minimum amount of compensation.</summary>
+        /// The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to
+        /// match the currency code of max_compensation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual Money Min { get; set; } 
 
@@ -2550,11 +2552,11 @@ namespace Google.Apis.JobService.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
-    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
-    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
+    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
+    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a

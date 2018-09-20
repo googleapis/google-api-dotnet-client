@@ -1131,6 +1131,31 @@ namespace Google.Apis.CloudTalentSolution.v3
 
                 /// <summary>Optional.
                 ///
+                /// The desired job attributes returned for jobs in the search response. Defaults to
+                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("jobView", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<JobViewEnum> JobView { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The desired job attributes returned for jobs in the search response. Defaults to
+                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
+                public enum JobViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNSPECIFIED")]
+                    JOBVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ID_ONLY")]
+                    JOBVIEWIDONLY,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_MINIMAL")]
+                    JOBVIEWMINIMAL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SMALL")]
+                    JOBVIEWSMALL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_FULL")]
+                    JOBVIEWFULL,
+                }
+
+                /// <summary>Optional.
+                ///
                 /// The starting point of a query result.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1162,31 +1187,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                 /// project/companies/123" AND requisitionId = "req-1"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The desired job attributes returned for jobs in the search response. Defaults to
-                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobView", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<JobViewEnum> JobView { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The desired job attributes returned for jobs in the search response. Defaults to
-                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
-                public enum JobViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNSPECIFIED")]
-                    JOBVIEWUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ID_ONLY")]
-                    JOBVIEWIDONLY,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_MINIMAL")]
-                    JOBVIEWMINIMAL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SMALL")]
-                    JOBVIEWSMALL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_FULL")]
-                    JOBVIEWFULL,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1222,6 +1222,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "jobView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1243,15 +1252,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobView", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobView",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

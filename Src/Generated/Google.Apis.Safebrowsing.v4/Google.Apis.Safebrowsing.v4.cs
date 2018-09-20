@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180913 (1351)
+ *      <tr><th>API Rev<td>20180919 (1357)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>

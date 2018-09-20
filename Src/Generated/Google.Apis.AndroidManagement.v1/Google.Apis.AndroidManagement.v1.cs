@@ -1769,6 +1769,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The enterprise token appended to the callback URL.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string EnterpriseToken { get; set; }
+
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
@@ -1776,10 +1780,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
-            /// <summary>The enterprise token appended to the callback URL.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string EnterpriseToken { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1812,6 +1812,15 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "enterpriseToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
@@ -1824,15 +1833,6 @@ namespace Google.Apis.AndroidManagement.v1
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enterpriseToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
