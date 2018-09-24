@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/webmaster-tools/search-console-api/'>Google Search Console URL Testing Tools API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20180922 (1360)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/webmaster-tools/search-console-api/'>
  *              https://developers.google.com/webmaster-tools/search-console-api/</a>

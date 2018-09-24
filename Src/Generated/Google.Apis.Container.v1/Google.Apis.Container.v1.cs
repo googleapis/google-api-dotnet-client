@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180824 (1331)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2610,11 +2610,6 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OperationId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -2626,6 +2621,11 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+                    /// and replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OperationId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2661,15 +2661,6 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2682,6 +2673,15 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6641,6 +6641,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
 
+        /// <summary>Configuration for private cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
+        public virtual PrivateClusterConfig PrivateClusterConfig { get; set; } 
+
         /// <summary>The resource labels for the cluster to use to annotate any related Google Compute Engine
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
@@ -7432,6 +7436,36 @@ namespace Google.Apis.Container.v1.Data
         /// is taking place. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for private clusters.</summary>
+    public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the master's internal IP address is used as the cluster endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
+        public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; } 
+
+        /// <summary>Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918
+        /// private addresses and communicate with the master via private networking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateNodes")]
+        public virtual System.Nullable<bool> EnablePrivateNodes { get; set; } 
+
+        /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
+        /// assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not
+        /// overlap with any other ranges in use within the cluster's network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
+        public virtual string MasterIpv4CidrBlock { get; set; } 
+
+        /// <summary>Output only. The internal IP address of this cluster's master endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
+        public virtual string PrivateEndpoint { get; set; } 
+
+        /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
+        public virtual string PublicEndpoint { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180908 (1346)
+ *      <tr><th>API Rev<td>20180919 (1357)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1456,7 +1456,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestSize")]
         public virtual System.Nullable<long> RequestSize { get; set; } 
 
-        /// <summary>The scheme (http, https), the host name, the path and the query portion of the URL that was
+        /// <summary>The scheme (http, https), the host name, the path, and the query portion of the URL that was
         /// requested. Example: `"http://example.com/some/info?color=red"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestUrl")]
         public virtual string RequestUrl { get; set; } 
@@ -1470,7 +1470,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serverIp")]
         public virtual string ServerIp { get; set; } 
 
-        /// <summary>The response code indicating the status of response. Examples: 200, 404.</summary>
+        /// <summary>The response code indicating the status of the response. Examples: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<int> Status { get; set; } 
 
@@ -1553,9 +1553,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
-        /// <summary>Optional. Resource name of the trace associated with the log entry, if any. If it contains a
-        /// relative resource name, the name is assumed to be relative to `//tracing.googleapis.com`. Example: `projects
-        /// /my-projectid/traces/06796866738c859f2f19b7cfb3214824`</summary>
+        /// <summary>Optional. Resource name of the trace associated with the log entry, if any. If this field contains
+        /// a relative resource name, you can assume the name is relative to `//tracing.googleapis.com`. Example:
+        /// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trace")]
         public virtual string Trace { get; set; } 
 

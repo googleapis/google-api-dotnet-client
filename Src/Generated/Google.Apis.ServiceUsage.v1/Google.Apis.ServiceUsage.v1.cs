@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20180920 (1358)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1322,39 +1322,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Authorization rule for API services.
-    ///
-    /// It specifies the permission(s) required for an API element for the overall API request to succeed. It is
-    /// typically used to mark request message fields that contain the name of the resource and indicates the
-    /// permissions that will be checked on that resource.
-    ///
-    /// For example:
-    ///
-    /// package google.storage.v1;
-    ///
-    /// message CopyObjectRequest { string source = 1 [ (google.api.authz).permissions = "storage.objects.get"];
-    ///
-    /// string destination = 2 [ (google.api.authz).permissions = "storage.objects.create,storage.objects.update"];
-    /// }</summary>
-    public class AuthorizationRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The required permissions. The acceptable values vary depend on the authorization system used. For
-        /// Google APIs, it should be a comma-separated Google IAM permission values. When multiple permissions are
-        /// listed, the semantics is not defined by the system. Additional documentation must be provided
-        /// manually.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual string Permissions { get; set; } 
-
-        /// <summary>Selects the API elements to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
-        public virtual string Selector { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>`Backend` defines the backend configuration for a service.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2337,12 +2304,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalBindings")]
         public virtual System.Collections.Generic.IList<HttpRule> AdditionalBindings { get; set; } 
 
-        /// <summary>Specifies the permission(s) required for an API element for the overall API request to succeed. It
-        /// is typically used to mark request message fields that contain the name of the resource and indicates the
-        /// permissions that will be checked on that resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorizations")]
-        public virtual System.Collections.Generic.IList<AuthorizationRule> Authorizations { get; set; } 
-
         /// <summary>The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping
         /// all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP
         /// request body.
@@ -2365,16 +2326,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("get")]
         public virtual string Get { get; set; } 
 
-        /// <summary>Use this only for Scotty Requests. Do not use this for bytestream methods. For media support, add
-        /// instead [][google.bytestream.RestByteStream] as an API to your configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaDownload")]
-        public virtual MediaDownload MediaDownload { get; set; } 
-
-        /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
-        /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
-        public virtual MediaUpload MediaUpload { get; set; } 
-
         /// <summary>Maps to HTTP PATCH. Used for updating a resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patch")]
         public virtual string Patch { get; set; } 
@@ -2393,34 +2344,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// NOTE: The referred field must be present at the top-level of the response message type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseBody")]
         public virtual string ResponseBody { get; set; } 
-
-        /// <summary>DO NOT USE. This is an experimental field.
-        ///
-        /// Optional. The REST collection name is by default derived from the URL pattern. If specified, this field
-        /// overrides the default collection name. Example:
-        ///
-        /// rpc AddressesAggregatedList(AddressesAggregatedListRequest) returns (AddressesAggregatedListResponse) {
-        /// option (google.api.http) = { get: "/v1/projects/{project_id}/aggregated/addresses" rest_collection:
-        /// "projects.addresses" }; }
-        ///
-        /// This method has the automatically derived collection name "projects.aggregated". Because, semantically, this
-        /// rpc is actually an operation on the "projects.addresses" collection, the `rest_collection` field is
-        /// configured to override the derived collection name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restCollection")]
-        public virtual string RestCollection { get; set; } 
-
-        /// <summary>DO NOT USE. This is an experimental field.
-        ///
-        /// Optional. The rest method name is by default derived from the URL pattern. If specified, this field
-        /// overrides the default method name. Example:
-        ///
-        /// rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse) { option (google.api.http) = {
-        /// post: "/v1/resources", body: "resource", rest_method_name: "insert" }; }
-        ///
-        /// This method has the automatically derived rest method name "create", but for backwards compatibility with
-        /// apiary, it is specified as insert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restMethodName")]
-        public virtual string RestMethodName { get; set; } 
 
         /// <summary>Selects a method to which this rule applies.
         ///
@@ -2556,88 +2479,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual string MonitoredResource { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Defines the Media configuration for a service in case of a download. Use this only for Scotty Requests.
-    /// Do not use this for media support using Bytestream, add instead [][google.bytestream.RestByteStream] as an API
-    /// to your configuration for Bytestream methods.</summary>
-    public class MediaDownload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A boolean that determines whether a notification for the completion of a download should be sent to
-        /// the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeNotification")]
-        public virtual System.Nullable<bool> CompleteNotification { get; set; } 
-
-        /// <summary>DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        ///
-        /// Specify name of the download service if one is used for download.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadService")]
-        public virtual string DownloadService { get; set; } 
-
-        /// <summary>Name of the Scotty dropzone to use for the current API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dropzone")]
-        public virtual string Dropzone { get; set; } 
-
-        /// <summary>Whether download is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>Optional maximum acceptable size for direct download. The size is specified in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxDirectDownloadSize")]
-        public virtual System.Nullable<long> MaxDirectDownloadSize { get; set; } 
-
-        /// <summary>A boolean that determines if direct download from ESF should be used for download of this
-        /// media.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useDirectDownload")]
-        public virtual System.Nullable<bool> UseDirectDownload { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Defines the Media configuration for a service in case of an upload. Use this only for Scotty Requests.
-    /// Do not use this for media support using Bytestream, add instead [][google.bytestream.RestByteStream] as an API
-    /// to your configuration for Bytestream methods.</summary>
-    public class MediaUpload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A boolean that determines whether a notification for the completion of an upload should be sent to
-        /// the backend. These notifications will not be seen by the client and will not consume quota.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeNotification")]
-        public virtual System.Nullable<bool> CompleteNotification { get; set; } 
-
-        /// <summary>Name of the Scotty dropzone to use for the current API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dropzone")]
-        public virtual string Dropzone { get; set; } 
-
-        /// <summary>Whether upload is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>Optional maximum acceptable size for an upload. The size is specified in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
-        public virtual System.Nullable<long> MaxSize { get; set; } 
-
-        /// <summary>An array of mimetype patterns. Esf will only accept uploads that match one of the given
-        /// patterns.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeTypes")]
-        public virtual System.Collections.Generic.IList<string> MimeTypes { get; set; } 
-
-        /// <summary>Whether to receive a notification for progress changes of media upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("progressNotification")]
-        public virtual System.Nullable<bool> ProgressNotification { get; set; } 
-
-        /// <summary>Whether to receive a notification on the start of media upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startNotification")]
-        public virtual System.Nullable<bool> StartNotification { get; set; } 
-
-        /// <summary>DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        ///
-        /// Specify name of the upload service if one is used for upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadService")]
-        public virtual string UploadService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

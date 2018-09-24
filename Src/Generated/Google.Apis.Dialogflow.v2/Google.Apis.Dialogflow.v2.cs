@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180918 (1356)
+ *      <tr><th>API Rev<td>20180920 (1358)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1023,6 +1023,13 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
+                    /// default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1031,13 +1038,6 @@ namespace Google.Apis.Dialogflow.v2
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
-                    /// default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1073,6 +1073,15 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1085,15 +1094,6 @@ namespace Google.Apis.Dialogflow.v2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1399,6 +1399,13 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1411,13 +1418,6 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1459,18 +1459,18 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1480,14 +1480,17 @@ namespace Google.Apis.Dialogflow.v2
 
                 }
 
-                /// <summary>Deletes the specified intent.</summary>
-                /// <param name="name">Required. The name of the intent to delete. Format: `projects//agent/intents/`.</param>
+                /// <summary>Deletes the specified intent and its direct or indirect followup intents.</summary>
+                /// <param name="name">Required. The name of the intent to delete. If this intent has direct or indirect followup
+                /// intents, we also delete them.
+                ///
+                /// Format: `projects//agent/intents/`.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the specified intent.</summary>
+                /// <summary>Deletes the specified intent and its direct or indirect followup intents.</summary>
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1499,8 +1502,10 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Required. The name of the intent to delete. Format:
-                    /// `projects//agent/intents/`.</summary>
+                    /// <summary>Required. The name of the intent to delete. If this intent has direct or indirect
+                    /// followup intents, we also delete them.
+                    ///
+                    /// Format: `projects//agent/intents/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3870,8 +3875,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<string> Events { get; set; } 
 
-        /// <summary>Optional. Collection of information about all followup intents that have name of this intent as a
-        /// root_name.</summary>
+        /// <summary>Read-only. Information about all followup intents that have this intent as a direct or indirect
+        /// parent. We populate this field only in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
 
@@ -3910,8 +3915,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentParameter> Parameters { get; set; } 
 
-        /// <summary>The unique identifier of the parent intent in the chain of followup intents. It identifies the
-        /// parent followup intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>Read-only after creation. The unique identifier of the parent intent in the chain of followup
+        /// intents. You can set this field when creating an intent, for example with CreateIntent or
+        /// BatchUpdateIntents, in order to make this intent a followup intent.
+        ///
+        /// It identifies the parent followup intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
@@ -3925,8 +3933,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
         public virtual System.Nullable<bool> ResetContexts { get; set; } 
 
-        /// <summary>The unique identifier of the root intent in the chain of followup intents. It identifies the
-        /// correct followup intents chain for this intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies
+        /// the correct followup intents chain for this intent. We populate this field only in the output.
+        ///
+        /// Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
@@ -3960,7 +3970,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentName")]
         public virtual string FollowupIntentName { get; set; } 
 
-        /// <summary>The unique identifier of the followup intent parent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>The unique identifier of the followup intent's parent. Format:
+        /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
@@ -4980,8 +4991,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<string> Events { get; set; } 
 
-        /// <summary>Optional. Collection of information about all followup intents that have name of this intent as a
-        /// root_name.</summary>
+        /// <summary>Read-only. Information about all followup intents that have this intent as a direct or indirect
+        /// parent. We populate this field only in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
 
@@ -5029,8 +5040,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentParameter> Parameters { get; set; } 
 
-        /// <summary>The unique identifier of the parent intent in the chain of followup intents. It identifies the
-        /// parent followup intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>Read-only after creation. The unique identifier of the parent intent in the chain of followup
+        /// intents. You can set this field when creating an intent, for example with CreateIntent or
+        /// BatchUpdateIntents, in order to make this intent a followup intent.
+        ///
+        /// It identifies the parent followup intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
@@ -5044,8 +5058,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
         public virtual System.Nullable<bool> ResetContexts { get; set; } 
 
-        /// <summary>The unique identifier of the root intent in the chain of followup intents. It identifies the
-        /// correct followup intents chain for this intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies
+        /// the correct followup intents chain for this intent. We populate this field only in the output.
+        ///
+        /// Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
@@ -5068,7 +5084,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentName")]
         public virtual string FollowupIntentName { get; set; } 
 
-        /// <summary>The unique identifier of the followup intent parent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>The unique identifier of the followup intent's parent. Format:
+        /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
         public virtual string ParentFollowupIntentName { get; set; } 
 
