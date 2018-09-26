@@ -1,21 +1,55 @@
 {
-  "kind": "discovery#restDescription",
-  "description": "View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.",
-  "servicePath": "",
   "basePath": "",
-  "id": "adexperiencereport:v1",
-  "documentationLink": "https://developers.google.com/ad-experience-report/",
   "revision": "20180911",
+  "documentationLink": "https://developers.google.com/ad-experience-report/",
+  "id": "adexperiencereport:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "PlatformSummary": {
-      "id": "PlatformSummary",
-      "description": "Summary of the ad experience rating of a site for a specific platform.",
       "type": "object",
       "properties": {
+        "betterAdsStatus": {
+          "type": "string",
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Warning.",
+            "Failing."
+          ],
+          "enum": [
+            "UNKNOWN",
+            "PASSING",
+            "WARNING",
+            "FAILING"
+          ],
+          "description": "The status of the site reviewed for the Better Ads Standards."
+        },
+        "region": {
+          "enumDescriptions": [
+            "Ad standard not yet defined for your region.",
+            "Region A.",
+            "Region B.",
+            "Region C."
+          ],
+          "description": "The assigned regions for the site and platform.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "REGION_UNKNOWN",
+              "REGION_A",
+              "REGION_B",
+              "REGION_C"
+            ],
+            "type": "string"
+          }
+        },
+        "enforcementTime": {
+          "description": "The date on which ad filtering begins.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "filterStatus": {
-          "description": "The ad filtering status of the site.",
           "type": "string",
           "enumDescriptions": [
             "N/A.",
@@ -30,7 +64,8 @@
             "OFF",
             "PAUSED",
             "PENDING"
-          ]
+          ],
+          "description": "The ad filtering status of the site."
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -44,50 +79,13 @@
           "description": "The last time that the site changed status.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "betterAdsStatus": {
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Warning.",
-            "Failing."
-          ],
-          "enum": [
-            "UNKNOWN",
-            "PASSING",
-            "WARNING",
-            "FAILING"
-          ],
-          "description": "The status of the site reviewed for the Better Ads Standards.",
-          "type": "string"
-        },
-        "region": {
-          "description": "The assigned regions for the site and platform.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "REGION_UNKNOWN",
-              "REGION_A",
-              "REGION_B",
-              "REGION_C"
-            ],
-            "type": "string"
-          },
-          "enumDescriptions": [
-            "Ad standard not yet defined for your region.",
-            "Region A.",
-            "Region B.",
-            "Region C."
-          ]
-        },
-        "enforcementTime": {
-          "description": "The date on which ad filtering begins.",
-          "format": "google-datetime",
-          "type": "string"
         }
-      }
+      },
+      "id": "PlatformSummary",
+      "description": "Summary of the ad experience rating of a site for a specific platform."
     },
     "ViolatingSitesResponse": {
+      "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
         "violatingSites": {
@@ -98,24 +96,23 @@
           }
         }
       },
-      "id": "ViolatingSitesResponse",
-      "description": "Response message for ListViolatingSites."
+      "id": "ViolatingSitesResponse"
     },
     "SiteSummaryResponse": {
       "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
-        "desktopSummary": {
-          "$ref": "PlatformSummary",
-          "description": "Summary for the desktop review of the site."
-        },
         "mobileSummary": {
-          "$ref": "PlatformSummary",
-          "description": "Summary for the mobile review of the site."
+          "description": "Summary for the mobile review of the site.",
+          "$ref": "PlatformSummary"
         },
         "reviewedSite": {
           "description": "The name of the site reviewed.",
           "type": "string"
+        },
+        "desktopSummary": {
+          "description": "Summary for the desktop review of the site.",
+          "$ref": "PlatformSummary"
         }
       },
       "id": "SiteSummaryResponse"
@@ -146,63 +143,63 @@
     "violatingSites": {
       "methods": {
         "list": {
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ],
+          "parameters": {},
+          "flatPath": "v1/violatingSites",
+          "path": "v1/violatingSites",
+          "id": "adexperiencereport.violatingSites.list",
           "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
-          "httpMethod": "GET",
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
           "parameterOrder": [],
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
-          "flatPath": "v1/violatingSites",
-          "id": "adexperiencereport.violatingSites.list",
-          "path": "v1/violatingSites"
+          "httpMethod": "GET"
         }
       }
     },
     "sites": {
       "methods": {
         "get": {
-          "id": "adexperiencereport.sites.get",
-          "path": "v1/{+name}",
-          "description": "Gets a summary of the ad experience rating of a site.",
-          "httpMethod": "GET",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
           "parameterOrder": [
             "name"
           ],
-          "parameters": {
-            "name": {
-              "location": "path",
-              "description": "The required site name. It should be the site property whose ad experiences\nmay have been reviewed, and it should be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field returned by the\nAPI will lead to the verification page, prompting the user to go through\nthat process before they can gain access to the Ad Experience Report.",
-              "required": true,
-              "type": "string",
-              "pattern": "^sites/[^/]+$"
-            }
-          },
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "flatPath": "v1/sites/{sitesId}"
+          "parameters": {
+            "name": {
+              "description": "The required site name. It should be the site property whose ad experiences\nmay have been reviewed, and it should be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field returned by the\nAPI will lead to the verification page, prompting the user to go through\nthat process before they can gain access to the Ad Experience Report.",
+              "required": true,
+              "type": "string",
+              "pattern": "^sites/[^/]+$",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/sites/{sitesId}",
+          "path": "v1/{+name}",
+          "id": "adexperiencereport.sites.get",
+          "description": "Gets a summary of the ad experience rating of a site."
         }
       }
     }
   },
   "parameters": {
     "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+      "location": "query"
     },
     "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
       "location": "query",
-      "description": "Returns response with indentations and line breaks."
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     },
     "quotaUser": {
       "location": "query",
@@ -230,17 +227,17 @@
       "type": "string"
     },
     "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
+      "type": "string"
     },
     "alt": {
       "enum": [
@@ -259,9 +256,9 @@
       "default": "json"
     },
     "access_token": {
-      "type": "string",
       "location": "query",
-      "description": "OAuth access token."
+      "description": "OAuth access token.",
+      "type": "string"
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
@@ -270,5 +267,8 @@
     }
   },
   "version": "v1",
-  "baseUrl": "https://adexperiencereport.googleapis.com/"
+  "baseUrl": "https://adexperiencereport.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.",
+  "servicePath": ""
 }

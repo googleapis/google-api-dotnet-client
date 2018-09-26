@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180820 (1327)
+ *      <tr><th>API Rev<td>20180925 (1363)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -617,10 +617,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>List filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -633,6 +629,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -668,15 +668,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -698,6 +689,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "orderBy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1058,6 +1058,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1065,10 +1069,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1104,6 +1104,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1116,15 +1125,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1307,22 +1307,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The sets of network addresses and DNS names for hosts to which a given export or share should be
-    /// allowed or denied.</summary>
-    public class ClientList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>DNS names of hosts, with optional wildcards.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostNames")]
-        public virtual System.Collections.Generic.IList<string> HostNames { get; set; } 
-
-        /// <summary>IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
-        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1335,46 +1319,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>File share export specification.</summary>
-    public class Export : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The clients which may connect.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedClients")]
-        public virtual ClientList AllowedClients { get; set; } 
-
-        /// <summary>Writes may be completed when not yet on stable storage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("async")]
-        public virtual System.Nullable<bool> Async__ { get; set; } 
-
-        /// <summary>The clients which may not connect.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deniedClients")]
-        public virtual ClientList DeniedClients { get; set; } 
-
-        /// <summary>Networks on which the export should appear. If none are specified, the default is all networks to
-        /// which the instance is connected to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
-        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; } 
-
-        /// <summary>Export rule for NFS</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nfsExport")]
-        public virtual NfsExport NfsExport { get; set; } 
-
-        /// <summary>Path to export (either "" or of the form /file_share_name[/subdir]).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
-
-        /// <summary>Whether the file share should be exported as read-only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
-
-        /// <summary>Export rule for SMB</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("smbExport")]
-        public virtual SmbExport SmbExport { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>File share configuration for the instance.</summary>
     public class FileShareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1382,28 +1326,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
         public virtual System.Nullable<long> CapacityGb { get; set; } 
 
-        /// <summary>Delete requested. The file share will be deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
-
-        /// <summary>Service enabled.
-        ///
-        /// When enabled, the instance exposes the exports to the user for mounting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>Exports. If protocols and exports are both zero-length, a default protocol of NFSV3 and a default
-        /// export of "*" are provided, and enabled is set to true.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exports")]
-        public virtual System.Collections.Generic.IList<Export> Exports { get; set; } 
-
         /// <summary>The name of the file share (must be 16 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>Protocols supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
-        public virtual System.Collections.Generic.IList<string> Protocols { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1433,20 +1358,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>The logging service the instance should use to write logs. Currently available options:
-        ///
-        /// * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will be exported from the
-        /// instance. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
-        public virtual string LoggingService { get; set; } 
-
-        /// <summary>The monitoring service the instance should use to write metrics. Currently available options:
-        ///
-        /// * `monitoring.googleapis.com` - the Google Cloud Monitoring service. * `none` - no metrics will be exported
-        /// from the instance. * if left as an empty string, `monitoring.googleapis.com` will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
-        public virtual string MonitoringService { get; set; } 
 
         /// <summary>Output only. The resource name of the instance, in the format
         /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
@@ -1582,42 +1493,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; } 
 
-        /// <summary>Output only. The name of the Google Compute Engine [subnetwork](/compute/docs/subnetworks) to which
-        /// the instance is connected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
-        public virtual string Subnetwork { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>NfsExport specifies attributes of a given NFS export rule.</summary>
-    public class NfsExport : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>GID for anonymous or squashed GIDs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("anonymousGid")]
-        public virtual System.Nullable<long> AnonymousGid { get; set; } 
-
-        /// <summary>UID for anonymous or squashed UIDs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("anonymousUid")]
-        public virtual System.Nullable<long> AnonymousUid { get; set; } 
-
-        /// <summary>Network transport protocols to be enabled. The default is TCP.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
-        public virtual System.Collections.Generic.IList<string> Protocols { get; set; } 
-
-        /// <summary>The mode of mapping of UIDs and GIDs (if any).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("squash")]
-        public virtual string Squash { get; set; } 
-
-        /// <summary>If unauthenticated_locks_allowed is true, locking requests do not require authentication.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unauthenticatedLocksAllowed")]
-        public virtual System.Nullable<bool> UnauthenticatedLocksAllowed { get; set; } 
-
-        /// <summary>If user_ports_allowed is true, client ports greater than or equal to 1024 are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userPortsAllowed")]
-        public virtual System.Nullable<bool> UserPortsAllowed { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1690,21 +1565,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>[Output only] Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>SmbExport defines attributes of a given SMB sharing rule.</summary>
-    public class SmbExport : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If true, allow clients to see this share when browsing the instance for shares.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("browsable")]
-        public virtual System.Nullable<bool> Browsable { get; set; } 
-
-        /// <summary>The published name of the share (if different from name).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
-        public virtual string FileShare { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
