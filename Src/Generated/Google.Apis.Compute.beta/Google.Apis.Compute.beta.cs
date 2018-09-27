@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180828 (1335)
+ *      <tr><th>API Rev<td>20180906 (1344)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -18877,7 +18877,124 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual GetGuestAttributesRequest GetGuestAttributes(string project, string zone, string instance)
+        {
+            return new GetGuestAttributesRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        public class GetGuestAttributesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.GuestAttributes>
+        {
+            /// <summary>Constructs a new GetGuestAttributes request.</summary>
+            public GetGuestAttributesRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Specifies the guest attributes path to be queried.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("queryPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QueryPath { get; set; }
+
+            /// <summary>Specifies the key for the guest attributes entry.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("variableKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VariableKey { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getGuestAttributes"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getGuestAttributes"; }
+            }
+
+            /// <summary>Initializes GetGuestAttributes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "queryPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "queryPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "variableKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "variableKey",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -19094,6 +19211,97 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the Shielded VM Identity of an instance</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual GetShieldedVmIdentityRequest GetShieldedVmIdentity(string project, string zone, string instance)
+        {
+            return new GetShieldedVmIdentityRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the Shielded VM Identity of an instance</summary>
+        public class GetShieldedVmIdentityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ShieldedVmIdentity>
+        {
+            /// <summary>Constructs a new GetShieldedVmIdentity request.</summary>
+            public GetShieldedVmIdentityRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getShieldedVmIdentity"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity"; }
+            }
+
+            /// <summary>Initializes GetShieldedVmIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -39221,6 +39429,179 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to query for Nat Mapping information of VM
+        /// endpoints.</param>
+        public virtual GetNatMappingInfoRequest GetNatMappingInfo(string project, string region, string router)
+        {
+            return new GetNatMappingInfoRequest(service, project, region, router);
+        }
+
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        public class GetNatMappingInfoRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.VmEndpointNatMappingsList>
+        {
+            /// <summary>Constructs a new GetNatMappingInfo request.</summary>
+            public GetNatMappingInfoRequest(Google.Apis.Services.IClientService service, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to query for Nat Mapping information of VM endpoints.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getNatMappingInfo"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}/getNatMappingInfo"; }
+            }
+
+            /// <summary>Initializes GetNatMappingInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves runtime information of the specified router.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -40578,6 +40959,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SecurityPolicy { get; private set; }
 
+            /// <summary>If true, the request will not be committed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.SecurityPolicyRule Body { get; set; }
@@ -40625,6 +41010,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -40931,6 +41325,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
+            /// <summary>If true, the request will not be committed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.SecurityPolicy Body { get; set; }
@@ -40974,6 +41372,15 @@ namespace Google.Apis.Compute.beta
                     "requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -41407,6 +41814,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("priority", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Priority { get; set; }
 
+            /// <summary>If true, the request will not be committed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.SecurityPolicyRule Body { get; set; }
@@ -41459,6 +41870,15 @@ namespace Google.Apis.Compute.beta
                     "priority", new Google.Apis.Discovery.Parameter
                     {
                         Name = "priority",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -57104,7 +57524,8 @@ namespace Google.Apis.Compute.beta.Data
         /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address
-        /// resource ( internal regional static IP address).
+        /// resource ( internal regional static IP address), with a purpose of GCE_END_POINT and address_type of
+        /// INTERNAL.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
@@ -57526,6 +57947,68 @@ namespace Google.Apis.Compute.beta.Data
 
     }    
 
+    /// <summary>A guest attributes entry.</summary>
+    public class GuestAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of the resource. Always compute#guestAttributes for guest attributes
+        /// entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The path to be queried. This can be the default namespace ('/') or a nested namespace ('//') or a
+        /// specified key ('//')</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPath")]
+        public virtual string QueryPath { get; set; } 
+
+        /// <summary>[Output Only] The value of the requested queried path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryValue")]
+        public virtual GuestAttributesValue QueryValue { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The key to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableKey")]
+        public virtual string VariableKey { get; set; } 
+
+        /// <summary>[Output Only] The value found for the requested key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableValue")]
+        public virtual string VariableValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A guest attributes namespace/key/value entry.</summary>
+    public class GuestAttributesEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Namespace for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; } 
+
+        /// <summary>Value for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Array of guest attribute namespace/key/value tuples.</summary>
+    public class GuestAttributesValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GuestAttributesEntry> Items { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Guest OS features.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -57741,9 +58224,6 @@ namespace Google.Apis.Compute.beta.Data
         /// type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("udpHealthCheck")]
-        public virtual UDPHealthCheck UdpHealthCheck { get; set; } 
 
         /// <summary>A so-far healthy instance will be marked unhealthy after this many consecutive failures. The
         /// default value is 2.</summary>
@@ -61169,8 +61649,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCode")]
         public virtual System.Nullable<ulong> LicenseCode { get; set; } 
 
-        /// <summary>[Output Only] Name of the resource. The name is 1-63 characters long and complies with
-        /// RFC1035.</summary>
+        /// <summary>Name of the resource. The name must be 1-63 characters long and comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -61927,6 +62406,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>The default port used if the port number is not specified in the network endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPort")]
+        public virtual System.Nullable<int> DefaultPort { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -61955,6 +62438,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The URL of the network to which all network endpoints in the NEG belong. Uses "default" project
+        /// network if unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
         /// <summary>Type of network endpoints in this network endpoint group. Currently the only supported value is
         /// GCE_VM_IP_PORT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointType")]
@@ -61967,6 +62455,14 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output only] Number of network endpoints in the network endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
+
+        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
+
+        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65435,6 +65931,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>A list of Nat services created in this router.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nats")]
+        public virtual System.Collections.Generic.IList<RouterNat> Nats { get; set; } 
+
         /// <summary>URI of the network to which this router belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
@@ -65732,6 +66232,85 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
+    /// <summary>Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet
+    /// without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT.
+    /// Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if
+    /// no external IPs are provided.</summary>
+    public class RouterNat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
+        public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
+
+        /// <summary>Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of
+        /// ports is allocated to a VM. This gets rounded up to the nearest power of 2. Eg. if the value of this field
+        /// is 50, at least 64 ports will be allocated to a VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minPortsPerVm")]
+        public virtual System.Nullable<int> MinPortsPerVm { get; set; } 
+
+        /// <summary>Unique name of this Nat service. The name must be 1-63 characters long and comply with
+        /// RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIpAllocateOption")]
+        public virtual string NatIpAllocateOption { get; set; } 
+
+        /// <summary>A list of URLs of the IP resources used for this Nat service. These IPs must be valid static
+        /// external IP addresses assigned to the project. max_length is subject to change post alpha.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
+        public virtual System.Collections.Generic.IList<string> NatIps { get; set; } 
+
+        /// <summary>Specify the Nat option. If this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router
+        /// for this network in this region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSubnetworkIpRangesToNat")]
+        public virtual string SourceSubnetworkIpRangesToNat { get; set; } 
+
+        /// <summary>A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only
+        /// when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<RouterNatSubnetworkToNat> Subnetworks { get; set; } 
+
+        /// <summary>Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpEstablishedIdleTimeoutSec")]
+        public virtual System.Nullable<int> TcpEstablishedIdleTimeoutSec { get; set; } 
+
+        /// <summary>Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpTransitoryIdleTimeoutSec")]
+        public virtual System.Nullable<int> TcpTransitoryIdleTimeoutSec { get; set; } 
+
+        /// <summary>Timeout (in seconds) for UDP connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udpIdleTimeoutSec")]
+        public virtual System.Nullable<int> UdpIdleTimeoutSec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the IP ranges that want to use NAT for a subnetwork.</summary>
+    public class RouterNatSubnetworkToNat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL for the subnetwork resource to use NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated
+        /// only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeNames")]
+        public virtual System.Collections.Generic.IList<string> SecondaryIpRangeNames { get; set; } 
+
+        /// <summary>Specify the options for NAT ranges in the Subnetwork. All usages of single value are valid except
+        /// NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE",
+        /// "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIpRangesToNat")]
+        public virtual System.Collections.Generic.IList<string> SourceIpRangesToNat { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RouterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Best routes for this router's network.</summary>
@@ -65744,6 +66323,9 @@ namespace Google.Apis.Compute.beta.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("bgpPeerStatus")]
         public virtual System.Collections.Generic.IList<RouterStatusBgpPeerStatus> BgpPeerStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("natStatus")]
+        public virtual System.Collections.Generic.IList<RouterStatusNatStatus> NatStatus { get; set; } 
 
         /// <summary>URI of the network to which this router belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -65795,6 +66377,39 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Time this session has been up, in seconds. Format: 145</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeSeconds")]
         public virtual string UptimeSeconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Status of a NAT contained in this router.</summary>
+    public class RouterStatusNatStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> AutoAllocatedNatIps { get; set; } 
+
+        /// <summary>The number of extra IPs to allocate. This will be greater than 0 only if user-specified IPs are NOT
+        /// enough to allow all configured VMs to use NAT. This value is meaningful only when auto-allocation of NAT IPs
+        /// is *not* used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minExtraNatIpsNeeded")]
+        public virtual System.Nullable<int> MinExtraNatIpsNeeded { get; set; } 
+
+        /// <summary>Unique name of this NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Number of VM endpoints (i.e., Nics) that can use NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numVmEndpointsWithNatMappings")]
+        public virtual System.Nullable<int> NumVmEndpointsWithNatMappings { get; set; } 
+
+        /// <summary>A list of fully qualified URLs of reserved IP address resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAllocatedNatIpResources")]
+        public virtual System.Collections.Generic.IList<string> UserAllocatedNatIpResources { get; set; } 
+
+        /// <summary>A list of IPs user-allocated for NAT. They will be raw IP strings like "179.12.26.133".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> UserAllocatedNatIps { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66304,6 +66919,37 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Defines whether the instance has the vTPM enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A shielded VM identity entry.</summary>
+    public class ShieldedVmIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual ShieldedVmIdentityEntry EncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#shieldedVmIdentity for shielded VM identity
+        /// entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKey")]
+        public virtual ShieldedVmIdentityEntry SigningKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Shielded VM Identity Entry.</summary>
+    public class ShieldedVmIdentityEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ekCert")]
+        public virtual string EkCert { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ekPub")]
+        public virtual string EkPub { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -66952,7 +67598,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Whether to enable flow logging for this subnetwork.</summary>
+        /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
+        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
         public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 
@@ -68810,31 +69457,6 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class UDPHealthCheck : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The UDP port number for the health check request. Valid values are 1 through 65535.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
-
-        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
-        /// takes precedence.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
-        public virtual string PortName { get; set; } 
-
-        /// <summary>Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request
-        /// data can only be ASCII.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual string Request { get; set; } 
-
-        /// <summary>The bytes to match against the beginning of the response data. It is an error if this is empty. The
-        /// response data can only be ASCII.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual string Response { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on
     /// the "longest-match" of the URL's host and path.</summary>
     public class UrlMap : Google.Apis.Requests.IDirectResponseSchema
@@ -69177,6 +69799,121 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contain information of Nat mapping for a VM endpoint (i.e., NIC).</summary>
+    public class VmEndpointNatMappings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the VM instance which the endpoint belongs to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaceNatMappings")]
+        public virtual System.Collections.Generic.IList<VmEndpointNatMappingsInterfaceNatMappings> InterfaceNatMappings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contain information of Nat mapping for an interface of this endpoint.</summary>
+    public class VmEndpointNatMappingsInterfaceNatMappings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that
+        /// is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
+        /// "1.1.1.1:2234-2234"].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIpPortRanges")]
+        public virtual System.Collections.Generic.IList<string> NatIpPortRanges { get; set; } 
+
+        /// <summary>Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated
+        /// port number in the field nat_ip_port_ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalNatPorts")]
+        public virtual System.Nullable<int> NumTotalNatPorts { get; set; } 
+
+        /// <summary>Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP range. Examples:
+        /// "10.33.4.55/32", or "192.168.5.0/24".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceAliasIpRange")]
+        public virtual string SourceAliasIpRange { get; set; } 
+
+        /// <summary>Primary IP of the VM for this NIC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVirtualIp")]
+        public virtual string SourceVirtualIp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of VmEndpointNatMappings.</summary>
+    public class VmEndpointNatMappingsList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#vmEndpointNatMappingsList for lists of Nat mappings
+        /// of VM endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] A list of Nat mapping information of VM endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual System.Collections.Generic.IList<VmEndpointNatMappings> Result { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual VmEndpointNatMappingsList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     /// <summary>VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)</summary>

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/wJ6op8HehvvrmPEffRA5vcCZodE\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/5FnKxGkhZf_jmHSztumbxGcQU4c\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20180914",
+ "revision": "20180921",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1069,6 +1069,18 @@
      "items": {
       "type": "string"
      }
+    }
+   }
+  },
+  "CustomerReturnReason": {
+   "id": "CustomerReturnReason",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "reasonCode": {
+     "type": "string"
     }
    }
   },
@@ -2459,6 +2471,63 @@
     }
    }
   },
+  "MerchantOrderReturn": {
+   "id": "MerchantOrderReturn",
+   "type": "object",
+   "properties": {
+    "creationDate": {
+     "type": "string"
+    },
+    "merchantOrderId": {
+     "type": "string"
+    },
+    "orderId": {
+     "type": "string"
+    },
+    "orderReturnId": {
+     "type": "string"
+    },
+    "returnItems": {
+     "type": "array",
+     "items": {
+      "$ref": "MerchantOrderReturnItem"
+     }
+    },
+    "returnShipments": {
+     "type": "array",
+     "items": {
+      "$ref": "ReturnShipment"
+     }
+    }
+   }
+  },
+  "MerchantOrderReturnItem": {
+   "id": "MerchantOrderReturnItem",
+   "type": "object",
+   "properties": {
+    "customerReturnReason": {
+     "$ref": "CustomerReturnReason"
+    },
+    "itemId": {
+     "type": "string"
+    },
+    "merchantReturnReason": {
+     "$ref": "RefundReason"
+    },
+    "product": {
+     "$ref": "OrderLineItemProduct"
+    },
+    "returnShipmentIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "state": {
+     "type": "string"
+    }
+   }
+  },
   "Order": {
    "id": "Order",
    "type": "object",
@@ -2635,7 +2704,7 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "Email address that should be used for order related communications. In certain cases this might not be a real users email, but a proxy email."
+     "description": "Deprecated."
     },
     "explicitMarketingPreference": {
      "type": "boolean",
@@ -3421,7 +3490,14 @@
     },
     "invoiceId": {
      "type": "string",
-     "description": "Invoice ID from orderInvoice service that corresponds to the charge."
+     "description": "Deprecated. Please use invoiceIds instead."
+    },
+    "invoiceIds": {
+     "type": "array",
+     "description": "Invoice IDs from the orderinvoices service that correspond to the charge.",
+     "items": {
+      "type": "string"
+     }
     }
    }
   },
@@ -3446,7 +3522,14 @@
    "properties": {
     "invoiceId": {
      "type": "string",
-     "description": "Invoice ID from orderInvoice service that corresponds to the charge."
+     "description": "Deprecated. Please use invoiceIds instead."
+    },
+    "invoiceIds": {
+     "type": "array",
+     "description": "Invoice IDs from the orderinvoices service that correspond to the refund.",
+     "items": {
+      "type": "string"
+     }
     },
     "refundState": {
      "type": "string",
@@ -3509,6 +3592,27 @@
      "description": "The list of transactions.",
      "items": {
       "$ref": "OrderReportTransaction"
+     }
+    }
+   }
+  },
+  "OrderreturnsListResponse": {
+   "id": "OrderreturnsListResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#orderreturnsListResponse\".",
+     "default": "content#orderreturnsListResponse"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "The token for the retrieval of the next page of returns."
+    },
+    "resources": {
+     "type": "array",
+     "items": {
+      "$ref": "MerchantOrderReturn"
      }
     }
    }
@@ -6437,6 +6541,39 @@
     }
    }
   },
+  "RefundReason": {
+   "id": "RefundReason",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "reasonCode": {
+     "type": "string"
+    }
+   }
+  },
+  "ReturnShipment": {
+   "id": "ReturnShipment",
+   "type": "object",
+   "properties": {
+    "creationDate": {
+     "type": "string"
+    },
+    "returnMethodType": {
+     "type": "string"
+    },
+    "shipmentId": {
+     "type": "string"
+    },
+    "shipmentTrackingInfos": {
+     "type": "array",
+     "items": {
+      "$ref": "ShipmentTrackingInfo"
+     }
+    }
+   }
+  },
   "Row": {
    "id": "Row",
    "type": "object",
@@ -6534,6 +6671,18 @@
     "unitInvoice": {
      "$ref": "UnitInvoice",
      "description": "[required] Invoice details for a single unit."
+    }
+   }
+  },
+  "ShipmentTrackingInfo": {
+   "id": "ShipmentTrackingInfo",
+   "type": "object",
+   "properties": {
+    "carrier": {
+     "type": "string"
+    },
+    "trackingNumber": {
+     "type": "string"
     }
    }
   },
@@ -6823,12 +6972,7 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "Email address of the customer.",
-     "annotations": {
-      "required": [
-       "content.orders.createtestorder"
-      ]
-     }
+     "description": "Deprecated."
     },
     "explicitMarketingPreference": {
      "type": "boolean",
@@ -8851,21 +8995,11 @@
      "httpMethod": "GET",
      "description": "Retrieves a list of transactions for an disbursement from your Merchant Center account.",
      "parameters": {
-      "disbursementEndDate": {
-       "type": "string",
-       "description": "The last date in which disbursements occurred. In ISO 8601 format. Default: current date.",
-       "location": "query"
-      },
       "disbursementId": {
        "type": "string",
        "description": "The Google-provided ID of the disbursement (found in Wallet).",
        "required": true,
        "location": "path"
-      },
-      "disbursementStartDate": {
-       "type": "string",
-       "description": "The first date in which disbursements occurred. In ISO 8601 format.",
-       "location": "query"
       },
       "maxResults": {
        "type": "integer",
@@ -8884,6 +9018,16 @@
        "type": "string",
        "description": "The token returned by the previous request.",
        "location": "query"
+      },
+      "transactionEndDate": {
+       "type": "string",
+       "description": "The last date in which transaction occurred. In ISO 8601 format. Default: current date.",
+       "location": "query"
+      },
+      "transactionStartDate": {
+       "type": "string",
+       "description": "The first date in which transaction occurred. In ISO 8601 format.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -8892,6 +9036,99 @@
      ],
      "response": {
       "$ref": "OrderreportsListTransactionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }
+   }
+  },
+  "orderreturns": {
+   "methods": {
+    "get": {
+     "id": "content.orderreturns.get",
+     "path": "{merchantId}/orderreturns/{returnId}",
+     "httpMethod": "GET",
+     "description": "Retrieves an order return from your Merchant Center account.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "returnId": {
+       "type": "string",
+       "description": "Merchant order return ID generated by Google.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "returnId"
+     ],
+     "response": {
+      "$ref": "MerchantOrderReturn"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "list": {
+     "id": "content.orderreturns.list",
+     "path": "{merchantId}/orderreturns",
+     "httpMethod": "GET",
+     "description": "Lists order returns in your Merchant Center account.",
+     "parameters": {
+      "createdEndDate": {
+       "type": "string",
+       "description": "Obtains order returns created before this date (inclusively), in ISO 8601 format.",
+       "location": "query"
+      },
+      "createdStartDate": {
+       "type": "string",
+       "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of order returns to return in the response, used for paging. The default value is 25 returns per page, and the maximum allowed value is 250 returns per page.",
+       "format": "uint32",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Return the results in the specified order.",
+       "enum": [
+        "returnCreationTimeAsc",
+        "returnCreationTimeDesc"
+       ],
+       "enumDescriptions": [
+        "",
+        ""
+       ],
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "The token returned by the previous request.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "merchantId"
+     ],
+     "response": {
+      "$ref": "OrderreturnsListResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

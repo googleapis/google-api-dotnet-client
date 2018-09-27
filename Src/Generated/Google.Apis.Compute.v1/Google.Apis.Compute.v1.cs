@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180828 (1335)
+ *      <tr><th>API Rev<td>20180906 (1344)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -15809,7 +15809,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -46068,6 +46068,10 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a customer-supplied encryption key</summary>
     public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the encryption key that is stored in Google Cloud KMS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
         /// <summary>Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt
         /// or decrypt this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawKey")]
@@ -47094,7 +47098,8 @@ namespace Google.Apis.Compute.v1.Data
         /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address
-        /// resource ( internal regional static IP address).
+        /// resource ( internal regional static IP address), with a purpose of GCE_END_POINT and address_type of
+        /// INTERNAL.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
@@ -47493,6 +47498,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -47522,6 +47532,11 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The request path of the HTTPS health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50638,8 +50653,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCode")]
         public virtual System.Nullable<ulong> LicenseCode { get; set; } 
 
-        /// <summary>[Output Only] Name of the resource. The name is 1-63 characters long and complies with
-        /// RFC1035.</summary>
+        /// <summary>Name of the resource. The name must be 1-63 characters long and comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -55218,7 +55232,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Whether to enable flow logging for this subnetwork.</summary>
+        /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
+        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
         public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 

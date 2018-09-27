@@ -1,351 +1,158 @@
 {
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "protocol": "rest",
-  "canonicalName": "Hangouts Chat",
-  "rootUrl": "https://chat.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "chat",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Hangouts Chat API",
-  "ownerName": "Google",
-  "resources": {
-    "spaces": {
-      "resources": {
-        "messages": {
-          "methods": {
-            "delete": {
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
-              "path": "v1/{+name}",
-              "id": "chat.spaces.messages.delete",
-              "description": "Deletes a message.",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Required. Resource name of the message to be deleted, in the form\n\"spaces/*/messages/*\"\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+/messages/[^/]+$"
-                }
-              }
-            },
-            "get": {
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
-              "path": "v1/{+name}",
-              "id": "chat.spaces.messages.get",
-              "description": "Returns a message.",
-              "response": {
-                "$ref": "Message"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "Required. Resource name of the message to be retrieved, in the form\n\"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+/messages/[^/]+$",
-                  "location": "path"
-                }
-              }
-            },
-            "update": {
-              "path": "v1/{+name}",
-              "id": "chat.spaces.messages.update",
-              "request": {
-                "$ref": "Message"
-              },
-              "description": "Updates a message.",
-              "response": {
-                "$ref": "Message"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PUT",
-              "parameters": {
-                "name": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+/messages/[^/]+$",
-                  "location": "path",
-                  "description": "Resource name, in the form \"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4"
-                },
-                "updateMask": {
-                  "location": "query",
-                  "description": "Required. The field paths to be updated.\n\nCurrently supported field paths: \"text\", \"cards\".",
-                  "format": "google-fieldmask",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}"
-            },
-            "create": {
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "Message"
-              },
-              "parameters": {
-                "parent": {
-                  "description": "Required. Space resource name, in the form \"spaces/*\".\nExample: spaces/AAAAMpdlehY",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+$",
-                  "location": "path"
-                },
-                "threadKey": {
-                  "description": "Opaque thread identifier string that can be specified to group messages\ninto a single thread. If this is the first message with a given thread\nidentifier, a new thread is created. Subsequent messages with the same\nthread identifier will be posted into the same thread. This relieves bots\nand webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post\nfurther updates to it.\n\nHas no effect if thread field,\ncorresponding to an existing thread, is set in message.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "flatPath": "v1/spaces/{spacesId}/messages",
-              "id": "chat.spaces.messages.create",
-              "path": "v1/{+parent}/messages",
-              "description": "Creates a message.",
-              "request": {
-                "$ref": "Message"
-              }
-            }
-          }
-        },
-        "members": {
-          "methods": {
-            "list": {
-              "response": {
-                "$ref": "ListMembershipsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "parent": {
-                  "description": "Required. The resource name of the space for which membership list is to be\nfetched, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehY",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+$",
-                  "location": "path"
-                },
-                "pageToken": {
-                  "description": "A token identifying a page of results the server should return.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "description": "Requested page size. The value is capped at 1000.\nServer may return fewer results than requested.\nIf unspecified, server will default to 100.",
-                  "format": "int32"
-                }
-              },
-              "flatPath": "v1/spaces/{spacesId}/members",
-              "path": "v1/{+parent}/members",
-              "id": "chat.spaces.members.list",
-              "description": "Lists human memberships in a space."
-            },
-            "get": {
-              "path": "v1/{+name}",
-              "id": "chat.spaces.members.get",
-              "description": "Returns a membership.",
-              "response": {
-                "$ref": "Membership"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Required. Resource name of the membership to be retrieved, in the form\n\"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^spaces/[^/]+/members/[^/]+$"
-                }
-              },
-              "flatPath": "v1/spaces/{spacesId}/members/{membersId}"
-            }
-          }
-        }
-      },
-      "methods": {
-        "list": {
-          "flatPath": "v1/spaces",
-          "path": "v1/spaces",
-          "id": "chat.spaces.list",
-          "description": "Lists spaces the caller is a member of.",
-          "response": {
-            "$ref": "ListSpacesResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {
-            "pageToken": {
-              "description": "A token identifying a page of results the server should return.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageSize": {
-              "location": "query",
-              "description": "Requested page size. The value is capped at 1000.\nServer may return fewer results than requested.\nIf unspecified, server will default to 100.",
-              "format": "int32",
-              "type": "integer"
-            }
-          }
-        },
-        "get": {
-          "description": "Returns a space.",
-          "response": {
-            "$ref": "Space"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "description": "Required. Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehY",
-              "required": true,
-              "type": "string",
-              "pattern": "^spaces/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/spaces/{spacesId}",
-          "path": "v1/{+name}",
-          "id": "chat.spaces.get"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://chat.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Enables bots to fetch information and perform actions in Hangouts Chat.",
-  "servicePath": "",
-  "basePath": "",
-  "id": "chat:v1",
-  "revision": "20180918",
-  "documentationLink": "https://developers.google.com/hangouts/chat",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "ListMembershipsResponse": {
+      "type": "object",
+      "properties": {
+        "memberships": {
+          "description": "List of memberships in the requested (or first) page.",
+          "type": "array",
+          "items": {
+            "$ref": "Membership"
+          }
+        },
+        "nextPageToken": {
+          "description": "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListMembershipsResponse"
+    },
+    "FormAction": {
+      "description": "A form action describes the behavior when the form is submitted.\nFor example, an Apps Script can be invoked to handle the form.",
+      "type": "object",
+      "properties": {
+        "actionMethodName": {
+          "description": "Apps Script function to invoke when the containing element is\nclicked/activated.",
+          "type": "string"
+        },
+        "parameters": {
+          "description": "List of action parameters.",
+          "type": "array",
+          "items": {
+            "$ref": "ActionParameter"
+          }
+        }
+      },
+      "id": "FormAction"
+    },
+    "CardAction": {
+      "description": "A card action is\nthe action associated with the card. For an invoice card, a\ntypical action would be: delete invoice, email invoice or open the\ninvoice in browser.",
+      "type": "object",
+      "properties": {
+        "onClick": {
+          "description": "The onclick action for this action item.",
+          "$ref": "OnClick"
+        },
+        "actionLabel": {
+          "description": "The label used to be displayed in the action menu item.",
+          "type": "string"
+        }
+      },
+      "id": "CardAction"
+    },
+    "UserMentionMetadata": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "description": "The user mentioned.",
+          "$ref": "User"
+        },
+        "type": {
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "Add user to space.",
+            "Mention user in space."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "ADD",
+            "MENTION"
+          ],
+          "description": "The type of user mention.",
+          "type": "string"
+        }
+      },
+      "id": "UserMentionMetadata",
+      "description": "Annotation metadata for user mentions (@)."
+    },
+    "Image": {
+      "id": "Image",
+      "description": "An image that is specified by a URL and can have an onclick action.",
+      "type": "object",
+      "properties": {
+        "aspectRatio": {
+          "description": "The aspect ratio of this image (width/height).",
+          "format": "double",
+          "type": "number"
+        },
+        "imageUrl": {
+          "description": "The URL of the image.",
+          "type": "string"
+        },
+        "onClick": {
+          "$ref": "OnClick",
+          "description": "The onclick action."
+        }
+      }
+    },
+    "Annotation": {
+      "description": "Annotations associated with the plain-text body of the message.\n\nExample plain-text message body:\n```\nHello @FooBot how are you!\"\n```\n\nThe corresponding annotations metadata:\n```\n\"annotations\":[{\n  \"type\":\"USER_MENTION\",\n  \"startIndex\":6,\n  \"length\":7,\n  \"userMention\": {\n    \"user\": {\n      \"name\":\"users/107946847022116401880\",\n      \"displayName\":\"FooBot\",\n      \"avatarUrl\":\"https://goo.gl/aeDtrS\",\n      \"type\":\"BOT\"\n    },\n    \"type\":\"MENTION\"\n   }\n}]\n```",
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "description": "Start index (0-based, inclusive) in the plain-text message body this\nannotation corresponds to.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "userMention": {
+          "$ref": "UserMentionMetadata",
+          "description": "The metadata of user mention."
+        },
+        "type": {
+          "description": "The type of this annotation.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "A user is mentioned."
+          ],
+          "enum": [
+            "ANNOTATION_TYPE_UNSPECIFIED",
+            "USER_MENTION"
+          ]
+        },
+        "length": {
+          "description": "Length of the substring in the plain-text message body this annotation\ncorresponds to.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "Annotation"
+    },
     "WidgetMarkup": {
       "id": "WidgetMarkup",
       "description": "A widget is a UI element that presents texts, images, etc.",
       "type": "object",
       "properties": {
+        "textParagraph": {
+          "$ref": "TextParagraph",
+          "description": "Display a text paragraph in this widget."
+        },
+        "keyValue": {
+          "$ref": "KeyValue",
+          "description": "Display a key value item in this widget."
+        },
         "image": {
           "description": "Display an image in this widget.",
           "$ref": "Image"
         },
         "buttons": {
-          "description": "A list of buttons. Buttons is also oneof data and only one of these\nfields should be set.",
           "type": "array",
           "items": {
             "$ref": "Button"
-          }
-        },
-        "textParagraph": {
-          "description": "Display a text paragraph in this widget.",
-          "$ref": "TextParagraph"
-        },
-        "keyValue": {
-          "$ref": "KeyValue",
-          "description": "Display a key value item in this widget."
+          },
+          "description": "A list of buttons. Buttons is also oneof data and only one of these\nfields should be set."
         }
       }
     },
@@ -353,6 +160,10 @@
       "description": "Parameters that a bot can use to configure how it's response is posted.",
       "type": "object",
       "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL for users to auth or config. (Only for REQUEST_CONFIG response types.)"
+        },
         "type": {
           "description": "The type of bot response.",
           "type": "string",
@@ -368,10 +179,6 @@
             "UPDATE_MESSAGE",
             "REQUEST_CONFIG"
           ]
-        },
-        "url": {
-          "description": "URL for users to auth or config. (Only for REQUEST_CONFIG response types.)",
-          "type": "string"
         }
       },
       "id": "ActionResponse"
@@ -380,27 +187,27 @@
       "description": "A room or DM in Hangouts Chat.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehYs",
-          "type": "string"
-        },
         "displayName": {
           "description": "Output only. The display name (only if the space is a room).",
           "type": "string"
         },
         "type": {
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "ROOM",
-            "DM"
-          ],
           "description": "Output only. The type of a space.",
           "type": "string",
           "enumDescriptions": [
             "",
             "A chat space where memberships are free to change. Messages in rooms are\nthreaded.",
             "1:1 Direct Message between a human and a bot, where all messages are\nflat."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "ROOM",
+            "DM"
           ]
+        },
+        "name": {
+          "description": "Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehYs",
+          "type": "string"
         }
       },
       "id": "Space"
@@ -409,16 +216,20 @@
       "description": "A card is a UI element that can contain UI widgets such as texts, images.",
       "type": "object",
       "properties": {
+        "header": {
+          "$ref": "CardHeader",
+          "description": "The header of the card. A header usually contains a title and an image."
+        },
         "name": {
           "description": "Name of the card.",
           "type": "string"
         },
         "sections": {
-          "description": "Sections are separated by a line divider.",
           "type": "array",
           "items": {
             "$ref": "Section"
-          }
+          },
+          "description": "Sections are separated by a line divider."
         },
         "cardActions": {
           "description": "The actions of this card.",
@@ -426,10 +237,6 @@
           "items": {
             "$ref": "CardAction"
           }
-        },
-        "header": {
-          "description": "The header of the card. A header usually contains a title and an image.",
-          "$ref": "CardHeader"
         }
       },
       "id": "Card"
@@ -438,39 +245,6 @@
       "description": "A message in Hangouts Chat.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "Resource name, in the form \"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
-          "type": "string"
-        },
-        "previewText": {
-          "description": "Text for generating preview chips. This text will not be displayed to the\nuser, but any links to images, web pages, videos, etc. included here will\ngenerate preview chips.",
-          "type": "string"
-        },
-        "text": {
-          "description": "Plain-text body of the message.",
-          "type": "string"
-        },
-        "space": {
-          "description": "The space the message belongs to.",
-          "$ref": "Space"
-        },
-        "argumentText": {
-          "description": "Plain-text body of the message with all bot mentions stripped out.",
-          "type": "string"
-        },
-        "fallbackText": {
-          "type": "string",
-          "description": "A plain-text description of the message's cards, used when the actual cards\ncannot be displayed (e.g. mobile notifications)."
-        },
-        "actionResponse": {
-          "$ref": "ActionResponse",
-          "description": "Input only. Parameters that a bot can use to configure how its response is\nposted."
-        },
-        "createTime": {
-          "description": "Output only. The time at which the message was created in Hangouts Chat\nserver.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "sender": {
           "description": "The user who created the message.",
           "$ref": "User"
@@ -492,44 +266,79 @@
           "items": {
             "$ref": "Annotation"
           }
+        },
+        "name": {
+          "description": "Resource name, in the form \"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
+          "type": "string"
+        },
+        "previewText": {
+          "description": "Text for generating preview chips. This text will not be displayed to the\nuser, but any links to images, web pages, videos, etc. included here will\ngenerate preview chips.",
+          "type": "string"
+        },
+        "text": {
+          "description": "Plain-text body of the message.",
+          "type": "string"
+        },
+        "space": {
+          "description": "The space the message belongs to.",
+          "$ref": "Space"
+        },
+        "argumentText": {
+          "description": "Plain-text body of the message with all bot mentions stripped out.",
+          "type": "string"
+        },
+        "fallbackText": {
+          "description": "A plain-text description of the message's cards, used when the actual cards\ncannot be displayed (e.g. mobile notifications).",
+          "type": "string"
+        },
+        "actionResponse": {
+          "description": "Input only. Parameters that a bot can use to configure how its response is\nposted.",
+          "$ref": "ActionResponse"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "Output only. The time at which the message was created in Hangouts Chat\nserver.",
+          "format": "google-datetime"
         }
       },
       "id": "Message"
     },
     "DeprecatedEvent": {
-      "description": "Hangouts Chat events.",
       "type": "object",
       "properties": {
-        "configCompleteRedirectUrl": {
-          "description": "The URL the bot should redirect the user to after they have completed an\nauthorization or configuration flow outside of Hangouts Chat. See the\n[Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)\nfor more information.",
-          "type": "string"
-        },
-        "threadKey": {
-          "description": "The bot-defined key for the thread related to the event. See the\nthread_key field of the\n`spaces.message.create` request for more information.",
-          "type": "string"
+        "token": {
+          "type": "string",
+          "description": "A secret value that bots can use to verify if a request is from Google. The\ntoken is randomly generated by Google, remains static, and can be obtained\nfrom the Hangouts Chat API configuration page in the Cloud Console.\nDevelopers can revoke/regenerate it if needed from the same page."
         },
         "eventTime": {
           "description": "The timestamp indicating when the event was dispatched.",
           "format": "google-datetime",
           "type": "string"
         },
-        "token": {
-          "description": "A secret value that bots can use to verify if a request is from Google. The\ntoken is randomly generated by Google, remains static, and can be obtained\nfrom the Hangouts Chat API configuration page in the Cloud Console.\nDevelopers can revoke/regenerate it if needed from the same page.",
-          "type": "string"
-        },
         "message": {
-          "$ref": "Message",
-          "description": "The message that triggered the event, if applicable."
-        },
-        "user": {
-          "$ref": "User",
-          "description": "The user that triggered the event."
+          "description": "The message that triggered the event, if applicable.",
+          "$ref": "Message"
         },
         "action": {
           "$ref": "FormAction",
           "description": "The form action data associated with an interactive card that was clicked.\nOnly populated for\nCARD_CLICKED events.\nSee the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for\nmore information."
         },
+        "user": {
+          "$ref": "User",
+          "description": "The user that triggered the event."
+        },
+        "space": {
+          "description": "The room or DM in which the event occurred.",
+          "$ref": "Space"
+        },
         "type": {
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "A message was sent in a room or direct message.",
+            "The bot was added to a room or DM.",
+            "The bot was removed from a room or DM.",
+            "The bot's interactive card was clicked."
+          ],
           "enum": [
             "UNSPECIFIED",
             "MESSAGE",
@@ -538,33 +347,31 @@
             "CARD_CLICKED"
           ],
           "description": "The type of the event.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "A message was sent in a room or direct message.",
-            "The bot was added to a room or DM.",
-            "The bot was removed from a room or DM.",
-            "The bot's interactive card was clicked."
-          ]
+          "type": "string"
         },
-        "space": {
-          "$ref": "Space",
-          "description": "The room or DM in which the event occurred."
+        "configCompleteRedirectUrl": {
+          "description": "The URL the bot should redirect the user to after they have completed an\nauthorization or configuration flow outside of Hangouts Chat. See the\n[Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)\nfor more information.",
+          "type": "string"
+        },
+        "threadKey": {
+          "type": "string",
+          "description": "The bot-defined key for the thread related to the event. See the\nthread_key field of the\n`spaces.message.create` request for more information."
         }
       },
-      "id": "DeprecatedEvent"
+      "id": "DeprecatedEvent",
+      "description": "Hangouts Chat events."
     },
     "OnClick": {
       "description": "An onclick action (e.g. open a link).",
       "type": "object",
       "properties": {
+        "openLink": {
+          "description": "This onclick triggers an open link action if specified.",
+          "$ref": "OpenLink"
+        },
         "action": {
           "$ref": "FormAction",
           "description": "A form action will be trigger by this onclick if specified."
-        },
-        "openLink": {
-          "$ref": "OpenLink",
-          "description": "This onclick triggers an open link action if specified."
         }
       },
       "id": "OnClick"
@@ -585,6 +392,7 @@
       "id": "ActionParameter"
     },
     "User": {
+      "id": "User",
       "description": "A user in Hangouts Chat.",
       "type": "object",
       "properties": {
@@ -610,44 +418,7 @@
             "BOT"
           ]
         }
-      },
-      "id": "User"
-    },
-    "Membership": {
-      "properties": {
-        "createTime": {
-          "description": "The creation time of the membership a.k.a the time at which the member\njoined the space, if applicable.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "MEMBERSHIP_STATE_UNSPECIFIED",
-            "JOINED",
-            "INVITED",
-            "NOT_A_MEMBER"
-          ],
-          "description": "State of the membership.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default, do not use.",
-            "The user has joined the space.",
-            "The user has been invited, is able to join the space, but currently has\nnot joined.",
-            "The user is not a member of the space, has not been invited and is not\nable to join the space."
-          ]
-        },
-        "name": {
-          "description": "Resource name of the membership, in the form \"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105",
-          "type": "string"
-        },
-        "member": {
-          "$ref": "User",
-          "description": "Member details."
-        }
-      },
-      "id": "Membership",
-      "description": "Represents a membership relation in Hangouts Chat.",
-      "type": "object"
+      }
     },
     "TextParagraph": {
       "description": "A paragraph of text. Formatted text supported.",
@@ -659,11 +430,137 @@
       },
       "id": "TextParagraph"
     },
+    "Membership": {
+      "description": "Represents a membership relation in Hangouts Chat.",
+      "type": "object",
+      "properties": {
+        "member": {
+          "$ref": "User",
+          "description": "Member details."
+        },
+        "createTime": {
+          "description": "The creation time of the membership a.k.a the time at which the member\njoined the space, if applicable.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "state": {
+          "description": "State of the membership.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default, do not use.",
+            "The user has joined the space.",
+            "The user has been invited, is able to join the space, but currently has\nnot joined.",
+            "The user is not a member of the space, has not been invited and is not\nable to join the space."
+          ],
+          "enum": [
+            "MEMBERSHIP_STATE_UNSPECIFIED",
+            "JOINED",
+            "INVITED",
+            "NOT_A_MEMBER"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Resource name of the membership, in the form \"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105"
+        }
+      },
+      "id": "Membership"
+    },
+    "ListSpacesResponse": {
+      "type": "object",
+      "properties": {
+        "spaces": {
+          "type": "array",
+          "items": {
+            "$ref": "Space"
+          },
+          "description": "List of spaces in the requested (or first) page."
+        },
+        "nextPageToken": {
+          "description": "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results. Tokens expire in an hour. An error is thrown\nif an expired token is passed.",
+          "type": "string"
+        }
+      },
+      "id": "ListSpacesResponse"
+    },
+    "CardHeader": {
+      "id": "CardHeader",
+      "type": "object",
+      "properties": {
+        "imageUrl": {
+          "description": "The URL of the image in the card header.",
+          "type": "string"
+        },
+        "imageStyle": {
+          "enumDescriptions": [
+            "",
+            "Square border.",
+            "Circular border."
+          ],
+          "enum": [
+            "IMAGE_STYLE_UNSPECIFIED",
+            "IMAGE",
+            "AVATAR"
+          ],
+          "description": "The image's type (e.g. square border or circular border).",
+          "type": "string"
+        },
+        "title": {
+          "description": "The title must be specified. The header has a fixed height: if both a\ntitle and subtitle is specified, each will take up 1 line. If only the\ntitle is specified, it will take up both lines.",
+          "type": "string"
+        },
+        "subtitle": {
+          "description": "The subtitle of the card header.",
+          "type": "string"
+        }
+      }
+    },
     "ImageButton": {
       "description": "An image button with an onclick action.",
       "type": "object",
       "properties": {
+        "iconUrl": {
+          "description": "The icon specified by a URL.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this image_button which will be used for accessibility.\nDefault value will be provided if developers don't specify.",
+          "type": "string"
+        },
         "icon": {
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "enum": [
             "ICON_UNSPECIFIED",
             "AIRPLANE",
@@ -698,147 +595,77 @@
             "VIDEO_PLAY"
           ],
           "description": "The icon specified by an enum that indices to an icon provided by Chat\nAPI.",
-          "type": "string",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ]
+          "type": "string"
         },
         "onClick": {
-          "$ref": "OnClick",
-          "description": "The onclick action."
-        },
-        "iconUrl": {
-          "description": "The icon specified by a URL.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The name of this image_button which will be used for accessibility.\nDefault value will be provided if developers don't specify.",
-          "type": "string"
+          "description": "The onclick action.",
+          "$ref": "OnClick"
         }
       },
       "id": "ImageButton"
     },
-    "ListSpacesResponse": {
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results. Tokens expire in an hour. An error is thrown\nif an expired token is passed."
-        },
-        "spaces": {
-          "description": "List of spaces in the requested (or first) page.",
-          "type": "array",
-          "items": {
-            "$ref": "Space"
-          }
-        }
-      },
-      "id": "ListSpacesResponse"
-    },
-    "CardHeader": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "description": "The title must be specified. The header has a fixed height: if both a\ntitle and subtitle is specified, each will take up 1 line. If only the\ntitle is specified, it will take up both lines.",
-          "type": "string"
-        },
-        "subtitle": {
-          "description": "The subtitle of the card header.",
-          "type": "string"
-        },
-        "imageUrl": {
-          "description": "The URL of the image in the card header.",
-          "type": "string"
-        },
-        "imageStyle": {
-          "enum": [
-            "IMAGE_STYLE_UNSPECIFIED",
-            "IMAGE",
-            "AVATAR"
-          ],
-          "description": "The image's type (e.g. square border or circular border).",
-          "type": "string",
-          "enumDescriptions": [
-            "",
-            "Square border.",
-            "Circular border."
-          ]
-        }
-      },
-      "id": "CardHeader"
-    },
     "TextButton": {
-      "id": "TextButton",
       "description": "A button with text and onclick action.",
       "type": "object",
       "properties": {
         "onClick": {
-          "$ref": "OnClick",
-          "description": "The onclick action of the button."
+          "description": "The onclick action of the button.",
+          "$ref": "OnClick"
         },
         "text": {
           "description": "The text of the button.",
           "type": "string"
         }
-      }
+      },
+      "id": "TextButton"
     },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object"
     },
     "KeyValue": {
-      "description": "A UI element contains a key (label) and a value (content). And this\nelement may also contain some actions such as onclick button.",
       "type": "object",
       "properties": {
-        "iconUrl": {
-          "description": "The icon specified by a URL.",
-          "type": "string"
-        },
-        "button": {
-          "description": "A button that can be clicked to trigger an action.",
-          "$ref": "Button"
-        },
-        "content": {
-          "description": "The text of the content. Formatted text supported and always required.",
-          "type": "string"
-        },
         "bottomLabel": {
           "description": "The text of the bottom label. Formatted text supported.",
           "type": "string"
         },
         "icon": {
+          "enum": [
+            "ICON_UNSPECIFIED",
+            "AIRPLANE",
+            "BOOKMARK",
+            "BUS",
+            "CAR",
+            "CLOCK",
+            "CONFIRMATION_NUMBER_ICON",
+            "DOLLAR",
+            "DESCRIPTION",
+            "EMAIL",
+            "EVENT_PERFORMER",
+            "EVENT_SEAT",
+            "FLIGHT_ARRIVAL",
+            "FLIGHT_DEPARTURE",
+            "HOTEL",
+            "HOTEL_ROOM_TYPE",
+            "INVITE",
+            "MAP_PIN",
+            "MEMBERSHIP",
+            "MULTIPLE_PEOPLE",
+            "OFFER",
+            "PERSON",
+            "PHONE",
+            "RESTAURANT_ICON",
+            "SHOPPING_CART",
+            "STAR",
+            "STORE",
+            "TICKET",
+            "TRAIN",
+            "VIDEO_CAMERA",
+            "VIDEO_PLAY"
+          ],
           "description": "An enum value that will be replaced by the Chat API with the\ncorresponding icon image.",
           "type": "string",
           "enumDescriptions": [
@@ -873,39 +700,6 @@
             "",
             "",
             ""
-          ],
-          "enum": [
-            "ICON_UNSPECIFIED",
-            "AIRPLANE",
-            "BOOKMARK",
-            "BUS",
-            "CAR",
-            "CLOCK",
-            "CONFIRMATION_NUMBER_ICON",
-            "DOLLAR",
-            "DESCRIPTION",
-            "EMAIL",
-            "EVENT_PERFORMER",
-            "EVENT_SEAT",
-            "FLIGHT_ARRIVAL",
-            "FLIGHT_DEPARTURE",
-            "HOTEL",
-            "HOTEL_ROOM_TYPE",
-            "INVITE",
-            "MAP_PIN",
-            "MEMBERSHIP",
-            "MULTIPLE_PEOPLE",
-            "OFFER",
-            "PERSON",
-            "PHONE",
-            "RESTAURANT_ICON",
-            "SHOPPING_CART",
-            "STAR",
-            "STORE",
-            "TICKET",
-            "TRAIN",
-            "VIDEO_CAMERA",
-            "VIDEO_PLAY"
           ]
         },
         "contentMultiline": {
@@ -913,15 +707,28 @@
           "type": "boolean"
         },
         "onClick": {
-          "description": "The onclick action. Only the top label, bottom label and content region\nare clickable.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action. Only the top label, bottom label and content region\nare clickable."
         },
         "topLabel": {
           "description": "The text of the top label. Formatted text supported.",
           "type": "string"
+        },
+        "iconUrl": {
+          "description": "The icon specified by a URL.",
+          "type": "string"
+        },
+        "button": {
+          "$ref": "Button",
+          "description": "A button that can be clicked to trigger an action."
+        },
+        "content": {
+          "description": "The text of the content. Formatted text supported and always required.",
+          "type": "string"
         }
       },
-      "id": "KeyValue"
+      "id": "KeyValue",
+      "description": "A UI element contains a key (label) and a value (content). And this\nelement may also contain some actions such as onclick button."
     },
     "Thread": {
       "description": "A thread in Hangouts Chat.",
@@ -939,11 +746,11 @@
       "type": "object",
       "properties": {
         "widgets": {
-          "description": "A section must contain at least 1 widget.",
           "type": "array",
           "items": {
             "$ref": "WidgetMarkup"
-          }
+          },
+          "description": "A section must contain at least 1 widget."
         },
         "header": {
           "description": "The header of the section, text formatted supported.",
@@ -951,17 +758,6 @@
         }
       },
       "id": "Section"
-    },
-    "OpenLink": {
-      "description": "A link that opens a new window.",
-      "type": "object",
-      "properties": {
-        "url": {
-          "description": "The URL to open.",
-          "type": "string"
-        }
-      },
-      "id": "OpenLink"
     },
     "Button": {
       "description": "A button. Can be a text button or an image button.",
@@ -972,139 +768,343 @@
           "description": "A button with text and onclick action."
         },
         "imageButton": {
-          "$ref": "ImageButton",
-          "description": "A button with image and onclick action."
+          "description": "A button with image and onclick action.",
+          "$ref": "ImageButton"
         }
       },
       "id": "Button"
     },
-    "ListMembershipsResponse": {
-      "type": "object",
+    "OpenLink": {
       "properties": {
-        "memberships": {
-          "type": "array",
-          "items": {
-            "$ref": "Membership"
+        "url": {
+          "description": "The URL to open.",
+          "type": "string"
+        }
+      },
+      "id": "OpenLink",
+      "description": "A link that opens a new window.",
+      "type": "object"
+    }
+  },
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "protocol": "rest",
+  "canonicalName": "Hangouts Chat",
+  "rootUrl": "https://chat.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "chat",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Hangouts Chat API",
+  "ownerName": "Google",
+  "resources": {
+    "spaces": {
+      "methods": {
+        "list": {
+          "response": {
+            "$ref": "ListSpacesResponse"
           },
-          "description": "List of memberships in the requested (or first) page."
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "pageToken": {
+              "description": "A token identifying a page of results the server should return.",
+              "type": "string",
+              "location": "query"
+            },
+            "pageSize": {
+              "description": "Requested page size. The value is capped at 1000.\nServer may return fewer results than requested.\nIf unspecified, server will default to 100.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            }
+          },
+          "flatPath": "v1/spaces",
+          "path": "v1/spaces",
+          "id": "chat.spaces.list",
+          "description": "Lists spaces the caller is a member of."
         },
-        "nextPageToken": {
-          "description": "Continuation token to retrieve the next page of results. It will be empty\nfor the last page of results.",
-          "type": "string"
+        "get": {
+          "response": {
+            "$ref": "Space"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "Required. Resource name of the space, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehY",
+              "required": true,
+              "type": "string",
+              "pattern": "^spaces/[^/]+$"
+            }
+          },
+          "flatPath": "v1/spaces/{spacesId}",
+          "path": "v1/{+name}",
+          "id": "chat.spaces.get",
+          "description": "Returns a space."
         }
       },
-      "id": "ListMembershipsResponse"
-    },
-    "UserMentionMetadata": {
-      "description": "Annotation metadata for user mentions (@).",
-      "type": "object",
-      "properties": {
-        "type": {
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "Add user to space.",
-            "Mention user in space."
-          ],
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "ADD",
-            "MENTION"
-          ],
-          "description": "The type of user mention.",
-          "type": "string"
+      "resources": {
+        "messages": {
+          "methods": {
+            "delete": {
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+/messages/[^/]+$",
+                  "location": "path",
+                  "description": "Required. Resource name of the message to be deleted, in the form\n\"spaces/*/messages/*\"\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4"
+                }
+              },
+              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+              "path": "v1/{+name}",
+              "id": "chat.spaces.messages.delete",
+              "description": "Deletes a message."
+            },
+            "get": {
+              "description": "Returns a message.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Message"
+              },
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Required. Resource name of the message to be retrieved, in the form\n\"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+/messages/[^/]+$"
+                }
+              },
+              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+              "id": "chat.spaces.messages.get",
+              "path": "v1/{+name}"
+            },
+            "update": {
+              "response": {
+                "$ref": "Message"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PUT",
+              "parameters": {
+                "updateMask": {
+                  "location": "query",
+                  "description": "Required. The field paths to be updated.\n\nCurrently supported field paths: \"text\", \"cards\".",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                },
+                "name": {
+                  "location": "path",
+                  "description": "Resource name, in the form \"spaces/*/messages/*\".\n\nExample: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+/messages/[^/]+$"
+                }
+              },
+              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+              "path": "v1/{+name}",
+              "id": "chat.spaces.messages.update",
+              "description": "Updates a message.",
+              "request": {
+                "$ref": "Message"
+              }
+            },
+            "create": {
+              "flatPath": "v1/spaces/{spacesId}/messages",
+              "path": "v1/{+parent}/messages",
+              "id": "chat.spaces.messages.create",
+              "request": {
+                "$ref": "Message"
+              },
+              "description": "Creates a message.",
+              "response": {
+                "$ref": "Message"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "parameters": {
+                "parent": {
+                  "description": "Required. Space resource name, in the form \"spaces/*\".\nExample: spaces/AAAAMpdlehY",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+$",
+                  "location": "path"
+                },
+                "threadKey": {
+                  "location": "query",
+                  "description": "Opaque thread identifier string that can be specified to group messages\ninto a single thread. If this is the first message with a given thread\nidentifier, a new thread is created. Subsequent messages with the same\nthread identifier will be posted into the same thread. This relieves bots\nand webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post\nfurther updates to it.\n\nHas no effect if thread field,\ncorresponding to an existing thread, is set in message.",
+                  "type": "string"
+                }
+              }
+            }
+          }
         },
-        "user": {
-          "description": "The user mentioned.",
-          "$ref": "User"
-        }
-      },
-      "id": "UserMentionMetadata"
-    },
-    "CardAction": {
-      "id": "CardAction",
-      "description": "A card action is\nthe action associated with the card. For an invoice card, a\ntypical action would be: delete invoice, email invoice or open the\ninvoice in browser.",
-      "type": "object",
-      "properties": {
-        "onClick": {
-          "description": "The onclick action for this action item.",
-          "$ref": "OnClick"
-        },
-        "actionLabel": {
-          "description": "The label used to be displayed in the action menu item.",
-          "type": "string"
+        "members": {
+          "methods": {
+            "list": {
+              "response": {
+                "$ref": "ListMembershipsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A token identifying a page of results the server should return."
+                },
+                "pageSize": {
+                  "description": "Requested page size. The value is capped at 1000.\nServer may return fewer results than requested.\nIf unspecified, server will default to 100.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "Required. The resource name of the space for which membership list is to be\nfetched, in the form \"spaces/*\".\n\nExample: spaces/AAAAMpdlehY",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+$"
+                }
+              },
+              "flatPath": "v1/spaces/{spacesId}/members",
+              "path": "v1/{+parent}/members",
+              "id": "chat.spaces.members.list",
+              "description": "Lists human memberships in a space."
+            },
+            "get": {
+              "description": "Returns a membership.",
+              "response": {
+                "$ref": "Membership"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "description": "Required. Resource name of the membership to be retrieved, in the form\n\"spaces/*/members/*\".\n\nExample: spaces/AAAAMpdlehY/members/105115627578887013105",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^spaces/[^/]+/members/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
+              "path": "v1/{+name}",
+              "id": "chat.spaces.members.get"
+            }
+          }
         }
       }
-    },
-    "FormAction": {
-      "description": "A form action describes the behavior when the form is submitted.\nFor example, an Apps Script can be invoked to handle the form.",
-      "type": "object",
-      "properties": {
-        "parameters": {
-          "type": "array",
-          "items": {
-            "$ref": "ActionParameter"
-          },
-          "description": "List of action parameters."
-        },
-        "actionMethodName": {
-          "description": "Apps Script function to invoke when the containing element is\nclicked/activated.",
-          "type": "string"
-        }
-      },
-      "id": "FormAction"
-    },
-    "Image": {
-      "description": "An image that is specified by a URL and can have an onclick action.",
-      "type": "object",
-      "properties": {
-        "aspectRatio": {
-          "description": "The aspect ratio of this image (width/height).",
-          "format": "double",
-          "type": "number"
-        },
-        "imageUrl": {
-          "description": "The URL of the image.",
-          "type": "string"
-        },
-        "onClick": {
-          "$ref": "OnClick",
-          "description": "The onclick action."
-        }
-      },
-      "id": "Image"
-    },
-    "Annotation": {
-      "description": "Annotations associated with the plain-text body of the message.\n\nExample plain-text message body:\n```\nHello @FooBot how are you!\"\n```\n\nThe corresponding annotations metadata:\n```\n\"annotations\":[{\n  \"type\":\"USER_MENTION\",\n  \"startIndex\":6,\n  \"length\":7,\n  \"userMention\": {\n    \"user\": {\n      \"name\":\"users/107946847022116401880\",\n      \"displayName\":\"FooBot\",\n      \"avatarUrl\":\"https://goo.gl/aeDtrS\",\n      \"type\":\"BOT\"\n    },\n    \"type\":\"MENTION\"\n   }\n}]\n```",
-      "type": "object",
-      "properties": {
-        "length": {
-          "description": "Length of the substring in the plain-text message body this annotation\ncorresponds to.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "startIndex": {
-          "description": "Start index (0-based, inclusive) in the plain-text message body this\nannotation corresponds to.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "userMention": {
-          "$ref": "UserMentionMetadata",
-          "description": "The metadata of user mention."
-        },
-        "type": {
-          "description": "The type of this annotation.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "A user is mentioned."
-          ],
-          "enum": [
-            "ANNOTATION_TYPE_UNSPECIFIED",
-            "USER_MENTION"
-          ]
-        }
-      },
-      "id": "Annotation"
     }
-  }
+  },
+  "parameters": {
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://chat.googleapis.com/",
+  "description": "Enables bots to fetch information and perform actions in Hangouts Chat.",
+  "kind": "discovery#restDescription",
+  "servicePath": "",
+  "basePath": "",
+  "revision": "20180918",
+  "documentationLink": "https://developers.google.com/hangouts/chat",
+  "id": "chat:v1"
 }

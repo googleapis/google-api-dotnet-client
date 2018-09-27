@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180915 (1353)
+ *      <tr><th>API Rev<td>20180922 (1360)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -2477,6 +2477,14 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// /my-projectid/traces/06796866738c859f2f19b7cfb3214824</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trace")]
         public virtual string Trace { get; set; } 
+
+        /// <summary>Optional. The sampling decision of the trace associated with the log entry. True means that the
+        /// trace resource name in the trace field was sampled for storage in a trace backend. False means that the
+        /// trace was not sampled for storage when this log entry was written, or the sampling decision was unknown at
+        /// the time. A non-sampled trace value is still useful as a request correlation identifier. The default is
+        /// False.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traceSampled")]
+        public virtual System.Nullable<bool> TraceSampled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

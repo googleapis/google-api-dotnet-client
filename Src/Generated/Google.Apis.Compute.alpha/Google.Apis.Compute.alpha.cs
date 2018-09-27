@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20180828 (1335)
+ *      <tr><th>API Rev<td>20180906 (1344)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -21214,7 +21214,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -21255,6 +21255,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Specifies the guest attributes path to be queried.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("queryPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QueryPath { get; set; }
 
             /// <summary>Specifies the key for the guest attributes entry.</summary>
             [Google.Apis.Util.RequestParameterAttribute("variableKey", Google.Apis.Util.RequestParameterType.Query)]
@@ -21310,6 +21314,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "queryPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "queryPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "variableKey", new Google.Apis.Discovery.Parameter
@@ -21535,6 +21548,97 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the Shielded VM Identity of an instance</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual GetShieldedVmIdentityRequest GetShieldedVmIdentity(string project, string zone, string instance)
+        {
+            return new GetShieldedVmIdentityRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the Shielded VM Identity of an instance</summary>
+        public class GetShieldedVmIdentityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ShieldedVmIdentity>
+        {
+            /// <summary>Constructs a new GetShieldedVmIdentity request.</summary>
+            public GetShieldedVmIdentityRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getShieldedVmIdentity"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getShieldedVmIdentity"; }
+            }
+
+            /// <summary>Initializes GetShieldedVmIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -28401,9 +28505,8 @@ namespace Google.Apis.Compute.alpha
         }
 
 
-        /// <summary>Deletes the specified machine image. If you delete an instance template that is being referenced
-        /// from another instance group, the instance group will not be able to create or recreate virtual machine
-        /// instances. Deleting an machine image is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified machine image. Deleting an machine image is permanent and cannot be
+        /// undone.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="machineImage">The name of the
         /// machine image to delete.</param>
@@ -28412,9 +28515,8 @@ namespace Google.Apis.Compute.alpha
             return new DeleteRequest(service, project, machineImage);
         }
 
-        /// <summary>Deletes the specified machine image. If you delete an instance template that is being referenced
-        /// from another instance group, the instance group will not be able to create or recreate virtual machine
-        /// instances. Deleting an machine image is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified machine image. Deleting an machine image is permanent and cannot be
+        /// undone.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -28660,8 +28762,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Creates an machine image in the specified project using the data that is included in the request.
-        /// If you are creating a new template to update an existing instance group, your new machine image must use the
-        /// same network or, if applicable, the same subnetwork as the original template.</summary>
+        /// If you are creating a new machine image to update an existing instance, your new machine image must use the
+        /// same network or, if applicable, the same subnetwork as the original instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.alpha.Data.MachineImage body, string project)
@@ -28670,8 +28772,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Creates an machine image in the specified project using the data that is included in the request.
-        /// If you are creating a new template to update an existing instance group, your new machine image must use the
-        /// same network or, if applicable, the same subnetwork as the original template.</summary>
+        /// If you are creating a new machine image to update an existing instance, your new machine image must use the
+        /// same network or, if applicable, the same subnetwork as the original instance.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -69464,7 +69566,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address
-        /// resource ( internal regional static IP address).
+        /// resource ( internal regional static IP address), with a purpose of GCE_END_POINT and address_type of
+        /// INTERNAL.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
@@ -69917,6 +70020,15 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The path to be queried. This can be the default namespace ('/') or a nested namespace ('//') or a
+        /// specified key ('//')</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPath")]
+        public virtual string QueryPath { get; set; } 
+
+        /// <summary>[Output Only] The value of the requested queried path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryValue")]
+        public virtual GuestAttributesValue QueryValue { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -69928,6 +70040,35 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] The value found for the requested key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableValue")]
         public virtual string VariableValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A guest attributes namespace/key/value entry.</summary>
+    public class GuestAttributesEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Namespace for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; } 
+
+        /// <summary>Value for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Array of guest attribute namespace/key/value tuples.</summary>
+    public class GuestAttributesValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GuestAttributesEntry> Items { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74115,8 +74256,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCode")]
         public virtual System.Nullable<ulong> LicenseCode { get; set; } 
 
-        /// <summary>[Output Only] Name of the resource. The name is 1-63 characters long and complies with
-        /// RFC1035.</summary>
+        /// <summary>Name of the resource. The name must be 1-63 characters long and comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -74386,8 +74526,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>The source instance used to create the template. You can provide this as a partial or full URL to
-        /// the resource. For example, the following are valid values: -
+        /// <summary>The source instance used to create the machine image. You can provide this as a partial or full URL
+        /// to the resource. For example, the following are valid values: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance -
         /// projects/project/zones/zone/instances/instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
@@ -75081,6 +75221,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>The default port used if the port number is not specified in the network endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPort")]
+        public virtual System.Nullable<int> DefaultPort { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -75109,6 +75253,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The URL of the network to which all network endpoints in the NEG belong. Uses "default" project
+        /// network if unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
         /// <summary>Type of network endpoints in this network endpoint group. Currently the only supported value is
         /// GCE_VM_IP_PORT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointType")]
@@ -75122,9 +75271,17 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
 
+        /// <summary>Optional URL of the subnetwork to which all network endpoints in the NEG belong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
+
         /// <summary>Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>[Output Only] The URL of the zone where the network endpoint group is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -79489,8 +79646,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// If you do not provide an encryption key, then the disk will be encrypted using an automatically generated
         /// key and you do not need to provide a key to use the disk later.
         ///
-        /// Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to
-        /// encrypt disks in a managed instance group.</summary>
+        /// Machine Images do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt
+        /// disks in a managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
@@ -79548,7 +79705,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// If desired, you can also attach existing non-root persistent disks using this property. This field is only
         /// applicable for persistent disks.
         ///
-        /// Note that for InstanceTemplate, specify the disk name, not the URL for the disk.</summary>
+        /// Note that for sourceMachineImage, specify the disk name, not the URL for the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -79933,6 +80090,37 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A shielded VM identity entry.</summary>
+    public class ShieldedVmIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual ShieldedVmIdentityEntry EncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#shieldedVmIdentity for shielded VM identity
+        /// entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKey")]
+        public virtual ShieldedVmIdentityEntry SigningKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Shielded VM Identity Entry.</summary>
+    public class ShieldedVmIdentityEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ekCert")]
+        public virtual string EkCert { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ekPub")]
+        public virtual string EkPub { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The policy describes the baseline against which VM instance boot integrity is measured.</summary>
     public class ShieldedVmIntegrityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -80178,10 +80366,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class SourceInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enables instances created based on this template to send packets with source IP addresses other
-        /// than their own and receive packets with destination IP addresses other than their own. If these instances
-        /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the Enable IP forwarding documentation for more information.</summary>
+        /// <summary>Enables instances created based on this machine image to send packets with source IP addresses
+        /// other than their own and receive packets with destination IP addresses other than their own. If these
+        /// instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true.
+        /// If unsure, leave this set to false. See the Enable IP forwarding documentation for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -80189,30 +80378,29 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
         public virtual System.Nullable<bool> DeletionProtection { get; set; } 
 
-        /// <summary>An optional text description for the instances that are created from this instance
-        /// template.</summary>
+        /// <summary>An optional text description for the instances that are created from this machine image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>An array of disks that are associated with the instances that are created from this
-        /// template.</summary>
+        /// <summary>An array of disks that are associated with the instances that are created from this machine
+        /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<SavedAttachedDisk> Disks { get; set; } 
 
-        /// <summary>A list of guest accelerator cards' type and count to use for instances created from the instance
-        /// template.</summary>
+        /// <summary>A list of guest accelerator cards' type and count to use for instances created from the machine
+        /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
-        /// <summary>Labels to apply to instances that are created from this template.</summary>
+        /// <summary>Labels to apply to instances that are created from this machine image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The machine type to use for instances that are created from this template.</summary>
+        /// <summary>The machine type to use for instances that are created from this machine image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
-        /// <summary>The metadata key/value pairs to assign to instances that are created from this template. These
+        /// <summary>The metadata key/value pairs to assign to instances that are created from this machine image. These
         /// pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -80229,19 +80417,20 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
-        /// <summary>Specifies the scheduling options for the instances that are created from this template.</summary>
+        /// <summary>Specifies the scheduling options for the instances that are created from this machine
+        /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual Scheduling Scheduling { get; set; } 
 
         /// <summary>A list of service accounts with specified scopes. Access tokens for these service accounts are
-        /// available to the instances that are created from this template. Use metadata queries to obtain the access
-        /// tokens for these instances.</summary>
+        /// available to the instances that are created from this machine image. Use metadata queries to obtain the
+        /// access tokens for these instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
-        /// <summary>A list of tags to apply to the instances that are created from this template. The tags identify
-        /// valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag
-        /// within the list must comply with RFC1035.</summary>
+        /// <summary>A list of tags to apply to the instances that are created from this machine image. The tags
+        /// identify valid sources or targets for network firewalls. The setTags method can modify this list of tags.
+        /// Each tag within the list must comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual Tags Tags { get; set; } 
 
@@ -80821,7 +81010,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Whether to enable flow logging for this subnetwork.</summary>
+        /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
+        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
         public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 

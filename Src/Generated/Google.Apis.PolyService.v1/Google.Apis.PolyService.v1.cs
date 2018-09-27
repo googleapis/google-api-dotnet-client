@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180914 (1352)
+ *      <tr><th>API Rev<td>20180922 (1360)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -437,6 +437,12 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Category { get; set; }
 
+            /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
+            /// pages. To get the next page, submit the same request specifying the value from
+            /// next_page_token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example,
             /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxComplexity", Google.Apis.Util.RequestParameterType.Query)]
@@ -455,12 +461,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.StringValueAttribute("SIMPLE")]
                 SIMPLE,
             }
-
-            /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
-            /// pages. To get the next page, submit the same request specifying the value from
-            /// next_page_token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
             /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults
             /// to `20`.</summary>
@@ -537,18 +537,18 @@ namespace Google.Apis.PolyService.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxComplexity", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxComplexity",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxComplexity", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxComplexity",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -639,11 +639,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Format { get; set; }
-
                 /// <summary>Specifies a continuation token from a previous search whose results were split into
                 /// multiple pages. To get the next page, submit the same request specifying the value from
                 /// next_page_token.</summary>
@@ -677,6 +672,11 @@ namespace Google.Apis.PolyService.v1
                 /// features.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
+                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Format { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -712,15 +712,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -751,6 +742,15 @@ namespace Google.Apis.PolyService.v1
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "format", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "format",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -812,16 +812,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
-                /// Defaults to `20`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, `TILT`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Format { get; set; }
-
                 /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`,
                 /// 'LIKED_TIME'. Defaults to `LIKED_TIME`, which ranks assets based on how recently they were
                 /// liked.</summary>
@@ -833,6 +823,16 @@ namespace Google.Apis.PolyService.v1
                 /// next_page_token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
+                /// Defaults to `20`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
+                /// `GLTF`, `GLTF2`, `OBJ`, `TILT`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Format { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -868,24 +868,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -898,6 +880,24 @@ namespace Google.Apis.PolyService.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "format", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "format",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

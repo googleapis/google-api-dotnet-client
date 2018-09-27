@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180914 (1352)
+ *      <tr><th>API Rev<td>20180921 (1359)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -74,6 +74,7 @@ namespace Google.Apis.ShoppingContent.v2
             orderinvoices = new OrderinvoicesResource(this);
             orderpayments = new OrderpaymentsResource(this);
             orderreports = new OrderreportsResource(this);
+            orderreturns = new OrderreturnsResource(this);
             orders = new OrdersResource(this);
             pos = new PosResource(this);
             products = new ProductsResource(this);
@@ -207,6 +208,14 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual OrderreportsResource Orderreports
         {
             get { return orderreports; }
+        }
+
+        private readonly OrderreturnsResource orderreturns;
+
+        /// <summary>Gets the Orderreturns resource.</summary>
+        public virtual OrderreturnsResource Orderreturns
+        {
+            get { return orderreturns; }
         }
 
         private readonly OrdersResource orders;
@@ -4848,15 +4857,6 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("disbursementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DisbursementId { get; private set; }
 
-            /// <summary>The last date in which disbursements occurred. In ISO 8601 format. Default: current
-            /// date.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("disbursementEndDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string DisbursementEndDate { get; set; }
-
-            /// <summary>The first date in which disbursements occurred. In ISO 8601 format.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("disbursementStartDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string DisbursementStartDate { get; set; }
-
             /// <summary>The maximum number of disbursements to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -4864,6 +4864,15 @@ namespace Google.Apis.ShoppingContent.v2
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The last date in which transaction occurred. In ISO 8601 format. Default: current
+            /// date.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("transactionEndDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TransactionEndDate { get; set; }
+
+            /// <summary>The first date in which transaction occurred. In ISO 8601 format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("transactionStartDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TransactionStartDate { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4908,18 +4917,238 @@ namespace Google.Apis.ShoppingContent.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "disbursementEndDate", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "disbursementEndDate",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "disbursementStartDate", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "disbursementStartDate",
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "transactionEndDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "transactionEndDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "transactionStartDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "transactionStartDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "orderreturns" collection of methods.</summary>
+    public class OrderreturnsResource
+    {
+        private const string Resource = "orderreturns";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrderreturnsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an order return from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="returnId">Merchant order return ID generated by Google.</param>
+        public virtual GetRequest Get(ulong merchantId, string returnId)
+        {
+            return new GetRequest(service, merchantId, returnId);
+        }
+
+        /// <summary>Retrieves an order return from your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.MerchantOrderReturn>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, string returnId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                ReturnId = returnId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>Merchant order return ID generated by Google.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReturnId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderreturns/{returnId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "returnId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists order returns in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        public virtual ListRequest List(ulong merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists order returns in your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderreturnsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>Obtains order returns created before this date (inclusively), in ISO 8601 format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("createdEndDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CreatedEndDate { get; set; }
+
+            /// <summary>Obtains order returns created after this date (inclusively), in ISO 8601 format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("createdStartDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CreatedStartDate { get; set; }
+
+            /// <summary>The maximum number of order returns to return in the response, used for paging. The default
+            /// value is 25 returns per page, and the maximum allowed value is 250 returns per page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Return the results in the specified order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
+
+            /// <summary>Return the results in the specified order.</summary>
+            public enum OrderByEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("returnCreationTimeAsc")]
+                ReturnCreationTimeAsc,
+                [Google.Apis.Util.StringValueAttribute("returnCreationTimeDesc")]
+                ReturnCreationTimeDesc,
+            }
+
+            /// <summary>The token returned by the previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orderreturns"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "createdEndDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createdEndDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "createdStartDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createdStartDate",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4929,6 +5158,15 @@ namespace Google.Apis.ShoppingContent.v2
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9796,6 +10034,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class CustomerReturnReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
+        public virtual string ReasonCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CutoffTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Hour of the cutoff time until which an order has to be placed to be processed in the same day.
@@ -11086,6 +11336,54 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class MerchantOrderReturn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
+        public virtual string CreationDate { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
+        public virtual string MerchantOrderId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("orderReturnId")]
+        public virtual string OrderReturnId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("returnItems")]
+        public virtual System.Collections.Generic.IList<MerchantOrderReturnItem> ReturnItems { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("returnShipments")]
+        public virtual System.Collections.Generic.IList<ReturnShipment> ReturnShipments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MerchantOrderReturnItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customerReturnReason")]
+        public virtual CustomerReturnReason CustomerReturnReason { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantReturnReason")]
+        public virtual RefundReason MerchantReturnReason { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual OrderLineItemProduct Product { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("returnShipmentIds")]
+        public virtual System.Collections.Generic.IList<string> ReturnShipmentIds { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the order was acknowledged.</summary>
@@ -11244,8 +11542,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email address that should be used for order related communications. In certain cases this might not
-        /// be a real users email, but a proxy email.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
@@ -11969,9 +12266,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chargeState")]
         public virtual string ChargeState { get; set; } 
 
-        /// <summary>Invoice ID from orderInvoice service that corresponds to the charge.</summary>
+        /// <summary>Deprecated. Please use invoiceIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
         public virtual string InvoiceId { get; set; } 
+
+        /// <summary>Invoice IDs from the orderinvoices service that correspond to the charge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceIds")]
+        public virtual System.Collections.Generic.IList<string> InvoiceIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11994,9 +12295,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderpaymentsNotifyRefundRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Invoice ID from orderInvoice service that corresponds to the charge.</summary>
+        /// <summary>Deprecated. Please use invoiceIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
         public virtual string InvoiceId { get; set; } 
+
+        /// <summary>Invoice IDs from the orderinvoices service that correspond to the refund.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceIds")]
+        public virtual System.Collections.Generic.IList<string> InvoiceIds { get; set; } 
 
         /// <summary>Whether refund was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundState")]
@@ -12054,6 +12359,24 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The list of transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactions")]
         public virtual System.Collections.Generic.IList<OrderReportTransaction> Transactions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderreturnsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderreturnsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The token for the retrieval of the next page of returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<MerchantOrderReturn> Resources { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14645,6 +14968,36 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RefundReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
+        public virtual string ReasonCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReturnShipment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
+        public virtual string CreationDate { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
+        public virtual string ReturnMethodType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
+        public virtual string ShipmentId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentTrackingInfos")]
+        public virtual System.Collections.Generic.IList<ShipmentTrackingInfo> ShipmentTrackingInfos { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of cells that constitute the row. Must have the same length as columnHeaders for two-
@@ -14734,6 +15087,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>[required] Invoice details for a single unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitInvoice")]
         public virtual UnitInvoice UnitInvoice { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShipmentTrackingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingNumber")]
+        public virtual string TrackingNumber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14960,7 +15325,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class TestOrderCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email address of the customer.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 

@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
+ *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180924 (1362)
+ *      <tr><th>API Rev<td>20180925 (1363)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
- *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
+ *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>
+ *              https://developers.google.com/authorized-buyers/apis/reference/rest/</a>
  *      <tr><th>Discovery Name<td>adexchangebuyer2
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Ad Exchange Buyer API II can be found at
- * <a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>.
+ * <a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>https://developers.google.com/authorized-buyers/apis/reference/rest/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -1514,17 +1514,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CreativeId { get; private set; }
 
-                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                    /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
-                    /// 'ListDealAssociations' method.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. Server may return fewer associations than requested. If
-                    /// unspecified, server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>An optional query string to filter deal associations. If no filter is specified, all
                     /// associations will be returned. Supported queries are:
                     ///
@@ -1535,6 +1524,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
                     [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Query { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
+                    /// 'ListDealAssociations' method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size. Server may return fewer associations than requested. If
+                    /// unspecified, server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1579,6 +1579,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "query", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "query",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1591,15 +1600,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1889,18 +1889,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                /// value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives'
-                /// method.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size. The server may return fewer creatives than requested (due to timeout
-                /// constraint) even if more are available via another call. If unspecified, server will pick an
-                /// appropriate default. Acceptable values are 1 to 1000, inclusive.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>An optional query string to filter creatives. If no filter is specified, all active
                 /// creatives will be returned. Supported queries are:
                 ///
@@ -1913,6 +1901,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// OR attribute:47'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
+
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives'
+                /// method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer creatives than requested (due to timeout
+                /// constraint) even if more are available via another call. If unspecified, server will pick an
+                /// appropriate default. Acceptable values are 1 to 1000, inclusive.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1948,6 +1948,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1960,15 +1969,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "query", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "query",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2522,13 +2522,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>An optional PQL query used to query for products. See https://developers.google.com
-                /// /doubleclick-publishers/docs/pqlreference for documentation about PQL and examples.
-                ///
-                /// Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The page token as returned from ListProductsResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2537,6 +2530,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// the server will pick an appropriate default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>An optional PQL query used to query for products. See https://developers.google.com/ad-
+                /// manager/docs/pqlreference for documentation about PQL and examples.
+                ///
+                /// Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2572,15 +2572,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2593,6 +2584,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3155,21 +3155,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>An optional PQL filter query used to query for proposals.
-                ///
-                /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>The page token as returned from ListProposalsResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
-                /// the server will pick an appropriate default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
                 /// it will be LIST_FILTER.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSyntax", Google.Apis.Util.RequestParameterType.Query)]
@@ -3186,6 +3171,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.StringValueAttribute("LIST_FILTER")]
                     LISTFILTER,
                 }
+
+                /// <summary>An optional PQL filter query used to query for proposals.
+                ///
+                /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The page token as returned from ListProposalsResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3221,6 +3221,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filterSyntax", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSyntax",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -3242,15 +3251,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSyntax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSyntax",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4514,8 +4514,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
                         /// `bidders/123/accounts/456/filterSets/abc`</param>
                         /// <param name="creativeStatusId">The ID of the creative
-                        /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/ad-
-                        /// exchange/rtb/downloads/creative-status-codes).</param>
+                        /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com
+                        /// /authorized-buyers/rtb/downloads/creative-status-codes).</param>
                         public virtual ListRequest List(string filterSetName, int creativeStatusId)
                         {
                             return new ListRequest(service, filterSetName, creativeStatusId);
@@ -4549,8 +4549,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             public virtual string FilterSetName { get; private set; }
 
                             /// <summary>The ID of the creative status for which to retrieve a breakdown by creative.
-                            /// See [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads
-                            /// /creative-status-codes).</summary>
+                            /// See [creative-status-codes](https://developers.google.com/authorized-
+                            /// buyers/rtb/downloads/creative-status-codes).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual int CreativeStatusId { get; private set; }
 
@@ -4665,9 +4665,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
                         /// `bidders/123/accounts/456/filterSets/abc`</param>
                         /// <param name="creativeStatusId">The ID of the creative
-                        /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-
-                        /// exchange/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86,
-                        /// and 87.</param>
+                        /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com
+                        /// /authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18,
+                        /// 19, 86, and 87.</param>
                         public virtual ListRequest List(string filterSetName, int creativeStatusId)
                         {
                             return new ListRequest(service, filterSetName, creativeStatusId);
@@ -4701,7 +4701,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             public virtual string FilterSetName { get; private set; }
 
                             /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
-                            /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads
+                            /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads
                             /// /creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19,
                             /// 86, and 87.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
@@ -4825,16 +4825,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the
                         /// filteredBids.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -4870,18 +4870,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4955,16 +4955,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to
                         /// the impressionMetrics.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -5000,18 +5000,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -6255,8 +6255,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
                     /// `bidders/123/accounts/456/filterSets/abc`</param>
                     /// <param name="creativeStatusId">The ID of the creative
-                    /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/ad-
-                    /// exchange/rtb/downloads/creative-status-codes).</param>
+                    /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com
+                    /// /authorized-buyers/rtb/downloads/creative-status-codes).</param>
                     public virtual ListRequest List(string filterSetName, int creativeStatusId)
                     {
                         return new ListRequest(service, filterSetName, creativeStatusId);
@@ -6290,8 +6290,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string FilterSetName { get; private set; }
 
                         /// <summary>The ID of the creative status for which to retrieve a breakdown by creative. See
-                        /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-
-                        /// status-codes).</summary>
+                        /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads
+                        /// /creative-status-codes).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual int CreativeStatusId { get; private set; }
 
@@ -6406,9 +6406,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
                     /// `bidders/123/accounts/456/filterSets/abc`</param>
                     /// <param name="creativeStatusId">The ID of the creative
-                    /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-
-                    /// exchange/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86,
-                    /// and 87.</param>
+                    /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com
+                    /// /authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18,
+                    /// 19, 86, and 87.</param>
                     public virtual ListRequest List(string filterSetName, int creativeStatusId)
                     {
                         return new ListRequest(service, filterSetName, creativeStatusId);
@@ -6442,9 +6442,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         public virtual string FilterSetName { get; private set; }
 
                         /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
-                        /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-
-                        /// status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
-                        /// 87.</summary>
+                        /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads
+                        /// /creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86,
+                        /// and 87.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual int CreativeStatusId { get; private set; }
 
@@ -7536,10 +7536,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a buyer of inventory. Each buyer is identified by a unique Ad Exchange account ID.</summary>
+    /// <summary>Represents a buyer of inventory. Each buyer is identified by a unique Authorized Buyers account
+    /// ID.</summary>
     public class Buyer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Ad Exchange account ID of the buyer.</summary>
+        /// <summary>Authorized Buyers account ID of the buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
@@ -7551,8 +7552,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// bid response was not successful, as described by the specified callout status.</summary>
     public class CalloutStatusRow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the callout status. See [callout-status-codes](https://developers.google.com/ad-
-        /// exchange/rtb/downloads/callout-status-codes).</summary>
+        /// <summary>The ID of the callout status. See [callout-status-codes](https://developers.google.com/authorized-
+        /// buyers/rtb/downloads/callout-status-codes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calloutStatusId")]
         public virtual System.Nullable<int> CalloutStatusId { get; set; } 
 
@@ -7577,9 +7578,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }    
 
     /// <summary>A client resource represents a client buyeran agency, a brand, or an advertiser customer of the sponsor
-    /// buyer. Users associated with the client buyer have restricted access to the Ad Exchange Marketplace and certain
-    /// other sections of the Ad Exchange Buyer UI based on the role granted to the client buyer. All fields are
-    /// required unless otherwise specified.</summary>
+    /// buyer. Users associated with the client buyer have restricted access to the Marketplace and certain other
+    /// sections of the Authorized Buyers UI based on the role granted to the client buyer. All fields are required
+    /// unless otherwise specified.</summary>
     public class Client : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The globally-unique numerical ID of the client. The value of this field is ignored in create and
@@ -7645,8 +7646,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A client user is created under a client buyer and has restricted access to the Ad Exchange Marketplace
-    /// and certain other sections of the Ad Exchange Buyer UI based on the role granted to the associated client buyer.
+    /// <summary>A client user is created under a client buyer and has restricted access to the Marketplace and certain
+    /// other sections of the Authorized Buyers UI based on the role granted to the associated client buyer.
     ///
     /// The only way a new client user can be created is via accepting an email invitation (see the
     /// accounts.clients.invitations.create method).
@@ -7676,7 +7677,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An invitation for a new client user to get access to the Ad Exchange Buyer UI. All fields are required
+    /// <summary>An invitation for a new client user to get access to the Authorized Buyers UI. All fields are required
     /// unless otherwise specified.</summary>
     public class ClientUserInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7889,8 +7890,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in DFP. This
-    /// doesn't apply to Private Auction and AdX Preferred Deals.</summary>
+    /// <summary>Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in Ad Manager.
+    /// This doesn't apply to Private Auction and AdX Preferred Deals.</summary>
     public class CreativeRestrictions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The format of the environment that the creatives will be displayed in.</summary>
@@ -7912,8 +7913,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class CreativeSize : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>What formats are allowed by the publisher. If this repeated field is empty then all formats are
-        /// allowed. E.g., if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio ad
-        /// (without any video).</summary>
+        /// allowed. For example, if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio
+        /// ad (without any video).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedFormats")]
         public virtual System.Collections.Generic.IList<string> AllowedFormats { get; set; } 
 
@@ -7945,7 +7946,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }    
 
     /// <summary>Represents information for a creative that is associated with a Programmatic Guaranteed/Preferred Deal
-    /// in DFP.</summary>
+    /// in Ad Manager.</summary>
     public class CreativeSpecification : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Companion sizes may be filled in only when this is a video creative.</summary>
@@ -7968,8 +7969,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
         public virtual MetricValue BidCount { get; set; } 
 
-        /// <summary>The ID of the creative status. See [creative-status-codes](https://developers.google.com/ad-
-        /// exchange/rtb/downloads/creative-status-codes).</summary>
+        /// <summary>The ID of the creative status. See [creative-status-codes](https://developers.google.com
+        /// /authorized-buyers/rtb/downloads/creative-status-codes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
         public virtual System.Nullable<int> CreativeStatusId { get; set; } 
 
@@ -8105,8 +8106,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativePreApprovalPolicy")]
         public virtual string CreativePreApprovalPolicy { get; set; } 
 
-        /// <summary>Restricitions about the creatives associated with the deal (i.e. size) This is available for
-        /// Programmatic Guaranteed/Preferred Deals in DFP. @OutputOnly</summary>
+        /// <summary>Restricitions about the creatives associated with the deal (i.e., size) This is available for
+        /// Programmatic Guaranteed/Preferred Deals in Ad Manager. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRestrictions")]
         public virtual CreativeRestrictions CreativeRestrictions { get; set; } 
 
@@ -8319,8 +8320,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>A set of filters that is applied to a request for data. Within a filter set, an AND operation is
     /// performed across the filters represented by each field. An OR operation is performed across the filters
-    /// represented by the multiple values of a repeated field. E.g. "format=VIDEO AND deal_id=12 AND
-    /// (seller_network_id=34 OR seller_network_id=56)"</summary>
+    /// represented by the multiple values of a repeated field, e.g., "format=VIDEO AND deal_id=12 AND
+    /// (seller_network_id=34 OR seller_network_id=56)".</summary>
     public class FilterSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An absolute date range, defined by a start date and an end date. Interpreted relative to Pacific
@@ -8329,13 +8330,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual AbsoluteDateRange AbsoluteDateRange { get; set; } 
 
         /// <summary>The ID of the creative on which to filter; optional. This field may be set only for a filter set
-        /// that accesses account-level troubleshooting data, i.e. one whose name matches the
+        /// that accesses account-level troubleshooting data, i.e., one whose name matches the
         /// `bidders/accounts/filterSets` pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
         public virtual string CreativeId { get; set; } 
 
         /// <summary>The ID of the deal on which to filter; optional. This field may be set only for a filter set that
-        /// accesses account-level troubleshooting data, i.e. one whose name matches the `bidders/accounts/filterSets`
+        /// accesses account-level troubleshooting data, i.e., one whose name matches the `bidders/accounts/filterSets`
         /// pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
         public virtual System.Nullable<long> DealId { get; set; } 
@@ -8345,7 +8346,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string Environment { get; set; } 
 
         /// <summary>The list of formats on which to filter; may be empty. The filters represented by multiple formats
-        /// are ORed together (i.e. if non-empty, results must match any one of the formats).</summary>
+        /// are ORed together (i.e., if non-empty, results must match any one of the formats).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formats")]
         public virtual System.Collections.Generic.IList<string> Formats { get; set; } 
 
@@ -8360,12 +8361,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
-        /// platforms are ORed together (i.e. if non-empty, results must match any one of the platforms).</summary>
+        /// platforms are ORed together (i.e., if non-empty, results must match any one of the platforms).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
         public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
 
-        /// <summary>For Exchange Bidding buyers only. The list of publisher identifiers on which to filter; may be
-        /// empty. The filters represented by multiple publisher identifiers are ORed together.</summary>
+        /// <summary>For Open Bidding partners only. The list of publisher identifiers on which to filter; may be empty.
+        /// The filters represented by multiple publisher identifiers are ORed together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherIdentifiers")]
         public virtual System.Collections.Generic.IList<string> PublisherIdentifiers { get; set; } 
 
@@ -8378,10 +8379,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
         public virtual RelativeDateRange RelativeDateRange { get; set; } 
 
-        /// <summary>For Ad Exchange buyers only. The list of IDs of the seller (publisher) networks on which to filter;
-        /// may be empty. The filters represented by multiple seller network IDs are ORed together (i.e. if non-empty,
+        /// <summary>For Authorized Buyers only. The list of IDs of the seller (publisher) networks on which to filter;
+        /// may be empty. The filters represented by multiple seller network IDs are ORed together (i.e., if non-empty,
         /// results must match any one of the publisher networks). See [seller-network-
-        /// ids](https://developers.google.com/ad-exchange/rtb/downloads/seller-network-ids) file for the set of
+        /// ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file for the set of
         /// existing seller network IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerNetworkIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SellerNetworkIds { get; set; } 
@@ -8593,7 +8594,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
     /// <summary>Represents the size of an ad unit that can be targeted on an ad request. It only applies to Private
     /// Auction, AdX Preferred Deals and Auction Packages. This targeting does not apply to Programmatic Guaranteed and
-    /// Preferred Deals in DFP.</summary>
+    /// Preferred Deals in Ad Manager.</summary>
     public class InventorySizeTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of inventory sizes to be excluded.</summary>
@@ -8956,11 +8957,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySizeTargeting")]
         public virtual InventorySizeTargeting InventorySizeTargeting { get; set; } 
 
-        /// <summary>Placement targeting information, e.g. URL, mobile applications.</summary>
+        /// <summary>Placement targeting information, e.g., URL, mobile applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementTargeting")]
         public virtual PlacementTargeting PlacementTargeting { get; set; } 
 
-        /// <summary>Technology targeting information, e.g. operating system, device category.</summary>
+        /// <summary>Technology targeting information, e.g., operating system, device category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyTargeting")]
         public virtual TechnologyTargeting TechnologyTargeting { get; set; } 
 
@@ -9192,7 +9193,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents targeting about where the ads can appear, e.g. certain sites or mobile applications.
+    /// <summary>Represents targeting about where the ads can appear, e.g., certain sites or mobile applications.
     /// Different placement targeting types will be logically OR'ed.</summary>
     public class PlacementTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9310,7 +9311,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>The revision number of the product. (auto-assigned by marketplace)</summary>
+        /// <summary>The revision number of the product (auto-assigned by Marketplace).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productRevision")]
         public virtual System.Nullable<long> ProductRevision { get; set; } 
 
@@ -9352,7 +9353,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     /// <summary>Note: this resource requires whitelisting for access. Please contact your account manager for access to
     /// Marketplace resources.
     ///
-    /// Represents a proposal in the marketplace. A proposal is the unit of negotiation between a seller and a buyer and
+    /// Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and
     /// contains deals which are served.
     ///
     /// Note: you can not update, create, or otherwise modify Private Auction or Preferred Deals deals through the API.
@@ -9558,17 +9559,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }    
 
     /// <summary>A relative date range, specified by an offset and a duration. The supported range of dates begins 30
-    /// days before today and ends today. I.e. the limits for these values are: offset_days >= 0 duration_days >= 1
+    /// days before today and ends today, i.e., the limits for these values are: offset_days >= 0 duration_days >= 1
     /// offset_days + duration_days <= 30</summary>
     public class RelativeDateRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of days in the requested date range. E.g. for a range spanning today, 1. For a range
-        /// spanning the last 7 days, 7.</summary>
+        /// <summary>The number of days in the requested date range, e.g., for a range spanning today: 1. For a range
+        /// spanning the last 7 days: 7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationDays")]
         public virtual System.Nullable<int> DurationDays { get; set; } 
 
-        /// <summary>The end date of the filter set, specified as the number of days before today. E.g. for a range
-        /// where the last date is today, 0.</summary>
+        /// <summary>The end date of the filter set, specified as the number of days before today, e.g., for a range
+        /// where the last date is today: 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetDays")]
         public virtual System.Nullable<int> OffsetDays { get; set; } 
 
@@ -9617,7 +9618,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a seller of inventory. Each seller is identified by a unique Ad Exchange account
+    /// <summary>Represents a seller of inventory. Each seller is identified by a unique Ad Manager account
     /// ID.</summary>
     public class Seller : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9747,7 +9748,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual CreativeSize CreativeSizeValue { get; set; } 
 
         /// <summary>The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING. The
-        /// definition of this targeting is derived from the structure used by DFP.</summary>
+        /// definition of this targeting is derived from the structure used by Ad Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargetingValue")]
         public virtual DayPartTargeting DayPartTargetingValue { get; set; } 
 
@@ -9824,9 +9825,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a list of targeted and excluded URLs (e.g google.com). For Private Auction and AdX Preferred
-    /// Deals, URLs are either included or excluded. For DFP Programmatic Guaranteed and Preferred Deals, this doesn't
-    /// apply.</summary>
+    /// <summary>Represents a list of targeted and excluded URLs (e.g., google.com). For Private Auction and AdX
+    /// Preferred Deals, URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this
+    /// doesn't apply.</summary>
     public class UrlTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of URLs to be excluded.</summary>
