@@ -1148,6 +1148,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>Override used only by built-in games in Play Games application.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("builtinGameId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string BuiltinGameId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1172,6 +1176,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "builtinGameId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "builtinGameId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }

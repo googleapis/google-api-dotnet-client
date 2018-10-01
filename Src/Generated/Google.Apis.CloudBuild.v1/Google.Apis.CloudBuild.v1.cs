@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180926 (1364)
+ *      <tr><th>API Rev<td>20180927 (1365)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1922,11 +1922,11 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>List of volumes to mount into the build step.
         ///
-        /// Each volume will be created as an empty volume prior to execution of the build step. Upon completion of the
-        /// build, volumes and their contents will be discarded.
+        /// Each volume is created as an empty volume prior to execution of the build step. Upon completion of the
+        /// build, volumes and their contents are discarded.
         ///
-        /// Using a named volume in only one step is not valid as it is indicative of a mis-configured build
-        /// request.</summary>
+        /// Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect
+        /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
 
@@ -2236,7 +2236,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Map of environment variable name to its encrypted value.
         ///
         /// Secret environment variables must be unique across all of a build's secrets, and must be used by at least
-        /// one build step. Values can be at most 1 KB in size. There can be at most ten secret values across all of a
+        /// one build step. Values can be at most 2 KB in size. There can be at most ten secret values across all of a
         /// build's secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IDictionary<string,string> SecretEnv { get; set; } 

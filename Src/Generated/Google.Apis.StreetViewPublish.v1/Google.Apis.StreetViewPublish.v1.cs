@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180925 (1363)
+ *      <tr><th>API Rev<td>20180927 (1365)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -1410,9 +1410,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Raw pose measurement for an entity.</summary>
     public class Pose : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The estimated horizontal accuracy of this pose in meters with 68% (one standard deviation)
-        /// confidence. For more information, see:
-        /// https://developer.android.com/reference/android/location/Location#getAccuracy()</summary>
+        /// <summary>The estimated horizontal accuracy of this pose in meters with 68% confidence (one standard
+        /// deviation). For example, on Android, this value is available from this method:
+        /// https://developer.android.com/reference/android/location/Location#getAccuracy(). Other platforms have
+        /// different methods of obtaining similar accuracy estimations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracyMeters")]
         public virtual System.Nullable<float> AccuracyMeters { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180919 (1357)
+ *      <tr><th>API Rev<td>20180922 (1360)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -426,6 +426,14 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
             /// is 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -448,14 +456,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -482,24 +482,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -512,6 +494,24 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1389,14 +1389,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1404,6 +1396,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1439,15 +1439,6 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1460,6 +1451,15 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3593,16 +3593,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("get")]
         public virtual string Get { get; set; } 
 
-        /// <summary>Use this only for Scotty Requests. Do not use this for bytestream methods. For media support, add
-        /// instead [][google.bytestream.RestByteStream] as an API to your configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaDownload")]
-        public virtual MediaDownload MediaDownload { get; set; } 
-
-        /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
-        /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
-        public virtual MediaUpload MediaUpload { get; set; } 
-
         /// <summary>Maps to HTTP PATCH. Used for updating a resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patch")]
         public virtual string Patch { get; set; } 
@@ -3802,88 +3792,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Defines the Media configuration for a service in case of a download. Use this only for Scotty Requests.
-    /// Do not use this for media support using Bytestream, add instead [][google.bytestream.RestByteStream] as an API
-    /// to your configuration for Bytestream methods.</summary>
-    public class MediaDownload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A boolean that determines whether a notification for the completion of a download should be sent to
-        /// the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeNotification")]
-        public virtual System.Nullable<bool> CompleteNotification { get; set; } 
-
-        /// <summary>DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        ///
-        /// Specify name of the download service if one is used for download.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadService")]
-        public virtual string DownloadService { get; set; } 
-
-        /// <summary>Name of the Scotty dropzone to use for the current API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dropzone")]
-        public virtual string Dropzone { get; set; } 
-
-        /// <summary>Whether download is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>Optional maximum acceptable size for direct download. The size is specified in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxDirectDownloadSize")]
-        public virtual System.Nullable<long> MaxDirectDownloadSize { get; set; } 
-
-        /// <summary>A boolean that determines if direct download from ESF should be used for download of this
-        /// media.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useDirectDownload")]
-        public virtual System.Nullable<bool> UseDirectDownload { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Defines the Media configuration for a service in case of an upload. Use this only for Scotty Requests.
-    /// Do not use this for media support using Bytestream, add instead [][google.bytestream.RestByteStream] as an API
-    /// to your configuration for Bytestream methods.</summary>
-    public class MediaUpload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A boolean that determines whether a notification for the completion of an upload should be sent to
-        /// the backend. These notifications will not be seen by the client and will not consume quota.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeNotification")]
-        public virtual System.Nullable<bool> CompleteNotification { get; set; } 
-
-        /// <summary>Name of the Scotty dropzone to use for the current API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dropzone")]
-        public virtual string Dropzone { get; set; } 
-
-        /// <summary>Whether upload is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>Optional maximum acceptable size for an upload. The size is specified in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
-        public virtual System.Nullable<long> MaxSize { get; set; } 
-
-        /// <summary>An array of mimetype patterns. Esf will only accept uploads that match one of the given
-        /// patterns.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeTypes")]
-        public virtual System.Collections.Generic.IList<string> MimeTypes { get; set; } 
-
-        /// <summary>Whether to receive a notification for progress changes of media upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("progressNotification")]
-        public virtual System.Nullable<bool> ProgressNotification { get; set; } 
-
-        /// <summary>Whether to receive a notification on the start of media upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startNotification")]
-        public virtual System.Nullable<bool> StartNotification { get; set; } 
-
-        /// <summary>DO NOT USE FIELDS BELOW THIS LINE UNTIL THIS WARNING IS REMOVED.
-        ///
-        /// Specify name of the upload service if one is used for upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadService")]
-        public virtual string UploadService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4406,7 +4314,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// An example quota configuration in yaml format:
     ///
-    /// quota:
+    /// quota: limits:
     ///
     /// - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}"  # rate limit
     /// for consumer projects values: STANDARD: 10000

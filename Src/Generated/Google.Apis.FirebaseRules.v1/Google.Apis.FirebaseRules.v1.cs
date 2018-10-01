@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180814 (1321)
+ *      <tr><th>API Rev<td>20180927 (1365)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -620,12 +620,12 @@ namespace Google.Apis.FirebaseRules.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>The requested runtime executable version. Defaults to
-                /// FIREBASE_RULES_EXECUTABLE_V1</summary>
+                /// FIREBASE_RULES_EXECUTABLE_V1.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("executableVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ExecutableVersionEnum> ExecutableVersion { get; set; }
 
                 /// <summary>The requested runtime executable version. Defaults to
-                /// FIREBASE_RULES_EXECUTABLE_V1</summary>
+                /// FIREBASE_RULES_EXECUTABLE_V1.</summary>
                 public enum ExecutableVersionEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("RELEASE_EXECUTABLE_VERSION_UNSPECIFIED")]
@@ -711,6 +711,17 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Next page token for the next batch of `Release` instances.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
+                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
+                /// all of the releases, the caller should iterate until the `page_token` on the response is
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>`Release` filter. The list method supports filters with restrictions on the `Release.name`,
                 /// `Release.ruleset_name`, and `Release.test_suite_name`.
                 ///
@@ -733,17 +744,6 @@ namespace Google.Apis.FirebaseRules.v1
                 /// `test_suite_name=projects/foo/testsuites/uuid1`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Next page token for the next batch of `Release` instances.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
-                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
-                /// all of the releases, the caller should iterate until the `page_token` on the response is
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -779,15 +779,6 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -800,6 +791,15 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1458,6 +1458,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>`Ruleset` name associated with the `Release` executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
         public virtual string RulesetName { get; set; } 
+
+        /// <summary>Optional, indicates the freshness of the result. The response is guaranteed to be the latest within
+        /// an interval up to the sync_time (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncTime")]
+        public virtual object SyncTime { get; set; } 
 
         /// <summary>Timestamp for the most recent `Release.update_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

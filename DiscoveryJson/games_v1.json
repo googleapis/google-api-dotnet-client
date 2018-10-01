@@ -1,6 +1,6 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/WElxaSCwSUDF2-XI-Vo82xxoi2Y\"",
+  "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/el_WawMX_oUkMEJV7rCL4-wLX54\"",
   "discoveryVersion": "v1",
   "id": "games:v1",
   "name": "games",
@@ -3323,6 +3323,13 @@
           "path": "applications/played",
           "httpMethod": "POST",
           "description": "Indicate that the the currently authenticated user is playing your application.",
+          "parameters": {
+            "builtinGameId": {
+              "type": "string",
+              "description": "Override used only by built-in games in Play Games application.",
+              "location": "query"
+            }
+          },
           "scopes": [
             "https://www.googleapis.com/auth/games",
             "https://www.googleapis.com/auth/plus.login"
