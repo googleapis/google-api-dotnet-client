@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20180921 (1359)
+ *      <tr><th>API Rev<td>20180928 (1366)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -3665,8 +3665,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods"
-        /// or "apparel".
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]

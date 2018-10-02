@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180927 (1365)
+ *      <tr><th>API Rev<td>20181001 (1369)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -900,6 +900,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Number of results to return in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The raw filter text to constrain the results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -907,10 +911,6 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of results to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -946,6 +946,15 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -958,15 +967,6 @@ namespace Google.Apis.CloudBuild.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1819,6 +1819,15 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
+        /// <summary>A list of global environment variable definitions that will exist for all build steps in this
+        /// build. If a variable is defined in both globally and in a build step, the variable will use the build step
+        /// value.
+        ///
+        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
+        /// "VALUE".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<string> Env { get; set; } 
+
         /// <summary>Option to define build log streaming behavior to Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
         public virtual string LogStreamingOption { get; set; } 
@@ -1835,6 +1844,12 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; } 
 
+        /// <summary>A list of global environment variables, which are encrypted using a Cloud Key Management Service
+        /// crypto key. These values must be specified in the build's `Secret`. These variables will be available to all
+        /// build steps in this build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; } 
+
         /// <summary>Requested hash for SourceProvenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
         public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
@@ -1842,6 +1857,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Option to specify behavior when there is an error in the substitution checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
         public virtual string SubstitutionOption { get; set; } 
+
+        /// <summary>Global list of volumes to mount for ALL build steps
+        ///
+        /// Each volume is created as an empty volume prior to starting the build process. Upon completion of the build,
+        /// volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes
+        /// defined a build step.
+        ///
+        /// Using a global volume in a build with only one step is not valid as it is indicative of a build request with
+        /// an incorrect configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1900,6 +1926,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// available to use as the name for a later build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
+        public virtual TimeSpan PullTiming { get; set; } 
 
         /// <summary>A list of environment variables which are encrypted using a Cloud Key Management Service crypto
         /// key. These values must be specified in the build's `Secret`.</summary>
@@ -2236,7 +2266,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Map of environment variable name to its encrypted value.
         ///
         /// Secret environment variables must be unique across all of a build's secrets, and must be used by at least
-        /// one build step. Values can be at most 2 KB in size. There can be at most ten secret values across all of a
+        /// one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a
         /// build's secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IDictionary<string,string> SecretEnv { get; set; } 

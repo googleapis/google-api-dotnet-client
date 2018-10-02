@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180919 (1357)
+ *      <tr><th>API Rev<td>20180926 (1364)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -854,6 +854,17 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
+                        /// continuation of a prior `ListDevices` call and the system should return the next page of
+                        /// data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields `id`
+                        /// and `num_id` are always returned, along with any other fields specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
+
                         /// <summary>The maximum number of devices to return in the response. If this value is zero, the
                         /// service will select a default size. A call may return fewer objects than requested. A non-
                         /// empty `next_page_token` in the response indicates that more data is available.</summary>
@@ -869,17 +880,6 @@ namespace Google.Apis.CloudIot.v1
                         /// 10,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
-
-                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
-                        /// continuation of a prior `ListDevices` call and the system should return the next page of
-                        /// data.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields `id`
-                        /// and `num_id` are always returned, along with any other fields specified.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object FieldMask { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -915,6 +915,24 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fieldMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fieldMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -936,24 +954,6 @@ namespace Google.Apis.CloudIot.v1
                                 "deviceNumIds", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "deviceNumIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "fieldMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "fieldMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1121,6 +1121,96 @@ namespace Google.Apis.CloudIot.v1
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Sends a command to the specified device. In order for a device to be able to receive
+                    /// commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2) be
+                    /// subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This
+                    /// subscription will receive commands at the top-level topic /devices/{device-id}/commands as well
+                    /// as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that subscribing
+                    /// to specific subfolders is not supported. If the command could not be delivered to the device,
+                    /// this method will return an error; in particular, if the device is not subscribed, this method
+                    /// will return FAILED_PRECONDITION. Otherwise, this method will return OK. If the subscription is
+                    /// QoS 1, at least once delivery will be guaranteed; for QoS 0, no acknowledgment will be expected
+                    /// from the device.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                    /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                    /// central1/registries/registry0/devices/{num_id}`.</param>
+                    public virtual SendCommandToDeviceRequest SendCommandToDevice(Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest body, string name)
+                    {
+                        return new SendCommandToDeviceRequest(service, body, name);
+                    }
+
+                    /// <summary>Sends a command to the specified device. In order for a device to be able to receive
+                    /// commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2) be
+                    /// subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This
+                    /// subscription will receive commands at the top-level topic /devices/{device-id}/commands as well
+                    /// as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that subscribing
+                    /// to specific subfolders is not supported. If the command could not be delivered to the device,
+                    /// this method will return an error; in particular, if the device is not subscribed, this method
+                    /// will return FAILED_PRECONDITION. Otherwise, this method will return OK. If the subscription is
+                    /// QoS 1, at least once delivery will be guaranteed; for QoS 0, no acknowledgment will be expected
+                    /// from the device.</summary>
+                    public class SendCommandToDeviceRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.SendCommandToDeviceResponse>
+                    {
+                        /// <summary>Constructs a new SendCommandToDevice request.</summary>
+                        public SendCommandToDeviceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "sendCommandToDevice"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:sendCommandToDevice"; }
+                        }
+
+                        /// <summary>Initializes SendCommandToDevice parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
                                 });
                         }
 
@@ -1489,18 +1579,6 @@ namespace Google.Apis.CloudIot.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>The maximum number of devices to return in the response. If this value is zero,
-                            /// the service will select a default size. A call may return fewer objects than requested.
-                            /// A non-empty `next_page_token` in the response indicates that more data is
-                            /// available.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
-                            /// this field is ignored. Maximum IDs: 10,000</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
-
                             /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
                             /// 10,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
@@ -1516,6 +1594,18 @@ namespace Google.Apis.CloudIot.v1
                             /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object FieldMask { get; set; }
+
+                            /// <summary>The maximum number of devices to return in the response. If this value is zero,
+                            /// the service will select a default size. A call may return fewer objects than requested.
+                            /// A non-empty `next_page_token` in the response indicates that more data is
+                            /// available.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+                            /// this field is ignored. Maximum IDs: 10,000</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1551,24 +1641,6 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "deviceIds", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "deviceIds",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "deviceNumIds", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "deviceNumIds",
@@ -1590,6 +1662,24 @@ namespace Google.Apis.CloudIot.v1
                                     "fieldMask", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "fieldMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "deviceIds", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deviceIds",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1757,6 +1847,96 @@ namespace Google.Apis.CloudIot.v1
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Sends a command to the specified device. In order for a device to be able to
+                        /// receive commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2)
+                        /// be subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This
+                        /// subscription will receive commands at the top-level topic /devices/{device-id}/commands as
+                        /// well as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that
+                        /// subscribing to specific subfolders is not supported. If the command could not be delivered
+                        /// to the device, this method will return an error; in particular, if the device is not
+                        /// subscribed, this method will return FAILED_PRECONDITION. Otherwise, this method will return
+                        /// OK. If the subscription is QoS 1, at least once delivery will be guaranteed; for QoS 0, no
+                        /// acknowledgment will be expected from the device.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`.</param>
+                        public virtual SendCommandToDeviceRequest SendCommandToDevice(Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest body, string name)
+                        {
+                            return new SendCommandToDeviceRequest(service, body, name);
+                        }
+
+                        /// <summary>Sends a command to the specified device. In order for a device to be able to
+                        /// receive commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2)
+                        /// be subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This
+                        /// subscription will receive commands at the top-level topic /devices/{device-id}/commands as
+                        /// well as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that
+                        /// subscribing to specific subfolders is not supported. If the command could not be delivered
+                        /// to the device, this method will return an error; in particular, if the device is not
+                        /// subscribed, this method will return FAILED_PRECONDITION. Otherwise, this method will return
+                        /// OK. If the subscription is QoS 1, at least once delivery will be guaranteed; for QoS 0, no
+                        /// acknowledgment will be expected from the device.</summary>
+                        public class SendCommandToDeviceRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.SendCommandToDeviceResponse>
+                        {
+                            /// <summary>Constructs a new SendCommandToDevice request.</summary>
+                            public SendCommandToDeviceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest body, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "sendCommandToDevice"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "POST"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1/{+name}:sendCommandToDevice"; }
+                            }
+
+                            /// <summary>Initializes SendCommandToDevice parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
                                     });
                             }
 
@@ -2684,6 +2864,12 @@ namespace Google.Apis.CloudIot.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastStateTime")]
         public virtual object LastStateTime { get; set; } 
 
+        /// <summary>**Beta Feature**
+        ///
+        /// The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
+        public virtual string LogLevel { get; set; } 
+
         /// <summary>The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by
         /// Cloud IoT Core. It can be used to add contextual information for the device.
         ///
@@ -2801,6 +2987,13 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>The identifier of this device registry. For example, `myRegistry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>**Beta Feature**
+        ///
+        /// The default logging verbosity for activity from devices in this registry. The verbosity level can be
+        /// overridden by Device.log_level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
+        public virtual string LogLevel { get; set; } 
 
         /// <summary>The MQTT configuration for this device registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mqttConfig")]
@@ -3088,6 +3281,31 @@ namespace Google.Apis.CloudIot.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyCertificate")]
         public virtual PublicKeyCertificate PublicKeyCertificate { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for `SendCommandToDevice`.</summary>
+    public class SendCommandToDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The command data to send to the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
+        public virtual string BinaryData { get; set; } 
+
+        /// <summary>Optional subfolder for the command. If empty, the command will be delivered to the /devices
+        /// /{device-id}/commands topic, otherwise it will be delivered to the /devices/{device-id}/commands/{subfolder}
+        /// topic. Multi-level subfolders are allowed. This field must not have more than 256 characters, and must not
+        /// contain any MQTT wildcards ("+" or "#") or null characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subfolder")]
+        public virtual string Subfolder { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for `SendCommandToDevice`.</summary>
+    public class SendCommandToDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

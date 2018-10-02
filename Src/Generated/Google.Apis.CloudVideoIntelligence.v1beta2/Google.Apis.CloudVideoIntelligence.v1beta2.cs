@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180907 (1345)
+ *      <tr><th>API Rev<td>20180920 (1358)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -1162,11 +1162,24 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
     /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
         /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
         /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
         /// experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
+        /// diarization_speaker_count, and is only set if speaker diarization is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
+        public virtual System.Nullable<int> SpeakerTag { get; set; } 
 
         /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
         /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
@@ -1177,6 +1190,369 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         /// <summary>The word corresponding to this set of information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
         public virtual string Word { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video annotation progress. Included in the `metadata` field of the `Operation` returned by the
+    /// `GetOperation` call of the `google::longrunning::Operations` service.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Progress metadata for all videos specified in `AnnotateVideoRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationProgress")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress> AnnotationProgress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video annotation response. Included in the `response` field of the `Operation` returned by the
+    /// `GetOperation` call of the `google::longrunning::Operations` service.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Annotation results for all videos specified in `AnnotateVideoRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults> AnnotationResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detected entity from video analysis.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1Entity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Textual description, e.g. `Fixed-gear bicycle`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
+        /// API](https://developers.google.com/knowledge-graph/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; } 
+
+        /// <summary>Language code for `description` in BCP-47 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Explicit content annotation (based on per-frame visual signals only). If no explicit content has been
+    /// detected in a frame, no annotations are present for that frame.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All video frames where explicit content was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame> Frames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video frame level annotation results for explicit content.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Likelihood of the pornography content..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pornographyLikelihood")]
+        public virtual string PornographyLikelihood { get; set; } 
+
+        /// <summary>Time-offset, relative to the beginning of the video, corresponding to the video frame for this
+        /// location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Label annotation.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Common categories for the detected entity. E.g. when the label is `Terrier` the category is likely
+        /// `dog`. And in some cases there might be more than one categories e.g. `Terrier` could also be a
+        /// `pet`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryEntities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1Entity> CategoryEntities { get; set; } 
+
+        /// <summary>Detected entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1Entity Entity { get; set; } 
+
+        /// <summary>All video frames where a label was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelFrame> Frames { get; set; } 
+
+        /// <summary>All video segments where a label was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelSegment> Segments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video frame level annotation results for label detection.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1LabelFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence that the label is accurate. Range: [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Time-offset, relative to the beginning of the video, corresponding to the video frame for this
+        /// location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video segment level annotation results for label detection.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1LabelSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence that the label is accurate. Range: [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Video segment where a label was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Normalized bounding box. The normalized vertex coordinates are relative to the original image. Range:
+    /// [0, 1].</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bottom Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottom")]
+        public virtual System.Nullable<float> Bottom { get; set; } 
+
+        /// <summary>Left X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("left")]
+        public virtual System.Nullable<float> Left { get; set; } 
+
+        /// <summary>Right X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("right")]
+        public virtual System.Nullable<float> Right { get; set; } 
+
+        /// <summary>Top Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top")]
+        public virtual System.Nullable<float> Top { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Normalized bounding polygon for text (that might not be aligned with axis). Contains list of the corner
+    /// points in clockwise order starting from top-left corner. For example, for a rectangular bounding box: When the
+    /// text is horizontal it might look like: 0----1 |    | 3----2
+    ///
+    /// When it's clockwise rotated 180 degrees around the top-left corner it becomes: 2----3 |    | 1----0
+    ///
+    /// and the vertex order will still be (0, 1, 2, 3). Note that values can be less than 0, or greater than 1 due to
+    /// trignometric calculations for location of the box.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Normalized vertices of the bounding polygon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1NormalizedVertex> Vertices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Annotations corresponding to one tracked object.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Object category's labeling confidence of this track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Entity to specify the object category that this track is labeled as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1Entity Entity { get; set; } 
+
+        /// <summary>Information corresponding to all frames where this object track appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame> Frames { get; set; } 
+
+        /// <summary>Each object track corresponds to one video segment where it appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video frame level annotations for object detection and tracking. This field stores per frame location,
+    /// time offset, and confidence.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The normalized bounding box location of this object track for the frame.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedBoundingBox")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox NormalizedBoundingBox { get; set; } 
+
+        /// <summary>The timestamp of the frame in microseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Annotations related to one detected OCR text snippet. This will contain the corresponding text,
+    /// confidence value, and frame level information for each detection.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1TextAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence for the track of detected text. It is calculated as the highest over all frames where
+        /// OCR detected text appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Information related to the frames where OCR detected text appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextFrame> Frames { get; set; } 
+
+        /// <summary>All video segments where OCR detected text appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextSegment> Segments { get; set; } 
+
+        /// <summary>The detected text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video frame level annotation results for text annotation (OCR). Contains information regarding
+    /// timestamp and bounding box locations for the frames containing detected OCR text snippets.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1TextFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bounding polygon of the detected text for this frame.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotatedBoundingBox")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly RotatedBoundingBox { get; set; } 
+
+        /// <summary>Timestamp of this frame.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video segment level annotation results for text detection.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1TextSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Video segment where a text snippet was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Annotation progress for a single video.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
+        public virtual string InputUri { get; set; } 
+
+        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Time of the most recent update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Annotation results for a single video.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
+        /// and some may fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; } 
+
+        /// <summary>Explicit content annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitAnnotation")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation ExplicitAnnotation { get; set; } 
+
+        /// <summary>Label annotations on frame level. There is exactly one element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> FrameLabelAnnotations { get; set; } 
+
+        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
+        public virtual string InputUri { get; set; } 
+
+        /// <summary>Annotations for list of objects detected and tracked in video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
+        /// each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
+
+        /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1VideoSegment> ShotAnnotations { get; set; } 
+
+        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>OCR text detection and tracking. Annotations for list of detected text snippets. Each will have
+        /// list of frame information associated with it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextAnnotation> TextAnnotations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video segment.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1VideoSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time-offset, relative to the beginning of the video, corresponding to the end of the segment
+        /// (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeOffset")]
+        public virtual object EndTimeOffset { get; set; } 
+
+        /// <summary>Time-offset, relative to the beginning of the video, corresponding to the start of the segment
+        /// (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeOffset")]
+        public virtual object StartTimeOffset { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

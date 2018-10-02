@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180908 (1346)
+ *      <tr><th>API Rev<td>20180919 (1357)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -842,8 +842,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>An array value.</summary>
     public class ArrayValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Values in the array. The order of this array may not be preserved if it contains a mix of indexed
-        /// and unindexed values.</summary>
+        /// <summary>Values in the array. The order of values in an array is preserved as long as all values have
+        /// identical settings for 'exclude_from_indexes'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
 
