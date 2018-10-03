@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180924 (1362)
+ *      <tr><th>API Rev<td>20181001 (1369)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7653,9 +7653,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>The list of permissions the admin is granted within the iframe. The admin will only be allowed to
-        /// view an iframe if they have all of the permissions associated with it. The only valid value is "approveApps"
-        /// that will allow the admin to access the iframe in "approve" mode.</summary>
+        /// <summary>Deprecated. Use PlaySearch.approveApps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; } 
 
@@ -7681,6 +7679,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     public class AdministratorWebTokenSpecPlaySearch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Allow access to the iframe in approve mode. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approveApps")]
+        public virtual System.Nullable<bool> ApproveApps { get; set; } 
+
         /// <summary>Whether the Play Search page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 

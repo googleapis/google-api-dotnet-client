@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180927 (1365)
+ *      <tr><th>API Rev<td>20181002 (1370)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -544,6 +544,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             [Google.Apis.Util.RequestParameterAttribute("durationDays", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> DurationDays { get; set; }
 
+            /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sdkVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SdkVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -581,6 +585,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
                     "durationDays", new Google.Apis.Discovery.Parameter
                     {
                         Name = "durationDays",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sdkVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sdkVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -759,6 +772,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual string SdkVersion { get; set; } 
+
         /// <summary>Short Dynamic Link suffix. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual Suffix Suffix { get; set; } 
@@ -799,6 +816,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDynamicLink")]
         public virtual string LongDynamicLink { get; set; } 
+
+        /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual string SdkVersion { get; set; } 
 
         /// <summary>Short Dynamic Link suffix. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
@@ -1007,7 +1028,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalMethod")]
         public virtual string RetrievalMethod { get; set; } 
 
-        /// <summary>Google SDK version.</summary>
+        /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
         public virtual string SdkVersion { get; set; } 
 
@@ -1116,6 +1137,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// .page.link/i/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
         public virtual string RequestedLink { get; set; } 
+
+        /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual string SdkVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

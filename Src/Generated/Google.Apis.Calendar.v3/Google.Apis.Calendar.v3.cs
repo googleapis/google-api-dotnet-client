@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180918 (1356)
+ *      <tr><th>API Rev<td>20180925 (1363)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -2307,10 +2307,31 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
 
-            /// <summary>Whether to send notifications about the deletion of the event. Optional. The default is
-            /// False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the deletion of the event. Note that some emails might still be sent
+            /// even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Guests who should receive notifications about the deletion of the event.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Guests who should receive notifications about the deletion of the event.</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2358,6 +2379,15 @@ namespace Google.Apis.Calendar.v3
                     "sendNotifications", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2636,10 +2666,33 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
-            /// <summary>Whether to send notifications about the creation of the new event. Optional. The default is
-            /// False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the creation of the new event. Note that some emails might still be
+            /// sent even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Whether to send notifications about the creation of the new event. Note that some emails might
+            /// still be sent. The default is False.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Whether to send notifications about the creation of the new event. Note that some emails might
+            /// still be sent. The default is False.</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
             /// <summary>Whether API client performing operation supports event attachments. Optional. The default is
             /// False.</summary>
@@ -2707,6 +2760,15 @@ namespace Google.Apis.Calendar.v3
                     "sendNotifications", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3305,10 +3367,31 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("destination", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Destination { get; private set; }
 
-            /// <summary>Whether to send notifications about the change of the event's organizer. Optional. The default
-            /// is False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the change of the event's organizer. Note that some emails might
+            /// still be sent even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Guests who should receive notifications about the change of the event's organizer.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Guests who should receive notifications about the change of the event's organizer.</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3365,6 +3448,15 @@ namespace Google.Apis.Calendar.v3
                     "sendNotifications", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3430,10 +3522,33 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
-            /// <summary>Whether to send notifications about the event update (e.g. attendee's responses, title changes,
-            /// etc.). Optional. The default is False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the event update (e.g. description changes, etc.). Note that some
+            /// emails might still be sent even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Guests who should receive notifications about the event update (e.g., attendee responses, title
+            /// changes, etc.).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Guests who should receive notifications about the event update (e.g., attendee responses, title
+            /// changes, etc.).</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
             /// <summary>Whether API client performing operation supports event attachments. Optional. The default is
             /// False.</summary>
@@ -3525,6 +3640,15 @@ namespace Google.Apis.Calendar.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsAttachments", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsAttachments",
@@ -3569,10 +3693,31 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("text", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Text { get; private set; }
 
-            /// <summary>Whether to send notifications about the creation of the event. Optional. The default is
-            /// False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the creation of the event. Note that some emails might still be sent
+            /// even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Guests who should receive notifications about the creation of the new event.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Guests who should receive notifications about the creation of the new event.</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3620,6 +3765,15 @@ namespace Google.Apis.Calendar.v3
                     "sendNotifications", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3685,10 +3839,33 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
-            /// <summary>Whether to send notifications about the event update (e.g. attendee's responses, title changes,
-            /// etc.). Optional. The default is False.</summary>
+            /// <summary>Deprecated. Please use sendUpdates instead.
+            ///
+            /// Whether to send notifications about the event update (e.g. description changes, etc.). Note that some
+            /// emails might still be sent even if you set the value to false. The default is False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotifications { get; set; }
+
+            /// <summary>Guests who should receive notifications about the event update (e.g., attendee responses, title
+            /// changes, etc.).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendUpdates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SendUpdatesEnum> SendUpdates { get; set; }
+
+            /// <summary>Guests who should receive notifications about the event update (e.g., attendee responses, title
+            /// changes, etc.).</summary>
+            public enum SendUpdatesEnum
+            {
+                /// <summary>Notifications will be sent to all guests.</summary>
+                [Google.Apis.Util.StringValueAttribute("all")]
+                All,
+                /// <summary>Notifications will be sent to non-Google Calendar guests only.</summary>
+                [Google.Apis.Util.StringValueAttribute("externalOnly")]
+                ExternalOnly,
+                /// <summary>No notifications will be sent. This value should only be used for migration use cases (note
+                /// that in most migration cases the import method should be used).</summary>
+                [Google.Apis.Util.StringValueAttribute("none")]
+                None,
+            }
 
             /// <summary>Whether API client performing operation supports event attachments. Optional. The default is
             /// False.</summary>
@@ -3774,6 +3951,15 @@ namespace Google.Apis.Calendar.v3
                     "sendNotifications", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendUpdates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendUpdates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

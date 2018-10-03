@@ -1,4 +1,81 @@
 {
+  "parameters": {
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    }
+  },
   "version": "v1",
   "baseUrl": "https://vault.googleapis.com/",
   "servicePath": "",
@@ -11,245 +88,6 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "ListExportsResponse": {
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "Page token to retrieve the next page of results in the list."
-        },
-        "exports": {
-          "description": "The list of exports.",
-          "type": "array",
-          "items": {
-            "$ref": "Export"
-          }
-        }
-      },
-      "id": "ListExportsResponse",
-      "description": "The holds for a matter."
-    },
-    "ReopenMatterRequest": {
-      "description": "Reopen a matter by ID.",
-      "type": "object",
-      "properties": {},
-      "id": "ReopenMatterRequest"
-    },
-    "CloseMatterRequest": {
-      "description": "Close a matter by ID.",
-      "type": "object",
-      "properties": {},
-      "id": "CloseMatterRequest"
-    },
-    "MailExportOptions": {
-      "description": "The options for mail export.",
-      "type": "object",
-      "properties": {
-        "exportFormat": {
-          "description": "The export file format.",
-          "type": "string",
-          "enumDescriptions": [
-            "No export format specified.",
-            "MBOX as export format.",
-            "PST as export format"
-          ],
-          "enum": [
-            "EXPORT_FORMAT_UNSPECIFIED",
-            "MBOX",
-            "PST"
-          ]
-        }
-      },
-      "id": "MailExportOptions"
-    },
-    "Query": {
-      "description": "A query definition relevant for search & export.",
-      "type": "object",
-      "properties": {
-        "driveOptions": {
-          "description": "For Drive search, specify more options in this field.",
-          "$ref": "DriveOptions"
-        },
-        "endTime": {
-          "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "dataScope": {
-          "enum": [
-            "DATA_SCOPE_UNSPECIFIED",
-            "ALL_DATA",
-            "HELD_DATA",
-            "UNPROCESSED_DATA"
-          ],
-          "description": "The data source to search from.",
-          "type": "string",
-          "enumDescriptions": [
-            "No data scope specified.",
-            "All available data.",
-            "Data on hold.",
-            "Data not processed."
-          ]
-        },
-        "startTime": {
-          "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "searchMethod": {
-          "enum": [
-            "SEARCH_METHOD_UNSPECIFIED",
-            "ACCOUNT",
-            "ORG_UNIT",
-            "TEAM_DRIVE",
-            "ENTIRE_ORG",
-            "ROOM"
-          ],
-          "description": "The search method to use.",
-          "type": "string",
-          "enumDescriptions": [
-            "A search method must be specified. If a request does not specify a\nsearch method, it will be rejected.",
-            "Will search all accounts provided in account_info.",
-            "Will search all accounts in the OU specified in org_unit_info.",
-            "Will search for all accounts in the Team Drive specified in\nteam_drive_info.",
-            "Will search for all accounts in the organization.\nNo need to set account_info or org_unit_info.",
-            "Will search in the Room specified in\nhangout_chats_info. (read-only)"
-          ]
-        },
-        "corpus": {
-          "description": "The corpus to search.",
-          "type": "string",
-          "enumDescriptions": [
-            "No corpus specified.",
-            "Drive.",
-            "Mail.",
-            "Groups.",
-            "Hangouts Chat."
-          ],
-          "enum": [
-            "CORPUS_TYPE_UNSPECIFIED",
-            "DRIVE",
-            "MAIL",
-            "GROUPS",
-            "HANGOUTS_CHAT"
-          ]
-        },
-        "hangoutsChatInfo": {
-          "description": "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)",
-          "$ref": "HangoutsChatInfo"
-        },
-        "hangoutsChatOptions": {
-          "description": "For hangouts chat search, specify more options in this field. (read-only)",
-          "$ref": "HangoutsChatOptions"
-        },
-        "orgUnitInfo": {
-          "$ref": "OrgUnitInfo",
-          "description": "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified."
-        },
-        "terms": {
-          "description": "The corpus-specific\n\u003ca href=\"https://support.google.com/vault/answer/2474474\"\u003esearch operators\u003c/a\u003e\nused to generate search results.",
-          "type": "string"
-        },
-        "mailOptions": {
-          "description": "For mail search, specify more options in this field.",
-          "$ref": "MailOptions"
-        },
-        "timeZone": {
-          "description": "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n\u003ca href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\"\u003eTime\nZone\u003c/a\u003e.",
-          "type": "string"
-        },
-        "teamDriveInfo": {
-          "$ref": "TeamDriveInfo",
-          "description": "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified."
-        },
-        "accountInfo": {
-          "description": "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified.",
-          "$ref": "AccountInfo"
-        }
-      },
-      "id": "Query"
-    },
-    "CloudStorageSink": {
-      "properties": {
-        "files": {
-          "description": "Output only. The exported files on cloud storage.",
-          "type": "array",
-          "items": {
-            "$ref": "CloudStorageFile"
-          }
-        }
-      },
-      "id": "CloudStorageSink",
-      "description": "Export sink for cloud storage files.",
-      "type": "object"
-    },
-    "ListMattersResponse": {
-      "description": "Provides the list of matters.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "Page token to retrieve the next page of results in the list.",
-          "type": "string"
-        },
-        "matters": {
-          "description": "List of matters.",
-          "type": "array",
-          "items": {
-            "$ref": "Matter"
-          }
-        }
-      },
-      "id": "ListMattersResponse"
-    },
-    "CloseMatterResponse": {
-      "description": "Response to a CloseMatterRequest.",
-      "type": "object",
-      "properties": {
-        "matter": {
-          "$ref": "Matter",
-          "description": "The updated matter, with state CLOSED."
-        }
-      },
-      "id": "CloseMatterResponse"
-    },
-    "OrgUnitInfo": {
-      "description": "Org Unit to search",
-      "type": "object",
-      "properties": {
-        "orgUnitId": {
-          "description": "Org unit to search, as provided by the\n\u003ca href=\"https://developers.google.com/admin-sdk/directory/\"\u003eAdmin SDK Directory API\u003c/a\u003e.",
-          "type": "string"
-        }
-      },
-      "id": "OrgUnitInfo"
-    },
-    "AddHeldAccountsRequest": {
-      "description": "Add a list of accounts to a hold.",
-      "type": "object",
-      "properties": {
-        "emails": {
-          "description": "Emails to identify which accounts to add. Only emails or only account_ids\nshould be specified, but not both.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "accountIds": {
-          "description": "Account ids to identify which accounts to add. Only account_ids or only\nemails should be specified, but not both.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "AddHeldAccountsRequest"
-    },
     "AddMatterPermissionsRequest": {
       "description": "Add an account with the permission specified. The role cannot be owner.\nIf an account already has a role in the matter, it will be\noverwritten.",
       "type": "object",
@@ -259,8 +97,8 @@
           "type": "boolean"
         },
         "matterPermission": {
-          "$ref": "MatterPermission",
-          "description": "The MatterPermission to add."
+          "description": "The MatterPermission to add.",
+          "$ref": "MatterPermission"
         },
         "ccMe": {
           "description": "Only relevant if send_emails is true.\nTrue to CC requestor in the email message.\nFalse to not CC requestor.",
@@ -281,28 +119,27 @@
       "id": "ReopenMatterResponse"
     },
     "DriveOptions": {
-      "description": "Drive search advanced options",
-      "type": "object",
       "properties": {
+        "includeTeamDrives": {
+          "description": "Set to true to include Team Drive.",
+          "type": "boolean"
+        },
         "versionDate": {
           "description": "Search the versions of the Drive file\nas of the reference date. These timestamps are in GMT and\nrounded down to the given date.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "includeTeamDrives": {
-          "description": "Set to true to include Team Drive.",
-          "type": "boolean"
         }
       },
-      "id": "DriveOptions"
+      "id": "DriveOptions",
+      "description": "Drive search advanced options",
+      "type": "object"
     },
     "ExportOptions": {
-      "description": "Export advanced options",
       "type": "object",
       "properties": {
         "driveOptions": {
-          "$ref": "DriveExportOptions",
-          "description": "Option available for Drive export."
+          "description": "Option available for Drive export.",
+          "$ref": "DriveExportOptions"
         },
         "mailOptions": {
           "$ref": "MailExportOptions",
@@ -313,13 +150,15 @@
           "description": "Option available for hangouts chat export."
         },
         "groupsOptions": {
-          "$ref": "GroupsExportOptions",
-          "description": "Option available for groups export."
+          "description": "Option available for groups export.",
+          "$ref": "GroupsExportOptions"
         }
       },
-      "id": "ExportOptions"
+      "id": "ExportOptions",
+      "description": "Export advanced options"
     },
     "TeamDriveInfo": {
+      "id": "TeamDriveInfo",
       "description": "Team Drives to search",
       "type": "object",
       "properties": {
@@ -330,23 +169,22 @@
             "type": "string"
           }
         }
-      },
-      "id": "TeamDriveInfo"
+      }
     },
     "UserInfo": {
-      "id": "UserInfo",
-      "description": "User's information.",
-      "type": "object",
       "properties": {
-        "displayName": {
-          "type": "string",
-          "description": "The displayed name of the user."
-        },
         "email": {
           "description": "The email address of the user.",
           "type": "string"
+        },
+        "displayName": {
+          "description": "The displayed name of the user.",
+          "type": "string"
         }
-      }
+      },
+      "id": "UserInfo",
+      "description": "User's information.",
+      "type": "object"
     },
     "UndeleteMatterRequest": {
       "description": "Undelete a matter by ID.",
@@ -360,15 +198,15 @@
       "type": "object",
       "properties": {
         "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
+            "type": "object",
             "additionalProperties": {
               "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
-            },
-            "type": "object"
-          }
+            }
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
         },
         "code": {
           "description": "The status code, which should be an enum value of google.rpc.Code.",
@@ -396,31 +234,30 @@
       "id": "RemoveHeldAccountsRequest"
     },
     "CloudStorageFile": {
+      "id": "CloudStorageFile",
       "description": "An export file on cloud storage",
       "type": "object",
       "properties": {
-        "size": {
+        "bucketName": {
           "type": "string",
+          "description": "The cloud storage bucket name of this export file.\nCan be used in cloud storage JSON/XML API."
+        },
+        "size": {
           "description": "The size of the export file.",
-          "format": "int64"
+          "format": "int64",
+          "type": "string"
         },
         "md5Hash": {
-          "type": "string",
-          "description": "The md5 hash of the file."
+          "description": "The md5 hash of the file.",
+          "type": "string"
         },
         "objectName": {
-          "type": "string",
-          "description": "The cloud storage object name of this export file.\nCan be used in cloud storage JSON/XML API."
-        },
-        "bucketName": {
-          "description": "The cloud storage bucket name of this export file.\nCan be used in cloud storage JSON/XML API.",
+          "description": "The cloud storage object name of this export file.\nCan be used in cloud storage JSON/XML API.",
           "type": "string"
         }
-      },
-      "id": "CloudStorageFile"
+      }
     },
     "RemoveMatterPermissionsRequest": {
-      "id": "RemoveMatterPermissionsRequest",
       "description": "Remove an account as a matter collaborator.",
       "type": "object",
       "properties": {
@@ -428,13 +265,15 @@
           "description": "The account ID.",
           "type": "string"
         }
-      }
+      },
+      "id": "RemoveMatterPermissionsRequest"
     },
     "GroupsExportOptions": {
       "description": "The options for groups export.",
       "type": "object",
       "properties": {
         "exportFormat": {
+          "description": "The export format for groups export.",
           "type": "string",
           "enumDescriptions": [
             "No export format specified.",
@@ -445,17 +284,16 @@
             "EXPORT_FORMAT_UNSPECIFIED",
             "MBOX",
             "PST"
-          ],
-          "description": "The export format for groups export."
+          ]
         }
       },
       "id": "GroupsExportOptions"
     },
     "MatterPermission": {
-      "description": "Currently each matter only has one owner, and all others are collaborators.\nWhen an account is purged, its corresponding MatterPermission resources\ncease to exist.",
       "type": "object",
       "properties": {
         "role": {
+          "description": "The user's role in this matter.",
           "type": "string",
           "enumDescriptions": [
             "No role assigned.",
@@ -466,18 +304,17 @@
             "ROLE_UNSPECIFIED",
             "COLLABORATOR",
             "OWNER"
-          ],
-          "description": "The user's role in this matter."
+          ]
         },
         "accountId": {
           "description": "The account id, as provided by \u003ca href=\"https://developers.google.com/admin-sdk/\"\u003eAdmin SDK\u003c/a\u003e.",
           "type": "string"
         }
       },
-      "id": "MatterPermission"
+      "id": "MatterPermission",
+      "description": "Currently each matter only has one owner, and all others are collaborators.\nWhen an account is purged, its corresponding MatterPermission resources\ncease to exist."
     },
     "MailOptions": {
-      "description": "Mail search advanced options",
       "type": "object",
       "properties": {
         "excludeDrafts": {
@@ -485,9 +322,11 @@
           "type": "boolean"
         }
       },
-      "id": "MailOptions"
+      "id": "MailOptions",
+      "description": "Mail search advanced options"
     },
     "RemoveHeldAccountsResponse": {
+      "description": "Response for batch delete held accounts.",
       "type": "object",
       "properties": {
         "statuses": {
@@ -498,10 +337,10 @@
           "description": "A list of statuses for deleted accounts. Results have the\nsame order as the request."
         }
       },
-      "id": "RemoveHeldAccountsResponse",
-      "description": "Response for batch delete held accounts."
+      "id": "RemoveHeldAccountsResponse"
     },
     "HeldHangoutsChatQuery": {
+      "id": "HeldHangoutsChatQuery",
       "description": "Query options for hangouts chat holds.",
       "type": "object",
       "properties": {
@@ -509,11 +348,9 @@
           "description": "If true, include rooms the user has participated in.",
           "type": "boolean"
         }
-      },
-      "id": "HeldHangoutsChatQuery"
+      }
     },
     "HangoutsChatOptions": {
-      "type": "object",
       "properties": {
         "includeRooms": {
           "description": "Set to true to include rooms.",
@@ -521,12 +358,15 @@
         }
       },
       "id": "HangoutsChatOptions",
-      "description": "Hangouts chat search advanced options"
+      "description": "Hangouts chat search advanced options",
+      "type": "object"
     },
     "HeldMailQuery": {
-      "description": "Query options for mail holds.",
-      "type": "object",
       "properties": {
+        "terms": {
+          "description": "The search terms for the hold.",
+          "type": "string"
+        },
         "endTime": {
           "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
           "format": "google-datetime",
@@ -536,13 +376,11 @@
           "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "terms": {
-          "description": "The search terms for the hold.",
-          "type": "string"
         }
       },
-      "id": "HeldMailQuery"
+      "id": "HeldMailQuery",
+      "description": "Query options for mail holds.",
+      "type": "object"
     },
     "DriveExportOptions": {
       "description": "The options for Drive export.",
@@ -556,9 +394,6 @@
       "id": "DriveExportOptions"
     },
     "AddHeldAccountResult": {
-      "id": "AddHeldAccountResult",
-      "description": "A status detailing the status of each account creation, and the\nHeldAccount, if successful.",
-      "type": "object",
       "properties": {
         "account": {
           "$ref": "HeldAccount",
@@ -568,12 +403,19 @@
           "$ref": "Status",
           "description": "This represents the success status. If failed, check message."
         }
-      }
+      },
+      "id": "AddHeldAccountResult",
+      "description": "A status detailing the status of each account creation, and the\nHeldAccount, if successful.",
+      "type": "object"
     },
     "HeldGroupsQuery": {
       "description": "Query options for group holds.",
       "type": "object",
       "properties": {
+        "terms": {
+          "description": "The search terms for the hold.",
+          "type": "string"
+        },
         "endTime": {
           "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
           "format": "google-datetime",
@@ -583,24 +425,20 @@
           "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "terms": {
-          "description": "The search terms for the hold.",
-          "type": "string"
         }
       },
       "id": "HeldGroupsQuery"
     },
     "HeldDriveQuery": {
+      "description": "Query options for Drive holds.",
+      "type": "object",
       "properties": {
         "includeTeamDriveFiles": {
           "description": "If true, include files in Team Drives in the hold.",
           "type": "boolean"
         }
       },
-      "id": "HeldDriveQuery",
-      "description": "Query options for Drive holds.",
-      "type": "object"
+      "id": "HeldDriveQuery"
     },
     "HeldOrgUnit": {
       "description": "A organizational unit being held in a particular hold.\nThis structure is immutable.",
@@ -622,8 +460,15 @@
       "description": "Represents a matter.",
       "type": "object",
       "properties": {
+        "description": {
+          "description": "The description of the matter.",
+          "type": "string"
+        },
+        "matterId": {
+          "description": "The matter ID which is generated by the server.\nShould be blank when creating a new matter.",
+          "type": "string"
+        },
         "state": {
-          "type": "string",
           "enumDescriptions": [
             "The matter has no specified state.",
             "This matter is open.",
@@ -636,32 +481,24 @@
             "CLOSED",
             "DELETED"
           ],
-          "description": "The state of the matter."
-        },
-        "name": {
-          "description": "The name of the matter.",
+          "description": "The state of the matter.",
           "type": "string"
         },
+        "name": {
+          "type": "string",
+          "description": "The name of the matter."
+        },
         "matterPermissions": {
-          "description": "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have.",
           "type": "array",
           "items": {
             "$ref": "MatterPermission"
-          }
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of the matter."
-        },
-        "matterId": {
-          "description": "The matter ID which is generated by the server.\nShould be blank when creating a new matter.",
-          "type": "string"
+          },
+          "description": "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have."
         }
       },
       "id": "Matter"
     },
     "AddHeldAccountsResponse": {
-      "id": "AddHeldAccountsResponse",
       "description": "Response for batch create held accounts.",
       "type": "object",
       "properties": {
@@ -672,27 +509,19 @@
             "$ref": "AddHeldAccountResult"
           }
         }
-      }
+      },
+      "id": "AddHeldAccountsResponse"
     },
     "Export": {
       "description": "An export",
       "type": "object",
       "properties": {
-        "cloudStorageSink": {
-          "description": "Output only. Export sink for cloud storage files.",
-          "$ref": "CloudStorageSink"
-        },
-        "query": {
-          "description": "The search query being exported.",
-          "$ref": "Query"
-        },
         "createTime": {
-          "type": "string",
           "description": "Output only. The time when the export was created.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "status": {
-          "type": "string",
           "enumDescriptions": [
             "The status is unspecified.",
             "The export completed.",
@@ -705,31 +534,40 @@
             "FAILED",
             "IN_PROGRESS"
           ],
-          "description": "Output only. The export status."
+          "description": "Output only. The export status.",
+          "type": "string"
         },
         "name": {
           "description": "The export name.",
           "type": "string"
         },
         "requester": {
-          "$ref": "UserInfo",
-          "description": "Output only. The requester of the export."
+          "description": "Output only. The requester of the export.",
+          "$ref": "UserInfo"
         },
         "id": {
           "description": "Output only. The generated export ID.",
           "type": "string"
         },
         "matterId": {
-          "type": "string",
-          "description": "Output only. The matter ID."
+          "description": "Output only. The matter ID.",
+          "type": "string"
         },
         "exportOptions": {
-          "description": "Advanced options of the export.",
-          "$ref": "ExportOptions"
+          "$ref": "ExportOptions",
+          "description": "Advanced options of the export."
         },
         "stats": {
           "$ref": "ExportStats",
           "description": "Output only. Export statistics."
+        },
+        "cloudStorageSink": {
+          "$ref": "CloudStorageSink",
+          "description": "Output only. Export sink for cloud storage files."
+        },
+        "query": {
+          "$ref": "Query",
+          "description": "The search query being exported."
         }
       },
       "id": "Export"
@@ -751,14 +589,8 @@
       }
     },
     "ExportStats": {
-      "description": "Stats of an export.",
       "type": "object",
       "properties": {
-        "totalArtifactCount": {
-          "description": "The number of documents to be exported.",
-          "format": "int64",
-          "type": "string"
-        },
         "sizeInBytes": {
           "description": "The size of export in bytes.",
           "format": "int64",
@@ -768,20 +600,27 @@
           "description": "The number of documents already processed by the export.",
           "format": "int64",
           "type": "string"
+        },
+        "totalArtifactCount": {
+          "description": "The number of documents to be exported.",
+          "format": "int64",
+          "type": "string"
         }
       },
-      "id": "ExportStats"
+      "id": "ExportStats",
+      "description": "Stats of an export."
     },
     "CorpusQuery": {
+      "description": "Corpus specific queries.",
       "type": "object",
       "properties": {
         "mailQuery": {
-          "$ref": "HeldMailQuery",
-          "description": "Details pertaining to mail holds. If set, corpus must be mail."
+          "description": "Details pertaining to mail holds. If set, corpus must be mail.",
+          "$ref": "HeldMailQuery"
         },
         "groupsQuery": {
-          "$ref": "HeldGroupsQuery",
-          "description": "Details pertaining to Groups holds. If set, corpus must be Groups."
+          "description": "Details pertaining to Groups holds. If set, corpus must be Groups.",
+          "$ref": "HeldGroupsQuery"
         },
         "hangoutsChatQuery": {
           "$ref": "HeldHangoutsChatQuery",
@@ -792,20 +631,29 @@
           "description": "Details pertaining to Drive holds. If set, corpus must be Drive."
         }
       },
-      "id": "CorpusQuery",
-      "description": "Corpus specific queries."
+      "id": "CorpusQuery"
     },
     "Hold": {
+      "id": "Hold",
+      "description": "Represents a hold within Vault. A hold restricts purging of\nartifacts based on the combination of the query and accounts restrictions.\nA hold can be configured to either apply to an explicitly configured set\nof accounts, or can be applied to all members of an organizational unit.",
       "type": "object",
       "properties": {
+        "accounts": {
+          "description": "If set, the hold applies to the enumerated accounts and org_unit must be\nempty.",
+          "type": "array",
+          "items": {
+            "$ref": "HeldAccount"
+          }
+        },
+        "query": {
+          "$ref": "CorpusQuery",
+          "description": "The corpus-specific query. If set, the corpusQuery must match corpus\ntype."
+        },
+        "orgUnit": {
+          "description": "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field.",
+          "$ref": "HeldOrgUnit"
+        },
         "corpus": {
-          "enumDescriptions": [
-            "No corpus specified.",
-            "Drive.",
-            "Mail.",
-            "Groups.",
-            "Hangouts Chat."
-          ],
           "enum": [
             "CORPUS_TYPE_UNSPECIFIED",
             "DRIVE",
@@ -814,7 +662,14 @@
             "HANGOUTS_CHAT"
           ],
           "description": "The corpus to be searched.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "No corpus specified.",
+            "Drive.",
+            "Mail.",
+            "Groups.",
+            "Hangouts Chat."
+          ]
         },
         "updateTime": {
           "description": "The last time this hold was modified.",
@@ -828,29 +683,10 @@
         "name": {
           "description": "The name of the hold.",
           "type": "string"
-        },
-        "accounts": {
-          "description": "If set, the hold applies to the enumerated accounts and org_unit must be\nempty.",
-          "type": "array",
-          "items": {
-            "$ref": "HeldAccount"
-          }
-        },
-        "query": {
-          "$ref": "CorpusQuery",
-          "description": "The corpus-specific query. If set, the corpusQuery must match corpus\ntype."
-        },
-        "orgUnit": {
-          "$ref": "HeldOrgUnit",
-          "description": "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field."
         }
-      },
-      "id": "Hold",
-      "description": "Represents a hold within Vault. A hold restricts purging of\nartifacts based on the combination of the query and accounts restrictions.\nA hold can be configured to either apply to an explicitly configured set\nof accounts, or can be applied to all members of an organizational unit."
+      }
     },
     "HangoutsChatInfo": {
-      "description": "Accounts to search",
-      "type": "object",
       "properties": {
         "roomId": {
           "description": "A set of rooms to search.",
@@ -860,12 +696,11 @@
           }
         }
       },
-      "id": "HangoutsChatInfo"
+      "id": "HangoutsChatInfo",
+      "description": "Accounts to search",
+      "type": "object"
     },
     "AccountInfo": {
-      "id": "AccountInfo",
-      "description": "Accounts to search",
-      "type": "object",
       "properties": {
         "emails": {
           "description": "A set of accounts to search.",
@@ -874,46 +709,49 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "AccountInfo",
+      "description": "Accounts to search",
+      "type": "object"
     },
     "HangoutsChatExportOptions": {
-      "description": "The options for hangouts chat export.",
       "type": "object",
       "properties": {
         "exportFormat": {
+          "enumDescriptions": [
+            "No export format specified.",
+            "MBOX as export format.",
+            "PST as export format"
+          ],
           "enum": [
             "EXPORT_FORMAT_UNSPECIFIED",
             "MBOX",
             "PST"
           ],
           "description": "The export format for hangouts chat export.",
-          "type": "string",
-          "enumDescriptions": [
-            "No export format specified.",
-            "MBOX as export format.",
-            "PST as export format"
-          ]
+          "type": "string"
         }
       },
-      "id": "HangoutsChatExportOptions"
+      "id": "HangoutsChatExportOptions",
+      "description": "The options for hangouts chat export."
     },
     "ListHoldsResponse": {
-      "id": "ListHoldsResponse",
       "description": "The holds for a matter.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more holds to list.",
-          "type": "string"
-        },
         "holds": {
           "description": "The list of holds.",
           "type": "array",
           "items": {
             "$ref": "Hold"
           }
+        },
+        "nextPageToken": {
+          "description": "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more holds to list.",
+          "type": "string"
         }
-      }
+      },
+      "id": "ListHoldsResponse"
     },
     "ListHeldAccountsResponse": {
       "description": "Returns a list of held accounts for a hold.",
@@ -928,12 +766,251 @@
         }
       },
       "id": "ListHeldAccountsResponse"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
+    "ListExportsResponse": {
+      "description": "The holds for a matter.",
+      "type": "object",
+      "properties": {
+        "exports": {
+          "description": "The list of exports.",
+          "type": "array",
+          "items": {
+            "$ref": "Export"
+          }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "Page token to retrieve the next page of results in the list."
+        }
+      },
+      "id": "ListExportsResponse"
+    },
+    "ReopenMatterRequest": {
+      "type": "object",
+      "properties": {},
+      "id": "ReopenMatterRequest",
+      "description": "Reopen a matter by ID."
+    },
+    "CloseMatterRequest": {
+      "id": "CloseMatterRequest",
+      "description": "Close a matter by ID.",
+      "type": "object",
+      "properties": {}
+    },
+    "MailExportOptions": {
+      "description": "The options for mail export.",
+      "type": "object",
+      "properties": {
+        "exportFormat": {
+          "enumDescriptions": [
+            "No export format specified.",
+            "MBOX as export format.",
+            "PST as export format"
+          ],
+          "enum": [
+            "EXPORT_FORMAT_UNSPECIFIED",
+            "MBOX",
+            "PST"
+          ],
+          "description": "The export file format.",
+          "type": "string"
+        }
+      },
+      "id": "MailExportOptions"
+    },
+    "Query": {
+      "description": "A query definition relevant for search & export.",
+      "type": "object",
+      "properties": {
+        "driveOptions": {
+          "$ref": "DriveOptions",
+          "description": "For Drive search, specify more options in this field."
+        },
+        "endTime": {
+          "type": "string",
+          "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "format": "google-datetime"
+        },
+        "dataScope": {
+          "enumDescriptions": [
+            "No data scope specified.",
+            "All available data.",
+            "Data on hold.",
+            "Data not processed."
+          ],
+          "enum": [
+            "DATA_SCOPE_UNSPECIFIED",
+            "ALL_DATA",
+            "HELD_DATA",
+            "UNPROCESSED_DATA"
+          ],
+          "description": "The data source to search from.",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "searchMethod": {
+          "enum": [
+            "SEARCH_METHOD_UNSPECIFIED",
+            "ACCOUNT",
+            "ORG_UNIT",
+            "TEAM_DRIVE",
+            "ENTIRE_ORG",
+            "ROOM"
+          ],
+          "description": "The search method to use.",
+          "type": "string",
+          "enumDescriptions": [
+            "A search method must be specified. If a request does not specify a\nsearch method, it will be rejected.",
+            "Will search all accounts provided in account_info.",
+            "Will search all accounts in the OU specified in org_unit_info.",
+            "Will search for all accounts in the Team Drive specified in\nteam_drive_info.",
+            "Will search for all accounts in the organization.\nNo need to set account_info or org_unit_info.",
+            "Will search in the Room specified in\nhangout_chats_info. (read-only)"
+          ]
+        },
+        "corpus": {
+          "type": "string",
+          "enumDescriptions": [
+            "No corpus specified.",
+            "Drive.",
+            "Mail.",
+            "Groups.",
+            "Hangouts Chat."
+          ],
+          "enum": [
+            "CORPUS_TYPE_UNSPECIFIED",
+            "DRIVE",
+            "MAIL",
+            "GROUPS",
+            "HANGOUTS_CHAT"
+          ],
+          "description": "The corpus to search."
+        },
+        "hangoutsChatInfo": {
+          "$ref": "HangoutsChatInfo",
+          "description": "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)"
+        },
+        "hangoutsChatOptions": {
+          "$ref": "HangoutsChatOptions",
+          "description": "For hangouts chat search, specify more options in this field. (read-only)"
+        },
+        "orgUnitInfo": {
+          "$ref": "OrgUnitInfo",
+          "description": "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified."
+        },
+        "terms": {
+          "description": "The corpus-specific\n\u003ca href=\"https://support.google.com/vault/answer/2474474\"\u003esearch operators\u003c/a\u003e\nused to generate search results.",
+          "type": "string"
+        },
+        "mailOptions": {
+          "$ref": "MailOptions",
+          "description": "For mail search, specify more options in this field."
+        },
+        "timeZone": {
+          "description": "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n\u003ca href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\"\u003eTime\nZone\u003c/a\u003e.",
+          "type": "string"
+        },
+        "teamDriveInfo": {
+          "description": "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified.",
+          "$ref": "TeamDriveInfo"
+        },
+        "accountInfo": {
+          "$ref": "AccountInfo",
+          "description": "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified."
+        }
+      },
+      "id": "Query"
+    },
+    "CloudStorageSink": {
+      "description": "Export sink for cloud storage files.",
+      "type": "object",
+      "properties": {
+        "files": {
+          "description": "Output only. The exported files on cloud storage.",
+          "type": "array",
+          "items": {
+            "$ref": "CloudStorageFile"
+          }
+        }
+      },
+      "id": "CloudStorageSink"
+    },
+    "ListMattersResponse": {
+      "description": "Provides the list of matters.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "Page token to retrieve the next page of results in the list.",
+          "type": "string"
+        },
+        "matters": {
+          "description": "List of matters.",
+          "type": "array",
+          "items": {
+            "$ref": "Matter"
+          }
+        }
+      },
+      "id": "ListMattersResponse"
+    },
+    "CloseMatterResponse": {
+      "type": "object",
+      "properties": {
+        "matter": {
+          "$ref": "Matter",
+          "description": "The updated matter, with state CLOSED."
+        }
+      },
+      "id": "CloseMatterResponse",
+      "description": "Response to a CloseMatterRequest."
+    },
+    "OrgUnitInfo": {
+      "id": "OrgUnitInfo",
+      "description": "Org Unit to search",
+      "type": "object",
+      "properties": {
+        "orgUnitId": {
+          "description": "Org unit to search, as provided by the\n\u003ca href=\"https://developers.google.com/admin-sdk/directory/\"\u003eAdmin SDK Directory API\u003c/a\u003e.",
+          "type": "string"
+        }
+      }
+    },
+    "AddHeldAccountsRequest": {
+      "type": "object",
+      "properties": {
+        "emails": {
+          "description": "Emails to identify which accounts to add. Only emails or only account_ids\nshould be specified, but not both.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accountIds": {
+          "description": "Account ids to identify which accounts to add. Only account_ids or only\nemails should be specified, but not both.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "AddHeldAccountsRequest",
+      "description": "Add a list of accounts to a hold."
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Vault",
   "auth": {
@@ -960,19 +1037,21 @@
       "resources": {
         "exports": {
           "methods": {
-            "get": {
-              "description": "Gets an Export.",
+            "delete": {
+              "flatPath": "v1/matters/{matterId}/exports/{exportId}",
+              "path": "v1/matters/{matterId}/exports/{exportId}",
+              "id": "vault.matters.exports.delete",
+              "description": "Deletes an Export.",
               "response": {
-                "$ref": "Export"
+                "$ref": "Empty"
               },
               "parameterOrder": [
                 "matterId",
                 "exportId"
               ],
-              "httpMethod": "GET",
+              "httpMethod": "DELETE",
               "scopes": [
-                "https://www.googleapis.com/auth/ediscovery",
-                "https://www.googleapis.com/auth/ediscovery.readonly"
+                "https://www.googleapis.com/auth/ediscovery"
               ],
               "parameters": {
                 "matterId": {
@@ -987,12 +1066,44 @@
                   "type": "string",
                   "location": "path"
                 }
+              }
+            },
+            "get": {
+              "response": {
+                "$ref": "Export"
+              },
+              "parameterOrder": [
+                "matterId",
+                "exportId"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery",
+                "https://www.googleapis.com/auth/ediscovery.readonly"
+              ],
+              "parameters": {
+                "matterId": {
+                  "description": "The matter ID.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                },
+                "exportId": {
+                  "location": "path",
+                  "description": "The export ID.",
+                  "required": true,
+                  "type": "string"
+                }
               },
               "flatPath": "v1/matters/{matterId}/exports/{exportId}",
               "path": "v1/matters/{matterId}/exports/{exportId}",
-              "id": "vault.matters.exports.get"
+              "id": "vault.matters.exports.get",
+              "description": "Gets an Export."
             },
             "list": {
+              "flatPath": "v1/matters/{matterId}/exports",
+              "path": "v1/matters/{matterId}/exports",
+              "id": "vault.matters.exports.list",
               "description": "Lists Exports.",
               "response": {
                 "$ref": "ListExportsResponse"
@@ -1003,30 +1114,27 @@
               "httpMethod": "GET",
               "parameters": {
                 "pageSize": {
-                  "type": "integer",
-                  "location": "query",
                   "description": "The number of exports to return in the response.",
-                  "format": "int32"
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
                 },
                 "matterId": {
-                  "location": "path",
-                  "description": "The matter ID.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "location": "path",
+                  "description": "The matter ID."
                 },
                 "pageToken": {
+                  "location": "query",
                   "description": "The pagination token as returned in the response.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/ediscovery",
                 "https://www.googleapis.com/auth/ediscovery.readonly"
-              ],
-              "flatPath": "v1/matters/{matterId}/exports",
-              "path": "v1/matters/{matterId}/exports",
-              "id": "vault.matters.exports.list"
+              ]
             },
             "create": {
               "request": {
@@ -1045,51 +1153,93 @@
               ],
               "parameters": {
                 "matterId": {
-                  "description": "The matter ID.",
                   "required": true,
                   "type": "string",
-                  "location": "path"
+                  "location": "path",
+                  "description": "The matter ID."
                 }
               },
               "flatPath": "v1/matters/{matterId}/exports",
               "path": "v1/matters/{matterId}/exports",
               "id": "vault.matters.exports.create"
-            },
-            "delete": {
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "matterId",
-                "exportId"
-              ],
-              "httpMethod": "DELETE",
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery"
-              ],
-              "parameters": {
-                "matterId": {
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                },
-                "exportId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The export ID."
-                }
-              },
-              "flatPath": "v1/matters/{matterId}/exports/{exportId}",
-              "path": "v1/matters/{matterId}/exports/{exportId}",
-              "id": "vault.matters.exports.delete",
-              "description": "Deletes an Export."
             }
           }
         },
         "holds": {
           "methods": {
+            "list": {
+              "id": "vault.matters.holds.list",
+              "path": "v1/matters/{matterId}/holds",
+              "description": "Lists holds within a matter. An empty page token in ListHoldsResponse\ndenotes no more holds to list.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "matterId"
+              ],
+              "response": {
+                "$ref": "ListHoldsResponse"
+              },
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "The pagination token as returned in the response.\nAn empty token means start from the beginning.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The number of holds to return in the response, between 0 and 100 inclusive.\nLeaving this empty, or as 0, is the same as page_size = 100.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "view": {
+                  "location": "query",
+                  "enum": [
+                    "HOLD_VIEW_UNSPECIFIED",
+                    "BASIC_HOLD",
+                    "FULL_HOLD"
+                  ],
+                  "description": "Specifies which parts of the Hold to return.",
+                  "type": "string"
+                },
+                "matterId": {
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "The matter ID."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery",
+                "https://www.googleapis.com/auth/ediscovery.readonly"
+              ],
+              "flatPath": "v1/matters/{matterId}/holds"
+            },
+            "create": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "matterId"
+              ],
+              "response": {
+                "$ref": "Hold"
+              },
+              "parameters": {
+                "matterId": {
+                  "location": "path",
+                  "description": "The matter ID.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery"
+              ],
+              "flatPath": "v1/matters/{matterId}/holds",
+              "id": "vault.matters.holds.create",
+              "path": "v1/matters/{matterId}/holds",
+              "description": "Creates a hold in the given matter.",
+              "request": {
+                "$ref": "Hold"
+              }
+            },
             "removeHeldAccounts": {
               "response": {
                 "$ref": "RemoveHeldAccountsResponse"
@@ -1103,17 +1253,17 @@
                 "https://www.googleapis.com/auth/ediscovery"
               ],
               "parameters": {
-                "matterId": {
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                },
                 "holdId": {
                   "location": "path",
                   "description": "The hold ID.",
                   "required": true,
                   "type": "string"
+                },
+                "matterId": {
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "The matter ID."
                 }
               },
               "flatPath": "v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts",
@@ -1125,6 +1275,26 @@
               "description": "Removes HeldAccounts from a hold. Returns a list of statuses in the same\norder as the request. If this request leaves the hold with no held\naccounts, the hold will not apply to any accounts."
             },
             "addHeldAccounts": {
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery"
+              ],
+              "parameters": {
+                "holdId": {
+                  "location": "path",
+                  "description": "The hold ID.",
+                  "required": true,
+                  "type": "string"
+                },
+                "matterId": {
+                  "location": "path",
+                  "description": "The matter ID.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
+              "id": "vault.matters.holds.addHeldAccounts",
+              "path": "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
               "request": {
                 "$ref": "AddHeldAccountsRequest"
               },
@@ -1136,61 +1306,9 @@
               ],
               "response": {
                 "$ref": "AddHeldAccountsResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery"
-              ],
-              "parameters": {
-                "holdId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The hold ID."
-                },
-                "matterId": {
-                  "location": "path",
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
-              "id": "vault.matters.holds.addHeldAccounts",
-              "path": "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts"
+              }
             },
             "get": {
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery",
-                "https://www.googleapis.com/auth/ediscovery.readonly"
-              ],
-              "parameters": {
-                "view": {
-                  "location": "query",
-                  "enum": [
-                    "HOLD_VIEW_UNSPECIFIED",
-                    "BASIC_HOLD",
-                    "FULL_HOLD"
-                  ],
-                  "description": "Specifies which parts of the Hold to return.",
-                  "type": "string"
-                },
-                "matterId": {
-                  "location": "path",
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string"
-                },
-                "holdId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The hold ID."
-                }
-              },
-              "flatPath": "v1/matters/{matterId}/holds/{holdId}",
-              "id": "vault.matters.holds.get",
-              "path": "v1/matters/{matterId}/holds/{holdId}",
-              "description": "Gets a hold by ID.",
               "httpMethod": "GET",
               "parameterOrder": [
                 "matterId",
@@ -1198,9 +1316,61 @@
               ],
               "response": {
                 "$ref": "Hold"
-              }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery",
+                "https://www.googleapis.com/auth/ediscovery.readonly"
+              ],
+              "parameters": {
+                "matterId": {
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "The matter ID."
+                },
+                "holdId": {
+                  "location": "path",
+                  "description": "The hold ID.",
+                  "required": true,
+                  "type": "string"
+                },
+                "view": {
+                  "enum": [
+                    "HOLD_VIEW_UNSPECIFIED",
+                    "BASIC_HOLD",
+                    "FULL_HOLD"
+                  ],
+                  "description": "Specifies which parts of the Hold to return.",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v1/matters/{matterId}/holds/{holdId}",
+              "id": "vault.matters.holds.get",
+              "path": "v1/matters/{matterId}/holds/{holdId}",
+              "description": "Gets a hold by ID."
             },
             "update": {
+              "scopes": [
+                "https://www.googleapis.com/auth/ediscovery"
+              ],
+              "parameters": {
+                "matterId": {
+                  "location": "path",
+                  "description": "The matter ID.",
+                  "required": true,
+                  "type": "string"
+                },
+                "holdId": {
+                  "description": "The ID of the hold.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/matters/{matterId}/holds/{holdId}",
+              "path": "v1/matters/{matterId}/holds/{holdId}",
+              "id": "vault.matters.holds.update",
               "request": {
                 "$ref": "Hold"
               },
@@ -1212,7 +1382,9 @@
                 "matterId",
                 "holdId"
               ],
-              "httpMethod": "PUT",
+              "httpMethod": "PUT"
+            },
+            "delete": {
               "scopes": [
                 "https://www.googleapis.com/auth/ediscovery"
               ],
@@ -1225,16 +1397,11 @@
                 },
                 "holdId": {
                   "location": "path",
-                  "description": "The ID of the hold.",
+                  "description": "The hold ID.",
                   "required": true,
                   "type": "string"
                 }
               },
-              "flatPath": "v1/matters/{matterId}/holds/{holdId}",
-              "path": "v1/matters/{matterId}/holds/{holdId}",
-              "id": "vault.matters.holds.update"
-            },
-            "delete": {
               "flatPath": "v1/matters/{matterId}/holds/{holdId}",
               "path": "v1/matters/{matterId}/holds/{holdId}",
               "id": "vault.matters.holds.delete",
@@ -1246,172 +1413,12 @@
                 "matterId",
                 "holdId"
               ],
-              "httpMethod": "DELETE",
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery"
-              ],
-              "parameters": {
-                "holdId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The hold ID."
-                },
-                "matterId": {
-                  "location": "path",
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string"
-                }
-              }
-            },
-            "list": {
-              "description": "Lists holds within a matter. An empty page token in ListHoldsResponse\ndenotes no more holds to list.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "matterId"
-              ],
-              "response": {
-                "$ref": "ListHoldsResponse"
-              },
-              "parameters": {
-                "matterId": {
-                  "location": "path",
-                  "description": "The matter ID.",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageToken": {
-                  "description": "The pagination token as returned in the response.\nAn empty token means start from the beginning.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "description": "The number of holds to return in the response, between 0 and 100 inclusive.\nLeaving this empty, or as 0, is the same as page_size = 100.",
-                  "format": "int32"
-                },
-                "view": {
-                  "location": "query",
-                  "enum": [
-                    "HOLD_VIEW_UNSPECIFIED",
-                    "BASIC_HOLD",
-                    "FULL_HOLD"
-                  ],
-                  "description": "Specifies which parts of the Hold to return.",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery",
-                "https://www.googleapis.com/auth/ediscovery.readonly"
-              ],
-              "flatPath": "v1/matters/{matterId}/holds",
-              "id": "vault.matters.holds.list",
-              "path": "v1/matters/{matterId}/holds"
-            },
-            "create": {
-              "parameters": {
-                "matterId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The matter ID."
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/ediscovery"
-              ],
-              "flatPath": "v1/matters/{matterId}/holds",
-              "id": "vault.matters.holds.create",
-              "path": "v1/matters/{matterId}/holds",
-              "description": "Creates a hold in the given matter.",
-              "request": {
-                "$ref": "Hold"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "matterId"
-              ],
-              "response": {
-                "$ref": "Hold"
-              }
+              "httpMethod": "DELETE"
             }
           },
           "resources": {
             "accounts": {
               "methods": {
-                "delete": {
-                  "httpMethod": "DELETE",
-                  "parameterOrder": [
-                    "matterId",
-                    "holdId",
-                    "accountId"
-                  ],
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameters": {
-                    "accountId": {
-                      "location": "path",
-                      "description": "The ID of the account to remove from the hold.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "matterId": {
-                      "location": "path",
-                      "description": "The matter ID.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "holdId": {
-                      "description": "The hold ID.",
-                      "required": true,
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/ediscovery"
-                  ],
-                  "flatPath": "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
-                  "id": "vault.matters.holds.accounts.delete",
-                  "path": "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
-                  "description": "Removes a HeldAccount from a hold. If this request leaves the hold with\nno held accounts, the hold will not apply to any accounts."
-                },
-                "list": {
-                  "description": "Lists HeldAccounts for a hold. This will only list individually specified\nheld accounts. If the hold is on an OU, then use\n\u003ca href=\"https://developers.google.com/admin-sdk/\"\u003eAdmin SDK\u003c/a\u003e\nto enumerate its members.",
-                  "response": {
-                    "$ref": "ListHeldAccountsResponse"
-                  },
-                  "parameterOrder": [
-                    "matterId",
-                    "holdId"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/ediscovery",
-                    "https://www.googleapis.com/auth/ediscovery.readonly"
-                  ],
-                  "parameters": {
-                    "matterId": {
-                      "description": "The matter ID.",
-                      "required": true,
-                      "type": "string",
-                      "location": "path"
-                    },
-                    "holdId": {
-                      "required": true,
-                      "type": "string",
-                      "location": "path",
-                      "description": "The hold ID."
-                    }
-                  },
-                  "flatPath": "v1/matters/{matterId}/holds/{holdId}/accounts",
-                  "path": "v1/matters/{matterId}/holds/{holdId}/accounts",
-                  "id": "vault.matters.holds.accounts.list"
-                },
                 "create": {
                   "flatPath": "v1/matters/{matterId}/holds/{holdId}/accounts",
                   "path": "v1/matters/{matterId}/holds/{holdId}/accounts",
@@ -1445,6 +1452,76 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/ediscovery"
                   ]
+                },
+                "delete": {
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "matterId",
+                    "holdId",
+                    "accountId"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameters": {
+                    "matterId": {
+                      "description": "The matter ID.",
+                      "required": true,
+                      "type": "string",
+                      "location": "path"
+                    },
+                    "holdId": {
+                      "location": "path",
+                      "description": "The hold ID.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "required": true,
+                      "type": "string",
+                      "location": "path",
+                      "description": "The ID of the account to remove from the hold."
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/ediscovery"
+                  ],
+                  "flatPath": "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
+                  "id": "vault.matters.holds.accounts.delete",
+                  "path": "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
+                  "description": "Removes a HeldAccount from a hold. If this request leaves the hold with\nno held accounts, the hold will not apply to any accounts."
+                },
+                "list": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/ediscovery",
+                    "https://www.googleapis.com/auth/ediscovery.readonly"
+                  ],
+                  "parameters": {
+                    "matterId": {
+                      "location": "path",
+                      "description": "The matter ID.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "holdId": {
+                      "location": "path",
+                      "description": "The hold ID.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1/matters/{matterId}/holds/{holdId}/accounts",
+                  "path": "v1/matters/{matterId}/holds/{holdId}/accounts",
+                  "id": "vault.matters.holds.accounts.list",
+                  "description": "Lists HeldAccounts for a hold. This will only list individually specified\nheld accounts. If the hold is on an OU, then use\n\u003ca href=\"https://developers.google.com/admin-sdk/\"\u003eAdmin SDK\u003c/a\u003e\nto enumerate its members.",
+                  "response": {
+                    "$ref": "ListHeldAccountsResponse"
+                  },
+                  "parameterOrder": [
+                    "matterId",
+                    "holdId"
+                  ],
+                  "httpMethod": "GET"
                 }
               }
             }
@@ -1452,134 +1529,11 @@
         }
       },
       "methods": {
-        "update": {
-          "response": {
-            "$ref": "Matter"
-          },
-          "parameterOrder": [
-            "matterId"
-          ],
-          "httpMethod": "PUT",
-          "scopes": [
-            "https://www.googleapis.com/auth/ediscovery"
-          ],
-          "parameters": {
-            "matterId": {
-              "required": true,
-              "type": "string",
-              "location": "path",
-              "description": "The matter ID."
-            }
-          },
-          "flatPath": "v1/matters/{matterId}",
-          "path": "v1/matters/{matterId}",
-          "id": "vault.matters.update",
-          "request": {
-            "$ref": "Matter"
-          },
-          "description": "Updates the specified matter.\nThis updates only the name and description of the matter, identified by\nmatter id. Changes to any other fields are ignored.\nReturns the default view of the matter."
-        },
-        "delete": {
-          "flatPath": "v1/matters/{matterId}",
-          "path": "v1/matters/{matterId}",
-          "id": "vault.matters.delete",
-          "description": "Deletes the specified matter. Returns matter with updated state.",
-          "response": {
-            "$ref": "Matter"
-          },
-          "parameterOrder": [
-            "matterId"
-          ],
-          "httpMethod": "DELETE",
-          "parameters": {
-            "matterId": {
-              "location": "path",
-              "description": "The matter ID",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/ediscovery"
-          ]
-        },
-        "addPermissions": {
-          "request": {
-            "$ref": "AddMatterPermissionsRequest"
-          },
-          "description": "Adds an account as a matter collaborator.",
-          "response": {
-            "$ref": "MatterPermission"
-          },
-          "parameterOrder": [
-            "matterId"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/ediscovery"
-          ],
-          "parameters": {
-            "matterId": {
-              "location": "path",
-              "description": "The matter ID.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/matters/{matterId}:addPermissions",
-          "path": "v1/matters/{matterId}:addPermissions",
-          "id": "vault.matters.addPermissions"
-        },
-        "list": {
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "ListMattersResponse"
-          },
-          "parameters": {
-            "state": {
-              "enum": [
-                "STATE_UNSPECIFIED",
-                "OPEN",
-                "CLOSED",
-                "DELETED"
-              ],
-              "description": "If set, list only matters with that specific state. The default is listing\nmatters of all states.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "The pagination token as returned in the response."
-            },
-            "pageSize": {
-              "location": "query",
-              "description": "The number of matters to return in the response.\nDefault and maximum are 100.",
-              "format": "int32",
-              "type": "integer"
-            },
-            "view": {
-              "location": "query",
-              "enum": [
-                "VIEW_UNSPECIFIED",
-                "BASIC",
-                "FULL"
-              ],
-              "description": "Specifies which parts of the matter to return in response.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/ediscovery",
-            "https://www.googleapis.com/auth/ediscovery.readonly"
-          ],
-          "flatPath": "v1/matters",
-          "id": "vault.matters.list",
-          "path": "v1/matters",
-          "description": "Lists matters the user has access to."
-        },
         "create": {
+          "description": "Creates a new matter with the given name and description. The initial state\nis open, and the owner is the method caller. Returns the created matter\nwith default view.",
+          "request": {
+            "$ref": "Matter"
+          },
           "httpMethod": "POST",
           "parameterOrder": [],
           "response": {
@@ -1591,17 +1545,9 @@
           ],
           "flatPath": "v1/matters",
           "id": "vault.matters.create",
-          "path": "v1/matters",
-          "description": "Creates a new matter with the given name and description. The initial state\nis open, and the owner is the method caller. Returns the created matter\nwith default view.",
-          "request": {
-            "$ref": "Matter"
-          }
+          "path": "v1/matters"
         },
         "reopen": {
-          "description": "Reopens the specified matter. Returns matter with updated state.",
-          "request": {
-            "$ref": "ReopenMatterRequest"
-          },
           "response": {
             "$ref": "ReopenMatterResponse"
           },
@@ -1611,10 +1557,10 @@
           "httpMethod": "POST",
           "parameters": {
             "matterId": {
+              "description": "The matter ID.",
               "required": true,
               "type": "string",
-              "location": "path",
-              "description": "The matter ID."
+              "location": "path"
             }
           },
           "scopes": [
@@ -1622,9 +1568,17 @@
           ],
           "flatPath": "v1/matters/{matterId}:reopen",
           "path": "v1/matters/{matterId}:reopen",
-          "id": "vault.matters.reopen"
+          "id": "vault.matters.reopen",
+          "description": "Reopens the specified matter. Returns matter with updated state.",
+          "request": {
+            "$ref": "ReopenMatterRequest"
+          }
         },
         "removePermissions": {
+          "request": {
+            "$ref": "RemoveMatterPermissionsRequest"
+          },
+          "description": "Removes an account as a matter collaborator.",
           "httpMethod": "POST",
           "parameterOrder": [
             "matterId"
@@ -1637,19 +1591,15 @@
           ],
           "parameters": {
             "matterId": {
-              "location": "path",
-              "description": "The matter ID.",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "location": "path",
+              "description": "The matter ID."
             }
           },
           "flatPath": "v1/matters/{matterId}:removePermissions",
           "id": "vault.matters.removePermissions",
-          "path": "v1/matters/{matterId}:removePermissions",
-          "request": {
-            "$ref": "RemoveMatterPermissionsRequest"
-          },
-          "description": "Removes an account as a matter collaborator."
+          "path": "v1/matters/{matterId}:removePermissions"
         },
         "close": {
           "description": "Closes the specified matter. Returns matter with updated state.",
@@ -1679,10 +1629,6 @@
           "path": "v1/matters/{matterId}:close"
         },
         "undelete": {
-          "description": "Undeletes the specified matter. Returns matter with updated state.",
-          "request": {
-            "$ref": "UndeleteMatterRequest"
-          },
           "response": {
             "$ref": "Matter"
           },
@@ -1692,10 +1638,10 @@
           "httpMethod": "POST",
           "parameters": {
             "matterId": {
-              "location": "path",
               "description": "The matter ID.",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "location": "path"
             }
           },
           "scopes": [
@@ -1703,25 +1649,36 @@
           ],
           "flatPath": "v1/matters/{matterId}:undelete",
           "path": "v1/matters/{matterId}:undelete",
-          "id": "vault.matters.undelete"
+          "id": "vault.matters.undelete",
+          "description": "Undeletes the specified matter. Returns matter with updated state.",
+          "request": {
+            "$ref": "UndeleteMatterRequest"
+          }
         },
         "get": {
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "matterId"
+          ],
+          "response": {
+            "$ref": "Matter"
+          },
           "parameters": {
-            "matterId": {
-              "description": "The matter ID.",
-              "required": true,
-              "type": "string",
-              "location": "path"
-            },
             "view": {
-              "description": "Specifies which parts of the Matter to return in the response.",
-              "type": "string",
-              "location": "query",
               "enum": [
                 "VIEW_UNSPECIFIED",
                 "BASIC",
                 "FULL"
-              ]
+              ],
+              "description": "Specifies which parts of the Matter to return in the response.",
+              "type": "string",
+              "location": "query"
+            },
+            "matterId": {
+              "location": "path",
+              "description": "The matter ID.",
+              "required": true,
+              "type": "string"
             }
           },
           "scopes": [
@@ -1731,93 +1688,136 @@
           "flatPath": "v1/matters/{matterId}",
           "id": "vault.matters.get",
           "path": "v1/matters/{matterId}",
-          "description": "Gets the specified matter.",
-          "httpMethod": "GET",
+          "description": "Gets the specified matter."
+        },
+        "update": {
+          "request": {
+            "$ref": "Matter"
+          },
+          "description": "Updates the specified matter.\nThis updates only the name and description of the matter, identified by\nmatter id. Changes to any other fields are ignored.\nReturns the default view of the matter.",
+          "response": {
+            "$ref": "Matter"
+          },
           "parameterOrder": [
             "matterId"
           ],
+          "httpMethod": "PUT",
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery"
+          ],
+          "parameters": {
+            "matterId": {
+              "required": true,
+              "type": "string",
+              "location": "path",
+              "description": "The matter ID."
+            }
+          },
+          "flatPath": "v1/matters/{matterId}",
+          "path": "v1/matters/{matterId}",
+          "id": "vault.matters.update"
+        },
+        "delete": {
           "response": {
             "$ref": "Matter"
+          },
+          "parameterOrder": [
+            "matterId"
+          ],
+          "httpMethod": "DELETE",
+          "parameters": {
+            "matterId": {
+              "description": "The matter ID",
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery"
+          ],
+          "flatPath": "v1/matters/{matterId}",
+          "path": "v1/matters/{matterId}",
+          "id": "vault.matters.delete",
+          "description": "Deletes the specified matter. Returns matter with updated state."
+        },
+        "addPermissions": {
+          "flatPath": "v1/matters/{matterId}:addPermissions",
+          "path": "v1/matters/{matterId}:addPermissions",
+          "id": "vault.matters.addPermissions",
+          "request": {
+            "$ref": "AddMatterPermissionsRequest"
+          },
+          "description": "Adds an account as a matter collaborator.",
+          "response": {
+            "$ref": "MatterPermission"
+          },
+          "parameterOrder": [
+            "matterId"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery"
+          ],
+          "parameters": {
+            "matterId": {
+              "required": true,
+              "type": "string",
+              "location": "path",
+              "description": "The matter ID."
+            }
           }
+        },
+        "list": {
+          "description": "Lists matters the user has access to.",
+          "httpMethod": "GET",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "ListMattersResponse"
+          },
+          "parameters": {
+            "state": {
+              "description": "If set, list only matters with that specific state. The default is listing\nmatters of all states.",
+              "type": "string",
+              "location": "query",
+              "enum": [
+                "STATE_UNSPECIFIED",
+                "OPEN",
+                "CLOSED",
+                "DELETED"
+              ]
+            },
+            "pageToken": {
+              "location": "query",
+              "description": "The pagination token as returned in the response.",
+              "type": "string"
+            },
+            "pageSize": {
+              "location": "query",
+              "description": "The number of matters to return in the response.\nDefault and maximum are 100.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "view": {
+              "location": "query",
+              "enum": [
+                "VIEW_UNSPECIFIED",
+                "BASIC",
+                "FULL"
+              ],
+              "description": "Specifies which parts of the matter to return in response.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery",
+            "https://www.googleapis.com/auth/ediscovery.readonly"
+          ],
+          "flatPath": "v1/matters",
+          "id": "vault.matters.list",
+          "path": "v1/matters"
         }
       }
-    }
-  },
-  "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
     }
   }
 }
