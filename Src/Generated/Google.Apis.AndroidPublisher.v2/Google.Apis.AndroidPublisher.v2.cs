@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180930 (1368)
+ *      <tr><th>API Rev<td>20181002 (1370)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1461,6 +1461,11 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
+                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (i.e.
+                /// if installation size may be over a threshold, typically 100 MB).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1500,6 +1505,15 @@ namespace Google.Apis.AndroidPublisher.v2
                             Name = "editId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ackBundleInstallationWarning", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ackBundleInstallationWarning",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1575,6 +1589,11 @@ namespace Google.Apis.AndroidPublisher.v2
                 /// <summary>Unique identifier for this edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
+
+                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (i.e.
+                /// if installation size may be over a threshold, typically 100 MB).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string

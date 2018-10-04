@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180927 (1365)
+ *      <tr><th>API Rev<td>20181003 (1371)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1286,19 +1286,23 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
-    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
-    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
-    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
+    /// represent:
+    ///
+    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
+    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
+    /// a credit card expiration date
+    ///
+    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        /// year/month where the day is not significant.</summary>
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
+        /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a date without a month.</summary>
+        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 
@@ -1497,6 +1501,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<IosVersion> Versions { get; set; } 
 
+        /// <summary>Output only. The set of supported Xcode versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersions")]
+        public virtual System.Collections.Generic.IList<XcodeVersion> XcodeVersions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1591,6 +1599,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
         public virtual System.Nullable<int> MinorVersion { get; set; } 
 
+        /// <summary>Output only. The available Xcode versions for this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedXcodeVersionIds")]
+        public virtual System.Collections.Generic.IList<string> SupportedXcodeVersionIds { get; set; } 
+
         /// <summary>Output only. Tags for this dimension. Examples: "default", "preview", "deprecated"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
@@ -1610,6 +1622,11 @@ namespace Google.Apis.Testing.v1.Data
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testsZip")]
         public virtual FileReference TestsZip { get; set; } 
+
+        /// <summary>Optional. The Xcode version that should be used for the test. Use the EnvironmentDiscoveryService
+        /// to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
+        public virtual string XcodeVersion { get; set; } 
 
         /// <summary>Optional. An .xctestrun file that will override the .xctestrun file in the tests zip. Because the
         /// .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be
@@ -2147,6 +2164,21 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Packet loss ratio (0.0 - 1.0)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packetLossRatio")]
         public virtual System.Nullable<float> PacketLossRatio { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Xcode version that an iOS version is compatible with.</summary>
+    public class XcodeVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Tags for this Xcode version. Examples: "default"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+
+        /// <summary>Output only. The id for this version. Example: "9.2"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

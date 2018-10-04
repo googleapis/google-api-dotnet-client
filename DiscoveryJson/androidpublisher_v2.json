@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Rr8eVfgV-WEtH9gBTzE1VeN9-sk\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/O6nR1INO39XPGH8kMZrLzMfb12Y\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180930",
+ "revision": "20181002",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -1774,6 +1774,11 @@
        "httpMethod": "POST",
        "description": "Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
        "parameters": {
+        "ackBundleInstallationWarning": {
+         "type": "boolean",
+         "description": "Must be set to true if the bundle installation may trigger a warning on user devices (i.e. if installation size may be over a threshold, typically 100 MB).",
+         "location": "query"
+        },
         "editId": {
          "type": "string",
          "description": "Unique identifier for this edit.",

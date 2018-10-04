@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180921 (1359)
+ *      <tr><th>API Rev<td>20181002 (1370)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -4715,19 +4715,22 @@ namespace Google.Apis.ShoppingContent.v2
         /// <summary>Retrieves a report for disbursements from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
-        public virtual ListdisbursementsRequest Listdisbursements(ulong merchantId)
+        /// <param name="disbursementStartDate">The first date which disbursements occurred. In ISO
+        /// 8601 format.</param>
+        public virtual ListdisbursementsRequest Listdisbursements(ulong merchantId, string disbursementStartDate)
         {
-            return new ListdisbursementsRequest(service, merchantId);
+            return new ListdisbursementsRequest(service, merchantId, disbursementStartDate);
         }
 
         /// <summary>Retrieves a report for disbursements from your Merchant Center account.</summary>
         public class ListdisbursementsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderreportsListDisbursementsResponse>
         {
             /// <summary>Constructs a new Listdisbursements request.</summary>
-            public ListdisbursementsRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+            public ListdisbursementsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementStartDate)
                 : base(service)
             {
                 MerchantId = merchantId;
+                DisbursementStartDate = disbursementStartDate;
                 InitParameters();
             }
 
@@ -4736,14 +4739,14 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
+            /// <summary>The first date which disbursements occurred. In ISO 8601 format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disbursementStartDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DisbursementStartDate { get; private set; }
+
             /// <summary>The last date which disbursements occurred. In ISO 8601 format. Default: current
             /// date.</summary>
             [Google.Apis.Util.RequestParameterAttribute("disbursementEndDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DisbursementEndDate { get; set; }
-
-            /// <summary>The first date which disbursements occurred. In ISO 8601 format.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("disbursementStartDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string DisbursementStartDate { get; set; }
 
             /// <summary>The maximum number of disbursements to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4787,18 +4790,18 @@ namespace Google.Apis.ShoppingContent.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "disbursementEndDate", new Google.Apis.Discovery.Parameter
+                    "disbursementStartDate", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "disbursementEndDate",
-                        IsRequired = false,
+                        Name = "disbursementStartDate",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "disbursementStartDate", new Google.Apis.Discovery.Parameter
+                    "disbursementEndDate", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "disbursementStartDate",
+                        Name = "disbursementEndDate",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4831,20 +4834,23 @@ namespace Google.Apis.ShoppingContent.v2
         /// account.</param>
         /// <param name="disbursementId">The Google-provided ID of the disbursement (found in
         /// Wallet).</param>
-        public virtual ListtransactionsRequest Listtransactions(ulong merchantId, string disbursementId)
+        /// <param name="transactionStartDate">The first date in which transaction occurred. In ISO
+        /// 8601 format.</param>
+        public virtual ListtransactionsRequest Listtransactions(ulong merchantId, string disbursementId, string transactionStartDate)
         {
-            return new ListtransactionsRequest(service, merchantId, disbursementId);
+            return new ListtransactionsRequest(service, merchantId, disbursementId, transactionStartDate);
         }
 
         /// <summary>Retrieves a list of transactions for an disbursement from your Merchant Center account.</summary>
         public class ListtransactionsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderreportsListTransactionsResponse>
         {
             /// <summary>Constructs a new Listtransactions request.</summary>
-            public ListtransactionsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementId)
+            public ListtransactionsRequest(Google.Apis.Services.IClientService service, ulong merchantId, string disbursementId, string transactionStartDate)
                 : base(service)
             {
                 MerchantId = merchantId;
                 DisbursementId = disbursementId;
+                TransactionStartDate = transactionStartDate;
                 InitParameters();
             }
 
@@ -4856,6 +4862,10 @@ namespace Google.Apis.ShoppingContent.v2
             /// <summary>The Google-provided ID of the disbursement (found in Wallet).</summary>
             [Google.Apis.Util.RequestParameterAttribute("disbursementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DisbursementId { get; private set; }
+
+            /// <summary>The first date in which transaction occurred. In ISO 8601 format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("transactionStartDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TransactionStartDate { get; private set; }
 
             /// <summary>The maximum number of disbursements to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4869,10 +4879,6 @@ namespace Google.Apis.ShoppingContent.v2
             /// date.</summary>
             [Google.Apis.Util.RequestParameterAttribute("transactionEndDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TransactionEndDate { get; set; }
-
-            /// <summary>The first date in which transaction occurred. In ISO 8601 format.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("transactionStartDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string TransactionStartDate { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4917,6 +4923,15 @@ namespace Google.Apis.ShoppingContent.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "transactionStartDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "transactionStartDate",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -4938,15 +4953,6 @@ namespace Google.Apis.ShoppingContent.v2
                     "transactionEndDate", new Google.Apis.Discovery.Parameter
                     {
                         Name = "transactionEndDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "transactionStartDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "transactionStartDate",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -11438,10 +11444,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are here.</summary>
+        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
+        /// about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
         /// <summary>Refunds for the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refunds")]
@@ -11592,6 +11598,73 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The phone number of the person receiving the delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLegacyPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotionBenefit> Benefits { get; set; } 
+
+        /// <summary>The date and time frame when the promotion is active and ready for validation review. Note that the
+        /// promotion live time may be delayed for a few hours due to the validation review. Start date and end date are
+        /// separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the
+        /// letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
+        /// expression of the time zone for the sale. The end date is in the same format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDates")]
+        public virtual string EffectiveDates { get; set; } 
+
+        /// <summary>Optional. The text code that corresponds to the promotion when applied on the retailer?s
+        /// website.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
+        public virtual string GenericRedemptionCode { get; set; } 
+
+        /// <summary>The unique ID of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The full title of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
+        public virtual string LongTitle { get; set; } 
+
+        /// <summary>Whether the promotion is applicable to all products or only specific products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
+        public virtual string ProductApplicability { get; set; } 
+
+        /// <summary>Indicates that the promotion is valid online.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
+        public virtual string RedemptionChannel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLegacyPromotionBenefit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The discount in the order price when the promotion is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discount")]
+        public virtual Price Discount { get; set; } 
+
+        /// <summary>The OfferId(s) that were purchased in this order and map to this specific benefit of the
+        /// promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerIds")]
+        public virtual System.Collections.Generic.IList<string> OfferIds { get; set; } 
+
+        /// <summary>Further describes the benefit of the promotion. Note that we will expand on this enumeration as we
+        /// support new promotion sub-types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subType")]
+        public virtual string SubType { get; set; } 
+
+        /// <summary>The impact on tax when the promotion is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxImpact")]
+        public virtual Price TaxImpact { get; set; } 
+
+        /// <summary>Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free
+        /// Shipping).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11845,73 +11918,6 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The type of instrument.
         ///
         /// Acceptable values are: - "AMEX" - "DISCOVER" - "JCB" - "MASTERCARD" - "UNIONPAY" - "VISA" - ""</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class OrderPromotion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
-        public virtual System.Collections.Generic.IList<OrderPromotionBenefit> Benefits { get; set; } 
-
-        /// <summary>The date and time frame when the promotion is active and ready for validation review. Note that the
-        /// promotion live time may be delayed for a few hours due to the validation review. Start date and end date are
-        /// separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the
-        /// letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
-        /// expression of the time zone for the sale. The end date is in the same format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDates")]
-        public virtual string EffectiveDates { get; set; } 
-
-        /// <summary>Optional. The text code that corresponds to the promotion when applied on the retailer?s
-        /// website.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
-        public virtual string GenericRedemptionCode { get; set; } 
-
-        /// <summary>The unique ID of the promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>The full title of the promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
-        public virtual string LongTitle { get; set; } 
-
-        /// <summary>Whether the promotion is applicable to all products or only specific products.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
-        public virtual string ProductApplicability { get; set; } 
-
-        /// <summary>Indicates that the promotion is valid online.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
-        public virtual string RedemptionChannel { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class OrderPromotionBenefit : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The discount in the order price when the promotion is applied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("discount")]
-        public virtual Price Discount { get; set; } 
-
-        /// <summary>The OfferId(s) that were purchased in this order and map to this specific benefit of the
-        /// promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("offerIds")]
-        public virtual System.Collections.Generic.IList<string> OfferIds { get; set; } 
-
-        /// <summary>Further describes the benefit of the promotion. Note that we will expand on this enumeration as we
-        /// support new promotion sub-types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subType")]
-        public virtual string SubType { get; set; } 
-
-        /// <summary>The impact on tax when the promotion is applied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taxImpact")]
-        public virtual Price TaxImpact { get; set; } 
-
-        /// <summary>Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free
-        /// Shipping).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -15302,10 +15308,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
-        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are here.</summary>
+        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
+        /// about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
         /// <summary>The total cost of shipping for all items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]

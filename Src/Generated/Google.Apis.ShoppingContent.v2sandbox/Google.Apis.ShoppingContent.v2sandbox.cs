@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20180921 (1359)
+ *      <tr><th>API Rev<td>20181002 (1370)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -3213,10 +3213,10 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are here.</summary>
+        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
+        /// about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
         /// <summary>Refunds for the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refunds")]
@@ -3367,6 +3367,73 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The phone number of the person receiving the delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLegacyPromotion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotionBenefit> Benefits { get; set; } 
+
+        /// <summary>The date and time frame when the promotion is active and ready for validation review. Note that the
+        /// promotion live time may be delayed for a few hours due to the validation review. Start date and end date are
+        /// separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the
+        /// letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
+        /// expression of the time zone for the sale. The end date is in the same format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDates")]
+        public virtual string EffectiveDates { get; set; } 
+
+        /// <summary>Optional. The text code that corresponds to the promotion when applied on the retailer?s
+        /// website.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
+        public virtual string GenericRedemptionCode { get; set; } 
+
+        /// <summary>The unique ID of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The full title of the promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
+        public virtual string LongTitle { get; set; } 
+
+        /// <summary>Whether the promotion is applicable to all products or only specific products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
+        public virtual string ProductApplicability { get; set; } 
+
+        /// <summary>Indicates that the promotion is valid online.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
+        public virtual string RedemptionChannel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLegacyPromotionBenefit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The discount in the order price when the promotion is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discount")]
+        public virtual Price Discount { get; set; } 
+
+        /// <summary>The OfferId(s) that were purchased in this order and map to this specific benefit of the
+        /// promotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerIds")]
+        public virtual System.Collections.Generic.IList<string> OfferIds { get; set; } 
+
+        /// <summary>Further describes the benefit of the promotion. Note that we will expand on this enumeration as we
+        /// support new promotion sub-types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subType")]
+        public virtual string SubType { get; set; } 
+
+        /// <summary>The impact on tax when the promotion is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxImpact")]
+        public virtual Price TaxImpact { get; set; } 
+
+        /// <summary>Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free
+        /// Shipping).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3620,73 +3687,6 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The type of instrument.
         ///
         /// Acceptable values are: - "AMEX" - "DISCOVER" - "JCB" - "MASTERCARD" - "UNIONPAY" - "VISA" - ""</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class OrderPromotion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
-        public virtual System.Collections.Generic.IList<OrderPromotionBenefit> Benefits { get; set; } 
-
-        /// <summary>The date and time frame when the promotion is active and ready for validation review. Note that the
-        /// promotion live time may be delayed for a few hours due to the validation review. Start date and end date are
-        /// separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the
-        /// letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an
-        /// expression of the time zone for the sale. The end date is in the same format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDates")]
-        public virtual string EffectiveDates { get; set; } 
-
-        /// <summary>Optional. The text code that corresponds to the promotion when applied on the retailer?s
-        /// website.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericRedemptionCode")]
-        public virtual string GenericRedemptionCode { get; set; } 
-
-        /// <summary>The unique ID of the promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>The full title of the promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("longTitle")]
-        public virtual string LongTitle { get; set; } 
-
-        /// <summary>Whether the promotion is applicable to all products or only specific products.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productApplicability")]
-        public virtual string ProductApplicability { get; set; } 
-
-        /// <summary>Indicates that the promotion is valid online.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("redemptionChannel")]
-        public virtual string RedemptionChannel { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class OrderPromotionBenefit : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The discount in the order price when the promotion is applied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("discount")]
-        public virtual Price Discount { get; set; } 
-
-        /// <summary>The OfferId(s) that were purchased in this order and map to this specific benefit of the
-        /// promotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("offerIds")]
-        public virtual System.Collections.Generic.IList<string> OfferIds { get; set; } 
-
-        /// <summary>Further describes the benefit of the promotion. Note that we will expand on this enumeration as we
-        /// support new promotion sub-types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subType")]
-        public virtual string SubType { get; set; } 
-
-        /// <summary>The impact on tax when the promotion is applied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taxImpact")]
-        public virtual Price TaxImpact { get; set; } 
-
-        /// <summary>Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free
-        /// Shipping).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -5381,10 +5381,10 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
-        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are here.</summary>
+        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
+        /// about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
         /// <summary>The total cost of shipping for all items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]

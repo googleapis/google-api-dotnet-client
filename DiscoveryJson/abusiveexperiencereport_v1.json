@@ -17,18 +17,7 @@
       "id": "ViolatingSitesResponse"
     },
     "SiteSummaryResponse": {
-      "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.ads.experiencereport.v1",
-      "type": "object",
       "properties": {
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
-        "lastChangeTime": {
-          "description": "The last time that the site changed status.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "abusiveStatus": {
           "description": "The status of the site reviewed for the abusive experiences.",
           "type": "string",
@@ -49,8 +38,6 @@
           "type": "string"
         },
         "filterStatus": {
-          "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
           "enumDescriptions": [
             "N/A.",
             "Ad filtering is on.",
@@ -64,7 +51,9 @@
             "OFF",
             "PAUSED",
             "PENDING"
-          ]
+          ],
+          "description": "The abusive experience enforcement status of the site.",
+          "type": "string"
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -73,15 +62,26 @@
         "reportUrl": {
           "description": "A link that leads to a full abusive experience report.",
           "type": "string"
+        },
+        "lastChangeTime": {
+          "description": "The last time that the site changed status.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
         }
       },
-      "id": "SiteSummaryResponse"
+      "id": "SiteSummaryResponse",
+      "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.ads.experiencereport.v1",
+      "type": "object"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "canonicalName": "Abusive Experience Report",
   "auth": {
@@ -101,9 +101,31 @@
   "title": "Abusive Experience Report API",
   "ownerName": "Google",
   "resources": {
+    "violatingSites": {
+      "methods": {
+        "list": {
+          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+          "response": {
+            "$ref": "ViolatingSitesResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ],
+          "parameters": {},
+          "flatPath": "v1/violatingSites",
+          "path": "v1/violatingSites",
+          "id": "abusiveexperiencereport.violatingSites.list"
+        }
+      }
+    },
     "sites": {
       "methods": {
         "get": {
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get",
+          "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
@@ -123,87 +145,16 @@
               "location": "path"
             }
           },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get",
-          "description": "Gets a summary of the abusive experience rating of a site."
-        }
-      }
-    },
-    "violatingSites": {
-      "methods": {
-        "list": {
-          "flatPath": "v1/violatingSites",
-          "path": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list",
-          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
-          "response": {
-            "$ref": "ViolatingSitesResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ]
+          "flatPath": "v1/sites/{sitesId}"
         }
       }
     }
   },
   "parameters": {
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -222,9 +173,58 @@
       "type": "string"
     },
     "fields": {
-      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
       "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v1",
@@ -233,7 +233,7 @@
   "description": "View Abusive Experience Report data, and get a list of sites that have a significant number of abusive experiences.",
   "servicePath": "",
   "basePath": "",
-  "revision": "20180904",
+  "id": "abusiveexperiencereport:v1",
   "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "id": "abusiveexperiencereport:v1"
+  "revision": "20180904"
 }

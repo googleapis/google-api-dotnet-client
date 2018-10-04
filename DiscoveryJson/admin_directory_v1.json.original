@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/bJY6yaK7IUjX9b18cnF3M_RjDj0\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/3gWnYLZX6BDruNsFQ2Dxff52vJg\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20180911",
+ "revision": "20180917",
  "title": "Admin Directory API",
  "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -593,6 +593,45 @@
      "type": "string",
      "description": "Chromebook boot mode (Read-only)"
     },
+    "cpuStatusReports": {
+     "type": "array",
+     "description": "Reports of CPU utilization and temperature (Read-only)",
+     "items": {
+      "type": "object",
+      "properties": {
+       "cpuTemperatureInfo": {
+        "type": "array",
+        "description": "List of CPU temperature samples.",
+        "items": {
+         "type": "object",
+         "properties": {
+          "label": {
+           "type": "string",
+           "description": "CPU label"
+          },
+          "temperature": {
+           "type": "integer",
+           "description": "Temperature in Celsius degrees.",
+           "format": "int32"
+          }
+         }
+        }
+       },
+       "cpuUtilizationPercentageInfo": {
+        "type": "array",
+        "items": {
+         "type": "integer",
+         "format": "int32"
+        }
+       },
+       "reportTime": {
+        "type": "string",
+        "description": "Date and time the report was received.",
+        "format": "date-time"
+       }
+      }
+     }
+    },
     "deviceFiles": {
      "type": "array",
      "description": "List of device files to download (Read-only)",
@@ -622,6 +661,38 @@
     "deviceId": {
      "type": "string",
      "description": "Unique identifier of Chrome OS Device (Read-only)"
+    },
+    "diskVolumeReports": {
+     "type": "array",
+     "description": "Reports of disk space and other info about mounted/connected volumes.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "volumeInfo": {
+        "type": "array",
+        "description": "Disk volumes",
+        "items": {
+         "type": "object",
+         "properties": {
+          "storageFree": {
+           "type": "string",
+           "description": "Free disk space [in bytes]",
+           "format": "int64"
+          },
+          "storageTotal": {
+           "type": "string",
+           "description": "Total disk space [in bytes]",
+           "format": "int64"
+          },
+          "volumeId": {
+           "type": "string",
+           "description": "Volume id"
+          }
+         }
+        }
+       }
+      }
+     }
     },
     "etag": {
      "type": "string",
@@ -711,6 +782,32 @@
      "type": "string",
      "description": "Final date the device will be supported (Read-only)",
      "format": "date-time"
+    },
+    "systemRamFreeReports": {
+     "type": "array",
+     "description": "Reports of amounts of available RAM memory (Read-only)",
+     "items": {
+      "type": "object",
+      "properties": {
+       "reportTime": {
+        "type": "string",
+        "description": "Date and time the report was received.",
+        "format": "date-time"
+       },
+       "systemRamFreeInfo": {
+        "type": "array",
+        "items": {
+         "type": "string",
+         "format": "int64"
+        }
+       }
+      }
+     }
+    },
+    "systemRamTotal": {
+     "type": "string",
+     "description": "Total RAM on the device [in bytes] (Read-only)",
+     "format": "int64"
     },
     "tpmVersionInfo": {
      "type": "object",

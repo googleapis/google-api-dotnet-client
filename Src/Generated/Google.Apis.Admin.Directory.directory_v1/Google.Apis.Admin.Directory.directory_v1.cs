@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20180911 (1349)
+ *      <tr><th>API Rev<td>20180917 (1355)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -10791,6 +10791,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootMode")]
         public virtual string BootMode { get; set; } 
 
+        /// <summary>Reports of CPU utilization and temperature (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuStatusReports")]
+        public virtual System.Collections.Generic.IList<ChromeOsDevice.CpuStatusReportsData> CpuStatusReports { get; set; } 
+
         /// <summary>List of device files to download (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceFiles")]
         public virtual System.Collections.Generic.IList<ChromeOsDevice.DeviceFilesData> DeviceFiles { get; set; } 
@@ -10798,6 +10802,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Unique identifier of Chrome OS Device (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
+
+        /// <summary>Reports of disk space and other info about mounted/connected volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskVolumeReports")]
+        public virtual System.Collections.Generic.IList<ChromeOsDevice.DiskVolumeReportsData> DiskVolumeReports { get; set; } 
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -10914,6 +10922,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
+        /// <summary>Reports of amounts of available RAM memory (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemRamFreeReports")]
+        public virtual System.Collections.Generic.IList<ChromeOsDevice.SystemRamFreeReportsData> SystemRamFreeReports { get; set; } 
+
+        /// <summary>Total RAM on the device [in bytes] (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemRamTotal")]
+        public virtual System.Nullable<long> SystemRamTotal { get; set; } 
+
         /// <summary>Trusted Platform Module (TPM) (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpmVersionInfo")]
         public virtual ChromeOsDevice.TpmVersionInfoData TpmVersionInfo { get; set; } 
@@ -10934,6 +10950,48 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("date")]
             public virtual string Date { get; set; } 
 
+        }    
+
+        public class CpuStatusReportsData
+        {
+            /// <summary>List of CPU temperature samples.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("cpuTemperatureInfo")]
+            public virtual System.Collections.Generic.IList<CpuStatusReportsData.CpuTemperatureInfoData> CpuTemperatureInfo { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPercentageInfo")]
+            public virtual System.Collections.Generic.IList<System.Nullable<int>> CpuUtilizationPercentageInfo { get; set; } 
+
+            /// <summary>Date and time the report was received.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+            public virtual string ReportTimeRaw { get; set; }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnore]
+            public virtual System.Nullable<System.DateTime> ReportTime
+            {
+                get
+                {
+                    return Google.Apis.Util.Utilities.GetDateTimeFromString(ReportTimeRaw);
+                }
+                set
+                {
+                    ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+            }
+
+            
+
+            public class CpuTemperatureInfoData
+            {
+                /// <summary>CPU label</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("label")]
+                public virtual string Label { get; set; } 
+
+                /// <summary>Temperature in Celsius degrees.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+                public virtual System.Nullable<int> Temperature { get; set; } 
+
+            }
         }    
 
         public class DeviceFilesData
@@ -10970,6 +11028,31 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         }    
 
+        public class DiskVolumeReportsData
+        {
+            /// <summary>Disk volumes</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("volumeInfo")]
+            public virtual System.Collections.Generic.IList<DiskVolumeReportsData.VolumeInfoData> VolumeInfo { get; set; } 
+
+            
+
+            public class VolumeInfoData
+            {
+                /// <summary>Free disk space [in bytes]</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("storageFree")]
+                public virtual System.Nullable<long> StorageFree { get; set; } 
+
+                /// <summary>Total disk space [in bytes]</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("storageTotal")]
+                public virtual System.Nullable<long> StorageTotal { get; set; } 
+
+                /// <summary>Volume id</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+                public virtual string VolumeId { get; set; } 
+
+            }
+        }    
+
         public class RecentUsersData
         {
             /// <summary>Email address of the user. Present only if the user type is managed</summary>
@@ -10979,6 +11062,31 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             /// <summary>The type of the user</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
+
+        }    
+
+        public class SystemRamFreeReportsData
+        {
+            /// <summary>Date and time the report was received.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+            public virtual string ReportTimeRaw { get; set; }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnore]
+            public virtual System.Nullable<System.DateTime> ReportTime
+            {
+                get
+                {
+                    return Google.Apis.Util.Utilities.GetDateTimeFromString(ReportTimeRaw);
+                }
+                set
+                {
+                    ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+            }
+
+            [Newtonsoft.Json.JsonPropertyAttribute("systemRamFreeInfo")]
+            public virtual System.Collections.Generic.IList<System.Nullable<long>> SystemRamFreeInfo { get; set; } 
 
         }    
 
