@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20180927 (1365)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -606,12 +606,6 @@ namespace Google.Apis.CloudTalentSolution.v3
 
                 /// <summary>Optional.
                 ///
-                /// The starting indicator from which to return results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
                 /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number
                 /// is provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -627,6 +621,12 @@ namespace Google.Apis.CloudTalentSolution.v3
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requireOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequireOpenJobs { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The starting indicator from which to return results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -662,15 +662,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -683,6 +674,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "requireOpenJobs", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requireOpenJobs",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1129,6 +1129,23 @@ namespace Google.Apis.CloudTalentSolution.v3
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional.
+                ///
+                /// The starting point of a query result.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The maximum number of jobs to be returned per page of results.
+                ///
+                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
+                /// the maximum allowed page size is 100.
+                ///
+                /// Default is 100 if empty or a number < 1 is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Required.
                 ///
                 /// The filter string specifies the jobs to be enumerated.
@@ -1171,23 +1188,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     JOBVIEWFULL,
                 }
 
-                /// <summary>Optional.
-                ///
-                /// The starting point of a query result.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The maximum number of jobs to be returned per page of results.
-                ///
-                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
-                /// the maximum allowed page size is 100.
-                ///
-                /// Default is 100 if empty or a number < 1 is specified.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1222,24 +1222,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobView", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobView",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1252,6 +1234,24 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "jobView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobView",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1556,6 +1556,44 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
             /// <summary>Optional.
             ///
             /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
@@ -1600,44 +1638,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1672,6 +1672,24 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "scope", new Google.Apis.Discovery.Parameter
                     {
                         Name = "scope",
@@ -1702,24 +1720,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2583,7 +2583,8 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         /// Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for
         /// Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }.
         ///
-        /// The default value is `en-US`.</summary>
+        /// If this field is unspecified and Job.description is present, detected language code based on Job.description
+        /// is assigned, otherwise defaults to 'en_US'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -2795,19 +2796,21 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         ///
         /// This filter specifies a structured syntax to match against the Job.custom_attributes marked as `filterable`.
         ///
-        /// The syntax for this expression is a subset of Google SQL syntax.
+        /// The syntax for this expression is a subset of SQL syntax.
         ///
-        /// Supported operators are: =, !=, <, <=, >, >= where the left of the operator is a custom field key and the
-        /// right of the operator is a number or string (surrounded by quotes) value.
+        /// Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is a custom
+        /// field key and the right of the operator is a number or a quoted string. You must escape backslash (\\) and
+        /// quote (\") characters.
         ///
-        /// Supported functions are LOWER() to perform case insensitive match and EMPTY() to filter on the existence of
-        /// a key.
+        /// Supported functions are `LOWER([field_name])` to perform a case insensitive match and `EMPTY([field_name])`
+        /// to filter on the existence of a key.
         ///
         /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (for example, "((A AND B AND C) OR
-        /// NOT D) AND E"), a maximum of 50 comparisons/functions are allowed in the expression. The expression must be
-        /// < 2000 characters in length.
+        /// NOT D) AND E"), a maximum of 50 comparisons or functions are allowed in the expression. The expression must
+        /// be < 3000 characters in length.
         ///
-        /// Sample Query: (LOWER(driving_license)="class a" OR EMPTY(driving_license)) AND driving_years > 10</summary>
+        /// Sample Query: `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND driving_years >
+        /// 10`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeFilter")]
         public virtual string CustomAttributeFilter { get; set; } 
 
@@ -3414,17 +3417,18 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         /// Supported options are:
         ///
         /// * "relevance desc": By relevance descending, as determined by the API algorithms. Relevance thresholding of
-        /// query results is only available with this ordering. * "posting_publish_time desc": By
-        /// Job.posting_publish_time descending. * "posting_update_time desc": By Job.posting_update_time descending. *
-        /// "title": By Job.title ascending. * "title desc": By Job.title descending. * "annualized_base_compensation":
-        /// By job's CompensationInfo.annualized_base_compensation_range ascending. Jobs whose annualized base
-        /// compensation is unspecified are put at the end of search results. * "annualized_base_compensation desc": By
-        /// job's CompensationInfo.annualized_base_compensation_range descending. Jobs whose annualized base
-        /// compensation is unspecified are put at the end of search results. * "annualized_total_compensation": By
-        /// job's CompensationInfo.annualized_total_compensation_range ascending. Jobs whose annualized base
-        /// compensation is unspecified are put at the end of search results. * "annualized_total_compensation desc": By
-        /// job's CompensationInfo.annualized_total_compensation_range descending. Jobs whose annualized base
-        /// compensation is unspecified are put at the end of search results.</summary>
+        /// query results is only available with this ordering. * "posting`_`publish`_`time desc": By
+        /// Job.posting_publish_time descending. * "posting`_`update`_`time desc": By Job.posting_update_time
+        /// descending. * "title": By Job.title ascending. * "title desc": By Job.title descending. *
+        /// "annualized`_`base`_`compensation": By job's CompensationInfo.annualized_base_compensation_range ascending.
+        /// Jobs whose annualized base compensation is unspecified are put at the end of search results. *
+        /// "annualized`_`base`_`compensation desc": By job's CompensationInfo.annualized_base_compensation_range
+        /// descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. *
+        /// "annualized`_`total`_`compensation": By job's CompensationInfo.annualized_total_compensation_range
+        /// ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. *
+        /// "annualized`_`total`_`compensation desc": By job's CompensationInfo.annualized_total_compensation_range
+        /// descending. Jobs whose annualized base compensation is unspecified are put at the end of search
+        /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
@@ -3520,7 +3524,7 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         public virtual SpellingCorrection SpellCorrection { get; set; } 
 
         /// <summary>The precise result count, which is available only if the client set enable_precise_result_size to
-        /// `true` or if the response is the last page of results. Otherwise, the value will be `-1`.</summary>
+        /// `true` or if the response is the last page of results. Otherwise, the value is `-1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; } 
 

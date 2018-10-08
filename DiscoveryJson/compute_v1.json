@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/koIjeaqQT2U71TcPliz06UnwrgA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/VLlcuW_H_TYnthWtTxma7o2oqnM\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20180906",
+ "revision": "20180916",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -9636,7 +9636,7 @@
   "Network": {
    "id": "Network",
    "type": "object",
-   "description": "Represents a Network resource. Read Networks and Firewalls for more information. (== resource_for v1.networks ==) (== resource_for beta.networks ==)",
+   "description": "Represents a Network resource. Read Virtual Private Cloud (VPC) Network Overview for more information. (== resource_for v1.networks ==) (== resource_for beta.networks ==)",
    "properties": {
     "IPv4Range": {
      "type": "string",
@@ -9645,7 +9645,7 @@
     },
     "autoCreateSubnetworks": {
      "type": "boolean",
-     "description": "When set to true, the network is created in \"auto subnet mode\". When set to false, the network is in \"custom subnet mode\".\n\nIn \"auto subnet mode\", a newly created network is assigned the default CIDR of 10.128.0.0/9 and it automatically creates one subnetwork per region."
+     "description": "When set to true, the VPC network is created in \"auto\" mode. When set to false, the VPC network is created in \"custom\" mode.\n\nAn auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges."
     },
     "creationTimestamp": {
      "type": "string",
@@ -9657,7 +9657,7 @@
     },
     "gatewayIPv4": {
      "type": "string",
-     "description": "A gateway address for default routing to other networks. This value is read only and is selected by the Google Compute Engine, typically as the first usable address in the IPv4Range.",
+     "description": "[Output Only] The gateway address for default routing out of the network. This value is read only and is selected by GCP.",
      "pattern": "[0-9]{1,3}(?:\\.[0-9]{1,3}){3}"
     },
     "id": {
@@ -9697,7 +9697,7 @@
     },
     "subnetworks": {
      "type": "array",
-     "description": "[Output Only] Server-defined fully-qualified URLs for all subnetworks in this network.",
+     "description": "[Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.",
      "items": {
       "type": "string"
      }
@@ -9905,7 +9905,7 @@
    "properties": {
     "routingMode": {
      "type": "string",
-     "description": "The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only advertise routes with subnetworks of this network in the same region as the router. If set to GLOBAL, this network's cloud routers will advertise routes with all subnetworks of this network, across regions.",
+     "description": "The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's cloud routers will advertise routes with all subnets of this network, across regions.",
      "enum": [
       "GLOBAL",
       "REGIONAL"

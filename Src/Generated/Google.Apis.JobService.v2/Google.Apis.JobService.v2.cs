@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20180927 (1365)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -2552,19 +2552,23 @@ namespace Google.Apis.JobService.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, for example date of birth. The time of day and time zone are either
-    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
-    /// can be 0 to represent a year and month where the day is not significant, for example credit card expiration
-    /// date. The year can be 0 to represent a month and day independent of year, for example anniversary date. Related
-    /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
+    /// represent:
+    ///
+    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
+    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
+    /// a credit card expiration date
+    ///
+    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        /// year/month where the day is not significant.</summary>
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
+        /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a date without a month.</summary>
+        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 
@@ -3252,7 +3256,8 @@ namespace Google.Apis.JobService.v2.Data
         /// Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for
         /// Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }.
         ///
-        /// The default value is `en-US`.</summary>
+        /// If this field is unspecified and Job.description is present, detected language code based on Job.description
+        /// is assigned, otherwise defaults to 'en_US'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -3463,7 +3468,7 @@ namespace Google.Apis.JobService.v2.Data
         ///
         /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (For example, "((A AND B AND C) OR
         /// NOT D) AND E"), and there can be a maximum of 50 comparisons/functions in the expression. The expression
-        /// must be < 2000 characters in length.
+        /// must be < 3000 characters in length.
         ///
         /// Sample Query: (key1 = "TEST" OR LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeFilter")]

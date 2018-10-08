@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/'>Service Networking API</a>
+ *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20181004 (1372)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/'>
- *              https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/</a>
+ *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
+ *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
  *      <tr><th>Discovery Name<td>servicenetworking
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Service Networking API can be found at
- * <a href='https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/'>https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/</a>.
+ * <a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -738,21 +738,6 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUsers")]
         public virtual System.Collections.Generic.IList<string> SubnetworkUsers { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message returning the name of the created service subnetwork.</summary>
-    public class AddSubnetworkResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Subnetwork CIDR range in "10.x.x.x/y" format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
-        public virtual string IpCidrRange { get; set; } 
-
-        /// <summary>Subnetwork name. See https://cloud.google.com/compute/docs/vpc/</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1472,7 +1457,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// Example:
     ///
     /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:
-    /// "/v1/{name=messages"}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message
+    /// "/v1/{name=messages}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message
     /// Message { string text = 1; // The resource content. }
     ///
     /// This enables an HTTP REST to gRPC mapping as below:

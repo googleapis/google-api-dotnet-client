@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180906 (1344)
+ *      <tr><th>API Rev<td>20180916 (1354)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -61852,14 +61852,15 @@ namespace Google.Apis.Compute.beta.Data
     ///
     /// Field names correspond to IAM request parameters and field values are their respective values.
     ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
+    /// Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of
+    /// IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or -
+    /// "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or -
+    /// "" (empty string), resulting in a counter with no fields.
     ///
     /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
     /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
     ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
+    /// At this time we do not support multiple field names (though this may be supported in the future).</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field value to attribute.</summary>
@@ -62303,8 +62304,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Network resource. Read Networks and Firewalls for more information. (== resource_for
-    /// v1.networks ==) (== resource_for beta.networks ==)</summary>
+    /// <summary>Represents a Network resource. Read Virtual Private Cloud (VPC) Network Overview for more information.
+    /// (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range of internal addresses that are legal on this network. This range is a CIDR specification,
@@ -62312,11 +62313,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; } 
 
-        /// <summary>When set to true, the network is created in "auto subnet mode". When set to false, the network is
-        /// in "custom subnet mode".
+        /// <summary>When set to true, the VPC network is created in "auto" mode. When set to false, the VPC network is
+        /// created in "custom" mode.
         ///
-        /// In "auto subnet mode", a newly created network is assigned the default CIDR of 10.128.0.0/9 and it
-        /// automatically creates one subnetwork per region.</summary>
+        /// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as
+        /// described in Auto mode VPC network IP ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateSubnetworks")]
         public virtual System.Nullable<bool> AutoCreateSubnetworks { get; set; } 
 
@@ -62329,8 +62330,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>A gateway address for default routing to other networks. This value is read only and is selected by
-        /// the Google Compute Engine, typically as the first usable address in the IPv4Range.</summary>
+        /// <summary>[Output Only] The gateway address for default routing out of the network. This value is read only
+        /// and is selected by GCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIPv4")]
         public virtual string GatewayIPv4 { get; set; } 
 
@@ -62364,7 +62365,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] Server-defined fully-qualified URLs for all subnetworks in this network.</summary>
+        /// <summary>[Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC
+        /// network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
         public virtual System.Collections.Generic.IList<string> Subnetworks { get; set; } 
 
@@ -62984,9 +62986,8 @@ namespace Google.Apis.Compute.beta.Data
     public class NetworkRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only
-        /// advertise routes with subnetworks of this network in the same region as the router. If set to GLOBAL, this
-        /// network's cloud routers will advertise routes with all subnetworks of this network, across
-        /// regions.</summary>
+        /// advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this
+        /// network's cloud routers will advertise routes with all subnets of this network, across regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
         public virtual string RoutingMode { get; set; } 
 
