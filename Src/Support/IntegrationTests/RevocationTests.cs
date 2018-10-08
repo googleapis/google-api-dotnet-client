@@ -25,10 +25,10 @@ using Xunit;
 
 namespace IntegrationTests
 {
-    public class RevokationTests
+    public class RevocationTests
     {
         [Fact]
-        public async Task RevokeUrlIsValid()
+        public async Task RevokeFakeToken_BadRequest()
         {
             // Tests that the correct 400 response is received from the server, given an invalid token.
             // Validates the revoke URL and verb are correct.
@@ -37,8 +37,8 @@ namespace IntegrationTests
                 ClientSecretsStream = Helper.GetClientSecretStream()
             }))
             {
-                var ex = await Assert.ThrowsAsync<TokenResponseException>(() =>
-                    f.RevokeTokenAsync("fake-user", "fake-token", default));
+                var ex = await Assert.ThrowsAsync<TokenResponseException>(
+                    () => f.RevokeTokenAsync("fake-user", "fake-token", default));
                 Assert.Equal(HttpStatusCode.BadRequest, ex.StatusCode);
                 Assert.Equal("invalid_token", ex.Error.Error);
             }
@@ -59,7 +59,7 @@ namespace IntegrationTests
             {
                 // Succeeds if no exception is thrown.
                 await f.RevokeTokenAsync("a-user", accessToken, default);
-                // Canonot verify revokation, as it takes in indeterminate duration to propogate.
+                // Cannot verify revocation, as it takes in indeterminate duration to propagate.
             }
         }
     }
