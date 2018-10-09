@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>CustomSearch API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180815 (1322)
+ *      <tr><th>API Rev<td>20181001 (1369)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>
  *              https://developers.google.com/custom-search/v1/using_rest</a>
@@ -135,9 +135,6 @@ namespace Google.Apis.Customsearch.v1
         /// <summary>Data format for the response.</summary>
         public enum AltEnum
         {
-            /// <summary>Responses with Content-Type of application/atom+xml</summary>
-            [Google.Apis.Util.StringValueAttribute("atom")]
-            Atom,
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/mVYPCLQ2cfgOvrWozbFRu6Ly8H8\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/HcEmuhTEJ15i1AnuK6mgjI8kmMs\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20180930",
+ "revision": "20181002",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -2052,7 +2052,7 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
@@ -2064,9 +2064,9 @@
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       }
@@ -2199,21 +2199,21 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the new event. Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the new event. Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
        "type": "string",
-       "description": "Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is False.",
+       "description": "Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is false.",
        "enum": [
         "all",
         "externalOnly",
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       },
@@ -2478,7 +2478,7 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the change of the event's organizer. Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the change of the event's organizer. Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
@@ -2490,9 +2490,9 @@
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       }
@@ -2550,21 +2550,21 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (e.g. description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
        "type": "string",
-       "description": "Guests who should receive notifications about the event update (e.g., attendee responses, title changes, etc.).",
+       "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
        "enum": [
         "all",
         "externalOnly",
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       },
@@ -2603,7 +2603,7 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
@@ -2615,9 +2615,9 @@
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       },
@@ -2680,21 +2680,21 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (e.g. description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.",
        "location": "query"
       },
       "sendUpdates": {
        "type": "string",
-       "description": "Guests who should receive notifications about the event update (e.g., attendee responses, title changes, etc.).",
+       "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
        "enum": [
         "all",
         "externalOnly",
         "none"
        ],
        "enumDescriptions": [
-        "Notifications will be sent to all guests.",
-        "Notifications will be sent to non-Google Calendar guests only.",
-        "No notifications will be sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
        ],
        "location": "query"
       },
