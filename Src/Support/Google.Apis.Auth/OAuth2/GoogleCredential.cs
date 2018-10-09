@@ -244,7 +244,7 @@ namespace Google.Apis.Auth.OAuth2
         public ICredential UnderlyingCredential => credential;
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
-        internal static GoogleCredential FromCredential(ServiceAccountCredential credential)
+        public static GoogleCredential FromServiceAccountCredential(ServiceAccountCredential credential)
         {
             return new ServiceAccountGoogleCredential(credential);
         }
