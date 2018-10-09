@@ -199,7 +199,7 @@ namespace Google.Apis.Auth.OAuth2
                 case JsonCredentialParameters.AuthorizedUserCredentialType:
                     return new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters));
                 case JsonCredentialParameters.ServiceAccountCredentialType:
-                    return GoogleCredential.FromCredential(
+                    return GoogleCredential.FromServiceAccountCredential(
                         CreateServiceAccountCredentialFromParameters(credentialParameters));
                 default:
                     throw new InvalidOperationException(
