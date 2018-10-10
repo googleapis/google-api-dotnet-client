@@ -1,50 +1,34 @@
 {
   "title": "Accelerated Mobile Pages (AMP) URL API",
-  "discoveryVersion": "v1",
   "ownerName": "Google",
+  "discoveryVersion": "v1",
   "version_module": true,
   "resources": {
     "ampUrls": {
       "methods": {
         "batchGet": {
-          "path": "v1/ampUrls:batchGet",
-          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
           "request": {
             "$ref": "BatchGetAmpUrlsRequest"
           },
-          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
           "response": {
             "$ref": "BatchGetAmpUrlsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
           "parameters": {},
-          "flatPath": "v1/ampUrls:batchGet"
+          "flatPath": "v1/ampUrls:batchGet",
+          "path": "v1/ampUrls:batchGet",
+          "id": "acceleratedmobilepageurl.ampUrls.batchGet"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
@@ -52,9 +36,9 @@
       "location": "query"
     },
     "callback": {
+      "location": "query",
       "description": "JSONP",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "oauth_token": {
       "location": "query",
@@ -62,6 +46,7 @@
       "type": "string"
     },
     "$.xgafv": {
+      "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
@@ -71,10 +56,15 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format."
+      ]
     },
     "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -82,13 +72,7 @@
         "media",
         "proto"
       ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
+      "type": "string"
     },
     "access_token": {
       "description": "OAuth access token.",
@@ -99,9 +83,46 @@
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
     }
   },
   "schemas": {
+    "BatchGetAmpUrlsResponse": {
+      "description": "Batch AMP URL response.",
+      "type": "object",
+      "properties": {
+        "ampUrls": {
+          "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once.",
+          "type": "array",
+          "items": {
+            "$ref": "AmpUrl"
+          }
+        },
+        "urlErrors": {
+          "description": "The errors for requested URLs that have no AMP URL.",
+          "type": "array",
+          "items": {
+            "$ref": "AmpUrlError"
+          }
+        }
+      },
+      "id": "BatchGetAmpUrlsResponse"
+    },
     "AmpUrl": {
       "description": "AMP URL response for a requested URL.",
       "type": "object",
@@ -126,7 +147,6 @@
       "type": "object",
       "properties": {
         "errorCode": {
-          "type": "string",
           "enumDescriptions": [
             "Not specified error.",
             "Indicates the requested URL is not found in the index, possibly because\nit's unable to be found, not able to be accessed by Googlebot, or some\nother error.",
@@ -143,7 +163,8 @@
             "URL_IS_VALID_AMP",
             "URL_IS_INVALID_AMP"
           ],
-          "description": "The error code of an API call."
+          "description": "The error code of an API call.",
+          "type": "string"
         },
         "originalUrl": {
           "description": "The original non-AMP URL.",
@@ -157,6 +178,8 @@
       "id": "AmpUrlError"
     },
     "BatchGetAmpUrlsRequest": {
+      "description": "AMP URL request for a batch of URLs.",
+      "type": "object",
       "properties": {
         "lookupStrategy": {
           "enum": [
@@ -178,37 +201,14 @@
           }
         }
       },
-      "id": "BatchGetAmpUrlsRequest",
-      "description": "AMP URL request for a batch of URLs.",
-      "type": "object"
-    },
-    "BatchGetAmpUrlsResponse": {
-      "properties": {
-        "ampUrls": {
-          "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once.",
-          "type": "array",
-          "items": {
-            "$ref": "AmpUrl"
-          }
-        },
-        "urlErrors": {
-          "description": "The errors for requested URLs that have no AMP URL.",
-          "type": "array",
-          "items": {
-            "$ref": "AmpUrlError"
-          }
-        }
-      },
-      "id": "BatchGetAmpUrlsResponse",
-      "description": "Batch AMP URL response.",
-      "type": "object"
+      "id": "BatchGetAmpUrlsRequest"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "kind": "discovery#restDescription",
@@ -219,7 +219,7 @@
   "ownerDomain": "google.com",
   "name": "acceleratedmobilepageurl",
   "batchPath": "batch",
-  "revision": "20180917",
   "documentationLink": "https://developers.google.com/amp/cache/",
-  "id": "acceleratedmobilepageurl:v1"
+  "id": "acceleratedmobilepageurl:v1",
+  "revision": "20180917"
 }
