@@ -13,6 +13,7 @@
     "Google.Apis.CloudNaturalLanguage.v1": "Google.Cloud.Language.V1",
     "Google.Apis.Logging.v2": "Google.Cloud.Logging.V2",
     "Google.Apis.Monitoring.v3": "Google.Cloud.Monitoring.V3",
+    "Google.Apis.Pubsub.v1": "Google.Cloud.PubSub.V1",
     "Google.Apis.Spanner.v1": "Google.Cloud.Spanner.Data",
     "Google.Apis.Speech.v1": "Google.Cloud.Speech.V1",
     "Google.Apis.Storage.v1": "Google.Cloud.Storage.V1",
