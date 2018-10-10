@@ -8,7 +8,7 @@ We welcome contributions to our code, and will always endeavor to respond in a q
 1. Make sure that your commit messages clearly describe the changes.
 1. Send a pull request.
 
-[issues]: https://github.com/google/google-api-dotnet-client/issues
+[issues]: https://github.com/googleapis/google-api-dotnet-client/issues
 
 ## Contributor License Agreements
 
@@ -34,30 +34,22 @@ These libraries are split into:
 - [Client Generator][client-gen]: The code generator for the above.
 - [Support Libraries][support-libs]: Support code for the client libraries.
 
-[support-libs]: https://github.com/google/google-api-dotnet-client/tree/master/Src/Support
-[client-libs]: https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
-[client-gen]: https://github.com/google/google-api-dotnet-client/tree/master/ClientGenerator
+[support-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/master/Src/Support
+[client-libs]: https://github.com/googleapis/google-api-dotnet-client/tree/master/Src/Generated
+[client-gen]: https://github.com/googleapis/google-api-dotnet-client/tree/master/ClientGenerator
 
 ## Building and .NET Core
 
-We use Visual Studio 2015 to edit the Support Libraries.
+We use Visual Studio 2017 to edit the Support Libraries.
 
-[MSBuild][msbuild] is currently used to run the Client Generator, and to build both the generated Client Libraries and the Support Libraries.
+We use [dotnet cli][dotnetcli] for testing and building both the generated Client Libraries and the Support Libraries.
 
-We are gradually transitioning towards using [dotnet cli][dotnetcli] for testing and building (see [#822][822]). Until this is complete there are both `csproj` and `project.json` projects for all support libraries.
-
-[msbuild]: https://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx
 [dotnetcli]: https://github.com/dotnet/cli
-[822]: https://github.com/google/google-api-dotnet-client/issues/822
 
 ## Tests
 
-Support Library tests use [NUnit][nunit].
+Support Library tests use [XUnit][xunit].
 
-Tests for the `.NET45` platform are run using [`run_tests.bat`][runtests], or can be run directly from within Visual Studio.
-Tests for `.NET Core` are run using [`run_tests_dotnetcore.bat`][runtestscorebat] (Windows) or [`run_tests_dotnetcore.sh`][runtestscoresh] (Linux).
+Tests are run using the `dotnet test` command in the relevant source directory.
 
-[nunit]: http://www.nunit.org/
-[runtests]: https://github.com/google/google-api-dotnet-client/blob/master/run_tests.bat
-[runtestscorebat]: https://github.com/google/google-api-dotnet-client/blob/master/run_tests_dotnetcore.bat
-[runtestscoresh]: https://github.com/google/google-api-dotnet-client/blob/master/run_tests_dotnetcore.sh
+[xunit]: https://xunit.github.io/
