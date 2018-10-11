@@ -95,3 +95,11 @@ GoogleApiHttpBody response = demoRequest.Execute();
 ```
 
 See issue [#1068](https://github.com/googleapis/google-api-dotnet-client/issues/1068) for more details.
+
+### Why aren't Unity, Xamarin or UWP supported?
+
+At a team discussion in October 2018 we made the decision to not proceed with support for these platforms.
+We don't see evidence that there would be enough usage to that would justify the techincal work and
+infrastructure required for us to fully support these extra platforms.
+
+We will revisit this decision on a regular basis, in case the situation changes.
