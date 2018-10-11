@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181007 (1375)
+ *      <tr><th>API Rev<td>20181009 (1377)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1461,8 +1461,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (i.e.
-                /// if installation size may be over a threshold, typically 100 MB).</summary>
+                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (for
+                /// example, if installation size may be over a threshold, typically 100 MB).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
@@ -1590,8 +1590,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (i.e.
-                /// if installation size may be over a threshold, typically 100 MB).</summary>
+                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (for
+                /// example, if installation size may be over a threshold, typically 100 MB).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 

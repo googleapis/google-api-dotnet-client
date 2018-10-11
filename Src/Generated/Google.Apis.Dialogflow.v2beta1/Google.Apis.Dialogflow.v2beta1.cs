@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20181008 (1376)
+ *      <tr><th>API Rev<td>20181009 (1377)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -326,9 +326,14 @@ namespace Google.Apis.Dialogflow.v2beta1
         {
             this.service = service;
             agent = new AgentResource(service);
+            conversationProfiles = new ConversationProfilesResource(service);
             conversations = new ConversationsResource(service);
+            environments = new EnvironmentsResource(service);
+            humanAgentAssistants = new HumanAgentAssistantsResource(service);
             knowledgeBases = new KnowledgeBasesResource(service);
             operations = new OperationsResource(service);
+            phoneNumberOrders = new PhoneNumberOrdersResource(service);
+            phoneNumbers = new PhoneNumbersResource(service);
 
         }
 
@@ -1027,11 +1032,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
                     /// default language is used. [More than a dozen
                     /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
@@ -1042,6 +1042,11 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1077,15 +1082,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1098,6 +1094,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1303,7 +1308,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                             }
 
 
-                            /// <summary>Creates a context.</summary>
+                            /// <summary>Creates a context.
+                            ///
+                            /// If the specified context already exists, overrides the context.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                             /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
@@ -1313,7 +1320,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>Creates a context.</summary>
+                            /// <summary>Creates a context.
+                            ///
+                            /// If the specified context already exists, overrides the context.</summary>
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -1536,15 +1545,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
-                                /// <summary>Optional. The next_page_token value returned from a previous list
-                                /// request.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
                                 /// <summary>Optional. The maximum number of items to return in a single page. By
                                 /// default 100 and at most 1000.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>Optional. The next_page_token value returned from a previous list
+                                /// request.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
 
 
                                 ///<summary>Gets the method name.</summary>
@@ -1580,18 +1589,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                             Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
                                         });
                                     RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        "pageSize", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageToken",
+                                            Name = "pageSize",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
                                             Pattern = null,
                                         });
                                     RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        "pageToken", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageSize",
+                                            Name = "pageToken",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
@@ -1714,7 +1723,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                             }
 
 
-                            /// <summary>Creates a session entity type.</summary>
+                            /// <summary>Creates a session entity type.
+                            ///
+                            /// If the specified session entity type already exists, overrides the session entity
+                            /// type.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                             /// or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default
@@ -1724,7 +1736,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>Creates a session entity type.</summary>
+                            /// <summary>Creates a session entity type.
+                            ///
+                            /// If the specified session entity type already exists, overrides the session entity
+                            /// type.</summary>
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -2020,7 +2035,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                             /// <param name="name">Required. The unique identifier of this session entity type. Format:
                             /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If
                             /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                            /// default '-' user.</param>
+                            /// default '-' user.
+                            ///
+                            /// `` must be the display name of an existing entity type in the same agent that will be overridden or
+                            /// supplemented.</param>
                             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
                             {
                                 return new PatchRequest(service, body, name);
@@ -2043,7 +2061,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 /// `projects//agent/sessions//entityTypes/`, or
                                 /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID`
                                 /// is not specified, we assume default 'draft' environment. If `User ID` is not
-                                /// specified, we assume default '-' user.</summary>
+                                /// specified, we assume default '-' user.
+                                ///
+                                /// `` must be the display name of an existing entity type in the same agent that will
+                                /// be overridden or supplemented.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
 
@@ -2719,11 +2740,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -2747,6 +2763,11 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2782,15 +2803,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
@@ -2812,6 +2824,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2848,6 +2869,17 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -2860,17 +2892,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -2912,15 +2933,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -2933,6 +2945,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3624,7 +3645,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
 
-                    /// <summary>Creates a context.</summary>
+                    /// <summary>Creates a context.
+                    ///
+                    /// If the specified context already exists, overrides the context.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                     /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
@@ -3634,7 +3657,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a context.</summary>
+                    /// <summary>Creates a context.
+                    ///
+                    /// If the specified context already exists, overrides the context.</summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -4033,7 +4058,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
 
-                    /// <summary>Creates a session entity type.</summary>
+                    /// <summary>Creates a session entity type.
+                    ///
+                    /// If the specified session entity type already exists, overrides the session entity
+                    /// type.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                     /// or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default
@@ -4043,7 +4071,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a session entity type.</summary>
+                    /// <summary>Creates a session entity type.
+                    ///
+                    /// If the specified session entity type already exists, overrides the session entity
+                    /// type.</summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -4267,15 +4298,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
-                        /// and at most 1000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Optional. The next_page_token value returned from a previous list
                         /// request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
+                        /// and at most 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -4311,18 +4342,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4337,7 +4368,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="name">Required. The unique identifier of this session entity type. Format:
                     /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If
                     /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                    /// default '-' user.</param>
+                    /// default '-' user.
+                    ///
+                    /// `` must be the display name of an existing entity type in the same agent that will be overridden or
+                    /// supplemented.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -4360,7 +4394,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                         /// `projects//agent/sessions//entityTypes/`, or
                         /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not
                         /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                        /// default '-' user.</summary>
+                        /// default '-' user.
+                        ///
+                        /// `` must be the display name of an existing entity type in the same agent that will be
+                        /// overridden or supplemented.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -4974,6 +5011,393 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             }
         }
+        private readonly ConversationProfilesResource conversationProfiles;
+
+        /// <summary>Gets the ConversationProfiles resource.</summary>
+        public virtual ConversationProfilesResource ConversationProfiles
+        {
+            get { return conversationProfiles; }
+        }
+
+        /// <summary>The "conversationProfiles" collection of methods.</summary>
+        public class ConversationProfilesResource
+        {
+            private const string Resource = "conversationProfiles";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ConversationProfilesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a conversation profile in the specified project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The project to create a conversation profile for. Format: `projects/`.</param>
+            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a conversation profile in the specified project.</summary>
+            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to create a conversation profile for. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/conversationProfiles"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes the specified conversation profile.</summary>
+            /// <param name="name">Required. The name of the conversation profile to delete. Format:
+            /// `projects//conversationProfiles/`.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes the specified conversation profile.</summary>
+            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the conversation profile to delete. Format:
+                /// `projects//conversationProfiles/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversationProfiles/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves the specified conversation profile.</summary>
+            /// <param name="name">Required. The resource name of the conversation profile. Format:
+            /// `projects//conversationProfiles/`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves the specified conversation profile.</summary>
+            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the conversation profile. Format:
+                /// `projects//conversationProfiles/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversationProfiles/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns the list of all conversation profiles in the specified project.</summary>
+            /// <param name="parent">Required. The project to list all conversation profiles from. Format: `projects/`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns the list of all conversation profiles in the specified project.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListConversationProfilesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to list all conversation profiles from. Format:
+                /// `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                /// most 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/conversationProfiles"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the specified conversation profile.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required for all methods except `create` (`create` populates the name automatically). The unique
+            /// identifier of this conversation profile. Format: `projects//conversationProfiles/`.</param>
+            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified conversation profile.</summary>
+            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required for all methods except `create` (`create` populates the name automatically). The
+                /// unique identifier of this conversation profile. Format: `projects//conversationProfiles/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationProfile Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversationProfiles/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly ConversationsResource conversations;
 
         /// <summary>Gets the Conversations resource.</summary>
@@ -4994,49 +5418,361 @@ namespace Google.Apis.Dialogflow.v2beta1
             public ConversationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                contexts = new ContextsResource(service);
+                messages = new MessagesResource(service);
+                participants = new ParticipantsResource(service);
 
             }
 
-            private readonly ContextsResource contexts;
+            private readonly MessagesResource messages;
 
-            /// <summary>Gets the Contexts resource.</summary>
-            public virtual ContextsResource Contexts
+            /// <summary>Gets the Messages resource.</summary>
+            public virtual MessagesResource Messages
             {
-                get { return contexts; }
+                get { return messages; }
             }
 
-            /// <summary>The "contexts" collection of methods.</summary>
-            public class ContextsResource
+            /// <summary>The "messages" collection of methods.</summary>
+            public class MessagesResource
             {
-                private const string Resource = "contexts";
+                private const string Resource = "messages";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public ContextsResource(Google.Apis.Services.IClientService service)
+                public MessagesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
 
                 }
 
 
-                /// <summary>Creates a context.</summary>
+                /// <summary>Lists messages that belong to a given conversation.</summary>
+                /// <param name="parent">Required. The name of the conversation to list messages for. Format:
+                /// `projects//conversations/`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists messages that belong to a given conversation.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListMessagesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the conversation to list messages for. Format:
+                    /// `projects//conversations/`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/{+parent}/messages"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly ParticipantsResource participants;
+
+            /// <summary>Gets the Participants resource.</summary>
+            public virtual ParticipantsResource Participants
+            {
+                get { return participants; }
+            }
+
+            /// <summary>The "participants" collection of methods.</summary>
+            public class ParticipantsResource
+            {
+                private const string Resource = "participants";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ParticipantsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    suggestions = new SuggestionsResource(service);
+
+                }
+
+                private readonly SuggestionsResource suggestions;
+
+                /// <summary>Gets the Suggestions resource.</summary>
+                public virtual SuggestionsResource Suggestions
+                {
+                    get { return suggestions; }
+                }
+
+                /// <summary>The "suggestions" collection of methods.</summary>
+                public class SuggestionsResource
+                {
+                    private const string Resource = "suggestions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SuggestionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Retrieves suggestions for live agents.
+                    ///
+                    /// This method should be used by human agent client software to fetch suggestions in real-time,
+                    /// while the conversation with an end user is in progress. The functionality is implemented in
+                    /// terms of the [list pagination](/apis/design/design_patterns#list_pagination) design pattern. The
+                    /// client app should use the `next_page_token` field to fetch the next batch of
+                    /// suggestions.</summary>
+                    /// <param name="parent">Required. The name of the conversation participant for whom to fetch suggestions. Format:
+                    /// `projects//conversations//participants/`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Retrieves suggestions for live agents.
+                    ///
+                    /// This method should be used by human agent client software to fetch suggestions in real-time,
+                    /// while the conversation with an end user is in progress. The functionality is implemented in
+                    /// terms of the [list pagination](/apis/design/design_patterns#list_pagination) design pattern. The
+                    /// client app should use the `next_page_token` field to fetch the next batch of
+                    /// suggestions.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListSuggestionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the conversation participant for whom to fetch suggestions.
+                        /// Format: `projects//conversations//participants/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of items to return in a single page. The default value
+                        /// is 100; the maximum value is 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The next_page_token value returned from a previous list
+                        /// request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2beta1/{+parent}/suggestions"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Adds a text (chat, for example), or audio (phone recording, for example) message from a
+                /// participan  into the conversation.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
-                /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
-                /// environment. If `User ID` is not specified, we assume default '-' user.</param>
-                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                /// <param name="participant">Required. The name of the participant this text comes from. Format:
+                /// `projects//conversations//participants/`.</param>
+                public virtual AnalyzeContentRequest AnalyzeContent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AnalyzeContentRequest body, string participant)
+                {
+                    return new AnalyzeContentRequest(service, body, participant);
+                }
+
+                /// <summary>Adds a text (chat, for example), or audio (phone recording, for example) message from a
+                /// participan  into the conversation.</summary>
+                public class AnalyzeContentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AnalyzeContentResponse>
+                {
+                    /// <summary>Constructs a new AnalyzeContent request.</summary>
+                    public AnalyzeContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AnalyzeContentRequest body, string participant)
+                        : base(service)
+                    {
+                        Participant = participant;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the participant this text comes from. Format:
+                    /// `projects//conversations//participants/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("participant", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Participant { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AnalyzeContentRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "analyzeContent"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/{+participant}:analyzeContent"; }
+                    }
+
+                    /// <summary>Initializes AnalyzeContent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "participant", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "participant",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a new participant in a conversation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Resource identifier of the conversation adding the participant. Format:
+                /// `projects//conversations/`.</param>
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Participant body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a context.</summary>
-                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                /// <summary>Creates a new participant in a conversation.</summary>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Participant>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Participant body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -5045,16 +5781,14 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
 
-                    /// <summary>Required. The session to create a context for. Format: `projects//agent/sessions/` or
-                    /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
-                    /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
-                    /// user.</summary>
+                    /// <summary>Required. Resource identifier of the conversation adding the participant. Format:
+                    /// `projects//conversations/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Participant Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -5074,7 +5808,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/contexts"; }
+                        get { return "v2beta1/{+parent}/participants"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5095,83 +5829,16 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Deletes the specified context.</summary>
-                /// <param name="name">Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/` or
-                /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not specified, we assume default
-                /// 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Deletes the specified context.</summary>
-                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>Required. The name of the context to delete. Format:
-                    /// `projects//agent/sessions//contexts/` or
-                    /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
-                    /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                    /// default '-' user.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "delete"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "DELETE"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v2beta1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/conversations/[^/]+/contexts/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Retrieves the specified context.</summary>
-                /// <param name="name">Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
-                /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not specified, we assume default
-                /// 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
+                /// <summary>Retrieves a conversation participant.</summary>
+                /// <param name="name">Required. The name of the participant. Format:
+                /// `projects//conversations//participants/`.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Retrieves the specified context.</summary>
-                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                /// <summary>Retrieves a conversation participant.</summary>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Participant>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -5182,10 +5849,8 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
 
-                    /// <summary>Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
-                    /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
-                    /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                    /// default '-' user.</summary>
+                    /// <summary>Required. The name of the participant. Format:
+                    /// `projects//conversations//participants/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5220,23 +5885,22 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/conversations/[^/]+/contexts/[^/]+$",
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
                             });
                     }
 
                 }
 
-                /// <summary>Returns the list of all contexts in the specified session.</summary>
-                /// <param name="parent">Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
-                /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
-                /// environment. If `User ID` is not specified, we assume default '-' user.</param>
+                /// <summary>Returns the list of all participants in the specified conversation.</summary>
+                /// <param name="parent">Required. The conversation to list all contexts from. Format:
+                /// `projects//conversations/`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns the list of all contexts in the specified session.</summary>
-                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
+                /// <summary>Returns the list of all participants in the specified conversation.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListParticipantsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -5247,10 +5911,8 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
 
-                    /// <summary>Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
-                    /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
-                    /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
-                    /// user.</summary>
+                    /// <summary>Required. The conversation to list all contexts from. Format:
+                    /// `projects//conversations/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5279,7 +5941,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/contexts"; }
+                        get { return "v2beta1/{+parent}/participants"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5318,45 +5980,52 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Updates the specified context.</summary>
+                /// <summary>Adds a text (chat, for example), or audio (phone recording, for example) message from a
+                /// participan  into the conversation. Note: This method is only available through the gRPC API (not
+                /// REST).
+                ///
+                /// The top-level message sent to the client by the server is `StreamingAnalyzeContentResponse`.
+                /// Multiple response messages can be returned in order. The first one or more messages contain the
+                /// `recognition_result` field. Each result represents a more complete transcript of what the user said.
+                /// The next message contains the `reply_text` field and potentially the `reply_audio` field. The
+                /// message can also contain the `automated_agent_reply` field.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-                /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase. If
-                /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-                /// default '-' user.</param>
-                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                /// <param name="participant">Required. The name of the participant this text comes from. Format:
+                /// `projects//conversations//participants/`.</param>
+                public virtual StreamingAnalyzeContentRequest StreamingAnalyzeContent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1StreamingAnalyzeContentRequest body, string participant)
                 {
-                    return new PatchRequest(service, body, name);
+                    return new StreamingAnalyzeContentRequest(service, body, participant);
                 }
 
-                /// <summary>Updates the specified context.</summary>
-                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                /// <summary>Adds a text (chat, for example), or audio (phone recording, for example) message from a
+                /// participan  into the conversation. Note: This method is only available through the gRPC API (not
+                /// REST).
+                ///
+                /// The top-level message sent to the client by the server is `StreamingAnalyzeContentResponse`.
+                /// Multiple response messages can be returned in order. The first one or more messages contain the
+                /// `recognition_result` field. Each result represents a more complete transcript of what the user said.
+                /// The next message contains the `reply_text` field and potentially the `reply_audio` field. The
+                /// message can also contain the `automated_agent_reply` field.</summary>
+                public class StreamingAnalyzeContentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1StreamingAnalyzeContentResponse>
                 {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                    /// <summary>Constructs a new StreamingAnalyzeContent request.</summary>
+                    public StreamingAnalyzeContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1StreamingAnalyzeContentRequest body, string participant)
                         : base(service)
                     {
-                        Name = name;
+                        Participant = participant;
                         Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>Required. The unique identifier of the context. Format:
-                    /// `projects//agent/sessions//contexts/`, or
-                    /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted
-                    /// to lowercase. If `Environment ID` is not specified, we assume default 'draft' environment. If
-                    /// `User ID` is not specified, we assume default '-' user.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
+                    /// <summary>Required. The name of the participant this text comes from. Format:
+                    /// `projects//conversations//participants/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("participant", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Participant { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1StreamingAnalyzeContentRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -5364,98 +6033,233 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "patch"; }
+                        get { return "streamingAnalyzeContent"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "PATCH"; }
+                        get { return "POST"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2beta1/{+participant}:streamingAnalyzeContent"; }
                     }
 
-                    /// <summary>Initializes Patch parameter list.</summary>
+                    /// <summary>Initializes StreamingAnalyzeContent parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
 
                         RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
+                            "participant", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "name",
+                                Name = "participant",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/conversations/[^/]+/contexts/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
                             });
                     }
 
                 }
             }
 
-            /// <summary>Deletes all active contexts in the specified session.</summary>
-            /// <param name="parent">Required. The name of the session to delete all contexts from. Format:
-            /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not
-            /// specified we assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
-            /// user.</param>
-            public virtual DeleteContextsRequest DeleteContexts(string parent)
+            /// <summary>Sets a phone number for this converstion to connect to.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of this conversation. Format: `projects//conversations/`.</param>
+            public virtual AddConversationPhoneNumberRequest AddConversationPhoneNumber(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AddConversationPhoneNumberRequest body, string name)
             {
-                return new DeleteContextsRequest(service, parent);
+                return new AddConversationPhoneNumberRequest(service, body, name);
             }
 
-            /// <summary>Deletes all active contexts in the specified session.</summary>
-            public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+            /// <summary>Sets a phone number for this converstion to connect to.</summary>
+            public class AddConversationPhoneNumberRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ConversationPhoneNumber>
             {
-                /// <summary>Constructs a new DeleteContexts request.</summary>
-                public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
+                /// <summary>Constructs a new AddConversationPhoneNumber request.</summary>
+                public AddConversationPhoneNumberRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AddConversationPhoneNumberRequest body, string name)
                     : base(service)
                 {
-                    Parent = parent;
+                    Name = name;
+                    Body = body;
                     InitParameters();
                 }
 
 
-                /// <summary>Required. The name of the session to delete all contexts from. Format:
-                /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID`
-                /// is not specified we assume default 'draft' environment. If `User ID` is not specified, we assume
-                /// default '-' user.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
+                /// <summary>The name of this conversation. Format: `projects//conversations/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
 
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1AddConversationPhoneNumberRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
                 {
-                    get { return "deleteContexts"; }
+                    get { return "addConversationPhoneNumber"; }
                 }
 
                 ///<summary>Gets the HTTP method.</summary>
                 public override string HttpMethod
                 {
-                    get { return "DELETE"; }
+                    get { return "POST"; }
                 }
 
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/contexts"; }
+                    get { return "v2beta1/{+name}:addConversationPhoneNumber"; }
                 }
 
-                /// <summary>Initializes DeleteContexts parameter list.</summary>
+                /// <summary>Initializes AddConversationPhoneNumber parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Completes the specified conversation. Finished conversations are purged from the database after
+            /// 30 days.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. Resource identifier of the conversation to close. Format:
+            /// `projects//conversations/`.</param>
+            public virtual CompleteRequest Complete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompleteConversationRequest body, string name)
+            {
+                return new CompleteRequest(service, body, name);
+            }
+
+            /// <summary>Completes the specified conversation. Finished conversations are purged from the database after
+            /// 30 days.</summary>
+            public class CompleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation>
+            {
+                /// <summary>Constructs a new Complete request.</summary>
+                public CompleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompleteConversationRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource identifier of the conversation to close. Format:
+                /// `projects//conversations/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompleteConversationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "complete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}:complete"; }
+                }
+
+                /// <summary>Initializes Complete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Creates a new conversation. Conversation are auto-completed after 24 hours.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource identifier of the project creating the conversation. Format:
+            /// `projects/`.</param>
+            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new conversation. Conversation are auto-completed after 24 hours.</summary>
+            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource identifier of the project creating the conversation. Format:
+                /// `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/conversations"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -5467,7 +6271,1190 @@ namespace Google.Apis.Dialogflow.v2beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves the specific conversation.</summary>
+            /// <param name="name">Required. The name of the conversation. Format: `projects//conversations/`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves the specific conversation.</summary>
+            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Conversation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the conversation. Format: `projects//conversations/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
                             Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns the list of all conversations in the specified project.</summary>
+            /// <param name="parent">Required. The project from which to list all conversation. Format: `projects/`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns the list of all conversations in the specified project.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListConversationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project from which to list all conversation. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>A filter expression that filters conversations listed in the response. In general, the
+                /// expression must specify the field name, a comparison operator, and the value to use for filtering:
+                ///
+                /// The value must be a string, a number, or a boolean. The comparison operator must be either `=`,`!=`,
+                /// `>`, or `<`. To filter on multiple expressions, separate the expressions with `AND` or `OR`
+                /// (omitting both implies `AND`). For clarity, expressions can be enclosed in parentheses.
+                ///
+                /// Only `lifecycle_state` can be filtered on in this way. For example, the following expression only
+                /// returns `FINISHED` conversations:
+                ///
+                /// `lifecycle_state = "FINISHED"`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                /// most 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/conversations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly EnvironmentsResource environments;
+
+        /// <summary>Gets the Environments resource.</summary>
+        public virtual EnvironmentsResource Environments
+        {
+            get { return environments; }
+        }
+
+        /// <summary>The "environments" collection of methods.</summary>
+        public class EnvironmentsResource
+        {
+            private const string Resource = "environments";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EnvironmentsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                users = new UsersResource(service);
+
+            }
+
+            private readonly UsersResource users;
+
+            /// <summary>Gets the Users resource.</summary>
+            public virtual UsersResource Users
+            {
+                get { return users; }
+            }
+
+            /// <summary>The "users" collection of methods.</summary>
+            public class UsersResource
+            {
+                private const string Resource = "users";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UsersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    conversations = new ConversationsResource(service);
+
+                }
+
+                private readonly ConversationsResource conversations;
+
+                /// <summary>Gets the Conversations resource.</summary>
+                public virtual ConversationsResource Conversations
+                {
+                    get { return conversations; }
+                }
+
+                /// <summary>The "conversations" collection of methods.</summary>
+                public class ConversationsResource
+                {
+                    private const string Resource = "conversations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConversationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        contexts = new ContextsResource(service);
+
+                    }
+
+                    private readonly ContextsResource contexts;
+
+                    /// <summary>Gets the Contexts resource.</summary>
+                    public virtual ContextsResource Contexts
+                    {
+                        get { return contexts; }
+                    }
+
+                    /// <summary>The "contexts" collection of methods.</summary>
+                    public class ContextsResource
+                    {
+                        private const string Resource = "contexts";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ContextsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Creates a context.
+                        ///
+                        /// If the specified context already exists, overrides the context.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
+                        /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+                        /// environment. If `User ID` is not specified, we assume default '-' user.</param>
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a context.
+                        ///
+                        /// If the specified context already exists, overrides the context.</summary>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The session to create a context for. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                            /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID`
+                            /// is not specified, we assume default '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "create"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "POST"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+parent}/contexts"; }
+                            }
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the specified context.</summary>
+                        /// <param name="name">Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/` or
+                        /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not specified, we assume default
+                        /// 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified context.</summary>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the context to delete. Format:
+                            /// `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                            /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "delete"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "DELETE"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+/contexts/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Retrieves the specified context.</summary>
+                        /// <param name="name">Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
+                        /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not specified, we assume default
+                        /// 'draft' environment. If `User ID` is not specified, we assume default '-' user.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Retrieves the specified context.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the context. Format:
+                            /// `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                            /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "get"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+/contexts/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Returns the list of all contexts in the specified session.</summary>
+                        /// <param name="parent">Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
+                        /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+                        /// environment. If `User ID` is not specified, we assume default '-' user.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Returns the list of all contexts in the specified session.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The session to list all contexts from. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                            /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID`
+                            /// is not specified, we assume default '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. The next_page_token value returned from a previous list
+                            /// request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Optional. The maximum number of items to return in a single page. By default
+                            /// 100 and at most 1000.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "list"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+parent}/contexts"; }
+                            }
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Updates the specified context.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
+                        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase. If
+                        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user.</param>
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the specified context.</summary>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The unique identifier of the context. Format:
+                            /// `projects//agent/sessions//contexts/`, or
+                            /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always
+                            /// converted to lowercase. If `Environment ID` is not specified, we assume default 'draft'
+                            /// environment. If `User ID` is not specified, we assume default '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. The mask to control which fields get updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "patch"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "PATCH"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+/contexts/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>Deletes all active contexts in the specified session.</summary>
+                    /// <param name="parent">Required. The name of the session to delete all contexts from. Format:
+                    /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not
+                    /// specified we assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
+                    /// user.</param>
+                    public virtual DeleteContextsRequest DeleteContexts(string parent)
+                    {
+                        return new DeleteContextsRequest(service, parent);
+                    }
+
+                    /// <summary>Deletes all active contexts in the specified session.</summary>
+                    public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new DeleteContexts request.</summary>
+                        public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the session to delete all contexts from. Format:
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                        /// `Environment ID` is not specified we assume default 'draft' environment. If `User ID` is not
+                        /// specified, we assume default '-' user.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "deleteContexts"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2beta1/{+parent}/contexts"; }
+                        }
+
+                        /// <summary>Initializes DeleteContexts parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/environments/[^/]+/users/[^/]+/conversations/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+            }
+        }
+        private readonly HumanAgentAssistantsResource humanAgentAssistants;
+
+        /// <summary>Gets the HumanAgentAssistants resource.</summary>
+        public virtual HumanAgentAssistantsResource HumanAgentAssistants
+        {
+            get { return humanAgentAssistants; }
+        }
+
+        /// <summary>The "humanAgentAssistants" collection of methods.</summary>
+        public class HumanAgentAssistantsResource
+        {
+            private const string Resource = "humanAgentAssistants";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public HumanAgentAssistantsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Uses the specified human agent assistant to come up with suggestions (relevant articles and
+            /// FAQs) on how to respond to a given conversation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the agent assistant. Format:
+            /// `projects//humanAgentAssistants/`.</param>
+            public virtual CompileSuggestionsRequest CompileSuggestions(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompileSuggestionsRequest body, string name)
+            {
+                return new CompileSuggestionsRequest(service, body, name);
+            }
+
+            /// <summary>Uses the specified human agent assistant to come up with suggestions (relevant articles and
+            /// FAQs) on how to respond to a given conversation.</summary>
+            public class CompileSuggestionsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompileSuggestionsResponse>
+            {
+                /// <summary>Constructs a new CompileSuggestions request.</summary>
+                public CompileSuggestionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompileSuggestionsRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the agent assistant. Format:
+                /// `projects//humanAgentAssistants/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompileSuggestionsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "compileSuggestions"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}:compileSuggestions"; }
+                }
+
+                /// <summary>Initializes CompileSuggestions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/humanAgentAssistants/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Creates a human agent assistant.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The project to create a agent assistant for. Format: `projects/`.</param>
+            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a human agent assistant.</summary>
+            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to create a agent assistant for. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/humanAgentAssistants"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes the specified human agent assistant.</summary>
+            /// <param name="name">Required. The resource name of the agent assistant. Format:
+            /// `projects//humanAgentAssistants/`.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes the specified human agent assistant.</summary>
+            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the agent assistant. Format:
+                /// `projects//humanAgentAssistants/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/humanAgentAssistants/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a human agent assistant.</summary>
+            /// <param name="name">Required. The resource name of the agent assistant. Format:
+            /// `projects//humanAgentAssistants/`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieves a human agent assistant.</summary>
+            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the agent assistant. Format:
+                /// `projects//humanAgentAssistants/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/humanAgentAssistants/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns the list of all human agent assistants.</summary>
+            /// <param name="parent">Required. The project to list all agent assistants from. Format: `projects/`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns the list of all human agent assistants.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListHumanAgentAssistantsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to list all agent assistants from. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The maximum number of items to return in a single page. The default value is 100;
+                /// the maximum value is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/humanAgentAssistants"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the specified human agent assistant.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required for all methods except `create` (`create` populates the name automatically). The unique
+            /// identifier of human agent assistant. Format: `projects//humanAgentAssistants/`.</param>
+            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified human agent assistant.</summary>
+            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required for all methods except `create` (`create` populates the name automatically). The
+                /// unique identifier of human agent assistant. Format: `projects//humanAgentAssistants/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The mask to specify which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1HumanAgentAssistant Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/humanAgentAssistants/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -5747,14 +7734,14 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 10 and at
                     /// most 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5790,18 +7777,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/knowledgeBases/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6041,14 +8028,14 @@ namespace Google.Apis.Dialogflow.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The maximum number of items to return in a single page. By default 10 and at most
                 /// 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6084,18 +8071,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6186,6 +8173,756 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly PhoneNumberOrdersResource phoneNumberOrders;
+
+        /// <summary>Gets the PhoneNumberOrders resource.</summary>
+        public virtual PhoneNumberOrdersResource PhoneNumberOrders
+        {
+            get { return phoneNumberOrders; }
+        }
+
+        /// <summary>The "phoneNumberOrders" collection of methods.</summary>
+        public class PhoneNumberOrdersResource
+        {
+            private const string Resource = "phoneNumberOrders";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PhoneNumberOrdersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Cancels an `PhoneNumberOrder`. Returns an error if the order is in state IN_PROGRESS or
+            /// COMPLETED.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The unique identifier of the order to delete. Format:
+            /// `projects//phoneNumberOrders/`.</param>
+            public virtual CancelRequest Cancel(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CancelPhoneNumberOrderRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>Cancels an `PhoneNumberOrder`. Returns an error if the order is in state IN_PROGRESS or
+            /// COMPLETED.</summary>
+            public class CancelRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CancelPhoneNumberOrderRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of the order to delete. Format:
+                /// `projects//phoneNumberOrders/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CancelPhoneNumberOrderRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "cancel"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}:cancel"; }
+                }
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumberOrders/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Creates an order to request phone numbers be added to a project. The initial `LifecycleState`
+            /// of a newly created order is PENDING.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Resource identifier of the project requesting the orders. Format:
+            /// `projects/`.</param>
+            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates an order to request phone numbers be added to a project. The initial `LifecycleState`
+            /// of a newly created order is PENDING.</summary>
+            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource identifier of the project requesting the orders. Format:
+                /// `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/phoneNumberOrders"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a specific `PhoneNumberOrder`.</summary>
+            /// <param name="name">Required. The unique identifier of the order to retrieve. Format:
+            /// `projects//phoneNumberOrders/`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Returns a specific `PhoneNumberOrder`.</summary>
+            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of the order to retrieve. Format:
+                /// `projects//phoneNumberOrders/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumberOrders/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists of all `PhoneNumberOrder` resources in the specified project.</summary>
+            /// <param name="parent">Required. The project to list all orders from. Format: `projects/`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists of all `PhoneNumberOrder` resources in the specified project.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListPhoneNumberOrdersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to list all orders from. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of items to return in a single page. The default value is 100.
+                /// The maximum value is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/phoneNumberOrders"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the specified `PhoneNumberOrder` resource. Returns an error if the order is in state
+            /// IN_PROGRESS or COMPLETED.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The unique identifier of this order. Format:
+            /// `projects//phoneNumberOrders/`.</param>
+            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified `PhoneNumberOrder` resource. Returns an error if the order is in state
+            /// IN_PROGRESS or COMPLETED.</summary>
+            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of this order. Format:
+                /// `projects//phoneNumberOrders/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumberOrder Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumberOrders/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly PhoneNumbersResource phoneNumbers;
+
+        /// <summary>Gets the PhoneNumbers resource.</summary>
+        public virtual PhoneNumbersResource PhoneNumbers
+        {
+            get { return phoneNumbers; }
+        }
+
+        /// <summary>The "phoneNumbers" collection of methods.</summary>
+        public class PhoneNumbersResource
+        {
+            private const string Resource = "phoneNumbers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PhoneNumbersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED
+            /// state immediately, and is deleted approximately 30 days later. This method may only be called on a
+            /// `PhoneNumber` in the ACTIVE state.</summary>
+            /// <param name="name">Required. The unique identifier of the `PhoneNumber` to delete. Format:
+            /// `projects//phoneNumbers/`.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Requests deletion of a `PhoneNumber`. The `PhoneNumber` is moved into the DELETE_REQUESTED
+            /// state immediately, and is deleted approximately 30 days later. This method may only be called on a
+            /// `PhoneNumber` in the ACTIVE state.</summary>
+            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of the `PhoneNumber` to delete. Format:
+                /// `projects//phoneNumbers/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+            /// <param name="parent">Required. The project to list all `PhoneNumber` resources from. Format:
+            /// `projects/`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns the list of all phone numbers in the specified project.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The project to list all `PhoneNumber` resources from. Format:
+                /// `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The maximum number of items to return in a single page. The default value is 100.
+                /// The maximum value is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Controls whether `PhoneNumber` resources in the DELETE_REQUESTED state should be
+                /// returned. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+parent}/phoneNumbers"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates the specified `PhoneNumber`.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The unique identifier of this phone number. Format:
+            /// `projects//phoneNumbers/`.</param>
+            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates the specified `PhoneNumber`.</summary>
+            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of this phone number. Format:
+                /// `projects//phoneNumbers/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Cancels the deletion request for a `PhoneNumber`. This method may only be called on a
+            /// `PhoneNumber` in the DELETE_REQUESTED state.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The unique identifier of the `PhoneNumber` to delete. Format:
+            /// `projects//phoneNumbers/`.</param>
+            public virtual UndeleteRequest Undelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Cancels the deletion request for a `PhoneNumber`. This method may only be called on a
+            /// `PhoneNumber` in the DELETE_REQUESTED state.</summary>
+            public class UndeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1PhoneNumber>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The unique identifier of the `PhoneNumber` to delete. Format:
+                /// `projects//phoneNumbers/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "undelete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}:undelete"; }
+                }
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/phoneNumbers/[^/]+$",
                         });
                 }
 
@@ -6285,7 +9022,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The number of conversational query requests after which the context expires. If set to
-        /// `0` (the default) the context expires immediately. Contexts expire automatically after 10 minutes even if
+        /// `0` (the default) the context expires immediately. Contexts expire automatically after 20 minutes even if
         /// there are no matching queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
         public virtual System.Nullable<int> LifespanCount { get; set; } 
@@ -6312,7 +9049,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpansionMode")]
         public virtual string AutoExpansionMode { get; set; } 
 
-        /// <summary>Required. The name of the entity.</summary>
+        /// <summary>Required. The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -7137,6 +9874,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for Conversations.AddConversationPhoneNumber.</summary>
+    public class GoogleCloudDialogflowV2beta1AddConversationPhoneNumberRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a conversational agent.</summary>
     public class GoogleCloudDialogflowV2beta1Agent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7189,6 +9933,87 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// zones), e.g., America/New_York, Europe/Paris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Conversations.AnalyzeContent.</summary>
+    public class GoogleCloudDialogflowV2beta1AnalyzeContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The natural language speech audio to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual GoogleCloudDialogflowV2beta1InputAudio Audio { get; set; } 
+
+        /// <summary>Optional. Instructs the speech synthesizer how to generate the output audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyAudioConfig")]
+        public virtual GoogleCloudDialogflowV2beta1OutputAudioConfig ReplyAudioConfig { get; set; } 
+
+        /// <summary>The natural language text to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowV2beta1InputText Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Conversations.AnalyzeContent.</summary>
+    public class GoogleCloudDialogflowV2beta1AnalyzeContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Only set if a Dialogflow automated agent has responded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentReply")]
+        public virtual GoogleCloudDialogflowV2beta1AutomatedAgentReply AutomatedAgentReply { get; set; } 
+
+        /// <summary>Optional. The audio data bytes encoded as specified in the request. This field is set if: -
+        /// `reply_audio_config` was specified in the request, or - The automated agent responded with audio to play to
+        /// the user. In such case, `reply_audio.config` contains settings used to synthesize the speech.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyAudio")]
+        public virtual GoogleCloudDialogflowV2beta1OutputAudio ReplyAudio { get; set; } 
+
+        /// <summary>Output only. The output text content. This field is set if the automated agent responded with text
+        /// to show to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
+        public virtual string ReplyText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines article suggestions that a human agent assistant can provide.</summary>
+    public class GoogleCloudDialogflowV2beta1ArticleSuggestionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Settings for knowledge base, Format: `projects//knowledgeBases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBaseName")]
+        public virtual string KnowledgeBaseName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the Automated Agent to connect to a conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1AutomatedAgentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the Dialogflow agent environment to use.
+        ///
+        /// This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-
+        /// dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project.
+        ///
+        /// Format: `projects//agent/environments/` If environment is not specified, the default `draft` environment is
+        /// used. Refer to [DetectIntentRequest](/dialogflow-enterprise/docs/reference/rpc/google.cloud.dialogflow.v2bet
+        /// a1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represent a response from an automated agent.</summary>
+    public class GoogleCloudDialogflowV2beta1AutomatedAgentReply : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Response of the Dialogflow Sessions.DetectIntent call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponse")]
+        public virtual GoogleCloudDialogflowV2beta1DetectIntentResponse DetectIntentResponse { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7354,6 +10179,42 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for PhoneNumberOrders.CancelPhoneNumberOrder.</summary>
+    public class GoogleCloudDialogflowV2beta1CancelPhoneNumberOrderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for HumanAgentAssistants.RequestCompileSuggestions.</summary>
+    public class GoogleCloudDialogflowV2beta1CompileSuggestionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of messages in a conversation in chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Message> Messages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for HumanAgentAssistants.RequestCompileSuggestions</summary>
+    public class GoogleCloudDialogflowV2beta1CompileSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Suggestion> Suggestions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Conversations.CompleteConversation.</summary>
+    public class GoogleCloudDialogflowV2beta1CompleteConversationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a context.</summary>
     public class GoogleCloudDialogflowV2beta1Context : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7374,6 +10235,85 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// doc](https://dialogflow.com/docs/actions-and-parameters) for syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a conversation. A conversation is an interaction between an agent, including live agents and
+    /// Dialogflow agents, and a support customer. Conversations can include phone calls and text-based chat
+    /// sessions.</summary>
+    public class GoogleCloudDialogflowV2beta1Conversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Conversation Profile to be used to configure this Conversation. This field cannot be
+        /// updated. Format: `projects//conversationProfiles/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; } 
+
+        /// <summary>Output only. The time the conversation was finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. The current state of the Conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; } 
+
+        /// <summary>The unique identifier of this conversation. Required for all methods except `create` (`create`
+        /// populates the name automatically). Format: `projects//conversations/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Required if the conversation is to be connected over telephony.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual GoogleCloudDialogflowV2beta1ConversationPhoneNumber PhoneNumber { get; set; } 
+
+        /// <summary>Output only. The time the conversation was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a phone number for telephony integration. It allows for connecting a particular conversation
+    /// over telephony.</summary>
+    public class GoogleCloudDialogflowV2beta1ConversationPhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The phone number to connect to this conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the services to connect to incoming Dialogflow conversations.</summary>
+    public class GoogleCloudDialogflowV2beta1ConversationProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for an automated agent to use with this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentConfig")]
+        public virtual GoogleCloudDialogflowV2beta1AutomatedAgentConfig AutomatedAgentConfig { get; set; } 
+
+        /// <summary>Required. Human readable name for this profile. Max length 1024 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Optional. Configuration for agent assistance to use with this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentAssistantConfig")]
+        public virtual GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig HumanAgentAssistantConfig { get; set; } 
+
+        /// <summary>Optional. Configuration for logging conversation lifecycle events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual GoogleCloudDialogflowV2beta1LoggingConfig LoggingConfig { get; set; } 
+
+        /// <summary>Required for all methods except `create` (`create` populates the name automatically). The unique
+        /// identifier of this conversation profile. Format: `projects//conversationProfiles/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. Configuration for publishing conversation lifecycle events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
+        public virtual GoogleCloudDialogflowV2beta1NotificationConfig NotificationConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7450,7 +10390,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A document resource.</summary>
+    /// <summary>A document resource.
+    ///
+    /// Note: resource `projects.agent.knowledgeBases.documents` is deprecated, please use
+    /// `projects.knowledgeBases.documents` instead.</summary>
     public class GoogleCloudDialogflowV2beta1Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge
@@ -7503,7 +10446,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpansionMode")]
         public virtual string AutoExpansionMode { get; set; } 
 
-        /// <summary>Required. The name of the entity.</summary>
+        /// <summary>Required. The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -7611,6 +10554,57 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines FAQ responses that a human agent assistant can provide.</summary>
+    public class GoogleCloudDialogflowV2beta1FaqAnswersConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Settings for knowledge base, Format: `projects//knowledgeBases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeBaseName")]
+        public virtual string KnowledgeBaseName { get; set; } 
+
+        /// <summary>Optional. Maximum number of results to return. If unset, defaults to 10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
+        public virtual System.Nullable<int> MaxResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a human agent assistant that provides suggestions to help human agents to resolve customer
+    /// issues. This defines the types of content that the human agent assistant can present to a human agent.</summary>
+    public class GoogleCloudDialogflowV2beta1HumanAgentAssistant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Settings for article suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestionConfig")]
+        public virtual GoogleCloudDialogflowV2beta1ArticleSuggestionConfig ArticleSuggestionConfig { get; set; } 
+
+        /// <summary>Optional. Settings for knowledge service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqAnswersConfig")]
+        public virtual GoogleCloudDialogflowV2beta1FaqAnswersConfig FaqAnswersConfig { get; set; } 
+
+        /// <summary>Required for all methods except `create` (`create` populates the name automatically). The unique
+        /// identifier of human agent assistant. Format: `projects//humanAgentAssistants/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the Human Agent Assistant to connect to a conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the agent assistant to use. Format: `projects//humanAgentAssistants/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. Pub/Sub topic on which to publish new agent assistant events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
+        public virtual GoogleCloudDialogflowV2beta1NotificationConfig NotificationConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request message for Agents.ImportAgent.</summary>
     public class GoogleCloudDialogflowV2beta1ImportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7628,6 +10622,22 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// with "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the natural language speech audio to be processed.</summary>
+    public class GoogleCloudDialogflowV2beta1InputAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The natural language speech audio to be processed. A single request can contain up to 1
+        /// minute of speech audio data. The transcribed text cannot contain more than 256 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; } 
+
+        /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDialogflowV2beta1InputAudioConfig Config { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7665,6 +10675,37 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the natural language text to be processed.</summary>
+    public class GoogleCloudDialogflowV2beta1InputText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The language of this conversational query. See [Language
+        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language
+        /// codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the language used in the input text.</summary>
+    public class GoogleCloudDialogflowV2beta1InputTextConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The language of this conversational query. See [Language
+        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language
+        /// codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8371,7 +11412,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents knowledge base resource.</summary>
+    /// <summary>Represents knowledge base resource.
+    ///
+    /// Note: resource `projects.agent.knowledgeBases` is deprecated, please use `projects.knowledgeBases`
+    /// instead.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeBase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise,
@@ -8416,6 +11460,40 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for ConversationProfiles.ListConversationProfiles.</summary>
+    public class GoogleCloudDialogflowV2beta1ListConversationProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of project conversation profiles. There is a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfiles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ConversationProfile> ConversationProfiles { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Conversations.ListConversations.</summary>
+    public class GoogleCloudDialogflowV2beta1ListConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of conversations. There will be a maximum number of items returned based on the page_size
+        /// field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Conversation> Conversations { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for Documents.ListDocuments.</summary>
     public class GoogleCloudDialogflowV2beta1ListDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8441,6 +11519,23 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; } 
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for HumanAgentAssistants.ListHumanAgentAssistants.</summary>
+    public class GoogleCloudDialogflowV2beta1ListHumanAgentAssistantsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of project agent assistants. There is a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentAssistants")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1HumanAgentAssistant> HumanAgentAssistants { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -8482,6 +11577,74 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Conversations.ListMessages.</summary>
+    public class GoogleCloudDialogflowV2beta1ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of messages. There will be a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Message> Messages { get; set; } 
+
+        /// <summary>Optional. Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Conversations.ListParticipants.</summary>
+    public class GoogleCloudDialogflowV2beta1ListParticipantsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of participants. There is a maximum number of items returned based on the page_size field
+        /// in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participants")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Participant> Participants { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for PhoneNumberOrders.ListPhoneNumberOrders.</summary>
+    public class GoogleCloudDialogflowV2beta1ListPhoneNumberOrdersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of orders. There is a maximum number of items returned based on the page_size field in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumberOrders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1PhoneNumberOrder> PhoneNumberOrders { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for PhoneNumbers.ListPhoneNumbers.</summary>
+    public class GoogleCloudDialogflowV2beta1ListPhoneNumbersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of `PhoneNumber` resources. There is a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1PhoneNumber> PhoneNumbers { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for SessionEntityTypes.ListSessionEntityTypes.</summary>
     public class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8494,6 +11657,82 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// page_size field in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for [Conversations.ListSuggestions]</summary>
+    public class GoogleCloudDialogflowV2beta1ListSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Suggestion> Suggestions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines logging behavior for conversation lifecycle events.</summary>
+    public class GoogleCloudDialogflowV2beta1LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a message posted into a conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1Message : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The message content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
+        /// <summary>Optional. The time when the message was sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Required. The message language. This should be a [BCP-47](https://www.rfc-
+        /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Required. The unique identifier of the message. Format:
+        /// `projects//conversations//messages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The participant that said this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participant")]
+        public virtual string Participant { get; set; } 
+
+        /// <summary>Optional. The role of the participant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
+        public virtual string ParticipantRole { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines notification behavior for conversation lifecycle events.</summary>
+    public class GoogleCloudDialogflowV2beta1NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the Cloud Pub/Sub topic to publish conversation events like CONVERSATION_STARTED
+        /// as serialized ConversationEvent protos.
+        ///
+        /// If enable_notifications is `true` and no topic is supplied, a new topic is created and listed here.
+        ///
+        /// Notification works for phone calls, if this topic either is in the same project as the conversation or you
+        /// grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic
+        /// project.
+        ///
+        /// Format: `projects//topics/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8526,6 +11765,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents the natural language speech audio to be played to the end user.</summary>
+    public class GoogleCloudDialogflowV2beta1OutputAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The natural language speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; } 
+
+        /// <summary>Required. Instructs the speech synthesizer how to generate the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDialogflowV2beta1OutputAudioConfig Config { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Instructs the speech synthesizer how to generate the output audio content.</summary>
     public class GoogleCloudDialogflowV2beta1OutputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8543,6 +11797,103 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. Configuration of how speech should be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfig")]
         public virtual GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig SynthesizeSpeechConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a single side of the conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1Participant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The unique identifier of this participant. Format:
+        /// `projects//conversations//participants/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The role this participant plays in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a phone number. `PhoneNumber` resources enable phone calls to be answered by Dialogflow
+    /// services and are added to a project through a `PhoneNumberOrder`.</summary>
+    public class GoogleCloudDialogflowV2beta1PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The conversation profile calls to this `PhoneNumber` should use. Format:
+        /// `projects//conversationProfiles/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; } 
+
+        /// <summary>Output only. The state of the `PhoneNumber`. Defaults to `ACTIVE`. `PhoneNumber` objects set to
+        /// `DELETE_REQUESTED` always decline incoming calls and can be removed completely within 30 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; } 
+
+        /// <summary>Required. The unique identifier of this phone number. Format: `projects//phoneNumbers/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a
+        /// correctly formatted phone number: +15556767888.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a phone number order. Orders can assign phone numbers to projects.</summary>
+    public class GoogleCloudDialogflowV2beta1PhoneNumberOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time this order was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. A description of the order, limit is 1024 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Output only. The current status of the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; } 
+
+        /// <summary>Required. The unique identifier of this order. Format: `projects//phoneNumberOrders/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Order is for new numbers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumberSpec")]
+        public virtual GoogleCloudDialogflowV2beta1PhoneNumberSpec PhoneNumberSpec { get; set; } 
+
+        /// <summary>Output only. A map of ordered numbers filled so far, keyed by their resource name. Key format:
+        /// `projects//phoneNumbers/`. Value format: E.164 phone number. Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IDictionary<string,string> PhoneNumbers { get; set; } 
+
+        /// <summary>Output only. The time this order was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for new numbers fitting a set of parameters. The country code for newly requested numbers
+    /// defaults to 1 (US) until the service is available in other regions.</summary>
+    public class GoogleCloudDialogflowV2beta1PhoneNumberSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Total numbers requested, between 1 and 10 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; } 
+
+        /// <summary>Optional. Area codes to use. An empty list means 'any code'. Each value is treated as equally
+        /// preferred. Each entry has a limit of 10 bytes. "area code" corresponds to "National Destination Code"
+        /// described in [E.164](https://en.wikipedia.org/wiki/E.164) standard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredAreaCodes")]
+        public virtual System.Collections.Generic.IList<string> PreferredAreaCodes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8605,8 +11956,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisRequestConfig")]
         public virtual GoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig SentimentAnalysisRequestConfig { get; set; } 
 
-        /// <summary>Optional. The collection of session entity types to replace or extend developer entities with for
-        /// this query only. The entity synonyms apply to all languages.</summary>
+        /// <summary>Optional. Additional session entity types to replace or extend developer entity types with. The
+        /// entity synonyms apply to all languages and persist for the session of this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
 
@@ -8812,9 +12163,228 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Required. The unique identifier of this session entity type. Format:
         /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`.
         /// If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified,
-        /// we assume default '-' user.</summary>
+        /// we assume default '-' user.
+        ///
+        /// `` must be the display name of an existing entity type in the same agent that will be overridden or
+        /// supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The top-level message sent by the client to the `StreamingAnalyzeContent` method.
+    ///
+    /// Multiple request messages must be sent in the following order:
+    ///
+    /// 1.  The first message must contain `participant` and `config` fields. To receive an audio response, the first
+    /// message must also contain the `reply_audio_config` field. The first message must not contain `input`.
+    ///
+    /// 2.  All subsequent messages must contain only input data. Specifically: - If the `config` in the first message
+    /// was set to `audio_config`, then all subsequent messages must contain only `input_audio`. It is a good practice
+    /// to split the input audio into short chunks and deliver each chunk in a separate message. - If the `config` in
+    /// the first message was set to `text_config`, then the second message must contain only `input_text`. Moreover,
+    /// the `input_text` field can be only sent once. After all input is delivered, the client must half-close, or abort
+    /// the request stream.</summary>
+    public class GoogleCloudDialogflowV2beta1StreamingAnalyzeContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instructs the speech recognizer how to process the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
+        public virtual GoogleCloudDialogflowV2beta1InputAudioConfig AudioConfig { get; set; } 
+
+        /// <summary>The input audio content to be recognized. Must be sent if `audio_config` is set in the first
+        /// message. The complete audio over all streaming messages must not exceed 1 minute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputAudio")]
+        public virtual string InputAudio { get; set; } 
+
+        /// <summary>The UTF-8 encoded natural language text to be processed. Must be sent if `text_config` is set in
+        /// the first message. Text length must not exceed 256 bytes. The `input_text` field can be only sent
+        /// once.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputText")]
+        public virtual string InputText { get; set; } 
+
+        /// <summary>Optional. Instructs the speech synthesizer how to generate the output audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyAudioConfig")]
+        public virtual GoogleCloudDialogflowV2beta1OutputAudioConfig ReplyAudioConfig { get; set; } 
+
+        /// <summary>The natural language text to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textConfig")]
+        public virtual GoogleCloudDialogflowV2beta1InputTextConfig TextConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The top-level message returned from the `StreamingAnalyzeContent` method.
+    ///
+    /// Multiple response messages can be returned in order:
+    ///
+    /// 1.  If the input was set to streaming audio, the first one or more messages contain `recognition_result`. Each
+    /// `recognition_result` represents a more complete transcript of what the user said. The last `recognition_result`
+    /// has `is_final` set to `true`.
+    ///
+    /// 2.  The next message contains `reply_text` and optionally `reply_audio` returned by an agent. This message may
+    /// also contain `automated_agent_reply`.</summary>
+    public class GoogleCloudDialogflowV2beta1StreamingAnalyzeContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Only set if a Dialogflow automated agent has responded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentReply")]
+        public virtual GoogleCloudDialogflowV2beta1AutomatedAgentReply AutomatedAgentReply { get; set; } 
+
+        /// <summary>The result of speech recognition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recognitionResult")]
+        public virtual GoogleCloudDialogflowV2beta1StreamingRecognitionResult RecognitionResult { get; set; } 
+
+        /// <summary>Optional. The audio data bytes encoded as specified in the request. This field is set if: - The
+        /// `reply_audio_config` field is specified in the request. - The automated agent, which this output comes from,
+        /// responded with audio. In such case, the `reply_audio.config` field contains settings used to synthesize the
+        /// speech.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyAudio")]
+        public virtual GoogleCloudDialogflowV2beta1OutputAudio ReplyAudio { get; set; } 
+
+        /// <summary>Optional. The output text content. This field is set if an automated agent responded with a text
+        /// for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
+        public virtual string ReplyText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a speech recognition result corresponding to a portion of the audio that is currently being
+    /// processed or an indication that this is the end of the single requested utterance.
+    ///
+    /// Example:
+    ///
+    /// 1.  transcript: "tube"
+    ///
+    /// 2.  transcript: "to be a"
+    ///
+    /// 3.  transcript: "to be"
+    ///
+    /// 4.  transcript: "to be or not to be" is_final: true
+    ///
+    /// 5.  transcript: " that's"
+    ///
+    /// 6.  transcript: " that is"
+    ///
+    /// 7.  recognition_event_type: `RECOGNITION_EVENT_END_OF_SINGLE_UTTERANCE`
+    ///
+    /// 8.  transcript: " that is the question" is_final: true
+    ///
+    /// Only two of the responses contain final results (#4 and #8 indicated by `is_final: true`). Concatenating these
+    /// generates the full transcript: "to be or not to be that is the question".
+    ///
+    /// In each response we populate:
+    ///
+    /// *  for `MESSAGE_TYPE_TRANSCRIPT`: `transcript` and possibly `is_final`.
+    ///
+    /// *  for `MESSAGE_TYPE_END_OF_SINGLE_UTTERANCE`: only `event_type`.</summary>
+    public class GoogleCloudDialogflowV2beta1StreamingRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Speech confidence between 0.0 and 1.0 for the current portion of audio. A higher number
+        /// indicates an estimated greater likelihood that the recognized words are correct. The default of 0.0 is a
+        /// sentinel value indicating that confidence was not set.
+        ///
+        /// This field is typically only provided if `is_final` is true and you should not rely on it being accurate or
+        /// even set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The default of 0.0 is a sentinel value indicating `confidence` was not set. If `false`, the
+        /// `StreamingRecognitionResult` represents an interim result that may change. If `true`, the recognizer will
+        /// not return any further hypotheses about this piece of the audio. May only be populated for `event_type` =
+        /// `RECOGNITION_EVENT_TRANSCRIPT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFinal")]
+        public virtual System.Nullable<bool> IsFinal { get; set; } 
+
+        /// <summary>Type of the result message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; } 
+
+        /// <summary>Transcript text representing the words that the user spoke. Populated if and only if `event_type` =
+        /// `RECOGNITION_EVENT_TRANSCRIPT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a suggestion for a human agent.</summary>
+    public class GoogleCloudDialogflowV2beta1Suggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Articles ordered by score in descending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("articles")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SuggestionArticle> Articles { get; set; } 
+
+        /// <summary>Output only. The time the suggestion was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. Answers extracted from FAQ documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SuggestionFaqAnswer> FaqAnswers { get; set; } 
+
+        /// <summary>Output only. The name of this suggestion. Format:
+        /// `projects//conversations//participants/suggestions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents suggested article.</summary>
+    public class GoogleCloudDialogflowV2beta1SuggestionArticle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A map that contains metadata about the answer and the document from which it
+        /// originates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+
+        /// <summary>Output only. Article snippets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
+        public virtual System.Collections.Generic.IList<string> Snippets { get; set; } 
+
+        /// <summary>Output only. The article title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>Output only. The article URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents suggested answer from "frequently asked questions".</summary>
+    public class GoogleCloudDialogflowV2beta1SuggestionFaqAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The piece of text from the `source` knowledge base document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; } 
+
+        /// <summary>The system's confidence score that this Knowledge answer is a good match for this conversational
+        /// query, range from 0.0 (completely uncertain) to 1.0 (completely certain).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Output only. A map that contains metadata about the answer and the document from which it
+        /// originates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+
+        /// <summary>Output only. The corresponding FAQ question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; } 
+
+        /// <summary>Output only. Indicates which Knowledge Document this answer was extracted from. Format:
+        /// `projects//agent/knowledgeBases//documents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8876,6 +12446,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     /// <summary>The request message for Agents.TrainAgent.</summary>
     public class GoogleCloudDialogflowV2beta1TrainAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for PhoneNumbers.UndeletePhoneNumber.</summary>
+    public class GoogleCloudDialogflowV2beta1UndeletePhoneNumberRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

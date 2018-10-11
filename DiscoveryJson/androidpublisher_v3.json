@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/cEukPON3yg1IkcunWaeml7NFhOg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/zcbRQkf_Tx0OoUkltp1uvxXyfHQ\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20181007",
+ "revision": "20181009",
  "title": "Google Play Developer API",
- "description": "Lets Android application developers access their Google Play accounts.",
+ "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -1528,7 +1528,7 @@
        "parameters": {
         "ackBundleInstallationWarning": {
          "type": "boolean",
-         "description": "Must be set to true if the bundle installation may trigger a warning on user devices (i.e. if installation size may be over a threshold, typically 100 MB).",
+         "description": "Must be set to true if the bundle installation may trigger a warning on user devices (for example, if installation size may be over a threshold, typically 100 MB).",
          "location": "query"
         },
         "editId": {

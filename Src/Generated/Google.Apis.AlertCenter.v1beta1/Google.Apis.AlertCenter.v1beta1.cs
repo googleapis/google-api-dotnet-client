@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://gsuite.google.com/products/alerts/'>G Suite Alert Center API</a>
+ *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181005 (1373)
+ *      <tr><th>API Rev<td>20181010 (1378)
  *      <tr><th>API Docs
- *          <td><a href='https://gsuite.google.com/products/alerts/'>
- *              https://gsuite.google.com/products/alerts/</a>
+ *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
+ *              https://developers.google.com/admin-sdk/alertcenter/</a>
  *      <tr><th>Discovery Name<td>alertcenter
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using G Suite Alert Center API can be found at
- * <a href='https://gsuite.google.com/products/alerts/'>https://gsuite.google.com/products/alerts/</a>.
+ * <a href='https://developers.google.com/admin-sdk/alertcenter/'>https://developers.google.com/admin-sdk/alertcenter/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
