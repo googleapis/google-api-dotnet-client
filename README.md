@@ -42,8 +42,14 @@ We provide best-effort support for these platforms, but new features may not be 
 
 * Silverlight
 * UWP
+* Xamarin
+* Unity
 
-For more details on framework support see [Frameworks.md](Frameworks.md)
+For more details on framework support see [Frameworks.md](Frameworks.md).
+
+See the [FAQ](FAQ.md#why-arent-unity-xamarin-or-unity-supported) for details regarding the lack of UWP, Xamarin, and Unity support.
+
+Note that [Firebase](https://firebase.google.com/) is available on Unity, and focuses on the need of this platforms.
 
 # Developer Documentation
 
