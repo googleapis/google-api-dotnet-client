@@ -1106,10 +1106,6 @@ namespace Google.Apis.Pubsub.v1beta1a
             }
 
 
-            /// <summary>The value obtained in the last ListTopicsResponse for continuation.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>A valid label query expression.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1117,6 +1113,10 @@ namespace Google.Apis.Pubsub.v1beta1a
             /// <summary>Maximum number of topics to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>The value obtained in the last ListTopicsResponse for continuation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1143,15 +1143,6 @@ namespace Google.Apis.Pubsub.v1beta1a
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
@@ -1164,6 +1155,15 @@ namespace Google.Apis.Pubsub.v1beta1a
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

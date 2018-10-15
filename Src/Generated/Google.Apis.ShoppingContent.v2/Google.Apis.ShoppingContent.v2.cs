@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181002 (1370)
+ *      <tr><th>API Rev<td>20181009 (1377)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9336,6 +9336,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Additional details about the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
+
+        /// <summary>The URL of a web page to help resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual string Documentation { get; set; } 
 
         /// <summary>Issue identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

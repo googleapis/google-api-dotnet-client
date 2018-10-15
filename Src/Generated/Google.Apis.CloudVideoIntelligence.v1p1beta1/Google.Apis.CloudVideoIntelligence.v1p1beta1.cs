@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20180920 (1358)
+ *      <tr><th>API Rev<td>20181003 (1371)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -1064,6 +1064,12 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative> Alternatives { get; set; } 
 
+        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
+        /// audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1071,6 +1077,16 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Config for SPEECH_TRANSCRIPTION.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1SpeechTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>*Optional* A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        /// language tags, listing possible alternative languages of the supplied video. See [Language Support](/speech-
+        /// to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are
+        /// listed, transcription result will contain transcription in the most likely language detected, including the
+        /// main language_code. The transcription result will include the language tag of the language detected in the
+        /// video. Note: This feature is only supported for Voice Command and Voice Search use cases and performance may
+        /// vary for other use cases (e.g., phone call transcription).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; } 
+
         /// <summary>*Optional* For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to
         /// two tracks. Default: track 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTracks")]
@@ -1116,9 +1132,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         public virtual string LanguageCode { get; set; } 
 
         /// <summary>*Optional* Maximum number of recognition hypotheses to be returned. Specifically, the maximum
-        /// number of `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may
-        /// return fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum
-        /// of one. If omitted, will return a maximum of one.</summary>
+        /// number of `SpeechRecognitionAlternative` messages within each `SpeechTranscription`. The server may return
+        /// fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
+        /// one. If omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
         public virtual System.Nullable<int> MaxAlternatives { get; set; } 
 
@@ -1505,15 +1521,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// confidence value, and frame level information for each detection.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1TextAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Confidence for the track of detected text. It is calculated as the highest over all frames where
-        /// OCR detected text appears.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; } 
-
-        /// <summary>Information related to the frames where OCR detected text appears.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
-        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextFrame> Frames { get; set; } 
-
         /// <summary>All video segments where OCR detected text appears.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextSegment> Segments { get; set; } 
@@ -1545,6 +1552,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Video segment level annotation results for text detection.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1TextSegment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Confidence for the track of detected text. It is calculated as the highest over all frames where
+        /// OCR detected text appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Information related to the frames where OCR detected text appears.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1TextFrame> Frames { get; set; } 
+
         /// <summary>Video segment where a text snippet was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
         public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 

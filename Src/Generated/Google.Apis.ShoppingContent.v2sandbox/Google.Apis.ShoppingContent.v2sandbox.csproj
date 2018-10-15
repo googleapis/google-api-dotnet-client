@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ShoppingContent.v2sandbox Client Library</Title>
-    <Version>1.36.0.1370</Version>
+    <Version>1.36.0.1377</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

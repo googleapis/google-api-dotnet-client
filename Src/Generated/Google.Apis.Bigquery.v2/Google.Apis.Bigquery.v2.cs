@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180927 (1365)
+ *      <tr><th>API Rev<td>20181005 (1373)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3639,6 +3639,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Time-based partitioning specification for the destination table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
+
+        /// <summary>If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their
+        /// corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER). The default value
+        /// will be true once this feature launches, but can be set now in preparation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
+        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; } 
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
         /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
