@@ -141,8 +141,10 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal class LimitedLocalhostHttpServer : IDisposable
         {
-            private const int MaxRequestLineLength = 256;
-            private const int MaxHeadersLength = 8192;
+            // RFC7230 recommends supporting a request-line length of at least 8,000 octets
+            // https://tools.ietf.org/html/rfc7230#section-3.1.1
+            private const int MaxRequestLineLength = 16 * 1024;
+            private const int MaxHeadersLength = 64 * 1024;
             private const int NetworkReadBufferSize = 1024;
 
             private static ILogger Logger = ApplicationContext.Logger.ForType<LimitedLocalhostHttpServer>();
