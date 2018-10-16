@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20181011 (1379)
+ *      <tr><th>API Rev<td>20181015 (1383)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -2762,7 +2762,7 @@ namespace Google.Apis.ToolResults.v1beta3
 
                 }
 
-                /// <summary>Lists Histories for a given Project.
+                /// <summary>Lists Executions for a given History.
                 ///
                 /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
                 /// order the executions with the same creation_time.
@@ -2782,7 +2782,7 @@ namespace Google.Apis.ToolResults.v1beta3
                     return new ListRequest(service, projectId, historyId);
                 }
 
-                /// <summary>Lists Histories for a given Project.
+                /// <summary>Lists Executions for a given History.
                 ///
                 /// The executions are sorted by creation_time in descending order. The execution_id key will be used to
                 /// order the executions with the same creation_time.

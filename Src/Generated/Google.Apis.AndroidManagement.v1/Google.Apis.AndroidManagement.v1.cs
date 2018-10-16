@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20181008 (1376)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -1509,13 +1509,13 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results returned by the server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1551,18 +1551,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1769,6 +1769,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -1776,10 +1780,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1812,6 +1812,15 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
@@ -1824,15 +1833,6 @@ namespace Google.Apis.AndroidManagement.v1
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2199,6 +2199,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// HIDDENstring BUNDLE_ARRAYarray of objects </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> ManagedConfiguration { get; set; } 
+
+        /// <summary>The formulated managed configuration with the managed configuration template applied to the app. To
+        /// generate a web token that identifies the enterprise use
+        /// https://developers.google.com/android/management/reference/rest/v1/enterprises.webTokens This field is
+        /// ignored if managed_configuration is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationTemplate")]
+        public virtual ManagedConfigurationTemplate ManagedConfigurationTemplate { get; set; } 
 
         /// <summary>The minimum version of the app that runs on the device. If set, the device attempts to update the
         /// app to at least this version code. If the app is not up-to-date, the device will contain a
@@ -2695,6 +2702,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
+        /// <summary>Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signinDetails")]
+        public virtual System.Collections.Generic.IList<SigninDetail> SigninDetails { get; set; } 
+
         /// <summary>Terms and conditions that must be accepted when provisioning a device for this enterprise. A page
         /// of terms is generated for each value in this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
@@ -2865,6 +2876,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The list of policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<Policy> Policies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The formulated managed configuration with the managed configuration template applied to the app. To
+    /// generate a web token that identifies the enterprise use
+    /// https://developers.google.com/android/management/reference/rest/v1/enterprises.webTokens</summary>
+    public class ManagedConfigurationTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional, a map containing  configuration variables defined for the configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ConfigurationVariables { get; set; } 
+
+        /// <summary>The ID of the managed configurations template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
+        public virtual string TemplateId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3399,6 +3427,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outgoingCallsDisabled")]
         public virtual System.Nullable<bool> OutgoingCallsDisabled { get; set; } 
 
+        /// <summary>Password policy that can apply to different scope e.g. at either a device or profile level.
+        /// 'password_requirements' is overridden if this policy is set with default scope or with scope explicitly
+        /// applying to the scope that 'password_requirements' applies to. If scope is not specified then restriction
+        /// applies to the default scope i.e. profile in a managed profile. If an entry exists with unspecified scope
+        /// and also an entry for the default scope with scope explicitly specified then the explicit restriction
+        /// overrides the default scope restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordPolicies")]
+        public virtual System.Collections.Generic.IList<PasswordRequirements> PasswordPolicies { get; set; } 
+
         /// <summary>Password requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordRequirements")]
         public virtual PasswordRequirements PasswordRequirements { get; set; } 
@@ -3574,6 +3611,32 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The port of the direct proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource containing sign in details for an enterprise.</summary>
+    public class SigninDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with
+        /// this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized
+        /// java.util.Properties representation of the properties in the JSON. This is a read-only field generated by
+        /// the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qrCode")]
+        public virtual string QrCode { get; set; } 
+
+        /// <summary>An enterprise wide enrollment token used to trigger custom sign-in flow. This is a read-only field
+        /// generated by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signinEnrollmentToken")]
+        public virtual string SigninEnrollmentToken { get; set; } 
+
+        /// <summary>Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The
+        /// sign-in endpoint should finish authentication flow with a URL in the form of
+        /// https://enterprise.google.com/android/enroll?et= for a successful login, or
+        /// https://enterprise.google.com/android/enroll/invalid for a failed login.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signinUrl")]
+        public virtual string SigninUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

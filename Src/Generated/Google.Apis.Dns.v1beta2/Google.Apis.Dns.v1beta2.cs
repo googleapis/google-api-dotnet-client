@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180826 (1333)
+ *      <tr><th>API Rev<td>20181015 (1383)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2249,6 +2249,15 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; } 
 
+        /// <summary>For privately visible zones, the set of GCP resources that the zone is visible from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
+        public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; } 
+
+        /// <summary>The zone's visibility: public zones are exposed to the Internet, while private zones are visible
+        /// only to GCP resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2300,6 +2309,37 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>The operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePrivateVisibilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePrivateVisibilityConfig".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The list of GCE private network IDs that can see this zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigNetwork> Networks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePrivateVisibilityConfigNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePrivateVisibilityConfigNetwork".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The fully qualified URL of the GCE private network to bind to. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2443,6 +2483,14 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>Maximum allowed number of managed zones in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
         public virtual System.Nullable<int> ManagedZones { get; set; } 
+
+        /// <summary>Maximum allowed number of managed zones which can be attached to a network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerNetwork")]
+        public virtual System.Nullable<int> ManagedZonesPerNetwork { get; set; } 
+
+        /// <summary>Maximum allowed number of networks to which a privately scoped zone can be attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networksPerManagedZone")]
+        public virtual System.Nullable<int> NetworksPerManagedZone { get; set; } 
 
         /// <summary>Maximum allowed number of ResourceRecords per ResourceRecordSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecordsPerRrset")]

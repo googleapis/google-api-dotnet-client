@@ -739,6 +739,13 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
+            /// provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// Set to true if the companies request must have open jobs.
             ///
             /// Defaults to false.
@@ -753,13 +760,6 @@ namespace Google.Apis.JobService.v2
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
-            /// provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -786,6 +786,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mustHaveOpenJobs",
@@ -798,15 +807,6 @@ namespace Google.Apis.JobService.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1690,6 +1690,21 @@ namespace Google.Apis.JobService.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
             /// <summary>Optional.
             ///
             /// The completion topic. The default is CompletionType.COMBINED.</summary>
@@ -1748,21 +1763,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,6 +1787,15 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1827,15 +1836,6 @@ namespace Google.Apis.JobService.v2
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

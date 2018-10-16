@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181009 (1377)
+ *      <tr><th>API Rev<td>20181010 (1378)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2856,7 +2856,7 @@ namespace Google.Apis.Slides.v1.Data
     public class Shadow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment point of the shadow, that sets the origin for translate, scale and skew of the
-        /// shadow.</summary>
+        /// shadow. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
         public virtual string Alignment { get; set; } 
 
@@ -2881,7 +2881,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
-        /// <summary>Whether the shadow should rotate with the shape.</summary>
+        /// <summary>Whether the shadow should rotate with the shape. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotateWithShape")]
         public virtual System.Nullable<bool> RotateWithShape { get; set; } 
 
@@ -2890,7 +2890,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transform")]
         public virtual AffineTransform Transform { get; set; } 
 
-        /// <summary>The type of the shadow.</summary>
+        /// <summary>The type of the shadow. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

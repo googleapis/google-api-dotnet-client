@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180827 (1334)
+ *      <tr><th>API Rev<td>20180919 (1357)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -2841,6 +2841,10 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The export file format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; } 
+
+        /// <summary>Set to true to export confidential mode content</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showConfidentialModeContent")]
+        public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
