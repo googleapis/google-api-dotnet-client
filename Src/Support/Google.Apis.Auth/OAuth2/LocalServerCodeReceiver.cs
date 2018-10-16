@@ -206,7 +206,20 @@ namespace Google.Apis.Auth.OAuth2
                 {
                     if (bufferOfs == bufferSize)
                     {
-                        bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false);
+                        // Networkstream.ReadAsync() doesn't honour the cancellation-token, so use workaround
+                        using (cancellationToken.Register(() => stream.Dispose()))
+                        {
+                            try
+                            {
+                                bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                            }
+                            // netcoreapp2.x throws an IOException on stream disposal; others throw ObjectDispoesdException
+                            catch  (Exception e) when (e is ObjectDisposedException || e is IOException)
+                            {
+                                cancellationToken.ThrowIfCancellationRequested();
+                                throw new OperationCanceledException();
+                            }
+                        }
                         if (bufferSize == 0)
                         {
                             // End of stream

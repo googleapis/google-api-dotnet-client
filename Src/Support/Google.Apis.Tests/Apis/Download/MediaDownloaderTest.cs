@@ -14,10 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Don't run these tests on netcoreapp1.0 or netcoreapp1.1
-// They are too slow.
-#if !NETCOREAPP1_0 && !NETCOREAPP1_1
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -589,5 +585,3 @@ namespace Google.Apis.Tests.Apis.Download
         }
     }
 }
-
-#endif
