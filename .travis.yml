@@ -16,4 +16,4 @@ addons:
 script:
   - ./BuildSupport.sh
   - dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build -c Release
-  - dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build -c Release
+  - dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build -c Release -v n
