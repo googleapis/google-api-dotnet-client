@@ -198,47 +198,49 @@ namespace Google.Apis.Auth.OAuth2
             private async Task<Dictionary<string, string>> GetQueryParamsFromClientAsync(TcpClient client, CancellationToken cancellationToken)
             {
                 var stream = client.GetStream();
-
-                var buffer = new byte[NetworkReadBufferSize];
-                int bufferOfs = 0;
-                int bufferSize = 0;
-                Func<Task<char?>> getChar = async () =>
+                // NetworkStream.ReadAsync() doesn't honour the cancellation-token (on all platforms),
+                // so use workaround
+                using (cancellationToken.Register(() => stream.Dispose()))
                 {
-                    if (bufferOfs == bufferSize)
+                    var buffer = new byte[NetworkReadBufferSize];
+                    int bufferOfs = 0;
+                    int bufferSize = 0;
+                    Func<Task<char?>> getChar = async () =>
                     {
-                        // Networkstream.ReadAsync() doesn't honour the cancellation-token, so use workaround
-                        using (cancellationToken.Register(() => stream.Dispose()))
+                        if (bufferOfs == bufferSize)
                         {
                             try
                             {
                                 bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
                             }
                             // netcoreapp2.x throws an IOException on stream disposal; others throw ObjectDispoesdException
-                            catch  (Exception e) when (e is ObjectDisposedException || e is IOException)
+                            catch (Exception e) when (e is ObjectDisposedException || e is IOException)
                             {
-                                cancellationToken.ThrowIfCancellationRequested();
-                                throw new OperationCanceledException();
+                                throw new OperationCanceledException(cancellationToken);
                             }
+                            // netcoreapp2.0 on Linux sometimes doesn't throw an exception on stream disposal in ReadAsync,
+                            // so check for cancellation afterwards
+                            cancellationToken.ThrowIfCancellationRequested();
+                            if (bufferSize == 0)
+                            {
+                                // End of stream
+                                return null;
+                            }
+                            bufferOfs = 0;
                         }
-                        if (bufferSize == 0)
-                        {
-                            // End of stream
-                            return null;
-                        }
-                        bufferOfs = 0;
-                    }
-                    byte b = buffer[bufferOfs++];
-                    // HTTP headers are generally ASCII, but historically allowed ISO-8859-1.
-                    // Non-ASCII bytes should be treated opaquely, not further processed (e.g. as UTF8).
-                    return (char)b;
-                };
+                        byte b = buffer[bufferOfs++];
+                        // HTTP headers are generally ASCII, but historically allowed ISO-8859-1.
+                        // Non-ASCII bytes should be treated opaquely, not further processed (e.g. as UTF8).
+                        return (char)b;
+                    };
 
-                string requestLine = await ReadRequestLine(getChar).ConfigureAwait(false);
-                var requestParams = ValidateAndGetRequestParams(requestLine);
-                await WaitForAllHeaders(getChar).ConfigureAwait(false);
-                await WriteResponse(stream, cancellationToken).ConfigureAwait(false);
+                    string requestLine = await ReadRequestLine(getChar).ConfigureAwait(false);
+                    var requestParams = ValidateAndGetRequestParams(requestLine);
+                    await WaitForAllHeaders(getChar).ConfigureAwait(false);
+                    await WriteResponse(stream, cancellationToken).ConfigureAwait(false);
 
-                return requestParams;
+                    return requestParams;
+                }
             }
 
             private async Task<string> ReadRequestLine(Func<Task<char?>> getChar)
