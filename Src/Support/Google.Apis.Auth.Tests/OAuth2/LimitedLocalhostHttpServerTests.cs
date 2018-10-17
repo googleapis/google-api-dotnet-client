@@ -160,7 +160,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
                 await client.ConnectAsync("localhost", server.Port);
-                var ex = await Assert.ThrowsAsync<OperationCanceledException>(() => server.GetQueryParamsAsync(cts.Token));
+                await Assert.ThrowsAsync<OperationCanceledException>(() => server.GetQueryParamsAsync(cts.Token));
             }
         }
 
