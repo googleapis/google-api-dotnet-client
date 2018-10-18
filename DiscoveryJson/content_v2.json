@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/utg1ejMUlji9a5_gHwUYaZ-gKog\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/SrhOH2xsTrrIa7fnXr9zDGqu4xk\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20181009",
+ "revision": "20181016",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -80,7 +80,7 @@
   "Account": {
    "id": "Account",
    "type": "object",
-   "description": "Account data.",
+   "description": "Account data. After the creation of a new account it may take a few minutes before it is fully operational.",
    "properties": {
     "adultContent": {
      "type": "boolean",
@@ -1849,6 +1849,26 @@
      "type": "string",
      "description": "The availability of the product."
     },
+    "customLabel0": {
+     "type": "string",
+     "description": "Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel1": {
+     "type": "string",
+     "description": "Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel2": {
+     "type": "string",
+     "description": "Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel3": {
+     "type": "string",
+     "description": "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel4": {
+     "type": "string",
+     "description": "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
     "installment": {
      "$ref": "Installment",
      "description": "Number and amount of installments to pay for an item. Brazil only."
@@ -1992,6 +2012,26 @@
     "availability": {
      "type": "string",
      "description": "The availability of the product."
+    },
+    "customLabel0": {
+     "type": "string",
+     "description": "Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel1": {
+     "type": "string",
+     "description": "Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel2": {
+     "type": "string",
+     "description": "Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel3": {
+     "type": "string",
+     "description": "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."
+    },
+    "customLabel4": {
+     "type": "string",
+     "description": "Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online products."
     },
     "installment": {
      "$ref": "Installment",
@@ -8999,7 +9039,7 @@
      "id": "content.orderreports.listtransactions",
      "path": "{merchantId}/orderreports/disbursements/{disbursementId}/transactions",
      "httpMethod": "GET",
-     "description": "Retrieves a list of transactions for an disbursement from your Merchant Center account.",
+     "description": "Retrieves a list of transactions for a disbursement from your Merchant Center account.",
      "parameters": {
       "disbursementId": {
        "type": "string",

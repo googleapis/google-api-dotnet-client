@@ -1341,6 +1341,22 @@ namespace Google.Apis.JobService.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Optional.
             ///
             /// The starting point of a query result.</summary>
@@ -1368,22 +1384,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1409,6 +1409,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1430,15 +1439,6 @@ namespace Google.Apis.JobService.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1690,37 +1690,6 @@ namespace Google.Apis.JobService.v2
             }
 
 
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to the specified company.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            public enum ScopeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
-                COMPLETIONSCOPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("TENANT")]
-                TENANT,
-                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
-            }
-
-            /// <summary>Required.
-            ///
-            /// Completion result count. The maximum allowed page size is 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Required.
             ///
             /// The query used to generate suggestions.</summary>
@@ -1763,6 +1732,37 @@ namespace Google.Apis.JobService.v2
                 COMBINED,
             }
 
+            /// <summary>Optional.
+            ///
+            /// If provided, restricts completion to the specified company.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            public enum ScopeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
+                COMPLETIONSCOPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("TENANT")]
+                TENANT,
+                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
+                PUBLIC__,
+            }
+
+            /// <summary>Required.
+            ///
+            /// Completion result count. The maximum allowed page size is 10.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1788,33 +1788,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "companyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scope",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
@@ -1836,6 +1809,33 @@ namespace Google.Apis.JobService.v2
                     "type", new Google.Apis.Discovery.Parameter
                     {
                         Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "companyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "companyName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scope", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scope",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

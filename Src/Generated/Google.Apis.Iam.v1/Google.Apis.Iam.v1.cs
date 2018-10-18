@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181005 (1373)
+ *      <tr><th>API Rev<td>20181012 (1380)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -2862,11 +2862,6 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
-            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>Include Roles that have been deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -2892,6 +2887,11 @@ namespace Google.Apis.Iam.v1
                 FULL,
             }
 
+            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
+            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2916,15 +2916,6 @@ namespace Google.Apis.Iam.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
@@ -2956,6 +2947,15 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

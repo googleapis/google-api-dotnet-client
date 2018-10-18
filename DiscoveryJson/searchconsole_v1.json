@@ -1,5 +1,4 @@
 {
-  "title": "Google Search Console URL Testing Tools API",
   "discoveryVersion": "v1",
   "ownerName": "Google",
   "version_module": true,
@@ -9,9 +8,6 @@
         "mobileFriendlyTest": {
           "methods": {
             "run": {
-              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
-              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
-              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
               "request": {
                 "$ref": "RunMobileFriendlyTestRequest"
               },
@@ -21,7 +17,10 @@
               },
               "parameterOrder": [],
               "httpMethod": "POST",
-              "parameters": {}
+              "parameters": {},
+              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run"
             }
           }
         }
@@ -29,84 +28,86 @@
     }
   },
   "parameters": {
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
     "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
       "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
+      "location": "query"
     },
     "quotaUser": {
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
-    "uploadType": {
+    "fields": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "$.xgafv": {
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
       "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
       ]
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     }
   },
   "schemas": {
     "MobileFriendlyIssue": {
+      "description": "Mobile-friendly issue.",
+      "type": "object",
       "properties": {
         "rule": {
           "description": "Rule violated.",
@@ -131,11 +132,10 @@
           ]
         }
       },
-      "id": "MobileFriendlyIssue",
-      "description": "Mobile-friendly issue.",
-      "type": "object"
+      "id": "MobileFriendlyIssue"
     },
     "RunMobileFriendlyTestResponse": {
+      "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
       "type": "object",
       "properties": {
         "testStatus": {
@@ -143,13 +143,15 @@
           "$ref": "TestStatus"
         },
         "resourceIssues": {
+          "description": "Information about embedded resources issues.",
           "type": "array",
           "items": {
             "$ref": "ResourceIssue"
-          },
-          "description": "Information about embedded resources issues."
+          }
         },
         "mobileFriendliness": {
+          "description": "Test verdict, whether the page is mobile friendly or not.",
+          "type": "string",
           "enumDescriptions": [
             "Internal error when running this test. Please try running the test again.",
             "The page is mobile friendly.",
@@ -159,9 +161,7 @@
             "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED",
             "MOBILE_FRIENDLY",
             "NOT_MOBILE_FRIENDLY"
-          ],
-          "description": "Test verdict, whether the page is mobile friendly or not.",
-          "type": "string"
+          ]
         },
         "mobileFriendlyIssues": {
           "description": "List of mobile-usability issues.",
@@ -171,41 +171,39 @@
           }
         },
         "screenshot": {
-          "$ref": "Image",
-          "description": "Screenshot of the requested URL."
+          "description": "Screenshot of the requested URL.",
+          "$ref": "Image"
         }
       },
-      "id": "RunMobileFriendlyTestResponse",
-      "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues."
+      "id": "RunMobileFriendlyTestResponse"
     },
     "ResourceIssue": {
+      "description": "Information about a resource with issue.",
+      "type": "object",
       "properties": {
         "blockedResource": {
-          "$ref": "BlockedResource",
-          "description": "Describes a blocked resource issue."
+          "description": "Describes a blocked resource issue.",
+          "$ref": "BlockedResource"
         }
       },
-      "id": "ResourceIssue",
-      "description": "Information about a resource with issue.",
-      "type": "object"
+      "id": "ResourceIssue"
     },
     "BlockedResource": {
+      "description": "Blocked resource.",
+      "type": "object",
       "properties": {
         "url": {
           "description": "URL of the blocked resource.",
           "type": "string"
         }
       },
-      "id": "BlockedResource",
-      "description": "Blocked resource.",
-      "type": "object"
+      "id": "BlockedResource"
     },
     "TestStatus": {
       "description": "Final state of the test, including error details if necessary.",
       "type": "object",
       "properties": {
         "status": {
-          "type": "string",
           "enumDescriptions": [
             "Internal error when running this test. Please try running the test again.",
             "Inspection has completed without errors.",
@@ -218,7 +216,8 @@
             "INTERNAL_ERROR",
             "PAGE_UNREACHABLE"
           ],
-          "description": "Status of the test."
+          "description": "Status of the test.",
+          "type": "string"
         },
         "details": {
           "description": "Error details if applicable.",
@@ -244,26 +243,26 @@
       "id": "Image"
     },
     "RunMobileFriendlyTestRequest": {
+      "description": "Mobile-friendly test request.",
       "type": "object",
       "properties": {
+        "requestScreenshot": {
+          "description": "Whether or not screenshot is requested. Default is false.",
+          "type": "boolean"
+        },
         "url": {
           "description": "URL for inspection.",
           "type": "string"
-        },
-        "requestScreenshot": {
-          "type": "boolean",
-          "description": "Whether or not screenshot is requested. Default is false."
         }
       },
-      "id": "RunMobileFriendlyTestRequest",
-      "description": "Mobile-friendly test request."
+      "id": "RunMobileFriendlyTestRequest"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
+  "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://searchconsole.googleapis.com/",
   "canonicalName": "Search Console",
@@ -276,6 +275,7 @@
   "name": "searchconsole",
   "batchPath": "batch",
   "revision": "20181013",
+  "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
   "id": "searchconsole:v1",
-  "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/"
+  "title": "Google Search Console URL Testing Tools API"
 }

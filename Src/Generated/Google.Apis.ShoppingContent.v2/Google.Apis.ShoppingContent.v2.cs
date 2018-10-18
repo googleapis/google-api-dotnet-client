@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181009 (1377)
+ *      <tr><th>API Rev<td>20181016 (1384)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -4829,7 +4829,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a list of transactions for an disbursement from your Merchant Center account.</summary>
+        /// <summary>Retrieves a list of transactions for a disbursement from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
         /// <param name="disbursementId">The Google-provided ID of the disbursement (found in
@@ -4841,7 +4841,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new ListtransactionsRequest(service, merchantId, disbursementId, transactionStartDate);
         }
 
-        /// <summary>Retrieves a list of transactions for an disbursement from your Merchant Center account.</summary>
+        /// <summary>Retrieves a list of transactions for a disbursement from your Merchant Center account.</summary>
         public class ListtransactionsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderreportsListTransactionsResponse>
         {
             /// <summary>Constructs a new Listtransactions request.</summary>
@@ -9112,7 +9112,8 @@ namespace Google.Apis.ShoppingContent.v2
 namespace Google.Apis.ShoppingContent.v2.Data
 {    
 
-    /// <summary>Account data.</summary>
+    /// <summary>Account data. After the creation of a new account it may take a few minutes before it is fully
+    /// operational.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates whether the merchant sells adult content.</summary>
@@ -10751,6 +10752,31 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
+        /// <summary>Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
+        public virtual string CustomLabel0 { get; set; } 
+
+        /// <summary>Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
+        public virtual string CustomLabel1 { get; set; } 
+
+        /// <summary>Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
+        public virtual string CustomLabel2 { get; set; } 
+
+        /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
+        public virtual string CustomLabel3 { get; set; } 
+
+        /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
+        public virtual string CustomLabel4 { get; set; } 
+
         /// <summary>Number and amount of installments to pay for an item. Brazil only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
         public virtual Installment Installment { get; set; } 
@@ -10891,6 +10917,31 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
+
+        /// <summary>Custom label 0 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
+        public virtual string CustomLabel0 { get; set; } 
+
+        /// <summary>Custom label 1 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
+        public virtual string CustomLabel1 { get; set; } 
+
+        /// <summary>Custom label 2 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
+        public virtual string CustomLabel2 { get; set; } 
+
+        /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
+        public virtual string CustomLabel3 { get; set; } 
+
+        /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign. Only supported for online
+        /// products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
+        public virtual string CustomLabel4 { get; set; } 
 
         /// <summary>Number and amount of installments to pay for an item. Brazil only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>Abusive Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180904 (1342)
+ *      <tr><th>API Rev<td>20181017 (1385)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>
  *              https://developers.google.com/abusive-experience-report/</a>
@@ -474,8 +474,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
 namespace Google.Apis.AbusiveExperienceReport.v1.Data
 {    
 
-    /// <summary>Response message for GetSiteSummary. Do not confuse with same message in
-    /// google.ads.experiencereport.v1</summary>
+    /// <summary>Response message for GetSiteSummary.</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status of the site reviewed for the abusive experiences.</summary>

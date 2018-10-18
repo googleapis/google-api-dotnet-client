@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180929 (1367)
+ *      <tr><th>API Rev<td>20181013 (1381)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -64,10 +64,8 @@ namespace Google.Apis.Logging.v2beta1
         public LoggingService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            billingAccounts = new BillingAccountsResource(this);
             entries = new EntriesResource(this);
             monitoredResourceDescriptors = new MonitoredResourceDescriptorsResource(this);
-            organizations = new OrganizationsResource(this);
             projects = new ProjectsResource(this);
         }
 
@@ -131,14 +129,6 @@ namespace Google.Apis.Logging.v2beta1
 
 
 
-        private readonly BillingAccountsResource billingAccounts;
-
-        /// <summary>Gets the BillingAccounts resource.</summary>
-        public virtual BillingAccountsResource BillingAccounts
-        {
-            get { return billingAccounts; }
-        }
-
         private readonly EntriesResource entries;
 
         /// <summary>Gets the Entries resource.</summary>
@@ -153,14 +143,6 @@ namespace Google.Apis.Logging.v2beta1
         public virtual MonitoredResourceDescriptorsResource MonitoredResourceDescriptors
         {
             get { return monitoredResourceDescriptors; }
-        }
-
-        private readonly OrganizationsResource organizations;
-
-        /// <summary>Gets the Organizations resource.</summary>
-        public virtual OrganizationsResource Organizations
-        {
-            get { return organizations; }
         }
 
         private readonly ProjectsResource projects;
@@ -358,213 +340,6 @@ namespace Google.Apis.Logging.v2beta1
                     DefaultValue = null,
                     Pattern = null,
                 });
-        }
-    }
-
-    /// <summary>The "billingAccounts" collection of methods.</summary>
-    public class BillingAccountsResource
-    {
-        private const string Resource = "billingAccounts";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public BillingAccountsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            logs = new LogsResource(service);
-
-        }
-
-        private readonly LogsResource logs;
-
-        /// <summary>Gets the Logs resource.</summary>
-        public virtual LogsResource Logs
-        {
-            get { return logs; }
-        }
-
-        /// <summary>The "logs" collection of methods.</summary>
-        public class LogsResource
-        {
-            private const string Resource = "logs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LogsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
-            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
-            /// names, see LogEntry.</param>
-            public virtual DeleteRequest Delete(string logName)
-            {
-                return new DeleteRequest(service, logName);
-            }
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
-                {
-                    LogName = logName;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
-                /// more information about log names, see LogEntry.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LogName { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+logName}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+/logs/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+parent}/logs"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
         }
     }
 
@@ -791,213 +566,6 @@ namespace Google.Apis.Logging.v2beta1
         }
     }
 
-    /// <summary>The "organizations" collection of methods.</summary>
-    public class OrganizationsResource
-    {
-        private const string Resource = "organizations";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public OrganizationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            logs = new LogsResource(service);
-
-        }
-
-        private readonly LogsResource logs;
-
-        /// <summary>Gets the Logs resource.</summary>
-        public virtual LogsResource Logs
-        {
-            get { return logs; }
-        }
-
-        /// <summary>The "logs" collection of methods.</summary>
-        public class LogsResource
-        {
-            private const string Resource = "logs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LogsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
-            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
-            /// names, see LogEntry.</param>
-            public virtual DeleteRequest Delete(string logName)
-            {
-                return new DeleteRequest(service, logName);
-            }
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
-                {
-                    LogName = logName;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
-                /// more information about log names, see LogEntry.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LogName { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+logName}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/logs/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+parent}/logs"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
-    }
-
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -1010,201 +578,11 @@ namespace Google.Apis.Logging.v2beta1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            logs = new LogsResource(service);
             metrics = new MetricsResource(service);
             sinks = new SinksResource(service);
 
         }
 
-        private readonly LogsResource logs;
-
-        /// <summary>Gets the Logs resource.</summary>
-        public virtual LogsResource Logs
-        {
-            get { return logs; }
-        }
-
-        /// <summary>The "logs" collection of methods.</summary>
-        public class LogsResource
-        {
-            private const string Resource = "logs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LogsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
-            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
-            /// names, see LogEntry.</param>
-            public virtual DeleteRequest Delete(string logName)
-            {
-                return new DeleteRequest(service, logName);
-            }
-
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
-            /// written shortly before the delete operation might not be deleted.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
-                    : base(service)
-                {
-                    LogName = logName;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
-                /// more information about log names, see LogEntry.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string LogName { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+logName}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "logName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "logName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/logs/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
-            /// entries are listed.</summary>
-            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/{+parent}/logs"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
         private readonly MetricsResource metrics;
 
         /// <summary>Gets the Metrics resource.</summary>
@@ -1447,17 +825,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1493,18 +871,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1865,17 +1243,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1911,18 +1289,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2330,24 +1708,6 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Result returned from ListLogs.</summary>
-    public class ListLogsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of log names. For example, "projects/my-project/syslog" or
-        /// "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logNames")]
-        public virtual System.Collections.Generic.IList<string> LogNames { get; set; } 
-
-        /// <summary>If there might be more results than those appearing in this response, then nextPageToken is
-        /// included. To get the next set of results, call this method again using the value of nextPageToken as
-        /// pageToken.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Result returned from ListMonitoredResourceDescriptors.</summary>
     public class ListMonitoredResourceDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2574,7 +1934,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
         public virtual BucketOptions BucketOptions { get; set; } 
 
-        /// <summary>Optional. A description of this metric, which is used in documentation.</summary>
+        /// <summary>Optional. A description of this metric, which is used in documentation. The maximum length of the
+        /// description is 8000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
