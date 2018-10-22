@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181012 (1380)
+ *      <tr><th>API Rev<td>20181018 (1386)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -683,29 +683,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
-            /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
-            /// next_page_token field.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional. Sort the list results by a certain order. If not specified results may be returned in
-            /// arbitrary order. You can sort the results in a descending order based on the creation timestamp using
-            /// order_by="create_time desc". Currently, only sorting by create_time desc is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Optional. The unique identifier of the Google account of the customer the alerts are associated
-            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
-            /// identity if not provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomerId { get; set; }
-
-            /// <summary>Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-            /// server will pick an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional. Query string for filtering alert results. This string must be specified as an
             /// expression or list of expressions, using the following grammar:
             ///
@@ -769,6 +746,29 @@ namespace Google.Apis.AlertCenter.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
+            /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
+            /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
+            /// next_page_token field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. Sort the list results by a certain order. If not specified results may be returned in
+            /// arbitrary order. You can sort the results in a descending order based on the creation timestamp using
+            /// order_by="create_time desc". Currently, only sorting by create_time desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The unique identifier of the Google account of the customer the alerts are associated
+            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
+            /// identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+            /// server will pick an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -793,6 +793,15 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -824,15 +833,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -882,6 +882,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// google.apps.alertcenter.type.DeviceCompromised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
+
+        /// <summary>Output only. Whether this alert has been marked for deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; } 
 
         /// <summary>Optional. The time this alert was no longer active. If provided, the end time must not be earlier
         /// than the start time. If not provided, the end time will default to the start time.</summary>
@@ -1195,12 +1199,12 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Details of the login action</summary>
     public class LoginDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Human readable IP address (e.g., 11.22.33.44) that is associated with the warning
+        /// <summary>Optional. Human readable IP address (e.g., 11.22.33.44) that is associated with the warning
         /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>Required. Login time that is associated with the warning event.</summary>
+        /// <summary>Optional. Login time that is associated with the warning event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginTime")]
         public virtual object LoginTime { get; set; } 
 

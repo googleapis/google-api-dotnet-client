@@ -1707,10 +1707,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string InstanceId { get; private set; }
 
-                        /// <summary>Plan id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PlanId { get; set; }
-
                         /// <summary>Service id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
@@ -1719,6 +1715,10 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         /// with the provided value.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Operation { get; set; }
+
+                        /// <summary>Plan id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PlanId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1763,15 +1763,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     Pattern = @"^[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "planId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "planId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "serviceId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "serviceId",
@@ -1784,6 +1775,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                 "operation", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "operation",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "planId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "planId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

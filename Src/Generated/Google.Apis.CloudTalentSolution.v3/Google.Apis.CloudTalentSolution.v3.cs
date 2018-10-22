@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20181008 (1376)
+ *      <tr><th>API Rev<td>20181011 (1379)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -433,7 +433,7 @@ namespace Google.Apis.CloudTalentSolution.v3
 
             }
 
-            /// <summary>Deletes specified company.</summary>
+            /// <summary>Deletes specified company. Prerequisite: The company has no jobs associated with it.</summary>
             /// <param name="name">Required.
             ///
             /// The resource name of the company to be deleted.
@@ -445,7 +445,7 @@ namespace Google.Apis.CloudTalentSolution.v3
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes specified company.</summary>
+            /// <summary>Deletes specified company. Prerequisite: The company has no jobs associated with it.</summary>
             public class DeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1558,6 +1558,32 @@ namespace Google.Apis.CloudTalentSolution.v3
 
             /// <summary>Optional.
             ///
+            /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For
+            /// more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_codes are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_codes are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_codes or companies having open jobs
+            /// with same language_codes are returned.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// If provided, restricts completion to specified company.
+            ///
+            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
+            /// project/companies/foo".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
@@ -1575,15 +1601,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                 PUBLIC__,
             }
 
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to specified company.
-            ///
-            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
-            /// project/companies/foo".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
             /// <summary>Required.
             ///
             /// Completion result count.
@@ -1600,7 +1617,9 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Required.
+            /// <summary>Deprecated. Use language_codes instead.
+            ///
+            /// Optional.
             ///
             /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
             /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
@@ -1672,9 +1691,9 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
+                    "languageCodes", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "scope",
+                        Name = "languageCodes",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1684,6 +1703,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "companyName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scope", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2806,8 +2834,8 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         /// to filter on the existence of a key.
         ///
         /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (for example, "((A AND B AND C) OR
-        /// NOT D) AND E"), a maximum of 50 comparisons or functions are allowed in the expression. The expression must
-        /// be < 3000 characters in length.
+        /// NOT D) AND E"), a maximum of 100 comparisons or functions are allowed in the expression. The expression must
+        /// be < 3000 bytes in length.
         ///
         /// Sample Query: `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND driving_years >
         /// 10`</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180716 (1292)
+ *      <tr><th>API Rev<td>20181017 (1385)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -1521,6 +1521,18 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot
+        /// drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the
+        /// Google Maps API to resolve the address to a geographic point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; } 
+
+        /// <summary>Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally,
+        /// ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like
+        /// the Google Maps API to resolve the address to a geographic point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; } 
 
         /// <summary>The name of the early vote site or drop off location. This field is not populated for polling
         /// locations.</summary>

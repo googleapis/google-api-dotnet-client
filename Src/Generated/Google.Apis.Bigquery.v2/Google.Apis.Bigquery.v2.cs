@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181005 (1373)
+ *      <tr><th>API Rev<td>20181012 (1380)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3895,8 +3895,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>The geographic location of the job. Required except for US and EU. See details at
-        /// https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
+        /// <summary>The geographic location of the job. See details at
+        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4559,6 +4559,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] The number of bytes in the table that are considered "long-term storage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
         public virtual System.Nullable<long> NumLongTermBytes { get; set; } 
+
+        /// <summary>[Output-only] [Experimental] The physical size of this table in bytes, excluding any data in the
+        /// streaming buffer. This includes compression and storage used for time travel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPhysicalBytes")]
+        public virtual System.Nullable<long> NumPhysicalBytes { get; set; } 
 
         /// <summary>[Output-only] The number of rows of data in this table, excluding any data in the streaming
         /// buffer.</summary>

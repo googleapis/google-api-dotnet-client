@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kNaWPiDorJ4a-XoVjJgcrtZLb_0\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/SZY-9_ScteTEtTSIjMIigLgnbt8\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20181005",
+ "revision": "20181012",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1286,7 +1286,7 @@
     },
     "location": {
      "type": "string",
-     "description": "The geographic location of the job. Required except for US and EU. See details at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location."
+     "description": "The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location."
     },
     "projectId": {
      "type": "string",
@@ -1975,6 +1975,11 @@
     "numLongTermBytes": {
      "type": "string",
      "description": "[Output-only] The number of bytes in the table that are considered \"long-term storage\".",
+     "format": "int64"
+    },
+    "numPhysicalBytes": {
+     "type": "string",
+     "description": "[Output-only] [Experimental] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.",
      "format": "int64"
     },
     "numRows": {

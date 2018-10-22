@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181012 (1380)
+ *      <tr><th>API Rev<td>20181018 (1386)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -728,6 +728,13 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// <summary>Required. Cloud [region](/compute/docs/reference/rest/v1/regions) for the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>Optional. The starting address of a range. The address must be a valid IPv4 address in the x.x.x.x
+        /// format. This value combined with the IP prefix range is the CIDR range for the subnet. The range must be
+        /// within the allocated range that is assigned to the private connection. If the CIDR range isn't available,
+        /// the call fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedAddress")]
+        public virtual string RequestedAddress { get; set; } 
 
         /// <summary>Required. Name for the new subnetwork. Must be a legal
         /// [subnetwork](compute/docs/reference/rest/v1/subnetworks) name.</summary>

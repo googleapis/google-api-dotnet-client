@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181008 (1376)
+ *      <tr><th>API Rev<td>20181011 (1379)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -407,17 +407,6 @@ namespace Google.Apis.JobService.v2
                 [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CompanyName { get; private set; }
 
-                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
-                /// page by page instead.
-                ///
-                /// Optional.
-                ///
-                /// Set to true if the total number of open jobs is to be returned.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
-
                 /// <summary>Optional.
                 ///
                 /// The starting point of a query result.</summary>
@@ -453,6 +442,17 @@ namespace Google.Apis.JobService.v2
                 [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string JobRequisitionId { get; set; }
 
+                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
+                /// page by page instead.
+                ///
+                /// Optional.
+                ///
+                /// Set to true if the total number of open jobs is to be returned.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -487,15 +487,6 @@ namespace Google.Apis.JobService.v2
                             Pattern = @"^companies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "includeJobsCount", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeJobsCount",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -526,6 +517,15 @@ namespace Google.Apis.JobService.v2
                         "jobRequisitionId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "jobRequisitionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeJobsCount", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeJobsCount",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1341,22 +1341,6 @@ namespace Google.Apis.JobService.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Optional.
             ///
             /// The starting point of a query result.</summary>
@@ -1384,6 +1368,22 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
 
+            /// <summary>Required.
+            ///
+            /// The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1409,15 +1409,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1439,6 +1430,15 @@ namespace Google.Apis.JobService.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1692,12 +1692,6 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Required.
             ///
-            /// The query used to generate suggestions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>Required.
-            ///
             /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
             /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
             ///
@@ -1763,6 +1757,12 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,15 +1787,6 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
@@ -1836,6 +1827,15 @@ namespace Google.Apis.JobService.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2887,9 +2887,9 @@ namespace Google.Apis.JobService.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual JobQuery Query { get; set; } 
 
-        /// <summary>Meta information, such as `user_id`, collected from the job searcher or other entity conducting the
-        /// job search, which is used to improve the search quality of the service. Users determine identifier values,
-        /// which must be unique and consist.</summary>
+        /// <summary>Meta information, such as `user_id`, collected from the job searcher or other entity conducting a
+        /// job search, is used to improve the service's search quality. Users determine identifier values, which must
+        /// be unique and consist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
         public virtual RequestMetadata RequestMetadata { get; set; } 
 
@@ -3204,7 +3204,8 @@ namespace Google.Apis.JobService.v2.Data
         ///
         /// Job compensation information.
         ///
-        /// This field replaces compensation_info.</summary>
+        /// This field replaces compensation_info. Only CompensationInfo.entries or extended_compensation_info can be
+        /// set, otherwise an exception is thrown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedCompensationInfo")]
         public virtual ExtendedCompensationInfo ExtendedCompensationInfo { get; set; } 
 
@@ -3467,8 +3468,8 @@ namespace Google.Apis.JobService.v2.Data
         /// a key.
         ///
         /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (For example, "((A AND B AND C) OR
-        /// NOT D) AND E"), and there can be a maximum of 50 comparisons/functions in the expression. The expression
-        /// must be < 3000 characters in length.
+        /// NOT D) AND E"), and there can be a maximum of 100 comparisons/functions in the expression. The expression
+        /// must be < 3000 bytes in length.
         ///
         /// Sample Query: (key1 = "TEST" OR LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeFilter")]
@@ -4314,7 +4315,7 @@ namespace Google.Apis.JobService.v2.Data
 
         /// <summary>Required.
         ///
-        /// The meta information collected about the job searcher, used to improve the search quality of the service..
+        /// The meta information collected about the job searcher, used to improve the search quality of the service.
         /// The identifiers, (such as `user_id`) are provided by users, and must be unique and consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
         public virtual RequestMetadata RequestMetadata { get; set; } 

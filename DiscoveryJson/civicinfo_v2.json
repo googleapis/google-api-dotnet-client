@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/0E0HMJczMJ5Gh20_HlZDoM2DlbU\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/UBGbvHxl5b0nTEIbQKoQKowlxXY\"",
  "discoveryVersion": "v1",
  "id": "civicinfo:v2",
  "name": "civicinfo",
  "canonicalName": "Civic Info",
  "version": "v2",
- "revision": "20180716",
+ "revision": "20181017",
  "title": "Google Civic Information API",
  "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
  "ownerDomain": "google.com",
@@ -797,6 +797,16 @@
     "id": {
      "type": "string",
      "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."
+    },
+    "latitude": {
+     "type": "number",
+     "description": "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+     "format": "double"
+    },
+    "longitude": {
+     "type": "number",
+     "description": "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+     "format": "double"
     },
     "name": {
      "type": "string",
