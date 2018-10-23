@@ -1372,6 +1372,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1381,11 +1386,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1439,18 +1439,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1752,14 +1752,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -1771,6 +1763,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1815,6 +1815,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1827,15 +1836,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1884,6 +1884,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1920,14 +1928,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1987,6 +1987,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gracefulDecommissionTimeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
@@ -1999,15 +2008,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gracefulDecommissionTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2576,20 +2576,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -2615,6 +2601,20 @@ namespace Google.Apis.Dataproc.v1beta2
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2659,6 +2659,24 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStateMatcher",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2680,24 +2698,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobStateMatcher",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/wFUbpfedbcZdQRSSATUnfjiw3rE\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/4oEp_ERLhnN2ABk55KEAUwUycA4\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20181015",
+ "revision": "20181017",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -328,9 +328,20 @@
    "type": "object",
    "description": "This represents a single version of the app.",
    "properties": {
+    "isProduction": {
+     "type": "boolean",
+     "description": "True if this version is a production Apk."
+    },
     "track": {
      "type": "string",
-     "description": "The track that this app was published in. For example if track is \"alpha\", this is an alpha version of the app."
+     "description": "The track that this app was published in. For example if track is \"alpha\", this is an alpha version of the app. Deprecated, use track_id instead."
+    },
+    "trackId": {
+     "type": "array",
+     "description": "The track ids that this version was published in. This field supersedes track, but doesn't include the production track.",
+     "items": {
+      "type": "string"
+     }
     },
     "versionCode": {
      "type": "integer",
@@ -1119,6 +1130,13 @@
    "type": "object",
    "description": "A Products resource represents an app in the Google Play store that is available to at least some users in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made available outside that enterprise.)\n\nThe information provided for each product (localized name, icon, link to the full Google Play details page) is intended to allow a basic representation of the product within an EMM user interface.",
    "properties": {
+    "appTracks": {
+     "type": "array",
+     "description": "The tracks that are visible to the enterprise with their user-friendly name.",
+     "items": {
+      "$ref": "TrackInfo"
+     }
+    },
     "appVersion": {
      "type": "array",
      "description": "App versions currently available for this product.",
@@ -1139,7 +1157,7 @@
     },
     "availableTracks": {
      "type": "array",
-     "description": "The tracks that are visible to the enterprise.",
+     "description": "The tracks that are visible to the enterprise. Deprecated, use app_tracks instead.",
      "items": {
       "type": "string"
      }
@@ -1308,9 +1326,16 @@
      "type": "string",
      "description": "The ID of the product. For example, \"app:com.google.android.gm\"."
     },
+    "trackIds": {
+     "type": "array",
+     "description": "Grants visibility to the specified track(s) of the product to the device. The existing track ids can be obtained by calling Products.Get.",
+     "items": {
+      "type": "string"
+     }
+    },
     "tracks": {
      "type": "array",
-     "description": "Grants visibility to the specified track(s) of the product to the device. The track available to the device is based on the following order of preference: alpha, beta, production. For example, if an app has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to both the alpha and beta tracks, if tracks is {\"beta\", \"production\"} then the beta version of the app is made available to the device. If there are no app versions in the specified track adding the \"alpha\" and \"beta\" values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or beta tracks before users can be granted visibility to apps in those tracks.\n\nThe allowed sets are: {} (considered equivalent to {\"production\"}) {\"production\"} {\"beta\", \"production\"} {\"alpha\", \"beta\", \"production\"} The order of elements is not relevant. Any other set of tracks will be rejected with an error.",
+     "description": "Grants visibility to the specified track(s) of the product to the device. The track available to the device is based on the following order of preference: alpha, beta, production. For example, if an app has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to both the alpha and beta tracks, if tracks is {\"beta\", \"production\"} then the beta version of the app is made available to the device. If there are no app versions in the specified track adding the \"alpha\" and \"beta\" values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or beta tracks before users can be granted visibility to apps in those tracks.\n\nThe allowed sets are: {} (considered equivalent to {\"production\"}) {\"production\"} {\"beta\", \"production\"} {\"alpha\", \"beta\", \"production\"} The order of elements is not relevant. Any other set of tracks will be rejected with an error.\n\nThis is deprecated. Use track_ids instead.",
      "items": {
       "type": "string"
      }
@@ -1370,9 +1395,16 @@
      "type": "string",
      "description": "The product ID to make visible to the user. Required for each item in the productVisibility list."
     },
+    "trackIds": {
+     "type": "array",
+     "description": "Grants visibility to the specified track(s) of the product to the user. This replaces the tracks field, and specifies the track by their unique id.",
+     "items": {
+      "type": "string"
+     }
+    },
     "tracks": {
      "type": "array",
-     "description": "Grants visibility to the specified track(s) of the product to the user. The track available to the user is based on the following order of preference: alpha, beta, production. For example, if an app has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to both the alpha and beta tracks, if tracks is {\"beta\", \"production\"} the user will be able to install the app and they will get the beta version of the app. If there are no app versions in the specified track adding the \"alpha\" and \"beta\" values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or beta tracks before users can be granted visibility to apps in those tracks.\n\nThe allowed sets are: {} (considered equivalent to {\"production\"}) {\"production\"} {\"beta\", \"production\"} {\"alpha\", \"beta\", \"production\"} The order of elements is not relevant. Any other set of tracks will be rejected with an error.",
+     "description": "Grants visibility to the specified track(s) of the product to the user. The track available to the user is based on the following order of preference: alpha, beta, production. For example, if an app has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to both the alpha and beta tracks, if tracks is {\"beta\", \"production\"} the user will be able to install the app and they will get the beta version of the app. If there are no app versions in the specified track adding the \"alpha\" and \"beta\" values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or beta tracks before users can be granted visibility to apps in those tracks.\n\nThe allowed sets are: {} (considered equivalent to {\"production\"}) {\"production\"} {\"beta\", \"production\"} {\"alpha\", \"beta\", \"production\"} The order of elements is not relevant. Any other set of tracks will be rejected with an error.\n\nThis is deprecated. Use track_ids instead.",
      "items": {
       "type": "string"
      }
@@ -1647,6 +1679,21 @@
     },
     "previousPageToken": {
      "type": "string"
+    }
+   }
+  },
+  "TrackInfo": {
+   "id": "TrackInfo",
+   "type": "object",
+   "description": "Id to name association of a track.",
+   "properties": {
+    "trackAlias": {
+     "type": "string",
+     "description": "A changeable, user-friendly name for a track."
+    },
+    "trackId": {
+     "type": "string",
+     "description": "A unique an unchangeable identifier of a test track."
     }
    }
   },
