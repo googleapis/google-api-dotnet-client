@@ -136,7 +136,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Manage your YouTube account</summary>
             public static string Youtube = "https://www.googleapis.com/auth/youtube";
 
-            /// <summary>Manage your YouTube account</summary>
+            /// <summary>See, edit, and permanently delete your YouTube videos, ratings, comments and captions</summary>
             public static string YoutubeForceSsl = "https://www.googleapis.com/auth/youtube.force-ssl";
 
             /// <summary>View your YouTube account</summary>
