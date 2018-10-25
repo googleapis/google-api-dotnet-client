@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20181019 (1387)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -595,13 +595,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of environments to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -637,18 +637,18 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1003,10 +1003,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1014,6 +1010,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1049,15 +1049,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1070,6 +1061,15 @@ namespace Google.Apis.CloudComposer.v1beta1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1388,7 +1388,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>Immutable. The version of the software running in the environment. This encapsulates both the
         /// version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular
-        /// expression `composer-([0-9]+\.[0-9]+(\.[0-9]+)?|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as
+        /// expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as
         /// input, the server will also check if the provided version is supported and deny the creation request for an
         /// unsupported version.
         ///
@@ -1400,10 +1400,9 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// The portion of the image version that follows airflow- is an official Apache Airflow repository [release
         /// name](https://github.com/apache/incubator-airflow/releases).
         ///
-        /// Supported values for input are: * `composer-latest-airflow-latest` * `composer-latest-airflow-1.10.0` *
-        /// `composer-latest-airflow-1.9.0` * `composer-latest-airflow-1.10` * `composer-latest-airflow-1.9` *
-        /// `composer-1.1.1-airflow-latest` * `composer-1.1.1-airflow-1.10.0` * `composer-1.1.1-airflow-1.9.0` *
-        /// `composer-1.1.1-airflow-1.10` * `composer-1.1.1-airflow-1.9`
+        /// Supported values for input are: * `composer-latest-airflow-1.10.0` * `composer-latest-airflow-1.9.0` *
+        /// `composer-latest-airflow-1.10` * `composer-latest-airflow-1.9` * `composer-1.3.0-airflow-1.10.0` *
+        /// `composer-1.3.0-airflow-1.9.0` * `composer-1.3.0-airflow-1.10` * `composer-1.3.0-airflow-1.9`
         ///
         /// See also [Release Notes](/composer/docs/release-notes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]

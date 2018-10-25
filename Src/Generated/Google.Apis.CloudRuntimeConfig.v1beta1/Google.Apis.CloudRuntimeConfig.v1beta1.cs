@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181014 (1382)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -1448,15 +1448,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
-                    /// previous list request to get the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Specifies the number of results to return per page. If there are fewer elements than
                     /// the specified number, returns all elements.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
+                    /// previous list request to get the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1492,18 +1492,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1900,15 +1900,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
-                /// list request to get the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Specifies the number of results to return per page. If there are fewer elements than the
                 /// specified number, returns all elements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
+                /// list request to get the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1944,18 +1944,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2237,14 +2237,14 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
 
     /// <summary>A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of
     /// variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality
-    /// condition where the `path` is set to `/foo` and the number of paths is set to 2, the following variables would
+    /// condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would
     /// meet the condition in a RuntimeConfig resource:
     ///
     /// + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"`
     ///
-    /// It would not would not satisify the same condition with the `number` set to 3, however, because there is only 2
-    /// paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix
-    /// are counted.</summary>
+    /// It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths
+    /// that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are
+    /// counted.</summary>
     public class Cardinality : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not
@@ -2609,7 +2609,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
-        /// <summary>Output only. The time of the last variable update.</summary>
+        /// <summary>Output only. The time of the last variable update. Timestamp will be UTC timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 

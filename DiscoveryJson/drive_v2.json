@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/7yxYVth0ZPT7vjWm4pl2GXc6fWw\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/QXi8PEOVXIemCi7DbUUEhixdbRs\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20181012",
+ "revision": "20181022",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1069,7 +1069,8 @@
      "description": "A short description of the file."
     },
     "downloadUrl": {
-     "type": "string"
+     "type": "string",
+     "description": "Short lived download URL for the file. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files."
     },
     "editable": {
      "type": "boolean",
