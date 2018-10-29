@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181017 (1385)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview</a>

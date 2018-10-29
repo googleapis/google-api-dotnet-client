@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181016 (1384)
+ *      <tr><th>API Rev<td>20181023 (1391)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -10045,6 +10045,43 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the attribute. Underscores will be replaced by spaces upon insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The type of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Free-form unit of the attribute. Unit can only be used for values of type int, float, or
+        /// price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
+
+        /// <summary>The value of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CustomGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sub-attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<CustomAttribute> Attributes { get; set; } 
+
+        /// <summary>The name of the group. Underscores will be replaced by spaces upon insertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CustomerReturnReason : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -10781,6 +10818,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
         public virtual Installment Installment { get; set; } 
 
+        /// <summary>The instore product location. Supported only for local products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
+        public virtual string InstoreProductLocation { get; set; } 
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#inventory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -10946,6 +10987,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Number and amount of installments to pay for an item. Brazil only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
         public virtual Installment Installment { get; set; } 
+
+        /// <summary>The instore product location. Supported only for local products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
+        public virtual string InstoreProductLocation { get; set; } 
 
         /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
@@ -14177,11 +14222,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// of the feed specification in its generic form (e.g., { "name": "size type", "type": "text", "value":
         /// "regular" }). This is useful for submitting attributes not explicitly exposed by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
-        public virtual System.Collections.Generic.IList<ProductCustomAttribute> CustomAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; } 
 
         /// <summary>A list of custom (merchant-provided) custom attribute groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customGroups")]
-        public virtual System.Collections.Generic.IList<ProductCustomGroup> CustomGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomGroup> CustomGroups { get; set; } 
 
         /// <summary>Custom label 0 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
@@ -14451,43 +14496,6 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Whether the aspect is required, excluded or should be validated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intention")]
         public virtual string Intention { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class ProductCustomAttribute : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the attribute. Underscores will be replaced by spaces upon insertion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The type of the attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>Free-form unit of the attribute. Unit can only be used for values of type int, float, or
-        /// price.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
-
-        /// <summary>The value of the attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class ProductCustomGroup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The sub-attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IList<ProductCustomAttribute> Attributes { get; set; } 
-
-        /// <summary>The name of the group. Underscores will be replaced by spaces upon insertion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

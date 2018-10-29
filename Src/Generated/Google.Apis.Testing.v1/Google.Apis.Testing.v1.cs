@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181022 (1390)
+ *      <tr><th>API Rev<td>20181025 (1393)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1015,6 +1015,11 @@ namespace Google.Apis.Testing.v1.Data
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>True if and only if tests with this model are recorded by stitching together screenshots. See
+        /// use_low_spec_video_recording in device config. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowFpsVideoRecording")]
+        public virtual System.Nullable<bool> LowFpsVideoRecording { get; set; } 
 
         /// <summary>The manufacturer of this device. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]

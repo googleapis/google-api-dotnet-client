@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181015 (1383)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1241,13 +1241,24 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`ConsumerInfo` provides information about the consumer project.</summary>
+    /// <summary>`ConsumerInfo` provides information about the consumer.</summary>
     public class ConsumerInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The consumer identity number, can be Google cloud project number, folder number or organization
+        /// number e.g. 1234567890. A value of 0 indicates no consumer number is found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNumber")]
+        public virtual System.Nullable<long> ConsumerNumber { get; set; } 
+
         /// <summary>The Google cloud project number, e.g. 1234567890. A value of 0 indicates no project number is
-        /// found.</summary>
+        /// found.
+        ///
+        /// NOTE: This field is deprecated after Chemist support flexible consumer id. New code should not depend on
+        /// this field anymore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

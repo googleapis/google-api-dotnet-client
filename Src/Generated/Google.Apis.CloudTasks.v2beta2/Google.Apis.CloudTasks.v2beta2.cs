@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180913 (1351)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -1610,14 +1610,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use the next_page_token in the
-                    /// response to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1638,6 +1630,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use the next_page_token in the
+                    /// response to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1673,15 +1673,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1694,6 +1685,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2437,7 +2437,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// The task will be delivered to the App Engine app which belongs to the same project as the queue. For more
     /// information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-
     /// are-routed) and how routing is affected by [dispatch
-    /// files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
+    /// files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport
+    /// and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to
+    /// Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler,
+    /// however, will appear to have used the HTTP protocol.
     ///
     /// The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or
     /// task-level:
@@ -2448,6 +2451,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// The `url` that the task will be sent to is:
     ///
     /// * `url =` host `+` relative_url
+    ///
+    /// Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login:
+    /// admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any
+    /// user, they cannot be dispatched to URIs restricted with [`login:
+    /// required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not
+    /// follow redirects.
     ///
     /// The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` -
     /// `299`]. `503` is considered an App Engine system error instead of an application error. Requests returning error
@@ -2550,6 +2559,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     }    
 
     /// <summary>App Engine Routing.
+    ///
+    /// Defines routing characteristics specific to App Engine - service, version, and instance.
     ///
     /// For more information about services, versions, and instances see [An Overview of App
     /// Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture
