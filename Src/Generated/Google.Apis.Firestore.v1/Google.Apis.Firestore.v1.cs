@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181007 (1375)
+ *      <tr><th>API Rev<td>20181020 (1388)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -353,10 +353,699 @@ namespace Google.Apis.Firestore.v1
             public DatabasesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                collectionGroups = new CollectionGroupsResource(service);
                 operations = new OperationsResource(service);
 
             }
 
+            private readonly CollectionGroupsResource collectionGroups;
+
+            /// <summary>Gets the CollectionGroups resource.</summary>
+            public virtual CollectionGroupsResource CollectionGroups
+            {
+                get { return collectionGroups; }
+            }
+
+            /// <summary>The "collectionGroups" collection of methods.</summary>
+            public class CollectionGroupsResource
+            {
+                private const string Resource = "collectionGroups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CollectionGroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    fields = new FieldsResource(service);
+                    indexes = new IndexesResource(service);
+
+                }
+
+                private readonly FieldsResource fields;
+
+                /// <summary>Gets the Fields resource.</summary>
+                public virtual FieldsResource Fields
+                {
+                    get { return fields; }
+                }
+
+                /// <summary>The "fields" collection of methods.</summary>
+                public class FieldsResource
+                {
+                    private const string Resource = "fields";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public FieldsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets the metadata and configuration for a Field.</summary>
+                    /// <param name="name">A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the metadata and configuration for a Field.</summary>
+                    public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/
+                        /// {collection_id}/fields/{field_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists the field configuration and metadata for this database.
+                    ///
+                    /// Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly
+                    /// overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to
+                    /// `indexConfig.usesAncestorConfig:false`.</summary>
+                    /// <param name="parent">A parent name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the field configuration and metadata for this database.
+                    ///
+                    /// Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly
+                    /// overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to
+                    /// `indexConfig.usesAncestorConfig:false`.</summary>
+                    public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListFieldsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A parent name of the form
+                        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The filter to apply to list results. Currently, FirestoreAdmin.ListFields only
+                        /// supports listing fields that have been explicitly overridden. To issue this query, call
+                        /// FirestoreAdmin.ListFields with the filter set to
+                        /// `indexConfig.usesAncestorConfig:false`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListFields, that may
+                        /// be used to get the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The number of results to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/fields"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates a field configuration. Currently, field updates apply only to single field
+                    /// index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to
+                    /// avoid changing any configuration that the caller isn't aware of. The field mask should be
+                    /// specified as: `{ paths: "index_config" }`.
+                    ///
+                    /// This call returns a google.longrunning.Operation which may be used to track the status of the
+                    /// field update. The metadata for the operation will be the type FieldOperationMetadata.
+                    ///
+                    /// To configure the default field settings for the database, use the special `Field` with resource
+                    /// name:
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields`.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">A field name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
+                    ///
+                    /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`,
+                    /// or a special field path. The only valid special field is `*`, which represents any field.
+                    ///
+                    /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path
+                    /// is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted
+                    /// include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
+                    ///
+                    /// Examples: (Note: Comments here are written in markdown syntax, so there is an  additional layer of backticks to
+                    /// represent a code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the
+                    /// field `address`. `\`*\`` represents a field named `*`, not any field.
+                    ///
+                    /// A special `Field` contains the default indexing settings for all fields. This field's resource name is:
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes defined on this `Field`
+                    /// will be applied to all fields which do not have their own `Field` index configuration.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a field configuration. Currently, field updates apply only to single field
+                    /// index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to
+                    /// avoid changing any configuration that the caller isn't aware of. The field mask should be
+                    /// specified as: `{ paths: "index_config" }`.
+                    ///
+                    /// This call returns a google.longrunning.Operation which may be used to track the status of the
+                    /// field update. The metadata for the operation will be the type FieldOperationMetadata.
+                    ///
+                    /// To configure the default field settings for the database, use the special `Field` with resource
+                    /// name:
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields`.</summary>
+                    public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A field name of the form `projects/{project_id}/databases/{database_id}/collectionG
+                        /// roups/{collection_id}/fields/{field_path}`
+                        ///
+                        /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value
+                        /// , e.g. `address.city`, or a special field path. The only valid special field is `*`, which
+                        /// represents any field.
+                        ///
+                        /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped
+                        /// within a quoted field path is the backtick character itself, escaped using a backslash.
+                        /// Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick),
+                        /// `[`, `]`, as well as any ascii symbolic characters.
+                        ///
+                        /// Examples: (Note: Comments here are written in markdown syntax, so there is an additional
+                        /// layer of backticks to represent a code block) `\`address.city\`` represents a field named
+                        /// `address.city`, not the map key `city` in the field `address`. `\`*\`` represents a field
+                        /// named `*`, not any field.
+                        ///
+                        /// A special `Field` contains the default indexing settings for all fields. This field's
+                        /// resource name is:
+                        /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes
+                        /// defined on this `Field` will be applied to all fields which do not have their own `Field`
+                        /// index configuration.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>A mask, relative to the field. If specified, only configuration specified by this
+                        /// field_mask will be updated in the field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Field Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "patch"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PATCH"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly IndexesResource indexes;
+
+                /// <summary>Gets the Indexes resource.</summary>
+                public virtual IndexesResource Indexes
+                {
+                    get { return indexes; }
+                }
+
+                /// <summary>The "indexes" collection of methods.</summary>
+                public class IndexesResource
+                {
+                    private const string Resource = "indexes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public IndexesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a composite index. This returns a google.longrunning.Operation which may be
+                    /// used to track the status of the creation. The metadata for the operation will be the type
+                    /// IndexOperationMetadata.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">A parent name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</param>
+                    public virtual CreateRequest Create(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a composite index. This returns a google.longrunning.Operation which may be
+                    /// used to track the status of the creation. The metadata for the operation will be the type
+                    /// IndexOperationMetadata.</summary>
+                    public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A parent name of the form
+                        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/indexes"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a composite index.</summary>
+                    /// <param name="name">A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a composite index.</summary>
+                    public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/
+                        /// {collection_id}/indexes/{index_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets a composite index.</summary>
+                    /// <param name="name">A name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a composite index.</summary>
+                    public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Index>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/
+                        /// {collection_id}/indexes/{index_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists composite indexes.</summary>
+                    /// <param name="parent">A parent name of the form
+                    /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists composite indexes.</summary>
+                    public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListIndexesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A parent name of the form
+                        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The filter to apply to list results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may
+                        /// be used to get the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The number of results to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/indexes"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+            }
             private readonly OperationsResource operations;
 
             /// <summary>Gets the Operations resource.</summary>
@@ -624,10 +1313,6 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -635,6 +1320,10 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -670,15 +1359,6 @@ namespace Google.Apis.Firestore.v1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -696,9 +1376,174 @@ namespace Google.Apis.Firestore.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
+            }
+
+            /// <summary>Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage
+            /// system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export.
+            /// The export occurs in the background and its progress can be monitored and managed via the Operation
+            /// resource that is created. The output of an export may only be used once the associated operation is
+            /// done. If an export operation is cancelled before completion it may leave partial data behind in Google
+            /// Cloud Storage.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Database to export. Should be of the form:
+            /// `projects/{project_id}/databases/{database_id}`.</param>
+            public virtual ExportDocumentsRequest ExportDocuments(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest body, string name)
+            {
+                return new ExportDocumentsRequest(service, body, name);
+            }
+
+            /// <summary>Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage
+            /// system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export.
+            /// The export occurs in the background and its progress can be monitored and managed via the Operation
+            /// resource that is created. The output of an export may only be used once the associated operation is
+            /// done. If an export operation is cancelled before completion it may leave partial data behind in Google
+            /// Cloud Storage.</summary>
+            public class ExportDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new ExportDocuments request.</summary>
+                public ExportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Database to export. Should be of the form:
+                /// `projects/{project_id}/databases/{database_id}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ExportDocumentsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "exportDocuments"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:exportDocuments"; }
+                }
+
+                /// <summary>Initializes ExportDocuments parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Imports documents into Google Cloud Firestore. Existing documents with the same name are
+            /// overwritten. The import occurs in the background and its progress can be monitored and managed via the
+            /// Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a
+            /// subset of the data has already been imported to Cloud Firestore.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Database to import into. Should be of the form:
+            /// `projects/{project_id}/databases/{database_id}`.</param>
+            public virtual ImportDocumentsRequest ImportDocuments(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest body, string name)
+            {
+                return new ImportDocumentsRequest(service, body, name);
+            }
+
+            /// <summary>Imports documents into Google Cloud Firestore. Existing documents with the same name are
+            /// overwritten. The import occurs in the background and its progress can be monitored and managed via the
+            /// Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a
+            /// subset of the data has already been imported to Cloud Firestore.</summary>
+            public class ImportDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new ImportDocuments request.</summary>
+                public ImportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Database to import into. Should be of the form:
+                /// `projects/{project_id}/databases/{database_id}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ImportDocumentsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "importDocuments"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:importDocuments"; }
+                }
+
+                /// <summary>Initializes ImportDocuments parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                }
+
             }
         }
         private readonly LocationsResource locations;
@@ -898,6 +1743,385 @@ namespace Google.Apis.Firestore.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ExportDocuments.</summary>
+    public class GoogleFirestoreAdminV1ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Which collection ids are being exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The state of the export operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; } 
+
+        /// <summary>Where the entities are being exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; } 
+
+        /// <summary>The progress, in bytes, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>The progress, in documents, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; } 
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for FirestoreAdmin.ExportDocuments.</summary>
+    public class GoogleFirestoreAdminV1ExportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Which collection ids to export. Unspecified means all collections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+
+        /// <summary>The output URI. Currently only supports Google Cloud Storage URIs of the form:
+        /// `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and
+        /// `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to
+        /// consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is
+        /// a bucket (without a namespace path), a prefix will be generated based on the start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Returned in the google.longrunning.Operation response field.</summary>
+    public class GoogleFirestoreAdminV1ExportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Location of the output files. This can be used to begin an import into Cloud Firestore (this
+        /// project or another project) after the operation completes successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a single field in the database.
+    ///
+    /// Fields are grouped by their "Collection Group", which represent all collections in the database with the same
+    /// id.</summary>
+    public class GoogleFirestoreAdminV1Field : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The index configuration for this field. If unset, field indexing will revert to the configuration
+        /// defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config
+        /// with an empty list of indexes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexConfig")]
+        public virtual GoogleFirestoreAdminV1IndexConfig IndexConfig { get; set; } 
+
+        /// <summary>A field name of the form
+        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
+        ///
+        /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g.
+        /// `address.city`, or a special field path. The only valid special field is `*`, which represents any field.
+        ///
+        /// Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted
+        /// field path is the backtick character itself, escaped using a backslash. Special characters in field paths
+        /// that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
+        ///
+        /// Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks
+        /// to represent a code block) `\`address.city\`` represents a field named `address.city`, not the map key
+        /// `city` in the field `address`. `\`*\`` represents a field named `*`, not any field.
+        ///
+        /// A special `Field` contains the default indexing settings for all fields. This field's resource name is:
+        /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields` Indexes defined on this
+        /// `Field` will be applied to all fields which do not have their own `Field` index configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.UpdateField.</summary>
+    public class GoogleFirestoreAdminV1FieldOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The field resource that this operation is acting on. For example: `projects/{project_id}/databases/
+        /// {database_id}/collectionGroups/{collection_id}/fields/{field_path}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>A list of IndexConfigDelta, which describe the intent of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexConfigDeltas")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexConfigDelta> IndexConfigDeltas { get; set; } 
+
+        /// <summary>The progress, in bytes, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>The progress, in documents, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; } 
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ImportDocuments.</summary>
+    public class GoogleFirestoreAdminV1ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Which collection ids are being imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The location of the documents being imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
+        public virtual string InputUriPrefix { get; set; } 
+
+        /// <summary>The state of the import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; } 
+
+        /// <summary>The progress, in bytes, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>The progress, in documents, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; } 
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for FirestoreAdmin.ImportDocuments.</summary>
+    public class GoogleFirestoreAdminV1ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Which collection ids to import. Unspecified means all collections included in the import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+
+        /// <summary>Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse
+        /// from an export that has completed successfully. See:
+        /// google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUriPrefix")]
+        public virtual string InputUriPrefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Firestore indexes enable simple and complex queries against documents in a database.</summary>
+    public class GoogleFirestoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields supported by this index.
+        ///
+        /// For composite indexes, this is always 2 or more fields. The last field entry is always for the field path
+        /// `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically
+        /// with the same direction as that of the last field defined. If the final field in a composite index is not
+        /// directional, the `__name__` will be ordered ASCENDING (unless explicitly specified).
+        ///
+        /// For single field indexes, this will always be exactly one entry with a field path equal to the field path of
+        /// the associated field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexField> Fields { get; set; } 
+
+        /// <summary>Output only. A server defined name for this index. The form of this name for composite indexes will
+        /// be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index
+        /// _id}` For single field indexes, this field will be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Indexes with a collection query scope specified allow queries against a collection that is the
+        /// child of a specific document, specified at query time, and that has the same collection id.
+        ///
+        /// Indexes with a collection group query scope specified allow queries against all collections descended from a
+        /// specific document, specified at query time, and that have the same collection id as this index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryScope")]
+        public virtual string QueryScope { get; set; } 
+
+        /// <summary>Output only. The serving state of the index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The index configuration for this field.</summary>
+    public class GoogleFirestoreAdminV1IndexConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Specifies the resource name of the `Field` from which this field's index configuration
+        /// is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index
+        /// configuration (when `uses_ancestor_config` is false).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestorField")]
+        public virtual string AncestorField { get; set; } 
+
+        /// <summary>The indexes supported for this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1Index> Indexes { get; set; } 
+
+        /// <summary>Output only When true, the `Field`'s index configuration is in the process of being reverted. Once
+        /// complete, the index config will transition to the same state as the field specified by `ancestor_field`, at
+        /// which point `uses_ancestor_config` will be `true` and `reverting` will be `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reverting")]
+        public virtual System.Nullable<bool> Reverting { get; set; } 
+
+        /// <summary>Output only. When true, the `Field`'s index configuration is set from the configuration specified
+        /// by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesAncestorConfig")]
+        public virtual System.Nullable<bool> UsesAncestorConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about an index configuration change.</summary>
+    public class GoogleFirestoreAdminV1IndexConfigDelta : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies how the index is changing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; } 
+
+        /// <summary>The index being changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual GoogleFirestoreAdminV1Index Index { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A field in an index. The field_path describes which field is indexed, the value_mode describes how the
+    /// field value is indexed.</summary>
+    public class GoogleFirestoreAdminV1IndexField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates that this field supports operations on `array_value`s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayConfig")]
+        public virtual string ArrayConfig { get; set; } 
+
+        /// <summary>Can be __name__. For single field indexes, this must match the name of the field or may be
+        /// omitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; } 
+
+        /// <summary>Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >,
+        /// >=.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("order")]
+        public virtual string Order { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.CreateIndex.</summary>
+    public class GoogleFirestoreAdminV1IndexOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The index resource that this operation is acting on. For example: `projects/{project_id}/databases/
+        /// {database_id}/collectionGroups/{collection_id}/indexes/{index_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; } 
+
+        /// <summary>The progress, in bytes, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>The progress, in documents, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; } 
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for FirestoreAdmin.ListFields.</summary>
+    public class GoogleFirestoreAdminV1ListFieldsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1Field> Fields { get; set; } 
+
+        /// <summary>A page token that may be used to request another page of results. If blank, this is the last
+        /// page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for FirestoreAdmin.ListIndexes.</summary>
+    public class GoogleFirestoreAdminV1ListIndexesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested indexes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1Index> Indexes { get; set; } 
+
+        /// <summary>A page token that may be used to request another page of results. If blank, this is the last
+        /// page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The metadata message for google.cloud.location.Location.metadata.</summary>
+    public class GoogleFirestoreAdminV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes the progress of the operation. Unit of work is generic and must be interpreted based on where
+    /// Progress is used.</summary>
+    public class GoogleFirestoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of work completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedWork")]
+        public virtual System.Nullable<long> CompletedWork { get; set; } 
+
+        /// <summary>The amount of work estimated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
+        public virtual System.Nullable<long> EstimatedWork { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181019 (1387)
+ *      <tr><th>API Rev<td>20181027 (1395)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -899,14 +899,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>A token specifying which result page to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of devices to show in a page of results. Must be between 1 and 100
                 /// inclusive.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PageSize { get; set; }
-
-                /// <summary>A token specifying which result page to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -942,18 +942,18 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                             Pattern = @"^customers/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1213,14 +1213,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
 
+            /// <summary>A token specifying which result page to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of customers to show in a page of results. A number between 1 and 100
             /// (inclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>A token specifying which result page to return.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1247,18 +1247,18 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1392,7 +1392,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Creates a customer for zero-touch enrollment. After the method returns successfully, admin and
             /// owner roles can manage devices and EMM configs by calling API methods or using their zero-touch
-            /// enrollment portal. The API doesn't notify the customer that they have access.</summary>
+            /// enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and
+            /// explains how to sign into the portal.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the
             /// reseller.</param>
@@ -1403,7 +1404,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Creates a customer for zero-touch enrollment. After the method returns successfully, admin and
             /// owner roles can manage devices and EMM configs by calling API methods or using their zero-touch
-            /// enrollment portal. The API doesn't notify the customer that they have access.</summary>
+            /// enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and
+            /// explains how to sign into the portal.</summary>
             public class CreateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Company>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1491,14 +1493,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
+                /// <summary>A token identifying a page of results returned by the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of results to be returned. If not specified or 0, all the records are
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>A token identifying a page of results returned by the server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1534,18 +1536,18 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                             Pattern = @"^[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

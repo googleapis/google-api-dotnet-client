@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20181012 (1380)
+ *      <tr><th>API Rev<td>20181027 (1395)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -519,6 +519,48 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
+    public class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is typically provided only for the top
+        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
+        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
+        /// was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Transcript text representing the words that the user spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; } 
+
+        /// <summary>A list of word-specific information for each recognized word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1WordInfo> Words { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
+    public class GoogleCloudVideointelligenceV1SpeechTranscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`).
+        /// These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most
+        /// probable, as ranked by the recognizer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1SpeechRecognitionAlternative> Alternatives { get; set; } 
+
+        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
+        /// audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -575,6 +617,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
+        /// <summary>Speech transcription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1SpeechTranscription> SpeechTranscriptions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -591,6 +637,43 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOffset")]
         public virtual object StartTimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Word-specific information for recognized words. Word information is only included in the response when
+    /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
+    public class GoogleCloudVideointelligenceV1WordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
+        /// diarization_speaker_count, and is only set if speaker diarization is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
+        public virtual System.Nullable<int> SpeakerTag { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The word corresponding to this set of information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -724,6 +807,48 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
+    public class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is typically provided only for the top
+        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
+        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
+        /// was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Transcript text representing the words that the user spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; } 
+
+        /// <summary>A list of word-specific information for each recognized word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2WordInfo> Words { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
+    public class GoogleCloudVideointelligenceV1beta2SpeechTranscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`).
+        /// These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most
+        /// probable, as ranked by the recognizer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative> Alternatives { get; set; } 
+
+        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
+        /// audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -780,6 +905,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
+        /// <summary>Speech transcription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2SpeechTranscription> SpeechTranscriptions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -796,6 +925,43 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOffset")]
         public virtual object StartTimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Word-specific information for recognized words. Word information is only included in the response when
+    /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
+    public class GoogleCloudVideointelligenceV1beta2WordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
+        /// diarization_speaker_count, and is only set if speaker diarization is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
+        public virtual System.Nullable<int> SpeakerTag { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The word corresponding to this set of information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1077,16 +1243,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Config for SPEECH_TRANSCRIPTION.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1SpeechTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-        /// language tags, listing possible alternative languages of the supplied video. See [Language Support](/speech-
-        /// to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are
-        /// listed, transcription result will contain transcription in the most likely language detected, including the
-        /// main language_code. The transcription result will include the language tag of the language detected in the
-        /// video. Note: This feature is only supported for Voice Command and Voice Search use cases and performance may
-        /// vary for other use cases (e.g., phone call transcription).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
-        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; } 
-
         /// <summary>*Optional* For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to
         /// two tracks. Default: track 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTracks")]
@@ -1517,6 +1673,48 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is typically provided only for the top
+        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
+        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
+        /// was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Transcript text representing the words that the user spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; } 
+
+        /// <summary>A list of word-specific information for each recognized word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1WordInfo> Words { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`).
+        /// These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most
+        /// probable, as ranked by the recognizer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative> Alternatives { get; set; } 
+
+        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
+        /// audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Annotations related to one detected OCR text snippet. This will contain the corresponding text,
     /// confidence value, and frame level information for each detection.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1TextAnnotation : Google.Apis.Requests.IDirectResponseSchema
@@ -1629,6 +1827,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
+        /// <summary>Speech transcription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1SpeechTranscription> SpeechTranscriptions { get; set; } 
+
         /// <summary>OCR text detection and tracking. Annotations for list of detected text snippets. Each will have
         /// list of frame information associated with it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnnotations")]
@@ -1650,6 +1852,43 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOffset")]
         public virtual object StartTimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Word-specific information for recognized words. Word information is only included in the response when
+    /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
+    public class GoogleCloudVideointelligenceV1p2beta1WordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from 1 up to
+        /// diarization_speaker_count, and is only set if speaker diarization is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
+        public virtual System.Nullable<int> SpeakerTag { get; set; } 
+
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The word corresponding to this set of information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

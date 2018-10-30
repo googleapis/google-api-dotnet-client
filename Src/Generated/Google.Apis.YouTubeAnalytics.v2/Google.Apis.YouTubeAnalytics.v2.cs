@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181024 (1392)
+ *      <tr><th>API Rev<td>20181026 (1394)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -981,6 +981,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>The end date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
+            /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string EndDate { get; set; }
+
+            /// <summary>The maximum number of rows to include in the response.", minValue: 1</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
             /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
             /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
             /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
@@ -1044,15 +1053,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Dimensions { get; set; }
 
-            /// <summary>The end date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
-            /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string EndDate { get; set; }
-
-            /// <summary>The maximum number of rows to include in the response.", minValue: 1</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1077,6 +1077,24 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "endDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "filters", new Google.Apis.Discovery.Parameter
                     {
@@ -1153,24 +1171,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "dimensions", new Google.Apis.Discovery.Parameter
                     {
                         Name = "dimensions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "endDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "endDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
