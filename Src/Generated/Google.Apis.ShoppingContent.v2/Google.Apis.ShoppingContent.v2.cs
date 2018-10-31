@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181023 (1391)
+ *      <tr><th>API Rev<td>20181029 (1397)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -11856,6 +11856,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
+        /// <summary>Associated fees at order creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fees")]
+        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; } 
+
         /// <summary>Global Trade Item Number (GTIN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; } 
@@ -11900,6 +11904,24 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// material, pattern, and size. You can find a comprehensive list of variant attributes here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
         public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLineItemProductFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of the fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual Price Amount { get; set; } 
+
+        /// <summary>Case-insensitive fee ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Name of the fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

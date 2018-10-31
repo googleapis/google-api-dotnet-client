@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181025 (1393)
+ *      <tr><th>API Rev<td>20181026 (1394)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -2586,6 +2586,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// <summary>Subnetwork name. See https://cloud.google.com/compute/docs/vpc/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Shared VPC host project network peered with consumer network. For example:
+        /// projects/1234321/global/networks/host-network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7657,7 +7657,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; } 
 
-        /// <summary>Options for displaying the Play Search page.</summary>
+        /// <summary>Options for displaying the managed Play Search apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playSearch")]
         public virtual AdministratorWebTokenSpecPlaySearch PlaySearch { get; set; } 
 
@@ -7665,7 +7665,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateApps")]
         public virtual AdministratorWebTokenSpecPrivateApps PrivateApps { get; set; } 
 
-        /// <summary>Options for displaying the Store Builder page.</summary>
+        /// <summary>Options for displaying the Organize apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeBuilder")]
         public virtual AdministratorWebTokenSpecStoreBuilder StoreBuilder { get; set; } 
 
@@ -7683,7 +7683,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approveApps")]
         public virtual System.Nullable<bool> ApproveApps { get; set; } 
 
-        /// <summary>Whether the Play Search page is displayed. Default is true.</summary>
+        /// <summary>Whether the managed Play Search apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
 
@@ -7703,7 +7703,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     public class AdministratorWebTokenSpecStoreBuilder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the Store Builder page is displayed. Default is true.</summary>
+        /// <summary>Whether the Organize apps page is displayed. Default is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
 
