@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20181026 (1394)
+ *      <tr><th>API Rev<td>20181031 (1399)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -537,6 +537,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LogoAnnotations { get; set; } 
 
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual ProductSearchResults ProductSearchResults { get; set; } 
+
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
         public virtual SafeSearchAnnotation SafeSearchAnnotation { get; set; } 
@@ -571,6 +575,29 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// AsyncBatchAnnotateFilesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
         public virtual System.Collections.Generic.IList<AsyncAnnotateFileResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the batch operations such as the current state.
+    ///
+    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
+    /// `google::longrunning::Operations` service.</summary>
+    public class BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
+        /// true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the batch request was submitted to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
+        public virtual object SubmitTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1052,6 +1079,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1EntityAnnotation> LogoAnnotations { get; set; } 
 
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual GoogleCloudVisionV1p1beta1ProductSearchResults ProductSearchResults { get; set; } 
+
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
         public virtual GoogleCloudVisionV1p1beta1SafeSearchAnnotation SafeSearchAnnotation { get; set; } 
@@ -1529,6 +1560,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latLongRect")]
         public virtual GoogleCloudVisionV1p1beta1LatLongRect LatLongRect { get; set; } 
 
+        /// <summary>Parameters for product search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchParams")]
+        public virtual GoogleCloudVisionV1p1beta1ProductSearchParams ProductSearchParams { get; set; } 
+
         /// <summary>Parameters for web detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webDetectionParams")]
         public virtual GoogleCloudVisionV1p1beta1WebDetectionParams WebDetectionParams { get; set; } 
@@ -1760,6 +1795,153 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Z coordinate (or depth).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
         public virtual System.Nullable<float> Z { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class GoogleCloudVisionV1p1beta1Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductKeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductKeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters for a product search request.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the area of interest in the image. Optional. If it is not specified,
+        /// system discretion will be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>The filtering expression. This can be used to restrict search results based on Product labels. We
+        /// currently support an AND of OR of key-value expressions, where each expression within an OR must have the
+        /// same key.
+        ///
+        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but not "(color = red OR
+        /// brand = Google)" or "color: red".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The list of product categories to search in. Currently, we only consider the first category, and
+        /// either "homegoods", "apparel", or "toys" should be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
+        public virtual System.Collections.Generic.IList<string> ProductCategories { get; set; } 
+
+        /// <summary>The resource name of a ProductSet to be searched for similar images.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSet")]
+        public virtual string ProductSet { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResultsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual GoogleCloudVisionV1p1beta1Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2135,6 +2317,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1EntityAnnotation> LogoAnnotations { get; set; } 
+
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual GoogleCloudVisionV1p2beta1ProductSearchResults ProductSearchResults { get; set; } 
 
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
@@ -2681,6 +2867,121 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Z coordinate (or depth).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
         public virtual System.Nullable<float> Z { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class GoogleCloudVisionV1p2beta1Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductKeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductKeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResultsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual GoogleCloudVisionV1p2beta1Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3711,6 +4012,27 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> Results { get; set; } 
@@ -4071,6 +4393,21 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Result> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>If an image was produced from a file (e.g. a PDF), this message gives information about the source of
     /// that image.</summary>
     public class ImageAnnotationContext : Google.Apis.Requests.IDirectResponseSchema
@@ -4099,6 +4436,27 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for the `ImportProductSets` method.
+    ///
+    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
+    /// google.longrunning.Operation.response field.</summary>
+    public class ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of reference_images that are imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
+        public virtual System.Collections.Generic.IList<ReferenceImage> ReferenceImages { get; set; } 
+
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
+        ///
+        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
+        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The desired input location and metadata.</summary>
     public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4110,6 +4468,23 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class KeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4355,6 +4730,70 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<KeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Result> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
     public class Property : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4369,6 +4808,60 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>Value of the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `ReferenceImage` represents a product image and its associated metadata, such as bounding
+    /// boxes.</summary>
+    public class ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bounding polygons around the areas of interest in the reference image. Optional. If this field is
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
+        ///
+        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
+        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
+        /// 1:5 is not).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
+        public virtual System.Collections.Generic.IList<BoundingPoly> BoundingPolys { get; set; } 
+
+        /// <summary>The resource name of the reference image.
+        ///
+        /// Format is:
+        ///
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+        ///
+        /// This field is ignored when creating a reference image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The Google Cloud Storage URI of the reference image.
+        ///
+        /// The URI must start with `gs://`.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class Result : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

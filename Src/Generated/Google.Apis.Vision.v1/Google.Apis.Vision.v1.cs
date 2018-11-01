@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181026 (1394)
+ *      <tr><th>API Rev<td>20181031 (1399)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.Vision.v1
             images = new ImagesResource(this);
             locations = new LocationsResource(this);
             operations = new OperationsResource(this);
+            projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -151,6 +152,14 @@ namespace Google.Apis.Vision.v1
         public virtual OperationsResource Operations
         {
             get { return operations; }
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
         }
     }
 
@@ -850,6 +859,10 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -857,10 +870,6 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -896,6 +905,15 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -913,23 +931,1811 @@ namespace Google.Apis.Vision.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            locations = new LocationsResource(service);
+
+        }
+
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
+        }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                productSets = new ProductSetsResource(service);
+                products = new ProductsResource(service);
+
+            }
+
+            private readonly ProductSetsResource productSets;
+
+            /// <summary>Gets the ProductSets resource.</summary>
+            public virtual ProductSetsResource ProductSets
+            {
+                get { return productSets; }
+            }
+
+            /// <summary>The "productSets" collection of methods.</summary>
+            public class ProductSetsResource
+            {
+                private const string Resource = "productSets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProductSetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    products = new ProductsResource(service);
+
+                }
+
+                private readonly ProductsResource products;
+
+                /// <summary>Gets the Products resource.</summary>
+                public virtual ProductsResource Products
+                {
+                    get { return products; }
+                }
+
+                /// <summary>The "products" collection of methods.</summary>
+                public class ProductsResource
+                {
+                    private const string Resource = "products";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ProductsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not
+                    /// exist, the products field of the response will be empty.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.</summary>
+                    /// <param name="name">The ProductSet resource for which to retrieve Products.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(service, name);
+                    }
+
+                    /// <summary>Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not
+                    /// exist, the products field of the response will be empty.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.</summary>
+                    public class ListRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ListProductsInProductSetResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The ProductSet resource for which to retrieve Products.
+                        ///
+                        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The next_page_token returned from a previous List request, if any.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}/products"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Adds a Product to the specified ProductSet. If the Product is already present, no change is
+                /// made.
+                ///
+                /// One Product can be added to at most 100 ProductSets.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name for the ProductSet to modify.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</param>
+                public virtual AddProductRequest AddProduct(Google.Apis.Vision.v1.Data.AddProductToProductSetRequest body, string name)
+                {
+                    return new AddProductRequest(service, body, name);
+                }
+
+                /// <summary>Adds a Product to the specified ProductSet. If the Product is already present, no change is
+                /// made.
+                ///
+                /// One Product can be added to at most 100 ProductSets.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.</summary>
+                public class AddProductRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new AddProduct request.</summary>
+                    public AddProductRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AddProductToProductSetRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name for the ProductSet to modify.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.AddProductToProductSetRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "addProduct"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:addProduct"; }
+                    }
+
+                    /// <summary>Initializes AddProduct parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates and returns a new ProductSet resource.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project in which the ProductSet should be created.
+                ///
+                /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</param>
+                public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.ProductSet body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates and returns a new ProductSet resource.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.</summary>
+                public class CreateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ProductSet>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.ProductSet body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project in which the ProductSet should be created.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A user-supplied resource id for this ProductSet. If set, the server will attempt to use
+                    /// this value as the resource id. If it is already in use, an error is returned with code
+                    /// ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character
+                    /// `/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProductSetId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.ProductSet Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/productSets"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "productSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productSetId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will
+                /// be deleted.
+                ///
+                /// The actual image files are not deleted from Google Cloud Storage.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                /// <param name="name">Resource name of the ProductSet to delete.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Permanently deletes a ProductSet. All Products and ReferenceImages in the ProductSet will
+                /// be deleted.
+                ///
+                /// The actual image files are not deleted from Google Cloud Storage.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of the ProductSet to delete.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets information associated with a ProductSet.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                /// <param name="name">Resource name of the ProductSet to get.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information associated with a ProductSet.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ProductSet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of the ProductSet to get.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Asynchronous API that imports a list of reference images to specified product sets based on
+                /// a list of image information.
+                ///
+                /// The google.longrunning.Operation API can be used to keep track of the progress and results of the
+                /// request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response`
+                /// contains `ImportProductSetsResponse`. (results)
+                ///
+                /// The input source of this method is a csv file on Google Cloud Storage. For the format of the csv
+                /// file please see ImportProductSetsGcsSource.csv_file_uri.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project in which the ProductSets should be imported.
+                ///
+                /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</param>
+                public virtual ImportRequest Import(Google.Apis.Vision.v1.Data.ImportProductSetsRequest body, string parent)
+                {
+                    return new ImportRequest(service, body, parent);
+                }
+
+                /// <summary>Asynchronous API that imports a list of reference images to specified product sets based on
+                /// a list of image information.
+                ///
+                /// The google.longrunning.Operation API can be used to keep track of the progress and results of the
+                /// request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response`
+                /// contains `ImportProductSetsResponse`. (results)
+                ///
+                /// The input source of this method is a csv file on Google Cloud Storage. For the format of the csv
+                /// file please see ImportProductSetsGcsSource.csv_file_uri.</summary>
+                public class ImportRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.ImportProductSetsRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project in which the ProductSets should be imported.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.ImportProductSetsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "import"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/productSets:import"; }
+                    }
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists ProductSets in an unspecified order.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1.</summary>
+                /// <param name="parent">The project from which ProductSets should be listed.
+                ///
+                /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists ProductSets in an unspecified order.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1.</summary>
+                public class ListRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ListProductSetsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project from which ProductSets should be listed.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The next_page_token returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/productSets"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Makes changes to a ProductSet resource. Only display_name can be updated currently.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist. * Returns INVALID_ARGUMENT if display_name is
+                /// present in update_mask but missing from the request or longer than 4096 characters.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the ProductSet.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+                ///
+                /// This field is ignored when creating a ProductSet.</param>
+                public virtual PatchRequest Patch(Google.Apis.Vision.v1.Data.ProductSet body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Makes changes to a ProductSet resource. Only display_name can be updated currently.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the ProductSet does not exist. * Returns INVALID_ARGUMENT if display_name is
+                /// present in update_mask but missing from the request or longer than 4096 characters.</summary>
+                public class PatchRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ProductSet>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.ProductSet body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the ProductSet.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+                    ///
+                    /// This field is ignored when creating a ProductSet.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The FieldMask that specifies which fields to update. If update_mask isn't specified,
+                    /// all mutable fields are to be updated. Valid mask path is `display_name`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.ProductSet Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Removes a Product from the specified ProductSet.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND If the Product is not found under the ProductSet.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name for the ProductSet to modify.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</param>
+                public virtual RemoveProductRequest RemoveProduct(Google.Apis.Vision.v1.Data.RemoveProductFromProductSetRequest body, string name)
+                {
+                    return new RemoveProductRequest(service, body, name);
+                }
+
+                /// <summary>Removes a Product from the specified ProductSet.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND If the Product is not found under the ProductSet.</summary>
+                public class RemoveProductRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new RemoveProduct request.</summary>
+                    public RemoveProductRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.RemoveProductFromProductSetRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name for the ProductSet to modify.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.RemoveProductFromProductSetRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "removeProduct"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:removeProduct"; }
+                    }
+
+                    /// <summary>Initializes RemoveProduct parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
+                            });
+                    }
+
+                }
+            }
+            private readonly ProductsResource products;
+
+            /// <summary>Gets the Products resource.</summary>
+            public virtual ProductsResource Products
+            {
+                get { return products; }
+            }
+
+            /// <summary>The "products" collection of methods.</summary>
+            public class ProductsResource
+            {
+                private const string Resource = "products";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProductsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    referenceImages = new ReferenceImagesResource(service);
+
+                }
+
+                private readonly ReferenceImagesResource referenceImages;
+
+                /// <summary>Gets the ReferenceImages resource.</summary>
+                public virtual ReferenceImagesResource ReferenceImages
+                {
+                    get { return referenceImages; }
+                }
+
+                /// <summary>The "referenceImages" collection of methods.</summary>
+                public class ReferenceImagesResource
+                {
+                    private const string Resource = "referenceImages";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ReferenceImagesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates and returns a new ReferenceImage resource.
+                    ///
+                    /// The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try
+                    /// to detect regions of interest in the image that are compatible with the product_category on the
+                    /// parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons
+                    /// into non-rotated rectangles.
+                    ///
+                    /// Note that the pipeline will resize the image if the image resolution is too large to process
+                    /// (above 50MP).
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns
+                    /// INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is
+                    /// not provided, and nothing compatible with the parent product's product_category is detected. *
+                    /// Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Resource name of the product in which to create the reference image.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.</param>
+                    public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.ReferenceImage body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates and returns a new ReferenceImage resource.
+                    ///
+                    /// The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try
+                    /// to detect regions of interest in the image that are compatible with the product_category on the
+                    /// parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons
+                    /// into non-rotated rectangles.
+                    ///
+                    /// Note that the pipeline will resize the image if the image resolution is too large to process
+                    /// (above 50MP).
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns
+                    /// INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is
+                    /// not provided, and nothing compatible with the parent product's product_category is detected. *
+                    /// Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.</summary>
+                    public class CreateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ReferenceImage>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.ReferenceImage body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Resource name of the product in which to create the reference image.
+                        ///
+                        /// Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>A user-supplied resource id for the ReferenceImage to be added. If set, the server
+                        /// will attempt to use this value as the resource id. If it is already in use, an error is
+                        /// returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain
+                        /// the character `/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("referenceImageId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ReferenceImageId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Vision.v1.Data.ReferenceImage Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/referenceImages"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "referenceImageId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "referenceImageId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Permanently deletes a reference image.
+                    ///
+                    /// The image metadata will be deleted right away, but search queries against ProductSets containing
+                    /// the image may still work until all related caches are refreshed.
+                    ///
+                    /// The actual image files are not deleted from Google Cloud Storage.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the reference image does not exist.</summary>
+                    /// <param name="name">The resource name of the reference image to delete.
+                    ///
+                    /// Format is:
+                    ///
+                    /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Permanently deletes a reference image.
+                    ///
+                    /// The image metadata will be deleted right away, but search queries against ProductSets containing
+                    /// the image may still work until all related caches are refreshed.
+                    ///
+                    /// The actual image files are not deleted from Google Cloud Storage.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the reference image does not exist.</summary>
+                    public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the reference image to delete.
+                        ///
+                        /// Format is:
+                        ///
+                        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`</summary
+                        /// >
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets information associated with a ReferenceImage.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the specified image does not exist.</summary>
+                    /// <param name="name">The resource name of the ReferenceImage to get.
+                    ///
+                    /// Format is:
+                    ///
+                    /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets information associated with a ReferenceImage.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the specified image does not exist.</summary>
+                    public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ReferenceImage>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The resource name of the ReferenceImage to get.
+                        ///
+                        /// Format is:
+                        ///
+                        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.</summar
+                        /// y>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists reference images.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the parent product does not exist. * Returns INVALID_ARGUMENT if the
+                    /// page_size is greater than 100, or less than 1.</summary>
+                    /// <param name="parent">Resource name of the product containing the reference images.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists reference images.
+                    ///
+                    /// Possible errors:
+                    ///
+                    /// * Returns NOT_FOUND if the parent product does not exist. * Returns INVALID_ARGUMENT if the
+                    /// page_size is greater than 100, or less than 1.</summary>
+                    public class ListRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ListReferenceImagesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Resource name of the product containing the reference images.
+                        ///
+                        /// Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>A token identifying a page of results to be returned. This is the value of
+                        /// `nextPageToken` returned in a previous reference image list request.
+                        ///
+                        /// Defaults to the first page if not specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/referenceImages"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Creates and returns a new product resource.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns
+                /// INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if
+                /// product_category is missing or invalid.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project in which the Product should be created.
+                ///
+                /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</param>
+                public virtual CreateRequest Create(Google.Apis.Vision.v1.Data.Product body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates and returns a new product resource.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns
+                /// INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if
+                /// product_category is missing or invalid.</summary>
+                public class CreateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Product>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.Product body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project in which the Product should be created.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A user-supplied resource id for this Product. If set, the server will attempt to use
+                    /// this value as the resource id. If it is already in use, an error is returned with code
+                    /// ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character
+                    /// `/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProductId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.Product Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/products"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "productId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "productId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Permanently deletes a product and its reference images.
+                ///
+                /// Metadata of the product and all its images will be deleted right away, but search queries against
+                /// ProductSets containing the product may still work until all related caches are refreshed.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the product does not exist.</summary>
+                /// <param name="name">Resource name of product to delete.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Permanently deletes a product and its reference images.
+                ///
+                /// Metadata of the product and all its images will be deleted right away, but search queries against
+                /// ProductSets containing the product may still work until all related caches are refreshed.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the product does not exist.</summary>
+                public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of product to delete.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets information associated with a Product.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product does not exist.</summary>
+                /// <param name="name">Resource name of the Product to get.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information associated with a Product.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product does not exist.</summary>
+                public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Product>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of the Product to get.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists products in an unspecified order.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.</summary>
+                /// <param name="parent">The project OR ProductSet from which Products should be listed.
+                ///
+                /// Format: `projects/PROJECT_ID/locations/LOC_ID`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists products in an unspecified order.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.</summary>
+                public class ListRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.ListProductsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project OR ProductSet from which Products should be listed.
+                    ///
+                    /// Format: `projects/PROJECT_ID/locations/LOC_ID`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The next_page_token returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/products"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Makes changes to a Product resource. Only the `display_name`, `description`, and `labels`
+                /// fields can be updated right now.
+                ///
+                /// If labels are updated, the change will not be reflected in queries until the next index time.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product does not exist. * Returns INVALID_ARGUMENT if display_name is
+                /// present in update_mask but is missing from the request or longer than 4096 characters. * Returns
+                /// INVALID_ARGUMENT if description is present in update_mask but is longer than 4096 characters. *
+                /// Returns INVALID_ARGUMENT if product_category is present in update_mask.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the product.
+                ///
+                /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+                ///
+                /// This field is ignored when creating a product.</param>
+                public virtual PatchRequest Patch(Google.Apis.Vision.v1.Data.Product body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Makes changes to a Product resource. Only the `display_name`, `description`, and `labels`
+                /// fields can be updated right now.
+                ///
+                /// If labels are updated, the change will not be reflected in queries until the next index time.
+                ///
+                /// Possible errors:
+                ///
+                /// * Returns NOT_FOUND if the Product does not exist. * Returns INVALID_ARGUMENT if display_name is
+                /// present in update_mask but is missing from the request or longer than 4096 characters. * Returns
+                /// INVALID_ARGUMENT if description is present in update_mask but is longer than 4096 characters. *
+                /// Returns INVALID_ARGUMENT if product_category is present in update_mask.</summary>
+                public class PatchRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Product>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.Product body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the product.
+                    ///
+                    /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+                    ///
+                    /// This field is ignored when creating a product.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The FieldMask that specifies which fields to update. If update_mask isn't specified,
+                    /// all mutable fields are to be updated. Valid mask paths include `product_labels`, `display_name`,
+                    /// and `description`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.Product Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
         }
     }
 }
 
 namespace Google.Apis.Vision.v1.Data
 {    
+
+    /// <summary>Request message for the `AddProductToProductSet` method.</summary>
+    public class AddProductToProductSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name for the Product to be added to this ProductSet.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Response to a single file annotation request. A file may contain one or more images, which individually
     /// have their own responses.</summary>
@@ -1012,6 +2818,10 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LogoAnnotations { get; set; } 
+
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual ProductSearchResults ProductSearchResults { get; set; } 
 
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
@@ -1103,6 +2913,29 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Individual responses to image annotation requests within the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
         public virtual System.Collections.Generic.IList<AnnotateImageResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the batch operations such as the current state.
+    ///
+    /// This is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the
+    /// `google::longrunning::Operations` service.</summary>
+    public class BatchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request is finished and google.longrunning.Operation.done is set to
+        /// true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the batch request was submitted to the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitTime")]
+        public virtual object SubmitTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1618,6 +3451,10 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1EntityAnnotation> LogoAnnotations { get; set; } 
+
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual GoogleCloudVisionV1p1beta1ProductSearchResults ProductSearchResults { get; set; } 
 
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
@@ -2149,6 +3986,121 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class GoogleCloudVisionV1p1beta1Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductKeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductKeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResultsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual GoogleCloudVisionV1p1beta1Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
     public class GoogleCloudVisionV1p1beta1Property : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2508,6 +4460,10 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1EntityAnnotation> LogoAnnotations { get; set; } 
+
+        /// <summary>If present, product search has completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
+        public virtual GoogleCloudVisionV1p2beta1ProductSearchResults ProductSearchResults { get; set; } 
 
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
@@ -3054,6 +5010,121 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Z coordinate (or depth).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
         public virtual System.Nullable<float> Z { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class GoogleCloudVisionV1p2beta1Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductKeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductKeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResultsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual GoogleCloudVisionV1p2beta1Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4084,6 +6155,27 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> Results { get; set; } 
@@ -4444,6 +6536,21 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information about the products similar to a single product in a query image.</summary>
+    public class GroupedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the product detected in the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Result> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4499,6 +6606,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latLongRect")]
         public virtual LatLongRect LatLongRect { get; set; } 
 
+        /// <summary>Parameters for product search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSearchParams")]
+        public virtual ProductSearchParams ProductSearchParams { get; set; } 
+
         /// <summary>Parameters for web detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webDetectionParams")]
         public virtual WebDetectionParams WebDetectionParams { get; set; } 
@@ -4548,6 +6659,106 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The Google Cloud Storage location for a csv file which preserves a list of ImportProductSetRequests in
+    /// each line.</summary>
+    public class ImportProductSetsGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage URI of the input csv file.
+        ///
+        /// The URI must start with `gs://`.
+        ///
+        /// The format of the input csv file should be one image per line. In each line, there are 8 columns.
+        ///
+        /// 1.  image-uri 2.  image-id 3.  product-set-id 4.  product-id 5.  product-category 6.  product-display-name
+        /// 7.  labels 8.  bounding-poly
+        ///
+        /// The `image-uri`, `product-set-id`, `product-id`, and `product-category` columns are required. All other
+        /// columns are optional.
+        ///
+        /// If the `ProductSet` or `Product` specified by the `product-set-id` and `product-id` values does not exist,
+        /// then the system will create a new `ProductSet` or `Product` for the image. In this case, the `product-
+        /// display-name` column refers to display_name, the `product-category` column refers to product_category, and
+        /// the `labels` column refers to product_labels.
+        ///
+        /// The `image-id` column is optional but must be unique if provided. If it is empty, the system will
+        /// automatically assign a unique id to the image.
+        ///
+        /// The `product-display-name` column is optional. If it is empty, the system sets the display_name field for
+        /// the product to a space (" "). You can update the `display_name` later by using the API.
+        ///
+        /// If a `Product` with the specified `product-id` already exists, then the system ignores the `product-display-
+        /// name`, `product-category`, and `labels` columns.
+        ///
+        /// The `labels` column (optional) is a line containing a list of comma-separated key-value pairs, in the
+        /// following format:
+        ///
+        /// "key_1=value_1,key_2=value_2,...,key_n=value_n"
+        ///
+        /// The `bounding-poly` column (optional) identifies one region of interest from the image in the same manner as
+        /// `CreateReferenceImage`. If you do not specify the `bounding-poly` column, then the system will try to detect
+        /// regions of interest automatically.
+        ///
+        /// At most one `bounding-poly` column is allowed per line. If the image contains multiple regions of interest,
+        /// add a line to the CSV file that includes the same product information, and the `bounding-poly` values for
+        /// each region of interest.
+        ///
+        /// The `bounding-poly` column must contain an even number of comma-separated numbers, in the format
+        /// "p1_x,p1_y,p2_x,p2_y,...,pn_x,pn_y". Use non-negative integers for absolute bounding polygons, and float
+        /// values in [0, 1] for normalized bounding polygons.
+        ///
+        /// The system will resize the image if the image resolution is too large to process (larger than
+        /// 20MP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvFileUri")]
+        public virtual string CsvFileUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The input content for the `ImportProductSets` method.</summary>
+    public class ImportProductSetsInputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google Cloud Storage location for a csv file which preserves a list of ImportProductSetRequests
+        /// in each line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportProductSetsGcsSource GcsSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for the `ImportProductSets` method.</summary>
+    public class ImportProductSetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The input content for the list of requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual ImportProductSetsInputConfig InputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ImportProductSets` method.
+    ///
+    /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
+    /// google.longrunning.Operation.response field.</summary>
+    public class ImportProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of reference_images that are imported successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
+        public virtual System.Collections.Generic.IList<ReferenceImage> ReferenceImages { get; set; } 
+
+        /// <summary>The rpc status for each ImportProductSet request, including both successes and errors.
+        ///
+        /// The number of statuses here matches the number of lines in the csv file, and statuses[i] stores the success
+        /// or failure status of processing the i-th line of the csv, starting from line 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<Status> Statuses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The desired input location and metadata.</summary>
     public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4559,6 +6770,23 @@ namespace Google.Apis.Vision.v1.Data
         /// are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product label represented as a key-value pair.</summary>
+    public class KeyValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label attached to the product. Cannot be empty and cannot exceed 128
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4621,6 +6849,73 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ListProductSets` method.</summary>
+    public class ListProductSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of ProductSets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSets")]
+        public virtual System.Collections.Generic.IList<ProductSet> ProductSets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ListProductsInProductSet` method.</summary>
+    public class ListProductsInProductSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of Products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ListProducts` method.</summary>
+    public class ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<Product> Products { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ListReferenceImages` method.</summary>
+    public class ListReferenceImagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next_page_token returned from a previous List request, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>The list of reference images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceImages")]
+        public virtual System.Collections.Generic.IList<ReferenceImage> ReferenceImages { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4834,6 +7129,136 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Product contains ReferenceImages.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-provided metadata to be stored with this product. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The user-provided name for this Product. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the product.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+        ///
+        /// This field is ignored when creating a product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
+        /// "apparel", or "toys".
+        ///
+        /// This field is immutable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
+        public virtual string ProductCategory { get; set; } 
+
+        /// <summary>Key-value pairs that can be attached to a product. At query time, constraints can be specified
+        /// based on the product_labels.
+        ///
+        /// Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match
+        /// a range-based restriction which is to be supported soon.
+        ///
+        /// Multiple values can be assigned to the same key. One product may have up to 100 product_labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productLabels")]
+        public virtual System.Collections.Generic.IList<KeyValue> ProductLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters for a product search request.</summary>
+    public class ProductSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bounding polygon around the area of interest in the image. Optional. If it is not specified,
+        /// system discretion will be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
+        public virtual BoundingPoly BoundingPoly { get; set; } 
+
+        /// <summary>The filtering expression. This can be used to restrict search results based on Product labels. We
+        /// currently support an AND of OR of key-value expressions, where each expression within an OR must have the
+        /// same key.
+        ///
+        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but not "(color = red OR
+        /// brand = Google)" or "color: red".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The list of product categories to search in. Currently, we only consider the first category, and
+        /// either "homegoods", "apparel", or "toys" should be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
+        public virtual System.Collections.Generic.IList<string> ProductCategories { get; set; } 
+
+        /// <summary>The resource name of a ProductSet to be searched for similar images.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSet")]
+        public virtual string ProductSet { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Results for a product search request.</summary>
+    public class ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
+        /// in the current results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>List of results grouped by products detected in the query image. Each entry corresponds to one
+        /// bounding polygon in the query image, and contains the matching products specific to that region. There may
+        /// be duplicate product matches in the union of all the per-product results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productGroupedResults")]
+        public virtual System.Collections.Generic.IList<GroupedResult> ProductGroupedResults { get; set; } 
+
+        /// <summary>List of results, one for each product match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Result> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A ProductSet contains Products. A ProductSet can contain a maximum of 1 million reference images. If
+    /// the limit is exceeded, periodic indexing will fail.</summary>
+    public class ProductSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters
+        /// long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. If there was an error with indexing the product set, the field is populated.
+        ///
+        /// This field is ignored when creating a ProductSet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexError")]
+        public virtual Status IndexError { get; set; } 
+
+        /// <summary>Output only. The time at which this ProductSet was last indexed. Query results will reflect all
+        /// updates before this time. If this ProductSet has never been indexed, this field is 0.
+        ///
+        /// This field is ignored when creating a ProductSet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual object IndexTime { get; set; } 
+
+        /// <summary>The resource name of the ProductSet.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+        ///
+        /// This field is ignored when creating a ProductSet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
     public class Property : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4848,6 +7273,73 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Value of the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `ReferenceImage` represents a product image and its associated metadata, such as bounding
+    /// boxes.</summary>
+    public class ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bounding polygons around the areas of interest in the reference image. Optional. If this field is
+        /// empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used.
+        ///
+        /// The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the
+        /// rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok;
+        /// 1:5 is not).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundingPolys")]
+        public virtual System.Collections.Generic.IList<BoundingPoly> BoundingPolys { get; set; } 
+
+        /// <summary>The resource name of the reference image.
+        ///
+        /// Format is:
+        ///
+        /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+        ///
+        /// This field is ignored when creating a reference image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The Google Cloud Storage URI of the reference image.
+        ///
+        /// The URI must start with `gs://`.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for the `RemoveProductFromProductSet` method.</summary>
+    public class RemoveProductFromProductSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name for the Product to be removed from this ProductSet.
+        ///
+        /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a product.</summary>
+    public class Result : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the image from the product that is the closest match to the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
+        /// <summary>The Product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; } 
+
+        /// <summary>A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

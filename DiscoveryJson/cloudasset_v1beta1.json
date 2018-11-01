@@ -1,35 +1,344 @@
 {
+  "canonicalName": "Cloud Asset",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://cloudasset.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "cloudasset",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Asset API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "methods": {
+        "batchGetAssetsHistory": {
+          "response": {
+            "$ref": "BatchGetAssetsHistoryResponse"
+          },
+          "parameterOrder": [
+            "parent"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "contentType": {
+              "enum": [
+                "CONTENT_TYPE_UNSPECIFIED",
+                "RESOURCE",
+                "IAM_POLICY"
+              ],
+              "description": "Required. The content type.",
+              "type": "string",
+              "location": "query"
+            },
+            "readTimeWindow.endTime": {
+              "location": "query",
+              "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
+              "format": "google-datetime",
+              "type": "string"
+            },
+            "readTimeWindow.startTime": {
+              "description": "Start time of the time window (inclusive).",
+              "format": "google-datetime",
+              "type": "string",
+              "location": "query"
+            },
+            "parent": {
+              "pattern": "^projects/[^/]+$",
+              "location": "path",
+              "description": "Required. The relative name of the root asset. It can only be an\norganization number (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\")\", or a project number (such as \"projects/12345\").",
+              "required": true,
+              "type": "string"
+            },
+            "assetNames": {
+              "location": "query",
+              "description": "A list of the full names of the assets. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request.",
+              "type": "string",
+              "repeated": true
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/projects/{projectsId}:batchGetAssetsHistory",
+          "path": "v1beta1/{+parent}:batchGetAssetsHistory",
+          "id": "cloudasset.projects.batchGetAssetsHistory",
+          "description": "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history."
+        },
+        "exportAssets": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "parent"
+          ],
+          "response": {
+            "$ref": "Operation"
+          },
+          "parameters": {
+            "parent": {
+              "location": "path",
+              "description": "Required. The relative name of the root asset. This can only be an organization\nnumber (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\"), or a project number (such as \"projects/12345\").",
+              "required": true,
+              "type": "string",
+              "pattern": "^projects/[^/]+$"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/projects/{projectsId}:exportAssets",
+          "id": "cloudasset.projects.exportAssets",
+          "path": "v1beta1/{+parent}:exportAssets",
+          "description": "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export.",
+          "request": {
+            "$ref": "ExportAssetsRequest"
+          }
+        }
+      },
+      "resources": {
+        "operations": {
+          "methods": {
+            "get": {
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the operation resource.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/operations/[^/]+/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}/{operationsId1}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudasset.projects.operations.get",
+              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+            }
+          }
+        }
+      }
+    },
+    "organizations": {
+      "resources": {
+        "operations": {
+          "methods": {
+            "get": {
+              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "description": "The name of the operation resource.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations/[^/]+/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}/{operationsId1}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudasset.organizations.operations.get"
+            }
+          }
+        }
+      },
+      "methods": {
+        "exportAssets": {
+          "response": {
+            "$ref": "Operation"
+          },
+          "parameterOrder": [
+            "parent"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "parent": {
+              "pattern": "^organizations/[^/]+$",
+              "location": "path",
+              "description": "Required. The relative name of the root asset. This can only be an organization\nnumber (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\"), or a project number (such as \"projects/12345\").",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v1beta1/organizations/{organizationsId}:exportAssets",
+          "path": "v1beta1/{+parent}:exportAssets",
+          "id": "cloudasset.organizations.exportAssets",
+          "request": {
+            "$ref": "ExportAssetsRequest"
+          },
+          "description": "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."
+        },
+        "batchGetAssetsHistory": {
+          "response": {
+            "$ref": "BatchGetAssetsHistoryResponse"
+          },
+          "parameterOrder": [
+            "parent"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "assetNames": {
+              "repeated": true,
+              "location": "query",
+              "description": "A list of the full names of the assets. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request.",
+              "type": "string"
+            },
+            "contentType": {
+              "enum": [
+                "CONTENT_TYPE_UNSPECIFIED",
+                "RESOURCE",
+                "IAM_POLICY"
+              ],
+              "description": "Required. The content type.",
+              "type": "string",
+              "location": "query"
+            },
+            "readTimeWindow.endTime": {
+              "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
+              "format": "google-datetime",
+              "type": "string",
+              "location": "query"
+            },
+            "readTimeWindow.startTime": {
+              "location": "query",
+              "description": "Start time of the time window (inclusive).",
+              "format": "google-datetime",
+              "type": "string"
+            },
+            "parent": {
+              "description": "Required. The relative name of the root asset. It can only be an\norganization number (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\")\", or a project number (such as \"projects/12345\").",
+              "required": true,
+              "type": "string",
+              "pattern": "^organizations/[^/]+$",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1beta1/organizations/{organizationsId}:batchGetAssetsHistory",
+          "path": "v1beta1/{+parent}:batchGetAssetsHistory",
+          "id": "cloudasset.organizations.batchGetAssetsHistory",
+          "description": "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history."
+        }
+      }
+    }
+  },
+  "parameters": {
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://cloudasset.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "The cloud asset API manages the history and inventory of cloud resources.",
+  "servicePath": "",
+  "basePath": "",
+  "revision": "20181029",
+  "documentationLink": "https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview",
+  "id": "cloudasset:v1beta1",
+  "discoveryVersion": "v1",
+  "version_module": true,
   "schemas": {
-    "TemporalAsset": {
-      "description": "Temporal asset. In addition to the asset, the temporal asset includes the\nstatus of the asset and valid from and to time of it.",
-      "type": "object",
-      "properties": {
-        "window": {
-          "$ref": "TimeWindow",
-          "description": "The time window when the asset data and state was observed."
-        },
-        "asset": {
-          "$ref": "Asset",
-          "description": "Asset."
-        },
-        "deleted": {
-          "description": "If the asset is deleted or not.",
-          "type": "boolean"
-        }
-      },
-      "id": "TemporalAsset"
-    },
-    "OutputConfig": {
-      "description": "Output configuration for export assets destination.",
-      "type": "object",
-      "properties": {
-        "gcsDestination": {
-          "description": "Destination on Cloud Storage.",
-          "$ref": "GcsDestination"
-        }
-      },
-      "id": "OutputConfig"
-    },
     "BatchGetAssetsHistoryResponse": {
       "description": "Batch get assets history response.",
       "type": "object",
@@ -52,11 +361,11 @@
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
-            "type": "object",
             "additionalProperties": {
               "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
-            }
+            },
+            "type": "object"
           }
         },
         "code": {
@@ -75,10 +384,6 @@
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
-        "condition": {
-          "description": "Unimplemented. The condition that is associated with this binding.\nNOTE: an unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
-          "$ref": "Expr"
-        },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
@@ -89,6 +394,10 @@
         "role": {
           "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
           "type": "string"
+        },
+        "condition": {
+          "$ref": "Expr",
+          "description": "Unimplemented. The condition that is associated with this binding.\nNOTE: an unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
         }
       },
       "id": "Binding"
@@ -120,7 +429,20 @@
       "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
       "type": "object",
       "properties": {
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "logType": {
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
@@ -128,39 +450,34 @@
             "DATA_READ"
           ],
           "description": "The log type that this config enables.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ]
-        },
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "id": "AuditLogConfig"
     },
     "GcsDestination": {
-      "description": "A Cloud Storage location.",
-      "type": "object",
       "properties": {
         "uri": {
           "description": "The path of the Cloud Storage objects. It's the same path that is used by\n gsutil. For example: \"gs://bucket_name/object_path\". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)\nfor more information.",
           "type": "string"
         }
       },
-      "id": "GcsDestination"
+      "id": "GcsDestination",
+      "description": "A Cloud Storage location.",
+      "type": "object"
     },
     "Resource": {
       "description": "Representation of a cloud resource.",
       "type": "object",
       "properties": {
+        "data": {
+          "description": "The content of the resource, in which some sensitive fields are scrubbed\naway and may not be present.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          }
+        },
         "discoveryDocumentUri": {
           "description": "The URL of the discovery document containing the resource's JSON schema.\nFor example:\n`\"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest\"`.\nIt will be left unspecified for resources without a discovery-based API,\nsuch as Cloud Bigtable.",
           "type": "string"
@@ -180,21 +497,11 @@
         "version": {
           "description": "The API version. Example: \"v1\".",
           "type": "string"
-        },
-        "data": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "The content of the resource, in which some sensitive fields are scrubbed\naway and may not be present.",
-          "type": "object"
         }
       },
       "id": "Resource"
     },
     "ExportAssetsRequest": {
-      "description": "Export asset request.",
-      "type": "object",
       "properties": {
         "assetTypes": {
           "description": "A list of asset types of which to take a snapshot for. For example:\n\"google.compute.disk\". If specified, only matching assets will be returned.",
@@ -223,26 +530,16 @@
           "type": "string"
         },
         "outputConfig": {
-          "description": "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format.",
-          "$ref": "OutputConfig"
+          "$ref": "OutputConfig",
+          "description": "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format."
         }
       },
-      "id": "ExportAssetsRequest"
+      "id": "ExportAssetsRequest",
+      "description": "Export asset request.",
+      "type": "object"
     },
     "Policy": {
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-      "type": "object",
       "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "description": "Deprecated.",
-          "format": "int32",
-          "type": "integer"
-        },
         "auditConfigs": {
           "description": "Specifies cloud audit logging configuration for this policy.",
           "type": "array",
@@ -256,21 +553,33 @@
           "items": {
             "$ref": "Binding"
           }
+        },
+        "etag": {
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+          "format": "byte",
+          "type": "string"
+        },
+        "version": {
+          "description": "Deprecated.",
+          "format": "int32",
+          "type": "integer"
         }
       },
-      "id": "Policy"
+      "id": "Policy",
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "type": "object"
     },
     "TimeWindow": {
       "description": "A time window of [start_time, end_time).",
       "type": "object",
       "properties": {
-        "startTime": {
-          "description": "Start time of the time window (inclusive).",
+        "endTime": {
+          "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
           "format": "google-datetime",
           "type": "string"
         },
-        "endTime": {
-          "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
+        "startTime": {
+          "description": "Start time of the time window (inclusive).",
           "format": "google-datetime",
           "type": "string"
         }
@@ -286,20 +595,20 @@
           "type": "boolean"
         },
         "response": {
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object"
         },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
           "type": "string"
         },
         "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
         },
         "metadata": {
           "additionalProperties": {
@@ -313,6 +622,8 @@
       "id": "Operation"
     },
     "AuditConfig": {
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
+      "type": "object",
       "properties": {
         "service": {
           "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
@@ -326,11 +637,11 @@
           }
         }
       },
-      "id": "AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
-      "type": "object"
+      "id": "AuditConfig"
     },
     "Asset": {
+      "description": "Cloud asset. This includes all Google Cloud Platform resources,\nCloud IAM policies, and other non-GCP assets.",
+      "type": "object",
       "properties": {
         "resource": {
           "$ref": "Resource",
@@ -349,353 +660,42 @@
           "description": "Representation of the actual Cloud IAM policy set on a cloud resource. For each\nresource, there must be at most one Cloud IAM policy set on it."
         }
       },
-      "id": "Asset",
-      "description": "Cloud asset. This includes all Google Cloud Platform resources,\nCloud IAM policies, and other non-GCP assets.",
-      "type": "object"
+      "id": "Asset"
+    },
+    "TemporalAsset": {
+      "description": "Temporal asset. In addition to the asset, the temporal asset includes the\nstatus of the asset and valid from and to time of it.",
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "description": "If the asset is deleted or not.",
+          "type": "boolean"
+        },
+        "window": {
+          "description": "The time window when the asset data and state was observed.",
+          "$ref": "TimeWindow"
+        },
+        "asset": {
+          "$ref": "Asset",
+          "description": "Asset."
+        }
+      },
+      "id": "TemporalAsset"
+    },
+    "OutputConfig": {
+      "description": "Output configuration for export assets destination.",
+      "type": "object",
+      "properties": {
+        "gcsDestination": {
+          "description": "Destination on Cloud Storage.",
+          "$ref": "GcsDestination"
+        }
+      },
+      "id": "OutputConfig"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "canonicalName": "Cloud Asset",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://cloudasset.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "cloudasset",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Asset API",
-  "ownerName": "Google",
-  "resources": {
-    "organizations": {
-      "methods": {
-        "batchGetAssetsHistory": {
-          "response": {
-            "$ref": "BatchGetAssetsHistoryResponse"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "parent": {
-              "pattern": "^organizations/[^/]+$",
-              "location": "path",
-              "description": "Required. The relative name of the root asset. It can only be an\norganization number (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\")\", or a project number (such as \"projects/12345\").",
-              "required": true,
-              "type": "string"
-            },
-            "assetNames": {
-              "repeated": true,
-              "location": "query",
-              "description": "A list of the full names of the assets. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request.",
-              "type": "string"
-            },
-            "contentType": {
-              "description": "Required. The content type.",
-              "type": "string",
-              "location": "query",
-              "enum": [
-                "CONTENT_TYPE_UNSPECIFIED",
-                "RESOURCE",
-                "IAM_POLICY"
-              ]
-            },
-            "readTimeWindow.endTime": {
-              "location": "query",
-              "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
-              "format": "google-datetime",
-              "type": "string"
-            },
-            "readTimeWindow.startTime": {
-              "location": "query",
-              "description": "Start time of the time window (inclusive).",
-              "format": "google-datetime",
-              "type": "string"
-            }
-          },
-          "flatPath": "v1beta1/organizations/{organizationsId}:batchGetAssetsHistory",
-          "path": "v1beta1/{+parent}:batchGetAssetsHistory",
-          "id": "cloudasset.organizations.batchGetAssetsHistory",
-          "description": "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history."
-        },
-        "exportAssets": {
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "parent": {
-              "description": "Required. The relative name of the root asset. This can only be an organization\nnumber (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\"), or a project number (such as \"projects/12345\").",
-              "required": true,
-              "type": "string",
-              "pattern": "^organizations/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/organizations/{organizationsId}:exportAssets",
-          "path": "v1beta1/{+parent}:exportAssets",
-          "id": "cloudasset.organizations.exportAssets",
-          "request": {
-            "$ref": "ExportAssetsRequest"
-          },
-          "description": "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."
-        }
-      },
-      "resources": {
-        "operations": {
-          "methods": {
-            "get": {
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "The name of the operation resource.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/operations/[^/]+/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}/{operationsId1}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudasset.organizations.operations.get",
-              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
-            }
-          }
-        }
-      }
-    },
-    "projects": {
-      "resources": {
-        "operations": {
-          "methods": {
-            "get": {
-              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the operation resource.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/operations/[^/]+/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}/{operationsId1}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudasset.projects.operations.get"
-            }
-          }
-        }
-      },
-      "methods": {
-        "exportAssets": {
-          "id": "cloudasset.projects.exportAssets",
-          "path": "v1beta1/{+parent}:exportAssets",
-          "description": "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export.",
-          "request": {
-            "$ref": "ExportAssetsRequest"
-          },
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "parent"
-          ],
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameters": {
-            "parent": {
-              "pattern": "^projects/[^/]+$",
-              "location": "path",
-              "description": "Required. The relative name of the root asset. This can only be an organization\nnumber (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\"), or a project number (such as \"projects/12345\").",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/projects/{projectsId}:exportAssets"
-        },
-        "batchGetAssetsHistory": {
-          "path": "v1beta1/{+parent}:batchGetAssetsHistory",
-          "id": "cloudasset.projects.batchGetAssetsHistory",
-          "description": "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.",
-          "response": {
-            "$ref": "BatchGetAssetsHistoryResponse"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "readTimeWindow.endTime": {
-              "location": "query",
-              "description": "End time of the time window (exclusive).\nCurrent timestamp if not specified.",
-              "format": "google-datetime",
-              "type": "string"
-            },
-            "readTimeWindow.startTime": {
-              "description": "Start time of the time window (inclusive).",
-              "format": "google-datetime",
-              "type": "string",
-              "location": "query"
-            },
-            "parent": {
-              "location": "path",
-              "description": "Required. The relative name of the root asset. It can only be an\norganization number (such as \"organizations/123\"), a project ID (such as\n\"projects/my-project-id\")\", or a project number (such as \"projects/12345\").",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$"
-            },
-            "assetNames": {
-              "repeated": true,
-              "location": "query",
-              "description": "A list of the full names of the assets. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request.",
-              "type": "string"
-            },
-            "contentType": {
-              "location": "query",
-              "enum": [
-                "CONTENT_TYPE_UNSPECIFIED",
-                "RESOURCE",
-                "IAM_POLICY"
-              ],
-              "description": "Required. The content type.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/projects/{projectsId}:batchGetAssetsHistory"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    }
-  },
-  "version": "v1beta1",
-  "baseUrl": "https://cloudasset.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "The cloud asset API manages the history and inventory of cloud resources.",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20181029",
-  "documentationLink": "https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview",
-  "id": "cloudasset:v1beta1",
-  "discoveryVersion": "v1",
-  "version_module": true
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  }
 }

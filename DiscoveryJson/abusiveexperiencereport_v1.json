@@ -1,9 +1,4 @@
 {
-  "id": "abusiveexperiencereport:v1",
-  "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "revision": "20181017",
-  "discoveryVersion": "v1",
-  "version_module": true,
   "schemas": {
     "ViolatingSitesResponse": {
       "description": "Response message for ListViolatingSites.",
@@ -23,6 +18,42 @@
       "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
+        "underReview": {
+          "description": "Whether the site is currently under review.",
+          "type": "boolean"
+        },
+        "reportUrl": {
+          "description": "A link that leads to a full abusive experience report.",
+          "type": "string"
+        },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
+        },
+        "lastChangeTime": {
+          "description": "The last time that the site changed status.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "abusiveStatus": {
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
+          ],
+          "enum": [
+            "UNKNOWN",
+            "PASSING",
+            "FAILING"
+          ],
+          "description": "The status of the site reviewed for the abusive experiences.",
+          "type": "string"
+        },
+        "enforcementTime": {
+          "description": "The date on which enforcement begins.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "filterStatus": {
           "enumDescriptions": [
             "N/A.",
@@ -40,52 +71,16 @@
           ],
           "description": "The abusive experience enforcement status of the site.",
           "type": "string"
-        },
-        "underReview": {
-          "description": "Whether the site is currently under review.",
-          "type": "boolean"
-        },
-        "reportUrl": {
-          "description": "A link that leads to a full abusive experience report.",
-          "type": "string"
-        },
-        "lastChangeTime": {
-          "description": "The last time that the site changed status.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
-        "abusiveStatus": {
-          "description": "The status of the site reviewed for the abusive experiences.",
-          "type": "string",
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ],
-          "enum": [
-            "UNKNOWN",
-            "PASSING",
-            "FAILING"
-          ]
-        },
-        "enforcementTime": {
-          "description": "The date on which enforcement begins.",
-          "format": "google-datetime",
-          "type": "string"
         }
       },
       "id": "SiteSummaryResponse"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
   "canonicalName": "Abusive Experience Report",
   "auth": {
     "oauth2": {
@@ -104,38 +99,12 @@
   "title": "Abusive Experience Report API",
   "ownerName": "Google",
   "resources": {
-    "sites": {
-      "methods": {
-        "get": {
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get",
-          "description": "Gets a summary of the abusive experience rating of a site.",
-          "response": {
-            "$ref": "SiteSummaryResponse"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "location": "path",
-              "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
-              "required": true,
-              "type": "string",
-              "pattern": "^sites/[^/]+$"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
-          "flatPath": "v1/sites/{sitesId}"
-        }
-      }
-    },
     "violatingSites": {
       "methods": {
         "list": {
+          "flatPath": "v1/violatingSites",
+          "path": "v1/violatingSites",
+          "id": "abusiveexperiencereport.violatingSites.list",
           "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
           "response": {
             "$ref": "ViolatingSitesResponse"
@@ -145,33 +114,44 @@
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
+          ]
+        }
+      }
+    },
+    "sites": {
+      "methods": {
+        "get": {
+          "description": "Gets a summary of the abusive experience rating of a site.",
+          "response": {
+            "$ref": "SiteSummaryResponse"
+          },
+          "parameterOrder": [
+            "name"
           ],
-          "flatPath": "v1/violatingSites",
-          "path": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list"
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ],
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
+              "required": true,
+              "type": "string",
+              "pattern": "^sites/[^/]+$"
+            }
+          },
+          "flatPath": "v1/sites/{sitesId}",
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get"
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
     "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
     "prettyPrint": {
@@ -180,8 +160,8 @@
       "default": "true",
       "location": "query"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
@@ -190,15 +170,10 @@
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
+    "uploadType": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -211,6 +186,16 @@
         "2"
       ],
       "description": "V1 error format.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
       "type": "string"
     },
     "alt": {
@@ -228,12 +213,27 @@
         "proto"
       ],
       "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v1",
   "baseUrl": "https://abusiveexperiencereport.googleapis.com/",
-  "servicePath": "",
-  "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "kind": "discovery#restDescription",
-  "basePath": ""
+  "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
+  "servicePath": "",
+  "basePath": "",
+  "id": "abusiveexperiencereport:v1",
+  "documentationLink": "https://developers.google.com/abusive-experience-report/",
+  "revision": "20181017",
+  "discoveryVersion": "v1",
+  "version_module": true
 }

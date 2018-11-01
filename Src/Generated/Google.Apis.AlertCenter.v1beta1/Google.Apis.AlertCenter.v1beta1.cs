@@ -683,6 +683,17 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
+            /// <summary>Optional. The unique identifier of the Google account of the customer the alerts are associated
+            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
+            /// identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+            /// server will pick an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Optional. Query string for filtering alert results. This string must be specified as an
             /// expression or list of expressions, using the following grammar:
             ///
@@ -758,17 +769,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Optional. The unique identifier of the Google account of the customer the alerts are associated
-            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
-            /// identity if not provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomerId { get; set; }
-
-            /// <summary>Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-            /// server will pick an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -794,6 +794,24 @@ namespace Google.Apis.AlertCenter.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -815,24 +833,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
                         Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
