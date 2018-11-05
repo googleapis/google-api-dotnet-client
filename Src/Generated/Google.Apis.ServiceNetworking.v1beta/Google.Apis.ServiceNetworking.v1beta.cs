@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181026 (1394)
+ *      <tr><th>API Rev<td>20181031 (1399)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -982,6 +982,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// will be rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
         public virtual System.Nullable<double> MinDeadline { get; set; } 
+
+        /// <summary>The number of seconds to wait for the completion of a long running operation. The default is no
+        /// deadline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationDeadline")]
+        public virtual System.Nullable<double> OperationDeadline { get; set; } 
 
         /// <summary>Selects the methods to which this rule applies.
         ///

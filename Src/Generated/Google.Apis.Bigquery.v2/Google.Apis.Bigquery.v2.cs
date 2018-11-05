@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181021 (1389)
+ *      <tr><th>API Rev<td>20181025 (1393)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4458,6 +4458,39 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RangePartitioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Experimental] [Required] The table is partitioned by this field. The field must be a top-level
+        /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>[Experimental] [Required] Defines the ranges for range partitioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual RangePartitioning.RangeData Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Experimental] [Required] Defines the ranges for range partitioning.</summary>
+        public class RangeData
+        {
+            /// <summary>[Experimental] [Required] The end of range partitioning, exclusive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("end")]
+            public virtual System.Nullable<long> End { get; set; } 
+
+            /// <summary>[Experimental] [Required] The width of each interval.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+            public virtual System.Nullable<long> Interval { get; set; } 
+
+            /// <summary>[Experimental] [Required] The start of range partitioning, inclusive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("start")]
+            public virtual System.Nullable<long> Start { get; set; } 
+
+        }
+    }    
+
     public class Streamingbuffer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] A lower-bound estimate of the number of bytes currently in the streaming
@@ -4481,8 +4514,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Beta] Clustering specification for the table. Must be specified with time-based partitioning, data
-        /// in the table will be first partitioned and subsequently clustered.</summary>
+        /// <summary>[Experimental] Clustering specification for the table. Must be specified with partitioning, data in
+        /// the table will be first partitioned and subsequently clustered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; } 
 
@@ -4570,6 +4603,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; } 
 
+        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
+        public virtual RangePartitioning RangePartitioning { get; set; } 
+
+        /// <summary>[Experimental] [Optional] If set to true, queries over this table require a partition filter that
+        /// can be used for partition elimination to be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; } 
+
         /// <summary>[Optional] Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
@@ -4588,7 +4631,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual TableReference TableReference { get; set; } 
 
-        /// <summary>Time-based partitioning specification for this table.</summary>
+        /// <summary>Time-based partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 

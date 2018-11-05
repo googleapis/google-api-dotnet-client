@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-search/'>DoubleClick Search API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181023 (1391)
+ *      <tr><th>API Rev<td>20181030 (1398)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>
@@ -1642,7 +1642,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportType")]
         public virtual string ReportType { get; set; } 
 
-        /// <summary>Synchronous report only. The maxinum number of rows to return; additional rows are dropped.
+        /// <summary>Synchronous report only. The maximum number of rows to return; additional rows are dropped.
         /// Acceptable values are 0 to 10000, inclusive. Defaults to 10000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; } 

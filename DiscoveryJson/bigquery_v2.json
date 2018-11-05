@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1kCDvNVYa-GraO9IWAOueDGMJQE\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/jYrUubKKHFACpvSbIbPxYlukj5c\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20181021",
+ "revision": "20181025",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1879,6 +1879,37 @@
     }
    }
   },
+  "RangePartitioning": {
+   "id": "RangePartitioning",
+   "type": "object",
+   "properties": {
+    "field": {
+     "type": "string",
+     "description": "[Experimental] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64."
+    },
+    "range": {
+     "type": "object",
+     "description": "[Experimental] [Required] Defines the ranges for range partitioning.",
+     "properties": {
+      "end": {
+       "type": "string",
+       "description": "[Experimental] [Required] The end of range partitioning, exclusive.",
+       "format": "int64"
+      },
+      "interval": {
+       "type": "string",
+       "description": "[Experimental] [Required] The width of each interval.",
+       "format": "int64"
+      },
+      "start": {
+       "type": "string",
+       "description": "[Experimental] [Required] The start of range partitioning, inclusive.",
+       "format": "int64"
+      }
+     }
+    }
+   }
+  },
   "Streamingbuffer": {
    "id": "Streamingbuffer",
    "type": "object",
@@ -1906,7 +1937,7 @@
    "properties": {
     "clustering": {
      "$ref": "Clustering",
-     "description": "[Beta] Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered."
+     "description": "[Experimental] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered."
     },
     "creationTime": {
      "type": "string",
@@ -1987,6 +2018,15 @@
      "description": "[Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.",
      "format": "uint64"
     },
+    "rangePartitioning": {
+     "$ref": "RangePartitioning",
+     "description": "[Experimental] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified."
+    },
+    "requirePartitionFilter": {
+     "type": "boolean",
+     "description": "[Experimental] [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.",
+     "default": "false"
+    },
     "schema": {
      "$ref": "TableSchema",
      "description": "[Optional] Describes the schema of this table."
@@ -2005,7 +2045,7 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "Time-based partitioning specification for this table."
+     "description": "Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified."
     },
     "type": {
      "type": "string",

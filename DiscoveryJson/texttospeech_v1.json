@@ -1,4 +1,5 @@
 {
+  "basePath": "",
   "id": "texttospeech:v1",
   "documentationLink": "https://cloud.google.com/text-to-speech/",
   "revision": "20181026",
@@ -45,6 +46,8 @@
       "id": "Voice"
     },
     "SynthesisInput": {
+      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be\nsupplied. Supplying both or neither returns\ngoogle.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000\ncharacters.",
+      "type": "object",
       "properties": {
         "ssml": {
           "description": "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml).",
@@ -55,14 +58,15 @@
           "type": "string"
         }
       },
-      "id": "SynthesisInput",
-      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be\nsupplied. Supplying both or neither returns\ngoogle.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000\ncharacters.",
-      "type": "object"
+      "id": "SynthesisInput"
     },
     "AudioConfig": {
-      "description": "Description of audio data to be synthesized.",
-      "type": "object",
       "properties": {
+        "volumeGainDb": {
+          "description": "Optional volume gain (in dB) of the normal native volume supported by the\nspecific voice, in the range [-96.0, 16.0]. If unset, or set to a value of\n0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)\nwill play at approximately half the amplitude of the normal native signal\namplitude. A value of +6.0 (dB) will play at approximately twice the\namplitude of the normal native signal amplitude. Strongly recommend not to\nexceed +10 (dB) as there's usually no effective increase in loudness for\nany value greater than that.",
+          "format": "double",
+          "type": "number"
+        },
         "sampleRateHertz": {
           "description": "The synthesis sample rate (in hertz) for this audio. Optional.  If this is\ndifferent from the voice's natural sample rate, then the synthesizer will\nhonor this request by converting to the desired sample rate (which might\nresult in worse audio quality), unless the specified sample rate is not\nsupported for the encoding chosen, in which case it will fail the request\nand return google.rpc.Code.INVALID_ARGUMENT.",
           "format": "int32",
@@ -93,14 +97,11 @@
           ],
           "description": "Required. The format of the requested audio byte stream.",
           "type": "string"
-        },
-        "volumeGainDb": {
-          "description": "Optional volume gain (in dB) of the normal native volume supported by the\nspecific voice, in the range [-96.0, 16.0]. If unset, or set to a value of\n0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)\nwill play at approximately half the amplitude of the normal native signal\namplitude. A value of +6.0 (dB) will play at approximately twice the\namplitude of the normal native signal amplitude. Strongly recommend not to\nexceed +10 (dB) as there's usually no effective increase in loudness for\nany value greater than that.",
-          "format": "double",
-          "type": "number"
         }
       },
-      "id": "AudioConfig"
+      "id": "AudioConfig",
+      "description": "Description of audio data to be synthesized.",
+      "type": "object"
     },
     "ListVoicesResponse": {
       "description": "The message returned to the client by the `ListVoices` method.",
@@ -117,8 +118,6 @@
       "id": "ListVoicesResponse"
     },
     "SynthesizeSpeechResponse": {
-      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
-      "type": "object",
       "properties": {
         "audioContent": {
           "description": "The audio data bytes encoded as specified in the request, including the\nheader (For LINEAR16 audio, we include the WAV header). Note: as\nwith all bytes fields, protobuffers use a pure binary representation,\nwhereas JSON representations use base64.",
@@ -126,10 +125,18 @@
           "type": "string"
         }
       },
-      "id": "SynthesizeSpeechResponse"
+      "id": "SynthesizeSpeechResponse",
+      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
+      "type": "object"
     },
     "SynthesizeSpeechRequest": {
+      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
+      "type": "object",
       "properties": {
+        "input": {
+          "$ref": "SynthesisInput",
+          "description": "Required. The Synthesizer requires either plain text or SSML as input."
+        },
         "voice": {
           "description": "Required. The desired voice of the synthesized audio.",
           "$ref": "VoiceSelectionParams"
@@ -137,15 +144,9 @@
         "audioConfig": {
           "$ref": "AudioConfig",
           "description": "Required. The configuration of the synthesized audio."
-        },
-        "input": {
-          "description": "Required. The Synthesizer requires either plain text or SSML as input.",
-          "$ref": "SynthesisInput"
         }
       },
-      "id": "SynthesizeSpeechRequest",
-      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
-      "type": "object"
+      "id": "SynthesizeSpeechRequest"
     },
     "VoiceSelectionParams": {
       "description": "Description of which voice to use for a synthesis request.",
@@ -180,8 +181,8 @@
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "protocol": "rest",
   "canonicalName": "Texttospeech",
@@ -205,6 +206,7 @@
     "voices": {
       "methods": {
         "list": {
+          "description": "Returns a list of Voice supported for synthesis.",
           "httpMethod": "GET",
           "response": {
             "$ref": "ListVoicesResponse"
@@ -212,9 +214,9 @@
           "parameterOrder": [],
           "parameters": {
             "languageCode": {
-              "location": "query",
               "description": "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices.",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             }
           },
           "scopes": [
@@ -222,18 +224,13 @@
           ],
           "flatPath": "v1/voices",
           "id": "texttospeech.voices.list",
-          "path": "v1/voices",
-          "description": "Returns a list of Voice supported for synthesis."
+          "path": "v1/voices"
         }
       }
     },
     "text": {
       "methods": {
         "synthesize": {
-          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
-          "request": {
-            "$ref": "SynthesizeSpeechRequest"
-          },
           "response": {
             "$ref": "SynthesizeSpeechResponse"
           },
@@ -245,12 +242,42 @@
           ],
           "flatPath": "v1/text:synthesize",
           "path": "v1/text:synthesize",
-          "id": "texttospeech.text.synthesize"
+          "id": "texttospeech.text.synthesize",
+          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
+          "request": {
+            "$ref": "SynthesizeSpeechRequest"
+          }
         }
       }
     }
   },
   "parameters": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
     "callback": {
       "description": "JSONP",
       "type": "string",
@@ -296,41 +323,14 @@
       "type": "string"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
     }
   },
   "version": "v1",
   "baseUrl": "https://texttospeech.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "Synthesizes natural-sounding speech by applying powerful neural network models.",
-  "servicePath": "",
-  "basePath": ""
+  "servicePath": ""
 }
