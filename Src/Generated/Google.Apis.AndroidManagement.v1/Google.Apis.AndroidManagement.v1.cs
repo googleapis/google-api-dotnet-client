@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181026 (1394)
+ *      <tr><th>API Rev<td>20181029 (1397)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -1769,10 +1769,6 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -1780,6 +1776,10 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
+
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1812,15 +1812,6 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
@@ -1833,6 +1824,15 @@ namespace Google.Apis.AndroidManagement.v1
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2200,10 +2200,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> ManagedConfiguration { get; set; } 
 
-        /// <summary>The formulated managed configuration with the managed configuration template applied to the app. To
-        /// generate a web token that identifies the enterprise use
-        /// https://developers.google.com/android/management/reference/rest/v1/enterprises.webTokens This field is
-        /// ignored if managed_configuration is set.</summary>
+        /// <summary>The managed configurations template for the app, saved from the managed configurations iframe. This
+        /// field is ignored if managed_configuration is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationTemplate")]
         public virtual ManagedConfigurationTemplate ManagedConfigurationTemplate { get; set; } 
 
@@ -2881,9 +2879,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The formulated managed configuration with the managed configuration template applied to the app. To
-    /// generate a web token that identifies the enterprise use
-    /// https://developers.google.com/android/management/reference/rest/v1/enterprises.webTokens</summary>
+    /// <summary>The managed configurations template for the app, saved from the managed configurations
+    /// iframe.</summary>
     public class ManagedConfigurationTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional, a map containing  configuration variables defined for the configuration.</summary>
@@ -3431,12 +3428,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outgoingCallsDisabled")]
         public virtual System.Nullable<bool> OutgoingCallsDisabled { get; set; } 
 
-        /// <summary>Password policy that can apply to different scope e.g. at either a device or profile level.
-        /// 'password_requirements' is overridden if this policy is set with default scope or with scope explicitly
-        /// applying to the scope that 'password_requirements' applies to. If scope is not specified then restriction
-        /// applies to the default scope i.e. profile in a managed profile. If an entry exists with unspecified scope
-        /// and also an entry for the default scope with scope explicitly specified then the explicit restriction
-        /// overrides the default scope restriction.</summary>
+        /// <summary>Password requirement policies. Different policies can be set for work profile or fully managed
+        /// devices by setting the password_scope field in the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordPolicies")]
         public virtual System.Collections.Generic.IList<PasswordRequirements> PasswordPolicies { get; set; } 
 

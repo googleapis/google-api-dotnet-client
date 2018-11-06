@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181022 (1390)
+ *      <tr><th>API Rev<td>20181103 (1402)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -347,16 +347,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Creates a new alert feedback.</summary>
+            /// <summary>Creates new feedback for an alert.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="alertId">Required. The identifier of the alert this feedback belongs to. Returns a NOT_FOUND error if
+            /// <param name="alertId">Required. The identifier of the alert this feedback belongs to. Returns a `NOT_FOUND` error if
             /// no such alert.</param>
             public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
             {
                 return new CreateRequest(service, body, alertId);
             }
 
-            /// <summary>Creates a new alert feedback.</summary>
+            /// <summary>Creates new feedback for an alert.</summary>
             public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -369,14 +369,13 @@ namespace Google.Apis.AlertCenter.v1beta1
                 }
 
 
-                /// <summary>Required. The identifier of the alert this feedback belongs to. Returns a NOT_FOUND error
+                /// <summary>Required. The identifier of the alert this feedback belongs to. Returns a `NOT_FOUND` error
                 /// if no such alert.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
-                /// <summary>Optional. The unique identifier of the Google account of the customer the alert's feedback
-                /// is associated with. This is obfuscated and not the plain customer ID as stored internally. Inferred
-                /// from the caller identity if not provided.</summary>
+                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
+                /// alert is associated with. Inferred from the caller identity if not provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
 
@@ -433,8 +432,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>Lists all the feedback for an alert.</summary>
-            /// <param name="alertId">Required. The alert identifier. If the alert does not exist returns a NOT_FOUND
-            /// error.</param>
+            /// <param name="alertId">Required. The alert identifier. The "-" wildcard could be used to represent all alerts. If
+            /// alert does not exist returns a `NOT_FOUND` error.</param>
             public virtual ListRequest List(string alertId)
             {
                 return new ListRequest(service, alertId);
@@ -452,14 +451,13 @@ namespace Google.Apis.AlertCenter.v1beta1
                 }
 
 
-                /// <summary>Required. The alert identifier. If the alert does not exist returns a NOT_FOUND
-                /// error.</summary>
+                /// <summary>Required. The alert identifier. The "-" wildcard could be used to represent all alerts. If
+                /// alert does not exist returns a `NOT_FOUND` error.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
-                /// <summary>Optional. The unique identifier of the Google account of the customer the alert is
-                /// associated with. This is obfuscated and not the plain customer ID as stored internally. Inferred
-                /// from the caller identity if not provided.</summary>
+                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
+                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
 
@@ -510,20 +508,20 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
         }
 
-        /// <summary>Marks the specified alert for deletion. An alert that has been marked for deletion will be excluded
-        /// from the results of a List operation by default, and will be removed from the Alert Center after 30 days.
-        /// Marking an alert for deletion will have no effect on an alert which has already been marked for deletion.
-        /// Attempting to mark a nonexistent alert for deletion will return NOT_FOUND.</summary>
+        /// <summary>Marks the specified alert for deletion. An alert that has been marked for deletion is removed from
+        /// Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been
+        /// marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND`
+        /// error.</summary>
         /// <param name="alertId">Required. The identifier of the alert to delete.</param>
         public virtual DeleteRequest Delete(string alertId)
         {
             return new DeleteRequest(service, alertId);
         }
 
-        /// <summary>Marks the specified alert for deletion. An alert that has been marked for deletion will be excluded
-        /// from the results of a List operation by default, and will be removed from the Alert Center after 30 days.
-        /// Marking an alert for deletion will have no effect on an alert which has already been marked for deletion.
-        /// Attempting to mark a nonexistent alert for deletion will return NOT_FOUND.</summary>
+        /// <summary>Marks the specified alert for deletion. An alert that has been marked for deletion is removed from
+        /// Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been
+        /// marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND`
+        /// error.</summary>
         public class DeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -539,9 +537,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AlertId { get; private set; }
 
-            /// <summary>Optional. The unique identifier of the Google account of the customer the alert is associated
-            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
-            /// identity if not provided.</summary>
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert
+            /// is associated with. Inferred from the caller identity if not provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
@@ -592,7 +589,8 @@ namespace Google.Apis.AlertCenter.v1beta1
         }
 
         /// <summary>Gets the specified alert.</summary>
-        /// <param name="alertId">Required. The identifier of the alert to retrieve.</param>
+        /// <param name="alertId">Required. The identifier of the alert to retrieve. Returns a NOT_FOUND error if no such
+        /// alert.</param>
         public virtual GetRequest Get(string alertId)
         {
             return new GetRequest(service, alertId);
@@ -610,13 +608,13 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Required. The identifier of the alert to retrieve.</summary>
+            /// <summary>Required. The identifier of the alert to retrieve. Returns a NOT_FOUND error if no such
+            /// alert.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AlertId { get; private set; }
 
-            /// <summary>Optional. The unique identifier of the Google account of the customer the alert is associated
-            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
-            /// identity if not provided.</summary>
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert
+            /// is associated with. Inferred from the caller identity if not provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
@@ -666,13 +664,13 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         }
 
-        /// <summary>Lists all the alerts for the current user and application.</summary>
+        /// <summary>Lists the alerts.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all the alerts for the current user and application.</summary>
+        /// <summary>Lists the alerts.</summary>
         public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -683,77 +681,9 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. The unique identifier of the Google account of the customer the alerts are associated
-            /// with. This is obfuscated and not the plain customer ID as stored internally. Inferred from the caller
-            /// identity if not provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomerId { get; set; }
-
-            /// <summary>Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-            /// server will pick an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional. Query string for filtering alert results. This string must be specified as an
-            /// expression or list of expressions, using the following grammar:
-            ///
-            /// ### Expressions
-            ///
-            /// An expression has the general form `  `.
-            ///
-            /// A field or value which contains a space or a colon must be enclosed by double quotes.
-            ///
-            /// #### Operators
-            ///
-            /// Operators follow the BNF specification:
-            ///
-            /// ` ::= "=" | ":"`
-            ///
-            /// ` ::= "<" | ">" | "<=" | ">="`
-            ///
-            /// Relational operators are defined only for timestamp fields. Equality operators are defined only for
-            /// string fields.
-            ///
-            /// #### Timestamp fields
-            ///
-            /// The value supplied for a timestamp field must be an [RFC 3339](https://tools.ietf.org/html/rfc3339)
-            /// date-time string.
-            ///
-            /// Supported timestamp fields are `create_time`, `start_time`, and `end_time`.
-            ///
-            /// #### String fields
-            ///
-            /// The value supplied for a string field may be an arbitrary string.
-            ///
-            /// #### Examples
-            ///
-            /// To query for all alerts created on or after April 5, 2018:
-            ///
-            /// `create_time >= "2018-04-05T00:00:00Z"`
-            ///
-            /// To query for all alerts from the source "Gmail phishing":
-            ///
-            /// `source:"Gmail phishing"`
-            ///
-            /// ### Joining expressions
-            ///
-            /// Expressions may be joined to form a more complex query. The BNF specification is:
-            ///
-            /// ` ::=  | |  ` ` ::= "AND" | "OR" | ""` ` ::= "NOT"`
-            ///
-            /// Using the empty string as a conjunction acts as an implicit AND.
-            ///
-            /// The precedence of joining operations, from highest to lowest, is NOT, AND, OR.
-            ///
-            /// #### Examples
-            ///
-            /// To query for all alerts which started in 2017:
-            ///
-            /// `start_time >= "2017-01-01T00:00:00Z" AND start_time < "2018-01-01T00:00:00Z"`
-            ///
-            /// To query for all user reported phishing alerts from the source "Gmail phishing":
-            ///
-            /// `type:"User reported phishing" source:"Gmail phishing"`</summary>
+            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
+            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
+            /// sdk/alertcenter/reference/filter-fields).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -763,11 +693,21 @@ namespace Google.Apis.AlertCenter.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Optional. Sort the list results by a certain order. If not specified results may be returned in
-            /// arbitrary order. You can sort the results in a descending order based on the creation timestamp using
-            /// order_by="create_time desc". Currently, only sorting by create_time desc is supported.</summary>
+            /// <summary>Optional. The sort order of the list results. If not specified results may be returned in
+            /// arbitrary order. You can sort the results in descending order based on the creation timestamp using
+            /// `order_by="create_time desc"`. Currently, only sorting by `create_time desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
+            /// are associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Optional. The requested page size. Server may return fewer items than requested. If
+            /// unspecified, server picks an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -793,24 +733,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
@@ -838,6 +760,24 @@ namespace Google.Apis.AlertCenter.v1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -850,12 +790,14 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Alerts for user account warning events.</summary>
     public class AccountWarning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Email of the user that this event belongs to.</summary>
+        /// <summary>Required. The email of the user that this event belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
         /// <summary>Optional. Details of the login action associated with the warning event. This is only available
-        /// for: Suspicious login Suspicious login (less secure app) User suspended (suspicious activity)</summary>
+        /// for:
+        ///
+        /// * Suspicious login * Suspicious login (less secure app) * User suspended (suspicious activity)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginDetails")]
         public virtual LoginDetails LoginDetails { get; set; } 
 
@@ -870,7 +812,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual string AlertId { get; set; } 
 
-        /// <summary>Output only. The time this alert was created. Assigned by the server.</summary>
+        /// <summary>Output only. The time this alert was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -878,44 +820,40 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
-        /// <summary>Optional. Specific data associated with this alert. e.g.
+        /// <summary>Optional. The data associated with this alert, for example
         /// google.apps.alertcenter.type.DeviceCompromised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
 
-        /// <summary>Output only. Whether this alert has been marked for deletion.</summary>
+        /// <summary>Output only. `True` if this alert is marked for deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>Optional. The time this alert was no longer active. If provided, the end time must not be earlier
-        /// than the start time. If not provided, the end time will default to the start time.</summary>
+        /// <summary>Optional. The time the event that caused this alert ceased being active. If provided, the end time
+        /// must not be earlier than the start time. If not provided, the end time defaults to the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>Output only. An optional Security Investigation Tool query for this alert.</summary>
+        /// <summary>Output only. An optional [Security Investigation Tool](https://support.google.com/a/answer/7575955)
+        /// query for this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityInvestigationToolLink")]
         public virtual string SecurityInvestigationToolLink { get; set; } 
 
         /// <summary>Required. A unique identifier for the system that is reported the alert.
         ///
-        /// Supported sources are any of the following: * "Google Operations" * "Mobile device management" * "Gmail
-        /// phishing" * "Domain wide takeout" * "Government attack warning" * "Google identity"</summary>
+        /// Supported sources are any of the following:
+        ///
+        /// * Google Operations * Mobile device management * Gmail phishing * Domain wide takeout * Government attack
+        /// warning * Google identity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
-        /// <summary>Required. The time this alert became active.</summary>
+        /// <summary>Required. The time the event that caused this alert was started or detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Required. The type of the alert.
-        ///
-        /// Supported types are any of the following: * "Google Operations" * "Device compromised" * "Suspicious
-        /// activity" * "User reported phishing" * "Misconfigured whitelist" * "Customer takeout initiated" *
-        /// "Government attack warning" * "User reported spam spike" * "Suspicious message reported" * "Phishing
-        /// reclassification" * "Malware reclassification" LINT.IfChange * "Suspicious login" * "Suspicious login (less
-        /// secure app)" * "User suspended" * "Leaked password" * "User suspended (suspicious activity)" * "User
-        /// suspended (spam)" * "User suspended (spam through relay)"
-        /// LINT.ThenChange(//depot/google3/apps/albert/data/albert_enums.proto)</summary>
+        /// <summary>Required. The type of the alert. For a list of available alert types see [G Suite Alert types
+        /// ](/admin-sdk/alertcenter/reference/alert-types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -930,7 +868,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
         public virtual string AlertId { get; set; } 
 
-        /// <summary>Output only. The time this feedback was created. Assigned by the server.</summary>
+        /// <summary>Output only. The time this feedback was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -942,8 +880,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>Output only. A unique identifier for the feedback. When creating a new feedback the system will
-        /// assign one.</summary>
+        /// <summary>Output only. The unique identifier for the feedback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedbackId")]
         public virtual string FeedbackId { get; set; } 
 
@@ -958,7 +895,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Attachment with application-specific information about an alert.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CSV file attachment.</summary>
+        /// <summary>A CSV file attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csv")]
         public virtual Csv Csv { get; set; } 
 
@@ -966,23 +903,23 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Alert for setting the domain or ip that malicious email comes from as whitelisted domain or ip in Gmail
+    /// <summary>Alert for setting the domain or IP that malicious email comes from as whitelisted domain or IP in Gmail
     /// advanced settings.</summary>
     public class BadWhitelist : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain id.</summary>
+        /// <summary>The domain ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual DomainId DomainId { get; set; } 
 
-        /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
         public virtual MaliciousEntity MaliciousEntity { get; set; } 
 
-        /// <summary>Every alert could contain multiple messages.</summary>
+        /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
 
-        /// <summary>The source ip address of the malicious email. e.g. "127.0.0.1".</summary>
+        /// <summary>The source IP address of the malicious email, for example, `127.0.0.1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
         public virtual string SourceIp { get; set; } 
 
@@ -990,15 +927,16 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Representation of a CSV file attachment, as a list of column headers and a list of data rows.</summary>
+    /// <summary>A representation of a CSV file attachment, as a list of column headers and a list of data
+    /// rows.</summary>
     public class Csv : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of data rows in a CSV file, as string arrays rather than as a single comma-separated
+        /// <summary>The list of data rows in a CSV file, as string arrays rather than as a single comma-separated
         /// string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRows")]
         public virtual System.Collections.Generic.IList<CsvRow> DataRows { get; set; } 
 
-        /// <summary>List of headers for data columns in a CSV file.</summary>
+        /// <summary>The list of headers for data columns in a CSV file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<string> Headers { get; set; } 
 
@@ -1006,10 +944,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Representation of a single data row in a CSV file.</summary>
+    /// <summary>A representation of a single data row in a CSV file.</summary>
     public class CsvRow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data entries in a CSV file row, as a string array rather than a single comma-separated
+        /// <summary>The data entries in a CSV file row, as a string array rather than a single comma-separated
         /// string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<string> Entries { get; set; } 
@@ -1025,7 +963,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>Required. List of security events.</summary>
+        /// <summary>Required. The list of security events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<DeviceCompromisedSecurityDetail> Events { get; set; } 
 
@@ -1036,11 +974,11 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Detailed information of a single MDM device compromised event.</summary>
     public class DeviceCompromisedSecurityDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Device compromised state includes: "Compromised" and "Not Compromised".</summary>
+        /// <summary>The device compromised state. Possible values are "`Compromised`" or "`Not Compromised`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCompromisedState")]
         public virtual string DeviceCompromisedState { get; set; } 
 
-        /// <summary>Required. Device Info.</summary>
+        /// <summary>Required. The device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
@@ -1052,11 +990,11 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; } 
 
-        /// <summary>Required for IOS, empty for others.</summary>
+        /// <summary>Required for iOS, empty for others.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
         public virtual string IosVendorId { get; set; } 
 
-        /// <summary>The device resource id.</summary>
+        /// <summary>The device resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
 
@@ -1068,7 +1006,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Domain id of Gmail phishing alerts.</summary>
+    /// <summary>Domain ID of Gmail phishing alerts.</summary>
     public class DomainId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The primary domain for the customer.</summary>
@@ -1082,11 +1020,11 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>A takeout operation for the entire domain was initiated by an admin. Derived from audit logs.</summary>
     public class DomainWideTakeoutInitiated : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email of the admin who initiated the takeout.</summary>
+        /// <summary>The email of the admin who initiated the takeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>takeout request id.</summary>
+        /// <summary>The takeout request ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("takeoutRequestId")]
         public virtual string TakeoutRequestId { get; set; } 
 
@@ -1109,7 +1047,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Details of a message in phishing spike alert.</summary>
     public class GmailMessageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>SHA256 Hash of email's attachment and all MIME parts.</summary>
+        /// <summary>The `SHA256` hash of email's attachment and all MIME parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentsSha256Hash")]
         public virtual System.Collections.Generic.IList<string> AttachmentsSha256Hash { get; set; } 
 
@@ -1117,27 +1055,27 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual object Date { get; set; } 
 
-        /// <summary>Hash of message body text.</summary>
+        /// <summary>The hash of the message body text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5HashMessageBody")]
         public virtual string Md5HashMessageBody { get; set; } 
 
-        /// <summary>MD5 Hash of email's subject. (Only available for reported emails).</summary>
+        /// <summary>The MD5 Hash of email's subject (only available for reported emails).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5HashSubject")]
         public virtual string Md5HashSubject { get; set; } 
 
-        /// <summary>Snippet of the message body text. (Only available for reported emails)</summary>
+        /// <summary>The snippet of the message body text (only available for reported emails).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageBodySnippet")]
         public virtual string MessageBodySnippet { get; set; } 
 
-        /// <summary>Message id.</summary>
+        /// <summary>The message ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; } 
 
-        /// <summary>Recipient of this email.</summary>
+        /// <summary>The recipient of this email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
         public virtual string Recipient { get; set; } 
 
-        /// <summary>Email subject text. (Only available for reported emails).</summary>
+        /// <summary>The email subject text (only available for reported emails).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectText")]
         public virtual string SubjectText { get; set; } 
 
@@ -1148,20 +1086,20 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>An incident reported by Google Operations for a G Suite application.</summary>
     public class GoogleOperations : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of emails which correspond to the users directly affected by the incident.</summary>
+        /// <summary>The list of emails which correspond to the users directly affected by the incident.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedUserEmails")]
         public virtual System.Collections.Generic.IList<string> AffectedUserEmails { get; set; } 
 
-        /// <summary>Optional application-specific data for an incident, provided when the G Suite application which
+        /// <summary>Optional. Application-specific data for an incident, provided when the G Suite application which
         /// reported the incident cannot be completely restored to a valid state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentData")]
         public virtual Attachment AttachmentData { get; set; } 
 
-        /// <summary>Detailed, freeform incident description.</summary>
+        /// <summary>A detailed, freeform incident description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>One-line incident description.</summary>
+        /// <summary>A one-line incident description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -1172,7 +1110,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Response message for an alert feedback listing request.</summary>
     public class ListAlertFeedbackResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of alert feedback. Result is ordered descending by creation time.</summary>
+        /// <summary>The list of alert feedback. Feedback entries for each alert are ordered by creation time
+        /// descending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
         public virtual System.Collections.Generic.IList<AlertFeedback> Feedback { get; set; } 
 
@@ -1187,8 +1126,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alerts")]
         public virtual System.Collections.Generic.IList<Alert> Alerts { get; set; } 
 
-        /// <summary>If not empty, indicates that there may be more alerts that match the request; this value can be
-        /// passed in a new ListAlertsRequest to get the next page of values.</summary>
+        /// <summary>The token for the next page. If not empty, indicates that there may be more alerts that match the
+        /// listing request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last
+        /// result of the current list call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1196,15 +1136,16 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Details of the login action</summary>
+    /// <summary>The details of the login action.</summary>
     public class LoginDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Human readable IP address (e.g., 11.22.33.44) that is associated with the warning
-        /// event.</summary>
+        /// <summary>Optional. The human-readable IP address (for example, `11.22.33.44`) that is associated with the
+        /// warning event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>Optional. Login time that is associated with the warning event.</summary>
+        /// <summary>Optional. The successful login time that is associated with the warning event. This will not be
+        /// present for blocked login attempts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginTime")]
         public virtual object LoginTime { get; set; } 
 
@@ -1212,24 +1153,25 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Proto for all phishing alerts with common payload. Supported types are any of the following: User
-    /// reported phishing User reported spam spike Suspicious message reported Phishing reclassification Malware
-    /// reclassification</summary>
+    /// <summary>Proto for all phishing alerts with common payload. Supported types are any of the following:
+    ///
+    /// * User reported phishing * User reported spam spike * Suspicious message reported * Phishing reclassification *
+    /// Malware reclassification</summary>
     public class MailPhishing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain id.</summary>
+        /// <summary>The domain ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual DomainId DomainId { get; set; } 
 
-        /// <summary>If true, the email is originated from within the organization.</summary>
+        /// <summary>If `true`, the email originated from within the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
         public virtual System.Nullable<bool> IsInternal { get; set; } 
 
-        /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
         public virtual MaliciousEntity MaliciousEntity { get; set; } 
 
-        /// <summary>Every alert could contain multiple messages.</summary>
+        /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
 
@@ -1240,7 +1182,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
     public class MaliciousEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Sender email address.</summary>
+        /// <summary>The sender email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
         public virtual string FromHeader { get; set; } 
 
@@ -1248,23 +1190,23 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Alert for a spike in user reported phishing. This will be deprecated in favor of
-    /// MailPhishing.</summary>
+    /// <summary>Alert for a spike in user reported phishing. Warning: This type has been deprecated. Use [MailPhishing
+    /// ](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.</summary>
     public class PhishingSpike : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain id.</summary>
+        /// <summary>The domain ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual DomainId DomainId { get; set; } 
 
-        /// <summary>If true, the email is originated from within the organization.</summary>
+        /// <summary>If `true`, the email originated from within the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
         public virtual System.Nullable<bool> IsInternal { get; set; } 
 
-        /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
         public virtual MaliciousEntity MaliciousEntity { get; set; } 
 
-        /// <summary>Every alert could contain multiple messages.</summary>
+        /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
 
@@ -1272,7 +1214,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A state sponsored attack alert. Derived from audit logs.</summary>
+    /// <summary>A state-sponsored attack alert. Derived from audit logs.</summary>
     public class StateSponsoredAttack : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The email of the user this incident was created for.</summary>
@@ -1290,7 +1232,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>Required. List of security events.</summary>
+        /// <summary>Required. The list of security events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<SuspiciousActivitySecurityDetail> Events { get; set; } 
 
@@ -1301,7 +1243,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Detailed information of a single MDM suspicious activity event.</summary>
     public class SuspiciousActivitySecurityDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Device Info.</summary>
+        /// <summary>Required. The device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
@@ -1309,7 +1251,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
         public virtual string DeviceModel { get; set; } 
 
-        /// <summary>Device property which is changed.</summary>
+        /// <summary>The device property which was changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceProperty")]
         public virtual string DeviceProperty { get; set; } 
 
@@ -1317,19 +1259,19 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; } 
 
-        /// <summary>Required for IOS, empty for others.</summary>
+        /// <summary>Required for iOS, empty for others.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
         public virtual string IosVendorId { get; set; } 
 
-        /// <summary>New value of the device property after change.</summary>
+        /// <summary>The new value of the device property after the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
         public virtual string NewValue { get; set; } 
 
-        /// <summary>Old value of the device property before change.</summary>
+        /// <summary>The old value of the device property before the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
         public virtual string OldValue { get; set; } 
 
-        /// <summary>The device resource id.</summary>
+        /// <summary>The device resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
 
