@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181017 (1385)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -5644,7 +5644,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11204,7 +11204,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11641,12 +11641,12 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be removed from the managed instance group. Abandoning an instance
+        /// does not delete the instance, but it does remove the instance from any target pools that are applied by the
+        /// managed instance group. This method reduces the targetSize of the managed instance group by the number of
+        /// instances that you abandon. This operation is marked as DONE when the action is scheduled even if the
+        /// instances have not yet been removed from the group. You must separately verify the status of the abandoning
+        /// action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -11663,12 +11663,12 @@ namespace Google.Apis.Compute.v1
             return new AbandonInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be removed from the managed instance group. Abandoning an instance
+        /// does not delete the instance, but it does remove the instance from any target pools that are applied by the
+        /// managed instance group. This method reduces the targetSize of the managed instance group by the number of
+        /// instances that you abandon. This operation is marked as DONE when the action is scheduled even if the
+        /// instances have not yet been removed from the group. You must separately verify the status of the abandoning
+        /// action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -12042,11 +12042,11 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
-        /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances in the managed instance group for immediate deletion. The instances
+        /// are also removed from any target pools of which they were a member. This method reduces the targetSize of
+        /// the managed instance group by the number of instances that you delete. This operation is marked as DONE when
+        /// the action is scheduled even if the instances are still being deleted. You must separately verify the status
+        /// of the deleting action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -12063,11 +12063,11 @@ namespace Google.Apis.Compute.v1
             return new DeleteInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
-        /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances in the managed instance group for immediate deletion. The instances
+        /// are also removed from any target pools of which they were a member. This method reduces the targetSize of
+        /// the managed instance group by the number of instances that you delete. This operation is marked as DONE when
+        /// the action is scheduled even if the instances are still being deleted. You must separately verify the status
+        /// of the deleting action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -12277,10 +12277,9 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
         /// need an increase in this limit.</summary>
@@ -12294,10 +12293,9 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
         /// need an increase in this limit.</summary>
@@ -12734,10 +12732,10 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -12754,10 +12752,10 @@ namespace Google.Apis.Compute.v1
             return new RecreateInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -12878,6 +12876,14 @@ namespace Google.Apis.Compute.v1
         /// instances. You must separately verify the status of the creating or deleting actions with the
         /// listmanagedinstances method.
         ///
+        /// When resizing down, the instance group arbitrarily chooses the order in which VMs are deleted. The group
+        /// takes into account some VM attributes when making the selection including:
+        ///
+        /// + The status of the VM instance. + The health of the VM instance. + The instance template version the VM is
+        /// based on. + For regional managed instance groups, the location of the VM instance.
+        ///
+        /// This list is subject to change.
+        ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -12898,6 +12904,14 @@ namespace Google.Apis.Compute.v1
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
         /// listmanagedinstances method.
+        ///
+        /// When resizing down, the instance group arbitrarily chooses the order in which VMs are deleted. The group
+        /// takes into account some VM attributes when making the selection including:
+        ///
+        /// + The status of the VM instance. + The health of the VM instance. + The instance template version the VM is
+        /// based on. + For regional managed instance groups, the location of the VM instance.
+        ///
+        /// This list is subject to change.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -15433,7 +15447,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -16222,7 +16236,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
+        /// information, read Viewing Referrers to VM Instances.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -16233,7 +16248,8 @@ namespace Google.Apis.Compute.v1
             return new ListReferrersRequest(service, project, zone, instance);
         }
 
-        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
+        /// information, read Viewing Referrers to VM Instances.</summary>
         public class ListReferrersRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceListReferrers>
         {
             /// <summary>Constructs a new ListReferrers request.</summary>
@@ -17638,7 +17654,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -17649,7 +17665,7 @@ namespace Google.Apis.Compute.v1
             return new SetTagsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
         public class SetTagsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTags request.</summary>
@@ -19667,6 +19683,82 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="interconnect">Name of the
+        /// interconnect resource to query.</param>
+        public virtual GetDiagnosticsRequest GetDiagnostics(string project, string interconnect)
+        {
+            return new GetDiagnosticsRequest(service, project, interconnect);
+        }
+
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        public class GetDiagnosticsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectsGetDiagnosticsResponse>
+        {
+            /// <summary>Constructs a new GetDiagnostics request.</summary>
+            public GetDiagnosticsRequest(Google.Apis.Services.IClientService service, string project, string interconnect)
+                : base(service)
+            {
+                Project = project;
+                Interconnect = interconnect;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the interconnect resource to query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Interconnect { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getDiagnostics"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/interconnects/{interconnect}/getDiagnostics"; }
+            }
+
+            /// <summary>Initializes GetDiagnostics parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "interconnect", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interconnect",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a Interconnect in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -20104,8 +20196,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -20129,7 +20221,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -20179,7 +20271,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -20616,8 +20708,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -20641,7 +20733,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -20691,7 +20783,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28620,7 +28712,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -28649,7 +28741,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -28708,7 +28800,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28731,12 +28823,12 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be immediately removed from the managed instance group. Abandoning
+        /// an instance does not delete the instance, but it does remove the instance from any target pools that are
+        /// applied by the managed instance group. This method reduces the targetSize of the managed instance group by
+        /// the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even
+        /// if the instances have not yet been removed from the group. You must separately verify the status of the
+        /// abandoning action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -28752,12 +28844,12 @@ namespace Google.Apis.Compute.v1
             return new AbandonInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be immediately removed from the managed instance group. Abandoning
+        /// an instance does not delete the instance, but it does remove the instance from any target pools that are
+        /// applied by the managed instance group. This method reduces the targetSize of the managed instance group by
+        /// the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even
+        /// if the instances have not yet been removed from the group. You must separately verify the status of the
+        /// abandoning action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -28986,11 +29078,12 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately deleted. The
         /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// targetSize of the managed instance group by the number of instances that you delete. The deleteInstances
+        /// operation is marked DONE if the deleteInstances request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the deleting action with the listmanagedinstances
+        /// method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -29006,11 +29099,12 @@ namespace Google.Apis.Compute.v1
             return new DeleteInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately deleted. The
         /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// targetSize of the managed instance group by the number of instances that you delete. The deleteInstances
+        /// operation is marked DONE if the deleteInstances request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the deleting action with the listmanagedinstances
+        /// method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -29218,10 +29312,9 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A regional managed instance group can contain up to 2000 instances.</summary>
         /// <param name="body">The body of the request.</param>
@@ -29234,10 +29327,9 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A regional managed instance group can contain up to 2000 instances.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -29669,10 +29761,10 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -29688,10 +29780,10 @@ namespace Google.Apis.Compute.v1
             return new RecreateInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -29806,11 +29898,13 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the intended size for the managed instance group. If you increase the size, the group
-        /// schedules actions to create new instances using the current instance template. If you decrease the size, the
-        /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
-        /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        /// <summary>Changes the intended size of the managed instance group. If you increase the size, the group
+        /// creates new instances using the current instance template. If you decrease the size, the group deletes one
+        /// or more instances.
+        ///
+        /// The resize operation is marked DONE if the resize request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -29825,11 +29919,13 @@ namespace Google.Apis.Compute.v1
             return new ResizeRequest(service, project, region, instanceGroupManager, size);
         }
 
-        /// <summary>Changes the intended size for the managed instance group. If you increase the size, the group
-        /// schedules actions to create new instances using the current instance template. If you decrease the size, the
-        /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
-        /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        /// <summary>Changes the intended size of the managed instance group. If you increase the size, the group
+        /// creates new instances using the current instance template. If you decrease the size, the group deletes one
+        /// or more instances.
+        ///
+        /// The resize operation is marked DONE if the resize request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -31721,6 +31817,179 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to query for Nat Mapping information of VM
+        /// endpoints.</param>
+        public virtual GetNatMappingInfoRequest GetNatMappingInfo(string project, string region, string router)
+        {
+            return new GetNatMappingInfoRequest(service, project, region, router);
+        }
+
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        public class GetNatMappingInfoRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VmEndpointNatMappingsList>
+        {
+            /// <summary>Constructs a new GetNatMappingInfo request.</summary>
+            public GetNatMappingInfoRequest(Google.Apis.Services.IClientService service, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to query for Nat Mapping information of VM endpoints.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getNatMappingInfo"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}/getNatMappingInfo"; }
+            }
+
+            /// <summary>Initializes GetNatMappingInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33933,7 +34202,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -45148,16 +45417,22 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The fully-qualified URL of a Instance Group resource. This instance group defines the list of
-        /// instances that serve traffic. Member virtual machine instances from each instance group must live in the
-        /// same zone as the instance group itself. No two backends in a backend service are allowed to use same
-        /// Instance Group resource.
+        /// <summary>The fully-qualified URL of an Instance Group or Network Endpoint Group resource. In case of
+        /// instance group this defines the list of instances that serve traffic. Member virtual machine instances from
+        /// each instance group must live in the same zone as the instance group itself. No two backends in a backend
+        /// service are allowed to use same Instance Group resource.
         ///
-        /// Note that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial
-        /// URL.
+        /// For Network Endpoint Groups this defines list of endpoints. All endpoints of Network Endpoint Group must be
+        /// hosted on instances located in the same zone as the Network Endpoint Group.
+        ///
+        /// Backend service can not contain mix of Instance Group and Network Endpoint Group backends.
+        ///
+        /// Note that you must specify an Instance Group or Network Endpoint Group resource using the fully-qualified
+        /// URL, rather than a partial URL.
         ///
         /// When the BackendService has load balancing scheme INTERNAL, the instance group must be within the same
-        /// region as the BackendService.</summary>
+        /// region as the BackendService. Network Endpoint Groups are not supported for INTERNAL load balancing
+        /// scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -45576,6 +45851,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class BackendServiceGroupHealth : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Health state of the backend instances or endpoints in requested instance or network endpoint group,
+        /// determined based on configured health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
         public virtual System.Collections.Generic.IList<HealthStatus> HealthStatus { get; set; } 
 
@@ -48862,6 +49139,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
         public virtual System.Nullable<int> Restarting { get; set; } 
 
+        /// <summary>[Output Only] The number of instances in the managed instance group that are being verified. See
+        /// the managedInstances[].currentAction property in the listManagedInstances method documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifying")]
+        public virtual System.Nullable<int> Verifying { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -50339,6 +50621,102 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Diagnostics information about interconnect, contains detailed and current technical information about
+    /// Google?s side of the connection.</summary>
+    public class InterconnectDiagnostics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of InterconnectDiagnostics.ARPEntry objects, describing individual neighbors currently seen
+        /// by the Google router in the ARP cache for the Interconnect. This will be empty when the Interconnect is not
+        /// bundled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arpCaches")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsARPEntry> ArpCaches { get; set; } 
+
+        /// <summary>A list of InterconnectDiagnostics.LinkStatus objects, describing the status for each link on the
+        /// Interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsLinkStatus> Links { get; set; } 
+
+        /// <summary>The MAC address of the Interconnect's bundle interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describing the ARP neighbor entries seen on this link</summary>
+    public class InterconnectDiagnosticsARPEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address of this ARP neighbor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The MAC address of this ARP neighbor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
+        public virtual string MacAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkLACPStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>System ID of the port on Google?s side of the LACP exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSystemId")]
+        public virtual string GoogleSystemId { get; set; } 
+
+        /// <summary>System ID of the port on the neighbor?s side of the LACP exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighborSystemId")]
+        public virtual string NeighborSystemId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkOpticalPower : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Value of the current optical power, read in dBm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InterconnectDiagnosticsLinkStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP neighbor entries seen on
+        /// this link. This will be empty if the link is bundled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arpCaches")]
+        public virtual System.Collections.Generic.IList<InterconnectDiagnosticsARPEntry> ArpCaches { get; set; } 
+
+        /// <summary>The unique ID for this link assigned during turn up by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circuitId")]
+        public virtual string CircuitId { get; set; } 
+
+        /// <summary>The Demarc address assigned by Google and provided in the LoA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDemarc")]
+        public virtual string GoogleDemarc { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lacpStatus")]
+        public virtual InterconnectDiagnosticsLinkLACPStatus LacpStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("receivingOpticalPower")]
+        public virtual InterconnectDiagnosticsLinkOpticalPower ReceivingOpticalPower { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("transmittingOpticalPower")]
+        public virtual InterconnectDiagnosticsLinkOpticalPower TransmittingOpticalPower { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response to the list request, and contains a list of interconnects.</summary>
     public class InterconnectList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50617,6 +50995,16 @@ namespace Google.Apis.Compute.v1.Data
         /// of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for the InterconnectsGetDiagnosticsRequest.</summary>
+    public class InterconnectsGetDiagnosticsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual InterconnectDiagnostics Result { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51912,7 +52300,7 @@ namespace Google.Apis.Compute.v1.Data
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// charaicter, which cannot be a dash.</summary>
+        /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -52811,11 +53199,15 @@ namespace Google.Apis.Compute.v1.Data
     public class PathMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full or partial URL to the BackendService resource. This will be used if none of the pathRules
-        /// defined by this PathMatcher is matched by the URL's path portion. For example, the following are all valid
-        /// URLs to a BackendService resource: -
+        /// or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a
+        /// BackendService resource: -
         /// https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService -
-        /// compute/v1/projects/project/global/backendServices/backendService -
-        /// global/backendServices/backendService</summary>
+        /// compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService
+        /// Use defaultService instead of defaultRouteAction when simple routing to a backend service is desired and
+        /// other advanced capabilities like traffic splitting and URL rewrites are not required. Only one of
+        /// defaultService, defaultRouteAction or defaultUrlRedirect must be set. Authorization requires one or more of
+        /// the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use
+        /// - compute.backendServices.use</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
 
@@ -52828,7 +53220,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The list of path rules.</summary>
+        /// <summary>The list of path rules. Use this list instead of routeRules when routing based on simple path
+        /// matching is all that's required. The order by which path rules are specified does not matter. Matches are
+        /// always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c will match before
+        /// /a/b irrespective of the order in which those paths appear in this list. Only one of pathRules or routeRules
+        /// must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathRules")]
         public virtual System.Collections.Generic.IList<PathRule> PathRules { get; set; } 
 
@@ -52846,7 +53242,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
 
-        /// <summary>The URL of the BackendService resource if this rule is matched.</summary>
+        /// <summary>The URL of the backend service resource if this rule is matched. Use service instead of routeAction
+        /// when simple routing to a backend service is desired and other advanced capabilities like traffic splitting
+        /// and rewrites are not required. Only one of service, routeAction or urlRedirect should must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -53655,7 +54053,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class ResourceGroupReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URI referencing one of the instance groups listed in the backend service.</summary>
+        /// <summary>A URI referencing one of the instance groups or network endpoint groups listed in the backend
+        /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -53916,6 +54315,10 @@ namespace Google.Apis.Compute.v1.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>A list of Nat services created in this router.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nats")]
+        public virtual System.Collections.Generic.IList<RouterNat> Nats { get; set; } 
 
         /// <summary>URI of the network to which this router belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -54214,6 +54617,85 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet
+    /// without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT.
+    /// Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if
+    /// no external IPs are provided.</summary>
+    public class RouterNat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
+        public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
+
+        /// <summary>Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of
+        /// ports is allocated to a VM. This gets rounded up to the nearest power of 2. Eg. if the value of this field
+        /// is 50, at least 64 ports will be allocated to a VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minPortsPerVm")]
+        public virtual System.Nullable<int> MinPortsPerVm { get; set; } 
+
+        /// <summary>Unique name of this Nat service. The name must be 1-63 characters long and comply with
+        /// RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIpAllocateOption")]
+        public virtual string NatIpAllocateOption { get; set; } 
+
+        /// <summary>A list of URLs of the IP resources used for this Nat service. These IPs must be valid static
+        /// external IP addresses assigned to the project. max_length is subject to change post alpha.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
+        public virtual System.Collections.Generic.IList<string> NatIps { get; set; } 
+
+        /// <summary>Specify the Nat option. If this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router
+        /// for this network in this region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSubnetworkIpRangesToNat")]
+        public virtual string SourceSubnetworkIpRangesToNat { get; set; } 
+
+        /// <summary>A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only
+        /// when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<RouterNatSubnetworkToNat> Subnetworks { get; set; } 
+
+        /// <summary>Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpEstablishedIdleTimeoutSec")]
+        public virtual System.Nullable<int> TcpEstablishedIdleTimeoutSec { get; set; } 
+
+        /// <summary>Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpTransitoryIdleTimeoutSec")]
+        public virtual System.Nullable<int> TcpTransitoryIdleTimeoutSec { get; set; } 
+
+        /// <summary>Timeout (in seconds) for UDP connections. Defaults to 30s if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udpIdleTimeoutSec")]
+        public virtual System.Nullable<int> UdpIdleTimeoutSec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the IP ranges that want to use NAT for a subnetwork.</summary>
+    public class RouterNatSubnetworkToNat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL for the subnetwork resource to use NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated
+        /// only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeNames")]
+        public virtual System.Collections.Generic.IList<string> SecondaryIpRangeNames { get; set; } 
+
+        /// <summary>Specify the options for NAT ranges in the Subnetwork. All usages of single value are valid except
+        /// NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE",
+        /// "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIpRangesToNat")]
+        public virtual System.Collections.Generic.IList<string> SourceIpRangesToNat { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RouterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Best routes for this router's network.</summary>
@@ -54226,6 +54708,9 @@ namespace Google.Apis.Compute.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("bgpPeerStatus")]
         public virtual System.Collections.Generic.IList<RouterStatusBgpPeerStatus> BgpPeerStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("natStatus")]
+        public virtual System.Collections.Generic.IList<RouterStatusNatStatus> NatStatus { get; set; } 
 
         /// <summary>URI of the network to which this router belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -54277,6 +54762,39 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Time this session has been up, in seconds. Format: 145</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeSeconds")]
         public virtual string UptimeSeconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Status of a NAT contained in this router.</summary>
+    public class RouterStatusNatStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> AutoAllocatedNatIps { get; set; } 
+
+        /// <summary>The number of extra IPs to allocate. This will be greater than 0 only if user-specified IPs are NOT
+        /// enough to allow all configured VMs to use NAT. This value is meaningful only when auto-allocation of NAT IPs
+        /// is *not* used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minExtraNatIpsNeeded")]
+        public virtual System.Nullable<int> MinExtraNatIpsNeeded { get; set; } 
+
+        /// <summary>Unique name of this NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Number of VM endpoints (i.e., Nics) that can use NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numVmEndpointsWithNatMappings")]
+        public virtual System.Nullable<int> NumVmEndpointsWithNatMappings { get; set; } 
+
+        /// <summary>A list of fully qualified URLs of reserved IP address resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAllocatedNatIpResources")]
+        public virtual System.Collections.Generic.IList<string> UserAllocatedNatIpResources { get; set; } 
+
+        /// <summary>A list of IPs user-allocated for NAT. They will be raw IP strings like "179.12.26.133".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> UserAllocatedNatIps { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -55769,7 +56287,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string SelfLink { get; set; } 
 
         /// <summary>URLs to SslCertificate resources that are used to authenticate connections between users and the
-        /// load balancer. Currently, exactly one SSL certificate must be specified.</summary>
+        /// load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL
+        /// certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
@@ -56191,7 +56710,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Sesssion affinity option, must be one of the following values: NONE: Connections from the same
+        /// <summary>Session affinity option, must be one of the following values: NONE: Connections from the same
         /// client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the
         /// same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same
         /// client IP with the same IP protocol will go to the same instance in the pool while that instance remains
@@ -56543,8 +57062,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
-        /// <summary>URLs to SslCertificate resources that are used to authenticate connections to Backends. Currently
-        /// exactly one SSL certificate must be specified.</summary>
+        /// <summary>URLs to SslCertificate resources that are used to authenticate connections to Backends. At least
+        /// one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
@@ -57075,7 +57594,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>The URL of the BackendService resource if none of the hostRules match.</summary>
+        /// <summary>The URL of the backendService resource if none of the hostRules match. Use defaultService instead
+        /// of defaultRouteAction when simple routing to a backendService is desired and other advanced capabilities
+        /// like traffic splitting and rewrites are not required. Only one of defaultService, defaultRouteAction or
+        /// defaultUrlRedirect should must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
 
@@ -57409,6 +57931,121 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contain information of Nat mapping for a VM endpoint (i.e., NIC).</summary>
+    public class VmEndpointNatMappings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the VM instance which the endpoint belongs to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaceNatMappings")]
+        public virtual System.Collections.Generic.IList<VmEndpointNatMappingsInterfaceNatMappings> InterfaceNatMappings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contain information of Nat mapping for an interface of this endpoint.</summary>
+    public class VmEndpointNatMappingsInterfaceNatMappings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that
+        /// is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
+        /// "1.1.1.1:2234-2234"].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIpPortRanges")]
+        public virtual System.Collections.Generic.IList<string> NatIpPortRanges { get; set; } 
+
+        /// <summary>Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated
+        /// port number in the field nat_ip_port_ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalNatPorts")]
+        public virtual System.Nullable<int> NumTotalNatPorts { get; set; } 
+
+        /// <summary>Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP range. Examples:
+        /// "10.33.4.55/32", or "192.168.5.0/24".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceAliasIpRange")]
+        public virtual string SourceAliasIpRange { get; set; } 
+
+        /// <summary>Primary IP of the VM for this NIC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVirtualIp")]
+        public virtual string SourceVirtualIp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of VmEndpointNatMappings.</summary>
+    public class VmEndpointNatMappingsList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#vmEndpointNatMappingsList for lists of Nat mappings
+        /// of VM endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] A list of Nat mapping information of VM endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual System.Collections.Generic.IList<VmEndpointNatMappings> Result { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual VmEndpointNatMappingsList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     /// <summary>VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)</summary>

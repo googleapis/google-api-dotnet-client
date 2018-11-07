@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.FirebaseRules.v1 Client Library</Title>
-    <Version>1.36.1.1373</Version>
+    <Version>1.36.1.1400</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/2mZN4YeAwjZYJZLdyVkbR-kEwpc\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/82ylYoGkWdOR9dmpZge6l1weils\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20180917",
+ "revision": "20181031",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -102,6 +102,21 @@
     "value": {
      "type": "string",
      "description": "The whitelisted value for the access control list."
+    }
+   }
+  },
+  "ApiWarning": {
+   "id": "ApiWarning",
+   "type": "object",
+   "description": "An Admin API warning message.",
+   "properties": {
+    "code": {
+     "type": "string",
+     "description": "Code to uniquely identify the warning type."
+    },
+    "message": {
+     "type": "string",
+     "description": "The warning message."
     }
    }
   },
@@ -599,6 +614,17 @@
      "type": "object",
      "description": "Options for exporting data as SQL statements.",
      "properties": {
+      "mysqlExportOptions": {
+       "type": "object",
+       "description": "Options for exporting from MySQL.",
+       "properties": {
+        "masterData": {
+         "type": "integer",
+         "description": "Option to include SQL statement required to set up replication. If set to 1, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored.",
+         "format": "int32"
+        }
+       }
+      },
       "schemaOnly": {
        "type": "boolean",
        "description": "Export only schemas."
@@ -822,6 +848,13 @@
     "nextPageToken": {
      "type": "string",
      "description": "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."
+    },
+    "warnings": {
+     "type": "array",
+     "description": "List of warnings that ocurred while handling the request.",
+     "items": {
+      "$ref": "ApiWarning"
+     }
     }
    }
   },
@@ -898,7 +931,7 @@
     },
     "privateNetwork": {
      "type": "string",
-     "description": "Reserved for future use."
+     "description": "The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, /projects/myProject/global/networks/default. This setting can be updated, but it cannot be removed after it is set."
     },
     "requireSsl": {
      "type": "boolean",
@@ -949,7 +982,7 @@
   "MaintenanceWindow": {
    "id": "MaintenanceWindow",
    "type": "object",
-   "description": "Maintenance window. This specifies when a v2 Cloud SQL instance should preferably be restarted for system maintenance puruposes.",
+   "description": "Maintenance window. This specifies when a v2 Cloud SQL instance should preferably be restarted for system maintenance purposes.",
    "properties": {
     "day": {
      "type": "integer",

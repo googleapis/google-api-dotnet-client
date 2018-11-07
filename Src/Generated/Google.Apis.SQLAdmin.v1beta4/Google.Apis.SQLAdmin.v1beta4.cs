@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20181031 (1399)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4251,6 +4251,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An Admin API warning message.</summary>
+    public class ApiWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Code to uniquely identify the warning type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Database instance backup configuration.</summary>
     public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4808,6 +4823,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Options for exporting data as SQL statements.</summary>
         public class SqlExportOptionsData
         {
+            /// <summary>Options for exporting from MySQL.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("mysqlExportOptions")]
+            public virtual SqlExportOptionsData.MysqlExportOptionsData MysqlExportOptions { get; set; } 
+
             /// <summary>Export only schemas.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
             public virtual System.Nullable<bool> SchemaOnly { get; set; } 
@@ -4817,6 +4836,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("tables")]
             public virtual System.Collections.Generic.IList<string> Tables { get; set; } 
 
+            
+
+            /// <summary>Options for exporting from MySQL.</summary>
+            public class MysqlExportOptionsData
+            {
+                /// <summary>Option to include SQL statement required to set up replication. If set to 1, the dump file
+                /// includes a CHANGE MASTER TO statement with the binary log coordinates. If set to 2, the CHANGE
+                /// MASTER TO statement is written as a SQL comment, and has no effect. All other values are
+                /// ignored.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("masterData")]
+                public virtual System.Nullable<int> MasterData { get; set; } 
+
+            }
         }
     }    
 
@@ -5020,6 +5052,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
+        /// <summary>List of warnings that ocurred while handling the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<ApiWarning> Warnings { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5087,7 +5123,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Enabled")]
         public virtual System.Nullable<bool> Ipv4Enabled { get; set; } 
 
-        /// <summary>Reserved for future use.</summary>
+        /// <summary>The resource link for the VPC network from which the Cloud SQL instance is accessible for private
+        /// IP. For example, /projects/myProject/global/networks/default. This setting can be updated, but it cannot be
+        /// removed after it is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; } 
 
@@ -5159,7 +5197,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     }    
 
     /// <summary>Maintenance window. This specifies when a v2 Cloud SQL instance should preferably be restarted for
-    /// system maintenance puruposes.</summary>
+    /// system maintenance purposes.</summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>day of week (1-7), starting on Monday.</summary>

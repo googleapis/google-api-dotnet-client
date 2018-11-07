@@ -1131,6 +1131,12 @@ namespace Google.Apis.CloudTalentSolution.v3
 
                 /// <summary>Optional.
                 ///
+                /// The starting point of a query result.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The maximum number of jobs to be returned per page of results.
                 ///
                 /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
@@ -1182,12 +1188,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     JOBVIEWFULL,
                 }
 
-                /// <summary>Optional.
-                ///
-                /// The starting point of a query result.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1222,6 +1222,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1243,15 +1252,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "jobView", new Google.Apis.Discovery.Parameter
                         {
                             Name = "jobView",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1556,67 +1556,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Optional.
-            ///
-            /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For
-            /// more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_codes are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_codes are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_codes or companies having open jobs
-            /// with same language_codes are returned.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            public enum ScopeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
-                COMPLETIONSCOPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("TENANT")]
-                TENANT,
-                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
-            }
-
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to specified company.
-            ///
-            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
-            /// project/companies/foo".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
-            /// <summary>Required.
-            ///
-            /// Completion result count.
-            ///
-            /// The maximum allowed page size is 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
             /// <summary>Deprecated. Use language_codes instead.
             ///
             /// Optional.
@@ -1657,6 +1596,67 @@ namespace Google.Apis.CloudTalentSolution.v3
                 COMBINED,
             }
 
+            /// <summary>Optional.
+            ///
+            /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For
+            /// more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_codes are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_codes are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_codes or companies having open jobs
+            /// with same language_codes are returned.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// If provided, restricts completion to specified company.
+            ///
+            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
+            /// project/companies/foo".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            public enum ScopeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
+                COMPLETIONSCOPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("TENANT")]
+                TENANT,
+                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
+                PUBLIC__,
+            }
+
+            /// <summary>Required.
+            ///
+            /// Completion result count.
+            ///
+            /// The maximum allowed page size is 10.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1691,6 +1691,24 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "languageCodes", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCodes",
@@ -1700,18 +1718,18 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
+                    "companyName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "scope",
+                        Name = "companyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
+                    "scope", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "companyName",
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1730,24 +1748,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

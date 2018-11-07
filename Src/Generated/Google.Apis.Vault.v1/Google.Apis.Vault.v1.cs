@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181005 (1373)
+ *      <tr><th>API Rev<td>20181106 (1405)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -330,6 +330,7 @@ namespace Google.Apis.Vault.v1
             this.service = service;
             exports = new ExportsResource(service);
             holds = new HoldsResource(service);
+            savedQueries = new SavedQueriesResource(service);
 
         }
 
@@ -598,13 +599,13 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>The number of exports to return in the response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The pagination token as returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The number of exports to return in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -640,18 +641,18 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1575,6 +1576,341 @@ namespace Google.Apis.Vault.v1
                             Name = "holdId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly SavedQueriesResource savedQueries;
+
+        /// <summary>Gets the SavedQueries resource.</summary>
+        public virtual SavedQueriesResource SavedQueries
+        {
+            get { return savedQueries; }
+        }
+
+        /// <summary>The "savedQueries" collection of methods.</summary>
+        public class SavedQueriesResource
+        {
+            private const string Resource = "savedQueries";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SavedQueriesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a saved query.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be created.</param>
+            public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
+            {
+                return new CreateRequest(service, body, matterId);
+            }
+
+            /// <summary>Creates a saved query.</summary>
+            public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.SavedQuery>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
+                    : base(service)
+                {
+                    MatterId = matterId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The matter id of the parent matter for which the saved query is to be created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string MatterId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Vault.v1.Data.SavedQuery Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/matters/{matterId}/savedQueries"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a saved query by Id.</summary>
+            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be
+            /// deleted.</param>
+            /// <param name="savedQueryId">Id of the saved query to be deleted.</param>
+            public virtual DeleteRequest Delete(string matterId, string savedQueryId)
+            {
+                return new DeleteRequest(service, matterId, savedQueryId);
+            }
+
+            /// <summary>Deletes a saved query by Id.</summary>
+            public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId)
+                    : base(service)
+                {
+                    MatterId = matterId;
+                    SavedQueryId = savedQueryId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The matter id of the parent matter for which the saved query is to be deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string MatterId { get; private set; }
+
+                /// <summary>Id of the saved query to be deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SavedQueryId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/matters/{matterId}/savedQueries/{savedQueryId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a saved query by Id.</summary>
+            /// <param name="matterId">The matter id of the parent matter for which the saved query is to be
+            /// retrieved.</param>
+            /// <param name="savedQueryId">Id of the saved query to be retrieved.</param>
+            public virtual GetRequest Get(string matterId, string savedQueryId)
+            {
+                return new GetRequest(service, matterId, savedQueryId);
+            }
+
+            /// <summary>Retrieves a saved query by Id.</summary>
+            public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.SavedQuery>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string matterId, string savedQueryId)
+                    : base(service)
+                {
+                    MatterId = matterId;
+                    SavedQueryId = savedQueryId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The matter id of the parent matter for which the saved query is to be retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string MatterId { get; private set; }
+
+                /// <summary>Id of the saved query to be retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SavedQueryId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/matters/{matterId}/savedQueries/{savedQueryId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "savedQueryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "savedQueryId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no
+            /// more saved queries to list.</summary>
+            /// <param name="matterId">The matter id of the parent matter for which the saved queries are to be
+            /// retrieved.</param>
+            public virtual ListRequest List(string matterId)
+            {
+                return new ListRequest(service, matterId);
+            }
+
+            /// <summary>Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no
+            /// more saved queries to list.</summary>
+            public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListSavedQueriesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string matterId)
+                    : base(service)
+                {
+                    MatterId = matterId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The matter id of the parent matter for which the saved queries are to be
+                /// retrieved.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string MatterId { get; private set; }
+
+                /// <summary>The pagination token as returned in the previous response. An empty token means start from
+                /// the beginning.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of saved queries to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/matters/{matterId}/savedQueries"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "matterId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "matterId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2835,6 +3171,22 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Definition of the response for method ListSaveQuery.</summary>
+    public class ListSavedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page token to retrieve the next page of results in the list. If this is empty, then there are no
+        /// more saved queries to list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of output saved queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
+        public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The options for mail export.</summary>
     public class MailExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3030,6 +3382,34 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The updated matter, with state OPEN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matter")]
         public virtual Matter Matter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Definition of the saved query.</summary>
+    public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The server generated timestamp at which saved query was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Name of the saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. The matter id of the associated matter. The server does not look at this field during
+        /// create and always uses matter id in the URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
+        public virtual string MatterId { get; set; } 
+
+        /// <summary>The underlying Query object which contains all the information of the saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual Query Query { get; set; } 
+
+        /// <summary>A unique identifier for the saved query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedQueryId")]
+        public virtual string SavedQueryId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

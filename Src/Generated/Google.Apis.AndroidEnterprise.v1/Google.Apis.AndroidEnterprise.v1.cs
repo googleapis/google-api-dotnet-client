@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181024 (1392)
+ *      <tr><th>API Rev<td>20181105 (1404)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7858,17 +7858,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>This represents a single version of the app.</summary>
     public class AppVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if this version is a production Apk.</summary>
+        /// <summary>True if this version is a production APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isProduction")]
         public virtual System.Nullable<bool> IsProduction { get; set; } 
 
-        /// <summary>The track that this app was published in. For example if track is "alpha", this is an alpha version
-        /// of the app. Deprecated, use track_id instead.</summary>
+        /// <summary>Deprecated, use trackId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string Track { get; set; } 
 
-        /// <summary>The track ids that this version was published in. This field supersedes track, but doesn't include
-        /// the production track.</summary>
+        /// <summary>Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't
+        /// include the production track (see isProduction instead).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
         public virtual System.Collections.Generic.IList<string> TrackId { get; set; } 
 
@@ -8730,7 +8729,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// intended to allow a basic representation of the product within an EMM user interface.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The tracks that are visible to the enterprise with their user-friendly name.</summary>
+        /// <summary>The tracks visible to the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTracks")]
         public virtual System.Collections.Generic.IList<TrackInfo> AppTracks { get; set; } 
 
@@ -8746,7 +8745,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableCountries")]
         public virtual System.Collections.Generic.IList<string> AvailableCountries { get; set; } 
 
-        /// <summary>The tracks that are visible to the enterprise. Deprecated, use app_tracks instead.</summary>
+        /// <summary>Deprecated, use appTracks instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableTracks")]
         public virtual System.Collections.Generic.IList<string> AvailableTracks { get; set; } 
 
@@ -8921,24 +8920,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>Grants visibility to the specified track(s) of the product to the device. The existing track ids
-        /// can be obtained by calling Products.Get.</summary>
+        /// <summary>Grants the device visibility to the specified product release track(s), identified by trackIds. The
+        /// list of release tracks of a product can be obtained by calling Products.Get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
         public virtual System.Collections.Generic.IList<string> TrackIds { get; set; } 
 
-        /// <summary>Grants visibility to the specified track(s) of the product to the device. The track available to
-        /// the device is based on the following order of preference: alpha, beta, production. For example, if an app
-        /// has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to
-        /// both the alpha and beta tracks, if tracks is {"beta", "production"} then the beta version of the app is made
-        /// available to the device. If there are no app versions in the specified track adding the "alpha" and "beta"
-        /// values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or
-        /// beta tracks before users can be granted visibility to apps in those tracks.
-        ///
-        /// The allowed sets are: {} (considered equivalent to {"production"}) {"production"} {"beta", "production"}
-        /// {"alpha", "beta", "production"} The order of elements is not relevant. Any other set of tracks will be
-        /// rejected with an error.
-        ///
-        /// This is deprecated. Use track_ids instead.</summary>
+        /// <summary>Deprecated. Use trackIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<string> Tracks { get; set; } 
 
@@ -9003,24 +8990,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>Grants visibility to the specified track(s) of the product to the user. This replaces the tracks
-        /// field, and specifies the track by their unique id.</summary>
+        /// <summary>Grants the user visibility to the specified product track(s), identified by trackIds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackIds")]
         public virtual System.Collections.Generic.IList<string> TrackIds { get; set; } 
 
-        /// <summary>Grants visibility to the specified track(s) of the product to the user. The track available to the
-        /// user is based on the following order of preference: alpha, beta, production. For example, if an app has a
-        /// prod version, a beta version and an alpha version and the enterprise has been granted visibility to both the
-        /// alpha and beta tracks, if tracks is {"beta", "production"} the user will be able to install the app and they
-        /// will get the beta version of the app. If there are no app versions in the specified track adding the "alpha"
-        /// and "beta" values to the list of tracks will have no effect. Note that the enterprise requires access to
-        /// alpha and/or beta tracks before users can be granted visibility to apps in those tracks.
-        ///
-        /// The allowed sets are: {} (considered equivalent to {"production"}) {"production"} {"beta", "production"}
-        /// {"alpha", "beta", "production"} The order of elements is not relevant. Any other set of tracks will be
-        /// rejected with an error.
-        ///
-        /// This is deprecated. Use track_ids instead.</summary>
+        /// <summary>Deprecated. Use trackIds instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<string> Tracks { get; set; } 
 
@@ -9314,11 +9288,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>Id to name association of a track.</summary>
     public class TrackInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A changeable, user-friendly name for a track.</summary>
+        /// <summary>A modifiable name for a track. This is the visible name in the play developer console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackAlias")]
         public virtual string TrackAlias { get; set; } 
 
-        /// <summary>A unique an unchangeable identifier of a test track.</summary>
+        /// <summary>Unmodifiable, unique track identifier. This identifier is the releaseTrackId in the url of the play
+        /// developer console page that displays the track information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
         public virtual string TrackId { get; set; } 
 

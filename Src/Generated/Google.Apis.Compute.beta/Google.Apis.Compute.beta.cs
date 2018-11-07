@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20181017 (1385)
+ *      <tr><th>API Rev<td>20181022 (1390)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1950,7 +1950,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -1979,7 +1979,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -2038,7 +2038,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -2797,7 +2797,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -2826,7 +2826,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -2885,7 +2885,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -4972,8 +4972,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -4997,7 +4997,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -5047,7 +5047,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -6190,7 +6190,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -6201,7 +6201,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
         {
             return new GetIamPolicyRequest(service, project, zone, resource);
@@ -6230,7 +6230,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -6283,7 +6283,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -6816,7 +6816,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, zone, resource);
@@ -6845,7 +6845,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -6904,7 +6904,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -7038,7 +7038,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -7067,7 +7067,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -7126,7 +7126,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -7665,8 +7665,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -7690,7 +7690,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -7740,7 +7740,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -8739,7 +8739,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -8768,7 +8768,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -8827,7 +8827,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -9348,8 +9348,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -9373,7 +9373,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -9423,7 +9423,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -10052,8 +10052,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -10077,7 +10077,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -10127,7 +10127,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11123,8 +11123,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -11148,7 +11148,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -11198,7 +11198,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11849,8 +11849,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -11874,7 +11874,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -11924,7 +11924,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -12577,8 +12577,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -12602,7 +12602,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -12652,7 +12652,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -13060,7 +13060,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -13145,8 +13145,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
             return new GetIamPolicyRequest(service, project, resource);
@@ -13170,7 +13170,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -13214,7 +13214,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -13475,8 +13475,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
@@ -13500,7 +13500,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -13550,7 +13550,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -13645,8 +13645,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -13670,7 +13670,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -13720,7 +13720,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -13743,12 +13743,12 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be removed from the managed instance group. Abandoning an instance
+        /// does not delete the instance, but it does remove the instance from any target pools that are applied by the
+        /// managed instance group. This method reduces the targetSize of the managed instance group by the number of
+        /// instances that you abandon. This operation is marked as DONE when the action is scheduled even if the
+        /// instances have not yet been removed from the group. You must separately verify the status of the abandoning
+        /// action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -13765,12 +13765,12 @@ namespace Google.Apis.Compute.beta
             return new AbandonInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be removed from the managed instance group. Abandoning an instance
+        /// does not delete the instance, but it does remove the instance from any target pools that are applied by the
+        /// managed instance group. This method reduces the targetSize of the managed instance group by the number of
+        /// instances that you abandon. This operation is marked as DONE when the action is scheduled even if the
+        /// instances have not yet been removed from the group. You must separately verify the status of the abandoning
+        /// action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -14144,11 +14144,11 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
-        /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances in the managed instance group for immediate deletion. The instances
+        /// are also removed from any target pools of which they were a member. This method reduces the targetSize of
+        /// the managed instance group by the number of instances that you delete. This operation is marked as DONE when
+        /// the action is scheduled even if the instances are still being deleted. You must separately verify the status
+        /// of the deleting action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -14165,11 +14165,11 @@ namespace Google.Apis.Compute.beta
             return new DeleteInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
-        /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances in the managed instance group for immediate deletion. The instances
+        /// are also removed from any target pools of which they were a member. This method reduces the targetSize of
+        /// the managed instance group by the number of instances that you delete. This operation is marked as DONE when
+        /// the action is scheduled even if the instances are still being deleted. You must separately verify the status
+        /// of the deleting action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -14379,10 +14379,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
         /// need an increase in this limit.</summary>
@@ -14396,10 +14395,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
         /// need an increase in this limit.</summary>
@@ -14966,10 +14964,10 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -14986,10 +14984,10 @@ namespace Google.Apis.Compute.beta
             return new RecreateInstancesRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -15110,6 +15108,14 @@ namespace Google.Apis.Compute.beta
         /// instances. You must separately verify the status of the creating or deleting actions with the
         /// listmanagedinstances method.
         ///
+        /// When resizing down, the instance group arbitrarily chooses the order in which VMs are deleted. The group
+        /// takes into account some VM attributes when making the selection including:
+        ///
+        /// + The status of the VM instance. + The health of the VM instance. + The instance template version the VM is
+        /// based on. + For regional managed instance groups, the location of the VM instance.
+        ///
+        /// This list is subject to change.
+        ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -15130,6 +15136,14 @@ namespace Google.Apis.Compute.beta
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
         /// listmanagedinstances method.
+        ///
+        /// When resizing down, the instance group arbitrarily chooses the order in which VMs are deleted. The group
+        /// takes into account some VM attributes when making the selection including:
+        ///
+        /// + The status of the VM instance. + The health of the VM instance. + The instance template version the VM is
+        /// based on. + For regional managed instance groups, the location of the VM instance.
+        ///
+        /// This list is subject to change.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -15774,7 +15788,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -15803,7 +15817,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -15862,7 +15876,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -17193,7 +17207,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -17222,7 +17236,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -17281,7 +17295,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -17485,8 +17499,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
             return new GetIamPolicyRequest(service, project, resource);
@@ -17510,7 +17524,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -17554,7 +17568,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -17800,8 +17814,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
@@ -17825,7 +17839,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -17875,7 +17889,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -17884,8 +17898,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -17909,7 +17923,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -17959,7 +17973,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -18501,7 +18515,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -19005,7 +19019,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
         {
             return new GetIamPolicyRequest(service, project, zone, resource);
@@ -19034,7 +19048,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -19087,7 +19101,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -19591,7 +19605,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
+        /// information, read Viewing Referrers to VM Instances.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -19602,7 +19617,8 @@ namespace Google.Apis.Compute.beta
             return new ListReferrersRequest(service, project, zone, instance);
         }
 
-        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
+        /// information, read Viewing Referrers to VM Instances.</summary>
         public class ListReferrersRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InstanceListReferrers>
         {
             /// <summary>Constructs a new ListReferrers request.</summary>
@@ -19834,6 +19850,127 @@ namespace Google.Apis.Compute.beta
             }
 
             /// <summary>Initializes Reset parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resumes an instance that was suspended using the instances().suspend method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to resume.</param>
+        public virtual ResumeRequest Resume(Google.Apis.Compute.beta.Data.InstancesResumeRequest body, string project, string zone, string instance)
+        {
+            return new ResumeRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Resumes an instance that was suspended using the instances().suspend method.</summary>
+        public class ResumeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Resume request.</summary>
+            public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstancesResumeRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to resume.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstancesResumeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resume"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/resume"; }
+            }
+
+            /// <summary>Initializes Resume parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -20155,7 +20292,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, zone, resource);
@@ -20184,7 +20321,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -20243,7 +20380,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -21231,7 +21368,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -21242,7 +21379,7 @@ namespace Google.Apis.Compute.beta
             return new SetTagsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
         public class SetTagsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetTags request.</summary>
@@ -21800,12 +21937,145 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>This method suspends a running instance, saving its state to persistent storage, and allows you to
+        /// resume the instance at a later time. Suspended instances incur reduced per-minute, virtual machine usage
+        /// charges while they are suspended. Any resources the virtual machine is using, such as persistent disks and
+        /// static IP addresses, will continue to be charged until they are deleted.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to suspend.</param>
+        public virtual SuspendRequest Suspend(string project, string zone, string instance)
+        {
+            return new SuspendRequest(service, project, zone, instance);
+        }
+
+        /// <summary>This method suspends a running instance, saving its state to persistent storage, and allows you to
+        /// resume the instance at a later time. Suspended instances incur reduced per-minute, virtual machine usage
+        /// charges while they are suspended. Any resources the virtual machine is using, such as persistent disks and
+        /// static IP addresses, will continue to be charged until they are deleted.</summary>
+        public class SuspendRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Suspend request.</summary>
+            public SuspendRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to suspend.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is false (==
+            /// preserve localSSD data).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "suspend"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/suspend"; }
+            }
+
+            /// <summary>Initializes Suspend parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "discardLocalSsd", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "discardLocalSsd",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -21834,7 +22104,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -21893,7 +22163,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -23183,7 +23453,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -23212,7 +23482,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -23271,7 +23541,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -24210,8 +24480,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -24235,7 +24505,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -24285,7 +24555,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -26303,7 +26573,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -26332,7 +26602,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -26391,7 +26661,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -27242,8 +27512,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -27267,7 +27537,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -27317,7 +27587,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -27936,7 +28206,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
         {
             return new GetIamPolicyRequest(service, project, zone, resource);
@@ -27965,7 +28235,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -28018,7 +28288,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28484,7 +28754,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, zone, resource);
@@ -28513,7 +28783,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -28572,7 +28842,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28704,7 +28974,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -28733,7 +29003,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -28792,7 +29062,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -29167,7 +29437,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
         {
             return new GetIamPolicyRequest(service, project, region, resource);
@@ -29196,7 +29466,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -29249,7 +29519,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -29525,7 +29795,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, region, resource);
@@ -29554,7 +29824,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -29613,7 +29883,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -29624,7 +29894,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -29653,7 +29923,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -29712,7 +29982,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -31967,7 +32237,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -31996,7 +32266,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -32055,7 +32325,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -32904,7 +33174,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -32933,7 +33203,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -32992,7 +33262,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -35020,7 +35290,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -35049,7 +35319,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -35108,7 +35378,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -35131,12 +35401,12 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be immediately removed from the managed instance group. Abandoning
+        /// an instance does not delete the instance, but it does remove the instance from any target pools that are
+        /// applied by the managed instance group. This method reduces the targetSize of the managed instance group by
+        /// the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even
+        /// if the instances have not yet been removed from the group. You must separately verify the status of the
+        /// abandoning action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -35152,12 +35422,12 @@ namespace Google.Apis.Compute.beta
             return new AbandonInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to remove the specified instances from the managed instance group.
-        /// Abandoning an instance does not delete the instance, but it does remove the instance from any target pools
-        /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
-        /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
-        /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.
+        /// <summary>Flags the specified instances to be immediately removed from the managed instance group. Abandoning
+        /// an instance does not delete the instance, but it does remove the instance from any target pools that are
+        /// applied by the managed instance group. This method reduces the targetSize of the managed instance group by
+        /// the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even
+        /// if the instances have not yet been removed from the group. You must separately verify the status of the
+        /// abandoning action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -35386,11 +35656,12 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately deleted. The
         /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// targetSize of the managed instance group by the number of instances that you delete. The deleteInstances
+        /// operation is marked DONE if the deleteInstances request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the deleting action with the listmanagedinstances
+        /// method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -35406,11 +35677,12 @@ namespace Google.Apis.Compute.beta
             return new DeleteInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to delete the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately deleted. The
         /// instances are also removed from any target pools of which they were a member. This method reduces the
-        /// targetSize of the managed instance group by the number of instances that you delete. This operation is
-        /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        /// targetSize of the managed instance group by the number of instances that you delete. The deleteInstances
+        /// operation is marked DONE if the deleteInstances request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the deleting action with the listmanagedinstances
+        /// method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -35618,10 +35890,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A regional managed instance group can contain up to 2000 instances.</summary>
         /// <param name="body">The body of the request.</param>
@@ -35634,10 +35905,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Creates a managed instance group using the information that you specify in the request. After the
-        /// group is created, it schedules an action to create instances in the group using the specified instance
-        /// template. This operation is marked as DONE when the group is created even if the instances in the group have
-        /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.
+        /// group is created, instances in the group are created using the specified instance template. This operation
+        /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
+        /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A regional managed instance group can contain up to 2000 instances.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
@@ -36199,10 +36469,10 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -36218,10 +36488,10 @@ namespace Google.Apis.Compute.beta
             return new RecreateInstancesRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
+        /// <summary>Flags the specified instances in the managed instance group to be immediately recreated. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
-        /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        /// operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must
+        /// separately verify the status of the recreating action with the listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
@@ -36336,11 +36606,13 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Changes the intended size for the managed instance group. If you increase the size, the group
-        /// schedules actions to create new instances using the current instance template. If you decrease the size, the
-        /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
-        /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        /// <summary>Changes the intended size of the managed instance group. If you increase the size, the group
+        /// creates new instances using the current instance template. If you decrease the size, the group deletes one
+        /// or more instances.
+        ///
+        /// The resize operation is marked DONE if the resize request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -36355,11 +36627,13 @@ namespace Google.Apis.Compute.beta
             return new ResizeRequest(service, project, region, instanceGroupManager, size);
         }
 
-        /// <summary>Changes the intended size for the managed instance group. If you increase the size, the group
-        /// schedules actions to create new instances using the current instance template. If you decrease the size, the
-        /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
-        /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        /// <summary>Changes the intended size of the managed instance group. If you increase the size, the group
+        /// creates new instances using the current instance template. If you decrease the size, the group deletes one
+        /// or more instances.
+        ///
+        /// The resize operation is marked DONE if the resize request is successful. The underlying actions take
+        /// additional time. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
@@ -36853,7 +37127,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -36882,7 +37156,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -36941,7 +37215,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -37653,7 +37927,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -37682,7 +37956,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -37741,7 +38015,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -38971,7 +39245,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -39000,7 +39274,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -39059,7 +39333,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -40187,7 +40461,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -40216,7 +40490,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -40275,7 +40549,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -40829,8 +41103,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -40854,7 +41128,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -40904,7 +41178,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -42066,8 +42340,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -42091,7 +42365,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -42141,7 +42415,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -42342,7 +42616,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -42351,8 +42625,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
             return new GetIamPolicyRequest(service, project, resource);
@@ -42376,7 +42650,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -42420,7 +42694,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -42570,8 +42844,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
@@ -42595,7 +42869,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -42645,7 +42919,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -42740,8 +43014,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -42765,7 +43039,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -42815,7 +43089,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -43250,8 +43524,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -43275,7 +43549,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -43325,7 +43599,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -44010,8 +44284,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -44035,7 +44309,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -44085,7 +44359,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -44579,7 +44853,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
         {
             return new GetIamPolicyRequest(service, project, region, resource);
@@ -44608,7 +44882,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -44661,7 +44935,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -45203,7 +45477,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, region, resource);
@@ -45232,7 +45506,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -45291,7 +45565,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -45425,7 +45699,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -45454,7 +45728,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -45513,7 +45787,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -46054,8 +46328,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -46079,7 +46353,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -46129,7 +46403,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -46995,8 +47269,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -47020,7 +47294,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -47070,7 +47344,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -47710,7 +47984,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string zone, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
@@ -47739,7 +48013,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -47798,7 +48072,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -49162,7 +49436,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -49191,7 +49465,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -49250,7 +49524,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -50115,8 +50389,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -50140,7 +50414,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -50190,7 +50464,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -51591,7 +51865,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -51620,7 +51894,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -51679,7 +51953,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -52330,8 +52604,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -52355,7 +52629,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -52405,7 +52679,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -53360,7 +53634,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, region, resource);
@@ -53389,7 +53663,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -53448,7 +53722,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -55373,16 +55647,22 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The fully-qualified URL of a Instance Group resource. This instance group defines the list of
-        /// instances that serve traffic. Member virtual machine instances from each instance group must live in the
-        /// same zone as the instance group itself. No two backends in a backend service are allowed to use same
-        /// Instance Group resource.
+        /// <summary>The fully-qualified URL of an Instance Group or Network Endpoint Group resource. In case of
+        /// instance group this defines the list of instances that serve traffic. Member virtual machine instances from
+        /// each instance group must live in the same zone as the instance group itself. No two backends in a backend
+        /// service are allowed to use same Instance Group resource.
         ///
-        /// Note that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial
-        /// URL.
+        /// For Network Endpoint Groups this defines list of endpoints. All endpoints of Network Endpoint Group must be
+        /// hosted on instances located in the same zone as the Network Endpoint Group.
+        ///
+        /// Backend service can not contain mix of Instance Group and Network Endpoint Group backends.
+        ///
+        /// Note that you must specify an Instance Group or Network Endpoint Group resource using the fully-qualified
+        /// URL, rather than a partial URL.
         ///
         /// When the BackendService has load balancing scheme INTERNAL, the instance group must be within the same
-        /// region as the BackendService.</summary>
+        /// region as the BackendService. Network Endpoint Groups are not supported for INTERNAL load balancing
+        /// scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -55821,6 +56101,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class BackendServiceGroupHealth : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Health state of the backend instances or endpoints in requested instance or network endpoint group,
+        /// determined based on configured health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
         public virtual System.Collections.Generic.IList<HealthStatus> HealthStatus { get; set; } 
 
@@ -57547,6 +57829,14 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
+        /// <summary>This field is used along with the backend_service field for internal load balancing or with the
+        /// target field for internal TargetInstance. This field cannot be used with port or portRange fields.
+        ///
+        /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets
+        /// addressed to any ports will be forwarded to the backends configured with this forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allPorts")]
+        public virtual System.Nullable<bool> AllPorts { get; set; } 
+
         /// <summary>This field is only used for INTERNAL load balancing.
         ///
         /// For internal load balancing, this field identifies the BackendService resource to receive the matched
@@ -58960,6 +59250,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -59878,7 +60171,7 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>If this flag is true, the managed instance group attempts to create all instances initiated by this
         /// resize request only once. If there is an error during creation, the managed instance group does not retry
         /// create this instance, and we will decrease the targetSize of the request instead. If the flag is false, the
-        /// group attemps to recreate each instance continuously until it succeeds.
+        /// group attempts to recreate each instance continuously until it succeeds.
         ///
         /// This flag matters only in the first attempt of creation of an instance. After an instance is successfully
         /// created while this flag is enabled, the instance behaves the same way as all the other instances created
@@ -60560,6 +60853,29 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] The status of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstancesResumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Array of disks associated with this instance that are protected with a customer-supplied encryption
+        /// key.
+        ///
+        /// In order to resume the instance, the disk url and its corresponding key must be provided.
+        ///
+        /// If the disk is not protected with a customer-supplied encryption key it should not be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CustomerEncryptionKeyProtectedDisk> Disks { get; set; } 
+
+        /// <summary>Decrypts data associated with an instance that is protected with a customer-supplied encryption
+        /// key.
+        ///
+        /// If the instance you are starting is protected with a customer-supplied encryption key, the correct key must
+        /// be provided otherwise the instance resume will not succeed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceEncryptionKey")]
+        public virtual CustomerEncryptionKey InstanceEncryptionKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61879,7 +62195,11 @@ namespace Google.Apis.Compute.beta.Data
     public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.</summary>
+        /// the LocalIAM implementation, for now.
+        ///
+        /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy
+        /// the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists
+        /// because there is active work being done to support it (b/115874152).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
         public virtual string LogMode { get; set; } 
 
@@ -63420,7 +63740,7 @@ namespace Google.Apis.Compute.beta.Data
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// charaicter, which cannot be a dash.</summary>
+        /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -64319,11 +64639,15 @@ namespace Google.Apis.Compute.beta.Data
     public class PathMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full or partial URL to the BackendService resource. This will be used if none of the pathRules
-        /// defined by this PathMatcher is matched by the URL's path portion. For example, the following are all valid
-        /// URLs to a BackendService resource: -
+        /// or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a
+        /// BackendService resource: -
         /// https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService -
-        /// compute/v1/projects/project/global/backendServices/backendService -
-        /// global/backendServices/backendService</summary>
+        /// compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService
+        /// Use defaultService instead of defaultRouteAction when simple routing to a backend service is desired and
+        /// other advanced capabilities like traffic splitting and URL rewrites are not required. Only one of
+        /// defaultService, defaultRouteAction or defaultUrlRedirect must be set. Authorization requires one or more of
+        /// the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use
+        /// - compute.backendServices.use</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
 
@@ -64336,7 +64660,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The list of path rules.</summary>
+        /// <summary>The list of path rules. Use this list instead of routeRules when routing based on simple path
+        /// matching is all that's required. The order by which path rules are specified does not matter. Matches are
+        /// always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c will match before
+        /// /a/b irrespective of the order in which those paths appear in this list. Only one of pathRules or routeRules
+        /// must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathRules")]
         public virtual System.Collections.Generic.IList<PathRule> PathRules { get; set; } 
 
@@ -64354,7 +64682,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
 
-        /// <summary>The URL of the BackendService resource if this rule is matched.</summary>
+        /// <summary>The URL of the backend service resource if this rule is matched. Use service instead of routeAction
+        /// when simple routing to a backend service is desired and other advanced capabilities like traffic splitting
+        /// and rewrites are not required. Only one of service, routeAction or urlRedirect should must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -65288,7 +65618,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class ResourceGroupReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URI referencing one of the instance groups listed in the backend service.</summary>
+        /// <summary>A URI referencing one of the instance groups or network endpoint groups listed in the backend
+        /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -65464,7 +65795,7 @@ namespace Google.Apis.Compute.beta.Data
     }    
 
     /// <summary>A backup schedule policy specifies when and how frequently snapshots are to be created for the target
-    /// disk. Also specifies how many and how long these automatically created snapshot should be retained.</summary>
+    /// disk. Also specifies how many and how long these scheduled snapshots should be retained.</summary>
     public class ResourcePolicyBackupSchedulePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Retention policy applied to snapshots created by this resource policy.</summary>
@@ -65476,7 +65807,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual ResourcePolicyBackupSchedulePolicySchedule Schedule { get; set; } 
 
-        /// <summary>Properties with which snapshots are created such as lables, encryption keys.</summary>
+        /// <summary>Properties with which snapshots are created such as labels, encryption keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotProperties")]
         public virtual ResourcePolicyBackupSchedulePolicySnapshotProperties SnapshotProperties { get; set; } 
 
@@ -65484,12 +65815,16 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Policy for retention of automatically created snapshots.</summary>
+    /// <summary>Policy for retention of scheduled snapshots.</summary>
     public class ResourcePolicyBackupSchedulePolicyRetentionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum age of the snapshot that is allowed to be kept.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionDays")]
         public virtual System.Nullable<int> MaxRetentionDays { get; set; } 
+
+        /// <summary>Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onSourceDiskDelete")]
+        public virtual string OnSourceDiskDelete { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65511,21 +65846,17 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specified snapshot properties for automatic snapshots created by this policy.</summary>
+    /// <summary>Specified snapshot properties for scheduled snapshots created by this policy.</summary>
     public class ResourcePolicyBackupSchedulePolicySnapshotProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indication to perform a ?guest aware? snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
         public virtual System.Nullable<bool> GuestFlush { get; set; } 
 
-        /// <summary>Labels to apply to automatic snapshots. These can be later modified by the setLabels method. Label
+        /// <summary>Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label
         /// values may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>GCS bucket storage location of the auto snapshot (regional or multi-regional).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
-        public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65544,7 +65875,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Duration { get; set; } 
 
         /// <summary>Time within the window to start the operations. It must be in format "HH:MM?, where HH : [00-23]
-        /// and MM : [00-59] GMT.</summary>
+        /// and MM : [00-00] GMT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
@@ -65565,7 +65896,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Nullable<int> HoursInCycle { get; set; } 
 
         /// <summary>Time within the window to start the operations. It must be in format "HH:MM?, where HH : [00-23]
-        /// and MM : [00-59] GMT.</summary>
+        /// and MM : [00-00] GMT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
@@ -65670,7 +66001,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Duration { get; set; } 
 
         /// <summary>Time within the window to start the operations. It must be in format "HH:MM?, where HH : [00-23]
-        /// and MM : [00-59] GMT.</summary>
+        /// and MM : [00-00] GMT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
@@ -65732,6 +66063,15 @@ namespace Google.Apis.Compute.beta.Data
         /// using a full or partial valid URL:  projects//global/gateways/default-internet-gateway</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopGateway")]
         public virtual string NextHopGateway { get; set; } 
+
+        /// <summary>The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching
+        /// packets. You can only specify the forwarding rule as a partial or full URL. For example, the following are
+        /// all valid URLs: -
+        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule -
+        /// regions/region/forwardingRules/forwardingRule  Note that this can only be used when the destination_range is
+        /// a public (non-RFC 1918) IP CIDR range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopIlb")]
+        public virtual string NextHopIlb { get; set; } 
 
         /// <summary>The URL to an instance that should handle matching packets. You can specify this as a full or
         /// partial URL. For example:
@@ -66836,10 +67176,6 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expr")]
         public virtual Expr Expr { get; set; } 
 
-        /// <summary>CIDR IP address range.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]
-        public virtual System.Collections.Generic.IList<string> SrcIpRanges { get; set; } 
-
         /// <summary>Preconfigured versioned expression. If this field is specified, config must also be specified.
         /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the
         /// corresponding src_ip_range field in config.</summary>
@@ -66991,7 +67327,7 @@ namespace Google.Apis.Compute.beta.Data
     /// ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Set to true if snapshots are autoamtically by applying resource policy on the target
+        /// <summary>[Output Only] Set to true if snapshots are automatically by applying resource policy on the target
         /// disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreated")]
         public virtual System.Nullable<bool> AutoCreated { get; set; } 
@@ -68146,7 +68482,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string SelfLink { get; set; } 
 
         /// <summary>URLs to SslCertificate resources that are used to authenticate connections between users and the
-        /// load balancer. Currently, exactly one SSL certificate must be specified.</summary>
+        /// load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL
+        /// certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
@@ -68568,7 +68905,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Sesssion affinity option, must be one of the following values: NONE: Connections from the same
+        /// <summary>Session affinity option, must be one of the following values: NONE: Connections from the same
         /// client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the
         /// same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same
         /// client IP with the same IP protocol will go to the same instance in the pool while that instance remains
@@ -68920,8 +69257,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
-        /// <summary>URLs to SslCertificate resources that are used to authenticate connections to Backends. Currently
-        /// exactly one SSL certificate must be specified.</summary>
+        /// <summary>URLs to SslCertificate resources that are used to authenticate connections to Backends. At least
+        /// one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
@@ -69466,7 +69803,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>The URL of the BackendService resource if none of the hostRules match.</summary>
+        /// <summary>The URL of the backendService resource if none of the hostRules match. Use defaultService instead
+        /// of defaultRouteAction when simple routing to a backendService is desired and other advanced capabilities
+        /// like traffic splitting and rewrites are not required. Only one of defaultService, defaultRouteAction or
+        /// defaultUrlRedirect should must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
 
