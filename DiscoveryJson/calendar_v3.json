@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/LCd2H1cObNtoO1eXOTbdlxX7PZ4\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/7shFmGJYOQm8lYcU7swGRcnQGuU\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
@@ -70,7 +70,7 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/calendar": {
-     "description": "Manage your calendars"
+     "description": "See, edit, share, and permanently delete all the calendars you can access using Google Calendar"
     },
     "https://www.googleapis.com/auth/calendar.events": {
      "description": "View and edit events on all your calendars"

@@ -1343,6 +1343,12 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// The starting point of a query result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The maximum number of jobs to be returned per page of results.
             ///
             /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
@@ -1378,12 +1384,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The starting point of a query result.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1409,6 +1409,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1430,15 +1439,6 @@ namespace Google.Apis.JobService.v2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1690,6 +1690,42 @@ namespace Google.Apis.JobService.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
             /// <summary>Optional.
             ///
             /// If provided, restricts completion to the specified company.</summary>
@@ -1727,42 +1763,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,6 +1787,24 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
@@ -1818,24 +1836,6 @@ namespace Google.Apis.JobService.v2
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

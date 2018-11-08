@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/kqiK7ItRiK15mvY7aRI-n1_7sqk\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/VLyImJGzXts_KS67b2e3DXRtsxU\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20181029",
+ "revision": "20181106",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -2936,7 +2936,7 @@
     },
     "product": {
      "$ref": "OrderLineItemProduct",
-     "description": "Product data from the time of the order placement."
+     "description": "Product data as seen by customer from the time of the order placement. Note that certain attributes values (e.g. title or gtin) might be reformatted and no longer match values submitted via product feed."
     },
     "quantityCanceled": {
      "type": "integer",
@@ -3072,10 +3072,6 @@
     "amount": {
      "$ref": "Price",
      "description": "Amount of the fee."
-    },
-    "id": {
-     "type": "string",
-     "description": "Case-insensitive fee ID."
     },
     "name": {
      "type": "string",
@@ -8605,6 +8601,7 @@
       "gmbEmail": {
        "type": "string",
        "description": "The email of the Google My Business account.",
+       "required": true,
        "location": "query"
       },
       "merchantId": {
@@ -8617,7 +8614,8 @@
      },
      "parameterOrder": [
       "merchantId",
-      "accountId"
+      "accountId",
+      "gmbEmail"
      ],
      "response": {
       "$ref": "LiasettingsRequestGmbAccessResponse"
@@ -8681,21 +8679,25 @@
       "contactEmail": {
        "type": "string",
        "description": "The email of the inventory verification contact.",
+       "required": true,
        "location": "query"
       },
       "contactName": {
        "type": "string",
        "description": "The name of the inventory verification contact.",
+       "required": true,
        "location": "query"
       },
       "country": {
        "type": "string",
        "description": "The country for which inventory verification is requested.",
+       "required": true,
        "location": "query"
       },
       "language": {
        "type": "string",
        "description": "The language for which inventory verification is requested.",
+       "required": true,
        "location": "query"
       },
       "merchantId": {
@@ -8708,7 +8710,11 @@
      },
      "parameterOrder": [
       "merchantId",
-      "accountId"
+      "accountId",
+      "contactEmail",
+      "contactName",
+      "country",
+      "language"
      ],
      "response": {
       "$ref": "LiasettingsSetInventoryVerificationContactResponse"
@@ -8733,6 +8739,7 @@
       "country": {
        "type": "string",
        "description": "The country for which the POS data provider is selected.",
+       "required": true,
        "location": "query"
       },
       "merchantId": {
@@ -8756,7 +8763,8 @@
      },
      "parameterOrder": [
       "merchantId",
-      "accountId"
+      "accountId",
+      "country"
      ],
      "response": {
       "$ref": "LiasettingsSetPosDataProviderResponse"

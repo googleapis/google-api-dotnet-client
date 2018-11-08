@@ -681,18 +681,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
-            /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
-            /// next_page_token field.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional. The sort order of the list results. If not specified results may be returned in
-            /// arbitrary order. You can sort the results in descending order based on the creation timestamp using
-            /// `order_by="create_time desc"`. Currently, only sorting by `create_time desc` is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
             /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
             /// are associated with. Inferred from the caller identity if not provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
@@ -708,6 +696,18 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// sdk/alertcenter/reference/filter-fields).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
+            /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
+            /// next_page_token field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The sort order of the list results. If not specified results may be returned in
+            /// arbitrary order. You can sort the results in descending order based on the creation timestamp using
+            /// `order_by="create_time desc"`. Currently, only sorting by `create_time desc` is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -734,24 +734,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "customerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "customerId",
@@ -773,6 +755,24 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

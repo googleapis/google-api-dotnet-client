@@ -115,7 +115,8 @@ namespace Google.Apis.Calendar.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Calendar API.</summary>
         public class Scope
         {
-            /// <summary>Manage your calendars</summary>
+            /// <summary>See, edit, share, and permanently delete all the calendars you can access using Google
+            /// Calendar</summary>
             public static string Calendar = "https://www.googleapis.com/auth/calendar";
 
             /// <summary>View and edit events on all your calendars</summary>
