@@ -1,11 +1,13 @@
 {
+  "fullyEncodeReservedExpansion": true,
+  "title": "Stackdriver Profiler API",
   "ownerName": "Google",
   "resources": {
     "projects": {
       "resources": {
         "profiles": {
           "methods": {
-            "createOffline": {
+            "create": {
               "response": {
                 "$ref": "Profile"
               },
@@ -27,51 +29,22 @@
                   "pattern": "^projects/[^/]+$"
                 }
               },
+              "flatPath": "v2/projects/{projectsId}/profiles",
+              "path": "v2/{+parent}/profiles",
+              "id": "cloudprofiler.projects.profiles.create",
+              "request": {
+                "$ref": "CreateProfileRequest"
+              },
+              "description": "CreateProfile creates a new profile resource in the online mode.\n\nThe server ensures that the new profiles are created at a constant rate per\ndeployment, so the creation request may hang for some time until the next\nprofile session is available.\n\nThe request may fail with ABORTED error if the creation is not available\nwithin ~1m, the response will indicate the duration of the backoff the\nclient should take before attempting creating a profile again. The backoff\nduration is returned in google.rpc.RetryInfo extension on the response\nstatus. To a gRPC client, the extension will be return as a\nbinary-serialized proto in the trailing metadata item named\n\"google.rpc.retryinfo-bin\"."
+            },
+            "createOffline": {
               "flatPath": "v2/projects/{projectsId}/profiles:createOffline",
               "path": "v2/{+parent}/profiles:createOffline",
               "id": "cloudprofiler.projects.profiles.createOffline",
+              "description": "CreateOfflineProfile creates a new profile resource in the offline mode.\nThe client provides the profile to create along with the profile bytes, the\nserver records it.",
               "request": {
                 "$ref": "Profile"
               },
-              "description": "CreateOfflineProfile creates a new profile resource in the offline mode.\nThe client provides the profile to create along with the profile bytes, the\nserver records it."
-            },
-            "patch": {
-              "description": "UpdateProfile updates the profile bytes and labels on the profile resource\ncreated in the online mode. Updating the bytes for profiles created in the\noffline mode is currently not supported: the profile content must be\nprovided at the time of the profile creation.",
-              "request": {
-                "$ref": "Profile"
-              },
-              "httpMethod": "PATCH",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "Profile"
-              },
-              "parameters": {
-                "name": {
-                  "pattern": "^projects/[^/]+/profiles/[^/]+$",
-                  "location": "path",
-                  "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
-                  "required": true,
-                  "type": "string"
-                },
-                "updateMask": {
-                  "description": "Field mask used to specify the fields to be overwritten. Currently only\nprofile_bytes and labels fields are supported by UpdateProfile, so only\nthose fields can be specified in the mask. When no mask is provided, all\nfields are overwritten.",
-                  "format": "google-fieldmask",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/monitoring",
-                "https://www.googleapis.com/auth/monitoring.write"
-              ],
-              "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}",
-              "id": "cloudprofiler.projects.profiles.patch",
-              "path": "v2/{+name}"
-            },
-            "create": {
               "response": {
                 "$ref": "Profile"
               },
@@ -92,14 +65,43 @@
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/monitoring",
                 "https://www.googleapis.com/auth/monitoring.write"
-              ],
-              "flatPath": "v2/projects/{projectsId}/profiles",
-              "path": "v2/{+parent}/profiles",
-              "id": "cloudprofiler.projects.profiles.create",
-              "description": "CreateProfile creates a new profile resource in the online mode.\n\nThe server ensures that the new profiles are created at a constant rate per\ndeployment, so the creation request may hang for some time until the next\nprofile session is available.\n\nThe request may fail with ABORTED error if the creation is not available\nwithin ~1m, the response will indicate the duration of the backoff the\nclient should take before attempting creating a profile again. The backoff\nduration is returned in google.rpc.RetryInfo extension on the response\nstatus. To a gRPC client, the extension will be return as a\nbinary-serialized proto in the trailing metadata item named\n\"google.rpc.retryinfo-bin\".",
+              ]
+            },
+            "patch": {
+              "description": "UpdateProfile updates the profile bytes and labels on the profile resource\ncreated in the online mode. Updating the bytes for profiles created in the\noffline mode is currently not supported: the profile content must be\nprovided at the time of the profile creation.",
               "request": {
-                "$ref": "CreateProfileRequest"
-              }
+                "$ref": "Profile"
+              },
+              "response": {
+                "$ref": "Profile"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PATCH",
+              "parameters": {
+                "updateMask": {
+                  "location": "query",
+                  "description": "Field mask used to specify the fields to be overwritten. Currently only\nprofile_bytes and labels fields are supported by UpdateProfile, so only\nthose fields can be specified in the mask. When no mask is provided, all\nfields are overwritten.",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                },
+                "name": {
+                  "pattern": "^projects/[^/]+/profiles/[^/]+$",
+                  "location": "path",
+                  "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/monitoring",
+                "https://www.googleapis.com/auth/monitoring.write"
+              ],
+              "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}",
+              "path": "v2/{+name}",
+              "id": "cloudprofiler.projects.profiles.patch"
             }
           }
         }
@@ -107,54 +109,38 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
     "uploadType": {
       "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     },
     "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
     },
     "alt": {
       "description": "Data format for response.",
@@ -172,15 +158,31 @@
       ],
       "location": "query"
     },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v2",
@@ -189,12 +191,72 @@
   "description": "Manages continuous profiling information.",
   "servicePath": "",
   "basePath": "",
-  "id": "cloudprofiler:v2",
+  "revision": "20181106",
   "documentationLink": "https://cloud.google.com/profiler/",
-  "revision": "20181029",
+  "id": "cloudprofiler:v2",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "CreateProfileRequest": {
+      "description": "CreateProfileRequest describes a profile resource online creation request.\nThe deployment field must be populated. The profile_type specifies the list\nof profile types supported by the agent. The creation call will hang until a\nprofile of one of these types needs to be collected.",
+      "type": "object",
+      "properties": {
+        "profileType": {
+          "enumDescriptions": [
+            "Unspecified profile type.",
+            "Thread CPU time sampling.",
+            "Wallclock time sampling. More expensive as stops all threads.",
+            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
+            "Single-shot collection of all thread stacks.",
+            "Synchronization contention profile.",
+            "Peak heap profile.",
+            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
+          ],
+          "description": "One or more profile types that the agent is capable of providing.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "PROFILE_TYPE_UNSPECIFIED",
+              "CPU",
+              "WALL",
+              "HEAP",
+              "THREADS",
+              "CONTENTION",
+              "PEAK_HEAP",
+              "HEAP_ALLOC"
+            ],
+            "type": "string"
+          }
+        },
+        "deployment": {
+          "$ref": "Deployment",
+          "description": "Deployment details."
+        }
+      },
+      "id": "CreateProfileRequest"
+    },
+    "Deployment": {
+      "description": "Deployment contains the deployment identification information.",
+      "type": "object",
+      "properties": {
+        "labels": {
+          "description": "Labels identify the deployment within the user universe and same target.\nValidation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`.\nValue for an individual label must be \u003c= 512 bytes, the total\nsize of all label names and values must be \u003c= 1024 bytes.\n\nLabel named \"language\" can be used to record the programming language of\nthe profiled deployment. The standard choices for the value include \"java\",\n\"go\", \"python\", \"ruby\", \"nodejs\", \"php\", \"dotnet\".\n\nFor deployments running on Google Cloud Platform, \"zone\" or \"region\" label\nshould be present describing the deployment location. An example of a zone\nis \"us-central1-a\", an example of a region is \"us-central1\" or\n\"us-central\".",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "target": {
+          "description": "Target is the service name used to group related deployments:\n* Service name for GAE Flex / Standard.\n* Cluster and container name for GKE.\n* User-specified string for direct GCE profiling (e.g. Java).\n* Job name for Dataflow.\nValidation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "Project ID is the ID of a cloud project.\nValidation regex: `^a-z{4,61}[a-z0-9]$`.",
+          "type": "string"
+        }
+      },
+      "id": "Deployment"
+    },
     "Profile": {
       "description": "Profile resource.",
       "type": "object",
@@ -205,6 +267,16 @@
           "type": "string"
         },
         "profileType": {
+          "enumDescriptions": [
+            "Unspecified profile type.",
+            "Thread CPU time sampling.",
+            "Wallclock time sampling. More expensive as stops all threads.",
+            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
+            "Single-shot collection of all thread stacks.",
+            "Synchronization contention profile.",
+            "Peak heap profile.",
+            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
+          ],
           "enum": [
             "PROFILE_TYPE_UNSPECIFIED",
             "CPU",
@@ -216,17 +288,7 @@
             "HEAP_ALLOC"
           ],
           "description": "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified profile type.",
-            "Thread CPU time sampling.",
-            "Wallclock time sampling. More expensive as stops all threads.",
-            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
-            "Single-shot collection of all thread stacks.",
-            "Synchronization contention profile.",
-            "Peak heap profile.",
-            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
-          ]
+          "type": "string"
         },
         "deployment": {
           "$ref": "Deployment",
@@ -250,66 +312,6 @@
         }
       },
       "id": "Profile"
-    },
-    "CreateProfileRequest": {
-      "description": "CreateProfileRequest describes a profile resource online creation request.\nThe deployment field must be populated. The profile_type specifies the list\nof profile types supported by the agent. The creation call will hang until a\nprofile of one of these types needs to be collected.",
-      "type": "object",
-      "properties": {
-        "profileType": {
-          "description": "One or more profile types that the agent is capable of providing.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "PROFILE_TYPE_UNSPECIFIED",
-              "CPU",
-              "WALL",
-              "HEAP",
-              "THREADS",
-              "CONTENTION",
-              "PEAK_HEAP",
-              "HEAP_ALLOC"
-            ]
-          },
-          "enumDescriptions": [
-            "Unspecified profile type.",
-            "Thread CPU time sampling.",
-            "Wallclock time sampling. More expensive as stops all threads.",
-            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
-            "Single-shot collection of all thread stacks.",
-            "Synchronization contention profile.",
-            "Peak heap profile.",
-            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
-          ]
-        },
-        "deployment": {
-          "$ref": "Deployment",
-          "description": "Deployment details."
-        }
-      },
-      "id": "CreateProfileRequest"
-    },
-    "Deployment": {
-      "description": "Deployment contains the deployment identification information.",
-      "type": "object",
-      "properties": {
-        "projectId": {
-          "description": "Project ID is the ID of a cloud project.\nValidation regex: `^a-z{4,61}[a-z0-9]$`.",
-          "type": "string"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Labels identify the deployment within the user universe and same target.\nValidation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`.\nValue for an individual label must be \u003c= 512 bytes, the total\nsize of all label names and values must be \u003c= 1024 bytes.\n\nLabel named \"language\" can be used to record the programming language of\nthe profiled deployment. The standard choices for the value include \"java\",\n\"go\", \"python\", \"ruby\", \"nodejs\", \"php\", \"dotnet\".\n\nFor deployments running on Google Cloud Platform, \"zone\" or \"region\" label\nshould be present describing the deployment location. An example of a zone\nis \"us-central1-a\", an example of a region is \"us-central1\" or\n\"us-central\".",
-          "type": "object"
-        },
-        "target": {
-          "type": "string",
-          "description": "Target is the service name used to group related deployments:\n* Service name for GAE Flex / Standard.\n* Cluster and container name for GKE.\n* User-specified string for direct GCE profiling (e.g. Java).\n* Job name for Dataflow.\nValidation regex: `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`."
-        }
-      },
-      "id": "Deployment"
     }
   },
   "protocol": "rest",
@@ -336,7 +338,5 @@
   "rootUrl": "https://cloudprofiler.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "cloudprofiler",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Stackdriver Profiler API"
+  "batchPath": "batch"
 }

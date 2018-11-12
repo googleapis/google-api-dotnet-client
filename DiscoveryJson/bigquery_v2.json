@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/jYrUubKKHFACpvSbIbPxYlukj5c\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/R8Tpc_l7O7D7GUY4V3Q1_pexUrw\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20181025",
+ "revision": "20181104",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1015,6 +1015,10 @@
      "default": "\"",
      "pattern": ".?"
     },
+    "rangePartitioning": {
+     "$ref": "RangePartitioning",
+     "description": "[Experimental] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified."
+    },
     "schema": {
      "$ref": "TableSchema",
      "description": "[Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore."
@@ -1052,11 +1056,11 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "Time-based partitioning specification for the destination table."
+     "description": "Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified."
     },
     "useAvroLogicalTypes": {
      "type": "boolean",
-     "description": "If sourceFormat is set to \"AVRO\", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER). The default value will be true once this feature launches, but can be set now in preparation."
+     "description": "[Optional] If sourceFormat is set to \"AVRO\", indicates whether to enable interpreting logical types into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER)."
     },
     "writeDisposition": {
      "type": "string",
@@ -1132,6 +1136,10 @@
       "$ref": "QueryParameter"
      }
     },
+    "rangePartitioning": {
+     "$ref": "RangePartitioning",
+     "description": "[Experimental] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified."
+    },
     "schemaUpdateOptions": {
      "type": "array",
      "description": "Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
@@ -1148,7 +1156,7 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "Time-based partitioning specification for the destination table."
+     "description": "Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified."
     },
     "useLegacySql": {
      "type": "boolean",

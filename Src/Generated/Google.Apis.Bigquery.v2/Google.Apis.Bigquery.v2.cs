@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181025 (1393)
+ *      <tr><th>API Rev<td>20181104 (1403)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3591,6 +3591,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; } 
 
+        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
+        public virtual RangePartitioning RangePartitioning { get; set; } 
+
         /// <summary>[Optional] The schema for the destination table. The schema can be omitted if the destination table
         /// already exists, or if you're loading data from Google Cloud Datastore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
@@ -3636,13 +3641,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
 
-        /// <summary>Time-based partitioning specification for the destination table.</summary>
+        /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
-        /// <summary>If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into their
-        /// corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER). The default value
-        /// will be true once this feature launches, but can be set now in preparation.</summary>
+        /// <summary>[Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types
+        /// into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie.
+        /// INTEGER).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; } 
 
@@ -3736,6 +3742,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
+        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
+        public virtual RangePartitioning RangePartitioning { get; set; } 
+
         /// <summary>Allows the schema of the destination table to be updated as a side effect of the query job. Schema
         /// update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
         /// WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For
@@ -3751,7 +3762,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
 
-        /// <summary>Time-based partitioning specification for the destination table.</summary>
+        /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 

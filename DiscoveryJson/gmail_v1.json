@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/zhBQnUVXp-QQ6Y6QUt5UiGZD_sA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/x4D3RSeprBTpZ7qUUZRnzZsdMkA\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
@@ -70,7 +70,7 @@
   "oauth2": {
    "scopes": {
     "https://mail.google.com/": {
-     "description": "Read, send, delete, and manage your email"
+     "description": "Read, compose, send, and permanently delete all your email from Gmail"
     },
     "https://www.googleapis.com/auth/gmail.compose": {
      "description": "Manage drafts and send emails"

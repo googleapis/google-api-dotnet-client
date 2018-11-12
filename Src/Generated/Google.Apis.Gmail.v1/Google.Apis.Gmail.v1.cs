@@ -108,7 +108,7 @@ namespace Google.Apis.Gmail.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Gmail API.</summary>
         public class Scope
         {
-            /// <summary>Read, send, delete, and manage your email</summary>
+            /// <summary>Read, compose, send, and permanently delete all your email from Gmail</summary>
             public static string MailGoogleCom = "https://mail.google.com/";
 
             /// <summary>Manage drafts and send emails</summary>

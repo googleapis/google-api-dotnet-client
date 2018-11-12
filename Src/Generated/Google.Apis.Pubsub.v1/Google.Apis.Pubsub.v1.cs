@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20181105 (1404)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -375,8 +375,9 @@ namespace Google.Apis.Pubsub.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Optional user-provided name for this snapshot. If the name is not provided in the request, the
             /// server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API
-            /// requests, you must specify a name.  See the resource name rules. Format is
-            /// `projects/{project}/snapshots/{snap}`.</param>
+            /// requests, you must specify a name.  See the
+            ///
+            /// resource name rules. Format is `projects/{project}/snapshots/{snap}`.</param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -410,8 +411,9 @@ namespace Google.Apis.Pubsub.v1
 
                 /// <summary>Optional user-provided name for this snapshot. If the name is not provided in the request,
                 /// the server will assign a random name for this snapshot on the same project as the subscription. Note
-                /// that for REST API requests, you must specify a name.  See the resource name rules. Format is
-                /// `projects/{project}/snapshots/{snap}`.</summary>
+                /// that for REST API requests, you must specify a name.  See the
+                ///
+                /// resource name rules. Format is `projects/{project}/snapshots/{snap}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1095,8 +1097,10 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Creates a subscription to a given topic. See the resource name rules. If the subscription
-            /// already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+            /// <summary>Creates a subscription to a given topic. See the
+            ///
+            /// resource name rules. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
+            /// topic doesn't exist, returns `NOT_FOUND`.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
             /// on the same project as the topic, conforming to the [resource name
@@ -1114,8 +1118,10 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a subscription to a given topic. See the resource name rules. If the subscription
-            /// already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+            /// <summary>Creates a subscription to a given topic. See the
+            ///
+            /// resource name rules. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
+            /// topic doesn't exist, returns `NOT_FOUND`.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
             /// on the same project as the topic, conforming to the [resource name
@@ -2264,7 +2270,9 @@ namespace Google.Apis.Pubsub.v1
                 }
             }
 
-            /// <summary>Creates the given topic with the given name. See the resource name rules.</summary>
+            /// <summary>Creates the given topic with the given name. See the
+            ///
+            /// resource name rules.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
             /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`),
@@ -2275,7 +2283,9 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates the given topic with the given name. See the resource name rules.</summary>
+            /// <summary>Creates the given topic with the given name. See the
+            ///
+            /// resource name rules.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Topic>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3009,6 +3019,21 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A policy that specifies the conditions for resource expiration (i.e., automatic resource
+    /// deletion).</summary>
+    public class ExpirationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not
+        /// active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource.
+        /// The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If
+        /// `ttl` is not set, the associated resource never expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an expression text. Example:
     ///
     /// title: "User account presence" description: "Determines whether the request has a user account" expression:
@@ -3227,7 +3252,8 @@ namespace Google.Apis.Pubsub.v1.Data
     }    
 
     /// <summary>A message that is published by publishers and consumed by subscribers. The message must contain either
-    /// a non-empty data field or at least one attribute.</summary>
+    /// a non-empty data field or at least one attribute. See Quotas and limits for more information about message
+    /// limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional attributes for this message.</summary>
@@ -3431,6 +3457,15 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 
+        /// <summary>A policy that specifies the conditions for this subscription's expiration. A subscription is
+        /// considered active as long as any connected subscriber is successfully consuming messages from the
+        /// subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default
+        /// policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
+        /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways and is
+        /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationPolicy")]
+        public virtual ExpirationPolicy ExpirationPolicy { get; set; } 
+
         /// <summary>See  Creating and managing labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -3459,7 +3494,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
-        /// `message_retention_duration` window. This must be true if you would like to Seek to a timestamp.
+        /// `message_retention_duration` window. This must be true if you would like to
+        ///
+        /// Seek to a timestamp.
         ///
         /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways and is
         /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>

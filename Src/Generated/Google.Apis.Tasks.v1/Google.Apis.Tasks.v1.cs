@@ -109,7 +109,7 @@ namespace Google.Apis.Tasks.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Tasks API.</summary>
         public class Scope
         {
-            /// <summary>Manage your tasks</summary>
+            /// <summary>Create, edit, organize, and delete all your tasks</summary>
             public static string Tasks = "https://www.googleapis.com/auth/tasks";
 
             /// <summary>View your tasks</summary>

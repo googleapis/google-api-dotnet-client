@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20181025 (1393)
+ *      <tr><th>API Rev<td>20181101 (1400)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -116,7 +116,7 @@ namespace Google.Apis.Drive.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Drive API.</summary>
         public class Scope
         {
-            /// <summary>View and manage the files in your Google Drive</summary>
+            /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>View and manage its own configuration data in your Google Drive</summary>
@@ -135,7 +135,7 @@ namespace Google.Apis.Drive.v3
             /// <summary>View the photos, videos and albums in your Google Photos</summary>
             public static string DrivePhotosReadonly = "https://www.googleapis.com/auth/drive.photos.readonly";
 
-            /// <summary>View the files in your Google Drive</summary>
+            /// <summary>See and download all your Google Drive files</summary>
             public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
             /// <summary>Modify your Google Apps Script scripts' behavior</summary>

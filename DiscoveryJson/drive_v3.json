@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/EouEjRWwmyA7G2_xNmMUqvcdOmQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/HgUopblzC7cEOr7mgQtFVCUwhzY\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20181025",
+ "revision": "20181101",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -70,7 +70,7 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/drive": {
-     "description": "View and manage the files in your Google Drive"
+     "description": "See, edit, create, and delete all of your Google Drive files"
     },
     "https://www.googleapis.com/auth/drive.appdata": {
      "description": "View and manage its own configuration data in your Google Drive"
@@ -88,7 +88,7 @@
      "description": "View the photos, videos and albums in your Google Photos"
     },
     "https://www.googleapis.com/auth/drive.readonly": {
-     "description": "View the files in your Google Drive"
+     "description": "See and download all your Google Drive files"
     },
     "https://www.googleapis.com/auth/drive.scripts": {
      "description": "Modify your Google Apps Script scripts' behavior"
