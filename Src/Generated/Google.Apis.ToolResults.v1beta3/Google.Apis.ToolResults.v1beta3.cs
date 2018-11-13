@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20181108 (1407)
+ *      <tr><th>API Rev<td>20181112 (1411)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4947,13 +4947,16 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds
-    /// and fractions of seconds at nanosecond resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-    /// Calendar which extends the Gregorian calendar backwards to year one. It is encoded assuming all minutes are 60
-    /// seconds long, i.e. leap seconds are "smeared" so that no leap second table is needed for interpretation. Range
-    /// is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we
-    /// can convert to and from RFC 3339 date strings. See
-    /// [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
+    /// <summary>A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a
+    /// count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC
+    /// midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards
+    /// to year one.
+    ///
+    /// All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for
+    /// interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).
+    ///
+    /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we
+    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
     ///
     /// # Examples
     ///

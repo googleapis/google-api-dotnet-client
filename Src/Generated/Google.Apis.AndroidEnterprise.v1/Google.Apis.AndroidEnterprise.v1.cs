@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181105 (1404)
+ *      <tr><th>API Rev<td>20181112 (1411)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -79,6 +79,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             storelayoutclusters = new StorelayoutclustersResource(this);
             storelayoutpages = new StorelayoutpagesResource(this);
             users = new UsersResource(this);
+            webapps = new WebappsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -247,6 +248,14 @@ namespace Google.Apis.AndroidEnterprise.v1
         public virtual UsersResource Users
         {
             get { return users; }
+        }
+
+        private readonly WebappsResource webapps;
+
+        /// <summary>Gets the Webapps resource.</summary>
+        public virtual WebappsResource Webapps
+        {
+            get { return webapps; }
         }
     }
 
@@ -7606,6 +7615,471 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
     }
+
+    /// <summary>The "webapps" collection of methods.</summary>
+    public class WebappsResource
+    {
+        private const string Resource = "webapps";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public WebappsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes an existing web app.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="webAppId">The ID of the web
+        /// app.</param>
+        public virtual DeleteRequest Delete(string enterpriseId, string webAppId)
+        {
+            return new DeleteRequest(service, enterpriseId, webAppId);
+        }
+
+        /// <summary>Deletes an existing web app.</summary>
+        public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                WebAppId = webAppId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the web app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("webAppId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string WebAppId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "webAppId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webAppId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets an existing web app.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="webAppId">The ID of the web
+        /// app.</param>
+        public virtual GetRequest Get(string enterpriseId, string webAppId)
+        {
+            return new GetRequest(service, enterpriseId, webAppId);
+        }
+
+        /// <summary>Gets an existing web app.</summary>
+        public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string webAppId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                WebAppId = webAppId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the web app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("webAppId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string WebAppId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "webAppId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webAppId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a new web app for the enterprise.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId)
+        {
+            return new InsertRequest(service, body, enterpriseId);
+        }
+
+        /// <summary>Creates a new web app for the enterprise.</summary>
+        public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.WebApp Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the details of all web apps for a given enterprise.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        public virtual ListRequest List(string enterpriseId)
+        {
+            return new ListRequest(service, enterpriseId);
+        }
+
+        /// <summary>Retrieves the details of all web apps for a given enterprise.</summary>
+        public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebAppsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an existing web app. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="webAppId">The ID of the web
+        /// app.</param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
+        {
+            return new PatchRequest(service, body, enterpriseId, webAppId);
+        }
+
+        /// <summary>Updates an existing web app. This method supports patch semantics.</summary>
+        public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                WebAppId = webAppId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the web app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("webAppId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string WebAppId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.WebApp Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "webAppId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webAppId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an existing web app.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="webAppId">The ID of the web
+        /// app.</param>
+        public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
+        {
+            return new UpdateRequest(service, body, enterpriseId, webAppId);
+        }
+
+        /// <summary>Updates an existing web app.</summary>
+        public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.WebApp>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.WebApp body, string enterpriseId, string webAppId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                WebAppId = webAppId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the web app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("webAppId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string WebAppId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.WebApp Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/webApps/{webAppId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "webAppId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "webAppId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.AndroidEnterprise.v1.Data
@@ -9407,6 +9881,74 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The value of the placeholder, specific to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userValue")]
         public virtual string UserValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>WebApp resource info.</summary>
+    public class WebApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display mode of the web app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
+        public virtual string DisplayMode { get; set; } 
+
+        /// <summary>A list of icons representing this website. Must have at least one element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icons")]
+        public virtual System.Collections.Generic.IList<WebAppIcon> Icons { get; set; } 
+
+        /// <summary>A flag whether the app has been published to the Play store yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPublished")]
+        public virtual System.Nullable<bool> IsPublished { get; set; } 
+
+        /// <summary>The start URL, i.e. the URL that should load when the user opens the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startUrl")]
+        public virtual string StartUrl { get; set; } 
+
+        /// <summary>The title of the web application as displayed to the user (e.g., amongst a list of other
+        /// applications, or as a label for an icon).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The current version of the app.
+        ///
+        /// Note that the version can automatically increase during the lifetime of the web app, while Google does
+        /// internal housekeeping to keep the web app up-to-date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<long> VersionCode { get; set; } 
+
+        /// <summary>The ID of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webAppId")]
+        public virtual string WebAppId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Icon for a web app.</summary>
+    public class WebAppIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64
+        /// Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should
+        /// ideally be square. - The image should ideally have a size of 512x512.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageData")]
+        public virtual string ImageData { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The web app details for an enterprise.</summary>
+    public class WebAppsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#webAppsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The manifest describing a web app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
+        public virtual System.Collections.Generic.IList<WebApp> WebApp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

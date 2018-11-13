@@ -383,11 +383,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string TargetAndroidAppPackageName { get; set; }
-
             /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
             /// acquired like this:
             ///
@@ -508,6 +503,11 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceAndroidAppPackageName { get; set; }
 
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TargetAndroidAppPackageName { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -532,15 +532,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "target.androidApp.packageName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
                     {
@@ -590,6 +581,15 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.androidApp.packageName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "target.androidApp.packageName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
