@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20181102 (1401)
+ *      <tr><th>API Rev<td>20181112 (1411)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -622,7 +622,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         ///
         /// 2----3 |    | 1----0
         ///
-        /// and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
@@ -1197,7 +1197,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         ///
         /// 2----3 |    | 1----0
         ///
-        /// and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -1220,6 +1220,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>A bounding polygon for the detected image annotation.</summary>
     public class GoogleCloudVisionV1p1beta1BoundingPoly : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The bounding polygon normalized vertices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedVertices")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1NormalizedVertex> NormalizedVertices { get; set; } 
+
         /// <summary>The bounding polygon vertices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertices")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1Vertex> Vertices { get; set; } 
@@ -1683,6 +1687,22 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to
+    /// the original image and range from 0 to 1.</summary>
+    public class GoogleCloudVisionV1p1beta1NormalizedVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>X coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; } 
+
+        /// <summary>Y coordinate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains metadata for the BatchAnnotateImages operation.</summary>
     public class GoogleCloudVisionV1p1beta1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1760,7 +1780,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
         /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -2236,7 +2256,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
         /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -2380,7 +2400,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         ///
         /// 2----3 |    | 1----0
         ///
-        /// and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -2832,7 +2852,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
         /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3265,7 +3285,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
         /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3432,7 +3452,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         ///
         /// 2----3 |    | 1----0
         ///
-        /// and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -3905,7 +3925,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
         /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4373,7 +4393,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
         /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -4690,7 +4710,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around
         /// the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the
         /// text is horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-
-        /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// left corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
@@ -5158,7 +5178,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
         /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
         /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// corner it becomes: 2----3 |    | 1----0 and the vertex order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
