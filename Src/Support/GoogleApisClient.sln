@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "Integra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.Mvc", "Google.Apis.Auth.Mvc\Google.Apis.Auth.Mvc.csproj", "{22ED8B87-9A8E-4330-8011-318A85F545DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.AspNetCore", "Google.Apis.Auth.AspNetCore\Google.Apis.Auth.AspNetCore.csproj", "{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore", "Google.Apis.Auth.AspNetCore\Google.Apis.Auth.AspNetCore.csproj", "{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.AspNetCore.IntegrationTests", "Google.Apis.Auth.AspNetCore.IntegrationTests\Google.Apis.Auth.AspNetCore.IntegrationTests.csproj", "{A88DC5FE-4697-4D1F-A374-D620E77A5383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
