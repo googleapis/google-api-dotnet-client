@@ -1,58 +1,124 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿/*
+Copyright 2018 Google Inc
 
-namespace Google.Apis.Auth.AspNetCore
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+using Google.Apis.Auth.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
+using System.Linq;
+
+// Microsoft recommend that all service Add methods go in this namespace.
+// See https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class GoogleOpenIdConnectExtensions
     {
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder) =>
-                AddGoogleOpenIdConnect(builder, _ => { });
+                        AddGoogleOpenIdConnect(builder, _ => { });
 
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
-            Action<OpenIdConnectOptions> configureOptions) =>
-                AddGoogleOpenIdConnect(builder, GoogleOpenIdConnectDefaults.AuthenticationScheme, configureOptions);
+           Action<OpenIdConnectOptions> configureOptions) =>
+               AddGoogleOpenIdConnect(builder, GoogleOpenIdConnectDefaults.AuthenticationScheme, configureOptions);
 
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
-            string authenticationScheme, Action<OpenIdConnectOptions> configureOptions) =>
-                AddGoogleOpenIdConnect(builder, authenticationScheme, GoogleOpenIdConnectDefaults.DisplayName, configureOptions);
+           string authenticationScheme, Action<OpenIdConnectOptions> configureOptions) =>
+               AddGoogleOpenIdConnect(builder, authenticationScheme, GoogleOpenIdConnectDefaults.DisplayName, configureOptions);
 
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
             string authenticationScheme, string displayName, Action<OpenIdConnectOptions> configureOptions)
         {
-            builder.AddOpenIdConnect(authenticationScheme, displayName, options =>
+            // Service to provide the authentication scheme name.
+            builder.Services.AddSingleton(new GoogleAuthenticationSchemeProvider(authenticationScheme));
+            // Services to facilitate the GoogleScopedAuthorize attribute.
+            builder.Services.AddTransient<IAuthorizationPolicyProvider, GoogleScopedPolicyProvider>();
+            builder.Services.AddScoped<IAuthorizationHandler, GoogleScopedAuthorizeHandler>();
+            // Required to provide access to HttpContext in GoogleAuthProvider.
+            builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Service to provide user access to the Google auth information.
+            builder.Services.AddSingleton<IGoogleAuthProvider, GoogleAuthProvider>();
+            return builder.AddOpenIdConnect(authenticationScheme, displayName, options =>
             {
-                // Run user-provided options configuration.
-                configureOptions(options);
+                // Google's OpenID authority URL.
+                options.Authority = "https://accounts.google.com";
                 // Response-code to get an id-token with profile information,
                 // and a code to use to get an access-token and refresh-token.
                 options.ResponseType = "id_token code";
                 // Scopes to announce this is an OpenID auth, and get simple profile information.
+                options.Scope.Clear();
                 options.Scope.Add("openid");
-                options.Scope.Add("profile");
                 options.Scope.Add("email");
-                // OpenID authority URL.
-                options.Authority = "https://accounts.google.com";
+                options.Scope.Add("profile");
                 // Save the id-token, access-token and refresh-token in the auth properties.
                 options.SaveTokens = true;
-                // Forward all events, and use the event to require consent and offline
-                // Both of these are required to get a refresh token.
+                // Call user configuration.
+                configureOptions(options);
+                // Add event handlers.
                 var userEvents = options.Events;
                 options.Events = new OpenIdConnectEvents
                 {
-                    // Forward then handle event.
-                    OnRedirectToIdentityProvider = async context =>
+                    OnRedirectToIdentityProvider = async ctx =>
                     {
-                        // Run existing user-provided event.
-                        await userEvents.OnRedirectToIdentityProvider(context);
-                        // Force asking for user consent.
-                        // This is required to get a refresh-token.
-                        context.ProtocolMessage.Prompt = "consent";
+                        // Force asking for user consent. This is required to get a refresh-token.
+                        ctx.ProtocolMessage.Prompt = "consent";
                         // Offline access required to get a refresh-token.
-                        context.ProtocolMessage.SetParameter("access_type", "offline");
+                        ctx.ProtocolMessage.SetParameter("access_type", "offline");
+                        // Determine if user is already authenticated.
+                        var auth = await ctx.HttpContext.AuthenticateAsync(authenticationScheme);
+                        var authed = auth.Succeeded && !auth.None;
+                        // Handle scopes, with incremental auth if required.
+                        if (ctx.HttpContext.Items.TryGetValue(Consts.HttpContextAdditionalScopeName, out var scope0) && scope0 is string incrementalScope)
+                        {
+                            if (authed)
+                            {
+                                // If user is already authenticated, use incremental auth.
+                                ctx.ProtocolMessage.SetParameter("include_granted_scopes", "true");
+                                ctx.ProtocolMessage.Scope = incrementalScope;
+                            }
+                            else
+                            {
+                                // If user is not authenticated, use standard (non-incremental) auth.
+                                ctx.ProtocolMessage.Scope += $" {incrementalScope}";
+                            }
+                        }
+                        if (authed && auth.Properties.Items.TryGetValue(Consts.ScopeName, out var existingScope))
+                        {
+                            // Pass-through the scopes that are already authorized.
+                            // This is required because all properties are wiped and re-created from this
+                            // auth process. To keep a property requires setting it here; scopes are the only property we need to keep.
+                            ctx.Properties.Items[Consts.ScopeName] = existingScope;
+                        }
+                        // Call user event last so all behaviour can be overridden.
+                        await userEvents.OnRedirectToIdentityProvider(ctx);
                     },
-                    // Forward all other events.
+                    OnTokenResponseReceived = async ctx =>
+                    {
+                        // TODO: Check this is definitely the correct handler in which to do this.
+                        // Call user event first so all behaviour can be overridden.
+                        await userEvents.OnTokenResponseReceived(ctx);
+                        // Merge existing scopes and newly acquired scopes.
+                        var scope = ctx.Properties.Items.TryGetValue(Consts.ScopeName, out var scope0) ? scope0 : "";
+                        var scopes = scope.Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+                        var newScopes = (ctx.ProtocolMessage.Scope ?? "").Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+                        var mergedScopes = scopes.Concat(newScopes).Distinct();
+                        ctx.Properties.Items[Consts.ScopeName] = string.Join(" ", mergedScopes);
+                    },
                     OnAuthenticationFailed = userEvents.OnAuthenticationFailed,
                     OnAuthorizationCodeReceived = userEvents.OnAuthorizationCodeReceived,
                     OnMessageReceived = userEvents.OnMessageReceived,
@@ -60,16 +126,10 @@ namespace Google.Apis.Auth.AspNetCore
                     OnRemoteFailure = userEvents.OnRemoteFailure,
                     OnRemoteSignOut = userEvents.OnRemoteSignOut,
                     OnTicketReceived = userEvents.OnTicketReceived,
-                    OnTokenResponseReceived = userEvents.OnTokenResponseReceived,
                     OnTokenValidated = userEvents.OnTokenValidated,
                     OnUserInformationReceived = userEvents.OnUserInformationReceived,
                 };
             });
-            // This can be a singleton because it's a provider, not the credential directly.
-            builder.Services.AddSingleton<IGoogleCredentialProvider>(
-                services => new GoogleCredentialProvider(services, authenticationScheme));
-            return builder;
         }
-
     }
 }

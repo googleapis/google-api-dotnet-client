@@ -14,15 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Google.Apis.Auth.AspNetCore
 {
-    public static class GoogleOpenIdConnectDefaults
+    /// <summary>
+    /// Simple class to allow the authentication scheme to be injected.
+    /// </summary>
+    internal class GoogleAuthenticationSchemeProvider
     {
-        public const string AuthenticationScheme = "GoogleOpenIdConnect";
-        public const string DisplayName = "Google OpenIdConnect";
+        public GoogleAuthenticationSchemeProvider(string scheme) => Scheme = scheme;
+        public string Scheme { get; }
     }
 }

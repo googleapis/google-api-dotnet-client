@@ -14,15 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
+using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Google.Apis.Auth.AspNetCore
 {
-    public static class GoogleOpenIdConnectDefaults
+    internal class GoogleScopedRequirement : IAuthorizationRequirement
     {
-        public const string AuthenticationScheme = "GoogleOpenIdConnect";
-        public const string DisplayName = "Google OpenIdConnect";
+        public GoogleScopedRequirement(string scheme, IReadOnlyList<string> scopes)
+        {
+            Scheme = scheme;
+            Scopes = scopes;
+        }
+
+        public string Scheme { get; }
+        public IReadOnlyList<string> Scopes { get; }
     }
 }
