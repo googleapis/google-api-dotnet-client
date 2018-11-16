@@ -1,0 +1,31 @@
+﻿
+@model IReadOnlyList<string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Integreation tests - Force Token Refresh</title>
+</head>
+<body>
+    <h1>Integration tests - Force Token Refresh</h1>
+    <ul>
+        @foreach (var token in @Model)
+        {
+            <li>@token</li>
+        }
+    </ul>
+    @if (@Model.Count > 0)
+    {
+        <p>Test passed</p>
+    }
+    else
+    {
+        <p>Test failed</p>
+    }
+</body>
+</html>

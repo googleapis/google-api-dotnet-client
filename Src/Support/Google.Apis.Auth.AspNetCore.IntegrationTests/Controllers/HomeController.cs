@@ -16,8 +16,11 @@ limitations under the License.
 
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -49,6 +52,55 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
             var buckets = await service.Buckets.List(clientInfo.ProjectId).ExecuteAsync();
             var bucketNames = buckets.Items.Select(x => x.Name).ToList();
             return View(bucketNames);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ShowTokens()
+        {
+            var auth = await HttpContext.AuthenticateAsync();
+            var accessToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
+            var refreshToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
+            var issuedUtc = auth.Properties.IssuedUtc?.ToString() ?? "<missing>";
+            var expiresUtc = auth.Properties.ExpiresUtc?.ToString() ?? "<missing>";
+
+            return View(new[]
+            {
+                $"Access Token: '{accessToken}'",
+                $"Refresh Token: '{refreshToken}'",
+                $"Issued UTC: '{issuedUtc}'",
+                $"Expires UTC: '{expiresUtc}'",
+            });
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ForceTokenRefresh([FromServices] IGoogleAuthProvider auth)
+        {
+            var authResult0 = await HttpContext.AuthenticateAsync();
+            var accessToken0 = authResult0.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
+            var refreshToken0 = authResult0.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
+            var issuedUtc0 = authResult0.Properties.IssuedUtc?.ToString() ?? "<missing>";
+            var expiresUtc0 = authResult0.Properties.ExpiresUtc?.ToString() ?? "<missing>";
+
+            // Force token refresh by specifying a too-long refresh window.
+            await auth.GetCredentialAsync(TimeSpan.FromHours(24));
+
+            var authResult1 = await HttpContext.AuthenticateAsync();
+            var accessToken1 = authResult1.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
+            var refreshToken1 = authResult1.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
+            var issuedUtc1 = authResult1.Properties.IssuedUtc?.ToString() ?? "<missing>";
+            var expiresUtc1 = authResult1.Properties.ExpiresUtc?.ToString() ?? "<missing>";
+
+            return View(new[]
+            {
+                $"Before Access Token: '{accessToken0}'",
+                $"Before Refresh Token: '{refreshToken0}'",
+                $"Before Issued UTC: '{issuedUtc0}'",
+                $"Before Expires UTC: '{expiresUtc0}'",
+                $"After Access Token: '{accessToken1}'",
+                $"After Refresh Token: '{refreshToken1}'",
+                $"After Issued UTC: '{issuedUtc1}'",
+                $"After Expires UTC: '{expiresUtc1}'",
+            });
         }
     }
 }

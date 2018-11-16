@@ -19,7 +19,8 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "TEST_CLIENT_SECRET_FILENAME": "C:\\Users\\chrisbacon\\Documents\\client_secret_233772281425-ab2mcbiqmv8kh0mdnqsrkrod97qk37h0.apps.googleusercontent.com.json"
       },
       "applicationUrl": "http://localhost:65143/"
     }
