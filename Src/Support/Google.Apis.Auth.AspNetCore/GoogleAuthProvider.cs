@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.AspNetCore
             var accessToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
             var refreshToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
             var expiresUtc = auth.Properties.ExpiresUtc;
-            if (accessToken == null || refreshToken == null || expiresUtc == null)
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken) || expiresUtc == null)
             {
                 throw new InvalidOperationException("Invalid auth. access_token, refresh_token, and expires_utc must all be present.");
             }
