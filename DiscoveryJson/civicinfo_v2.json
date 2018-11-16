@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/zoeGHlXpDBmwR1PBLw8yEsb1uUQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/UBGbvHxl5b0nTEIbQKoQKowlxXY\"",
  "discoveryVersion": "v1",
  "id": "civicinfo:v2",
  "name": "civicinfo",
  "canonicalName": "Civic Info",
  "version": "v2",
- "revision": "20161102",
+ "revision": "20181017",
  "title": "Google Civic Information API",
  "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
  "ownerDomain": "google.com",
@@ -236,6 +236,10 @@
      "type": "string",
      "description": "A number specifying the position of this contest on the voter's ballot.",
      "format": "int64"
+    },
+    "ballotTitle": {
+     "type": "string",
+     "description": "The official title on the ballot for this contest, only where available."
     },
     "candidates": {
      "type": "array",
@@ -518,6 +522,15 @@
     }
    }
   },
+  "FieldMetadataProto": {
+   "id": "FieldMetadataProto",
+   "type": "object",
+   "properties": {
+    "internal": {
+     "$ref": "InternalFieldMetadataProto"
+    }
+   }
+  },
   "GeographicDivision": {
    "id": "GeographicDivision",
    "type": "object",
@@ -541,6 +554,112 @@
       "type": "integer",
       "format": "uint32"
      }
+    }
+   }
+  },
+  "InternalFieldMetadataProto": {
+   "id": "InternalFieldMetadataProto",
+   "type": "object",
+   "properties": {
+    "isAuto": {
+     "type": "boolean"
+    },
+    "sourceSummary": {
+     "$ref": "InternalSourceSummaryProto"
+    }
+   }
+  },
+  "InternalSourceSummaryProto": {
+   "id": "InternalSourceSummaryProto",
+   "type": "object",
+   "properties": {
+    "dataset": {
+     "type": "string"
+    },
+    "provider": {
+     "type": "string"
+    }
+   }
+  },
+  "LivegraphBacktraceRecordInfo": {
+   "id": "LivegraphBacktraceRecordInfo",
+   "type": "object",
+   "properties": {
+    "dataSourcePublishMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "expId": {
+     "type": "string"
+    },
+    "expInfo": {
+     "$ref": "LivegraphBacktraceRecordInfoExpInfo"
+    },
+    "isRecon": {
+     "type": "boolean"
+    },
+    "isWlmThrottled": {
+     "type": "boolean"
+    },
+    "numberOfTriples": {
+     "type": "string",
+     "format": "int64"
+    },
+    "priority": {
+     "type": "string"
+    },
+    "process": {
+     "type": "string"
+    },
+    "proxyReceiveMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "proxySentMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "recordId": {
+     "type": "string"
+    },
+    "shouldMonitorLatency": {
+     "type": "boolean"
+    },
+    "subscriberReceiveMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "topicBuildFinishMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "topicBuildStartMsec": {
+     "type": "string",
+     "format": "int64"
+    },
+    "version": {
+     "type": "string"
+    }
+   }
+  },
+  "LivegraphBacktraceRecordInfoExpInfo": {
+   "id": "LivegraphBacktraceRecordInfoExpInfo",
+   "type": "object",
+   "properties": {
+    "deletedIns": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "MessageSet": {
+   "id": "MessageSet",
+   "type": "object",
+   "properties": {
+    "recordMessageSetExt": {
+     "$ref": "LivegraphBacktraceRecordInfo"
     }
    }
   },
@@ -642,6 +761,26 @@
     }
    }
   },
+  "PointProto": {
+   "id": "PointProto",
+   "type": "object",
+   "properties": {
+    "latE7": {
+     "type": "integer",
+     "format": "uint32"
+    },
+    "lngE7": {
+     "type": "integer",
+     "format": "uint32"
+    },
+    "metadata": {
+     "$ref": "FieldMetadataProto"
+    },
+    "temporaryData": {
+     "$ref": "MessageSet"
+    }
+   }
+  },
   "PollingLocation": {
    "id": "PollingLocation",
    "type": "object",
@@ -658,6 +797,16 @@
     "id": {
      "type": "string",
      "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."
+    },
+    "latitude": {
+     "type": "number",
+     "description": "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+     "format": "double"
+    },
+    "longitude": {
+     "type": "number",
+     "description": "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+     "format": "double"
     },
     "name": {
      "type": "string",
@@ -710,28 +859,7 @@
     "dependentLocalityName": {
      "type": "string"
     },
-    "dependentThoroughfareLeadingType": {
-     "type": "string"
-    },
     "dependentThoroughfareName": {
-     "type": "string"
-    },
-    "dependentThoroughfarePostDirection": {
-     "type": "string"
-    },
-    "dependentThoroughfarePreDirection": {
-     "type": "string"
-    },
-    "dependentThoroughfareTrailingType": {
-     "type": "string"
-    },
-    "dependentThoroughfaresConnector": {
-     "type": "string"
-    },
-    "dependentThoroughfaresIndicator": {
-     "type": "string"
-    },
-    "dependentThoroughfaresType": {
      "type": "string"
     },
     "firmName": {
@@ -770,23 +898,51 @@
     "subPremiseName": {
      "type": "string"
     },
-    "thoroughfareLeadingType": {
-     "type": "string"
-    },
     "thoroughfareName": {
      "type": "string"
     },
     "thoroughfareNumber": {
      "type": "string"
+    }
+   }
+  },
+  "Provenance": {
+   "id": "Provenance",
+   "type": "object",
+   "properties": {
+    "collidedSegmentSource": {
+     "$ref": "StreetSegmentList"
     },
-    "thoroughfarePostDirection": {
+    "ctclContestUuid": {
      "type": "string"
     },
-    "thoroughfarePreDirection": {
+    "ctclOfficeUuid": {
      "type": "string"
     },
-    "thoroughfareTrailingType": {
+    "datasetId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "precinctId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "precinctSplitId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "tsStreetSegmentId": {
      "type": "string"
+    },
+    "vip5PrecinctId": {
+     "type": "string"
+    },
+    "vip5StreetSegmentId": {
+     "type": "string"
+    },
+    "vipStreetSegmentId": {
+     "type": "string",
+     "format": "int64"
     }
    }
   },
@@ -916,6 +1072,189 @@
     }
    }
   },
+  "StreetSegment": {
+   "id": "StreetSegment",
+   "type": "object",
+   "properties": {
+    "administrationRegionIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "beforeGeocodeId": {
+     "type": "string"
+    },
+    "catalistUniquePrecinctCode": {
+     "type": "string"
+    },
+    "city": {
+     "type": "string"
+    },
+    "cityCouncilDistrict": {
+     "type": "string"
+    },
+    "congressionalDistrict": {
+     "type": "string"
+    },
+    "contestIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "countyCouncilDistrict": {
+     "type": "string"
+    },
+    "countyFips": {
+     "type": "string"
+    },
+    "datasetId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "earlyVoteSiteByIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "endHouseNumber": {
+     "type": "string",
+     "format": "int64"
+    },
+    "geocodedPoint": {
+     "$ref": "PointProto"
+    },
+    "geographicDivisionOcdIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "id": {
+     "type": "string"
+    },
+    "judicialDistrict": {
+     "type": "string"
+    },
+    "mailOnly": {
+     "type": "boolean"
+    },
+    "municipalDistrict": {
+     "type": "string"
+    },
+    "ncoaAddress": {
+     "type": "string"
+    },
+    "oddOrEvens": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "originalId": {
+     "type": "string"
+    },
+    "pollinglocationByIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "precinctName": {
+     "type": "string"
+    },
+    "precinctOcdId": {
+     "type": "string"
+    },
+    "provenances": {
+     "type": "array",
+     "items": {
+      "$ref": "Provenance"
+     }
+    },
+    "published": {
+     "type": "boolean"
+    },
+    "schoolDistrict": {
+     "type": "string"
+    },
+    "startHouseNumber": {
+     "type": "string",
+     "format": "int64"
+    },
+    "startLatE7": {
+     "type": "string",
+     "format": "int64"
+    },
+    "startLngE7": {
+     "type": "string",
+     "format": "int64"
+    },
+    "state": {
+     "type": "string"
+    },
+    "stateHouseDistrict": {
+     "type": "string"
+    },
+    "stateSenateDistrict": {
+     "type": "string"
+    },
+    "streetName": {
+     "type": "string"
+    },
+    "subAdministrativeAreaName": {
+     "type": "string"
+    },
+    "surrogateId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "targetsmartUniquePrecinctCode": {
+     "type": "string"
+    },
+    "townshipDistrict": {
+     "type": "string"
+    },
+    "unitNumber": {
+     "type": "string"
+    },
+    "unitType": {
+     "type": "string"
+    },
+    "vanPrecinctCode": {
+     "type": "string"
+    },
+    "voterGeographicDivisionOcdIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "wardDistrict": {
+     "type": "string"
+    },
+    "wildcard": {
+     "type": "boolean"
+    },
+    "zip": {
+     "type": "string"
+    }
+   }
+  },
+  "StreetSegmentList": {
+   "id": "StreetSegmentList",
+   "type": "object",
+   "properties": {
+    "segments": {
+     "type": "array",
+     "items": {
+      "$ref": "StreetSegment"
+     }
+    }
+   }
+  },
   "VoterInfoRequest": {
    "id": "VoterInfoRequest",
    "type": "object",
@@ -974,7 +1313,7 @@
     },
     "otherElections": {
      "type": "array",
-     "description": "If no election ID was specified in the query, and there was more than one election with data for the given voter, this will contain information about the other elections that could apply.",
+     "description": "When there are multiple elections for a voter address, the otherElections field is populated in the API response and there are two possibilities: 1. If the earliest election is not the intended election, specify the election ID of the desired election in a second API request using the electionId field. 2. If these elections occur on the same day, the API doesn?t return any polling location, contest, or election official information to ensure that an additional query is made. For user-facing applications, we recommend displaying these elections to the user to disambiguate. A second API request using the electionId field should be made for the election that is relevant to the user.",
      "items": {
       "$ref": "Election"
      }
@@ -988,6 +1327,12 @@
     },
     "precinctId": {
      "type": "string"
+    },
+    "segments": {
+     "type": "array",
+     "items": {
+      "$ref": "StreetSegment"
+     }
     },
     "state": {
      "type": "array",
@@ -1070,7 +1415,7 @@
       },
       "electionId": {
        "type": "string",
-       "description": "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/elections",
+       "description": "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field.",
        "default": "0",
        "format": "int64",
        "location": "query"

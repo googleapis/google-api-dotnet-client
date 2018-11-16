@@ -2,14 +2,14 @@
 
   <!-- common nupkg information -->
   <PropertyGroup>
-    <Version>1.35.1</Version>
+    <Version>1.36.1</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
-    <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/googleapis/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+    <RepositoryUrl>https://github.com/googleapis/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
   </PropertyGroup>
   

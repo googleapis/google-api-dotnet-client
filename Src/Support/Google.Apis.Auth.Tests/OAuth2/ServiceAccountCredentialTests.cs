@@ -302,7 +302,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
                 User = "a_user",
                 Scopes = new[] { "scope1" },
             }.FromPrivateKey(PrivateKey));
-            var cred1 = GoogleCredential.FromCredential(serviceAccountCred);
+            var cred1 = GoogleCredential.FromServiceAccountCredential(serviceAccountCred);
             var cred2 = cred1.CreateScoped("scope2");
 
             var svc1 = (ServiceAccountCredential)cred1.UnderlyingCredential;
@@ -337,7 +337,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
                 User = "user1",
                 Scopes = new[] { "scope1" },
             }.FromPrivateKey(PrivateKey));
-            var cred1 = GoogleCredential.FromCredential(serviceAccountCred);
+            var cred1 = GoogleCredential.FromServiceAccountCredential(serviceAccountCred);
             var cred2 = cred1.CreateWithUser("user2");
 
             var svc1 = (ServiceAccountCredential)cred1.UnderlyingCredential;

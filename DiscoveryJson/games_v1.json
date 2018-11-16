@@ -1,12 +1,12 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/VojGv152asTkFI0emfJp6dey5-w\"",
+  "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/xmOeKDQLQPwABxtOPCYkwq3xTRs\"",
   "discoveryVersion": "v1",
   "id": "games:v1",
   "name": "games",
   "canonicalName": "Games",
   "version": "v1",
-  "revision": "20180524",
+  "revision": "20181106",
   "title": "Google Play Game Services API",
   "description": "The API for Google Play Game Services.",
   "ownerDomain": "google.com",
@@ -3229,6 +3229,11 @@
               "description": "The ID of the achievement used by this method.",
               "required": true,
               "location": "path"
+            },
+            "builtinGameId": {
+              "type": "string",
+              "description": "Override used only by built-in games in Play Games application.",
+              "location": "query"
             }
           },
           "parameterOrder": [
@@ -3247,6 +3252,13 @@
           "path": "achievements/updateMultiple",
           "httpMethod": "POST",
           "description": "Updates multiple achievements for the currently authenticated player.",
+          "parameters": {
+            "builtinGameId": {
+              "type": "string",
+              "description": "Override used only by built-in games in Play Games application.",
+              "location": "query"
+            }
+          },
           "request": {
             "$ref": "AchievementUpdateMultipleRequest"
           },
@@ -3311,6 +3323,13 @@
           "path": "applications/played",
           "httpMethod": "POST",
           "description": "Indicate that the the currently authenticated user is playing your application.",
+          "parameters": {
+            "builtinGameId": {
+              "type": "string",
+              "description": "Override used only by built-in games in Play Games application.",
+              "location": "query"
+            }
+          },
           "scopes": [
             "https://www.googleapis.com/auth/games",
             "https://www.googleapis.com/auth/plus.login"

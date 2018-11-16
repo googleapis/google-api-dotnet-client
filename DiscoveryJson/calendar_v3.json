@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/LFErqd92_jXSfzYPZGiW_10ztGc\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/5Wl_wmdWuu9hQMbPn2tVFCRyV7w\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20180529",
+ "revision": "20181104",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -70,10 +70,19 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/calendar": {
-     "description": "Manage your calendars"
+     "description": "See, edit, share, and permanently delete all the calendars you can access using Google Calendar"
+    },
+    "https://www.googleapis.com/auth/calendar.events": {
+     "description": "View and edit events on all your calendars"
+    },
+    "https://www.googleapis.com/auth/calendar.events.readonly": {
+     "description": "View events on all your calendars"
     },
     "https://www.googleapis.com/auth/calendar.readonly": {
      "description": "View your calendars"
+    },
+    "https://www.googleapis.com/auth/calendar.settings.readonly": {
+     "description": "View your Calendar settings"
     }
    }
   }
@@ -345,23 +354,11 @@
    "properties": {
     "method": {
      "type": "string",
-     "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS reminders are only available for G Suite customers.",
-     "annotations": {
-      "required": [
-       "calendar.calendarList.insert",
-       "calendar.calendarList.update"
-      ]
-     }
+     "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS reminders are only available for G Suite customers.  \nRequired when adding a notification."
     },
     "type": {
      "type": "string",
-     "description": "The type of notification. Possible values are:  \n- \"eventCreation\" - Notification sent when a new event is put on the calendar. \n- \"eventChange\" - Notification sent when an event is changed. \n- \"eventCancellation\" - Notification sent when an event is cancelled. \n- \"eventResponse\" - Notification sent when an event is changed. \n- \"agenda\" - An agenda with the events of the day (sent out in the morning).",
-     "annotations": {
-      "required": [
-       "calendar.calendarList.insert",
-       "calendar.calendarList.update"
-      ]
-     }
+     "description": "The type of notification. Possible values are:  \n- \"eventCreation\" - Notification sent when a new event is put on the calendar. \n- \"eventChange\" - Notification sent when an event is changed. \n- \"eventCancellation\" - Notification sent when an event is cancelled. \n- \"eventResponse\" - Notification sent when an attendee responds to the event invitation. \n- \"agenda\" - An agenda with the events of the day (sent out in the morning).  \nRequired when adding a notification."
     }
    }
   },
@@ -599,6 +596,13 @@
      "type": "string",
      "description": "The access code to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."
     },
+    "entryPointFeatures": {
+     "type": "array",
+     "description": "Features of the entry point, such as being toll or toll-free. One entry point can have multiple features. However, toll and toll-free cannot be both set on the same entry point.",
+     "items": {
+      "type": "string"
+     }
+    },
     "entryPointType": {
      "type": "string",
      "description": "The type of the conference entry point.\nPossible values are:  \n- \"video\" - joining a conference over HTTP. A conference can have zero or one video entry point.\n- \"phone\" - joining a conference by dialing a phone number. A conference can have zero or more phone entry points.\n- \"sip\" - joining a conference over SIP. A conference can have zero or one sip entry point.\n- \"more\" - further conference joining instructions, for example additional phone numbers. A conference can have zero or one more entry point. A conference with only a more entry point is not a valid conference."
@@ -622,6 +626,10 @@
     "pin": {
      "type": "string",
      "description": "The PIN to access the conference. The maximum length is 128 characters.\nWhen creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed.\nOptional."
+    },
+    "regionCode": {
+     "type": "string",
+     "description": "The CLDR/ISO 3166 region code for the country associated with this phone access. Example: \"SE\" for Sweden.\nCalendar backend will populate this field only for EntryPointType.PHONE."
     },
     "uri": {
      "type": "string",
@@ -698,7 +706,7 @@
       },
       "id": {
        "type": "string",
-       "description": "The creator's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API"
+       "description": "The creator's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"
       },
       "self": {
        "type": "boolean",
@@ -861,7 +869,7 @@
       },
       "id": {
        "type": "string",
-       "description": "The organizer's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API"
+       "description": "The organizer's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"
       },
       "self": {
        "type": "boolean",
@@ -872,7 +880,7 @@
     },
     "originalStartTime": {
      "$ref": "EventDateTime",
-     "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. Immutable."
+     "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."
     },
     "privateCopy": {
      "type": "boolean",
@@ -939,7 +947,7 @@
     },
     "status": {
      "type": "string",
-     "description": "Status of the event. Optional. Possible values are:  \n- \"confirmed\" - The event is confirmed. This is the default status. \n- \"tentative\" - The event is tentatively confirmed. \n- \"cancelled\" - The event is cancelled."
+     "description": "Status of the event. Optional. Possible values are:  \n- \"confirmed\" - The event is confirmed. This is the default status. \n- \"tentative\" - The event is tentatively confirmed. \n- \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\nA cancelled status represents two different states depending on the event type:  \n- Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\nCancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.  \n- All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\nDeleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\nIf an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated."
     },
     "summary": {
      "type": "string",
@@ -972,14 +980,7 @@
     },
     "fileUrl": {
      "type": "string",
-     "description": "URL link to the attachment.\nFor adding Google Drive file attachments use the same format as in alternateLink property of the Files resource in the Drive API.",
-     "annotations": {
-      "required": [
-       "calendar.events.import",
-       "calendar.events.insert",
-       "calendar.events.update"
-      ]
-     }
+     "description": "URL link to the attachment.\nFor adding Google Drive file attachments use the same format as in alternateLink property of the Files resource in the Drive API.\nRequired when adding an attachment."
     },
     "iconLink": {
      "type": "string",
@@ -1015,18 +1016,11 @@
     },
     "email": {
      "type": "string",
-     "description": "The attendee's email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.",
-     "annotations": {
-      "required": [
-       "calendar.events.import",
-       "calendar.events.insert",
-       "calendar.events.update"
-      ]
-     }
+     "description": "The attendee's email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.\nRequired when adding an attendee."
     },
     "id": {
      "type": "string",
-     "description": "The attendee's Profile ID, if available. It corresponds to theid field in the People collection of the Google+ API"
+     "description": "The attendee's Profile ID, if available. It corresponds to the id field in the People collection of the Google+ API"
     },
     "optional": {
      "type": "boolean",
@@ -1079,30 +1073,12 @@
    "properties": {
     "method": {
      "type": "string",
-     "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.",
-     "annotations": {
-      "required": [
-       "calendar.calendarList.insert",
-       "calendar.calendarList.update",
-       "calendar.events.import",
-       "calendar.events.insert",
-       "calendar.events.update"
-      ]
-     }
+     "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.  \nRequired when adding a reminder."
     },
     "minutes": {
      "type": "integer",
-     "description": "Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes).",
-     "format": "int32",
-     "annotations": {
-      "required": [
-       "calendar.calendarList.insert",
-       "calendar.calendarList.update",
-       "calendar.events.import",
-       "calendar.events.insert",
-       "calendar.events.update"
-      ]
-     }
+     "description": "Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes).\nRequired when adding a reminder.",
+     "format": "int32"
     }
    }
   },
@@ -1210,12 +1186,12 @@
    "properties": {
     "calendarExpansionMax": {
      "type": "integer",
-     "description": "Maximal number of calendars for which FreeBusy information is to be provided. Optional.",
+     "description": "Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum value is 50.",
      "format": "int32"
     },
     "groupExpansionMax": {
      "type": "integer",
-     "description": "Maximal number of calendar identifiers to be provided for a single group. Optional. An error will be returned for a group with more members than this value.",
+     "description": "Maximal number of calendar identifiers to be provided for a single group. Optional. An error is returned for a group with more members than this value. Maximum value is 100.",
      "format": "int32"
     },
     "items": {
@@ -1227,12 +1203,12 @@
     },
     "timeMax": {
      "type": "string",
-     "description": "The end of the interval for the query.",
+     "description": "The end of the interval for the query formatted as per RFC3339.",
      "format": "date-time"
     },
     "timeMin": {
      "type": "string",
-     "description": "The start of the interval for the query.",
+     "description": "The start of the interval for the query formatted as per RFC3339.",
      "format": "date-time"
     },
     "timeZone": {
@@ -1631,7 +1607,7 @@
      "id": "calendar.calendarList.delete",
      "path": "users/me/calendarList/{calendarId}",
      "httpMethod": "DELETE",
-     "description": "Deletes an entry on the user's calendar list.",
+     "description": "Removes a calendar from the user's calendar list.",
      "parameters": {
       "calendarId": {
        "type": "string",
@@ -1651,7 +1627,7 @@
      "id": "calendar.calendarList.get",
      "path": "users/me/calendarList/{calendarId}",
      "httpMethod": "GET",
-     "description": "Returns an entry on the user's calendar list.",
+     "description": "Returns a calendar from the user's calendar list.",
      "parameters": {
       "calendarId": {
        "type": "string",
@@ -1675,7 +1651,7 @@
      "id": "calendar.calendarList.insert",
      "path": "users/me/calendarList",
      "httpMethod": "POST",
-     "description": "Adds an entry to the user's calendar list.",
+     "description": "Inserts an existing calendar into the user's calendar list.",
      "parameters": {
       "colorRgbFormat": {
        "type": "boolean",
@@ -1697,7 +1673,7 @@
      "id": "calendar.calendarList.list",
      "path": "users/me/calendarList",
      "httpMethod": "GET",
-     "description": "Returns entries on the user's calendar list.",
+     "description": "Returns the calendars on the user's calendar list.",
      "parameters": {
       "maxResults": {
        "type": "integer",
@@ -1757,7 +1733,7 @@
      "id": "calendar.calendarList.patch",
      "path": "users/me/calendarList/{calendarId}",
      "httpMethod": "PATCH",
-     "description": "Updates an entry on the user's calendar list. This method supports patch semantics.",
+     "description": "Updates an existing calendar on the user's calendar list. This method supports patch semantics.",
      "parameters": {
       "calendarId": {
        "type": "string",
@@ -1788,7 +1764,7 @@
      "id": "calendar.calendarList.update",
      "path": "users/me/calendarList/{calendarId}",
      "httpMethod": "PUT",
-     "description": "Updates an entry on the user's calendar list.",
+     "description": "Updates an existing calendar on the user's calendar list.",
      "parameters": {
       "calendarId": {
        "type": "string",
@@ -2029,7 +2005,10 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ]
     }
    }
@@ -2073,7 +2052,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the deletion of the event. Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Guests who should receive notifications about the deletion of the event.",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       }
      },
@@ -2082,7 +2076,8 @@
       "eventId"
      ],
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "get": {
@@ -2130,6 +2125,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ]
     },
@@ -2169,7 +2166,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "insert": {
@@ -2201,7 +2199,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the creation of the new event. Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the new event. Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is false.",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       },
       "supportsAttachments": {
@@ -2220,7 +2233,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "instances": {
@@ -2302,6 +2316,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2430,6 +2446,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2460,7 +2478,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the change of the event's organizer. Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the change of the event's organizer. Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Guests who should receive notifications about the change of the event's organizer.",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       }
      },
@@ -2473,7 +2506,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "patch": {
@@ -2516,7 +2550,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the event update (e.g. attendee's responses, title changes, etc.). Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       },
       "supportsAttachments": {
@@ -2536,7 +2585,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "quickAdd": {
@@ -2553,7 +2603,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the creation of the event. Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Guests who should receive notifications about the creation of the new event.",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       },
       "text": {
@@ -2571,7 +2636,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "update": {
@@ -2614,7 +2680,22 @@
       },
       "sendNotifications": {
        "type": "boolean",
-       "description": "Whether to send notifications about the event update (e.g. attendee's responses, title changes, etc.). Optional. The default is False.",
+       "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.",
+       "location": "query"
+      },
+      "sendUpdates": {
+       "type": "string",
+       "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
+       "enum": [
+        "all",
+        "externalOnly",
+        "none"
+       ],
+       "enumDescriptions": [
+        "Notifications are sent to all guests.",
+        "Notifications are sent to non-Google Calendar guests only.",
+        "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
+       ],
        "location": "query"
       },
       "supportsAttachments": {
@@ -2634,7 +2715,8 @@
       "$ref": "Event"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/calendar"
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events"
      ]
     },
     "watch": {
@@ -2765,6 +2847,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.events",
+      "https://www.googleapis.com/auth/calendar.events.readonly",
       "https://www.googleapis.com/auth/calendar.readonly"
      ],
      "supportsSubscription": true
@@ -2814,7 +2898,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ]
     },
     "list": {
@@ -2846,7 +2931,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ],
      "supportsSubscription": true
     },
@@ -2883,7 +2969,8 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/calendar",
-      "https://www.googleapis.com/auth/calendar.readonly"
+      "https://www.googleapis.com/auth/calendar.readonly",
+      "https://www.googleapis.com/auth/calendar.settings.readonly"
      ],
      "supportsSubscription": true
     }

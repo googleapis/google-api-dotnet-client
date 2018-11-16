@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/35E8bZFvQOO3Jc0obcZT3ylPCHk\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/tdbJPMazx6MrJLWgJ0381Mo2V1Y\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:alpha",
  "name": "deploymentmanager",
  "canonicalName": "Deployment Manager Alpha",
  "version": "alpha",
- "revision": "20180510",
+ "revision": "20180609",
  "title": "Google Cloud Deployment Manager Alpha API",
  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -2788,7 +2788,7 @@
       },
       "type": {
        "type": "string",
-       "description": "The name of the type provider for this request.",
+       "description": "The name of the type provider type for this request.",
        "required": true,
        "location": "path"
       },

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/s_f0e-TSysQ6Bs6ML8ORn4Q3MGk\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/J3bNxg5XwGnvxefvijMQtZBG3zY\"",
  "discoveryVersion": "v1",
  "id": "adsense:v1.4",
  "name": "adsense",
  "canonicalName": "AdSense",
  "version": "v1.4",
- "revision": "20180530",
+ "revision": "20181111",
  "title": "AdSense Management API",
  "description": "Accesses AdSense publishers' inventory and generates performance reports.",
  "ownerDomain": "google.com",
@@ -205,7 +205,15 @@
    "properties": {
     "adCode": {
      "type": "string",
-     "description": "The ad code snippet."
+     "description": "The Auto ad code snippet. The ad code snippet."
+    },
+    "ampBody": {
+     "type": "string",
+     "description": "The AMP Auto ad code snippet that goes in the body of an AMP page."
+    },
+    "ampHead": {
+     "type": "string",
+     "description": "The AMP Auto ad code snippet that goes in the head of an AMP page."
     },
     "kind": {
      "type": "string",
@@ -920,6 +928,37 @@
    "resources": {
     "adclients": {
      "methods": {
+      "getAdCode": {
+       "id": "adsense.accounts.adclients.getAdCode",
+       "path": "accounts/{accountId}/adclients/{adClientId}/adcode",
+       "httpMethod": "GET",
+       "description": "Get Auto ad code for a given ad client.",
+       "parameters": {
+        "accountId": {
+         "type": "string",
+         "description": "Account which contains the ad client.",
+         "required": true,
+         "location": "path"
+        },
+        "adClientId": {
+         "type": "string",
+         "description": "Ad client to get the code for.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "accountId",
+        "adClientId"
+       ],
+       "response": {
+        "$ref": "AdCode"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/adsense",
+        "https://www.googleapis.com/auth/adsense.readonly"
+       ]
+      },
       "list": {
        "id": "adsense.accounts.adclients.list",
        "path": "accounts/{accountId}/adclients",

@@ -141,8 +141,10 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal class LimitedLocalhostHttpServer : IDisposable
         {
-            private const int MaxRequestLineLength = 256;
-            private const int MaxHeadersLength = 8192;
+            // RFC7230 recommends supporting a request-line length of at least 8,000 octets
+            // https://tools.ietf.org/html/rfc7230#section-3.1.1
+            private const int MaxRequestLineLength = 16 * 1024;
+            private const int MaxHeadersLength = 64 * 1024;
             private const int NetworkReadBufferSize = 1024;
 
             private static ILogger Logger = ApplicationContext.Logger.ForType<LimitedLocalhostHttpServer>();
@@ -196,34 +198,49 @@ namespace Google.Apis.Auth.OAuth2
             private async Task<Dictionary<string, string>> GetQueryParamsFromClientAsync(TcpClient client, CancellationToken cancellationToken)
             {
                 var stream = client.GetStream();
-
-                var buffer = new byte[NetworkReadBufferSize];
-                int bufferOfs = 0;
-                int bufferSize = 0;
-                Func<Task<char?>> getChar = async () =>
+                // NetworkStream.ReadAsync() doesn't honour the cancellation-token (on all platforms),
+                // so use workaround
+                using (cancellationToken.Register(() => stream.Dispose()))
                 {
-                    if (bufferOfs == bufferSize)
+                    var buffer = new byte[NetworkReadBufferSize];
+                    int bufferOfs = 0;
+                    int bufferSize = 0;
+                    Func<Task<char?>> getChar = async () =>
                     {
-                        bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false);
-                        if (bufferSize == 0)
+                        if (bufferOfs == bufferSize)
                         {
-                            // End of stream
-                            return null;
+                            try
+                            {
+                                bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
+                            }
+                            // netcoreapp2.x throws an IOException on stream disposal; others throw ObjectDispoesdException
+                            catch (Exception e) when (e is ObjectDisposedException || e is IOException)
+                            {
+                                throw new OperationCanceledException(cancellationToken);
+                            }
+                            // netcoreapp2.0 on Linux sometimes doesn't throw an exception on stream disposal in ReadAsync,
+                            // so check for cancellation afterwards
+                            cancellationToken.ThrowIfCancellationRequested();
+                            if (bufferSize == 0)
+                            {
+                                // End of stream
+                                return null;
+                            }
+                            bufferOfs = 0;
                         }
-                        bufferOfs = 0;
-                    }
-                    byte b = buffer[bufferOfs++];
-                    // HTTP headers are generally ASCII, but historically allowed ISO-8859-1.
-                    // Non-ASCII bytes should be treated opaquely, not further processed (e.g. as UTF8).
-                    return (char)b;
-                };
+                        byte b = buffer[bufferOfs++];
+                        // HTTP headers are generally ASCII, but historically allowed ISO-8859-1.
+                        // Non-ASCII bytes should be treated opaquely, not further processed (e.g. as UTF8).
+                        return (char)b;
+                    };
 
-                string requestLine = await ReadRequestLine(getChar).ConfigureAwait(false);
-                var requestParams = ValidateAndGetRequestParams(requestLine);
-                await WaitForAllHeaders(getChar).ConfigureAwait(false);
-                await WriteResponse(stream, cancellationToken).ConfigureAwait(false);
+                    string requestLine = await ReadRequestLine(getChar).ConfigureAwait(false);
+                    var requestParams = ValidateAndGetRequestParams(requestLine);
+                    await WaitForAllHeaders(getChar).ConfigureAwait(false);
+                    await WriteResponse(stream, cancellationToken).ConfigureAwait(false);
 
-                return requestParams;
+                    return requestParams;
+                }
             }
 
             private async Task<string> ReadRequestLine(Func<Task<char?>> getChar)

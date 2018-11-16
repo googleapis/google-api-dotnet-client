@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.org/google/google-api-dotnet-client.svg?branch=master)](https://travis-ci.org/google/google-api-dotnet-client)
+[![Build Status](https://travis-ci.org/googleapis/google-api-dotnet-client.svg?branch=master)](https://travis-ci.org/googleapis/google-api-dotnet-client)
 
 # Google APIs client Library for .NET
 
 ---------
 # _Google Cloud Platform APIs_
 
-_If you're working with **Google Cloud Platform** APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for .NET instead](https://github.com/GoogleCloudPlatform/google-cloud-dotnet). These are the new and idiomatic .NET libraries targeted specifically at Google Cloud Platform Services._
+_If you're working with **Google Cloud Platform** APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for .NET instead](https://github.com/googleapis/google-cloud-dotnet). These are the new and idiomatic .NET libraries targeted specifically at Google Cloud Platform Services._
 
 # Library Maintenance
 
@@ -27,7 +27,7 @@ Please see the [FAQ](FAQ.md) for answers to common questions.
 
 ### ASP.NET Core
 
-ASP.NET Core is supported through the `netstandard1.3` framework target. However there are currently no authentication helpers or examples specific to ASP.NET Core, making authentication more difficult to use than on other platforms. This is being tracked in issue [#933](https://github.com/google/google-api-dotnet-client/issues/933).
+ASP.NET Core is supported through the `netstandard1.3` framework target. However there are currently no authentication helpers or examples specific to ASP.NET Core, making authentication more difficult to use than on other platforms. This is being tracked in issue [#933](https://github.com/googleapis/google-api-dotnet-client/issues/933).
 
 ## Legacy Supported Frameworks
 
@@ -42,8 +42,14 @@ We provide best-effort support for these platforms, but new features may not be 
 
 * Silverlight
 * UWP
+* Xamarin
+* Unity
 
-For more details on framework support see [Frameworks.md](Frameworks.md)
+For more details on framework support see [Frameworks.md](Frameworks.md).
+
+See the [FAQ](FAQ.md#why-arent-unity-xamarin-or-uwp-supported) for details regarding the lack of UWP, Xamarin, and Unity support.
+
+Note that [Firebase](https://firebase.google.com/) is available on Unity, and focuses on the need of this platform.
 
 # Developer Documentation
 
@@ -61,5 +67,5 @@ The generator that produces the source code for API-specific libraries is in `Cl
 
 # Support Forums
 
-If you find an issue with in the client library we would appreciate you adding an issue in the [issue tracker](https://github.com/google/google-api-dotnet-client/issues).
+If you find an issue with in the client library we would appreciate you adding an issue in the [issue tracker](https://github.com/googleapis/google-api-dotnet-client/issues).
 Questions regarding usage of the client library should be posted to [stackoverflow.com](http://stackoverflow.com/)  using the tag [#google-api-dotnet-client](http://stackoverflow.com/questions/tagged/google-api-dotnet-client)

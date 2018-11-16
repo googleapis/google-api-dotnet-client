@@ -125,7 +125,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 await client.ConnectAsync("localhost", server.Port);
                 var stream = client.GetStream();
-                var httpRequest = Encoding.ASCII.GetBytes(new string('X', 1000));
+                var httpRequest = Encoding.ASCII.GetBytes(new string('X', 100_000));
                 var dummyTask = stream.WriteAsync(httpRequest, 0, httpRequest.Length);
 
                 var ex = await Assert.ThrowsAsync<ServerException>(() => server.GetQueryParamsAsync(cts.Token));
@@ -142,11 +142,25 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
-                request.Headers.Add("X-Test", new string('X', 10000));
+                // Adding a single header >64k causes the test to hang.
+                request.Headers.Add("X-Test1", new string('X', 35_000));
+                request.Headers.Add("X-Test2", new string('X', 35_000));
                 var dummyTask = client.SendAsync(request, cts.Token);
 
                 var ex = await Assert.ThrowsAsync<ServerException>(() => server.GetQueryParamsAsync(cts.Token));
                 Assert.Contains("Headers too long:", ex.Message);
+            }
+        }
+
+        [Fact]
+        public async Task Cancellation()
+        {
+            using (var server = StartServer())
+            using (var client = new TcpClient())
+            {
+                var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
+                await client.ConnectAsync("localhost", server.Port);
+                await Assert.ThrowsAsync<OperationCanceledException>(() => server.GetQueryParamsAsync(cts.Token));
             }
         }
 

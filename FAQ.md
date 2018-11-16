@@ -1,6 +1,6 @@
 # FAQ
 
-Please [file an issue](https://github.com/google/google-api-dotnet-client/issues/new) if there are more questions you'd like to see addressed here.
+Please [file an issue](https://github.com/googleapis/google-api-dotnet-client/issues/new) if there are more questions you'd like to see addressed here.
 
 ### What does this library being in "maintenance mode" mean?
 
@@ -10,7 +10,7 @@ We will continue to support these libraries, fix bugs, and add minor features as
 
 We will continue to release new versions of all API libraries as they are available; and release new API libraries as new services become available.
 
-### What happened to the [`FileDataStore`](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis/Util/Store/FileDataStore.cs) default directory on some platforms between v1.25 and v1.26?
+### What happened to the [`FileDataStore`](https://github.com/googleapis/google-api-dotnet-client/blob/master/Src/Support/Google.Apis/Util/Store/FileDataStore.cs) default directory on some platforms between v1.25 and v1.26?
 
 On some Windows desktop/server platforms between v1.25 and v1.26, the default `FileDataStore` directory location changed. This was an unindended consequence of a code refactor.
 
@@ -28,15 +28,15 @@ var absolutePath = Path.Combine(
 var fileDataStore = new FileDataStore(absolutePath, fullPath: true);
 ```
 
-Release [v1.26](https://github.com/google/google-api-dotnet-client/releases/tag/v1.26.2) was a major refactor of the project structure. Part of this work was to converge source code between desktop and .NET Core platforms, which involved changes to [FileDataStore.cs](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis/Util/Store/FileDataStore.cs). These changes allowed `FileDataStore` to build for .NET Core applications, but did involve changes to the logic to determine the default base directory of the file-store, because `Environment.SpecialFolder.ApplicationData` is not available on .NET Core.
+Release [v1.26](https://github.com/googleapis/google-api-dotnet-client/releases/tag/v1.26.2) was a major refactor of the project structure. Part of this work was to converge source code between desktop and .NET Core platforms, which involved changes to [FileDataStore.cs](https://github.com/googleapis/google-api-dotnet-client/blob/master/Src/Support/Google.Apis/Util/Store/FileDataStore.cs). These changes allowed `FileDataStore` to build for .NET Core applications, but did involve changes to the logic to determine the default base directory of the file-store, because `Environment.SpecialFolder.ApplicationData` is not available on .NET Core.
 
 We did consider reverting this back to the v1.25 behaviour in v1.28+, but would rather not cause an additional backward-incompatible change; especially as there is a simple work-around available. 
 
-### Can I use [GoogleWebAuthorizationBroker](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) on a server?
+### Can I use [GoogleWebAuthorizationBroker](https://github.com/googleapis/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) on a server?
 
 In a word: No.
 
-[GoogleWebAuthorizationBroker](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) requires interaction with the end-user, so can only be used in client-side code.
+[GoogleWebAuthorizationBroker](https://github.com/googleapis/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) requires interaction with the end-user, so can only be used in client-side code.
 
 OAuth authentication requires the end-user to interact with a web browser, which can only be done client-side.
 
@@ -94,4 +94,12 @@ demoRequest.ModifyRequest = httpRequestMessage =>
 GoogleApiHttpBody response = demoRequest.Execute();
 ```
 
-See issue [#1068](https://github.com/google/google-api-dotnet-client/issues/1068) for more details.
+See issue [#1068](https://github.com/googleapis/google-api-dotnet-client/issues/1068) for more details.
+
+### Why aren't Unity, Xamarin or UWP supported?
+
+At a team discussion in October 2018 we made the decision to not proceed with support for these platforms.
+We don't see evidence that there would be enough usage to justify the techincal work and
+infrastructure required for us to fully support these extra platforms.
+
+We will revisit this decision on a regular basis, in case the situation changes.

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/PJB_zqya-G8YVADxM394C0jmFUA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/PJB_zqya-G8YVADxM394C0jmFUA\"",
  "discoveryVersion": "v1",
  "id": "admin:datatransfer_v1",
  "name": "admin",

@@ -93,7 +93,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             {
                 Token = token
             };
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, request.Build());
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, request.Build());
 
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)

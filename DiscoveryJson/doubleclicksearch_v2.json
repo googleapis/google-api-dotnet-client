@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/o93rFFA76j_ca5BOz3KvTwT1WkY\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/IOWgYjK9xlpfWTJ2oeZN41FesFE\"",
  "discoveryVersion": "v1",
  "id": "doubleclicksearch:v2",
  "name": "doubleclicksearch",
  "version": "v2",
- "revision": "20180529",
+ "revision": "20181106",
  "title": "DoubleClick Search API",
  "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
  "ownerDomain": "google.com",
@@ -604,7 +604,7 @@
     },
     "rowCount": {
      "type": "integer",
-     "description": "Synchronous report only. The maxinum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000.",
+     "description": "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000.",
      "default": "10000",
      "format": "int32",
      "minimum": "0",
