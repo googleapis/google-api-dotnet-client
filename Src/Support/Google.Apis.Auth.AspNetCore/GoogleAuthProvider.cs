@@ -82,7 +82,7 @@ namespace Google.Apis.Auth.AspNetCore
                     var refreshedRefreshToken = payload.Value<string>("refresh_token");
                     var refreshedExpiresIn = payload.Value<string>("expires_in");
                     auth.Properties.UpdateTokenValue(OpenIdConnectParameterNames.AccessToken, refreshedAccessToken);
-                    if (!string.IsNullOrEmpty(refreshToken))
+                    if (!string.IsNullOrEmpty(refreshedRefreshToken))
                     {
                         auth.Properties.UpdateTokenValue(OpenIdConnectParameterNames.RefreshToken, refreshedRefreshToken);
                     }
