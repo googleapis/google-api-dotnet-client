@@ -111,7 +111,7 @@ namespace Google.Apis.Auth.AspNetCore
             {
                 throw new InvalidOperationException("Cannot get scopes when not authenticated.");
             }
-            auth.Properties.Items.TryGetValue(GoogleScopedAuthorizeHandler.ScopeName, out var scope);
+            auth.Properties.Items.TryGetValue(Consts.ScopeName, out var scope);
             return (scope ?? "").Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
         }
     }
