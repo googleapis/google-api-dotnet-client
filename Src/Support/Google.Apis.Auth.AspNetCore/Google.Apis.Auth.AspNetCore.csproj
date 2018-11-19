@@ -1,7 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\CommonProjectProperties.xml" />
 
   <PropertyGroup>
+    <!-- Only ASP.NET Core 2.0 on netstandard2.0 supported -->
     <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- Beta release -->
+    <Version>$(Version)-beta01</Version>
+  </PropertyGroup>
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google APIs ASP.NET Core Auth Extensions</Title>
+    <Description>
+The Google APIs Client Library is a runtime client for working with Google Services.
+
+The ASP.NET Core Auth extension library contains a Google-specific OpenIdConnect auth handler.
+Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
+
+Supported Platforms:
+- ASP.NET Core 2.x on netstandard2.x
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +29,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.0.4" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
+
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
