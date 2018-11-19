@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.AspNetCore
 {
-    internal class GoogleScopedAuthorizeHandler : AuthorizationHandler<GoogleScopedRequirement>
+    internal class GoogleScopedAuthorizationHandler : AuthorizationHandler<GoogleScopedRequirement>
     {
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, GoogleScopedRequirement requirement)
         {

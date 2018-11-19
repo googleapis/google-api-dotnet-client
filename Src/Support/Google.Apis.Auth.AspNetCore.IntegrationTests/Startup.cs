@@ -29,10 +29,7 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(2);
-                })
+                .AddCookie(options => options.ExpireTimeSpan = TimeSpan.FromMinutes(2))
                 .AddGoogleOpenIdConnect(options =>
                 {
                     var clientInfo = (ClientInfo)services.First(x => x.ServiceType == typeof(ClientInfo)).ImplementationInstance;
@@ -45,20 +42,14 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("home", "{controller=Home}/{action=Index}");
-            });
+            app.UseMvc(routes => routes.MapRoute("home", "{controller=Home}/{action=Index}"));
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Fallback, probably shouldn't get here.");
-            });
+            app.Run(async (context) => await context.Response.WriteAsync("Fallback, probably shouldn't get here."));
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿
-@model IReadOnlyList<string>
+﻿@using Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
+@model HomeController.ForceTokenRefreshModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
@@ -14,18 +15,16 @@
 <body>
     <h1>Integration tests - Force Token Refresh</h1>
     <ul>
-        @foreach (var token in @Model)
+        @foreach (var result in @Model.Results)
         {
-            <li>@token</li>
+            <li>@result</li>
         }
     </ul>
-    @if (@Model.Count > 0)
-    {
-        <p>Test passed</p>
-    }
-    else
-    {
-        <p>Test failed</p>
-    }
+    <form asp-controller="home" asp-action="ForceTokenRefreshCheckPersisted" method="post">
+        @* Passing access token for test only - don't do this in production code! *@
+        <input name="expectedAccessToken" type="hidden" value="@Model.AccessToken" />
+        <button type="submit">Continue test...</button>
+    </form>
+    <p><a asp-controller="home" asp-action="index">Index</a></p>
 </body>
 </html>

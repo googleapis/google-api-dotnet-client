@@ -9,24 +9,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Integreation tests - Storage Bucket Listing</title>
+    <title>Integreation tests - Force Token Refresh Check Persisted</title>
 </head>
 <body>
-    <h1>Integration tests - Storage Bucket Listing</h1>
+    <h1>Integration tests - Force Token Refresh Check Persisted</h1>
     <ul>
-        @foreach (var bucketName in @Model)
+        @foreach (var result in @Model)
         {
-            <li>@bucketName</li>
+        <li>@result</li>
         }
     </ul>
-    @if (@Model.Count > 0)
-    {
-        <p>Test passed</p>
-    }
-    else
-    {
-        <p>Test failed</p>
-    }
     <p><a asp-controller="home" asp-action="index">Index</a></p>
 </body>
 </html>

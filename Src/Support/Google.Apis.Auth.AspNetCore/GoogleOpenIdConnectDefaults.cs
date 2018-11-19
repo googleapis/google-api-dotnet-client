@@ -20,9 +20,19 @@ using System.Text;
 
 namespace Google.Apis.Auth.AspNetCore
 {
+    /// <summary>
+    /// Default values related to the Google OpenIdConnect authentication handler.
+    /// </summary>
     public static class GoogleOpenIdConnectDefaults
     {
+        /// <summary>
+        /// The default value used for the authentication scheme.
+        /// </summary>
         public const string AuthenticationScheme = "GoogleOpenIdConnect";
+
+        /// <summary>
+        /// The default value for the display name.
+        /// </summary>
         public const string DisplayName = "Google OpenIdConnect";
     }
 }

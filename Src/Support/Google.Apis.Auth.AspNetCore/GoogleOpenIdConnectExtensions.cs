@@ -28,19 +28,48 @@ using System.Linq;
 // See https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Extension methods to support Google OpenIdConnect authentication.
+    /// </summary>
     public static class GoogleOpenIdConnectExtensions
     {
+        /// <summary>
+        /// Add Google OpenIdConnect authentication.
+        /// </summary>
+        /// <param name="builder">The current <see cref="AuthenticationBuilder"/>.</param>
+        /// <returns>The current <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder) =>
-                        AddGoogleOpenIdConnect(builder, _ => { });
+            AddGoogleOpenIdConnect(builder, _ => { });
 
+        /// <summary>
+        /// Add Google OpenIdConnect authentication.
+        /// </summary>
+        /// <param name="builder">The current <see cref="AuthenticationBuilder"/>.</param>
+        /// <param name="configureOptions">Function allowing option customization.</param>
+        /// <returns>The current <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
-           Action<OpenIdConnectOptions> configureOptions) =>
-               AddGoogleOpenIdConnect(builder, GoogleOpenIdConnectDefaults.AuthenticationScheme, configureOptions);
+            Action<OpenIdConnectOptions> configureOptions) =>
+                AddGoogleOpenIdConnect(builder, GoogleOpenIdConnectDefaults.AuthenticationScheme, configureOptions);
 
+        /// <summary>
+        /// Add Google OpenIdConnect authentication.
+        /// </summary>
+        /// <param name="builder">The current <see cref="AuthenticationBuilder"/>.</param>
+        /// <param name="authenticationScheme">The name of this authentication scheme.</param>
+        /// <param name="configureOptions">Function allowing option customization.</param>
+        /// <returns>The current <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
-           string authenticationScheme, Action<OpenIdConnectOptions> configureOptions) =>
-               AddGoogleOpenIdConnect(builder, authenticationScheme, GoogleOpenIdConnectDefaults.DisplayName, configureOptions);
+            string authenticationScheme, Action<OpenIdConnectOptions> configureOptions) =>
+                AddGoogleOpenIdConnect(builder, authenticationScheme, GoogleOpenIdConnectDefaults.DisplayName, configureOptions);
 
+        /// <summary>
+        /// Add Google OpenIdConnect authentication.
+        /// </summary>
+        /// <param name="builder">The current <see cref="AuthenticationBuilder"/>.</param>
+        /// <param name="authenticationScheme">The name of this authentication scheme.</param>
+        /// <param name="displayName">The display name of this authentication scheme.</param>
+        /// <param name="configureOptions">Function allowing option customization.</param>
+        /// <returns>The current <see cref="AuthenticationBuilder"/>.</returns>
         public static AuthenticationBuilder AddGoogleOpenIdConnect(this AuthenticationBuilder builder,
             string authenticationScheme, string displayName, Action<OpenIdConnectOptions> configureOptions)
         {
@@ -48,7 +77,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddSingleton(new GoogleAuthenticationSchemeProvider(authenticationScheme));
             // Services to facilitate the GoogleScopedAuthorize attribute.
             builder.Services.AddTransient<IAuthorizationPolicyProvider, GoogleScopedPolicyProvider>();
-            builder.Services.AddScoped<IAuthorizationHandler, GoogleScopedAuthorizeHandler>();
+            builder.Services.AddScoped<IAuthorizationHandler, GoogleScopedAuthorizationHandler>();
             // Required to provide access to HttpContext in GoogleAuthProvider.
             builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // Service to provide user access to the Google auth information.
@@ -83,7 +112,8 @@ namespace Microsoft.Extensions.DependencyInjection
                         var auth = await ctx.HttpContext.AuthenticateAsync(authenticationScheme);
                         var authed = auth.Succeeded && !auth.None;
                         // Handle scopes, with incremental auth if required.
-                        if (ctx.HttpContext.Items.TryGetValue(Consts.HttpContextAdditionalScopeName, out var scope0) && scope0 is string incrementalScope)
+                        if (ctx.HttpContext.Items.TryGetValue(Consts.HttpContextAdditionalScopeName, out var scope0) &&
+                            scope0 is string incrementalScope)
                         {
                             if (authed)
                             {
@@ -101,16 +131,16 @@ namespace Microsoft.Extensions.DependencyInjection
                         {
                             // Pass-through the scopes that are already authorized.
                             // This is required because all properties are wiped and re-created from this
-                            // auth process. To keep a property requires setting it here; scopes are the only property we need to keep.
+                            // auth process. To keep a property requires setting it here;
+                            // scopes are the only property we need to keep.
                             ctx.Properties.Items[Consts.ScopeName] = existingScope;
                         }
-                        // Call user event last so all behaviour can be overridden.
+                        // Call user event; called last to allow user to overwrite any values written above.
                         await userEvents.OnRedirectToIdentityProvider(ctx);
                     },
                     OnTokenResponseReceived = async ctx =>
                     {
-                        // TODO: Check this is definitely the correct handler in which to do this.
-                        // Call user event first so all behaviour can be overridden.
+                        // Call user event; called first to allow user to alter values before they are read below.
                         await userEvents.OnTokenResponseReceived(ctx);
                         // Merge existing scopes and newly acquired scopes.
                         var scope = ctx.Properties.Items.TryGetValue(Consts.ScopeName, out var scope0) ? scope0 : "";
@@ -119,6 +149,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         var mergedScopes = scopes.Concat(newScopes).Distinct();
                         ctx.Properties.Items[Consts.ScopeName] = string.Join(" ", mergedScopes);
                     },
+                    // Forward all other events.
                     OnAuthenticationFailed = userEvents.OnAuthenticationFailed,
                     OnAuthorizationCodeReceived = userEvents.OnAuthorizationCodeReceived,
                     OnMessageReceived = userEvents.OnMessageReceived,

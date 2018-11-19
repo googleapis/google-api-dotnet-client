@@ -21,6 +21,10 @@ using System.Text;
 
 namespace Google.Apis.Auth.AspNetCore.IntegrationTests
 {
+    /// <summary>
+    /// Client auth information, loaded from a Google user credential json file.
+    /// Set the TEST_CLIENT_SECRET_FILENAME environment variable to point to the credential file.
+    /// </summary>
     public class ClientInfo
     {
         public static ClientInfo Load()

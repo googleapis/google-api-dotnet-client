@@ -33,7 +33,8 @@ namespace Google.Apis.Auth.AspNetCore
     {
         private static TimeSpan s_accessTokenRefreshWindow = TimeSpan.FromMinutes(5);
 
-        public GoogleAuthProvider(IHttpContextAccessor httpContextAccessor, GoogleAuthenticationSchemeProvider schemeProvider, ISystemClock clock, IOptionsMonitor<OpenIdConnectOptions> options)
+        public GoogleAuthProvider(IHttpContextAccessor httpContextAccessor,
+            GoogleAuthenticationSchemeProvider schemeProvider, ISystemClock clock, IOptionsMonitor<OpenIdConnectOptions> options)
         {
             _httpContextAccessor = httpContextAccessor;
             _scheme = schemeProvider.Scheme;
@@ -46,7 +47,8 @@ namespace Google.Apis.Auth.AspNetCore
         private readonly ISystemClock _clock;
         private readonly IOptionsMonitor<OpenIdConnectOptions> _options;
 
-        public async Task<GoogleCredential> GetCredentialAsync(TimeSpan? accessTokenRefreshWindow = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<GoogleCredential> GetCredentialAsync(
+            TimeSpan? accessTokenRefreshWindow = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var httpContext = _httpContextAccessor.HttpContext;
             var auth = await httpContext.AuthenticateAsync(_scheme);
@@ -91,6 +93,7 @@ namespace Google.Apis.Auth.AspNetCore
                     {
                         auth.Properties.ExpiresUtc = _clock.UtcNow + TimeSpan.FromSeconds(expiresInSeconds);
                     }
+                    accessToken = refreshedAccessToken;
                 }
                 catch (Exception e)
                 {

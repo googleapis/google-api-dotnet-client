@@ -20,6 +20,10 @@ using System.Collections.Generic;
 
 namespace Google.Apis.Auth.AspNetCore
 {
+    /// <summary>
+    /// Specifies that the class or method that this attribute is applied to requires the specified authorization,
+    /// which can include the incremental addition of Google scopes.
+    /// </summary>
     public class GoogleScopedAuthorizeAttribute : AuthorizeAttribute
     {
         private const string PolicyPrefix = "GoogleScoped: ";
@@ -30,11 +34,21 @@ namespace Google.Apis.Auth.AspNetCore
             {
                 return null;
             }
-            return policy.Substring(PolicyPrefix.Length).Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+            return policy.Substring(PolicyPrefix.Length)
+                .Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
         }
 
+        /// <summary>
+        /// Construct an instance of <see cref="GoogleScopedAuthorizeAttribute"/>.
+        /// </summary>
+        /// <param name="scopes">
+        /// The Google auth scopes required by the class or method to which this attribute is applied.
+        /// </param>
         public GoogleScopedAuthorizeAttribute(params string[] scopes) => Scopes = scopes;
 
+        /// <summary>
+        /// Get or set the Google auth scopes required by the class or method to which this attribute is applied.
+        /// </summary>
         public IReadOnlyList<string> Scopes
         {
             get => ParsePolicy(Policy);
