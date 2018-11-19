@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20181112 (1411)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1632,9 +1632,12 @@ namespace Google.Apis.Fitness.v1
                 [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-                /// <summary>The continuation token, which is used to page through large result sets. To get the next
-                /// page of results, set this parameter to the value of nextPageToken from the previous
-                /// response.</summary>
+                /// <summary>The continuation token, which is used for incremental syncing. To get the next batch of
+                /// changes, set this parameter to the value of nextPageToken from the previous response. This token is
+                /// treated as a timestamp (in millis since epoch). If specified, the API returns sessions modified
+                /// since this time. The page token is ignored if either start or end time is specified. If none of
+                /// start time, end time, and the page token is specified, sessions modified in the last 7 days are
+                /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2027,8 +2030,7 @@ namespace Google.Apis.Fitness.v1.Data
     /// Data points always contain one value for each field of the data type.</summary>
     public class DataPoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Used for version checking during transformation; that is, a datapoint can only replace another
-        /// datapoint that has an older computation time stamp.</summary>
+        /// <summary>DO NOT USE THIS FIELD. It is ignored, and not stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computationTimeMillis")]
         public virtual System.Nullable<long> ComputationTimeMillis { get; set; } 
 

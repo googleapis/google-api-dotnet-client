@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181106 (1405)
+ *      <tr><th>API Rev<td>20181116 (1415)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -980,6 +980,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The page size to return. Defaults to 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The type of files in the version that should be listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatusEnum> Status { get; set; }
@@ -999,10 +1003,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The page size to return. Defaults to 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1038,6 +1038,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = @"^sites/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "status", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "status",
@@ -1050,15 +1059,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1094,15 +1094,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A unique id for the new version. This is only specified for legacy version
-                /// creations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VersionId { get; set; }
-
                 /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
                 /// legacy version uploads.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> SizeBytes { get; set; }
+
+                /// <summary>A unique id for the new version. This is only specified for legacy version
+                /// creations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VersionId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1144,18 +1144,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "versionId", new Google.Apis.Discovery.Parameter
+                        "sizeBytes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "versionId",
+                            Name = "sizeBytes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "sizeBytes", new Google.Apis.Discovery.Parameter
+                        "versionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "sizeBytes",
+                            Name = "versionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1389,6 +1389,153 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
             }
+        }
+
+        /// <summary>Gets the Hosting metadata for a specific site.</summary>
+        /// <param name="name">Required. The site for which to get the SiteConfig, in the format: sites/site-
+        /// name/config</param>
+        public virtual GetConfigRequest GetConfig(string name)
+        {
+            return new GetConfigRequest(service, name);
+        }
+
+        /// <summary>Gets the Hosting metadata for a specific site.</summary>
+        public class GetConfigRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig>
+        {
+            /// <summary>Constructs a new GetConfig request.</summary>
+            public GetConfigRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The site for which to get the SiteConfig, in the format: sites/site-
+            /// name/config</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes GetConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sites/[^/]+/config$",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the Hosting metadata for a specific site.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. The site for which to update the SiteConfig, in the format: sites/site-
+        /// name/config</param>
+        public virtual UpdateConfigRequest UpdateConfig(Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
+        {
+            return new UpdateConfigRequest(service, body, name);
+        }
+
+        /// <summary>Sets the Hosting metadata for a specific site.</summary>
+        public class UpdateConfigRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig>
+        {
+            /// <summary>Constructs a new UpdateConfig request.</summary>
+            public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The site for which to update the SiteConfig, in the format: sites/site-
+            /// name/config</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>A set of field names from your [site configuration](../sites.SiteConfig) that you want to
+            /// update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a
+            /// default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes UpdateConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^sites/[^/]+/config$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 }
@@ -1749,6 +1896,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>Defines how to handle a trailing slash in the URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trailingSlashBehavior")]
         public virtual string TrailingSlashBehavior { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A `SiteConfig` contains metadata associated with a specific site that controls Firebase Hosting serving
+    /// behavior</summary>
+    public class SiteConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of FINALIZED versions that will be held for a site before automatic deletion. When a new
+        /// version is deployed, content for versions in storage in excess of this number will be deleted, and will no
+        /// longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an
+        /// unlimited number of max_versions by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxVersions")]
+        public virtual System.Nullable<long> MaxVersions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

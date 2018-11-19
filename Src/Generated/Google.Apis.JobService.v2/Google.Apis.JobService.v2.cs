@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181029 (1397)
+ *      <tr><th>API Rev<td>20181114 (1413)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1690,42 +1690,6 @@ namespace Google.Apis.JobService.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
             /// <summary>Optional.
             ///
             /// If provided, restricts completion to the specified company.</summary>
@@ -1763,6 +1727,42 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,24 +1787,6 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
@@ -1836,6 +1818,24 @@ namespace Google.Apis.JobService.v2
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1950,7 +1950,7 @@ namespace Google.Apis.JobService.v2.Data
 
         /// <summary>Optional.
         ///
-        /// Specifies the traffic density to use when caculating commute time. Must not be present if
+        /// Specifies the traffic density to use when calculating commute time. Must not be present if
         /// departure_hour_local is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roadTraffic")]
         public virtual string RoadTraffic { get; set; } 
@@ -3535,9 +3535,9 @@ namespace Google.Apis.JobService.v2.Data
         /// The location filter specifies geo-regions containing the jobs to search against. See LocationFilter for more
         /// information.
         ///
-        /// If a location value is not specified, jobs are be retrieved from all locations.
+        /// If a location value is not specified, jobs are retrieved from all locations.
         ///
-        /// If multiple values are specified, jobs are retrieved from any of the specified locations, and, if different
+        /// If multiple values are specified, jobs are retrieved from any of the specified locations. If different
         /// values are specified for the LocationFilter.distance_in_miles parameter, the maximum provided distance is
         /// used for all locations.
         ///
@@ -3750,7 +3750,7 @@ namespace Google.Apis.JobService.v2.Data
         /// If a location value isn't specified, jobs fitting the other search criteria are retrieved regardless of
         /// where they're located.
         ///
-        /// If multiple values are specified, jobs are retrieved from any of the specified locations, and, if different
+        /// If multiple values are specified, jobs are retrieved from any of the specified locations. If different
         /// values are specified for the LocationFilter.distance_in_miles parameter, the maximum provided distance is
         /// used for all locations.
         ///
@@ -4211,9 +4211,7 @@ namespace Google.Apis.JobService.v2.Data
     /// The Request body of the `SearchJobs` call.</summary>
     public class SearchJobsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. Any value provided in this field is ignored.
-        ///
-        /// Optional.
+        /// <summary>Optional.
         ///
         /// Controls whether to disable relevance thresholding. Relevance thresholding removes jobs that have low
         /// relevance in search results, for example, removing "Assistant to the CEO" positions from the search results

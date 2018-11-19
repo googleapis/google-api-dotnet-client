@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20181104 (1403)
+ *      <tr><th>API Rev<td>20181113 (1412)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7025,6 +7025,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; } 
+
+        /// <summary>Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only
+        /// present if the user has requested to pause the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTimeMillis")]
+        public virtual System.Nullable<long> AutoResumeTimeMillis { get; set; } 
 
         /// <summary>The reason why a subscription was canceled or is not auto-renewing. Possible values are: - User
         /// canceled the subscription - Subscription was canceled by the system, for example because of a billing

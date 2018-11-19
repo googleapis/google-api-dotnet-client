@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180925 (1363)
+ *      <tr><th>API Rev<td>20181114 (1413)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>
@@ -935,6 +935,16 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
+                    /// it includes only active breakpoints.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
+
                     /// <summary>This field is deprecated. The following fields are always stripped out of the result:
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -964,16 +974,6 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
-
-                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
-                    /// it includes only active breakpoints.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
-
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1009,6 +1009,24 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeInactive",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeAllUsers",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "stripResults", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "stripResults",
@@ -1039,24 +1057,6 @@ namespace Google.Apis.CloudDebugger.v2
                             "action.value", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "action.value",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeAllUsers",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1166,11 +1166,6 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
-                /// `google.com/intellij/v1`).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ClientVersion { get; set; }
-
                 /// <summary>When set to `true`, the result includes all debuggees. Otherwise, the result includes only
                 /// debuggees that are active.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
@@ -1179,6 +1174,11 @@ namespace Google.Apis.CloudDebugger.v2
                 /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Project { get; set; }
+
+                /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                /// `google.com/intellij/v1`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClientVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1205,15 +1205,6 @@ namespace Google.Apis.CloudDebugger.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "clientVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeInactive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeInactive",
@@ -1226,6 +1217,15 @@ namespace Google.Apis.CloudDebugger.v2
                         "project", new Google.Apis.Discovery.Parameter
                         {
                             Name = "project",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1473,9 +1473,9 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual StatusMessage Status { get; set; } 
 
-        /// <summary>Uniquifier to further distiguish the application. It is possible that different applications might
+        /// <summary>Uniquifier to further distinguish the application. It is possible that different applications might
         /// have identical values in the debuggee message, thus, incorrectly identified as a single application by the
-        /// Controller service. This field adds salt to further distiguish the application. Agents should consider
+        /// Controller service. This field adds salt to further distinguish the application. Agents should consider
         /// seeding this field with value that identifies the code, binary, configuration and environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniquifier")]
         public virtual string Uniquifier { get; set; } 
@@ -1672,8 +1672,8 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Response for registering a debuggee.</summary>
     public class RegisterDebuggeeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Debuggee resource. The field `id` is guranteed to be set (in addition to the echoed fields). If the
-        /// field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and
+        /// <summary>Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If
+        /// the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and
         /// detaching from the application. It should however continue to poll `RegisterDebuggee` until
         /// reenabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggee")]

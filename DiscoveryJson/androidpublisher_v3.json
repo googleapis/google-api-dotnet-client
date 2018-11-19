@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/IfF0M2pPLr2WlOFK-DF4-53xld0\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/heJVOTjg5eN2c0Fk8NTRmHawpRw\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20181104",
+ "revision": "20181113",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -900,6 +900,11 @@
     "autoRenewing": {
      "type": "boolean",
      "description": "Whether the subscription will automatically be renewed when it reaches its current expiry time."
+    },
+    "autoResumeTimeMillis": {
+     "type": "string",
+     "description": "Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription.",
+     "format": "int64"
     },
     "cancelReason": {
      "type": "integer",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181021 (1389)
+ *      <tr><th>API Rev<td>20181109 (1408)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -6968,6 +6968,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
+        /// <summary>The bucket's IAM configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamConfiguration")]
+        public virtual Bucket.IamConfigurationData IamConfiguration { get; set; } 
+
         /// <summary>The ID of the bucket. For buckets, the id and name properties are the same.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -7119,6 +7123,43 @@ namespace Google.Apis.Storage.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
             public virtual string DefaultKmsKeyName { get; set; } 
 
+        }    
+
+        /// <summary>The bucket's IAM configuration.</summary>
+        public class IamConfigurationData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
+            public virtual IamConfigurationData.BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
+
+            
+
+            public class BucketPolicyOnlyData
+            {
+                /// <summary>If set, access checks only use bucket-level IAM policies or above.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+                public virtual System.Nullable<bool> Enabled { get; set; } 
+
+                /// <summary>The deadline time for changing iamConfiguration.bucketPolicyOnly.enabled from true to false
+                /// in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false
+                /// until the locked time, after which the field is immutable.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("lockedTime")]
+                public virtual string LockedTimeRaw { get; set; }
+
+                /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LockedTimeRaw"/>.</summary>
+                [Newtonsoft.Json.JsonIgnore]
+                public virtual System.Nullable<System.DateTime> LockedTime
+                {
+                    get
+                    {
+                        return Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
+                    }
+                    set
+                    {
+                        LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                    }
+                }
+
+            }
         }    
 
         /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>

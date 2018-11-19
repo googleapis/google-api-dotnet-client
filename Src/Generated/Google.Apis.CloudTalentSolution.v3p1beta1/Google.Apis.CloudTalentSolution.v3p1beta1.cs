@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3p1beta1
- *      <tr><th>API Rev<td>20181029 (1397)
+ *      <tr><th>API Rev<td>20181114 (1413)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1228,23 +1228,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional.
-                ///
-                /// The starting point of a query result.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The maximum number of jobs to be returned per page of results.
-                ///
-                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
-                /// the maximum allowed page size is 100.
-                ///
-                /// Default is 100 if empty or a number < 1 is specified.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Required.
                 ///
                 /// The filter string specifies the jobs to be enumerated.
@@ -1287,6 +1270,23 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                     JOBVIEWFULL,
                 }
 
+                /// <summary>Optional.
+                ///
+                /// The starting point of a query result.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The maximum number of jobs to be returned per page of results.
+                ///
+                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
+                /// the maximum allowed page size is 100.
+                ///
+                /// Default is 100 if empty or a number < 1 is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1321,24 +1321,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1351,6 +1333,24 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                         "jobView", new Google.Apis.Discovery.Parameter
                         {
                             Name = "jobView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1657,16 +1657,37 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
 
             /// <summary>Optional.
             ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
+            /// <summary>Optional.
+            ///
             /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For
             /// more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
             ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_codes are returned.
+            /// For CompletionType.JOB_TITLE type, only open jobs with the same language_codes are returned.
             ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_codes are
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_codes are
             /// returned.
             ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_codes or companies having open jobs
-            /// with same language_codes are returned.
+            /// For CompletionType.COMBINED type, only open jobs with the same language_codes or companies having open
+            /// jobs with the same language_codes are returned.
             ///
             /// The maximum number of allowed characters is 255.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
@@ -1723,38 +1744,17 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
             /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
             /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
             ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            /// For CompletionType.JOB_TITLE type, only open jobs with the same language_code are returned.
             ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_code are
             /// returned.
             ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.
+            /// For CompletionType.COMBINED type, only open jobs with the same language_code or companies having open
+            /// jobs with the same language_code are returned.
             ///
             /// The maximum number of allowed characters is 255.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1788,6 +1788,15 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "languageCodes", new Google.Apis.Discovery.Parameter
@@ -1838,15 +1847,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2030,7 +2030,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
 
         /// <summary>Optional.
         ///
-        /// Specifies the traffic density to use when caculating commute time.</summary>
+        /// Specifies the traffic density to use when calculating commute time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roadTraffic")]
         public virtual string RoadTraffic { get; set; } 
 
@@ -3216,7 +3216,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         /// If a location value isn't specified, jobs fitting the other search criteria are retrieved regardless of
         /// where they're located.
         ///
-        /// If multiple values are specified, jobs are retrieved from any of the specified locations, and, if different
+        /// If multiple values are specified, jobs are retrieved from any of the specified locations. If different
         /// values are specified for the LocationFilter.distance_in_miles parameter, the maximum provided distance is
         /// used for all locations.
         ///
@@ -3325,8 +3325,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         public virtual PostalAddress PostalAddress { get; set; } 
 
         /// <summary>Radius in miles of the job location. This value is derived from the location bounding box in which
-        /// a circle with the specified radius centered from LatLng coves the area associated with the job location. For
-        /// example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.</summary>
+        /// a circle with the specified radius centered from LatLng covers the area associated with the job location.
+        /// For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radiusInMiles")]
         public virtual System.Nullable<double> RadiusInMiles { get; set; } 
 
@@ -3731,9 +3731,9 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         /// <summary>Optional.
         ///
         /// Controls whether highly similar jobs are returned next to each other in the search results. Jobs are
-        /// determined to be highly similar based on their titles, job categories, and locations. Highly similar results
-        /// will be clustered so that only one representative job of the cluster will be displayed to the job seeker
-        /// higher up in the results, with the other jobs being displayed lower down in the results.
+        /// identified as highly similar based on their titles, job categories, and locations. Highly similar results
+        /// are clustered so that only one representative job of the cluster is displayed to the job seeker higher up in
+        /// the results, with the other jobs being displayed lower down in the results.
         ///
         /// Defaults to DiversificationLevel.SIMPLE if no value is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diversificationLevel")]
@@ -3904,7 +3904,7 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         public virtual SpellingCorrection SpellCorrection { get; set; } 
 
         /// <summary>The precise result count, which is available only if the client set enable_precise_result_size to
-        /// `true` or if the response is the last page of results. Otherwise, the value is `-1`.</summary>
+        /// `true`, or if the response is the last page of results. Otherwise, the value is `-1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181105 (1404)
+ *      <tr><th>API Rev<td>20181107 (1406)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3252,8 +3252,9 @@ namespace Google.Apis.Pubsub.v1.Data
     }    
 
     /// <summary>A message that is published by publishers and consumed by subscribers. The message must contain either
-    /// a non-empty data field or at least one attribute. See Quotas and limits for more information about message
-    /// limits.</summary>
+    /// a non-empty data field or at least one attribute. Note that client libraries represent this object differently
+    /// depending on the language. See the corresponding client library documentation for more information. See Quotas
+    /// and limits for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional attributes for this message.</summary>

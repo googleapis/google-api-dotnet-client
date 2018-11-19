@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20181106 (1405)
+ *      <tr><th>API Rev<td>20181113 (1412)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -117,9 +117,6 @@ namespace Google.Apis.GamesManagement.v1management
         {
             /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
-
-            /// <summary>Know the list of people in your circles, your age range, and language</summary>
-            public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
         }
 
