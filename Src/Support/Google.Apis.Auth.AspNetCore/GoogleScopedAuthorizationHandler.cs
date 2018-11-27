@@ -16,9 +16,11 @@ limitations under the License.
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,12 +49,21 @@ namespace Google.Apis.Auth.AspNetCore
             var additionalScopes = requirement.Scopes.Except(existingScopes).ToList();
             if (additionalScopes.Any() || !authed)
             {
-                // If further scopes are required and/or the user has not authenticated at all, then [re]authenticate.
-                // Store the additional scopes required in the HttpContext.
-                resource.HttpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
-                // Issue challenge, to [re]authenticate.
-                resource.Result = new ChallengeResult(requirement.Scheme);
+                //// If further scopes are required and/or the user has not authenticated at all, then [re]authenticate.
+                //// Store the additional scopes required in the HttpContext.
+                //resource.HttpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
+                //// Issue challenge, to [re]authenticate.
+                //resource.Result = new ChallengeResult(requirement.Scheme);
+                resource.Result = CreateChallenge(resource.HttpContext, additionalScopes, requirement.Scheme);
             }
+        }
+
+        internal static IActionResult CreateChallenge(HttpContext httpContext, IEnumerable<string> additionalScopes, string scheme)
+        {
+            // Store the additional scopes required in the HttpContext.
+            httpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
+            // Return challenge, to [re]authenticate.
+            return new ChallengeResult(scheme);
         }
     }
 }

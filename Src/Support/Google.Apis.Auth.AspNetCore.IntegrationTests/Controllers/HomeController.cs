@@ -16,6 +16,8 @@ limitations under the License.
 
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
+using Google.Apis.Translate.v2;
+using Google.Apis.Translate.v2.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -56,6 +58,35 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
             var buckets = await service.Buckets.List(clientInfo.ProjectId).ExecuteAsync();
             var bucketNames = buckets.Items.Select(x => x.Name).ToList();
             return View(bucketNames);
+        }
+
+        // Test showing use of incremental auth.
+        // The call to auth.RequireScopesAsync(...) ensures the correct authorization is available.
+        [Authorize]
+        public async Task<IActionResult> Translate([FromServices] IGoogleAuthProvider auth, [FromServices] ClientInfo clientInfo)
+        {
+            // Programmatic auth check.
+            if (await auth.RequireScopesAsync(TranslateService.Scope.CloudTranslation) is IActionResult authResult)
+            {
+                // If the required scopes are not authorized, then a non-null IActionResult will be returned,
+                // which must be returned from the action.
+                return authResult;
+            }
+            // The required scopes have now been authorized.
+            var cred = await auth.GetCredentialAsync();
+            var service = new TranslateService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = cred
+            });
+            var translateRequest = service.Translations.Translate(new TranslateTextRequest
+            {
+                Format = "text",
+                Q = new List<string> { "The cold weather will soon be over" },
+                Source = "en",
+                Target = "fr",
+            });
+            var response = await translateRequest.ExecuteAsync();
+            return View((object)response.Translations.Single().TranslatedText);
         }
 
         [Authorize]

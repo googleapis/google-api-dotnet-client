@@ -1,0 +1,22 @@
+﻿@model string
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Integreation tests - Translate</title>
+</head>
+<body>
+    <h1>Integration tests - Translate</h1>
+    <ul>
+        @Model
+    </ul>
+    <p>Test passed</p>
+    <p><a asp-controller="home" asp-action="index">Index</a></p>
+</body>
+</html>

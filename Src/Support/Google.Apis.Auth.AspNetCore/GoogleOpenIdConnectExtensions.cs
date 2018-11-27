@@ -23,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Linq;
+using System.Security.Claims;
 
 // Microsoft recommend that all service Add methods go in this namespace.
 // See https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
@@ -117,9 +118,16 @@ namespace Microsoft.Extensions.DependencyInjection
                         {
                             if (authed)
                             {
+                                // TODO: Understand why incremental auth is not working properly.
                                 // If user is already authenticated, use incremental auth.
                                 ctx.ProtocolMessage.SetParameter("include_granted_scopes", "true");
                                 ctx.ProtocolMessage.Scope = incrementalScope;
+                                Claim googleId = ctx.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+                                if (googleId != null)
+                                {
+                                    // Use the Google ID; "sub" in the JWT; to aid login.
+                                    ctx.ProtocolMessage.LoginHint = googleId.Value;
+                                }
                             }
                             else
                             {

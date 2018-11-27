@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Generated\Google.Apis.Storage.v1\Google.Apis.Storage.v1.cs" Link="Storage\Google.Apis.Storage.v1.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.Storage.v1\Google.Apis.Storage.v1.cs" Link="Services\Google.Apis.Storage.v1.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.Translate.v2\Google.Apis.Translate.v2.cs" Link="Services\Google.Apis.Translate.v2.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Storage\" />
+    <Folder Include="Services\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

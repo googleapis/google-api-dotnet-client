@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -37,12 +38,23 @@ namespace Google.Apis.Auth.AspNetCore
         /// </param>
         /// <param name="cancellationToken">Optional. Token to allow cancellation.</param>
         /// <returns></returns>
-        Task<GoogleCredential> GetCredentialAsync(TimeSpan? accessTokenRefreshWindow = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<GoogleCredential> GetCredentialAsync(
+            TimeSpan? accessTokenRefreshWindow = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get the currently authorized Google scopes.
         /// </summary>
         /// <returns>A list of all currently authorized Google scopes.</returns>
         Task<IReadOnlyList<string>> GetCurrentScopesAsync();
+
+        /// <summary>
+        /// Get a suitable auth challenge if any of the requested scopes are not yet authorized.
+        /// </summary>
+        /// <param name="scopes">The required scopes.</param>
+        /// <returns>
+        /// An auth challenge if any of the requested scopes are not yet authorized;
+        /// a Task with a result of null otherwise.
+        /// </returns>
+        Task<IActionResult> RequireScopesAsync(params string[] scopes);
     }
 }

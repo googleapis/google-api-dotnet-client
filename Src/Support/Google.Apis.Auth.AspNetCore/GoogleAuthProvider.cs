@@ -18,11 +18,13 @@ using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -116,6 +118,23 @@ namespace Google.Apis.Auth.AspNetCore
             }
             auth.Properties.Items.TryGetValue(Consts.ScopeName, out var scope);
             return (scope ?? "").Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public async Task<IActionResult> RequireScopesAsync(params string[] scopes)
+        {
+            var currentScopes = await GetCurrentScopesAsync();
+            var additionalScopes = scopes.Except(currentScopes).ToList();
+            if (additionalScopes.Any())
+            {
+                // Auth required to authorize extra scopes.
+                return GoogleScopedAuthorizationHandler.CreateChallenge(
+                    _httpContextAccessor.HttpContext, additionalScopes, _scheme);
+            }
+            else
+            {
+                // All scopes already authorized.
+                return null;
+            }
         }
     }
 }
