@@ -3,7 +3,7 @@
   <Import Project="..\CommonProjectProperties.xml" />
 
   <PropertyGroup>
-    <!-- Only ASP.NET Core 2.0 on netstandard2.0 supported -->
+    <!-- ASP.NET Core <2.0 not supported, so no need to support netstandard <2.0 -->
     <TargetFramework>netstandard2.0</TargetFramework>
     <!-- Beta release -->
     <Version>$(Version)-beta01</Version>
@@ -19,7 +19,7 @@ The ASP.NET Core Auth extension library contains a Google-specific OpenIdConnect
 Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
 
 Supported Platforms:
-- ASP.NET Core 2.x on netstandard2.x
+- ASP.NET Core 2.0+
     </Description>
   </PropertyGroup>
 
