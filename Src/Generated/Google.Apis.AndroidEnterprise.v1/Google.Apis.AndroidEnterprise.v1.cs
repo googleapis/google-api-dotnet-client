@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181113 (1412)
+ *      <tr><th>API Rev<td>20181121 (1420)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -6716,6 +6716,8 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Generates an authentication token which the device policy client can use to provision the given
         /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes.
         ///
+        /// You can provision a maximum of 10 devices per user.
+        ///
         /// This call only works with EMM-managed accounts.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -6727,6 +6729,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Generates an authentication token which the device policy client can use to provision the given
         /// EMM-managed user account on a device. The generated token is single-use and expires after a few minutes.
+        ///
+        /// You can provision a maximum of 10 devices per user.
         ///
         /// This call only works with EMM-managed accounts.</summary>
         public class GenerateAuthenticationTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AuthenticationToken>

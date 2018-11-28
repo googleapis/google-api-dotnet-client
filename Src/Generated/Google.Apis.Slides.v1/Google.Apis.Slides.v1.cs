@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181108 (1407)
+ *      <tr><th>API Rev<td>20181116 (1415)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -108,14 +108,14 @@ namespace Google.Apis.Slides.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Slides API.</summary>
         public class Scope
         {
-            /// <summary>View and manage the files in your Google Drive</summary>
+            /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>View and manage Google Drive files and folders that you have opened or created with this
             /// app</summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
-            /// <summary>View the files in your Google Drive</summary>
+            /// <summary>See and download all your Google Drive files</summary>
             public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
             /// <summary>View and manage your Google Slides presentations</summary>
@@ -124,7 +124,7 @@ namespace Google.Apis.Slides.v1
             /// <summary>View your Google Slides presentations</summary>
             public static string PresentationsReadonly = "https://www.googleapis.com/auth/presentations.readonly";
 
-            /// <summary>View and manage your spreadsheets in Google Drive</summary>
+            /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
             public static string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
             /// <summary>View your Google Spreadsheets</summary>
@@ -1015,6 +1015,20 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates a line.</summary>
     public class CreateLineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The category of line to be created.
+        ///
+        /// The exact line type created is determined based on the category and how it's routed to connect to other page
+        /// elements.
+        ///
+        /// If you specify both a `category` and a `line_category`, the `category` takes precedence.
+        ///
+        /// If you do not specify a value for `category`, but specify a value for `line_category`, then the specified
+        /// `line_category` value is used.
+        ///
+        /// If you do not specify either, then STRAIGHT is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; } 
+
         /// <summary>The element properties for the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
@@ -1810,6 +1824,13 @@ namespace Google.Apis.Slides.v1.Data
     /// connector.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The category of the line.
+        ///
+        /// It matches the `category` specified in CreateLineRequest, and can be updated with
+        /// UpdateLineCategoryRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
+        public virtual string LineCategory { get; set; } 
+
         /// <summary>The properties of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineProperties")]
         public virtual LineProperties LineProperties { get; set; } 
@@ -1817,6 +1838,32 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The type of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineType")]
         public virtual string LineType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The properties for one end of a Line connection.</summary>
+    public class LineConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the connected page element.
+        ///
+        /// Some page elements, such as groups, tables, and lines do not have connection sites and therefore cannot be
+        /// connected to a connector line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedObjectId")]
+        public virtual string ConnectedObjectId { get; set; } 
+
+        /// <summary>The index of the connection site on the connected page element.
+        ///
+        /// In most cases, it corresponds to the predefined connection site index from the ECMA-376 standard. More
+        /// information on those connection sites can be found in the description of the "cnx" attribute in section
+        /// 20.1.9.9 and Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open XML File Formats-
+        /// Fundamentals and Markup Language Reference", part 1 of [ECMA-376 5th edition] (http://www.ecma-
+        /// international.org/publications/standards/Ecma-376.htm).
+        ///
+        /// The position of each connection site can also be viewed from Slides editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionSiteIndex")]
+        public virtual System.Nullable<int> ConnectionSiteIndex { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1847,6 +1894,12 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endArrow")]
         public virtual string EndArrow { get; set; } 
 
+        /// <summary>The connection at the end of the line. If unset, there is no connection.
+        ///
+        /// Only lines with a Type indicating it is a "connector" can have an `end_connection`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endConnection")]
+        public virtual LineConnection EndConnection { get; set; } 
+
         /// <summary>The fill of the line. The default line fill matches the defaults for new lines created in the
         /// Slides editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineFill")]
@@ -1859,6 +1912,12 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The style of the arrow at the beginning of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startArrow")]
         public virtual string StartArrow { get; set; } 
+
+        /// <summary>The connection at the beginning of the line. If unset, there is no connection.
+        ///
+        /// Only lines with a Type indicating it is a "connector" can have a `start_connection`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startConnection")]
+        public virtual LineConnection StartConnection { get; set; } 
 
         /// <summary>The thickness of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
@@ -2706,6 +2765,11 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replaceImage")]
         public virtual ReplaceImageRequest ReplaceImage { get; set; } 
 
+        /// <summary>Reroutes a line such that it's connected at the two closest connection sites on the connected page
+        /// elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rerouteLine")]
+        public virtual RerouteLineRequest RerouteLine { get; set; } 
+
         /// <summary>Ungroups objects, such as groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ungroupObjects")]
         public virtual UngroupObjectsRequest UngroupObjects { get; set; } 
@@ -2717,6 +2781,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Updates the properties of an Image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateImageProperties")]
         public virtual UpdateImagePropertiesRequest UpdateImageProperties { get; set; } 
+
+        /// <summary>Updates the category of a line</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateLineCategory")]
+        public virtual UpdateLineCategoryRequest UpdateLineCategory { get; set; } 
 
         /// <summary>Updates the properties of a Line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateLineProperties")]
@@ -2773,6 +2841,21 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Updates the properties of a Video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateVideoProperties")]
         public virtual UpdateVideoPropertiesRequest UpdateVideoProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Reroutes a line such that it's connected at the two closest connection sites on the connected page
+    /// elements.</summary>
+    public class RerouteLineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the line to reroute.
+        ///
+        /// Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of
+        /// the line must be on different page elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3656,6 +3739,28 @@ namespace Google.Apis.Slides.v1.Data
         public virtual ImageProperties ImageProperties { get; set; } 
 
         /// <summary>The object ID of the image the updates are applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the category of a line.</summary>
+    public class UpdateLineCategoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The line category to update to.
+        ///
+        /// The exact line type is determined based on the category to update to and how it's routed to connect to other
+        /// page elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
+        public virtual string LineCategory { get; set; } 
+
+        /// <summary>The object ID of the line the update is applied to.
+        ///
+        /// Only a line with a category indicating it is a "connector" can be updated.
+        ///
+        /// The line may be rerouted after updating its category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 

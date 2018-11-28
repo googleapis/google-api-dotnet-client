@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20181113 (1412)
+ *      <tr><th>API Rev<td>20181125 (1424)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4909,10 +4909,12 @@ namespace Google.Apis.Calendar.v3.Data
 
     public class CalendarNotification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The method used to deliver the notification. Possible values are: - "email" - Reminders are sent
-        /// via email. - "sms" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and
-        /// updates. SMS reminders are only available for G Suite customers. Required when adding a
-        /// notification.</summary>
+        /// <summary>The method used to deliver the notification. Possible values are: - "email" - Notifications are
+        /// sent via email. - "sms" - Deprecated. Once this feature is shutdown, the API will no longer return
+        /// notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS
+        /// notifications to be removed for more information. Notifications are sent via SMS. This value is read-only
+        /// and is ignored on inserts and updates. SMS notifications are only available for G Suite customers. Required
+        /// when adding a notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -5764,9 +5766,11 @@ namespace Google.Apis.Calendar.v3.Data
     public class EventReminder : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. -
-        /// "sms" - Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS
-        /// reminders for other account types are ignored. - "popup" - Reminders are sent via a UI popup. Required when
-        /// adding a reminder.</summary>
+        /// "sms" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this
+        /// method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed
+        /// for more information. Reminders are sent via SMS. These are only available for G Suite customers. Requests
+        /// to set SMS reminders for other account types are ignored. - "popup" - Reminders are sent via a UI popup.
+        /// Required when adding a reminder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 

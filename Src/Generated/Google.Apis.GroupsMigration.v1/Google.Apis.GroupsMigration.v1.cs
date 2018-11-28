@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-migration/'>Groups Migration API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180803 (1310)
+ *      <tr><th>API Rev<td>20181126 (1425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-migration/'>
  *              https://developers.google.com/google-apps/groups-migration/</a>

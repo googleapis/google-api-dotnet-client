@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181116 (1415)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -934,7 +934,9 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual DesktopInfo DesktopInfo { get; set; } 
 
         /// <summary>E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found
-        /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java</summary>
+        /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
+        ///
+        /// Will fallback to dynamic_link_domain is this field is missing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUriPrefix")]
         public virtual string DomainUriPrefix { get; set; } 
 
@@ -942,7 +944,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
         /// associated with your Firebase project.
         ///
-        /// Required.</summary>
+        /// Required if missing domain_uri_prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkDomain")]
         public virtual string DynamicLinkDomain { get; set; } 
 

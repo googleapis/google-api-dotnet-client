@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181107 (1406)
+ *      <tr><th>API Rev<td>20181120 (1419)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -854,6 +854,49 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty, this
+                        /// field is ignored. Maximum IDs: 10,000</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+                        /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
+                        /// 10,000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                        /// <summary>If set, returns only the gateways with which the specified device is associated.
+                        /// The device ID can be numeric (`num_id`) or the user-defined string (`id`). For example, if
+                        /// `456` is specified, returns only the gateways to which the device with `num_id` 456 is
+                        /// bound.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsDeviceId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GatewayListOptionsAssociationsDeviceId { get; set; }
+
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+                        /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
+                        /// specified, all devices are returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.gatewayType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<GatewayListOptionsGatewayTypeEnum> GatewayListOptionsGatewayType { get; set; }
+
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+                        /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
+                        /// specified, all devices are returned.</summary>
+                        public enum GatewayListOptionsGatewayTypeEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY_TYPE_UNSPECIFIED")]
+                            GATEWAYTYPEUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY")]
+                            GATEWAY,
+                            [Google.Apis.Util.StringValueAttribute("NON_GATEWAY")]
+                            NONGATEWAY,
+                        }
+
+                        /// <summary>If set, only devices associated with the specified gateway are returned. The
+                        /// gateway ID can be numeric (`num_id`) or the user-defined string (`id`). For example, if
+                        /// `123` is specified, only devices bound to the gateway with `num_id` 123 are
+                        /// returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsGatewayId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string GatewayListOptionsAssociationsGatewayId { get; set; }
+
                         /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                         /// continuation of a prior `ListDevices` call and the system should return the next page of
                         /// data.</summary>
@@ -870,16 +913,6 @@ namespace Google.Apis.CloudIot.v1
                         /// empty `next_page_token` in the response indicates that more data is available.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty, this
-                        /// field is ignored. Maximum IDs: 10,000</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
-
-                        /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
-                        /// 10,000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -915,6 +948,51 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "deviceIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gatewayListOptions.associationsDeviceId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "gatewayListOptions.gatewayType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gatewayListOptions.gatewayType",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "gatewayListOptions.associationsGatewayId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gatewayListOptions.associationsGatewayId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -936,24 +1014,6 @@ namespace Google.Apis.CloudIot.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "deviceIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1579,15 +1639,48 @@ namespace Google.Apis.CloudIot.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
-                            /// this field is ignored. Maximum IDs: 10,000</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+                            /// <summary>If set, returns only the gateways with which the specified device is
+                            /// associated. The device ID can be numeric (`num_id`) or the user-defined string (`id`).
+                            /// For example, if `456` is specified, returns only the gateways to which the device with
+                            /// `num_id` 456 is bound.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsDeviceId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string GatewayListOptionsAssociationsDeviceId { get; set; }
 
                             /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
                             /// 10,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                            /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+                            /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
+                            /// specified, all devices are returned.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.gatewayType", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<GatewayListOptionsGatewayTypeEnum> GatewayListOptionsGatewayType { get; set; }
+
+                            /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+                            /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
+                            /// specified, all devices are returned.</summary>
+                            public enum GatewayListOptionsGatewayTypeEnum
+                            {
+                                [Google.Apis.Util.StringValueAttribute("GATEWAY_TYPE_UNSPECIFIED")]
+                                GATEWAYTYPEUNSPECIFIED,
+                                [Google.Apis.Util.StringValueAttribute("GATEWAY")]
+                                GATEWAY,
+                                [Google.Apis.Util.StringValueAttribute("NON_GATEWAY")]
+                                NONGATEWAY,
+                            }
+
+                            /// <summary>If set, only devices associated with the specified gateway are returned. The
+                            /// gateway ID can be numeric (`num_id`) or the user-defined string (`id`). For example, if
+                            /// `123` is specified, only devices bound to the gateway with `num_id` 123 are
+                            /// returned.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsGatewayId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string GatewayListOptionsAssociationsGatewayId { get; set; }
+
+                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object FieldMask { get; set; }
 
                             /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                             /// continuation of a prior `ListDevices` call and the system should return the next page of
@@ -1595,17 +1688,17 @@ namespace Google.Apis.CloudIot.v1
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
-                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object FieldMask { get; set; }
-
                             /// <summary>The maximum number of devices to return in the response. If this value is zero,
                             /// the service will select a default size. A call may return fewer objects than requested.
                             /// A non-empty `next_page_token` in the response indicates that more data is
                             /// available.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+                            /// this field is ignored. Maximum IDs: 10,000</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1641,9 +1734,9 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "deviceIds", new Google.Apis.Discovery.Parameter
+                                    "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "deviceIds",
+                                        Name = "gatewayListOptions.associationsDeviceId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1659,9 +1752,18 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    "gatewayListOptions.gatewayType", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageToken",
+                                        Name = "gatewayListOptions.gatewayType",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "gatewayListOptions.associationsGatewayId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "gatewayListOptions.associationsGatewayId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1677,9 +1779,27 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
+                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "deviceIds", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "deviceIds",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1943,6 +2063,76 @@ namespace Google.Apis.CloudIot.v1
                         }
                     }
 
+                    /// <summary>Associates the device with the gateway.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                    /// central1/registries/my-registry`.</param>
+                    public virtual BindDeviceToGatewayRequest BindDeviceToGateway(Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest body, string parent)
+                    {
+                        return new BindDeviceToGatewayRequest(service, body, parent);
+                    }
+
+                    /// <summary>Associates the device with the gateway.</summary>
+                    public class BindDeviceToGatewayRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayResponse>
+                    {
+                        /// <summary>Constructs a new BindDeviceToGateway request.</summary>
+                        public BindDeviceToGatewayRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
+                        /// central1/registries/my-registry`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "bindDeviceToGateway"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}:bindDeviceToGateway"; }
+                        }
+
+                        /// <summary>Initializes BindDeviceToGateway parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                                });
+                        }
+
+                    }
+
                     /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                     /// exists and does not have a policy set.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -2158,6 +2348,146 @@ namespace Google.Apis.CloudIot.v1
                         }
 
                     }
+
+                    /// <summary>Deletes the association between the device and the gateway.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                    /// central1/registries/my-registry`.</param>
+                    public virtual UnbindDeviceFromGatewayRequest UnbindDeviceFromGateway(Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest body, string parent)
+                    {
+                        return new UnbindDeviceFromGatewayRequest(service, body, parent);
+                    }
+
+                    /// <summary>Deletes the association between the device and the gateway.</summary>
+                    public class UnbindDeviceFromGatewayRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayResponse>
+                    {
+                        /// <summary>Constructs a new UnbindDeviceFromGateway request.</summary>
+                        public UnbindDeviceFromGatewayRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
+                        /// central1/registries/my-registry`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "unbindDeviceFromGateway"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}:unbindDeviceFromGateway"; }
+                        }
+
+                        /// <summary>Initializes UnbindDeviceFromGateway parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Associates the device with the gateway.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                /// central1/registries/my-registry`.</param>
+                public virtual BindDeviceToGatewayRequest BindDeviceToGateway(Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest body, string parent)
+                {
+                    return new BindDeviceToGatewayRequest(service, body, parent);
+                }
+
+                /// <summary>Associates the device with the gateway.</summary>
+                public class BindDeviceToGatewayRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayResponse>
+                {
+                    /// <summary>Constructs a new BindDeviceToGateway request.</summary>
+                    public BindDeviceToGatewayRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
+                    /// central1/registries/my-registry`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "bindDeviceToGateway"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}:bindDeviceToGateway"; }
+                    }
+
+                    /// <summary>Initializes BindDeviceToGateway parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
+                            });
+                    }
+
                 }
 
                 /// <summary>Creates a device registry that contains devices.</summary>
@@ -2747,6 +3077,76 @@ namespace Google.Apis.CloudIot.v1
                     }
 
                 }
+
+                /// <summary>Deletes the association between the device and the gateway.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                /// central1/registries/my-registry`.</param>
+                public virtual UnbindDeviceFromGatewayRequest UnbindDeviceFromGateway(Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest body, string parent)
+                {
+                    return new UnbindDeviceFromGatewayRequest(service, body, parent);
+                }
+
+                /// <summary>Deletes the association between the device and the gateway.</summary>
+                public class UnbindDeviceFromGatewayRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayResponse>
+                {
+                    /// <summary>Constructs a new UnbindDeviceFromGateway request.</summary>
+                    public UnbindDeviceFromGatewayRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
+                    /// central1/registries/my-registry`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "unbindDeviceFromGateway"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}:unbindDeviceFromGateway"; }
+                    }
+
+                    /// <summary>Initializes UnbindDeviceFromGateway parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
+                            });
+                    }
+
+                }
             }
         }
     }
@@ -2754,6 +3154,30 @@ namespace Google.Apis.CloudIot.v1
 
 namespace Google.Apis.CloudIot.v1.Data
 {    
+
+    /// <summary>Request for `BindDeviceToGateway`.</summary>
+    public class BindDeviceToGatewayRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device to associate with the specified gateway. The value of `device_id` can be either the
+        /// device numeric ID or the user-defined device identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; } 
+
+        /// <summary>The value of `gateway_id` can be either the device numeric ID or the user-defined device
+        /// identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
+        public virtual string GatewayId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for `BindDeviceToGateway`.</summary>
+    public class BindDeviceToGatewayResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
@@ -2820,6 +3244,10 @@ namespace Google.Apis.CloudIot.v1.Data
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
         public virtual System.Collections.Generic.IList<DeviceCredential> Credentials { get; set; } 
+
+        /// <summary>Gateway-related configuration and state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayConfig")]
+        public virtual GatewayConfig GatewayConfig { get; set; } 
 
         /// <summary>The user-defined device identifier. The device ID must be unique within a device
         /// registry.</summary>
@@ -3086,6 +3514,30 @@ namespace Google.Apis.CloudIot.v1.Data
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gateway-related configuration and state.</summary>
+    public class GatewayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates how to authorize and/or authenticate devices to access the gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayAuthMethod")]
+        public virtual string GatewayAuthMethod { get; set; } 
+
+        /// <summary>Indicates whether the device is a gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayType")]
+        public virtual string GatewayType { get; set; } 
+
+        /// <summary>[Output only] The ID of the gateway the device accessed most recently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAccessedGatewayId")]
+        public virtual string LastAccessedGatewayId { get; set; } 
+
+        /// <summary>[Output only] The most recent time at which the device accessed the gateway specified in
+        /// `last_accessed_gateway`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAccessedGatewayTime")]
+        public virtual object LastAccessedGatewayTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3417,6 +3869,30 @@ namespace Google.Apis.CloudIot.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for `UnbindDeviceFromGateway`.</summary>
+    public class UnbindDeviceFromGatewayRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device to disassociate from the specified gateway. The value of `device_id` can be either the
+        /// device numeric ID or the user-defined device identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; } 
+
+        /// <summary>The value of `gateway_id` can be either the device numeric ID or the user-defined device
+        /// identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
+        public virtual string GatewayId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for `UnbindDeviceFromGateway`.</summary>
+    public class UnbindDeviceFromGatewayResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

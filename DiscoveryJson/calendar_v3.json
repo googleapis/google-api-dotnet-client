@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/366nthxaV-HRPhntFwAXZ-rLADI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/lI7ZDM8riDWk38LHz77rwUi1L4g\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20181113",
+ "revision": "20181125",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -354,7 +354,7 @@
    "properties": {
     "method": {
      "type": "string",
-     "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS reminders are only available for G Suite customers.  \nRequired when adding a notification."
+     "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Notifications are sent via email. \n- \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS notifications to be removed for more information.\nNotifications are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS notifications are only available for G Suite customers.  \nRequired when adding a notification."
     },
     "type": {
      "type": "string",
@@ -1073,7 +1073,7 @@
    "properties": {
     "method": {
      "type": "string",
-     "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.  \nRequired when adding a reminder."
+     "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed for more information.\nReminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.  \nRequired when adding a reminder."
     },
     "minutes": {
      "type": "integer",

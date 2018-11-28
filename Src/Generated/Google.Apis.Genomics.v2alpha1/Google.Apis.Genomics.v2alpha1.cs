@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20181113 (1412)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1688,7 +1688,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The machine type of the virtual machine to create. Must be the short name of a standard machine
-        /// type (such as "n1-standard-1") or a custom machine type (such as "custom-1-4096").</summary>
+        /// type (such as "n1-standard-1") or a custom machine type (such as "custom-1-4096", where "1" indicates the
+        /// number of vCPUs and "4096" indicates the memory in MB). See [Creating an instance with a custom machine
+        /// type](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) for
+        /// more specifications on creating a custom machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
