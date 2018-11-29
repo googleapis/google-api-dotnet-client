@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181112 (1411)
+ *      <tr><th>API Rev<td>20181126 (1425)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>

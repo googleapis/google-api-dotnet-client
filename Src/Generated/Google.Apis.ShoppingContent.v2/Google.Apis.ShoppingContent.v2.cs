@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181106 (1405)
+ *      <tr><th>API Rev<td>20181126 (1425)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -12185,8 +12185,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The carrier handling the shipment.
         ///
-        /// Acceptable values are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" - "ontrac"
-        /// - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds"</summary>
+        /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
+        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds"
+        ///
+        /// Acceptable values for FR are: - "colissimo" - "chronopost"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -14590,9 +14592,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class ProductShippingDimension : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unit of value.
-        ///
-        /// Acceptable values are: - "cm" - "in"</summary>
+        /// <summary>The unit of value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 

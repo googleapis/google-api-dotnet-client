@@ -502,10 +502,6 @@ namespace Google.Apis.Firestore.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The number of results to return.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The filter to apply to list results. Currently, FirestoreAdmin.ListFields only
                         /// supports listing fields that have been explicitly overridden. To issue this query, call
                         /// FirestoreAdmin.ListFields with the filter set to
@@ -517,6 +513,10 @@ namespace Google.Apis.Firestore.v1
                         /// be used to get the next page of results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>The number of results to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -552,15 +552,6 @@ namespace Google.Apis.Firestore.v1
                                     Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -573,6 +564,15 @@ namespace Google.Apis.Firestore.v1
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -968,11 +968,6 @@ namespace Google.Apis.Firestore.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may
-                        /// be used to get the next page of results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>The number of results to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -980,6 +975,11 @@ namespace Google.Apis.Firestore.v1
                         /// <summary>The filter to apply to list results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may
+                        /// be used to get the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1015,15 +1015,6 @@ namespace Google.Apis.Firestore.v1
                                     Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -1036,6 +1027,15 @@ namespace Google.Apis.Firestore.v1
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
