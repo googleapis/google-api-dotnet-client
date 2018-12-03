@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181116 (1415)
+ *      <tr><th>API Rev<td>20181129 (1428)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -577,13 +577,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The next_page_token from a previous request, if provided.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The page size to return. Defaults to 50.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The next_page_token from a previous request, if provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -619,18 +619,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -980,15 +980,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
-                    /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>The page size to return. Defaults to 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The type of files in the version that should be listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatusEnum> Status { get; set; }
@@ -1003,6 +994,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                         ACTIVE,
                     }
+
+                    /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
+                    /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The page size to return. Defaults to 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1038,6 +1038,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = @"^sites/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "status", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "status",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1050,15 +1059,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "status", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "status",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1094,15 +1094,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A unique id for the new version. This is only specified for legacy version
-                /// creations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VersionId { get; set; }
-
                 /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
                 /// legacy version uploads.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> SizeBytes { get; set; }
+
+                /// <summary>A unique id for the new version. This is only specified for legacy version
+                /// creations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VersionId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1144,18 +1144,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "versionId", new Google.Apis.Discovery.Parameter
+                        "sizeBytes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "versionId",
+                            Name = "sizeBytes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "sizeBytes", new Google.Apis.Discovery.Parameter
+                        "versionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "sizeBytes",
+                            Name = "versionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1691,12 +1691,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A `Header` defines custom headers to add to a response should the request URL path match the
-    /// pattern.</summary>
+    /// <summary>A [`header`](/docs/hosting/full-config#headers) defines custom headers to add to a response should the
+    /// request URL path match the pattern.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        /// the request URL path.</summary>
+        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -1781,17 +1781,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A `Redirect` represents the configuration for returning an HTTP redirect response given a matching
-    /// request URL path.</summary>
+    /// <summary>A [`redirect`](/docs/hosting/full-config#redirects) represents the configuration for returning an HTTP
+    /// redirect response given a matching request URL path.</summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        /// the request URL path.</summary>
+        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
         /// <summary>Required. The value to put in the HTTP location header of the response. The location can contain
-        /// capture group values from the pattern using a `":"` prefix to identify the segment and an optional `"*"` to
+        /// capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to
         /// capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
         /// "https://example.com/foo/:capture"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -1842,8 +1842,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A `Rewrite` represents an internal content rewrite on the version. If the pattern matches, the request
-    /// will be handled as if it were to the destination path specified in the configuration.</summary>
+    /// <summary>A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal content rewrite on the
+    /// version. If the pattern matches, the request will be handled as if it were to the destination path specified in
+    /// the configuration.</summary>
     public class Rewrite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request will be forwarded to Firebase Dynamic Links.</summary>
@@ -1854,8 +1855,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; } 
 
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#section-glob) to match against
-        /// the request URL path.</summary>
+        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -1868,8 +1869,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }    
 
     /// <summary>The configuration for how incoming requests to a site should be routed and processed before serving
-    /// content. The patterns are matched and applied according to a specific [priority order](/docs/hosting/url-
-    /// redirects-rewrites#section-priorities).</summary>
+    /// content. The patterns are matched and applied according to a specific [priority order](/docs/hosting/full-
+    /// config#hosting_priority_order).</summary>
     public class ServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How to handle well known App Association files.</summary>

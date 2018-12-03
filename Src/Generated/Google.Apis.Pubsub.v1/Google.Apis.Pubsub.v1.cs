@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181107 (1406)
+ *      <tr><th>API Rev<td>20181119 (1418)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3440,10 +3440,10 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>A subscription resource.</summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This value is the maximum time after a subscriber receives a message before the subscriber should
-        /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
-        /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-
-        /// effort basis).
+        /// <summary>The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+        /// acknowledge receipt before resending the message. In the interval after the message is delivered and before
+        /// it is acknowledged, it is considered to be outstanding. During that time period, the message will not be
+        /// redelivered (on a best-effort basis).
         ///
         /// For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value
         /// for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or

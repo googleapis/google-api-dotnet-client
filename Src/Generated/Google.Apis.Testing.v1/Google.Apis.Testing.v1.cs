@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181115 (1414)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -917,6 +917,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appApk")]
         public virtual FileReference AppApk { get; set; } 
 
+        /// <summary>A multi-apk app bundle for the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
+        public virtual AppBundle AppBundle { get; set; } 
+
         /// <summary>The java package for the application under test. Optional, default is determined by examining the
         /// application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
@@ -1071,6 +1075,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appApk")]
         public virtual FileReference AppApk { get; set; } 
 
+        /// <summary>A multi-apk app bundle for the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
+        public virtual AppBundle AppBundle { get; set; } 
+
         /// <summary>The initial activity that should be used to start the app. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInitialActivity")]
         public virtual string AppInitialActivity { get; set; } 
@@ -1131,6 +1139,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The APK for the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appApk")]
         public virtual FileReference AppApk { get; set; } 
+
+        /// <summary>A multi-apk app bundle for the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
+        public virtual AppBundle AppBundle { get; set; } 
 
         /// <summary>The java package for the application under test. Optional, default is determined by examining the
         /// application's manifest.</summary>
@@ -1238,6 +1250,19 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Full Java-style package name for this application, e.g. "com.example.foo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or
+    /// more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance
+    /// on building App Bundles.</summary>
+    public class AppBundle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>.aab file representing the app bundle under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleLocation")]
+        public virtual FileReference BundleLocation { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

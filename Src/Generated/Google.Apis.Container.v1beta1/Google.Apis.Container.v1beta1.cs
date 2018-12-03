@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181001 (1369)
+ *      <tr><th>API Rev<td>20181109 (1408)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -655,11 +655,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -676,6 +671,11 @@ namespace Google.Apis.Container.v1beta1
                         /// the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -711,15 +711,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -741,6 +732,15 @@ namespace Google.Apis.Container.v1beta1
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -6733,7 +6733,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentMasterVersion")]
         public virtual string CurrentMasterVersion { get; set; } 
 
-        /// <summary>[Output only] The number of nodes currently in the cluster.</summary>
+        /// <summary>[Output only]  The number of nodes currently in the cluster. Deprecated. Call Kubernetes API
+        /// directly to retrieve node information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeCount")]
         public virtual System.Nullable<int> CurrentNodeCount { get; set; } 
 
@@ -6819,7 +6820,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>The list of Google Compute Engine [locations](/compute/docs/zones#available) in which the cluster's
+        /// <summary>The list of Google Compute Engine [zones](/compute/docs/zones#available) in which the cluster's
         /// nodes should be located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
@@ -6835,7 +6836,9 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
 
-        /// <summary>The authentication information for accessing the master endpoint.</summary>
+        /// <summary>The authentication information for accessing the master endpoint. If unspecified, the defaults are
+        /// used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random
+        /// password will be generated, and a client certificate will be issued.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; } 
 
@@ -6946,6 +6949,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; } 
 
+        /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
+        public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; } 
+
         /// <summary>[Output only] The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
         /// the cluster resides. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -6993,7 +7000,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
         public virtual string DesiredImageType { get; set; } 
 
-        /// <summary>The desired list of Google Compute Engine [locations](/compute/docs/zones#available) in which the
+        /// <summary>The desired list of Google Compute Engine [zones](/compute/docs/zones#available) in which the
         /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
         /// created or removed from the cluster, depending on whether locations are being added or removed.
         ///
@@ -7059,6 +7066,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired configuration options for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
         public virtual PodSecurityPolicyConfig DesiredPodSecurityPolicyConfig { get; set; } 
+
+        /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
+        public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7502,7 +7513,8 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string Password { get; set; } 
 
         /// <summary>The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and
-        /// later, you can disable basic authentication by providing an empty username.</summary>
+        /// later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty
+        /// string).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
 
@@ -8184,7 +8196,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The desired list of Google Compute Engine [locations](/compute/docs/zones#available) in which the
+        /// <summary>The desired list of Google Compute Engine [zones](/compute/docs/zones#available) in which the
         /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
         /// created or removed from the cluster, depending on whether locations are being added or removed.
         ///
@@ -8705,6 +8717,18 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>This field is to determine the status of the secondary range programmably.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to
+    /// automatically adjust the resources of pods controlled by it.</summary>
+    public class VerticalPodAutoscaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables vertical pod autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

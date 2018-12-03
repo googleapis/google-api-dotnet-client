@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181107 (1406)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -394,7 +394,7 @@ namespace Google.Apis.Speech.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^[^/]+$",
+                        Pattern = @"^.+$",
                     });
             }
 
@@ -660,6 +660,28 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata`
+    /// field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations`
+    /// service.</summary>
+    public class LongRunningRecognizeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time of the most recent processing update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; } 
+
+        /// <summary>Approximate percentage of audio processed thus far. Guaranteed to be 100 when the audio is fully
+        /// processed and the results are available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
+        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The top-level message sent by the client for the `LongRunningRecognize` method.</summary>
     public class LongRunningRecognizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -671,6 +693,20 @@ namespace Google.Apis.Speech.v1.Data
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The only message returned to the client by the `LongRunningRecognize` method. It contains the result as
+    /// zero or more sequential `SpeechRecognitionResult` messages. It is included in the `result.response` field of the
+    /// `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.</summary>
+    public class LongRunningRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Sequential list of transcription results corresponding to sequential portions of
+        /// audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -977,13 +1013,6 @@ namespace Google.Apis.Speech.v1.Data
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
-
-        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
-        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
-        /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
-        /// alternative.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
-        public virtual System.Nullable<int> SpeakerTag { get; set; } 
 
         /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
