@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181116 (1415)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -685,18 +685,18 @@ namespace Google.Apis.Slides.v1
 
         }
 
-        /// <summary>Creates a new presentation using the title given in the request. If a presentationId is provided,
-        /// uses it as the ID of the new presentation. Otherwise, a new presentationId is generated. Returns the created
-        /// presentation.</summary>
+        /// <summary>Creates a blank presentation using the title given in the request. If a `presentationId` is
+        /// provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in
+        /// the request, including any provided content, are ignored. Returns the created presentation.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Slides.v1.Data.Presentation body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new presentation using the title given in the request. If a presentationId is provided,
-        /// uses it as the ID of the new presentation. Otherwise, a new presentationId is generated. Returns the created
-        /// presentation.</summary>
+        /// <summary>Creates a blank presentation using the title given in the request. If a `presentationId` is
+        /// provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in
+        /// the request, including any provided content, are ignored. Returns the created presentation.</summary>
         public class CreateRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Presentation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1015,7 +1015,7 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates a line.</summary>
     public class CreateLineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The category of line to be created.
+        /// <summary>The category of the line to be created.
         ///
         /// The exact line type created is determined based on the category and how it's routed to connect to other page
         /// elements.
@@ -1033,7 +1033,14 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
-        /// <summary>The category of line to be created.</summary>
+        /// <summary>The category of the line to be created.
+        ///
+        /// Deprecated: use `category` instead.
+        ///
+        /// The exact line type created is determined based on the category and how it's routed to connect to other page
+        /// elements.
+        ///
+        /// If you specify both a `category` and a `line_category`, the `category` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
         public virtual string LineCategory { get; set; } 
 
@@ -2537,7 +2544,9 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
         public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
 
-        /// <summary>The replace method. Deprecated: use `image_replace_method` instead.
+        /// <summary>The replace method.
+        ///
+        /// Deprecated: use `image_replace_method` instead.
         ///
         /// If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes
         /// precedence.</summary>
@@ -2782,7 +2791,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateImageProperties")]
         public virtual UpdateImagePropertiesRequest UpdateImageProperties { get; set; } 
 
-        /// <summary>Updates the category of a line</summary>
+        /// <summary>Updates the category of a line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateLineCategory")]
         public virtual UpdateLineCategoryRequest UpdateLineCategory { get; set; } 
 

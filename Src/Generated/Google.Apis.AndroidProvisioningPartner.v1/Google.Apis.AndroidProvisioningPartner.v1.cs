@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181121 (1420)
+ *      <tr><th>API Rev<td>20181202 (1431)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -1929,7 +1929,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="metadataOwnerId">Required. The owner of the newly set metadata. Set this to the partner
             /// ID.</param>
-            /// <param name="deviceId">Required. The ID of the reseller partner.</param>
+            /// <param name="deviceId">Required. The ID of the device.</param>
             public virtual MetadataRequest Metadata(Google.Apis.AndroidProvisioningPartner.v1.Data.UpdateDeviceMetadataRequest body, long metadataOwnerId, long deviceId)
             {
                 return new MetadataRequest(service, body, metadataOwnerId, deviceId);
@@ -1953,7 +1953,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("metadataOwnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long MetadataOwnerId { get; private set; }
 
-                /// <summary>Required. The ID of the reseller partner.</summary>
+                /// <summary>Required. The ID of the device.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long DeviceId { get; private set; }
 
@@ -2294,13 +2294,13 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of results to be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>A token identifying a page of results returned by the server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of results to be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2336,18 +2336,18 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                                 Pattern = @"^partners/[^/]+/vendors/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2460,6 +2460,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Required. The device identifier of the device to claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+
+        /// <summary>Optional. The metadata to attach to the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
+        public virtual DeviceMetadata DeviceMetadata { get; set; } 
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
