@@ -779,6 +779,12 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
+            /// In an API response, the `nextPageToken` property identifies the next page that can be
+            /// retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
             ///
@@ -803,12 +809,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// true to retrieve all groups owned by the authenticated user.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mine", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Mine { get; set; }
-
-            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
-            /// In an API response, the `nextPageToken` property identifies the next page that can be
-            /// retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -835,6 +835,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
                         Name = "onBehalfOfContentOwner",
@@ -856,15 +865,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "mine", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mine",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -981,6 +981,19 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>The start date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
+            /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StartDate { get; set; }
+
+            /// <summary>A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See
+            /// the [Available Reports](/youtube/analytics/v2/available_reports)  document for a list of the reports
+            /// that you can retrieve and the metrics available in each report, and see the
+            /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required:
+            /// true, pattern: [0-9a-zA-Z,]+</summary>
+            [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Metrics { get; set; }
+
             /// <summary>If set to true historical data (i.e. channel data from before the linking of the channel to the
             /// content owner) will be retrieved.",</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
@@ -1040,19 +1053,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Sort { get; set; }
 
-            /// <summary>The start date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
-            /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string StartDate { get; set; }
-
-            /// <summary>A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See
-            /// the [Available Reports](/youtube/analytics/v2/available_reports)  document for a list of the reports
-            /// that you can retrieve and the metrics available in each report, and see the
-            /// [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required:
-            /// true, pattern: [0-9a-zA-Z,]+</summary>
-            [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Metrics { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1077,6 +1077,24 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "startDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
                     {
@@ -1153,24 +1171,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "sort", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sort",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startDate", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startDate",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "metrics", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "metrics",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

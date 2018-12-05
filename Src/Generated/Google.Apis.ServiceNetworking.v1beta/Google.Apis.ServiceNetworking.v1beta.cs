@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181128 (1427)
+ *      <tr><th>API Rev<td>20181204 (1433)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -444,27 +444,27 @@ namespace Google.Apis.ServiceNetworking.v1beta
             }
 
 
-            /// <summary>To connect service to a VPC network peering connection must be established prior to service
-            /// provisioning. This method must be invoked by the consumer VPC network administrator It will establish a
-            /// permanent peering connection with a shared network created in the service producer organization and
-            /// register a allocated IP range(s) to be used for service subnetwork provisioning. This connection will be
-            /// used for all supported services in the service producer organization, so it only needs to be invoked
-            /// once. Operation.</summary>
+            /// <summary>Creates a private connection that establishes a VPC Network Peering connection to a VPC network
+            /// in the service producer's organization. The administrator of the service consumer's VPC network invokes
+            /// this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks
+            /// in the service producer's VPC network. This connection is used for all supported services in the service
+            /// producer's organization, so it only needs to be invoked once. The response from the `get` operation will
+            /// be of type `Connection` if the operation successfully completes.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Provider peering service that is managing peering connectivity for a service provider
-            /// organization. For Google services that support this functionality it is
-            /// 'services/servicenetworking.googleapis.com'.</param>
+            /// <param name="parent">The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>To connect service to a VPC network peering connection must be established prior to service
-            /// provisioning. This method must be invoked by the consumer VPC network administrator It will establish a
-            /// permanent peering connection with a shared network created in the service producer organization and
-            /// register a allocated IP range(s) to be used for service subnetwork provisioning. This connection will be
-            /// used for all supported services in the service producer organization, so it only needs to be invoked
-            /// once. Operation.</summary>
+            /// <summary>Creates a private connection that establishes a VPC Network Peering connection to a VPC network
+            /// in the service producer's organization. The administrator of the service consumer's VPC network invokes
+            /// this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks
+            /// in the service producer's VPC network. This connection is used for all supported services in the service
+            /// producer's organization, so it only needs to be invoked once. The response from the `get` operation will
+            /// be of type `Connection` if the operation successfully completes.</summary>
             public class CreateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -477,9 +477,9 @@ namespace Google.Apis.ServiceNetworking.v1beta
                 }
 
 
-                /// <summary>Provider peering service that is managing peering connectivity for a service provider
-                /// organization. For Google services that support this functionality it is
-                /// 'services/servicenetworking.googleapis.com'.</summary>
+                /// <summary>The service that is managing peering connectivity for a service producer's organization.
+                /// For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -526,18 +526,16 @@ namespace Google.Apis.ServiceNetworking.v1beta
 
             }
 
-            /// <summary>Service consumers use this method to list configured peering connection for the given service
-            /// and consumer network.</summary>
-            /// <param name="parent">Provider peering service that is managing peering connectivity for a service provider
-            /// organization. For Google services that support this functionality it is 'services/servicenetworking.googleapis.com'.
-            /// For "-" all configured public peering services will be queried.</param>
+            /// <summary>List the private connections that are configured in a service consumer's VPC network.</summary>
+            /// <param name="parent">The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. If you
+            /// specify `-` as the parameter value, all configured public peering services are listed.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Service consumers use this method to list configured peering connection for the given service
-            /// and consumer network.</summary>
+            /// <summary>List the private connections that are configured in a service consumer's VPC network.</summary>
             public class ListRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.ListConnectionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -549,17 +547,18 @@ namespace Google.Apis.ServiceNetworking.v1beta
                 }
 
 
-                /// <summary>Provider peering service that is managing peering connectivity for a service provider
-                /// organization. For Google services that support this functionality it is
-                /// 'services/servicenetworking.googleapis.com'. For "-" all configured public peering services will be
-                /// queried.</summary>
+                /// <summary>The service that is managing peering connectivity for a service producer's organization.
+                /// For Google services that support this functionality, this value is
+                /// `services/servicenetworking.googleapis.com`. If you specify `-` as the parameter value, all
+                /// configured public peering services are listed.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Network name in the consumer project.   This network must have been already peered with a
-                /// shared VPC network using CreateConnection method. Must be in a form
-                /// 'projects/{project}/global/networks/{network}'. {project} is a project number, as in '12345'
-                /// {network} is network name.</summary>
+                /// <summary>The name of service consumer's VPC network that's connected with service producer network
+                /// through a private connection. The network name must be in the following format:
+                /// `projects/{project}/global/networks/{network}`. {project} is a project number, such as in `12345`
+                /// that includes the VPC service consumer's VPC network. {network} is the name of the service
+                /// consumer's VPC network.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Network { get; set; }
 
@@ -610,27 +609,29 @@ namespace Google.Apis.ServiceNetworking.v1beta
             }
         }
 
-        /// <summary>Service producers use this method to provision a new subnet in peered service shared VPC network.
-        /// It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size
-        /// (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). It will then create a
-        /// subnetwork in the request region. The subsequent call will try to reuse the subnetwork previously created if
-        /// subnetwork name, region and prefix length of the IP range match. Operation</summary>
+        /// <summary>For service producers, provisions a new subnet in a peered service's shared VPC network in the
+        /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
+        /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
+        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
+        /// prefix length. The response from the `get` operation will be of type `Subnetwork` if the operation
+        /// successfully completes.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. This is a 'tenant' project in the service producer organization. services/{service
-        /// }/{collection-id}/{resource-id} {collection id} is the cloud resource collection type representing the tenant
-        /// project. Only 'projects' are currently supported. {resource id} is the tenant project numeric id: '123456'.
-        /// {service} the name of the peering service, for example 'service-peering.example.com'. This service must be
-        /// activated. in the consumer project.</param>
+        /// <param name="parent">Required. A tenant project in the service producer organization, in the following format:
+        /// services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that
+        /// represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such
+        /// as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must
+        /// already be enabled in the service consumer's project.</param>
         public virtual AddSubnetworkRequest AddSubnetwork(Google.Apis.ServiceNetworking.v1beta.Data.AddSubnetworkRequest body, string parent)
         {
             return new AddSubnetworkRequest(service, body, parent);
         }
 
-        /// <summary>Service producers use this method to provision a new subnet in peered service shared VPC network.
-        /// It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size
-        /// (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). It will then create a
-        /// subnetwork in the request region. The subsequent call will try to reuse the subnetwork previously created if
-        /// subnetwork name, region and prefix length of the IP range match. Operation</summary>
+        /// <summary>For service producers, provisions a new subnet in a peered service's shared VPC network in the
+        /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
+        /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
+        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
+        /// prefix length. The response from the `get` operation will be of type `Subnetwork` if the operation
+        /// successfully completes.</summary>
         public class AddSubnetworkRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new AddSubnetwork request.</summary>
@@ -643,11 +644,11 @@ namespace Google.Apis.ServiceNetworking.v1beta
             }
 
 
-            /// <summary>Required. This is a 'tenant' project in the service producer organization. services/{service
-            /// }/{collection-id}/{resource-id} {collection id} is the cloud resource collection type representing the
-            /// tenant project. Only 'projects' are currently supported. {resource id} is the tenant project numeric id:
-            /// '123456'. {service} the name of the peering service, for example 'service-peering.example.com'. This
-            /// service must be activated. in the consumer project.</summary>
+            /// <summary>Required. A tenant project in the service producer organization, in the following format:
+            /// services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type
+            /// that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project
+            /// numeric id, such as `123456`. {service} the name of the peering service, such as `service-
+            /// peering.example.com`. This service must already be enabled in the service consumer's project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -694,17 +695,19 @@ namespace Google.Apis.ServiceNetworking.v1beta
 
         }
 
-        /// <summary>Allocated ranges specified for the connection may be updated. Operation.</summary>
+        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
+        /// operation will be of type `Connection` if the operation successfully completes.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Provider peering service that is managing peering connectivity for a service provider
-        /// organization. For Google services that support this functionality it is
-        /// 'services/servicenetworking.googleapis.com'.</param>
+        /// <param name="name">The service producer peering service that is managing peering connectivity for a service producer
+        /// organization. For Google services that support this functionality, this is
+        /// `services/servicenetworking.googleapis.com`.</param>
         public virtual PatchRequest Patch(Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string name)
         {
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Allocated ranges specified for the connection may be updated. Operation.</summary>
+        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
+        /// operation will be of type `Connection` if the operation successfully completes.</summary>
         public class PatchRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -717,14 +720,14 @@ namespace Google.Apis.ServiceNetworking.v1beta
             }
 
 
-            /// <summary>Provider peering service that is managing peering connectivity for a service provider
-            /// organization. For Google services that support this functionality it is
-            /// 'services/servicenetworking.googleapis.com'.</summary>
+            /// <summary>The service producer peering service that is managing peering connectivity for a service
+            /// producer organization. For Google services that support this functionality, this is
+            /// `services/servicenetworking.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The update mask. If this is omitted, it defaults to "*".   Only reserved peering ranges list
-            /// may be updated.</summary>
+            /// <summary>The update mask. If this is omitted, it defaults to "*". You can only update the listed peering
+            /// ranges.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -801,31 +804,32 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Request to create a subnetwork in a previously peered service network.</summary>
     public class AddSubnetworkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Resource representing service consumer. It may be different from the project number in
-        /// consumer network parameter in case of that network being a shared VPC network. In that case, Service
-        /// Networking will validate that this resource belongs to that shared VPC. For example
-        /// 'projects/123456'.</summary>
+        /// <summary>Required. A resource that represents the service consumer, such as `projects/123456`. The project
+        /// number can be different from the value in the consumer network parameter. For example, the network might be
+        /// part of a Shared VPC network. In those cases, Service Networking validates that this resource belongs to
+        /// that Shared VPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumer")]
         public virtual string Consumer { get; set; } 
 
-        /// <summary>Required. Network name in the consumer project.   This network must have been already peered with a
-        /// shared VPC network using CreateConnection method. Must be in a form
-        /// 'projects/{project}/global/networks/{network}'. {project} is a project number, as in '12345' {network} is
-        /// network name.</summary>
+        /// <summary>Required. The name of the service consumer's VPC network. The network must have an existing private
+        /// connection that was provisioned through the connections.create method. The name must be in the following
+        /// format: `projects/{project}/global/networks/{network}`, where {project} is a project number, such as
+        /// `12345`. {network} is the name of a VPC network in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; } 
 
-        /// <summary>Optional. Description of the subnetwork.</summary>
+        /// <summary>An optional description of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Required. The prefix length of the IP range. Use usual CIDR range notation. For example, '30' to
-        /// provision subnet with x.x.x.x/30 CIDR range. Actual range will be determined using allocated range for the
-        /// consumer peered network and returned in the result.</summary>
+        /// <summary>Required. The prefix length of the subnet's IP address range.  Use CIDR range notation, such as
+        /// `30` to provision a subnet with an `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of
+        /// available ranges in the service consumer's allocated range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; } 
 
-        /// <summary>Required. Cloud [region](/compute/docs/reference/rest/v1/regions) for the new subnetwork.</summary>
+        /// <summary>Required. The name of a [region](/compute/docs/regions-zones) for the subnet, such `europe-
+        /// west1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -836,13 +840,12 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedAddress")]
         public virtual string RequestedAddress { get; set; } 
 
-        /// <summary>Required. Name for the new subnetwork. Must be a legal
-        /// [subnetwork](compute/docs/reference/rest/v1/subnetworks) name.</summary>
+        /// <summary>Required. A name for the new subnet. For information about the naming requirements, see
+        /// [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in the Compute API documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
-        /// <summary>Optional. List of members that will be granted 'compute.networkUser' role on the newly added
-        /// subnetwork.</summary>
+        /// <summary>A list of members that are granted the `compute.networkUser` role on the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUsers")]
         public virtual System.Collections.Generic.IList<string> SubnetworkUsers { get; set; } 
 
@@ -1137,27 +1140,30 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message returning the created service connection.</summary>
+    /// <summary>Represents a private connection resource. A private connection is implemented as a VPC Network Peering
+    /// connection between a service producer's VPC network and a service consumer's VPC network.</summary>
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of VPC network connected with service producer network. Must be in a form
-        /// 'projects/{project}/global/networks/{network}'. {project} is a project number, as in '12345' {network} is a
-        /// network name.</summary>
+        /// <summary>The name of service consumer's VPC network that's connected with service producer network, in the
+        /// following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as
+        /// in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service
+        /// consumer's VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Output only. Name of the peering connection that is created by the peering service.</summary>
+        /// <summary>Output only. The name of the VPC Network Peering connection that was created by the service
+        /// producer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peering")]
         public virtual string Peering { get; set; } 
 
-        /// <summary>Named IP address range(s) of PEERING type allocated for this service provider. Note that invoking
-        /// this method with a different range when connection is already established will not modify already
-        /// provisioned service producer subnetworks.</summary>
+        /// <summary>The name of one or more allocated IP address ranges for this service producer of type `PEERING`.
+        /// Note that invoking this method with a different range when connection is already established will not modify
+        /// already provisioned service producer subnetworks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedPeeringRanges")]
         public virtual System.Collections.Generic.IList<string> ReservedPeeringRanges { get; set; } 
 
-        /// <summary>Output only. Name of the peering service associated with this connection. "services/{service
-        /// name}</summary>
+        /// <summary>Output only. The name of the peering service that's associated with this connection, in the
+        /// following format: `services/{service name}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -2686,10 +2692,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message returning the created service subnetwork.</summary>
+    /// <summary>Represents a subnet that was created by a peered service.</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Subnetwork CIDR range in "10.x.x.x/y" format.</summary>
+        /// <summary>Subnetwork CIDR range in `10.x.x.x/y` format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -2697,8 +2703,8 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Shared VPC host project network peered with consumer network. For example:
-        /// projects/1234321/global/networks/host-network</summary>
+        /// <summary>In the Shared VPC host project, the VPC network that's peered with the consumer network. For
+        /// example: `projects/1234321/global/networks/host-network`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 

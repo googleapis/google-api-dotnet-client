@@ -958,6 +958,12 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>Whether the response should include a sync token, which can be used to get all changes
+                /// since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
+                /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
                 /// <summary>The token of the page to be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1005,12 +1011,6 @@ namespace Google.Apis.PeopleService.v1
                     LASTNAMEASCENDING,
                 }
 
-                /// <summary>Whether the response should include a sync token, which can be used to get all changes
-                /// since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
-                /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> RequestSyncToken { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1043,6 +1043,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "requestSyncToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestSyncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -1093,15 +1102,6 @@ namespace Google.Apis.PeopleService.v1
                         "sortOrder", new Google.Apis.Discovery.Parameter
                         {
                             Name = "sortOrder",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestSyncToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestSyncToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1369,6 +1369,11 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
+            /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object RequestMaskIncludeField { get; set; }
+
             /// <summary>The resource names of the people to provide information about.
             ///
             /// - To get information about the authenticated user, specify `people/me`. - To get information about a
@@ -1389,11 +1394,6 @@ namespace Google.Apis.PeopleService.v1
             /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
-
-            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
-            /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object RequestMaskIncludeField { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1420,6 +1420,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMask.includeField",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "resourceNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceNames",
@@ -1432,15 +1441,6 @@ namespace Google.Apis.PeopleService.v1
                     "personFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "personFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMask.includeField",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181202 (1431)
+ *      <tr><th>API Rev<td>20181203 (1432)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/activity/'>
  *              https://developers.google.com/google-apps/activity/</a>
