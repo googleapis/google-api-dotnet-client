@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181129 (1428)
+ *      <tr><th>API Rev<td>20181203 (1432)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9129,7 +9129,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 {    
 
     /// <summary>Account data. After the creation of a new account it may take a few minutes before it is fully
-    /// operational.</summary>
+    /// operational. The methods delete, insert, patch, and update require the admin role.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates whether the merchant sells adult content.</summary>
@@ -9538,7 +9538,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The tax settings of a merchant account.</summary>
+    /// <summary>The tax settings of a merchant account. All methods require the admin role.</summary>
     public class AccountTax : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the account to which these account tax settings belong.</summary>
@@ -11207,6 +11207,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Local Inventory ads (LIA) settings. All methods except listposdataproviders require the admin
+    /// role.</summary>
     public class LiaSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the account to which these LIA settings belong. Ignored upon update, always present in
@@ -11506,6 +11508,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Order. All methods require the order manager role.</summary>
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the order was acknowledged.</summary>
@@ -12087,6 +12090,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Order disbursement. All methods require the payment analyst role.</summary>
     public class OrderReportDisbursement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The disbursement amount.</summary>
@@ -14188,7 +14192,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Product data.</summary>
+    /// <summary>Product data. After inserting, updating, or deleting a product, it may take several minutes before
+    /// changes take effect.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional URLs of images of the item.</summary>
@@ -15209,7 +15214,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The merchant account's shipping settings.</summary>
+    /// <summary>The merchant account's shipping settings. All methods except getsupportedcarriers and
+    /// getsupportedholidays require the admin role.</summary>
     public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the account to which these account shipping settings belong. Ignored upon update, always
