@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181020 (1388)
+ *      <tr><th>API Rev<td>20181121 (1420)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -354,6 +354,7 @@ namespace Google.Apis.Firestore.v1
             {
                 this.service = service;
                 collectionGroups = new CollectionGroupsResource(service);
+                documents = new DocumentsResource(service);
                 operations = new OperationsResource(service);
 
             }
@@ -968,11 +969,6 @@ namespace Google.Apis.Firestore.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may
-                        /// be used to get the next page of results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>The number of results to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -980,6 +976,11 @@ namespace Google.Apis.Firestore.v1
                         /// <summary>The filter to apply to list results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may
+                        /// be used to get the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1015,15 +1016,6 @@ namespace Google.Apis.Firestore.v1
                                     Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -1041,9 +1033,1233 @@ namespace Google.Apis.Firestore.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                         }
 
                     }
+                }
+            }
+            private readonly DocumentsResource documents;
+
+            /// <summary>Gets the Documents resource.</summary>
+            public virtual DocumentsResource Documents
+            {
+                get { return documents; }
+            }
+
+            /// <summary>The "documents" collection of methods.</summary>
+            public class DocumentsResource
+            {
+                private const string Resource = "documents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DocumentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets multiple documents.
+                ///
+                /// Documents returned by this method are not guaranteed to be returned in the same order that they were
+                /// requested.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual BatchGetRequest BatchGet(Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest body, string database)
+                {
+                    return new BatchGetRequest(service, body, database);
+                }
+
+                /// <summary>Gets multiple documents.
+                ///
+                /// Documents returned by this method are not guaranteed to be returned in the same order that they were
+                /// requested.</summary>
+                public class BatchGetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.BatchGetDocumentsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.BatchGetDocumentsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "batchGet"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:batchGet"; }
+                    }
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Starts a new transaction.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual BeginTransactionRequest BeginTransaction(Google.Apis.Firestore.v1.Data.BeginTransactionRequest body, string database)
+                {
+                    return new BeginTransactionRequest(service, body, database);
+                }
+
+                /// <summary>Starts a new transaction.</summary>
+                public class BeginTransactionRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.BeginTransactionResponse>
+                {
+                    /// <summary>Constructs a new BeginTransaction request.</summary>
+                    public BeginTransactionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.BeginTransactionRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.BeginTransactionRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "beginTransaction"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:beginTransaction"; }
+                    }
+
+                    /// <summary>Initializes BeginTransaction parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Commits a transaction, while optionally updating documents.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual CommitRequest Commit(Google.Apis.Firestore.v1.Data.CommitRequest body, string database)
+                {
+                    return new CommitRequest(service, body, database);
+                }
+
+                /// <summary>Commits a transaction, while optionally updating documents.</summary>
+                public class CommitRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.CommitResponse>
+                {
+                    /// <summary>Constructs a new Commit request.</summary>
+                    public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.CommitRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.CommitRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "commit"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:commit"; }
+                    }
+
+                    /// <summary>Initializes Commit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Creates a new document.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`</param>
+                /// <param
+                /// name="collectionId">The collection ID, relative to `parent`, to list. For example: `chatrooms`.</param>
+                public virtual CreateDocumentRequest CreateDocument(Google.Apis.Firestore.v1.Data.Document body, string parent, string collectionId)
+                {
+                    return new CreateDocumentRequest(service, body, parent, collectionId);
+                }
+
+                /// <summary>Creates a new document.</summary>
+                public class CreateDocumentRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
+                {
+                    /// <summary>Constructs a new CreateDocument request.</summary>
+                    public CreateDocumentRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string parent, string collectionId)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        CollectionId = collectionId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource. For example:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The collection ID, relative to `parent`, to list. For example: `chatrooms`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CollectionId { get; private set; }
+
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>The client-assigned document ID to use for this document.
+                    ///
+                    /// Optional. If not specified, an ID will be assigned by the service.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DocumentId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.Document Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "createDocument"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/{collectionId}"; }
+                    }
+
+                    /// <summary>Initializes CreateDocument parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/.+$",
+                            });
+                        RequestParameters.Add(
+                            "collectionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "collectionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "mask.fieldPaths",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "documentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a document.</summary>
+                /// <param name="name">The resource name of the Document to delete. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a document.</summary>
+                public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the Document to delete. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
+                    /// document must not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
+
+                    /// <summary>When set, the target document must exist and have been last updated at that
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CurrentDocumentUpdateTime { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                        RequestParameters.Add(
+                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.exists",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.updateTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets a single document.</summary>
+                /// <param name="name">The resource name of the Document to get. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a single document.</summary>
+                public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the Document to get. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Reads the document in a transaction.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Transaction { get; set; }
+
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>Reads the version of the document at the given time. This may not be older than 60
+                    /// seconds.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                        RequestParameters.Add(
+                            "transaction", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "transaction",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "mask.fieldPaths",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "readTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists documents.</summary>
+                /// <param name="parent">The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-
+                /// project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-
+                /// chatroom`</param>
+                /// <param name="collectionId">The collection ID, relative to `parent`, to list. For example:
+                /// `chatrooms` or `messages`.</param>
+                public virtual ListRequest List(string parent, string collectionId)
+                {
+                    return new ListRequest(service, parent, collectionId);
+                }
+
+                /// <summary>Lists documents.</summary>
+                public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListDocumentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent, string collectionId)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        CollectionId = collectionId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-
+                    /// database/documents/chatrooms/my-chatroom`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The collection ID, relative to `parent`, to list. For example: `chatrooms` or
+                    /// `messages`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CollectionId { get; private set; }
+
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of documents to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Reads documents in a transaction.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Transaction { get; set; }
+
+                    /// <summary>Reads documents as they were at the given time. This may not be older than 60
+                    /// seconds.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
+                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>If the list should show missing documents. A missing document is a document that does
+                    /// not exist but has sub-documents. These documents will be returned with a key but will not have
+                    /// fields, Document.create_time, or Document.update_time set.
+                    ///
+                    /// Requests with `show_missing` may not specify `where` or `order_by`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowMissing { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/{collectionId}"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                        RequestParameters.Add(
+                            "collectionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "collectionId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "mask.fieldPaths",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "transaction", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "transaction",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "readTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "showMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "showMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists all the collection IDs underneath a document.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent document. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-
+                /// project/databases/my-database/documents/chatrooms/my-chatroom`</param>
+                public virtual ListCollectionIdsRequest ListCollectionIds(Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest body, string parent)
+                {
+                    return new ListCollectionIdsRequest(service, body, parent);
+                }
+
+                /// <summary>Lists all the collection IDs underneath a document.</summary>
+                public class ListCollectionIdsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListCollectionIdsResponse>
+                {
+                    /// <summary>Constructs a new ListCollectionIds request.</summary>
+                    public ListCollectionIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent document. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.ListCollectionIdsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "listCollectionIds"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}:listCollectionIds"; }
+                    }
+
+                    /// <summary>Initializes ListCollectionIds parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Listens to changes.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual ListenRequest Listen(Google.Apis.Firestore.v1.Data.ListenRequest body, string database)
+                {
+                    return new ListenRequest(service, body, database);
+                }
+
+                /// <summary>Listens to changes.</summary>
+                public class ListenRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.ListenResponse>
+                {
+                    /// <summary>Constructs a new Listen request.</summary>
+                    public ListenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.ListenRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.ListenRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "listen"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:listen"; }
+                    }
+
+                    /// <summary>Initializes Listen parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates or inserts a document.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the document, for example
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</param>
+                public virtual PatchRequest Patch(Google.Apis.Firestore.v1.Data.Document body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates or inserts a document.</summary>
+                public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Document>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.Document body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the document, for example
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
+                    /// document must not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
+
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> UpdateMaskFieldPaths { get; set; }
+
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>When set, the target document must exist and have been last updated at that
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CurrentDocumentUpdateTime { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.Document Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                        RequestParameters.Add(
+                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.exists",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "updateMask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask.fieldPaths",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "mask.fieldPaths",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.updateTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Rolls back a transaction.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format:
+                /// `projects/{project_id}/databases/{database_id}`.</param>
+                public virtual RollbackRequest Rollback(Google.Apis.Firestore.v1.Data.RollbackRequest body, string database)
+                {
+                    return new RollbackRequest(service, body, database);
+                }
+
+                /// <summary>Rolls back a transaction.</summary>
+                public class RollbackRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Rollback request.</summary>
+                    public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RollbackRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.RollbackRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "rollback"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:rollback"; }
+                    }
+
+                    /// <summary>Initializes Rollback parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Runs a query.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource name. In the format:
+                /// `projects/{project_id}/databases/{database_id}/documents` or
+                /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-
+                /// project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-
+                /// chatroom`</param>
+                public virtual RunQueryRequest RunQuery(Google.Apis.Firestore.v1.Data.RunQueryRequest body, string parent)
+                {
+                    return new RunQueryRequest(service, body, parent);
+                }
+
+                /// <summary>Runs a query.</summary>
+                public class RunQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.RunQueryResponse>
+                {
+                    /// <summary>Constructs a new RunQuery request.</summary>
+                    public RunQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.RunQueryRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name. In the format:
+                    /// `projects/{project_id}/databases/{database_id}/documents` or
+                    /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example:
+                    /// `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-
+                    /// database/documents/chatrooms/my-chatroom`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.RunQueryRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "runQuery"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}:runQuery"; }
+                    }
+
+                    /// <summary>Initializes RunQuery parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="database">The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is
+                /// only required in the first message.</param>
+                public virtual WriteRequest Write(Google.Apis.Firestore.v1.Data.WriteRequest body, string database)
+                {
+                    return new WriteRequest(service, body, database);
+                }
+
+                /// <summary>Streams batches of document updates and deletes, in order.</summary>
+                public class WriteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.WriteResponse>
+                {
+                    /// <summary>Constructs a new Write request.</summary>
+                    public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.WriteRequest body, string database)
+                        : base(service)
+                    {
+                        Database = database;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The database name. In the format: `projects/{project_id}/databases/{database_id}`. This
+                    /// is only required in the first message.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Database { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.WriteRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "write"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+database}/documents:write"; }
+                    }
+
+                    /// <summary>Initializes Write parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "database", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "database",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            });
+                    }
+
                 }
             }
             private readonly OperationsResource operations;
@@ -1313,10 +2529,6 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1324,6 +2536,10 @@ namespace Google.Apis.Firestore.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1359,15 +2575,6 @@ namespace Google.Apis.Firestore.v1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1380,6 +2587,15 @@ namespace Google.Apis.Firestore.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1735,6 +2951,355 @@ namespace Google.Apis.Firestore.v1
 namespace Google.Apis.Firestore.v1.Data
 {    
 
+    /// <summary>An array value.</summary>
+    public class ArrayValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Values in the array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.BatchGetDocuments.</summary>
+    public class BatchGetDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the documents to retrieve. In the format:
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of
+        /// the document is not a child resource of the given `database`. Duplicate names will be elided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<string> Documents { get; set; } 
+
+        /// <summary>The fields to return. If not set, returns all fields.
+        ///
+        /// If a document has a field that is not present in this mask, that field will not be returned in the
+        /// response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mask")]
+        public virtual DocumentMask Mask { get; set; } 
+
+        /// <summary>Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new
+        /// transaction ID will be returned as the first response in the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; } 
+
+        /// <summary>Reads documents as they were at the given time. This may not be older than 60 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>Reads documents in a transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The streamed response for Firestore.BatchGetDocuments.</summary>
+    public class BatchGetDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A document that was requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("found")]
+        public virtual Document Found { get; set; } 
+
+        /// <summary>A document name that was requested but does not exist. In the format:
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("missing")]
+        public virtual string Missing { get; set; } 
+
+        /// <summary>The time at which the document was read. This may be monotically increasing, in this case the
+        /// previous documents in the result stream are guaranteed not to have changed between their read_time and this
+        /// one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>The transaction that was started as part of this request. Will only be set in the first response,
+        /// and only if BatchGetDocumentsRequest.new_transaction was set in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.BeginTransaction.</summary>
+    public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The options for the transaction. Defaults to a read-write transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual TransactionOptions Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.BeginTransaction.</summary>
+    public class BeginTransactionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction that was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A selection of a collection, such as `messages as m1`.</summary>
+    public class CollectionSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When false, selects only collections that are immediate children of the `parent` specified in the
+        /// containing `RunQueryRequest`. When true, selects all descendant collections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allDescendants")]
+        public virtual System.Nullable<bool> AllDescendants { get; set; } 
+
+        /// <summary>The collection ID. When set, selects only collections with this ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
+        public virtual string CollectionId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.Commit.</summary>
+    public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, applies all writes in this transaction, and commits it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The writes to apply.
+        ///
+        /// Always executed atomically and in order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writes")]
+        public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.Commit.</summary>
+    public class CommitResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the commit occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual object CommitTime { get; set; } 
+
+        /// <summary>The result of applying the writes.
+        ///
+        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
+        public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter that merges multiple other filters using the given operator.</summary>
+    public class CompositeFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of filters to combine. Must contain at least one filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filters")]
+        public virtual System.Collections.Generic.IList<Filter> Filters { get; set; } 
+
+        /// <summary>The operator for combining multiple filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A position in a query result set.</summary>
+    public class Cursor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the position is just before or just after the given values, relative to the sort order defined
+        /// by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("before")]
+        public virtual System.Nullable<bool> Before { get; set; } 
+
+        /// <summary>The values that represent a position, in the order they appear in the order by clause of a query.
+        ///
+        /// Can contain fewer values than specified in the order by clause.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Firestore document.
+    ///
+    /// Must not exceed 1 MiB - 4 bytes.</summary>
+    public class Document : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time at which the document was created.
+        ///
+        /// This value increases monotonically when a document is deleted then recreated. It can also be compared to
+        /// values from other documents and the `read_time` of a query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The document's fields.
+        ///
+        /// The map keys represent field names.
+        ///
+        /// A simple field name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start
+        /// with `0` to `9`. For example, `foo_bar_17`.
+        ///
+        /// Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except
+        /// in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot
+        /// be empty.
+        ///
+        /// Field paths may be used in other contexts to refer to structured fields defined here. For `map_value`, the
+        /// field path is represented by the simple or quoted field names of the containing fields, delimited by `.`.
+        /// For example, the structured field `"foo" : { map_value: { "x" : { string_value: "hello" }}}` would be
+        /// represented by the field path `foo.x`.
+        ///
+        /// Within a field path, a quoted field name starts and ends with `` ` `` and may contain any character. Some
+        /// characters, including `` ` ``, must be escaped using a `\`. For example, `` `x` `` represents `x` and ``
+        /// `bak\`tik` `` represents `` bak`tik ``.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
+
+        /// <summary>The resource name of the document, for example
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The time at which the document was last changed.
+        ///
+        /// This value is initially set to the `create_time` then increases monotonically with each change to the
+        /// document. It can also be compared to values from other documents and the `read_time` of a query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Document has changed.
+    ///
+    /// May be the result of multiple writes, including deletes, that ultimately resulted in a new value for the
+    /// Document.
+    ///
+    /// Multiple DocumentChange messages may be returned for the same logical change, if multiple targets are
+    /// affected.</summary>
+    public class DocumentChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new state of the Document.
+        ///
+        /// If `mask` is set, contains only fields that were updated or added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual Document Document { get; set; } 
+
+        /// <summary>A set of target IDs for targets that no longer match this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedTargetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RemovedTargetIds { get; set; } 
+
+        /// <summary>A set of target IDs of targets that match this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> TargetIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Document has been deleted.
+    ///
+    /// May be the result of multiple writes, including updates, the last of which deleted the Document.
+    ///
+    /// Multiple DocumentDelete messages may be returned for the same logical delete, if multiple targets are
+    /// affected.</summary>
+    public class DocumentDelete : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the Document that was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; } 
+
+        /// <summary>The read timestamp at which the delete was observed.
+        ///
+        /// Greater or equal to the `commit_time` of the delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>A set of target IDs for targets that previously matched this entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedTargetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RemovedTargetIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of field paths on a document. Used to restrict a get or update operation on a document to a
+    /// subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and
+    /// takes in account the dynamic nature of Value.</summary>
+    public class DocumentMask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+        /// reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPaths")]
+        public virtual System.Collections.Generic.IList<string> FieldPaths { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Document has been removed from the view of the targets.
+    ///
+    /// Sent if the document is no longer relevant to a target and is out of view. Can be sent instead of a
+    /// DocumentDelete or a DocumentChange if the server can not send the new value of the document.
+    ///
+    /// Multiple DocumentRemove messages may be returned for the same logical write or delete, if multiple targets are
+    /// affected.</summary>
+    public class DocumentRemove : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the Document that has gone out of view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; } 
+
+        /// <summary>The read timestamp at which the remove was observed.
+        ///
+        /// Greater or equal to the `commit_time` of the change/delete/remove.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>A set of target IDs for targets that previously matched this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedTargetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RemovedTargetIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A transformation of a document.</summary>
+    public class DocumentTransform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the document to transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; } 
+
+        /// <summary>The list of transformations to apply to the fields of the document, in order. This must not be
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldTransforms")]
+        public virtual System.Collections.Generic.IList<FieldTransform> FieldTransforms { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A target specified by a set of documents names.</summary>
+    public class DocumentsTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the documents to retrieve. In the format:
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of
+        /// the document is not a child resource of the given `database`. Duplicate names will be elided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<string> Documents { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1743,6 +3308,109 @@ namespace Google.Apis.Firestore.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A digest of all the documents that match a given target.</summary>
+    public class ExistenceFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of documents that match target_id.
+        ///
+        /// If different from the count of documents in the client that match, the client must manually determine which
+        /// documents no longer match the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; } 
+
+        /// <summary>The target ID to which this filter applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual System.Nullable<int> TargetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter on a specific field.</summary>
+    public class FieldFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field to filter by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual FieldReference Field { get; set; } 
+
+        /// <summary>The operator to filter by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; } 
+
+        /// <summary>The value to compare to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual Value Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to a field, such as `max(messages.time) as max_time`.</summary>
+    public class FieldReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A transformation of a field of the document.</summary>
+    public class FieldTransform : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Append the given elements in order if they are not already present in the current field value. If
+        /// the field is not an array, or if the field does not yet exist, it is first set to the empty array.
+        ///
+        /// Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is
+        /// missing. NaN is equal to NaN, and Null is equal to Null. If the input contains multiple equivalent values,
+        /// only the first will be considered.
+        ///
+        /// The corresponding transform_result will be the null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appendMissingElements")]
+        public virtual ArrayValue AppendMissingElements { get; set; } 
+
+        /// <summary>The path of the field. See Document.fields for the field path syntax reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; } 
+
+        /// <summary>Remove all of the given elements from the array in the field. If the field is not an array, or if
+        /// the field does not yet exist, it is set to the empty array.
+        ///
+        /// Equivalent numbers of the different types (e.g. 3L and 3.0) are considered equal when deciding whether an
+        /// element should be removed. NaN is equal to NaN, and Null is equal to Null. This will remove all equivalent
+        /// values if there are duplicates.
+        ///
+        /// The corresponding transform_result will be the null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeAllFromArray")]
+        public virtual ArrayValue RemoveAllFromArray { get; set; } 
+
+        /// <summary>Sets the field to the given server value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setToServerValue")]
+        public virtual string SetToServerValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter.</summary>
+    public class Filter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A composite filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeFilter")]
+        public virtual CompositeFilter CompositeFilter { get; set; } 
+
+        /// <summary>A filter on a document field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldFilter")]
+        public virtual FieldFilter FieldFilter { get; set; } 
+
+        /// <summary>A filter that takes exactly one argument.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unaryFilter")]
+        public virtual UnaryFilter UnaryFilter { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2184,6 +3852,68 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
+    /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.</summary>
+    public class LatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; } 
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.ListCollectionIds.</summary>
+    public class ListCollectionIdsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of results to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>A page token. Must be a value from ListCollectionIdsResponse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from Firestore.ListCollectionIds.</summary>
+    public class ListCollectionIdsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The collection ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; } 
+
+        /// <summary>A page token that may be used to continue the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.ListDocuments.</summary>
+    public class ListDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Documents found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<Document> Documents { get; set; } 
+
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2194,6 +3924,56 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request for Firestore.Listen</summary>
+    public class ListenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A target to add to this stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addTarget")]
+        public virtual Target AddTarget { get; set; } 
+
+        /// <summary>Labels associated with this target change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ID of a target to remove from this stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeTarget")]
+        public virtual System.Nullable<int> RemoveTarget { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.Listen.</summary>
+    public class ListenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Document has changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentChange")]
+        public virtual DocumentChange DocumentChange { get; set; } 
+
+        /// <summary>A Document has been deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentDelete")]
+        public virtual DocumentDelete DocumentDelete { get; set; } 
+
+        /// <summary>A Document has been removed from a target (because it is no longer relevant to that
+        /// target).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentRemove")]
+        public virtual DocumentRemove DocumentRemove { get; set; } 
+
+        /// <summary>A filter to apply to the set of documents previously returned for the given target.
+        ///
+        /// Returned when documents may have been removed from the given target, but the exact documents are
+        /// unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual ExistenceFilter Filter { get; set; } 
+
+        /// <summary>Targets have changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetChange")]
+        public virtual TargetChange TargetChange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2224,6 +4004,171 @@ namespace Google.Apis.Firestore.v1.Data
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A map value.</summary>
+    public class MapValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The map's fields.
+        ///
+        /// The map keys represent field names. Field names matching the regular expression `__.*__` are reserved.
+        /// Reserved field names are forbidden except in certain documented contexts. The map keys, represented as
+        /// UTF-8, must not exceed 1,500 bytes and cannot be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An order on a field.</summary>
+    public class Order : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The direction to order by. Defaults to `ASCENDING`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
+
+        /// <summary>The field to order by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual FieldReference Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A precondition on a document, used for conditional operations.</summary>
+    public class Precondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When set to `true`, the target document must exist. When set to `false`, the target document must
+        /// not exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exists")]
+        public virtual System.Nullable<bool> Exists { get; set; } 
+
+        /// <summary>When set, the target document must exist and have been last updated at that time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The projection of document's fields to return.</summary>
+    public class Projection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields to return.
+        ///
+        /// If empty, all fields are returned. To only return the name of the document, use `['__name__']`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<FieldReference> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A target specified by a query.</summary>
+    public class QueryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`
+        /// or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-
+        /// project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms
+        /// /my-chatroom`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>A structured query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
+        public virtual StructuredQuery StructuredQuery { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for a transaction that can only be used to read documents.</summary>
+    public class ReadOnly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reads documents at the given time. This may not be older than 60 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for a transaction that can be used to read and write documents.</summary>
+    public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional transaction to retry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryTransaction")]
+        public virtual string RetryTransaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.Rollback.</summary>
+    public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction to roll back.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.RunQuery.</summary>
+    public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new
+        /// transaction ID will be returned as the first response in the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newTransaction")]
+        public virtual TransactionOptions NewTransaction { get; set; } 
+
+        /// <summary>Reads documents as they were at the given time. This may not be older than 60 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>A structured query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
+        public virtual StructuredQuery StructuredQuery { get; set; } 
+
+        /// <summary>Reads documents in a transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.RunQuery.</summary>
+    public class RunQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A query result. Not set when reporting partial progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual Document Document { get; set; } 
+
+        /// <summary>The time at which the document was read. This may be monotonically increasing; in this case, the
+        /// previous documents in the result stream are guaranteed not to have changed between their `read_time` and
+        /// this one.
+        ///
+        /// If the query returns no results, a response with `read_time` and no `document` will be sent, and this
+        /// represents the time at which the query was run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>The number of results that have been skipped due to an offset between the last response and the
+        /// current response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedResults")]
+        public virtual System.Nullable<int> SkippedResults { get; set; } 
+
+        /// <summary>The transaction that was started as part of this request. Can only be set in the first response,
+        /// and only if RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in
+        /// this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual string Transaction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2287,6 +4232,367 @@ namespace Google.Apis.Firestore.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Firestore query.</summary>
+    public class StructuredQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A end point for the query results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endAt")]
+        public virtual Cursor EndAt { get; set; } 
+
+        /// <summary>The collections to query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("from")]
+        public virtual System.Collections.Generic.IList<CollectionSelector> From { get; set; } 
+
+        /// <summary>The maximum number of results to return.
+        ///
+        /// Applies after all other constraints. Must be >= 0 if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; } 
+
+        /// <summary>The number of results to skip.
+        ///
+        /// Applies before limit, but after all other constraints. Must be >= 0 if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; } 
+
+        /// <summary>The order to apply to the query results.
+        ///
+        /// Firestore guarantees a stable ordering through the following rules:
+        ///
+        /// * Any field required to appear in `order_by`, that is not already specified in `order_by`, is appended to
+        /// the order in field name order by default. * If an order on `__name__` is not specified, it is appended by
+        /// default.
+        ///
+        /// Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was
+        /// specified. For example:
+        ///
+        /// * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER
+        /// BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT * FROM Foo WHERE A > 1`
+        /// becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual System.Collections.Generic.IList<Order> OrderBy { get; set; } 
+
+        /// <summary>The projection to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("select")]
+        public virtual Projection Select { get; set; } 
+
+        /// <summary>A starting point for the query results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startAt")]
+        public virtual Cursor StartAt { get; set; } 
+
+        /// <summary>The filter to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("where")]
+        public virtual Filter Where { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A specification of a set of documents to listen to.</summary>
+    public class Target : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A target specified by a set of document names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual DocumentsTarget Documents { get; set; } 
+
+        /// <summary>If the target should be removed once it is current and consistent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("once")]
+        public virtual System.Nullable<bool> Once { get; set; } 
+
+        /// <summary>A target specified by a query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual QueryTarget Query { get; set; } 
+
+        /// <summary>Start listening after a specific `read_time`.
+        ///
+        /// The client must know the state of matching documents at this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>A resume token from a prior TargetChange for an identical target.
+        ///
+        /// Using a resume token with a different target is unsupported and may fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
+        public virtual string ResumeToken { get; set; } 
+
+        /// <summary>A client provided target ID.
+        ///
+        /// If not set, the server will assign an ID for the target.
+        ///
+        /// Used for resuming a target without changing IDs. The IDs can either be client-assigned or be server-assigned
+        /// in a previous stream. All targets with client provided IDs must be added before adding a target that needs a
+        /// server-assigned id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual System.Nullable<int> TargetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Targets being watched have changed.</summary>
+    public class TargetChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error that resulted in this change, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual Status Cause { get; set; } 
+
+        /// <summary>The consistent `read_time` for the given `target_ids` (omitted when the target_ids are not at a
+        /// consistent snapshot).
+        ///
+        /// The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a
+        /// new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new
+        /// consistent snapshot (while NO_CHANGE and REMOVE messages are not).
+        ///
+        /// For a given stream, `read_time` is guaranteed to be monotonically increasing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; } 
+
+        /// <summary>A token that can be used to resume the stream for the given `target_ids`, or all targets if
+        /// `target_ids` is empty.
+        ///
+        /// Not set on every target change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
+        public virtual string ResumeToken { get; set; } 
+
+        /// <summary>The type of change that occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetChangeType")]
+        public virtual string TargetChangeType { get; set; } 
+
+        /// <summary>The target IDs of targets that have changed.
+        ///
+        /// If empty, the change applies to all targets.
+        ///
+        /// For `target_change_type=ADD`, the order of the target IDs matches the order of the requests to add the
+        /// targets. This allows clients to unambiguously associate server-assigned target IDs with added targets.
+        ///
+        /// For other states, the order of the target IDs is not defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> TargetIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for creating a new transaction.</summary>
+    public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction can only be used for read operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual ReadOnly ReadOnly__ { get; set; } 
+
+        /// <summary>The transaction can be used for both read and write operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readWrite")]
+        public virtual ReadWrite ReadWrite { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter with a single operand.</summary>
+    public class UnaryFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field to which to apply the operator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual FieldReference Field { get; set; } 
+
+        /// <summary>The unary operator to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A message that can hold any of the supported value types.</summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array value.
+        ///
+        /// Cannot directly contain another array value, though can contain an map which contains another
+        /// array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
+        public virtual ArrayValue ArrayValue { get; set; } 
+
+        /// <summary>A boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+
+        /// <summary>A bytes value.
+        ///
+        /// Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are considered by queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
+        public virtual string BytesValue { get; set; } 
+
+        /// <summary>A double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; } 
+
+        /// <summary>A geo point value representing a point on the surface of Earth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoPointValue")]
+        public virtual LatLng GeoPointValue { get; set; } 
+
+        /// <summary>An integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<long> IntegerValue { get; set; } 
+
+        /// <summary>A map value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapValue")]
+        public virtual MapValue MapValue { get; set; } 
+
+        /// <summary>A null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
+        public virtual string NullValue { get; set; } 
+
+        /// <summary>A reference to a document. For example:
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceValue")]
+        public virtual string ReferenceValue { get; set; } 
+
+        /// <summary>A string value.
+        ///
+        /// The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes of the UTF-8
+        /// representation are considered by queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        /// <summary>A timestamp value.
+        ///
+        /// Precise only to microseconds. When stored, any additional precision is rounded down.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual object TimestampValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A write on a document.</summary>
+    public class Write : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional precondition on the document.
+        ///
+        /// The write will fail if this is set and not met by the target document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentDocument")]
+        public virtual Precondition CurrentDocument { get; set; } 
+
+        /// <summary>A document name to delete. In the format:
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delete")]
+        public virtual string Delete { get; set; } 
+
+        /// <summary>Applies a tranformation to a document. At most one `transform` per document is allowed in a given
+        /// request. An `update` cannot follow a `transform` on the same document in a given request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transform")]
+        public virtual DocumentTransform Transform { get; set; } 
+
+        /// <summary>A document to write.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("update")]
+        public virtual Document Update { get; set; } 
+
+        /// <summary>The fields to update in this write.
+        ///
+        /// This field can be set only when the operation is `update`. If the mask is not set for an `update` and the
+        /// document exists, any existing data will be overwritten. If the mask is set and the document on the server
+        /// has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present
+        /// in the input document, are deleted from the document on the server. The field paths in this mask must not
+        /// contain a reserved field name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual DocumentMask UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Firestore.Write.
+    ///
+    /// The first request creates a stream, or resumes an existing one from a token.
+    ///
+    /// When creating a new stream, the server replies with a response containing only an ID and a token, to use in the
+    /// next request.
+    ///
+    /// When resuming a stream, the server first streams any responses later than the given token, then a response
+    /// containing only an up-to-date token, to use in the next request.</summary>
+    public class WriteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Labels associated with this write request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ID of the write stream to resume. This may only be set in the first message. When left empty, a
+        /// new write stream will be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
+        public virtual string StreamId { get; set; } 
+
+        /// <summary>A stream token that was previously sent by the server.
+        ///
+        /// The client should set this field to the token from the most recent WriteResponse it has received. This
+        /// acknowledges that the client has received responses up to this token. After sending this token, earlier
+        /// tokens may not be used anymore.
+        ///
+        /// The server may close the stream if there are too many unacknowledged responses.
+        ///
+        /// Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field
+        /// and the `stream_id` field.
+        ///
+        /// Leave this field unset when creating a new stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamToken")]
+        public virtual string StreamToken { get; set; } 
+
+        /// <summary>The writes to apply.
+        ///
+        /// Always executed atomically and in order. This must be empty on the first request. This may be empty on the
+        /// last request. This must not be empty on all other requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writes")]
+        public virtual System.Collections.Generic.IList<Write> Writes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Firestore.Write.</summary>
+    public class WriteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the commit occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual object CommitTime { get; set; } 
+
+        /// <summary>The ID of the stream. Only set on the first message, when a new stream was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
+        public virtual string StreamId { get; set; } 
+
+        /// <summary>A token that represents the position of this response in the stream. This can be used by a client
+        /// to resume the stream at this point.
+        ///
+        /// This field is always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamToken")]
+        public virtual string StreamToken { get; set; } 
+
+        /// <summary>The result of applying the writes.
+        ///
+        /// This i-th write result corresponds to the i-th write in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeResults")]
+        public virtual System.Collections.Generic.IList<WriteResult> WriteResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of applying a write.</summary>
+    public class WriteResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The results of applying each DocumentTransform.FieldTransform, in the same order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformResults")]
+        public virtual System.Collections.Generic.IList<Value> TransformResults { get; set; } 
+
+        /// <summary>The last update time of the document after applying the write. Not set after a `delete`.
+        ///
+        /// If the write did not actually change the document, this will be the previous update_time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

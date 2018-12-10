@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181204 (1433)
+ *      <tr><th>API Rev<td>20181207 (1436)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1188,7 +1188,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual string Audiences { get; set; } 
 
-        /// <summary>Redirect URL if JWT token is required but no present or is expired. Implement authorizationUrl of
+        /// <summary>Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of
         /// securityDefinitions in OpenAPI spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
         public virtual string AuthorizationUrl { get; set; } 

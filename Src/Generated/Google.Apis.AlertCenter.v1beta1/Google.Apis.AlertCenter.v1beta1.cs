@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181204 (1433)
+ *      <tr><th>API Rev<td>20181208 (1437)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -462,16 +462,16 @@ namespace Google.Apis.AlertCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
+                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
+                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomerId { get; set; }
+
                 /// <summary>Optional. A query string for filtering alert feedback results. For more details, see [Query
                 /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
                 /// sdk/alertcenter/reference/filter-fields#alerts.feedback.list).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
-                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CustomerId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -507,18 +507,18 @@ namespace Google.Apis.AlertCenter.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
+                        "customerId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filter",
+                            Name = "customerId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "customerId", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "customerId",
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -796,6 +796,80 @@ namespace Google.Apis.AlertCenter.v1beta1
                         Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting
+        /// to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert
+        /// Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which
+        /// has not been marked for deletion has no effect.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="alertId">Required. The identifier of the alert to undelete.</param>
+        public virtual UndeleteRequest Undelete(Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId)
+        {
+            return new UndeleteRequest(service, body, alertId);
+        }
+
+        /// <summary>Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting
+        /// to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert
+        /// Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which
+        /// has not been marked for deletion has no effect.</summary>
+        public class UndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
+        {
+            /// <summary>Constructs a new Undelete request.</summary>
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId)
+                : base(service)
+            {
+                AlertId = alertId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The identifier of the alert to undelete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AlertId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "undelete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/alerts/{alertId}:undelete"; }
+            }
+
+            /// <summary>Initializes Undelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "alertId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alertId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1299,6 +1373,18 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The serial number of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to undelete a specific alert that was marked for deletion.</summary>
+    public class UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert is
+        /// associated with. Inferred from the caller identity if not provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

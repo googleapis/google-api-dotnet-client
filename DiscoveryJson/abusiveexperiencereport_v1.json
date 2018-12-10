@@ -1,7 +1,4 @@
 {
-  "ownerDomain": "google.com",
-  "name": "abusiveexperiencereport",
-  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Abusive Experience Report API",
   "ownerName": "Google",
@@ -25,11 +22,11 @@
           ],
           "parameters": {
             "name": {
-              "pattern": "^sites/[^/]+$",
               "location": "path",
               "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "pattern": "^sites/[^/]+$"
             }
           }
         }
@@ -38,40 +35,32 @@
     "violatingSites": {
       "methods": {
         "list": {
+          "id": "abusiveexperiencereport.violatingSites.list",
+          "path": "v1/violatingSites",
+          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+          "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "GET",
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "flatPath": "v1/violatingSites",
-          "path": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list",
-          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\"."
+          "flatPath": "v1/violatingSites"
         }
       }
     }
   },
   "parameters": {
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
+    "fields": {
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "oauth_token": {
+    "uploadType": {
       "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
     "callback": {
@@ -79,8 +68,25 @@
       "type": "string",
       "location": "query"
     },
-    "alt": {
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
+    "alt": {
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -93,43 +99,34 @@
         "json",
         "media",
         "proto"
-      ]
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      ],
+      "type": "string"
     },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
       "type": "string"
     },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
-    "fields": {
+    "prettyPrint": {
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "version": "v1",
@@ -159,8 +156,6 @@
       "type": "object"
     },
     "SiteSummaryResponse": {
-      "description": "Response message for GetSiteSummary.",
-      "type": "object",
       "properties": {
         "enforcementTime": {
           "description": "The date on which enforcement begins.",
@@ -168,6 +163,13 @@
           "type": "string"
         },
         "filterStatus": {
+          "enumDescriptions": [
+            "N/A.",
+            "Ad filtering is on.",
+            "Ad filtering is off.",
+            "Ad filtering is paused.",
+            "Ad filtering is pending."
+          ],
           "enum": [
             "UNKNOWN",
             "ON",
@@ -176,14 +178,7 @@
             "PENDING"
           ],
           "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
-          "enumDescriptions": [
-            "N/A.",
-            "Ad filtering is on.",
-            "Ad filtering is off.",
-            "Ad filtering is paused.",
-            "Ad filtering is pending."
-          ]
+          "type": "string"
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -193,16 +188,18 @@
           "description": "A link that leads to a full abusive experience report.",
           "type": "string"
         },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
         "lastChangeTime": {
           "description": "The last time that the site changed status.",
           "format": "google-datetime",
           "type": "string"
         },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
+        },
         "abusiveStatus": {
+          "description": "The status of the site reviewed for the abusive experiences.",
+          "type": "string",
           "enumDescriptions": [
             "Not reviewed.",
             "Passing.",
@@ -212,12 +209,12 @@
             "UNKNOWN",
             "PASSING",
             "FAILING"
-          ],
-          "description": "The status of the site reviewed for the abusive experiences.",
-          "type": "string"
+          ]
         }
       },
-      "id": "SiteSummaryResponse"
+      "id": "SiteSummaryResponse",
+      "description": "Response message for GetSiteSummary.",
+      "type": "object"
     }
   },
   "protocol": "rest",
@@ -235,5 +232,8 @@
       }
     }
   },
-  "rootUrl": "https://abusiveexperiencereport.googleapis.com/"
+  "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "abusiveexperiencereport",
+  "batchPath": "batch"
 }

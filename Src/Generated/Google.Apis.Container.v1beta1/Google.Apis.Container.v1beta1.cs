@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181109 (1408)
+ *      <tr><th>API Rev<td>20181113 (1412)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -404,6 +404,12 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
+                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
+                    /// listed subnetworks. This defaults to the parent project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
                     /// requests to get the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -415,12 +421,6 @@ namespace Google.Apis.Container.v1beta1
                     /// (Default: 500)</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
-                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
-                    /// listed subnetworks. This defaults to the parent project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -456,6 +456,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -468,15 +477,6 @@ namespace Google.Apis.Container.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -655,11 +655,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
-
                         /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
@@ -676,6 +671,11 @@ namespace Google.Apis.Container.v1beta1
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
+
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -711,15 +711,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
@@ -741,6 +732,15 @@ namespace Google.Apis.Container.v1beta1
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -775,16 +775,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
-                        /// by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -796,6 +786,16 @@ namespace Google.Apis.Container.v1beta1
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
+
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
+                        /// by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -831,24 +831,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -861,6 +843,24 @@ namespace Google.Apis.Container.v1beta1
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1525,12 +1525,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ProjectId { get; set; }
-
                     /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
                     /// in which the cluster resides. This field has been deprecated and replaced by the name
                     /// field.</summary>
@@ -1541,6 +1535,12 @@ namespace Google.Apis.Container.v1beta1
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
+
+                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1576,15 +1576,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
@@ -1597,6 +1588,15 @@ namespace Google.Apis.Container.v1beta1
                             "clusterId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1631,11 +1631,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to retrieve. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1647,6 +1642,11 @@ namespace Google.Apis.Container.v1beta1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The name of the cluster to retrieve. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1682,15 +1682,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1703,6 +1694,15 @@ namespace Google.Apis.Container.v1beta1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3032,14 +3032,14 @@ namespace Google.Apis.Container.v1beta1
 
             }
 
-
+            /// <summary>Used to fetch locations that offer GKE.</summary>
             /// <param name="parent">Contains the name of the resource requested. Specified in the format 'projects'.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-
+            /// <summary>Used to fetch locations that offer GKE.</summary>
             public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -6592,6 +6592,11 @@ namespace Google.Apis.Container.v1beta1.Data
     /// functionality.</summary>
     public class AddonsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable
+        /// Cloud Run addon. This option can only be enabled at cluster creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunConfig")]
+        public virtual CloudRunConfig CloudRunConfig { get; set; } 
+
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
@@ -6601,6 +6606,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// load balancers for services in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpLoadBalancing")]
         public virtual HttpLoadBalancing HttpLoadBalancing { get; set; } 
+
+        /// <summary>Configuration for Istio, an open platform to connect, manage, and secure microservices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("istioConfig")]
+        public virtual IstioConfig IstioConfig { get; set; } 
 
         /// <summary>Configuration for the Kubernetes Dashboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesDashboard")]
@@ -6628,6 +6637,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters for using BigQuery as the destination of resource usage export.</summary>
+    public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6694,6 +6714,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Issue a client certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueClientCertificate")]
         public virtual System.Nullable<bool> IssueClientCertificate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for the Cloud Run feature.</summary>
+    public class CloudRunConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Cloud Run addon is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6920,6 +6951,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
+        /// <summary>Configuration for exporting resource usages. Resource usage export is disabled when this config
+        /// unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
+        public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; } 
+
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -7066,6 +7102,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired configuration options for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
         public virtual PodSecurityPolicyConfig DesiredPodSecurityPolicyConfig { get; set; } 
+
+        /// <summary>The desired configuration for exporting resource usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
+        public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
 
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
@@ -7337,6 +7377,21 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration options for Istio addon.</summary>
+    public class IstioConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specified Istio auth mode, either none, or mutual TLS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auth")]
+        public virtual string Auth { get; set; } 
+
+        /// <summary>Whether Istio is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the Kubernetes Dashboard.</summary>
     public class KubernetesDashboard : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7446,9 +7501,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Recommended is a bool combining the drain state of the location (ie- has the region been drained
-        /// manually?), and the stockout status of any zone according to Zone Advisor. This will be internal only for
-        /// use by pantheon.</summary>
+        /// <summary>Whether the location is recomended for GKE cluster scheduling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommended")]
         public virtual System.Nullable<bool> Recommended { get; set; } 
 
@@ -8018,6 +8071,22 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Resource name "cpu", "memory" or gpu-specific string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for exporting cluster resource usages.</summary>
+    public class ResourceUsageExportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration to use BigQuery as usage export destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual BigQueryDestination BigqueryDestination { get; set; } 
+
+        /// <summary>Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+        /// in the cluster to meter network egress traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNetworkEgressMetering")]
+        public virtual System.Nullable<bool> EnableNetworkEgressMetering { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

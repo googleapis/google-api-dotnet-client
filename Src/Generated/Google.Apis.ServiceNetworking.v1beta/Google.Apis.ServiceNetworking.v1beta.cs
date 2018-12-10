@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181204 (1433)
+ *      <tr><th>API Rev<td>20181207 (1436)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -613,8 +613,9 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
         /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
-        /// prefix length. The response from the `get` operation will be of type `Subnetwork` if the operation
-        /// successfully completes.</summary>
+        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
+        /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
+        /// completes.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. A tenant project in the service producer organization, in the following format:
         /// services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that
@@ -630,8 +631,9 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
         /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
-        /// prefix length. The response from the `get` operation will be of type `Subnetwork` if the operation
-        /// successfully completes.</summary>
+        /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
+        /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
+        /// completes.</summary>
         public class AddSubnetworkRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
         {
             /// <summary>Constructs a new AddSubnetwork request.</summary>
@@ -795,6 +797,82 @@ namespace Google.Apis.ServiceNetworking.v1beta
             }
 
         }
+
+        /// <summary>Service producers can use this method to find a currently unused range within consumer allocated
+        /// ranges.   This returned range is not reserved, and not guaranteed to remain unused. It will validate
+        /// previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number
+        /// of leading bits of ipv4 network mask, as in CIDR range notation). Operation</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. This is in a form services/{service}. {service} the name of the private access
+        /// management service, for example 'service-peering.example.com'.</param>
+        public virtual SearchRangeRequest SearchRange(Google.Apis.ServiceNetworking.v1beta.Data.SearchRangeRequest body, string parent)
+        {
+            return new SearchRangeRequest(service, body, parent);
+        }
+
+        /// <summary>Service producers can use this method to find a currently unused range within consumer allocated
+        /// ranges.   This returned range is not reserved, and not guaranteed to remain unused. It will validate
+        /// previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number
+        /// of leading bits of ipv4 network mask, as in CIDR range notation). Operation</summary>
+        public class SearchRangeRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SearchRange request.</summary>
+            public SearchRangeRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1beta.Data.SearchRangeRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. This is in a form services/{service}. {service} the name of the private access
+            /// management service, for example 'service-peering.example.com'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceNetworking.v1beta.Data.SearchRangeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "searchRange"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta/{+parent}:searchRange"; }
+            }
+
+            /// <summary>Initializes SearchRange parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+$",
+                    });
+            }
+
+        }
     }
 }
 
@@ -922,7 +1000,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual string Audiences { get; set; } 
 
-        /// <summary>Redirect URL if JWT token is required but no present or is expired. Implement authorizationUrl of
+        /// <summary>Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of
         /// securityDefinitions in OpenAPI spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
         public virtual string AuthorizationUrl { get; set; } 
@@ -2451,6 +2529,25 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to search for an unused range within allocated ranges.</summary>
+    public class SearchRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The prefix length of the IP range. Use usual CIDR range notation. For example, '30' to
+        /// find unused x.x.x.x/30 CIDR range. Actual range will be determined using allocated range for the consumer
+        /// peered network and returned in the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
+        public virtual System.Nullable<int> IpPrefixLength { get; set; } 
+
+        /// <summary>Network name in the consumer project.   This network must have been already peered with a shared
+        /// VPC network using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'.
+        /// {project} is a project number, as in '12345' {network} is network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181022 (1390)
+ *      <tr><th>API Rev<td>20181128 (1427)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -4014,8 +4014,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to return.</param>
@@ -4024,8 +4023,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, backendService);
         }
 
-        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5416,7 +5414,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "guestFlush", new Google.Apis.Discovery.Parameter
@@ -5641,6 +5639,99 @@ namespace Google.Apis.Compute.v1
                     "disk", new Google.Apis.Discovery.Parameter
                     {
                         Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, zone, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -6036,7 +6127,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -6051,13 +6142,112 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.ZoneSetLabelsRequest body, string project, string zone, string resource)
         {
             return new SetLabelsRequest(service, body, project, zone, resource);
@@ -6087,7 +6277,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -6159,7 +6349,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -6169,6 +6359,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11010,7 +11299,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -11119,7 +11408,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -11280,7 +11569,85 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/images/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -11538,12 +11905,96 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/images/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
         {
             return new SetLabelsRequest(service, body, project, resource);
@@ -11568,7 +12019,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -11618,7 +12069,91 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/images/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -12723,6 +13258,136 @@ namespace Google.Apis.Compute.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where you
+        /// want to create the managed instance group.</param>
+        /// <param name="instanceGroupManager">The name of the
+        /// instance group manager.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+        {
+            return new PatchRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where you want to create the managed instance group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -14674,6 +15339,84 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/instanceTemplates/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates an instance template in the specified project using the data that is included in the
         /// request. If you are creating a new template to update an existing instance group, your new instance template
         /// must use the same network or, if applicable, the same subnetwork as the original template.</summary>
@@ -14910,6 +15653,174 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/instanceTemplates/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/instanceTemplates/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "instances" collection of methods.</summary>
@@ -15041,7 +15952,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "networkInterface", new Google.Apis.Discovery.Parameter
@@ -15323,7 +16234,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "forceAttach", new Google.Apis.Discovery.Parameter
@@ -15574,7 +16485,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "accessConfig", new Google.Apis.Discovery.Parameter
@@ -15611,9 +16522,10 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="instance">Instance name.</param>
-        /// <param name="deviceName">Disk device
-        /// name to detach.</param>
+        /// <param name="instance">Instance name for this request.</param>
+        /// <param
+        /// name="deviceName">The device name of the disk to detach. Make a get() request on the instance to view currently
+        /// attached disks and device names.</param>
         public virtual DetachDiskRequest DetachDisk(string project, string zone, string instance, string deviceName)
         {
             return new DetachDiskRequest(service, project, zone, instance, deviceName);
@@ -15642,11 +16554,12 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Instance name.</summary>
+            /// <summary>Instance name for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Disk device name to detach.</summary>
+            /// <summary>The device name of the disk to detach. Make a get() request on the instance to view currently
+            /// attached disks and device names.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
 
@@ -15712,7 +16625,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "deviceName", new Google.Apis.Discovery.Parameter
@@ -15829,6 +16742,99 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, zone, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -15928,7 +16934,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "port", new Google.Apis.Discovery.Parameter
@@ -16370,7 +17376,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -16510,7 +17516,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -16529,7 +17535,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetDeletionProtectionRequest SetDeletionProtection(string project, string zone, string resource)
         {
             return new SetDeletionProtectionRequest(service, project, zone, resource);
@@ -16557,7 +17563,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -16628,7 +17634,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "deletionProtection", new Google.Apis.Discovery.Parameter
@@ -16656,11 +17662,12 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="instance">The instance name.</param>
-        /// <param name="autoDelete">Whether
-        /// to auto-delete the disk when the instance is deleted.</param>
-        /// <param name="deviceName">The device name of
-        /// the disk to modify.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="autoDelete">Whether to auto-delete the disk when the instance is deleted.</param>
+        /// <param
+        /// name="deviceName">The device name of the disk to modify. Make a get() request on the instance to view currently
+        /// attached disks and device names.</param>
         public virtual SetDiskAutoDeleteRequest SetDiskAutoDelete(string project, string zone, string instance, bool autoDelete, string deviceName)
         {
             return new SetDiskAutoDeleteRequest(service, project, zone, instance, autoDelete, deviceName);
@@ -16690,7 +17697,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>The instance name.</summary>
+            /// <summary>The instance name for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
@@ -16698,7 +17705,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("autoDelete", Google.Apis.Util.RequestParameterType.Query)]
             public virtual bool AutoDelete { get; private set; }
 
-            /// <summary>The device name of the disk to modify.</summary>
+            /// <summary>The device name of the disk to modify. Make a get() request on the instance to view currently
+            /// attached disks and device names.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
 
@@ -16764,7 +17772,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "autoDelete", new Google.Apis.Discovery.Parameter
@@ -16792,6 +17800,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -16905,7 +18012,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17028,7 +18135,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17151,7 +18258,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17272,7 +18379,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17395,7 +18502,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17415,7 +18522,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="instance">Instance name.</param>
+        /// <param name="instance">Instance name for this request.</param>
         public virtual SetSchedulingRequest SetScheduling(Google.Apis.Compute.v1.Data.Scheduling body, string project, string zone, string instance)
         {
             return new SetSchedulingRequest(service, body, project, zone, instance);
@@ -17444,7 +18551,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Instance name.</summary>
+            /// <summary>Instance name for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
@@ -17516,7 +18623,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17639,7 +18746,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17760,7 +18867,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -17860,7 +18967,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -17966,7 +19073,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -18089,7 +19196,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -18208,7 +19315,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -18218,6 +19325,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -18340,7 +19546,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "networkInterface", new Google.Apis.Discovery.Parameter
@@ -18477,7 +19683,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "networkInterface", new Google.Apis.Discovery.Parameter
@@ -20468,6 +21674,84 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Create a License resource in the specified project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -20700,6 +21984,90 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -22061,7 +23429,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="nodeGroup">Name of the NodeGroup resource to delete.</param>
+        /// <param name="nodeGroup">Name of the NodeGroup resource.</param>
         public virtual AddNodesRequest AddNodes(Google.Apis.Compute.v1.Data.NodeGroupsAddNodesRequest body, string project, string zone, string nodeGroup)
         {
             return new AddNodesRequest(service, body, project, zone, nodeGroup);
@@ -22090,7 +23458,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the NodeGroup resource to delete.</summary>
+            /// <summary>Name of the NodeGroup resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("nodeGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string NodeGroup { get; private set; }
 
@@ -22647,6 +24015,99 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, zone, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a NodeGroup resource in the specified project using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -23102,6 +24563,105 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ZoneSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/nodeGroups/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Updates the node template of the node group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -23218,6 +24778,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/nodeGroups/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -23587,6 +25246,99 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, region, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a NodeTemplate resource in the specified project using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -23847,6 +25599,204 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/nodeTemplates/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/nodeTemplates/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -27964,7 +29914,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28181,7 +30131,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28571,7 +30521,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28591,7 +30541,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
         /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.RegionSetLabelsRequest body, string project, string region, string resource)
         {
             return new SetLabelsRequest(service, body, project, region, resource);
@@ -28620,7 +30570,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -28692,7 +30642,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -29752,6 +31702,136 @@ namespace Google.Apis.Compute.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="instanceGroupManager">The name of the instance group
+        /// manager.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+        {
+            return new PatchRequest(service, body, project, region, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -34028,7 +36108,7 @@ namespace Google.Apis.Compute.v1
         /// necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is
         /// needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
         ///
-        /// For more information, see Deleting snaphots.</summary>
+        /// For more information, see Deleting snapshots.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="snapshot">Name of the Snapshot
         /// resource to delete.</param>
@@ -34041,7 +36121,7 @@ namespace Google.Apis.Compute.v1
         /// necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is
         /// needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
         ///
-        /// For more information, see Deleting snaphots.</summary>
+        /// For more information, see Deleting snapshots.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -34115,7 +36195,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -34203,6 +36283,84 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/snapshots/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -34349,12 +36507,96 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/snapshots/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
         {
             return new SetLabelsRequest(service, body, project, resource);
@@ -34379,7 +36621,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -34429,7 +36671,91 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/snapshots/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -36020,6 +38346,99 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, region, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -36424,10 +38843,9 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
-        /// within the subnetwork resource can be specified in the request: secondary_ip_range,
-        /// allow_subnet_cidr_routes_overlap and role. It is also mandatory to specify the current fingeprint of the
-        /// subnetwork resource being patched.</summary>
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
+        /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
+        /// of the subnetwork resource being patched.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -36438,10 +38856,9 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, region, subnetwork);
         }
 
-        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
-        /// within the subnetwork resource can be specified in the request: secondary_ip_range,
-        /// allow_subnet_cidr_routes_overlap and role. It is also mandatory to specify the current fingeprint of the
-        /// subnetwork resource being patched.</summary>
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
+        /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
+        /// of the subnetwork resource being patched.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -36546,6 +38963,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -36669,6 +39185,105 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -44584,12 +47199,28 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The URL of the network in which to reserve the address. This field can only be used with INTERNAL
+        /// type with VPC_PEERING purpose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
         /// <summary>This signifies the networking tier used for configuring this Address and can only take the
-        /// following values: PREMIUM , STANDARD.
+        /// following values: PREMIUM, STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding
+        /// rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules
+        /// can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with
+        /// a Network load balancer.
         ///
         /// If this field is not specified, it is assumed to be PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
+
+        /// <summary>The prefix length if the resource reprensents an IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
+        public virtual System.Nullable<int> PrefixLength { get; set; } 
+
+        /// <summary>The purpose of resource, only used with INTERNAL type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
         /// global addresses. You must specify this field as part of the HTTP request URL. You cannot set this field in
@@ -45008,6 +47639,74 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
+    /// AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    ///
+    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for logging a type of permissions. Example:
+    ///
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// "log_type": "DATA_WRITE", } ] }
+    ///
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+        /// format of [Binding.members][].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Authorization-related information used by Cloud Audit Logging.</summary>
+    public class AuthorizationLoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the permission that was checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
     /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
     /// read Autoscaling Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==)
@@ -45373,7 +48072,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
         /// <summary>Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either
-        /// GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
+        /// GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTargetType")]
         public virtual string UtilizationTargetType { get; set; } 
 
@@ -45532,7 +48231,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Maximum number of seconds the response to a signed URL request will be considered fresh. After this
         /// time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving
         /// responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend
-        /// had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The
+        /// had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The
         /// actual headers served in responses will not be altered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUrlCacheMaxAgeSec")]
         public virtual System.Nullable<long> SignedUrlCacheMaxAgeSec { get; set; } 
@@ -45657,7 +48356,8 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint
-        /// must be provided in order to update the BackendService.
+        /// must be provided in order to update the BackendService, otherwise the request will fail with error 412
+        /// conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve a BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -45836,7 +48536,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Maximum number of seconds the response to a signed URL request will be considered fresh. After this
         /// time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving
         /// responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend
-        /// had a ?Cache-Control: public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The
+        /// had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The
         /// actual headers served in responses will not be altered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUrlCacheMaxAgeSec")]
         public virtual System.Nullable<long> SignedUrlCacheMaxAgeSec { get; set; } 
@@ -46008,6 +48708,46 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
+        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// independently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
+        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` .
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
+        /// `roles/owner`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
@@ -46330,6 +49070,38 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>A condition to be met.</summary>
+    public class Condition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Trusted attributes supplied by the IAM system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
+        public virtual string Iam { get; set; } 
+
+        /// <summary>An operator to apply the subject with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; } 
+
+        /// <summary>Trusted attributes discharged by the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
+        public virtual string Svc { get; set; } 
+
+        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
+        /// control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
+        public virtual string Sys { get; set; } 
+
+        /// <summary>DEPRECATED. Use 'values' instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Message containing connection draining configuration.</summary>
     public class ConnectionDraining : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46456,7 +49228,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels
         /// set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
         /// every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to
-        /// update or change labels.
+        /// update or change labels, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve a disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
@@ -46493,6 +49265,13 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Internal use only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; } 
+
+        /// <summary>Physical block size of the persistent disk, in bytes. If not present in a request, a default value
+        /// is used. Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an
+        /// unsupported value is requested, the error message will list the supported values for the caller's
+        /// project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalBlockSizeBytes")]
+        public virtual System.Nullable<long> PhysicalBlockSizeBytes { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the disk resides. Only applicable for regional resources. You
         /// must specify this field as part of the HTTP request URL. It is not settable as a field in the request
@@ -47125,6 +49904,38 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Firewall resource.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -47172,6 +49983,11 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Type of the resource. Always compute#firewall for firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>This field denotes the logging options for a particular firewall rule. If logging is enabled, logs
+        /// will be exported to Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual FirewallLogConfig LogConfig { get; set; } 
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -47357,6 +50173,17 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>The available logging options for a firewall rule.</summary>
+    public class FirewallLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field denotes whether to enable logging for a particular firewall rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to
     /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple. (== resource_for
     /// beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for beta.globalForwardingRules ==)
@@ -47480,9 +50307,9 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>This field is used along with the backend_service field for internal load balancing.
         ///
-        /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
-        /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
-        /// forwarding rule.
+        /// When the load balancing scheme is INTERNAL, a list of ports can be configured, for example, ['80'],
+        /// ['8000','9000'] etc. Only packets addressed to these ports will be forwarded to the backends configured with
+        /// this forwarding rule.
         ///
         /// You may specify a maximum of up to 5 ports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
@@ -47719,8 +50546,9 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
         /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
-        /// labels. You must always provide an up-to-date fingerprint hash when updating or changing labels. Make a
-        /// get() request to the resource to get the latest fingerprint.</summary>
+        /// labels. You must always provide an up-to-date fingerprint hash when updating or changing labels, otherwise
+        /// the request will fail with error 412 conditionNotMet. Make a get() request to the resource to get the latest
+        /// fingerprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
@@ -47735,6 +50563,26 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify
+        /// bindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
+        /// etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
+        /// reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
     }    
 
     /// <summary>Guest OS features.</summary>
@@ -48368,7 +51216,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A fingerprint for the labels being applied to this image, which is essentially a hash of the labels
         /// used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
         /// every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to
-        /// update or change labels.
+        /// update or change labels, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
@@ -49027,7 +51875,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when
         /// inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the
-        /// InstanceGroupManager.
+        /// InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -49583,7 +52431,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The fingerprint of the named ports information for this instance group. Use this optional property
         /// to prevent conflicts when multiple users change the named ports settings concurrently. Obtain the
         /// fingerprint with the instanceGroups.get method. Then, include the fingerprint in your request to ensure that
-        /// you do not overwrite changes that were applied from another concurrent request.</summary>
+        /// you do not overwrite changes that were applied from another concurrent request. A request with an incorrect
+        /// fingerprint will fail with error 412 conditionNotMet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -50239,8 +53088,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
 
         /// <summary>Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to update
-        /// the customer's provisioned bandwidth. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not
-        /// available for DEDICATED.</summary>
+        /// the customer's provisioned bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and
+        /// DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
         public virtual string Bandwidth { get; set; } 
 
@@ -50339,7 +53188,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>URL of the cloud router to be used for dynamic routing. This router must be in the same region as
+        /// <summary>URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as
         /// this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the
         /// network & region within which the Cloud Router is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("router")]
@@ -50356,8 +53205,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this attachment, in the
-        /// range 2-4094. This field refers to 802.1q VLAN tag, also known as IEEE 802.1Q Only specified at creation
+        /// <summary>The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vlanTag8021q")]
         public virtual System.Nullable<int> VlanTag8021q { get; set; } 
@@ -50516,7 +53364,7 @@ namespace Google.Apis.Compute.v1.Data
     public class InterconnectAttachmentPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner?s
-        /// portal. For instance ?Chicago 1?. This value may be validated to match approved Partner values.</summary>
+        /// portal. For instance "Chicago 1". This value may be validated to match approved Partner values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectName")]
         public virtual string InterconnectName { get; set; } 
 
@@ -50681,7 +53529,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Value of the current optical power, read in dBm.</summary>
+        /// <summary>Value of the current optical power, read in dBm. Take a known good optical value, give it a 10%
+        /// margin and trigger warnings relative to that value. In general, a -7dBm warning and a -11dBm alarm are good
+        /// optical value estimates for most links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; } 
 
@@ -51203,6 +54053,86 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>Specifies what kind of log the caller must write</summary>
+    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud audit options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
+        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; } 
+
+        /// <summary>Counter options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
+        public virtual LogConfigCounterOptions Counter { get; set; } 
+
+        /// <summary>Data access options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
+        public virtual LogConfigDataAccessOptions DataAccess { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Cloud Audit log</summary>
+    public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
+
+        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
+        public virtual string LogName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Increment a streamz counter with the specified metric and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of
+    /// IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or -
+    /// "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or -
+    /// "" (empty string), resulting in a counter with no fields.
+    ///
+    /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support multiple field names (though this may be supported in the future).</summary>
+    public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field value to attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>The metric to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Data Access (Gin) log</summary>
+    public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
+        /// the LocalIAM implementation, for now.
+        ///
+        /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy
+        /// the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists
+        /// because there is active work being done to support it (b/115874152).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
+        public virtual string LogMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
     /// ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
@@ -51568,7 +54498,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents
         /// and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
         /// every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order
-        /// to update or change metadata.
+        /// to update or change metadata, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -51705,7 +54635,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint hash of contents stored in this network interface. This field will be ignored when
         /// inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to
-        /// update the NetworkInterface.</summary>
+        /// update the NetworkInterface, otherwise the request will fail with error 412 conditionNotMet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -51828,9 +54758,9 @@ namespace Google.Apis.Compute.v1.Data
     /// peering.</summary>
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether full mesh connectivity is created and managed automatically. When it is set to true, Google
-        /// Compute Engine will automatically create and manage the routes between two networks when the state is
-        /// ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        /// <summary>Indicates whether full mesh connectivity is created and managed automatically. When it is set to
+        /// true, Google Compute Engine will automatically create and manage the routes between two networks when the
+        /// state is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -53252,6 +56182,65 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **JSON Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam/docs).</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
+        public virtual System.Nullable<bool> IamOwned { get; set; } 
+
+        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
+        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
+        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
+        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
+        /// Otherwise, if no rule applies, permission is denied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+
+        /// <summary>Deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
     /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
     /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
@@ -54034,6 +57023,26 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RegionSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify
+        /// bindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
+        /// etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
+        /// reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
+    }    
+
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>
     public class ResourceCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54486,10 +57495,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>[Output Only] Type of how the resource/configuration of the BGP peer is managed. MANAGED_BY_USER is
-        /// the default value; MANAGED_BY_ATTACHMENT represents an BGP peer that is automatically created for PARTNER
-        /// interconnectAttachment, Google will automatically create/delete this type of BGP peer when the PARTNER
-        /// interconnectAttachment is created/deleted.</summary>
+        /// <summary>[Output Only] The resource that configures and manages this BGP peer. MANAGED_BY_USER is the
+        /// default value and can be managed by you or other users; MANAGED_BY_ATTACHMENT is a BGP peer that is
+        /// configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER.
+        /// Google will automatically create, update, and delete this type of BGP peer when the PARTNER
+        /// InterconnectAttachment is created, updated, or deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -54529,10 +57539,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
         public virtual string LinkedVpnTunnel { get; set; } 
 
-        /// <summary>[Output Only] Type of how the resource/configuration of the interface is managed. MANAGED_BY_USER
-        /// is the default value; MANAGED_BY_ATTACHMENT represents an interface that is automatically created for
-        /// PARTNER type interconnectAttachment, Google will automatically create/update/delete this type of interface
-        /// when the PARTNER interconnectAttachment is created/provisioned/deleted.</summary>
+        /// <summary>[Output Only] The resource that configures and manages this interface. MANAGED_BY_USER is the
+        /// default value and can be managed by you or other users; MANAGED_BY_ATTACHMENT is an interface that is
+        /// configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER.
+        /// Google will automatically create, update, and delete this type of interface when the PARTNER
+        /// InterconnectAttachment is created, updated, or deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -54875,6 +57886,45 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>A rule to be applied in a Policy.</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+
+        /// <summary>Human-readable description of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
+        /// in at least one of these entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ins")]
+        public virtual System.Collections.Generic.IList<string> Ins { get; set; } 
+
+        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
+        /// action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfigs")]
+        public virtual System.Collections.Generic.IList<LogConfig> LogConfigs { get; set; } 
+
+        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
+        /// is in none of the entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notIns")]
+        public virtual System.Collections.Generic.IList<string> NotIns { get; set; } 
+
+        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
+        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class SSLHealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The TCP port number for the health check request. The default value is 443. Valid values are 1
@@ -54974,7 +58024,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents
         /// and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
         /// every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order
-        /// to update or change metadata.
+        /// to update or change metadata, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make get() request to the security policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -55117,7 +58167,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> Preview { get; set; } 
 
         /// <summary>An integer indicating the priority of a rule in the list. The priority must be a positive value
-        /// between 0 and 2147483647. Rules are evaluated in the increasing order of priority.</summary>
+        /// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest
+        /// priority and 2147483647 is the lowest prority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; } 
 
@@ -55248,7 +58299,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A fingerprint for the labels being applied to this snapshot, which is essentially a hash of the
         /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
         /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
-        /// order to update or change labels.
+        /// order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve a snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
@@ -55643,7 +58694,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be
-        /// provided in order to update the SslPolicy.
+        /// provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -55757,7 +58808,8 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must
-        /// be provided in order to update the Subnetwork.
+        /// be provided in order to update the Subnetwork, otherwise the request will fail with error 412
+        /// conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve a Subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -55809,7 +58861,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>An array of configurations for secondary IP ranges for VM instances contained in this subnetwork.
         /// The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong
-        /// to either primary or secondary ranges.</summary>
+        /// to either primary or secondary ranges. This field can be updated with a patch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
         public virtual System.Collections.Generic.IList<SubnetworkSecondaryRange> SecondaryIpRanges { get; set; } 
 
@@ -57608,7 +60660,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be
-        /// provided in order to update the UrlMap.
+        /// provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
         ///
         /// To see the latest fingerprint, make a get() request to retrieve a UrlMap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -58554,5 +61606,25 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class ZoneSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify
+        /// bindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
+        /// etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
+        /// reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
     }
 }

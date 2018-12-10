@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181105 (1404)
+ *      <tr><th>API Rev<td>20181202 (1431)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -893,8 +893,8 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU. See details
-            /// at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
+            /// <summary>The geographic location of the job. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -985,8 +985,8 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location of the job. Required except for US and EU. See details
-            /// at https://cloud.google.com/bigquery/docs/dataset-locations#specifying_your_location.</summary>
+            /// <summary>The geographic location of the job. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -1075,9 +1075,8 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>[Experimental] The geographic location where the job should run. Required except for US and EU.
-            /// See details at https://cloud.google.com/bigquery/docs/dataset-
-            /// locations#specifying_your_location.</summary>
+            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -2857,7 +2856,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> LastModifiedTime { get; set; } 
 
         /// <summary>The geographic location where the dataset should reside. The default value is US. See details at
-        /// https://cloud.google.com/bigquery/docs/dataset-locations.</summary>
+        /// https://cloud.google.com/bigquery/docs/locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -2953,7 +2952,7 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
             public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-            /// <summary>[Experimental] The geographic location where the data resides.</summary>
+            /// <summary>The geographic location where the data resides.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
             public virtual string Location { get; set; } 
 
@@ -3308,7 +3307,7 @@ namespace Google.Apis.Bigquery.v2.Data
     public class GoogleSheetsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Beta] [Optional] Range of a sheet to query from. Only used when non-empty. Typical format:
-        /// !:</summary>
+        /// sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual string Range { get; set; } 
 
@@ -3591,7 +3590,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; } 
 
-        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; } 
@@ -3742,7 +3741,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
-        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; } 
@@ -4051,6 +4050,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
 
+        /// <summary>[Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the
+        /// accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE:
+        /// estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND:
+        /// estiamte is upper bound of what the query would cost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessedAccuracy")]
+        public virtual string TotalBytesProcessedAccuracy { get; set; } 
+
         /// <summary>[Output-only] Total number of partitions processed from all partitioned tables referenced in the
         /// job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
@@ -4140,6 +4146,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] Running state of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MaterializedViewDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] [TrustedTester] The time when this materialized view was last modified, in
+        /// milliseconds since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual System.Nullable<long> LastRefreshTime { get; set; } 
+
+        /// <summary>[Required] A query whose result is persisted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4330,7 +4351,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The geographic location where the job should run. Required except for US and EU.</summary>
+        /// <summary>The geographic location where the job should run. See details at
+        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4472,12 +4494,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class RangePartitioning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Experimental] [Required] The table is partitioned by this field. The field must be a top-level
+        /// <summary>[TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level
         /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; } 
 
-        /// <summary>[Experimental] [Required] Defines the ranges for range partitioning.</summary>
+        /// <summary>[TrustedTester] [Required] Defines the ranges for range partitioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual RangePartitioning.RangeData Range { get; set; } 
 
@@ -4485,18 +4507,18 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>[Experimental] [Required] Defines the ranges for range partitioning.</summary>
+        /// <summary>[TrustedTester] [Required] Defines the ranges for range partitioning.</summary>
         public class RangeData
         {
-            /// <summary>[Experimental] [Required] The end of range partitioning, exclusive.</summary>
+            /// <summary>[TrustedTester] [Required] The end of range partitioning, exclusive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("end")]
             public virtual System.Nullable<long> End { get; set; } 
 
-            /// <summary>[Experimental] [Required] The width of each interval.</summary>
+            /// <summary>[TrustedTester] [Required] The width of each interval.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("interval")]
             public virtual System.Nullable<long> Interval { get; set; } 
 
-            /// <summary>[Experimental] [Required] The start of range partitioning, inclusive.</summary>
+            /// <summary>[TrustedTester] [Required] The start of range partitioning, inclusive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start")]
             public virtual System.Nullable<long> Start { get; set; } 
 
@@ -4526,8 +4548,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Experimental] Clustering specification for the table. Must be specified with partitioning, data in
-        /// the table will be first partitioned and subsequently clustered.</summary>
+        /// <summary>[Beta] Clustering specification for the table. Must be specified with partitioning, data in the
+        /// table will be first partitioned and subsequently clustered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; } 
 
@@ -4591,6 +4613,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
+        /// <summary>[Optional] Materialized view definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
+        public virtual MaterializedViewDefinition MaterializedView { get; set; } 
+
         /// <summary>[Output-only, Beta] Present iff this table represents a ML model. Describes the training
         /// information for the model, and it is required to run 'PREDICT' queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
@@ -4605,7 +4631,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
         public virtual System.Nullable<long> NumLongTermBytes { get; set; } 
 
-        /// <summary>[Output-only] [Experimental] The physical size of this table in bytes, excluding any data in the
+        /// <summary>[Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the
         /// streaming buffer. This includes compression and storage used for time travel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPhysicalBytes")]
         public virtual System.Nullable<long> NumPhysicalBytes { get; set; } 
@@ -4615,13 +4641,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; } 
 
-        /// <summary>[Experimental] Range partitioning specification for this table. Only one of timePartitioning and
+        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; } 
 
-        /// <summary>[Experimental] [Optional] If set to true, queries over this table require a partition filter that
-        /// can be used for partition elimination to be specified.</summary>
+        /// <summary>[Beta] [Optional] If set to true, queries over this table require a partition filter that can be
+        /// used for partition elimination to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; } 
 
@@ -4649,8 +4675,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
         /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
-        /// BigQuery table. VIEW: A virtual table defined by a SQL query. EXTERNAL: A table that references data stored
-        /// in an external storage system, such as Google Cloud Storage. The default value is TABLE.</summary>
+        /// BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] MATERIALIZED_VIEW: SQL query
+        /// whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such
+        /// as Google Cloud Storage. The default value is TABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -4689,10 +4716,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skipInvalidRows")]
         public virtual System.Nullable<bool> SkipInvalidRows { get; set; } 
 
-        /// <summary>[Experimental] If specified, treats the destination table as a base template, and inserts the rows
-        /// into an instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance
-        /// table, using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-
-        /// into-bigquery#template-tables for considerations when working with templates tables.</summary>
+        /// <summary>If specified, treats the destination table as a base template, and inserts the rows into an
+        /// instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table,
+        /// using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-into-
+        /// bigquery#template-tables for considerations when working with templates tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateSuffix")]
         public virtual string TemplateSuffix { get; set; } 
 
