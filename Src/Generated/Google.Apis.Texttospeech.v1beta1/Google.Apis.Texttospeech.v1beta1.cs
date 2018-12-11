@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181130 (1429)
+ *      <tr><th>API Rev<td>20181208 (1437)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -485,7 +485,10 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string AudioEncoding { get; set; } 
 
         /// <summary>An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to
-        /// speech. Effects are applied on top of each other in the order they are given.</summary>
+        /// speech. Effects are applied on top of each other in the order they are given. See
+        ///
+        /// [audio-profiles](https: //cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile
+        /// ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectsProfileId")]
         public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; } 
 

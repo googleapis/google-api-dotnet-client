@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/x4D3RSeprBTpZ7qUUZRnzZsdMkA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/SsO65dTSi1aclXM9UeYU18wFhYg\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20180904",
+ "revision": "20181202",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",
@@ -179,7 +179,7 @@
   "Delegate": {
    "id": "Delegate",
    "type": "object",
-   "description": "Settings for a delegate. Delegates can read, send, and delete messages, as well as manage contacts, for the delegator's account. See \"Set up mail delegation\" for more information about delegates.",
+   "description": "Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for the delegator's account. See \"Set up mail delegation\" for more information about delegates.",
    "properties": {
     "delegateEmail": {
      "type": "string",

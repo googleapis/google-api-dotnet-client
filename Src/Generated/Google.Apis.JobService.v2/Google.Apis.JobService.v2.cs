@@ -407,21 +407,22 @@ namespace Google.Apis.JobService.v2
                 [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CompanyName { get; private set; }
 
+                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
+                /// page by page instead.
+                ///
+                /// Optional.
+                ///
+                /// Set to true if the total number of open jobs is to be returned.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
+
                 /// <summary>Optional.
                 ///
                 /// The starting point of a query result.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
-                ///
-                /// A typical use is to synchronize job repositories.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IdsOnly { get; set; }
 
                 /// <summary>Optional.
                 ///
@@ -436,22 +437,21 @@ namespace Google.Apis.JobService.v2
 
                 /// <summary>Optional.
                 ///
+                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
+                ///
+                /// A typical use is to synchronize job repositories.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The requisition ID, also known as posting ID, assigned by the company to the job.
                 ///
                 /// The maximum number of allowable characters is 225.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string JobRequisitionId { get; set; }
-
-                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
-                /// page by page instead.
-                ///
-                /// Optional.
-                ///
-                /// Set to true if the total number of open jobs is to be returned.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -487,18 +487,18 @@ namespace Google.Apis.JobService.v2
                             Pattern = @"^companies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "includeJobsCount", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "includeJobsCount",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "idsOnly",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -514,18 +514,18 @@ namespace Google.Apis.JobService.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
+                        "idsOnly", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "jobRequisitionId",
+                            Name = "idsOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeJobsCount", new Google.Apis.Discovery.Parameter
+                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "includeJobsCount",
+                            Name = "jobRequisitionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -739,17 +739,6 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
-            /// Set to true if the companies request must have open jobs.
-            ///
-            /// Defaults to false.
-            ///
-            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
-
-            /// <summary>Optional.
-            ///
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -760,6 +749,17 @@ namespace Google.Apis.JobService.v2
             /// provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// Set to true if the companies request must have open jobs.
+            ///
+            /// Defaults to false.
+            ///
+            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -786,15 +786,6 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -807,6 +798,15 @@ namespace Google.Apis.JobService.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mustHaveOpenJobs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

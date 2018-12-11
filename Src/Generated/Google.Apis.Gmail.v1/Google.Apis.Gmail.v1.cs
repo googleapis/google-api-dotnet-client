@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180904 (1342)
+ *      <tr><th>API Rev<td>20181202 (1431)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -6724,8 +6724,9 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Settings for a delegate. Delegates can read, send, and delete messages, as well as manage contacts, for
-    /// the delegator's account. See "Set up mail delegation" for more information about delegates.</summary>
+    /// <summary>Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add
+    /// contacts, for the delegator's account. See "Set up mail delegation" for more information about
+    /// delegates.</summary>
     public class Delegate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The email address of the delegate.</summary>

@@ -413,6 +413,11 @@ namespace Google.Apis.PolyService.v1
             }
 
 
+            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
+            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Category { get; set; }
+
             /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
             /// pages. To get the next page, submit the same request specifying the value from
             /// next_page_token.</summary>
@@ -462,11 +467,6 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Curated { get; set; }
 
-            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
-            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Category { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -491,6 +491,15 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "category", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "category",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -549,15 +558,6 @@ namespace Google.Apis.PolyService.v1
                     "curated", new Google.Apis.Discovery.Parameter
                     {
                         Name = "curated",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "category", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "category",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
