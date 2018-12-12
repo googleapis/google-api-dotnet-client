@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20180609 (1255)
+ *      <tr><th>API Rev<td>20181207 (1436)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -1133,8 +1133,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
             return new GetIamPolicyRequest(service, project, resource);
@@ -1158,7 +1158,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1202,7 +1202,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -1617,8 +1617,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManagerV2Beta.v2beta.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
@@ -1642,7 +1642,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1692,7 +1692,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -1787,8 +1787,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name of the resource for
-        /// this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManagerV2Beta.v2beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -1812,7 +1812,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the resource for this request.</summary>
+            /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1862,7 +1862,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -3867,9 +3867,9 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined independently.
-        /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.</summary>
+        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
+        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -3928,11 +3928,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Output only. Timestamp when the composite type was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -3953,7 +3952,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>Output only. Self link for the type provider.</summary>
+        /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -4073,11 +4072,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Output only. Timestamp when the deployment was created, in RFC3339 text format .</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -4106,7 +4104,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>Output only. Self link for the deployment.</summary>
+        /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -4119,6 +4117,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// deployment, the updated configuration appears here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual DeploymentUpdate Update { get; set; } 
+
+        /// <summary>Output only. Update timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4268,7 +4270,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
 
     public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify
         /// bindings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
@@ -4365,14 +4367,15 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     ///
     /// Field names correspond to IAM request parameters and field values are their respective values.
     ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
+    /// Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of
+    /// IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or -
+    /// "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or -
+    /// "" (empty string), resulting in a counter with no fields.
     ///
     /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
     /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
     ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
+    /// At this time we do not support multiple field names (though this may be supported in the future).</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field value to attribute.</summary>
@@ -4391,7 +4394,11 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.</summary>
+        /// the LocalIAM implementation, for now.
+        ///
+        /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy
+        /// the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists
+        /// because there is active work being done to support it (b/115874152).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
         public virtual string LogMode { get; set; } 
 
@@ -4410,7 +4417,6 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expandedConfig")]
         public virtual string ExpandedConfig { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
@@ -4418,7 +4424,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
         public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; } 
 
-        /// <summary>Output only. Timestamp when the manifest was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -4782,12 +4788,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
         public virtual string FinalProperties { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Output only. Timestamp when the resource was created or acquired, in RFC3339 text format
-        /// .</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -4814,7 +4818,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ResourceUpdate Update { get; set; } 
 
-        /// <summary>Output only. Timestamp when the resource was updated, in RFC3339 text format .</summary>
+        /// <summary>Output only. Update timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTime { get; set; } 
 
@@ -5127,11 +5131,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Output only. Timestamp when the type was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -5150,7 +5153,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>Output only. Self link for the type.</summary>
+        /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -5158,8 +5161,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains detailed information about a composite type, base type, or base type with specific
-    /// collection.</summary>
+    /// <summary>Type Information. Contains detailed information about a composite type, base type, or base type with
+    /// specific collection.</summary>
     public class TypeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The description of the type.</summary>
@@ -5184,7 +5187,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TypeInfoSchemaInfo Schema { get; set; } 
 
-        /// <summary>Output only. Server-defined URL for the resource.</summary>
+        /// <summary>Output only. Self link for the type provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -5244,11 +5247,11 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("descriptorUrl")]
         public virtual string DescriptorUrl { get; set; } 
 
-        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Output only. Timestamp when the type provider was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 

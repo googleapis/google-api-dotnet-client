@@ -1,4 +1,180 @@
 {
+  "ownerDomain": "google.com",
+  "name": "servicebroker",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Service Broker API",
+  "ownerName": "Google",
+  "resources": {
+    "v1": {
+      "methods": {
+        "getIamPolicy": {
+          "path": "v1/{+resource}:getIamPolicy",
+          "id": "servicebroker.getIamPolicy",
+          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
+          "response": {
+            "$ref": "GoogleIamV1__Policy"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "resource": {
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/{v1Id}:getIamPolicy"
+        },
+        "setIamPolicy": {
+          "request": {
+            "$ref": "GoogleIamV1__SetIamPolicyRequest"
+          },
+          "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+          "response": {
+            "$ref": "GoogleIamV1__Policy"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "resource": {
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$"
+            }
+          },
+          "flatPath": "v1/{v1Id}:setIamPolicy",
+          "path": "v1/{+resource}:setIamPolicy",
+          "id": "servicebroker.setIamPolicy"
+        },
+        "testIamPermissions": {
+          "flatPath": "v1/{v1Id}:testIamPermissions",
+          "path": "v1/{+resource}:testIamPermissions",
+          "id": "servicebroker.testIamPermissions",
+          "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
+          "request": {
+            "$ref": "GoogleIamV1__TestIamPermissionsRequest"
+          },
+          "response": {
+            "$ref": "GoogleIamV1__TestIamPermissionsResponse"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
+          "parameters": {
+            "resource": {
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://servicebroker.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
+  "servicePath": "",
+  "basePath": "",
   "revision": "20181127",
   "documentationLink": "https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker",
   "id": "servicebroker:v1",
@@ -33,27 +209,26 @@
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
+        "expression": {
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "type": "string"
+        },
         "title": {
           "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
           "type": "string"
         },
         "location": {
-          "type": "string",
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string"
         },
         "description": {
           "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
           "type": "string"
-        },
-        "expression": {
-          "type": "string",
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."
         }
       },
       "id": "GoogleType__Expr"
     },
     "GoogleIamV1__TestIamPermissionsResponse": {
-      "id": "GoogleIamV1__TestIamPermissionsResponse",
       "description": "Response message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
@@ -64,9 +239,11 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "GoogleIamV1__TestIamPermissionsResponse"
     },
     "GoogleIamV1__Binding": {
+      "id": "GoogleIamV1__Binding",
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
@@ -82,25 +259,24 @@
           }
         },
         "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
+          "type": "string",
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."
         }
-      },
-      "id": "GoogleIamV1__Binding"
+      }
     },
     "GoogleIamV1__TestIamPermissionsRequest": {
+      "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
+          }
         }
       },
-      "id": "GoogleIamV1__TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method."
+      "id": "GoogleIamV1__TestIamPermissionsRequest"
     },
     "GoogleIamV1__SetIamPolicyRequest": {
       "description": "Request message for `SetIamPolicy` method.",
@@ -116,8 +292,8 @@
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "canonicalName": "Service Broker",
   "auth": {
@@ -129,181 +305,5 @@
       }
     }
   },
-  "rootUrl": "https://servicebroker.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "servicebroker",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Service Broker API",
-  "ownerName": "Google",
-  "resources": {
-    "v1": {
-      "methods": {
-        "setIamPolicy": {
-          "response": {
-            "$ref": "GoogleIamV1__Policy"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/{v1Id}:setIamPolicy",
-          "path": "v1/{+resource}:setIamPolicy",
-          "id": "servicebroker.setIamPolicy",
-          "request": {
-            "$ref": "GoogleIamV1__SetIamPolicyRequest"
-          },
-          "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy."
-        },
-        "testIamPermissions": {
-          "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
-          "request": {
-            "$ref": "GoogleIamV1__TestIamPermissionsRequest"
-          },
-          "response": {
-            "$ref": "GoogleIamV1__TestIamPermissionsResponse"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/{v1Id}:testIamPermissions",
-          "path": "v1/{+resource}:testIamPermissions",
-          "id": "servicebroker.testIamPermissions"
-        },
-        "getIamPolicy": {
-          "response": {
-            "$ref": "GoogleIamV1__Policy"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/{v1Id}:getIamPolicy",
-          "path": "v1/{+resource}:getIamPolicy",
-          "id": "servicebroker.getIamPolicy",
-          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
-        }
-      }
-    }
-  },
-  "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://servicebroker.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
-  "servicePath": "",
-  "basePath": ""
+  "rootUrl": "https://servicebroker.googleapis.com/"
 }

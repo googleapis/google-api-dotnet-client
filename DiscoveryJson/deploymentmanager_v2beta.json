@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/LkknaPBA2ag_gwJEt-rsY1S_xdU\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Z2kmwtDLpwl8WW681sS3DyXiG3U\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:v2beta",
  "name": "deploymentmanager",
  "canonicalName": "Deployment Manager V2Beta",
  "version": "v2beta",
- "revision": "20180609",
+ "revision": "20181207",
  "title": "Google Cloud Deployment Manager API V2Beta Methods",
  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -201,7 +201,7 @@
    "properties": {
     "condition": {
      "$ref": "Expr",
-     "description": "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently. This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER."
+     "description": "Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."
     },
     "members": {
      "type": "array",
@@ -242,12 +242,11 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
      "format": "uint64"
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the composite type was created, in RFC3339 text format."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "labels": {
      "type": "array",
@@ -266,7 +265,7 @@
     },
     "selfLink": {
      "type": "string",
-     "description": "Output only. Self link for the type provider."
+     "description": "Output only. Server defined URL for the resource."
     },
     "status": {
      "type": "string"
@@ -387,12 +386,11 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
      "format": "uint64"
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the deployment was created, in RFC3339 text format ."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "labels": {
      "type": "array",
@@ -415,7 +413,7 @@
     },
     "selfLink": {
      "type": "string",
-     "description": "Output only. Self link for the deployment."
+     "description": "Output only. Server defined URL for the resource."
     },
     "target": {
      "$ref": "TargetConfiguration",
@@ -424,6 +422,10 @@
     "update": {
      "$ref": "DeploymentUpdate",
      "description": "Output only. If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here."
+    },
+    "updateTime": {
+     "type": "string",
+     "description": "Output only. Update timestamp in RFC3339 text format."
     }
    }
   },
@@ -559,7 +561,7 @@
    "properties": {
     "bindings": {
      "type": "array",
-     "description": "Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.",
+     "description": "Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.",
      "items": {
       "$ref": "Binding"
      }
@@ -650,7 +652,7 @@
   "LogConfigCounterOptions": {
    "id": "LogConfigCounterOptions",
    "type": "object",
-   "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are their respective values.\n\nAt present the only supported field names are - \"iam_principal\", corresponding to IAMContext.principal; - \"\" (empty string), resulting in one aggretated counter with no field.\n\nExamples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==\u003e increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support: * multiple field names (though this may be supported in the future) * decrementing the counter * incrementing it by anything other than 1",
+   "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are their respective values.\n\nSupported field names: - \"authority\", which is \"[token]\" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - \"iam_principal\", a representation of IAMContext.principal even if a token or authority selector is present; or - \"\" (empty string), resulting in a counter with no fields.\n\nExamples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==\u003e increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support multiple field names (though this may be supported in the future).",
    "properties": {
     "field": {
      "type": "string",
@@ -669,7 +671,7 @@
    "properties": {
     "logMode": {
      "type": "string",
-     "description": "Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now."
+     "description": "Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now.\n\nNOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists because there is active work being done to support it (b/115874152)."
     }
    }
   },
@@ -688,7 +690,6 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
      "format": "uint64"
     },
     "imports": {
@@ -700,7 +701,7 @@
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the manifest was created, in RFC3339 text format."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "layout": {
      "type": "string",
@@ -1025,12 +1026,11 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
      "format": "uint64"
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the resource was created or acquired, in RFC3339 text format ."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "manifest": {
      "type": "string",
@@ -1054,7 +1054,7 @@
     },
     "updateTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the resource was updated, in RFC3339 text format ."
+     "description": "Output only. Update timestamp in RFC3339 text format."
     },
     "url": {
      "type": "string",
@@ -1367,12 +1367,11 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
      "format": "uint64"
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the type was created, in RFC3339 text format."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "labels": {
      "type": "array",
@@ -1391,14 +1390,14 @@
     },
     "selfLink": {
      "type": "string",
-     "description": "Output only. Self link for the type."
+     "description": "Output only. Server defined URL for the resource."
     }
    }
   },
   "TypeInfo": {
    "id": "TypeInfo",
    "type": "object",
-   "description": "Contains detailed information about a composite type, base type, or base type with specific collection.",
+   "description": "Type Information. Contains detailed information about a composite type, base type, or base type with specific collection.",
    "properties": {
     "description": {
      "type": "string",
@@ -1410,8 +1409,7 @@
     },
     "kind": {
      "type": "string",
-     "description": "Output only. Type of the output. Always deploymentManager#TypeInfo for TypeInfo.",
-     "default": "deploymentmanager#typeInfo"
+     "description": "Output only. Type of the output. Always deploymentManager#TypeInfo for TypeInfo."
     },
     "name": {
      "type": "string",
@@ -1423,7 +1421,7 @@
     },
     "selfLink": {
      "type": "string",
-     "description": "Output only. Server-defined URL for the resource."
+     "description": "Output only. Self link for the type provider."
     },
     "title": {
      "type": "string",
@@ -1484,12 +1482,12 @@
     },
     "id": {
      "type": "string",
-     "description": "Output only. Unique identifier for the resource; defined by the server.",
+     "description": "Output only. Unique identifier for the resource defined by the server.",
      "format": "uint64"
     },
     "insertTime": {
      "type": "string",
-     "description": "Output only. Timestamp when the type provider was created, in RFC3339 text format."
+     "description": "Output only. Creation timestamp in RFC3339 text format."
     },
     "labels": {
      "type": "array",
@@ -1955,9 +1953,9 @@
       },
       "resource": {
        "type": "string",
-       "description": "Name of the resource for this request.",
+       "description": "Name or id of the resource for this request.",
        "required": true,
-       "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       }
      },
@@ -2159,9 +2157,9 @@
       },
       "resource": {
        "type": "string",
-       "description": "Name of the resource for this request.",
+       "description": "Name or id of the resource for this request.",
        "required": true,
-       "pattern": "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       }
      },
@@ -2231,9 +2229,9 @@
       },
       "resource": {
        "type": "string",
-       "description": "Name of the resource for this request.",
+       "description": "Name or id of the resource for this request.",
        "required": true,
-       "pattern": "(?:[-a-z0-9_]{0,62}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       }
      },

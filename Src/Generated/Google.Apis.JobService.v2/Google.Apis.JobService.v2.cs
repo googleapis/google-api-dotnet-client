@@ -426,6 +426,16 @@ namespace Google.Apis.JobService.v2
 
                 /// <summary>Optional.
                 ///
+                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
+                ///
+                /// A typical use is to synchronize job repositories.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The maximum number of jobs to be returned per page of results.
                 ///
                 /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed
@@ -434,16 +444,6 @@ namespace Google.Apis.JobService.v2
                 /// Default is 100 if empty or a number < 1 is specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
-                ///
-                /// A typical use is to synchronize job repositories.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IdsOnly { get; set; }
 
                 /// <summary>Optional.
                 ///
@@ -505,18 +505,18 @@ namespace Google.Apis.JobService.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "idsOnly", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "idsOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "idsOnly",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -739,6 +739,17 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// Set to true if the companies request must have open jobs.
+            ///
+            /// Defaults to false.
+            ///
+            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -749,17 +760,6 @@ namespace Google.Apis.JobService.v2
             /// provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// Set to true if the companies request must have open jobs.
-            ///
-            /// Defaults to false.
-            ///
-            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -786,6 +786,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mustHaveOpenJobs",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -798,15 +807,6 @@ namespace Google.Apis.JobService.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

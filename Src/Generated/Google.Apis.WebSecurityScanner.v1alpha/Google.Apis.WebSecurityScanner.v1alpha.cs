@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20181207 (1436)
+ *      <tr><th>API Rev<td>20181210 (1439)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>
@@ -428,16 +428,16 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>The maximum number of CrawledUrls to return, can be limited by server. If not
+                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>A token identifying a page of results to be returned. This should be a
                         /// `next_page_token` value returned from a previous List request. If unspecified, the first
                         /// page of results is returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>The maximum number of CrawledUrls to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -473,18 +473,18 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -692,6 +692,11 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>The maximum number of Findings to return, can be limited by server. If not
+                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>The filter expression. The expression must be in the format: . Supported field:
                         /// 'finding_type'. Supported operator: '='.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -702,11 +707,6 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                         /// page of results is returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>The maximum number of Findings to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -742,6 +742,15 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -754,15 +763,6 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -862,16 +862,16 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The maximum number of ScanRuns to return, can be limited by server. If not specified or
+                    /// not positive, the implementation will select a reasonable value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>A token identifying a page of results to be returned. This should be a
                     /// `next_page_token` value returned from a previous List request. If unspecified, the first page of
                     /// results is returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The maximum number of ScanRuns to return, can be limited by server. If not specified or
-                    /// not positive, the implementation will select a reasonable value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -907,18 +907,18 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                                 Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
