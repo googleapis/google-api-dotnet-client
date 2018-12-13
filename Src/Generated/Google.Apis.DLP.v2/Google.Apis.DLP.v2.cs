@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181204 (1433)
+ *      <tr><th>API Rev<td>20181211 (1440)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -5523,7 +5523,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2CloudStorageRegexFileSet RegexFileSet { get; set; } 
 
         /// <summary>The Cloud Storage url of the file(s) to scan, in the format `gs:`. Trailing wildcard in the path is
-        /// allowed. Exactly one of `url` or `regex_file_set` must be set.</summary>
+        /// allowed.
+        ///
+        /// If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-
+        /// recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent
+        /// to `gs://mybucket`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory`.
+        ///
+        /// Exactly one of `url` or `regex_file_set` must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

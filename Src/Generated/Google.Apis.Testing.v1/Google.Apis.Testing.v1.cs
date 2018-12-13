@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181205 (1434)
+ *      <tr><th>API Rev<td>20181211 (1440)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -350,14 +350,14 @@ namespace Google.Apis.Testing.v1
         }
 
 
-        /// <summary>Request the details of an Android application APK.</summary>
+        /// <summary>Gets the details of an Android application APK.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual GetApkDetailsRequest GetApkDetails(Google.Apis.Testing.v1.Data.FileReference body)
         {
             return new GetApkDetailsRequest(service, body);
         }
 
-        /// <summary>Request the details of an Android application APK.</summary>
+        /// <summary>Gets the details of an Android application APK.</summary>
         public class GetApkDetailsRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.GetApkDetailsResponse>
         {
             /// <summary>Constructs a new GetApkDetails request.</summary>
@@ -532,7 +532,7 @@ namespace Google.Apis.Testing.v1
 
             }
 
-            /// <summary>Request to run a matrix of tests according to the given specifications. Unsupported
+            /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
             /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
             /// executions.
             ///
@@ -547,7 +547,7 @@ namespace Google.Apis.Testing.v1
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Request to run a matrix of tests according to the given specifications. Unsupported
+            /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
             /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
             /// executions.
             ///
@@ -630,7 +630,7 @@ namespace Google.Apis.Testing.v1
 
             }
 
-            /// <summary>Check the status of a test matrix.
+            /// <summary>Checks the status of a test matrix.
             ///
             /// May return any of the following canonical error codes:
             ///
@@ -644,7 +644,7 @@ namespace Google.Apis.Testing.v1
                 return new GetRequest(service, projectId, testMatrixId);
             }
 
-            /// <summary>Check the status of a test matrix.
+            /// <summary>Checks the status of a test matrix.
             ///
             /// May return any of the following canonical error codes:
             ///
@@ -734,19 +734,19 @@ namespace Google.Apis.Testing.v1
         }
 
 
-        /// <summary>Get the catalog of supported test environments.
+        /// <summary>Gets the catalog of supported test environments.
         ///
         /// May return any of the following canonical error codes:
         ///
         /// - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist -
         /// INTERNAL - if an internal error occurred</summary>
-        /// <param name="environmentType">The type of environment that should be listed. Required</param>
+        /// <param name="environmentType">Required. The type of environment that should be listed.</param>
         public virtual GetRequest Get(GetRequest.EnvironmentTypeEnum environmentType)
         {
             return new GetRequest(service, environmentType);
         }
 
-        /// <summary>Get the catalog of supported test environments.
+        /// <summary>Gets the catalog of supported test environments.
         ///
         /// May return any of the following canonical error codes:
         ///
@@ -763,11 +763,11 @@ namespace Google.Apis.Testing.v1
             }
 
 
-            /// <summary>The type of environment that should be listed. Required</summary>
+            /// <summary>Required. The type of environment that should be listed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("environmentType", Google.Apis.Util.RequestParameterType.Path)]
             public virtual EnvironmentTypeEnum EnvironmentType { get; private set; }
 
-            /// <summary>The type of environment that should be listed. Required</summary>
+            /// <summary>Required. The type of environment that should be listed.</summary>
             public enum EnvironmentTypeEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_TYPE_UNSPECIFIED")]
@@ -782,7 +782,7 @@ namespace Google.Apis.Testing.v1
                 PROVIDEDSOFTWARE,
             }
 
-            /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog. Optional</summary>
+            /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
@@ -837,10 +837,10 @@ namespace Google.Apis.Testing.v1
 namespace Google.Apis.Testing.v1.Data
 {    
 
-    /// <summary>Identifies an account and how to log into it</summary>
+    /// <summary>Identifies an account and how to log into it.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An automatic google login account</summary>
+        /// <summary>An automatic google login account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAuto")]
         public virtual GoogleAuto GoogleAuto { get; set; } 
 
@@ -851,23 +851,23 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A single Android device.</summary>
     public class AndroidDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the Android device to be used. Use the EnvironmentDiscoveryService to get supported
-        /// options. Required</summary>
+        /// <summary>Required. The id of the Android device to be used. Use the EnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelId")]
         public virtual string AndroidModelId { get; set; } 
 
-        /// <summary>The id of the Android OS version to be used. Use the EnvironmentDiscoveryService to get supported
-        /// options. Required</summary>
+        /// <summary>Required. The id of the Android OS version to be used. Use the EnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionId")]
         public virtual string AndroidVersionId { get; set; } 
 
-        /// <summary>The locale the test device used for testing. Use the EnvironmentDiscoveryService to get supported
-        /// options. Required</summary>
+        /// <summary>Required. The locale the test device used for testing. Use the EnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
-        /// <summary>How the device is oriented during the test. Use the EnvironmentDiscoveryService to get supported
-        /// options. Required</summary>
+        /// <summary>Required. How the device is oriented during the test. Use the EnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; } 
 
@@ -878,15 +878,15 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>The currently supported Android devices.</summary>
     public class AndroidDeviceCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of supported Android device models. @OutputOnly</summary>
+        /// <summary>The set of supported Android device models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
         public virtual System.Collections.Generic.IList<AndroidModel> Models { get; set; } 
 
-        /// <summary>The set of supported runtime configurations. @OutputOnly</summary>
+        /// <summary>The set of supported runtime configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfiguration")]
         public virtual AndroidRuntimeConfiguration RuntimeConfiguration { get; set; } 
 
-        /// <summary>The set of supported Android OS versions. @OutputOnly</summary>
+        /// <summary>The set of supported Android OS versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<AndroidVersion> Versions { get; set; } 
 
@@ -897,7 +897,7 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A list of Android device configurations in which the test is to be executed.</summary>
     public class AndroidDeviceList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of Android devices Required</summary>
+        /// <summary>Required. A list of Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevices")]
         public virtual System.Collections.Generic.IList<AndroidDevice> AndroidDevices { get; set; } 
 
@@ -921,7 +921,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual AppBundle AppBundle { get; set; } 
 
-        /// <summary>The java package for the application under test. Optional, default is determined by examining the
+        /// <summary>The java package for the application under test. The default value is determined by examining the
         /// application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; } 
@@ -935,20 +935,20 @@ namespace Google.Apis.Testing.v1.Data
         ///
         /// for more information about Android Test Orchestrator.
         ///
-        /// Optional. If not set, the test will be run without the orchestrator.</summary>
+        /// If not set, the test will be run without the orchestrator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorOption")]
         public virtual string OrchestratorOption { get; set; } 
 
-        /// <summary>The APK containing the test code to be executed. Required</summary>
+        /// <summary>Required. The APK containing the test code to be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testApk")]
         public virtual FileReference TestApk { get; set; } 
 
-        /// <summary>The java package for the test to be executed. Optional, default is determined by examining the
+        /// <summary>The java package for the test to be executed. The default value is determined by examining the
         /// application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPackageId")]
         public virtual string TestPackageId { get; set; } 
 
-        /// <summary>The InstrumentationTestRunner class. Optional, default is determined by examining the application's
+        /// <summary>The InstrumentationTestRunner class. The default value is determined by examining the application's
         /// manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testRunnerClass")]
         public virtual string TestRunnerClass { get; set; } 
@@ -956,7 +956,7 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
         /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name"
         ///
-        /// Optional, if empty, all targets in the module will be run.</summary>
+        /// If empty, all targets in the module will be run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
 
@@ -965,29 +965,29 @@ namespace Google.Apis.Testing.v1.Data
     }    
 
     /// <summary>A set of Android device configuration permutations is defined by the the cross-product of the given
-    /// axes.  Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices.
+    /// axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices.
     ///
     /// Only supported permutations will be instantiated.  Invalid permutations (e.g., incompatible models/versions) are
     /// ignored.</summary>
     public class AndroidMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ids of the set of Android device to be used. Use the EnvironmentDiscoveryService to get
-        /// supported options. Required</summary>
+        /// <summary>Required. The ids of the set of Android device to be used. Use the EnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelIds")]
         public virtual System.Collections.Generic.IList<string> AndroidModelIds { get; set; } 
 
-        /// <summary>The ids of the set of Android OS version to be used. Use the EnvironmentDiscoveryService to get
-        /// supported options. Required</summary>
+        /// <summary>Required. The ids of the set of Android OS version to be used. Use the EnvironmentDiscoveryService
+        /// to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionIds")]
         public virtual System.Collections.Generic.IList<string> AndroidVersionIds { get; set; } 
 
-        /// <summary>The set of locales the test device will enable for testing. Use the EnvironmentDiscoveryService to
-        /// get supported options. Required</summary>
+        /// <summary>Required. The set of locales the test device will enable for testing. Use the
+        /// EnvironmentDiscoveryService to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<string> Locales { get; set; } 
 
-        /// <summary>The set of orientations to test with. Use the EnvironmentDiscoveryService to get supported options.
-        /// Required</summary>
+        /// <summary>Required. The set of orientations to test with. Use the EnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientations")]
         public virtual System.Collections.Generic.IList<string> Orientations { get; set; } 
 
@@ -998,51 +998,49 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of an Android device tests may be run on.</summary>
     public class AndroidModel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The company that this device is branded with. Example: "Google", "Samsung" @OutputOnly</summary>
+        /// <summary>The company that this device is branded with. Example: "Google", "Samsung".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
-        /// <summary>The name of the industrial design. This corresponds to android.os.Build.DEVICE
-        /// @OutputOnly</summary>
+        /// <summary>The name of the industrial design. This corresponds to android.os.Build.DEVICE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codename")]
         public virtual string Codename { get; set; } 
 
-        /// <summary>Whether this device is virtual or physical. @OutputOnly</summary>
+        /// <summary>Whether this device is virtual or physical.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual string Form { get; set; } 
 
-        /// <summary>Whether this device is a phone, tablet, wearable, etc. @OutputOnly</summary>
+        /// <summary>Whether this device is a phone, tablet, wearable, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
         public virtual string FormFactor { get; set; } 
 
-        /// <summary>The unique opaque id for this model. Use this for invoking the TestExecutionService.
-        /// @OutputOnly</summary>
+        /// <summary>The unique opaque id for this model. Use this for invoking the TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
         /// <summary>True if and only if tests with this model are recorded by stitching together screenshots. See
-        /// use_low_spec_video_recording in device config. @OutputOnly</summary>
+        /// use_low_spec_video_recording in device config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowFpsVideoRecording")]
         public virtual System.Nullable<bool> LowFpsVideoRecording { get; set; } 
 
-        /// <summary>The manufacturer of this device. @OutputOnly</summary>
+        /// <summary>The manufacturer of this device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; } 
 
-        /// <summary>The human-readable marketing name for this device model. Examples: "Nexus 5", "Galaxy S5"
-        /// @OutputOnly</summary>
+        /// <summary>The human-readable marketing name for this device model. Examples: "Nexus 5", "Galaxy
+        /// S5".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Screen density in DPI. This corresponds to ro.sf.lcd_density @OutputOnly</summary>
+        /// <summary>Screen density in DPI. This corresponds to ro.sf.lcd_density</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
         public virtual System.Nullable<int> ScreenDensity { get; set; } 
 
-        /// <summary>Screen size in the horizontal (X) dimension measured in pixels. @OutputOnly</summary>
+        /// <summary>Screen size in the horizontal (X) dimension measured in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenX")]
         public virtual System.Nullable<int> ScreenX { get; set; } 
 
-        /// <summary>Screen size in the vertical (Y) dimension measured in pixels. @OutputOnly</summary>
+        /// <summary>Screen size in the vertical (Y) dimension measured in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenY")]
         public virtual System.Nullable<int> ScreenY { get; set; } 
 
@@ -1051,15 +1049,15 @@ namespace Google.Apis.Testing.v1.Data
         /// preferred ABI is the first element in the list.
         ///
         /// Elements are optionally prefixed by "version_id:" (where version_id is the id of an AndroidVersion),
-        /// denoting an ABI that is supported only on a particular version. @OutputOnly</summary>
+        /// denoting an ABI that is supported only on a particular version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
         public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; } 
 
-        /// <summary>The set of Android versions this device supports. @OutputOnly</summary>
+        /// <summary>The set of Android versions this device supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedVersionIds")]
         public virtual System.Collections.Generic.IList<string> SupportedVersionIds { get; set; } 
 
-        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated"</summary>
+        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -1079,31 +1077,30 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual AppBundle AppBundle { get; set; } 
 
-        /// <summary>The initial activity that should be used to start the app. Optional</summary>
+        /// <summary>The initial activity that should be used to start the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInitialActivity")]
         public virtual string AppInitialActivity { get; set; } 
 
-        /// <summary>The java package for the application under test. Optional, default is determined by examining the
+        /// <summary>The java package for the application under test. The default value is determined by examining the
         /// application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; } 
 
         /// <summary>The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore
-        /// the app beyond the first activity. Default is 50. Optional</summary>
+        /// the app beyond the first activity. Default is 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDepth")]
         public virtual System.Nullable<int> MaxDepth { get; set; } 
 
-        /// <summary>The max number of steps Robo can execute. Default is no limit. Optional</summary>
+        /// <summary>The max number of steps Robo can execute. Default is no limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSteps")]
         public virtual System.Nullable<int> MaxSteps { get; set; } 
 
         /// <summary>A set of directives Robo should apply during the crawl. This allows users to customize the crawl.
-        /// For example, the username and password for a test account can be provided. Optional</summary>
+        /// For example, the username and password for a test account can be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboDirectives")]
         public virtual System.Collections.Generic.IList<RoboDirective> RoboDirectives { get; set; } 
 
-        /// <summary>A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
-        /// Optional</summary>
+        /// <summary>A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
         public virtual FileReference RoboScript { get; set; } 
 
@@ -1120,11 +1117,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Android configuration that can be selected at the time a test is run.</summary>
     public class AndroidRuntimeConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of available locales. @OutputOnly</summary>
+        /// <summary>The set of available locales.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<Locale> Locales { get; set; } 
 
-        /// <summary>The set of available orientations. @OutputOnly</summary>
+        /// <summary>The set of available orientations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientations")]
         public virtual System.Collections.Generic.IList<Orientation> Orientations { get; set; } 
 
@@ -1132,8 +1129,8 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A test of an Android Application with a Test Loop. The intent  will be implicitly added, since Games is
-    /// the only user of this api, for the time being.</summary>
+    /// <summary>A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games
+    /// is the only user of this api, for the time being.</summary>
     public class AndroidTestLoop : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -1144,7 +1141,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual AppBundle AppBundle { get; set; } 
 
-        /// <summary>The java package for the application under test. Optional, default is determined by examining the
+        /// <summary>The java package for the application under test. The default is determined by examining the
         /// application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; } 
@@ -1152,13 +1149,13 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The list of scenario labels that should be run during the test. The scenario labels should map to
         /// labels defined in the application's manifest. For example, player_experience and
         /// com.google.test.loops.player_experience add all of the loops labeled in the manifest with the
-        /// com.google.test.loops.player_experience name to the execution. Optional. Scenarios can also be specified in
-        /// the scenarios field.</summary>
+        /// com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the
+        /// scenarios field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarioLabels")]
         public virtual System.Collections.Generic.IList<string> ScenarioLabels { get; set; } 
 
-        /// <summary>The list of scenarios that should be run during the test. Optional, default is all test loops,
-        /// derived from the application's manifest.</summary>
+        /// <summary>The list of scenarios that should be run during the test. The default is all test loops, derived
+        /// from the application's manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarios")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Scenarios { get; set; } 
 
@@ -1166,35 +1163,34 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A version of the Android OS</summary>
+    /// <summary>A version of the Android OS.</summary>
     public class AndroidVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The API level for this Android version. Examples: 18, 19 @OutputOnly</summary>
+        /// <summary>The API level for this Android version. Examples: 18, 19.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<int> ApiLevel { get; set; } 
 
-        /// <summary>The code name for this Android version. Examples: "JellyBean", "KitKat" @OutputOnly</summary>
+        /// <summary>The code name for this Android version. Examples: "JellyBean", "KitKat".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeName")]
         public virtual string CodeName { get; set; } 
 
-        /// <summary>Market share for this version. @OutputOnly</summary>
+        /// <summary>Market share for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
         public virtual Distribution Distribution { get; set; } 
 
-        /// <summary>An opaque id for this Android version. Use this id to invoke the TestExecutionService.
-        /// @OutputOnly</summary>
+        /// <summary>An opaque id for this Android version. Use this id to invoke the TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The date this Android version became available in the market. @OutputOnly</summary>
+        /// <summary>The date this Android version became available in the market.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
         public virtual Date ReleaseDate { get; set; } 
 
-        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated"</summary>
+        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>A string representing this version of the Android OS. Examples: "4.3", "4.4" @OutputOnly</summary>
+        /// <summary>A string representing this version of the Android OS. Examples: "4.3", "4.4".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionString")]
         public virtual string VersionString { get; set; } 
 
@@ -1205,12 +1201,12 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>An Android package file to install.</summary>
     public class Apk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The path to an APK to be installed on the device before the test begins. Optional</summary>
+        /// <summary>The path to an APK to be installed on the device before the test begins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual FileReference Location { get; set; } 
 
-        /// <summary>The java package for the APK to be installed. Optional, value is determined by examining the
-        /// application's manifest.</summary>
+        /// <summary>The java package for the APK to be installed. Value is determined by examining the application's
+        /// manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
@@ -1218,7 +1214,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Android application details based on application manifest and apk archive contents</summary>
+    /// <summary>Android application details based on application manifest and apk archive contents.</summary>
     public class ApkDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("apkManifest")]
@@ -1287,7 +1283,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfoDetails")]
         public virtual System.Collections.Generic.IList<ClientInfoDetail> ClientInfoDetails { get; set; } 
 
-        /// <summary>Client name, such as gcloud. Required</summary>
+        /// <summary>Required. Client name, such as gcloud.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1295,15 +1291,15 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Key-value pair of detailed information about the client which invoked the test. For example {'Version',
-    /// '1.0'}, {'Release Track', 'BETA'}</summary>
+    /// <summary>Key-value pair of detailed information about the client which invoked the test. Examples: {'Version',
+    /// '1.0'}, {'Release Track', 'BETA'}.</summary>
     public class ClientInfoDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The key of detailed client information. Required</summary>
+        /// <summary>Required. The key of detailed client information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>The value of detailed client information. Required</summary>
+        /// <summary>Required. The value of detailed client information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -1358,11 +1354,11 @@ namespace Google.Apis.Testing.v1.Data
     /// platform.</summary>
     public class Distribution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The estimated fraction (0-1) of the total market with this configuration. @OutputOnly</summary>
+        /// <summary>Output only. The estimated fraction (0-1) of the total market with this configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketShare")]
         public virtual System.Nullable<double> MarketShare { get; set; } 
 
-        /// <summary>The time this distribution was measured. @OutputOnly</summary>
+        /// <summary>Output only. The time this distribution was measured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementTime")]
         public virtual object MeasurementTime { get; set; } 
 
@@ -1404,14 +1400,14 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A key-value pair passed as an environment variable to the test</summary>
+    /// <summary>A key-value pair passed as an environment variable to the test.</summary>
     public class EnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Key for the environment variable</summary>
+        /// <summary>Key for the environment variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>Value for the environment variable</summary>
+        /// <summary>Value for the environment variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -1455,8 +1451,8 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A storage location within Google cloud storage (GCS).</summary>
     public class GoogleCloudStorage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The path to a directory in GCS that will eventually contain the results for this test. The
-        /// requesting user must have write access on the bucket in the supplied path. Required</summary>
+        /// <summary>Required. The path to a directory in GCS that will eventually contain the results for this test.
+        /// The requesting user must have write access on the bucket in the supplied path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; } 
 
@@ -1468,15 +1464,15 @@ namespace Google.Apis.Testing.v1.Data
     /// element.html</summary>
     public class IntentFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The android:name value of the  tag</summary>
+        /// <summary>The android:name value of the  tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionNames")]
         public virtual System.Collections.Generic.IList<string> ActionNames { get; set; } 
 
-        /// <summary>The android:name value of the  tag</summary>
+        /// <summary>The android:name value of the  tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryNames")]
         public virtual System.Collections.Generic.IList<string> CategoryNames { get; set; } 
 
-        /// <summary>The android:mimeType value of the  tag</summary>
+        /// <summary>The android:mimeType value of the  tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -1514,19 +1510,19 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>The currently supported iOS devices.</summary>
     public class IosDeviceCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The set of supported iOS device models.</summary>
+        /// <summary>The set of supported iOS device models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
         public virtual System.Collections.Generic.IList<IosModel> Models { get; set; } 
 
-        /// <summary>Output only. The set of supported runtime configurations.</summary>
+        /// <summary>The set of supported runtime configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfiguration")]
         public virtual IosRuntimeConfiguration RuntimeConfiguration { get; set; } 
 
-        /// <summary>Output only. The set of supported iOS software versions.</summary>
+        /// <summary>The set of supported iOS software versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<IosVersion> Versions { get; set; } 
 
-        /// <summary>Output only. The set of supported Xcode versions.</summary>
+        /// <summary>The set of supported Xcode versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersions")]
         public virtual System.Collections.Generic.IList<XcodeVersion> XcodeVersions { get; set; } 
 
@@ -1537,7 +1533,7 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A list of iOS device configurations in which the test is to be executed.</summary>
     public class IosDeviceList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A list of iOS devices</summary>
+        /// <summary>Required. A list of iOS devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosDevices")]
         public virtual System.Collections.Generic.IList<IosDevice> IosDevices { get; set; } 
 
@@ -1548,31 +1544,29 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of an iOS device tests may be run on.</summary>
     public class IosModel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Device capabilities. Copied from https://developer.apple.com/library/archive/documenta
-        /// tion/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.
-        /// html</summary>
+        /// <summary>Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceIn
+        /// formation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html</summary
+        /// >
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCapabilities")]
         public virtual System.Collections.Generic.IList<string> DeviceCapabilities { get; set; } 
 
-        /// <summary>Whether this device is a phone, tablet, wearable, etc. @OutputOnly</summary>
+        /// <summary>Whether this device is a phone, tablet, wearable, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
         public virtual string FormFactor { get; set; } 
 
-        /// <summary>Output only. The unique opaque id for this model. Use this for invoking the
-        /// TestExecutionService.</summary>
+        /// <summary>The unique opaque id for this model. Use this for invoking the TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Output only. The human-readable name for this device model. Examples: "iPhone 4s", "iPad Mini
-        /// 2"</summary>
+        /// <summary>The human-readable name for this device model. Examples: "iPhone 4s", "iPad Mini 2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The set of iOS major software versions this device supports.</summary>
+        /// <summary>The set of iOS major software versions this device supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedVersionIds")]
         public virtual System.Collections.Generic.IList<string> SupportedVersionIds { get; set; } 
 
-        /// <summary>Output only. Tags for this dimension. Examples: "default", "preview", "deprecated"</summary>
+        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -1583,11 +1577,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>iOS configuration that can be selected at the time a test is run.</summary>
     public class IosRuntimeConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The set of available locales.</summary>
+        /// <summary>The set of available locales.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<Locale> Locales { get; set; } 
 
-        /// <summary>Output only. The set of available orientations.</summary>
+        /// <summary>The set of available orientations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientations")]
         public virtual System.Collections.Generic.IList<Orientation> Orientations { get; set; } 
 
@@ -1598,8 +1592,8 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of how to set up an iOS device prior to a test.</summary>
     public class IosTestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The network traffic profile used for running the test. Available network profiles can be
-        /// queried by using the NETWORK_CONFIGURATION environment type when calling
+        /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
+        /// using the NETWORK_CONFIGURATION environment type when calling
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; } 
@@ -1608,27 +1602,26 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An iOS version</summary>
+    /// <summary>An iOS version.</summary>
     public class IosVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. An opaque id for this iOS version. Use this id to invoke the
-        /// TestExecutionService.</summary>
+        /// <summary>An opaque id for this iOS version. Use this id to invoke the TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Output only. An integer representing the major iOS version. Examples: "8", "9"</summary>
+        /// <summary>An integer representing the major iOS version. Examples: "8", "9".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
         public virtual System.Nullable<int> MajorVersion { get; set; } 
 
-        /// <summary>Output only. An integer representing the minor iOS version. Examples: "1", "2"</summary>
+        /// <summary>An integer representing the minor iOS version. Examples: "1", "2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
         public virtual System.Nullable<int> MinorVersion { get; set; } 
 
-        /// <summary>Output only. The available Xcode versions for this version.</summary>
+        /// <summary>The available Xcode versions for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedXcodeVersionIds")]
         public virtual System.Collections.Generic.IList<string> SupportedXcodeVersionIds { get; set; } 
 
-        /// <summary>Output only. Tags for this dimension. Examples: "default", "preview", "deprecated"</summary>
+        /// <summary>Tags for this dimension. Examples: "default", "preview", "deprecated".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -1648,14 +1641,14 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testsZip")]
         public virtual FileReference TestsZip { get; set; } 
 
-        /// <summary>Optional. The Xcode version that should be used for the test. Use the EnvironmentDiscoveryService
-        /// to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.</summary>
+        /// <summary>The Xcode version that should be used for the test. Use the EnvironmentDiscoveryService to get
+        /// supported options. Defaults to the latest Xcode version Firebase Test Lab supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
         public virtual string XcodeVersion { get; set; } 
 
-        /// <summary>Optional. An .xctestrun file that will override the .xctestrun file in the tests zip. Because the
-        /// .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be
-        /// useful for sharding tests. Default is taken from the tests zip.</summary>
+        /// <summary>An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun
+        /// file contains environment variables along with test methods to run and/or ignore, this can be useful for
+        /// sharding tests. Default is taken from the tests zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xctestrun")]
         public virtual FileReference Xctestrun { get; set; } 
 
@@ -1673,20 +1666,20 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A location/region designation for language.</summary>
     public class Locale : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id for this locale. Example: "en_US" @OutputOnly</summary>
+        /// <summary>The id for this locale. Example: "en_US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A human-friendly name for this language/locale. Example: "English" @OutputOnly</summary>
+        /// <summary>A human-friendly name for this language/locale. Example: "English".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A human-friendly string representing the region for this locale. Example: "United States" Not
-        /// present for every locale. @OutputOnly</summary>
+        /// <summary>A human-friendly string representing the region for this locale. Example: "United States". Not
+        /// present for every locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Tags for this dimension. Examples: "default"</summary>
+        /// <summary>Tags for this dimension. Example: "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -1696,15 +1689,15 @@ namespace Google.Apis.Testing.v1.Data
 
     public class NetworkConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The emulation rule applying to the download traffic</summary>
+        /// <summary>The emulation rule applying to the download traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downRule")]
         public virtual TrafficRule DownRule { get; set; } 
 
-        /// <summary>The unique opaque id for this network traffic configuration @OutputOnly</summary>
+        /// <summary>The unique opaque id for this network traffic configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The emulation rule applying to the upload traffic</summary>
+        /// <summary>The emulation rule applying to the upload traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upRule")]
         public virtual TrafficRule UpRule { get; set; } 
 
@@ -1721,16 +1714,16 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An opaque binary blob file to install on the device before the test starts</summary>
+    /// <summary>An opaque binary blob file to install on the device before the test starts.</summary>
     public class ObbFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Opaque Binary Blob (OBB) file(s) to install on the device Required</summary>
+        /// <summary>Required. Opaque Binary Blob (OBB) file(s) to install on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obb")]
         public virtual FileReference Obb { get; set; } 
 
-        /// <summary>OBB file name which must conform to the format as specified by Android e.g.
-        /// [main|patch].0300110.com.example.android.obb which will be installed into /Android/obb// on the device
-        /// Required</summary>
+        /// <summary>Required. OBB file name which must conform to the format as specified by Android e.g.
+        /// [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the
+        /// device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obbFileName")]
         public virtual string ObbFileName { get; set; } 
 
@@ -1741,15 +1734,15 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Screen orientation of the device.</summary>
     public class Orientation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id for this orientation. Example: "portrait" @OutputOnly</summary>
+        /// <summary>The id for this orientation. Example: "portrait".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A human-friendly name for this orientation. Example: "portrait" @OutputOnly</summary>
+        /// <summary>A human-friendly name for this orientation. Example: "portrait".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Tags for this dimension. Examples: "default"</summary>
+        /// <summary>Tags for this dimension. Example: "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
@@ -1761,7 +1754,7 @@ namespace Google.Apis.Testing.v1.Data
     public class ProvidedSoftwareCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A string representing the current version of Android Test Orchestrator that is provided by
-        /// TestExecutionService. Example: "1.0.2 beta"</summary>
+        /// TestExecutionService. Example: "1.0.2 beta".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorVersion")]
         public virtual string OrchestratorVersion { get; set; } 
 
@@ -1769,24 +1762,24 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A file or directory to install on the device before the test starts</summary>
+    /// <summary>A file or directory to install on the device before the test starts.</summary>
     public class RegularFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required</summary>
+        /// <summary>Required. The source file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual FileReference Content { get; set; } 
 
-        /// <summary>Where to put the content on the device. Must be an absolute, whitelisted path. If the file exists,
-        /// it will be replaced. The following device-side directories and any of their subdirectories are whitelisted:
-        /// ${EXTERNAL_STORAGE}, or /sdcard ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of
-        /// these directory trees is invalid.
+        /// <summary>Required. Where to put the content on the device. Must be an absolute, whitelisted path. If the
+        /// file exists, it will be replaced. The following device-side directories and any of their subdirectories are
+        /// whitelisted: ${EXTERNAL_STORAGE}, or /sdcard ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path
+        /// outside of these directory trees is invalid.
         ///
         /// The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
         /// /sdcard on a particular device does not map to external storage, the system will replace it with the
         /// external storage path prefix for that device and copy the file there.
         ///
         /// It is strongly advised to use the Environment API in app and test code to access files on the device in a
-        /// portable way. Required</summary>
+        /// portable way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
         public virtual string DevicePath { get; set; } 
 
@@ -1801,13 +1794,13 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorage")]
         public virtual GoogleCloudStorage GoogleCloudStorage { get; set; } 
 
-        /// <summary>The tool results execution that results are written to. @OutputOnly</summary>
+        /// <summary>Output only. The tool results execution that results are written to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsExecution")]
         public virtual ToolResultsExecution ToolResultsExecution { get; set; } 
 
         /// <summary>The tool results history that contains the tool results execution that results are written to.
         ///
-        /// Optional, if not provided the service will choose an appropriate value.</summary>
+        /// If not provided, the service will choose an appropriate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsHistory")]
         public virtual ToolResultsHistory ToolResultsHistory { get; set; } 
 
@@ -1819,18 +1812,18 @@ namespace Google.Apis.Testing.v1.Data
     /// Robo can perform text entry or element click.</summary>
     public class RoboDirective : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of action that Robo should perform on the specified element. Required.</summary>
+        /// <summary>Required. The type of action that Robo should perform on the specified element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
         public virtual string ActionType { get; set; } 
 
         /// <summary>The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on
-        /// the element matching the resource_name. Optional</summary>
+        /// the element matching the resource_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputText")]
         public virtual string InputText { get; set; } 
 
-        /// <summary>The android resource name of the target UI element For example, in Java: R.string.foo in xml:
-        /// @string/foo Only the “foo” part is needed. Reference doc:
-        /// https://developer.android.com/guide/topics/resources/accessing-resources.html Required</summary>
+        /// <summary>Required. The android resource name of the target UI element. For example, in Java: R.string.foo in
+        /// xml: @string/foo Only the "foo" part is needed. Reference doc:
+        /// https://developer.android.com/guide/topics/resources/accessing-resources.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -1838,7 +1831,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message for specifying the start activities to crawl</summary>
+    /// <summary>Message for specifying the start activities to crawl.</summary>
     public class RoboStartingIntent : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("launcherActivity")]
@@ -1858,11 +1851,11 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Intent categories to set on the intent. Optional.</summary>
+        /// <summary>Intent categories to set on the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
-        /// <summary>URI for the action. Optional.</summary>
+        /// <summary>URI for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -1873,16 +1866,15 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Additional details about the progress of the running test.</summary>
     public class TestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the TestState is ERROR, then this string will contain human-readable details about the error.
-        /// @OutputOnly</summary>
+        /// <summary>Output only. If the TestState is ERROR, then this string will contain human-readable details about
+        /// the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
-        /// <summary>Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device",
-        /// "Starting Test".
+        /// <summary>Output only. Human-readable, detailed descriptions of the test's progress. For example:
+        /// "Provisioning a device", "Starting Test".
         ///
-        /// During the course of execution new data may be appended to the end of progress_messages.
-        /// @OutputOnly</summary>
+        /// During the course of execution new data may be appended to the end of progress_messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressMessages")]
         public virtual System.Collections.Generic.IList<string> ProgressMessages { get; set; } 
 
@@ -1893,15 +1885,15 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of a test environment.</summary>
     public class TestEnvironmentCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Android devices suitable for running Android Instrumentation Tests.</summary>
+        /// <summary>Supported Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDeviceCatalog")]
         public virtual AndroidDeviceCatalog AndroidDeviceCatalog { get; set; } 
 
-        /// <summary>Supported iOS devices</summary>
+        /// <summary>Supported iOS devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosDeviceCatalog")]
         public virtual IosDeviceCatalog IosDeviceCatalog { get; set; } 
 
-        /// <summary>Supported network configurations</summary>
+        /// <summary>Supported network configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfigurationCatalog")]
         public virtual NetworkConfigurationCatalog NetworkConfigurationCatalog { get; set; } 
 
@@ -1916,39 +1908,39 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Specifies a single test to be executed in a single environment.</summary>
     public class TestExecution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How the host machine(s) are configured. @OutputOnly</summary>
+        /// <summary>Output only. How the host machine(s) are configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; } 
 
-        /// <summary>Unique id set by the backend. @OutputOnly</summary>
+        /// <summary>Output only. Unique id set by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Id of the containing TestMatrix. @OutputOnly</summary>
+        /// <summary>Output only. Id of the containing TestMatrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matrixId")]
         public virtual string MatrixId { get; set; } 
 
-        /// <summary>The cloud project that owns the test execution. @OutputOnly</summary>
+        /// <summary>Output only. The cloud project that owns the test execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Indicates the current progress of the test execution (e.g., FINISHED). @OutputOnly</summary>
+        /// <summary>Output only. Indicates the current progress of the test execution (e.g., FINISHED).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Additional details about the running test. @OutputOnly</summary>
+        /// <summary>Output only. Additional details about the running test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testDetails")]
         public virtual TestDetails TestDetails { get; set; } 
 
-        /// <summary>How to run the test. @OutputOnly</summary>
+        /// <summary>Output only. How to run the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSpecification")]
         public virtual TestSpecification TestSpecification { get; set; } 
 
-        /// <summary>The time this test execution was initially created. @OutputOnly</summary>
+        /// <summary>Output only. The time this test execution was initially created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
-        /// <summary>Where the results for this execution are written. @OutputOnly</summary>
+        /// <summary>Output only. Where the results for this execution are written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsStep")]
         public virtual ToolResultsStep ToolResultsStep { get; set; } 
 
@@ -1960,44 +1952,44 @@ namespace Google.Apis.Testing.v1.Data
     /// axes.</summary>
     public class TestMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Information about the client which invoked the test. Optional</summary>
+        /// <summary>Information about the client which invoked the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
         public virtual ClientInfo ClientInfo { get; set; } 
 
-        /// <summary>How the host machine(s) are configured. Required</summary>
+        /// <summary>Required. How the host machine(s) are configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; } 
 
-        /// <summary>Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-        /// @OutputOnly</summary>
+        /// <summary>Output only. Describes why the matrix is considered invalid. Only useful for matrices in the
+        /// INVALID state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidMatrixDetails")]
         public virtual string InvalidMatrixDetails { get; set; } 
 
-        /// <summary>The cloud project that owns the test matrix. @OutputOnly</summary>
+        /// <summary>The cloud project that owns the test matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Where the results for the matrix are written. Required</summary>
+        /// <summary>Required. Where the results for the matrix are written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultStorage")]
         public virtual ResultStorage ResultStorage { get; set; } 
 
-        /// <summary>Indicates the current progress of the test matrix (e.g., FINISHED) @OutputOnly</summary>
+        /// <summary>Output only. Indicates the current progress of the test matrix (e.g., FINISHED).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The list of test executions that the service creates for this matrix. @OutputOnly</summary>
+        /// <summary>Output only. The list of test executions that the service creates for this matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testExecutions")]
         public virtual System.Collections.Generic.IList<TestExecution> TestExecutions { get; set; } 
 
-        /// <summary>Unique id set by the service. @OutputOnly</summary>
+        /// <summary>Output only. Unique id set by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testMatrixId")]
         public virtual string TestMatrixId { get; set; } 
 
-        /// <summary>How to run the test. Required</summary>
+        /// <summary>Required. How to run the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSpecification")]
         public virtual TestSpecification TestSpecification { get; set; } 
 
-        /// <summary>The time this test matrix was initially created. @OutputOnly</summary>
+        /// <summary>Output only. The time this test matrix was initially created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
@@ -2008,12 +2000,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A description of how to set up the Android device prior to running the test.</summary>
     public class TestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device will be logged in on this account for the duration of the test. Optional</summary>
+        /// <summary>The device will be logged in on this account for the duration of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
 
-        /// <summary>APKs to install in addition to those being directly tested. Currently capped at 100.
-        /// Optional</summary>
+        /// <summary>APKs to install in addition to those being directly tested. Currently capped at 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalApks")]
         public virtual System.Collections.Generic.IList<Apk> AdditionalApks { get; set; } 
 
@@ -2022,9 +2013,7 @@ namespace Google.Apis.Testing.v1.Data
         ///
         /// Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
         /// /sdcard on a particular device does not map to external storage, the system will replace it with the
-        /// external storage path prefix for that device.
-        ///
-        /// Optional</summary>
+        /// external storage path prefix for that device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoriesToPull")]
         public virtual System.Collections.Generic.IList<string> DirectoriesToPull { get; set; } 
 
@@ -2032,14 +2021,12 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<EnvironmentVariable> EnvironmentVariables { get; set; } 
 
-        /// <summary>List of files to push to the device before starting the test.
-        ///
-        /// Optional</summary>
+        /// <summary>List of files to push to the device before starting the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filesToPush")]
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; } 
 
-        /// <summary>Optional. The network traffic profile used for running the test. Available network profiles can be
-        /// queried by using the NETWORK_CONFIGURATION environment type when calling
+        /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
+        /// using the NETWORK_CONFIGURATION environment type when calling
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; } 
@@ -2059,15 +2046,15 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidRoboTest")]
         public virtual AndroidRoboTest AndroidRoboTest { get; set; } 
 
-        /// <summary>An Android Application with a Test Loop</summary>
+        /// <summary>An Android Application with a Test Loop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidTestLoop")]
         public virtual AndroidTestLoop AndroidTestLoop { get; set; } 
 
         /// <summary>Enables automatic Google account login. If set, the service will automatically generate a Google
         /// test account and add it to the device, before executing the test. Note that test accounts might be reused.
         /// Many applications show their full set of functionalities when an account is present on the device. Logging
-        /// into the device with these generated accounts allows testing more functionalities. Default is false.
-        /// Optional</summary>
+        /// into the device with these generated accounts allows testing more functionalities. Default is
+        /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGoogleLogin")]
         public virtual System.Nullable<bool> AutoGoogleLogin { get; set; } 
 
@@ -2079,19 +2066,19 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableVideoRecording")]
         public virtual System.Nullable<bool> DisableVideoRecording { get; set; } 
 
-        /// <summary>Optional. Test setup requirements for iOS.</summary>
+        /// <summary>Test setup requirements for iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosTestSetup")]
         public virtual IosTestSetup IosTestSetup { get; set; } 
 
-        /// <summary>An iOS XCTest, via an .xctestrun file</summary>
+        /// <summary>An iOS XCTest, via an .xctestrun file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosXcTest")]
         public virtual IosXcTest IosXcTest { get; set; } 
 
-        /// <summary>Test setup requirements for Android e.g. files to install, bootstrap scripts. Optional</summary>
+        /// <summary>Test setup requirements for Android e.g. files to install, bootstrap scripts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSetup")]
         public virtual TestSetup TestSetup { get; set; } 
 
-        /// <summary>Max time a test execution is allowed to run before it is automatically cancelled. Optional, default
+        /// <summary>Max time a test execution is allowed to run before it is automatically cancelled. The default value
         /// is 5 min.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
         public virtual object TestTimeout { get; set; } 
@@ -2105,15 +2092,15 @@ namespace Google.Apis.Testing.v1.Data
     /// This has the results of a TestMatrix.</summary>
     public class ToolResultsExecution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A tool results execution ID. @OutputOnly</summary>
+        /// <summary>Output only. A tool results execution ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
-        /// <summary>A tool results history ID. @OutputOnly</summary>
+        /// <summary>Output only. A tool results history ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>The cloud project that owns the tool results execution. @OutputOnly</summary>
+        /// <summary>Output only. The cloud project that owns the tool results execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -2124,11 +2111,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Represents a tool results history resource.</summary>
     public class ToolResultsHistory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A tool results history ID. Required</summary>
+        /// <summary>Required. A tool results history ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>The cloud project that owns the tool results history. Required</summary>
+        /// <summary>Required. The cloud project that owns the tool results history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -2141,19 +2128,19 @@ namespace Google.Apis.Testing.v1.Data
     /// This has the results of a TestExecution.</summary>
     public class ToolResultsStep : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A tool results execution ID. @OutputOnly</summary>
+        /// <summary>Output only. A tool results execution ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
 
-        /// <summary>A tool results history ID. @OutputOnly</summary>
+        /// <summary>Output only. A tool results history ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>The cloud project that owns the tool results step. @OutputOnly</summary>
+        /// <summary>Output only. The cloud project that owns the tool results step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>A tool results step ID. @OutputOnly</summary>
+        /// <summary>Output only. A tool results step ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
@@ -2161,26 +2148,26 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Network emulation parameters</summary>
+    /// <summary>Network emulation parameters.</summary>
     public class TrafficRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Bandwidth in kbits/second</summary>
+        /// <summary>Bandwidth in kbits/second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
         public virtual System.Nullable<float> Bandwidth { get; set; } 
 
-        /// <summary>Burst size in kbits</summary>
+        /// <summary>Burst size in kbits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("burst")]
         public virtual System.Nullable<float> Burst { get; set; } 
 
-        /// <summary>Packet delay, must be >= 0</summary>
+        /// <summary>Packet delay, must be >= 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delay")]
         public virtual object Delay { get; set; } 
 
-        /// <summary>Packet duplication ratio (0.0 - 1.0)</summary>
+        /// <summary>Packet duplication ratio (0.0 - 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packetDuplicationRatio")]
         public virtual System.Nullable<float> PacketDuplicationRatio { get; set; } 
 
-        /// <summary>Packet loss ratio (0.0 - 1.0)</summary>
+        /// <summary>Packet loss ratio (0.0 - 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packetLossRatio")]
         public virtual System.Nullable<float> PacketLossRatio { get; set; } 
 
@@ -2191,11 +2178,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>An Xcode version that an iOS version is compatible with.</summary>
     public class XcodeVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Tags for this Xcode version. Examples: "default"</summary>
+        /// <summary>Tags for this Xcode version. Example: "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>Output only. The id for this version. Example: "9.2"</summary>
+        /// <summary>The id for this version. Example: "9.2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 

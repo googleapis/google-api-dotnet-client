@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181203 (1432)
+ *      <tr><th>API Rev<td>20181205 (1434)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8397,6 +8397,50 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The Auto install constraint. Defines a set of restrictions for installation. At least one of the fields
+    /// must be set.</summary>
+    public class AutoInstallConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Charging state to constrain on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chargingStateConstraint")]
+        public virtual string ChargingStateConstraint { get; set; } 
+
+        /// <summary>The idle state of the device to constrain on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdleStateConstraint")]
+        public virtual string DeviceIdleStateConstraint { get; set; } 
+
+        /// <summary>Network type to constrain on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTypeConstraint")]
+        public virtual string NetworkTypeConstraint { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AutoInstallPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The constraints for the install. Currently there can be at most one constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoInstallConstraint")]
+        public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; } 
+
+        /// <summary>The auto install mode. If unset defaults to AVAILABLE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoInstallMode")]
+        public virtual string AutoInstallMode { get; set; } 
+
+        /// <summary>The priority of the install, as an unsigned integer. Lower number means higher priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPriority")]
+        public virtual System.Nullable<int> AutoInstallPriority { get; set; } 
+
+        /// <summary>The minimum version of the app. If a lower version of the app is installed then the app will be
+        /// auto-updated according to the auto-install constraints, instead of waiting for the regular auto-
+        /// update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumVersionCode")]
+        public virtual System.Nullable<int> MinimumVersionCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A configuration variables resource contains the managed configuration settings ID to be applied to a
     /// single user, as well as the variable set that is attributed to the user. The variable set will be used to
     /// replace placeholders in the managed configuration settings.</summary>
@@ -9394,6 +9438,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>The policy for a product.</summary>
     public class ProductPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The auto install policy for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
+        public virtual AutoInstallPolicy AutoInstallPolicy { get; set; } 
+
         /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 

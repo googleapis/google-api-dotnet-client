@@ -1,7 +1,4 @@
 {
-  "rootUrl": "https://indexing.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "indexing",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Indexing API",
@@ -10,8 +7,6 @@
     "urlNotifications": {
       "methods": {
         "publish": {
-          "path": "v3/urlNotifications:publish",
-          "id": "indexing.urlNotifications.publish",
           "request": {
             "$ref": "UrlNotification"
           },
@@ -25,9 +20,14 @@
             "https://www.googleapis.com/auth/indexing"
           ],
           "parameters": {},
-          "flatPath": "v3/urlNotifications:publish"
+          "flatPath": "v3/urlNotifications:publish",
+          "path": "v3/urlNotifications:publish",
+          "id": "indexing.urlNotifications.publish"
         },
         "getMetadata": {
+          "path": "v3/urlNotifications/metadata",
+          "id": "indexing.urlNotifications.getMetadata",
+          "description": "Gets metadata about a Web Document. This method can _only_ be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API.",
           "response": {
             "$ref": "UrlNotificationMetadata"
           },
@@ -43,15 +43,35 @@
           "scopes": [
             "https://www.googleapis.com/auth/indexing"
           ],
-          "flatPath": "v3/urlNotifications/metadata",
-          "path": "v3/urlNotifications/metadata",
-          "id": "indexing.urlNotifications.getMetadata",
-          "description": "Gets metadata about a Web Document. This method can _only_ be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API."
+          "flatPath": "v3/urlNotifications/metadata"
         }
       }
     }
   },
   "parameters": {
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
     "alt": {
       "enum": [
         "json",
@@ -79,9 +99,9 @@
       "type": "string"
     },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
       "location": "query",
@@ -90,42 +110,19 @@
       "default": "true"
     },
     "quotaUser": {
-      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
     }
   },
   "version": "v3",
@@ -145,8 +142,8 @@
       "type": "object",
       "properties": {
         "latestRemove": {
-          "$ref": "UrlNotification",
-          "description": "Latest notification received with type `URL_REMOVED`."
+          "description": "Latest notification received with type `URL_REMOVED`.",
+          "$ref": "UrlNotification"
         },
         "latestUpdate": {
           "description": "Latest notification received with type `URL_UPDATED`.",
@@ -163,6 +160,20 @@
       "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
       "type": "object",
       "properties": {
+        "type": {
+          "enumDescriptions": [
+            "Unspecified.",
+            "The given URL (Web document) has been updated.",
+            "The given URL (Web document) has been deleted."
+          ],
+          "enum": [
+            "URL_NOTIFICATION_TYPE_UNSPECIFIED",
+            "URL_UPDATED",
+            "URL_DELETED"
+          ],
+          "description": "The URL life cycle event that Google is being notified about.",
+          "type": "string"
+        },
         "url": {
           "description": "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google.",
           "type": "string"
@@ -171,20 +182,6 @@
           "description": "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "type": {
-          "enum": [
-            "URL_NOTIFICATION_TYPE_UNSPECIFIED",
-            "URL_UPDATED",
-            "URL_DELETED"
-          ],
-          "description": "The URL life cycle event that Google is being notified about.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "The given URL (Web document) has been updated.",
-            "The given URL (Web document) has been deleted."
-          ]
         }
       },
       "id": "UrlNotification"
@@ -203,8 +200,8 @@
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "canonicalName": "Indexing",
   "auth": {
@@ -215,5 +212,8 @@
         }
       }
     }
-  }
+  },
+  "rootUrl": "https://indexing.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "indexing"
 }
