@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20181120 (1419)
+ *      <tr><th>API Rev<td>20181127 (1426)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>
  *              https://developers.google.com/speed/docs/insights/v5/get-started</a>
@@ -512,7 +512,7 @@ namespace Google.Apis.Pagespeedonline.v5.Data
 
         /// <summary>Map of categories in the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IDictionary<string,LighthouseCategoryV5> Categories { get; set; } 
+        public virtual LighthouseResultV5.CategoriesData Categories { get; set; } 
 
         /// <summary>Map of category groups in the LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryGroups")]
@@ -566,6 +566,31 @@ namespace Google.Apis.Pagespeedonline.v5.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        /// <summary>Map of categories in the LHR.</summary>
+        public class CategoriesData
+        {
+            /// <summary>The accessibility category, containing all accessibility related audits.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("accessibility")]
+            public virtual LighthouseCategoryV5 Accessibility { get; set; } 
+
+            /// <summary>The best practices category, containing all web best practice related audits.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("best-practices")]
+            public virtual LighthouseCategoryV5 BestPractices { get; set; } 
+
+            /// <summary>The performance category, containing all performance related audits.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("performance")]
+            public virtual LighthouseCategoryV5 Performance { get; set; } 
+
+            /// <summary>The Progressive-Web-App (PWA) category, containing all pwa related audits.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("pwa")]
+            public virtual LighthouseCategoryV5 Pwa { get; set; } 
+
+            /// <summary>The Search-Engine-Optimization (SEO) category, containing all seo related audits.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("seo")]
+            public virtual LighthouseCategoryV5 Seo { get; set; } 
+
+        }    
 
         /// <summary>A grouping contained in a category that groups similar audits together.</summary>
         public class CategoryGroupsDataElement

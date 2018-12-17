@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20181128 (1427)
+ *      <tr><th>API Rev<td>20181130 (1429)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -5772,7 +5772,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -8157,7 +8157,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -8242,7 +8242,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -8572,7 +8572,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -8766,7 +8766,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -27915,7 +27915,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28013,7 +28013,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28100,7 +28100,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28474,7 +28474,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "direction", new Google.Apis.Discovery.Parameter
@@ -28636,7 +28636,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28742,7 +28742,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28840,7 +28840,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -29034,7 +29034,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -34610,7 +34610,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -42234,7 +42234,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -42321,7 +42321,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -72639,8 +72639,8 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Service resource (a.k.a service project) ID.</summary>
     public class XpnResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the service resource. In the case of projects, this field matches the project ID (e.g.,
-        /// my-project), not the project number (e.g., 12345678).</summary>
+        /// <summary>The ID of the service resource. In the case of projects, this field supports project id (e.g., my-
+        /// project-123) and project number (e.g. 12345678).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/TcQxi2v-Wt2cGft_7rpYVhPQGtA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/NtoJIO0Mp0BYbtnKoGvOvVKCYHs\"",
  "discoveryVersion": "v1",
  "id": "pagespeedonline:v5",
  "name": "pagespeedonline",
  "version": "v5",
- "revision": "20181120",
+ "revision": "20181127",
  "title": "PageSpeed Insights API",
  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
  "ownerDomain": "google.com",
@@ -180,9 +180,27 @@
     "categories": {
      "type": "object",
      "description": "Map of categories in the LHR.",
-     "additionalProperties": {
-      "$ref": "LighthouseCategoryV5",
-      "description": "A category of audits and their combined weighted score. Keyed by category id."
+     "properties": {
+      "accessibility": {
+       "$ref": "LighthouseCategoryV5",
+       "description": "The accessibility category, containing all accessibility related audits."
+      },
+      "best-practices": {
+       "$ref": "LighthouseCategoryV5",
+       "description": "The best practices category, containing all web best practice related audits."
+      },
+      "performance": {
+       "$ref": "LighthouseCategoryV5",
+       "description": "The performance category, containing all performance related audits."
+      },
+      "pwa": {
+       "$ref": "LighthouseCategoryV5",
+       "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits."
+      },
+      "seo": {
+       "$ref": "LighthouseCategoryV5",
+       "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits."
+      }
      }
     },
     "categoryGroups": {

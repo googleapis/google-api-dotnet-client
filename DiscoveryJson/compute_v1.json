@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/oSeLrTssSagpjQOSuYtwZ6BQtms\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/m6oCgMxscM7YlnV69HIdTmFUj8g\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20181128",
+ "revision": "20181130",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -19634,7 +19634,7 @@
    "properties": {
     "id": {
      "type": "string",
-     "description": "The ID of the service resource. In the case of projects, this field matches the project ID (e.g., my-project), not the project number (e.g., 12345678)."
+     "description": "The ID of the service resource. In the case of projects, this field supports project id (e.g., my-project-123) and project number (e.g. 12345678)."
     },
     "type": {
      "type": "string",
@@ -21247,7 +21247,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to patch.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22050,7 +22050,7 @@
        "type": "string",
        "description": "Name of the firewall rule to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22088,7 +22088,7 @@
        "type": "string",
        "description": "Name of the firewall rule to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22204,7 +22204,7 @@
        "type": "string",
        "description": "Name of the firewall rule to patch.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22245,7 +22245,7 @@
        "type": "string",
        "description": "Name of the firewall rule to update.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28208,7 +28208,7 @@
        "type": "string",
        "description": "Name of the network resource to add peering to.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28249,7 +28249,7 @@
        "type": "string",
        "description": "Name of the network to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28287,7 +28287,7 @@
        "type": "string",
        "description": "Name of the network to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28403,7 +28403,7 @@
        "type": "string",
        "description": "Name of the network to update.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28444,7 +28444,7 @@
        "type": "string",
        "description": "Name of the network resource to remove peering from.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -28485,7 +28485,7 @@
        "type": "string",
        "description": "Name of the network to be updated.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30601,7 +30601,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to patch.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -32909,7 +32909,7 @@
        "type": "string",
        "description": "Name of the Route resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       }
      },
@@ -32942,7 +32942,7 @@
        "type": "string",
        "description": "Name of the Route resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       }
      },
