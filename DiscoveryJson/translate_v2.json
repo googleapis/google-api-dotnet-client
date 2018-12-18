@@ -3,6 +3,8 @@
     "languages": {
       "methods": {
         "list": {
+          "path": "v2/languages",
+          "id": "language.languages.list",
           "description": "Returns a list of supported languages for translation.",
           "response": {
             "$ref": "LanguagesListResponse"
@@ -10,22 +12,20 @@
           "httpMethod": "GET",
           "parameters": {
             "target": {
+              "location": "query",
               "description": "The language to use to return localized, human readable names of supported\nlanguages.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             },
             "model": {
+              "location": "query",
               "description": "The model type for which supported languages should be returned.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-translation",
             "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "path": "v2/languages",
-          "id": "language.languages.list"
+          ]
         }
       }
     },
@@ -54,9 +54,9 @@
               "repeated": true
             },
             "source": {
+              "location": "query",
               "description": "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             },
             "cid": {
               "description": "The customization id for translate",
@@ -71,8 +71,6 @@
               "location": "query"
             },
             "format": {
-              "description": "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text.",
-              "type": "string",
               "enumDescriptions": [
                 "Specifies the input is in HTML",
                 "Specifies the input is in plain textual format"
@@ -81,7 +79,9 @@
               "enum": [
                 "html",
                 "text"
-              ]
+              ],
+              "description": "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text.",
+              "type": "string"
             },
             "model": {
               "description": "The `model` type requested for this translation. Valid values are\nlisted in public documentation.",
@@ -93,10 +93,6 @@
           "path": "v2"
         },
         "translate": {
-          "description": "Translates input text, returning translated text.",
-          "request": {
-            "$ref": "TranslateTextRequest"
-          },
           "response": {
             "$ref": "TranslationsListResponse"
           },
@@ -108,7 +104,11 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ],
           "path": "v2",
-          "id": "language.translations.translate"
+          "id": "language.translations.translate",
+          "description": "Translates input text, returning translated text.",
+          "request": {
+            "$ref": "TranslateTextRequest"
+          }
         }
       }
     },
@@ -116,66 +116,51 @@
       "methods": {
         "list": {
           "description": "Detects the language of text within a request.",
+          "httpMethod": "GET",
           "response": {
             "$ref": "DetectionsListResponse"
           },
           "parameterOrder": [
             "q"
           ],
-          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-translation",
             "https://www.googleapis.com/auth/cloud-platform"
           ],
           "parameters": {
             "q": {
+              "location": "query",
               "description": "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs.",
               "type": "string",
               "required": true,
-              "repeated": true,
-              "location": "query"
+              "repeated": true
             }
           },
-          "path": "v2/detect",
-          "id": "language.detections.list"
+          "id": "language.detections.list",
+          "path": "v2/detect"
         },
         "detect": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
+          "description": "Detects the language of text within a request.",
+          "request": {
+            "$ref": "DetectLanguageRequest"
+          },
           "response": {
             "$ref": "DetectionsListResponse"
           },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-translation",
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {},
-          "id": "language.detections.detect",
           "path": "v2/detect",
-          "request": {
-            "$ref": "DetectLanguageRequest"
-          },
-          "description": "Detects the language of text within a request."
+          "id": "language.detections.detect"
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
-      "type": "string"
-    },
     "pp": {
       "location": "query",
       "description": "Pretty-print response.",
@@ -183,14 +168,14 @@
       "default": "true"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "bearer_token": {
-      "location": "query",
       "description": "OAuth bearer token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
       "location": "query",
@@ -198,10 +183,10 @@
       "type": "string"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
+      "default": "true"
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
@@ -209,18 +194,16 @@
       "location": "query"
     },
     "fields": {
-      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -229,10 +212,11 @@
       "enum": [
         "1",
         "2"
-      ]
+      ],
+      "description": "V1 error format.",
+      "type": "string"
     },
     "alt": {
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -245,7 +229,23 @@
         "json",
         "media",
         "proto"
-      ]
+      ],
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v2",
@@ -285,16 +285,16 @@
     "TranslationsResource": {
       "type": "object",
       "properties": {
-        "model": {
-          "description": "The `model` type used for this translation. Valid values are\nlisted in public documentation. Can be different from requested `model`.\nPresent only if specific model type was explicitly requested.",
-          "type": "string"
-        },
         "translatedText": {
           "description": "Text translated into the target language.",
           "type": "string"
         },
         "detectedSourceLanguage": {
           "description": "The source language of the initial request, detected automatically, if\nno source language was passed within the initial request. If the\nsource language was passed, auto-detection of the language will not\noccur and this field will be empty.",
+          "type": "string"
+        },
+        "model": {
+          "description": "The `model` type used for this translation. Valid values are\nlisted in public documentation. Can be different from requested `model`.\nPresent only if specific model type was explicitly requested.",
           "type": "string"
         }
       },
@@ -410,20 +410,20 @@
       "id": "LanguagesListResponse"
     }
   },
-  "icons": {
-    "x16": "https://www.google.com/images/icons/product/translate-16.png",
-    "x32": "https://www.google.com/images/icons/product/translate-32.png"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "https://www.google.com/images/icons/product/translate-32.png",
+    "x16": "https://www.google.com/images/icons/product/translate-16.png"
+  },
   "canonicalName": "Translate",
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        },
         "https://www.googleapis.com/auth/cloud-translation": {
           "description": "Translate text from one language to another using Google Translate"
+        },
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
         }
       }
     }
@@ -432,9 +432,9 @@
   "ownerDomain": "google.com",
   "name": "translate",
   "batchPath": "batch/translate",
+  "title": "Google Cloud Translation API",
   "features": [
     "dataWrapper"
   ],
-  "title": "Google Cloud Translation API",
   "ownerName": "Google"
 }

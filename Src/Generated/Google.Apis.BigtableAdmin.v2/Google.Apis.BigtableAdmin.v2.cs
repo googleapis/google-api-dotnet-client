@@ -815,15 +815,15 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>If true, ignore safety checks when creating the app profile.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
-
                     /// <summary>The ID to be used when referring to the new app profile within its instance, e.g., just
                     /// `myprofile` rather than
                     /// `projects/myproject/instances/myinstance/appProfiles/myprofile`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appProfileId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AppProfileId { get; set; }
+
+                    /// <summary>If true, ignore safety checks when creating the app profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -865,18 +865,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            "appProfileId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "ignoreWarnings",
+                                Name = "appProfileId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "appProfileId", new Google.Apis.Discovery.Parameter
+                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "appProfileId",
+                                Name = "ignoreWarnings",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1140,14 +1140,14 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
-
                     /// <summary>The subset of app profile fields which should be replaced. If unset, all fields will be
                     /// replaced.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1189,18 +1189,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "ignoreWarnings",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "ignoreWarnings",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

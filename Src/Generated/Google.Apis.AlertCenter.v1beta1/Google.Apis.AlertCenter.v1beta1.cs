@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181207 (1436)
+ *      <tr><th>API Rev<td>20181215 (1444)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             : base(initializer)
         {
             alerts = new AlertsResource(this);
+            v1beta1 = new V1beta1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -121,6 +122,14 @@ namespace Google.Apis.AlertCenter.v1beta1
         public virtual AlertsResource Alerts
         {
             get { return alerts; }
+        }
+
+        private readonly V1beta1Resource v1beta1;
+
+        /// <summary>Gets the V1beta1 resource.</summary>
+        public virtual V1beta1Resource V1beta1
+        {
+            get { return v1beta1; }
         }
     }
 
@@ -462,16 +471,16 @@ namespace Google.Apis.AlertCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
+                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
+                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomerId { get; set; }
+
                 /// <summary>Optional. A query string for filtering alert feedback results. For more details, see [Query
                 /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
                 /// sdk/alertcenter/reference/filter-fields#alerts.feedback.list).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
-                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CustomerId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -507,18 +516,18 @@ namespace Google.Apis.AlertCenter.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
+                        "customerId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filter",
+                            Name = "customerId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "customerId", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "customerId",
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -702,12 +711,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
-            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
-            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
             /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
             /// next_page_token field.</summary>
@@ -729,6 +732,12 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// unspecified, server picks an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
+            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
+            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -754,15 +763,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -794,6 +794,15 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -877,6 +886,149 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         }
     }
+
+    /// <summary>The "v1beta1" collection of methods.</summary>
+    public class V1beta1Resource
+    {
+        private const string Resource = "v1beta1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1beta1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns customer-level settings.</summary>
+        public virtual GetSettingsRequest GetSettings()
+        {
+            return new GetSettingsRequest(service);
+        }
+
+        /// <summary>Returns customer-level settings.</summary>
+        public class GetSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert
+            /// settings are associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/settings"; }
+            }
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update the customer-level settings.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.AlertCenter.v1beta1.Data.Settings body)
+        {
+            return new UpdateSettingsRequest(service, body);
+        }
+
+        /// <summary>Update the customer-level settings.</summary>
+        public class UpdateSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
+        {
+            /// <summary>Constructs a new UpdateSettings request.</summary>
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.Settings body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert
+            /// settings are associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AlertCenter.v1beta1.Data.Settings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/settings"; }
+            }
+
+            /// <summary>Initializes UpdateSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.AlertCenter.v1beta1.Data
@@ -934,7 +1086,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityInvestigationToolLink")]
         public virtual string SecurityInvestigationToolLink { get; set; } 
 
-        /// <summary>Required. A unique identifier for the system that is reported the alert.
+        /// <summary>Required. A unique identifier for the system that reported the alert.
         ///
         /// Supported sources are any of the following:
         ///
@@ -1017,6 +1169,26 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The source IP address of the malicious email, for example, `127.0.0.1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
         public virtual string SourceIp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A reference to a Cloud Pubsub topic.
+    ///
+    /// To register for notifications, the owner of the topic must grant `alerts-api-push-
+    /// notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.</summary>
+    public class CloudPubsubTopic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The format of the payload that would be sent. If not specified the format will be
+        /// JSON.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadFormat")]
+        public virtual string PayloadFormat { get; set; } 
+
+        /// <summary>The `name` field of a Cloud Pubsub [Topic]
+        /// (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
+        public virtual string TopicName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1285,6 +1457,18 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Settings for callback notifications. For more details see [G Suite Alert Notification](/admin-
+    /// sdk/alertcenter/guides/notifications).</summary>
+    public class Notification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Google Cloud Pub/sub topic destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
+        public virtual CloudPubsubTopic CloudPubsubTopic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Alert for a spike in user reported phishing. Warning: This type has been deprecated. Use [MailPhishing
     /// ](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.</summary>
     public class PhishingSpike : Google.Apis.Requests.IDirectResponseSchema
@@ -1304,6 +1488,17 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Customer-level settings.</summary>
+    public class Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
+        public virtual System.Collections.Generic.IList<Notification> Notifications { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

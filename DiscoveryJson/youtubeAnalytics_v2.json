@@ -1,14 +1,403 @@
 {
+  "ownerName": "Google",
+  "resources": {
+    "groupItems": {
+      "methods": {
+        "delete": {
+          "description": "Removes an item from a group.",
+          "response": {
+            "$ref": "EmptyResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "DELETE",
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "location": "query",
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string"
+            },
+            "id": {
+              "description": "The `id` parameter specifies the YouTube group item ID of the group item\nthat is being deleted.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v2/groupItems",
+          "path": "v2/groupItems",
+          "id": "youtubeAnalytics.groupItems.delete"
+        },
+        "insert": {
+          "request": {
+            "$ref": "GroupItem"
+          },
+          "description": "Creates a group item.",
+          "response": {
+            "$ref": "GroupItem"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "location": "query",
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string"
+            }
+          },
+          "flatPath": "v2/groupItems",
+          "path": "v2/groupItems",
+          "id": "youtubeAnalytics.groupItems.insert"
+        },
+        "list": {
+          "description": "Returns a collection of group items that match the API request parameters.",
+          "httpMethod": "GET",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "ListGroupItemsResponse"
+          },
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "location": "query",
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string"
+            },
+            "groupId": {
+              "description": "The `groupId` parameter specifies the unique ID of the group for which you\nwant to retrieve group items.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v2/groupItems",
+          "id": "youtubeAnalytics.groupItems.list",
+          "path": "v2/groupItems"
+        }
+      }
+    },
+    "groups": {
+      "methods": {
+        "insert": {
+          "flatPath": "v2/groups",
+          "id": "youtubeAnalytics.groups.insert",
+          "path": "v2/groups",
+          "description": "Creates a group.",
+          "request": {
+            "$ref": "Group"
+          },
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "Group"
+          },
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "location": "query",
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ]
+        },
+        "list": {
+          "description": "Returns a collection of groups that match the API request parameters. For\nexample, you can retrieve all groups that the authenticated user owns,\nor you can retrieve one or more groups by their unique IDs.",
+          "response": {
+            "$ref": "ListGroupsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "pageToken": {
+              "description": "The `pageToken` parameter identifies a specific page in the result set that\nshould be returned. In an API response, the `nextPageToken` property\nidentifies the next page that can be retrieved.",
+              "type": "string",
+              "location": "query"
+            },
+            "onBehalfOfContentOwner": {
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string",
+              "location": "query"
+            },
+            "id": {
+              "description": "The `id` parameter specifies a comma-separated list of the YouTube group\nID(s) for the resource(s) that are being retrieved. Each group must be\nowned by the authenticated user. In a `group` resource, the `id` property\nspecifies the group's YouTube group ID.\n\nNote that if you do not specify a value for the `id` parameter, then you\nmust set the `mine` parameter to `true`.",
+              "type": "string",
+              "location": "query"
+            },
+            "mine": {
+              "location": "query",
+              "description": "This parameter can only be used in a properly authorized request. Set this\nparameter's value to true to retrieve all groups owned by the authenticated\nuser.",
+              "type": "boolean"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v2/groups",
+          "path": "v2/groups",
+          "id": "youtubeAnalytics.groups.list"
+        },
+        "update": {
+          "flatPath": "v2/groups",
+          "path": "v2/groups",
+          "id": "youtubeAnalytics.groups.update",
+          "description": "Modifies a group. For example, you could change a group's title.",
+          "request": {
+            "$ref": "Group"
+          },
+          "response": {
+            "$ref": "Group"
+          },
+          "parameterOrder": [],
+          "httpMethod": "PUT",
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ]
+        },
+        "delete": {
+          "description": "Deletes a group.",
+          "response": {
+            "$ref": "EmptyResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "DELETE",
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
+              "type": "string",
+              "location": "query"
+            },
+            "id": {
+              "location": "query",
+              "description": "The `id` parameter specifies the YouTube group ID of the group that is\nbeing deleted.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v2/groups",
+          "path": "v2/groups",
+          "id": "youtubeAnalytics.groups.delete"
+        }
+      }
+    },
+    "reports": {
+      "methods": {
+        "query": {
+          "description": "Retrieve your YouTube Analytics reports.",
+          "response": {
+            "$ref": "QueryResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "startDate": {
+              "description": "The start date for fetching YouTube Analytics data. The value should be in\n`YYYY-MM-DD` format.\nrequired: true, pattern: \"[0-9]{4}-[0-9]{2}-[0-9]{2}",
+              "type": "string",
+              "location": "query"
+            },
+            "metrics": {
+              "location": "query",
+              "description": "A comma-separated list of YouTube Analytics metrics, such as `views` or\n`likes,dislikes`. See the\n[Available Reports](/youtube/analytics/v2/available_reports)  document for\na list of the reports that you can retrieve and the metrics\navailable in each report, and see the\n[Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of\nthose metrics.\nrequired: true, pattern: [0-9a-zA-Z,]+",
+              "type": "string"
+            },
+            "includeHistoricalChannelData": {
+              "description": "If set to true historical data (i.e. channel data from before the linking\nof the channel to the content owner) will be retrieved.\",",
+              "type": "boolean",
+              "location": "query"
+            },
+            "ids": {
+              "description": "Identifies the YouTube channel or content owner for which you are\nretrieving YouTube Analytics data.\n\n- To request data for a YouTube user, set the `ids` parameter value to\n  `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube\n  channel ID.\n- To request data for a YouTube CMS content owner, set the `ids` parameter\n  value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name\n  of the content owner.\nrequired: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+",
+              "type": "string",
+              "location": "query"
+            },
+            "currency": {
+              "description": "The currency to which financial metrics should be converted. The default is\nUS Dollar (USD). If the result contains no financial metrics, this flag\nwill be ignored. Responds with an error if the specified currency is not\nrecognized.\",\npattern: [A-Z]{3}",
+              "type": "string",
+              "location": "query"
+            },
+            "startIndex": {
+              "location": "query",
+              "description": "An index of the first entity to retrieve. Use this parameter as a\npagination mechanism along with the max-results parameter (one-based,\ninclusive).\",\nminValue: 1",
+              "format": "int32",
+              "type": "integer"
+            },
+            "dimensions": {
+              "description": "A comma-separated list of YouTube Analytics dimensions, such as `views` or\n`ageGroup,gender`. See the [Available\nReports](/youtube/analytics/v2/available_reports) document for a list of\nthe reports that you can retrieve and the dimensions used for those\nreports. Also see the [Dimensions](/youtube/analytics/v2/dimsmets/dims)\ndocument for definitions of those dimensions.\"\npattern: [0-9a-zA-Z,]+",
+              "type": "string",
+              "location": "query"
+            },
+            "endDate": {
+              "description": "The end date for fetching YouTube Analytics data. The value should be in\n`YYYY-MM-DD` format.\nrequired: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}",
+              "type": "string",
+              "location": "query"
+            },
+            "maxResults": {
+              "description": "The maximum number of rows to include in the response.\",\nminValue: 1",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "filters": {
+              "location": "query",
+              "description": "A list of filters that should be applied when retrieving YouTube Analytics\ndata. The [Available Reports](/youtube/analytics/v2/available_reports)\ndocument identifies the dimensions that can be used to filter each report,\nand the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines\nthose dimensions. If a request uses multiple filters, join them together\nwith a semicolon (`;`), and the returned result table will satisfy both\nfilters. For example, a filters parameter value of\n`video==dMH0bHeiRNg;country==IT` restricts the result set to include data\nfor the given video in Italy.\",",
+              "type": "string"
+            },
+            "sort": {
+              "location": "query",
+              "description": "A comma-separated list of dimensions or metrics that determine the sort\norder for YouTube Analytics data. By default the sort order is ascending.\nThe '`-`' prefix causes descending sort order.\",\npattern: [-0-9a-zA-Z,]+",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtubepartner",
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v2/reports",
+          "path": "v2/reports",
+          "id": "youtubeAnalytics.reports.query"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    }
+  },
+  "version": "v2",
+  "baseUrl": "https://youtubeanalytics.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Retrieves your YouTube Analytics data.",
+  "servicePath": "",
+  "basePath": "",
+  "id": "youtubeAnalytics:v2",
+  "documentationLink": "https://developers.google.com/youtube/analytics",
+  "revision": "20181216",
+  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "Group": {
       "description": "A group.",
       "type": "object",
       "properties": {
-        "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
-        },
         "kind": {
           "description": "Identifies the API resource's type. The value will be `youtube#group`.",
           "type": "string"
@@ -17,10 +406,6 @@
           "description": "The Etag of this resource.",
           "type": "string"
         },
-        "contentDetails": {
-          "description": "The `contentDetails` object contains additional information about the\ngroup, such as the number and type of items that it contains.",
-          "$ref": "GroupContentDetails"
-        },
         "id": {
           "description": "The ID that YouTube uses to uniquely identify the group.",
           "type": "string"
@@ -28,6 +413,14 @@
         "snippet": {
           "description": "The `snippet` object contains basic information about the group, including\nits creation date and name.",
           "$ref": "GroupSnippet"
+        },
+        "contentDetails": {
+          "$ref": "GroupContentDetails",
+          "description": "The `contentDetails` object contains additional information about the\ngroup, such as the number and type of items that it contains."
+        },
+        "errors": {
+          "description": "Apiary error details",
+          "$ref": "Errors"
         }
       },
       "id": "Group"
@@ -70,6 +463,7 @@
           "type": "string"
         },
         "locationType": {
+          "type": "string",
           "enumDescriptions": [
             "location is an xpath-like path pointing\nto the request field that caused the error.",
             "other location type which can safely be shared\nexternally."
@@ -77,8 +471,7 @@
           "enum": [
             "PATH",
             "OTHER"
-          ],
-          "type": "string"
+          ]
         },
         "code": {
           "description": "Error code in the error domain. This should correspond to\na value of the enum type whose name is in domain. See\nthe core error domain in error_domain.proto.",
@@ -106,13 +499,13 @@
       "description": "A group snippet.",
       "type": "object",
       "properties": {
-        "title": {
-          "description": "The group name. The value must be a non-empty string.",
-          "type": "string"
-        },
         "publishedAt": {
           "description": "The date and time that the group was created. The value is specified in\nISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
           "format": "google-datetime",
+          "type": "string"
+        },
+        "title": {
+          "description": "The group name. The value must be a non-empty string.",
           "type": "string"
         }
       },
@@ -138,6 +531,8 @@
       "id": "ResultTableColumnHeader"
     },
     "Errors": {
+      "description": "Request Error information.\n\nThe presence of an error field signals that the operation\nhas failed.",
+      "type": "object",
       "properties": {
         "error": {
           "description": "Specific error description and codes",
@@ -147,6 +542,8 @@
           }
         },
         "code": {
+          "description": "Global error code. Deprecated and ignored.\nSet custom error codes in ErrorProto.domain and ErrorProto.code\ninstead.",
+          "type": "string",
           "enumDescriptions": [
             "",
             "",
@@ -166,27 +563,19 @@
             "PRECONDITION_FAILED",
             "INTERNAL_ERROR",
             "SERVICE_UNAVAILABLE"
-          ],
-          "description": "Global error code. Deprecated and ignored.\nSet custom error codes in ErrorProto.domain and ErrorProto.code\ninstead.",
-          "type": "string"
+          ]
         },
         "requestId": {
           "description": "Request identifier generated by the service, which can be\nused to identify the error in the logs",
           "type": "string"
         }
       },
-      "id": "Errors",
-      "description": "Request Error information.\n\nThe presence of an error field signals that the operation\nhas failed.",
-      "type": "object"
+      "id": "Errors"
     },
     "ListGroupItemsResponse": {
       "description": "Response message for GroupsService.ListGroupItems.",
       "type": "object",
       "properties": {
-        "errors": {
-          "$ref": "Errors",
-          "description": "Apiary error details"
-        },
         "kind": {
           "description": "Identifies the API resource's type. The value will be\n`youtube#groupItemListResponse`.",
           "type": "string"
@@ -201,12 +590,22 @@
         "etag": {
           "description": "The Etag of this resource.",
           "type": "string"
+        },
+        "errors": {
+          "$ref": "Errors",
+          "description": "Apiary error details"
         }
       },
       "id": "ListGroupItemsResponse"
     },
     "GroupItem": {
+      "description": "A group item.",
+      "type": "object",
       "properties": {
+        "resource": {
+          "description": "The `resource` object contains information that identifies the item being\nadded to the group.",
+          "$ref": "GroupItemResource"
+        },
         "id": {
           "description": "The ID that YouTube uses to uniquely identify the `channel`, `video`,\n`playlist`, or `asset` resource that is included in the group. Note that\nthis ID refers specifically to the inclusion of that resource in a\nparticular group and is different than the channel ID, video ID,\nplaylist ID, or asset ID that uniquely identifies the resource itself.\nThe `resource.id` property's value specifies the unique channel, video,\nplaylist, or asset ID.",
           "type": "string"
@@ -226,26 +625,14 @@
         "etag": {
           "description": "The Etag of this resource.",
           "type": "string"
-        },
-        "resource": {
-          "$ref": "GroupItemResource",
-          "description": "The `resource` object contains information that identifies the item being\nadded to the group."
         }
       },
-      "id": "GroupItem",
-      "description": "A group item.",
-      "type": "object"
+      "id": "GroupItem"
     },
     "ListGroupsResponse": {
+      "description": "Response message for GroupsService.ListGroups.",
+      "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "The token that can be used as the value of the `pageToken` parameter to\nretrieve the next page in the result set.",
-          "type": "string"
-        },
-        "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
-        },
         "kind": {
           "description": "Identifies the API resource's type. The value will be\n`youtube#groupListResponse`.",
           "type": "string"
@@ -260,29 +647,37 @@
         "etag": {
           "description": "The Etag of this resource.",
           "type": "string"
+        },
+        "nextPageToken": {
+          "description": "The token that can be used as the value of the `pageToken` parameter to\nretrieve the next page in the result set.",
+          "type": "string"
+        },
+        "errors": {
+          "$ref": "Errors",
+          "description": "Apiary error details"
         }
       },
-      "id": "ListGroupsResponse",
-      "description": "Response message for GroupsService.ListGroups.",
-      "type": "object"
+      "id": "ListGroupsResponse"
     },
     "GroupContentDetails": {
       "description": "A group's content details.",
       "type": "object",
       "properties": {
-        "itemType": {
-          "description": "The type of resources that the group contains.\n\nValid values for this property are:\n * `youtube#channel`\n * `youtube#playlist`\n * `youtube#video`\n * `youtubePartner#asset`",
-          "type": "string"
-        },
         "itemCount": {
           "description": "The number of items in the group.",
           "format": "uint64",
+          "type": "string"
+        },
+        "itemType": {
+          "description": "The type of resources that the group contains.\n\nValid values for this property are:\n * `youtube#channel`\n * `youtube#playlist`\n * `youtube#video`\n * `youtubePartner#asset`",
           "type": "string"
         }
       },
       "id": "GroupContentDetails"
     },
     "QueryResponse": {
+      "description": "Response message for TargetedQueriesService.Query.",
+      "type": "object",
       "properties": {
         "rows": {
           "description": "The list contains all rows of the result table. Each item in the list is\nan array that contains comma-delimited data corresponding to a single row\nof data. The order of the comma-delimited data fields will match the\norder of the columns listed in the `columnHeaders` field.\n\nIf no data is available for the given query, the `rows` element will be\nomitted from the response.\n\nThe response for a query with the `day` dimension will not contain rows for\nthe most recent days.",
@@ -295,8 +690,8 @@
           }
         },
         "errors": {
-          "description": "When set, indicates that the operation failed.",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "When set, indicates that the operation failed."
         },
         "kind": {
           "description": "This value specifies the type of data included in the API response.\nFor the query method, the kind property value will be\n`youtubeAnalytics#resultTable`.",
@@ -310,20 +705,21 @@
           }
         }
       },
-      "id": "QueryResponse",
-      "description": "Response message for TargetedQueriesService.Query.",
-      "type": "object"
+      "id": "QueryResponse"
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "YouTube Analytics",
   "auth": {
     "oauth2": {
       "scopes": {
+        "https://www.googleapis.com/auth/youtube.readonly": {
+          "description": "View your YouTube account"
+        },
         "https://www.googleapis.com/auth/yt-analytics.readonly": {
           "description": "View YouTube Analytics reports for your YouTube content"
         },
@@ -335,9 +731,6 @@
         },
         "https://www.googleapis.com/auth/youtubepartner": {
           "description": "View and manage your assets and associated content on YouTube"
-        },
-        "https://www.googleapis.com/auth/youtube.readonly": {
-          "description": "View your YouTube account"
         }
       }
     }
@@ -347,398 +740,5 @@
   "name": "youtubeAnalytics",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "YouTube Analytics API",
-  "ownerName": "Google",
-  "resources": {
-    "groupItems": {
-      "methods": {
-        "delete": {
-          "description": "Removes an item from a group.",
-          "httpMethod": "DELETE",
-          "response": {
-            "$ref": "EmptyResponse"
-          },
-          "parameterOrder": [],
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string",
-              "location": "query"
-            },
-            "id": {
-              "location": "query",
-              "description": "The `id` parameter specifies the YouTube group item ID of the group item\nthat is being deleted.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "flatPath": "v2/groupItems",
-          "id": "youtubeAnalytics.groupItems.delete",
-          "path": "v2/groupItems"
-        },
-        "insert": {
-          "description": "Creates a group item.",
-          "request": {
-            "$ref": "GroupItem"
-          },
-          "response": {
-            "$ref": "GroupItem"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "flatPath": "v2/groupItems",
-          "path": "v2/groupItems",
-          "id": "youtubeAnalytics.groupItems.insert"
-        },
-        "list": {
-          "flatPath": "v2/groupItems",
-          "path": "v2/groupItems",
-          "id": "youtubeAnalytics.groupItems.list",
-          "description": "Returns a collection of group items that match the API request parameters.",
-          "response": {
-            "$ref": "ListGroupItemsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string",
-              "location": "query"
-            },
-            "groupId": {
-              "location": "query",
-              "description": "The `groupId` parameter specifies the unique ID of the group for which you\nwant to retrieve group items.",
-              "type": "string"
-            }
-          }
-        }
-      }
-    },
-    "groups": {
-      "methods": {
-        "delete": {
-          "description": "Deletes a group.",
-          "response": {
-            "$ref": "EmptyResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "DELETE",
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string"
-            },
-            "id": {
-              "description": "The `id` parameter specifies the YouTube group ID of the group that is\nbeing deleted.",
-              "type": "string",
-              "location": "query"
-            }
-          },
-          "flatPath": "v2/groups",
-          "path": "v2/groups",
-          "id": "youtubeAnalytics.groups.delete"
-        },
-        "insert": {
-          "response": {
-            "$ref": "Group"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string"
-            }
-          },
-          "flatPath": "v2/groups",
-          "path": "v2/groups",
-          "id": "youtubeAnalytics.groups.insert",
-          "request": {
-            "$ref": "Group"
-          },
-          "description": "Creates a group."
-        },
-        "list": {
-          "response": {
-            "$ref": "ListGroupsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string"
-            },
-            "id": {
-              "location": "query",
-              "description": "The `id` parameter specifies a comma-separated list of the YouTube group\nID(s) for the resource(s) that are being retrieved. Each group must be\nowned by the authenticated user. In a `group` resource, the `id` property\nspecifies the group's YouTube group ID.\n\nNote that if you do not specify a value for the `id` parameter, then you\nmust set the `mine` parameter to `true`.",
-              "type": "string"
-            },
-            "mine": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. Set this\nparameter's value to true to retrieve all groups owned by the authenticated\nuser.",
-              "type": "boolean"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The `pageToken` parameter identifies a specific page in the result set that\nshould be returned. In an API response, the `nextPageToken` property\nidentifies the next page that can be retrieved.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "flatPath": "v2/groups",
-          "path": "v2/groups",
-          "id": "youtubeAnalytics.groups.list",
-          "description": "Returns a collection of groups that match the API request parameters. For\nexample, you can retrieve all groups that the authenticated user owns,\nor you can retrieve one or more groups by their unique IDs."
-        },
-        "update": {
-          "response": {
-            "$ref": "Group"
-          },
-          "parameterOrder": [],
-          "httpMethod": "PUT",
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "This parameter can only be used in a properly authorized request. **Note:**\nThis parameter is intended exclusively for YouTube content partners that\nown and manage many different YouTube channels.\n\nThe `onBehalfOfContentOwner` parameter indicates that the request's\nauthorization credentials identify a YouTube user who is acting on behalf\nof the content owner specified in the parameter value. It allows content\nowners to authenticate once and get access to all their video and channel\ndata, without having to provide authentication credentials for each\nindividual channel. The account that the user authenticates with must be\nlinked to the specified YouTube content owner.",
-              "type": "string"
-            }
-          },
-          "flatPath": "v2/groups",
-          "path": "v2/groups",
-          "id": "youtubeAnalytics.groups.update",
-          "request": {
-            "$ref": "Group"
-          },
-          "description": "Modifies a group. For example, you could change a group's title."
-        }
-      }
-    },
-    "reports": {
-      "methods": {
-        "query": {
-          "response": {
-            "$ref": "QueryResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.readonly",
-            "https://www.googleapis.com/auth/youtubepartner",
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "ids": {
-              "description": "Identifies the YouTube channel or content owner for which you are\nretrieving YouTube Analytics data.\n\n- To request data for a YouTube user, set the `ids` parameter value to\n  `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube\n  channel ID.\n- To request data for a YouTube CMS content owner, set the `ids` parameter\n  value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name\n  of the content owner.\nrequired: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+",
-              "type": "string",
-              "location": "query"
-            },
-            "includeHistoricalChannelData": {
-              "description": "If set to true historical data (i.e. channel data from before the linking\nof the channel to the content owner) will be retrieved.\",",
-              "type": "boolean",
-              "location": "query"
-            },
-            "currency": {
-              "location": "query",
-              "description": "The currency to which financial metrics should be converted. The default is\nUS Dollar (USD). If the result contains no financial metrics, this flag\nwill be ignored. Responds with an error if the specified currency is not\nrecognized.\",\npattern: [A-Z]{3}",
-              "type": "string"
-            },
-            "startIndex": {
-              "location": "query",
-              "description": "An index of the first entity to retrieve. Use this parameter as a\npagination mechanism along with the max-results parameter (one-based,\ninclusive).\",\nminValue: 1",
-              "format": "int32",
-              "type": "integer"
-            },
-            "dimensions": {
-              "location": "query",
-              "description": "A comma-separated list of YouTube Analytics dimensions, such as `views` or\n`ageGroup,gender`. See the [Available\nReports](/youtube/analytics/v2/available_reports) document for a list of\nthe reports that you can retrieve and the dimensions used for those\nreports. Also see the [Dimensions](/youtube/analytics/v2/dimsmets/dims)\ndocument for definitions of those dimensions.\"\npattern: [0-9a-zA-Z,]+",
-              "type": "string"
-            },
-            "endDate": {
-              "location": "query",
-              "description": "The end date for fetching YouTube Analytics data. The value should be in\n`YYYY-MM-DD` format.\nrequired: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}",
-              "type": "string"
-            },
-            "maxResults": {
-              "description": "The maximum number of rows to include in the response.\",\nminValue: 1",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            },
-            "filters": {
-              "location": "query",
-              "description": "A list of filters that should be applied when retrieving YouTube Analytics\ndata. The [Available Reports](/youtube/analytics/v2/available_reports)\ndocument identifies the dimensions that can be used to filter each report,\nand the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines\nthose dimensions. If a request uses multiple filters, join them together\nwith a semicolon (`;`), and the returned result table will satisfy both\nfilters. For example, a filters parameter value of\n`video==dMH0bHeiRNg;country==IT` restricts the result set to include data\nfor the given video in Italy.\",",
-              "type": "string"
-            },
-            "sort": {
-              "description": "A comma-separated list of dimensions or metrics that determine the sort\norder for YouTube Analytics data. By default the sort order is ascending.\nThe '`-`' prefix causes descending sort order.\",\npattern: [-0-9a-zA-Z,]+",
-              "type": "string",
-              "location": "query"
-            },
-            "startDate": {
-              "location": "query",
-              "description": "The start date for fetching YouTube Analytics data. The value should be in\n`YYYY-MM-DD` format.\nrequired: true, pattern: \"[0-9]{4}-[0-9]{2}-[0-9]{2}",
-              "type": "string"
-            },
-            "metrics": {
-              "description": "A comma-separated list of YouTube Analytics metrics, such as `views` or\n`likes,dislikes`. See the\n[Available Reports](/youtube/analytics/v2/available_reports)  document for\na list of the reports that you can retrieve and the metrics\navailable in each report, and see the\n[Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of\nthose metrics.\nrequired: true, pattern: [0-9a-zA-Z,]+",
-              "type": "string",
-              "location": "query"
-            }
-          },
-          "flatPath": "v2/reports",
-          "path": "v2/reports",
-          "id": "youtubeAnalytics.reports.query",
-          "description": "Retrieve your YouTube Analytics reports."
-        }
-      }
-    }
-  },
-  "parameters": {
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    }
-  },
-  "version": "v2",
-  "baseUrl": "https://youtubeanalytics.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Retrieves your YouTube Analytics data.",
-  "servicePath": "",
-  "basePath": "",
-  "id": "youtubeAnalytics:v2",
-  "documentationLink": "https://developers.google.com/youtube/analytics",
-  "revision": "20181211",
-  "discoveryVersion": "v1"
+  "title": "YouTube Analytics API"
 }
