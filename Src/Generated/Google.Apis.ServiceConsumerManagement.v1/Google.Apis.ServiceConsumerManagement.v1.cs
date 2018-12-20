@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181215 (1444)
+ *      <tr><th>API Rev<td>20181217 (1446)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -1102,10 +1102,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -1115,6 +1111,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1150,15 +1150,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1171,6 +1162,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2791,14 +2791,16 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     public class Monitoring : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Monitoring configurations for sending metrics to the consumer project. There can be multiple
-        /// consumer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one consumer destination.</summary>
+        /// consumer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ConsumerDestinations { get; set; } 
 
         /// <summary>Monitoring configurations for sending metrics to the producer project. There can be multiple
-        /// producer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one producer destination.</summary>
+        /// producer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ProducerDestinations { get; set; } 
 
@@ -2810,7 +2812,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// project).</summary>
     public class MonitoringDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Names of the metrics to report to this monitoring destination. Each name must be defined in
+        /// <summary>Types of the metrics to report to this monitoring destination. Each type must be defined in
         /// Service.metrics section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181215 (1444)
+ *      <tr><th>API Rev<td>20181217 (1446)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -2780,14 +2780,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class Monitoring : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Monitoring configurations for sending metrics to the consumer project. There can be multiple
-        /// consumer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one consumer destination.</summary>
+        /// consumer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ConsumerDestinations { get; set; } 
 
         /// <summary>Monitoring configurations for sending metrics to the producer project. There can be multiple
-        /// producer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one producer destination.</summary>
+        /// producer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ProducerDestinations { get; set; } 
 
@@ -2799,7 +2801,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
     /// project).</summary>
     public class MonitoringDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Names of the metrics to report to this monitoring destination. Each name must be defined in
+        /// <summary>Types of the metrics to report to this monitoring destination. Each type must be defined in
         /// Service.metrics section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 

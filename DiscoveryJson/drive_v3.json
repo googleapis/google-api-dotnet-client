@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/f7WfmB-Psb9hpfxtVc3C3FWH6Co\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/DmsVwHXLUfZJqrDE1d-9tgSUvKk\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20181206",
+ "revision": "20181213",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -584,6 +584,14 @@
     "explicitlyTrashed": {
      "type": "boolean",
      "description": "Whether the file has been explicitly trashed, as opposed to recursively trashed from a parent folder."
+    },
+    "exportLinks": {
+     "type": "object",
+     "description": "Links for exporting Google Docs to specific formats.",
+     "additionalProperties": {
+      "type": "string",
+      "description": "A mapping from export format to URL"
+     }
     },
     "fileExtension": {
      "type": "string",
@@ -1169,6 +1177,14 @@
    "type": "object",
    "description": "The metadata for a revision to a file.",
    "properties": {
+    "exportLinks": {
+     "type": "object",
+     "description": "Links for exporting Google Docs to specific formats.",
+     "additionalProperties": {
+      "type": "string",
+      "description": "A mapping from export format to URL"
+     }
+    },
     "id": {
      "type": "string",
      "description": "The ID of the revision."

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181210 (1439)
+ *      <tr><th>API Rev<td>20181214 (1443)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -834,6 +834,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// operations that fail with a "permission denied" error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; } 
+
+        /// <summary>The name of the service account key used to create or exchange credentials for authenticating the
+        /// service account making the request. This is a scheme-less URI full resource name. For example:
+        ///
+        /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyName")]
+        public virtual string ServiceAccountKeyName { get; set; } 
 
         /// <summary>The third party identification (if any) of the authenticated user making the request. When the JSON
         /// object represented here has a proto equivalent, the proto name will be indicated in the `@type`

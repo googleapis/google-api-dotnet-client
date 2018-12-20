@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20180806 (1313)
+ *      <tr><th>API Rev<td>20181219 (1448)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
@@ -359,6 +359,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
+            /// <summary>the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or
+            /// one of its sub-OU(s)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orgUnitID", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrgUnitID { get; set; }
+
             /// <summary>Token to specify next page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -464,6 +469,15 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "orgUnitID", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitID",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(id:[a-z0-9]+)",
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -546,6 +560,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or
+            /// one of its sub-OU(s)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orgUnitID", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrgUnitID { get; set; }
 
             /// <summary>Token to specify next page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -656,6 +675,15 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orgUnitID", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitID",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(id:[a-z0-9]+)",
                     });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
@@ -1105,6 +1133,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>the organizational unit's ID to filter usage parameters from users belonging to a specific OU
+            /// or one of its sub-OU(s).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orgUnitID", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrgUnitID { get; set; }
+
             /// <summary>Token to specify next page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1182,6 +1215,15 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orgUnitID", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitID",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(id:[a-z0-9]+)",
                     });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181203 (1432)
+ *      <tr><th>API Rev<td>20181219 (1448)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3155,8 +3155,9 @@ namespace Google.Apis.Pubsub.v1.Data
     {
         /// <summary>The new ack deadline with respect to the time this request was sent to the Pub/Sub system. For
         /// example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        /// was made. Specifying zero may immediately make the message available for another pull request. The minimum
-        /// deadline you can specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
+        /// was made. Specifying zero might immediately make the message available for delivery to another subscriber
+        /// client. This typically results in an increase in the rate of message redeliveries (that is, duplicates). The
+        /// minimum deadline you can specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
         /// minutes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 

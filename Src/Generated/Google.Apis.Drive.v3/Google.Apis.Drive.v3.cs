@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20181206 (1435)
+ *      <tr><th>API Rev<td>20181213 (1442)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5189,6 +5189,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explicitlyTrashed")]
         public virtual System.Nullable<bool> ExplicitlyTrashed { get; set; } 
 
+        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ExportLinks { get; set; } 
+
         /// <summary>The final component of fullFileExtension. This is only available for files with binary content in
         /// Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
@@ -6026,6 +6030,10 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>The metadata for a revision to a file.</summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ExportLinks { get; set; } 
+
         /// <summary>The ID of the revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 

@@ -1,27 +1,70 @@
 {
-  "canonicalName": "Monitoring",
-  "rootUrl": "https://monitoring.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "monitoring",
-  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Stackdriver Monitoring API",
   "ownerName": "Google",
   "resources": {
     "operations": {
       "methods": {
-        "list": {
+        "cancel": {
+          "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
+          "request": {
+            "$ref": "CancelOperationRequest"
+          },
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Empty"
+          },
           "parameters": {
-            "pageSize": {
-              "location": "query",
-              "description": "The standard list page size.",
-              "format": "int32",
-              "type": "integer"
-            },
-            "filter": {
+            "name": {
+              "required": true,
               "type": "string",
-              "location": "query",
-              "description": "The standard list filter."
+              "pattern": "^operations/.+$",
+              "location": "path",
+              "description": "The name of the operation resource to be cancelled."
+            }
+          },
+          "flatPath": "v1/operations/{operationsId}:cancel",
+          "id": "monitoring.operations.cancel",
+          "path": "v1/{+name}:cancel"
+        },
+        "delete": {
+          "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
+          "httpMethod": "DELETE",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "The name of the operation resource to be deleted.",
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/.+$"
+            }
+          },
+          "flatPath": "v1/operations/{operationsId}",
+          "id": "monitoring.operations.delete",
+          "path": "v1/{+name}"
+        },
+        "list": {
+          "response": {
+            "$ref": "ListOperationsResponse"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "filter": {
+              "description": "The standard list filter.",
+              "type": "string",
+              "location": "query"
             },
             "name": {
               "location": "path",
@@ -34,21 +77,21 @@
               "location": "query",
               "description": "The standard list page token.",
               "type": "string"
+            },
+            "pageSize": {
+              "description": "The standard list page size.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
             }
           },
           "flatPath": "v1/operations",
           "path": "v1/{+name}",
           "id": "monitoring.operations.list",
-          "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-          "response": {
-            "$ref": "ListOperationsResponse"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET"
+          "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id."
         },
         "get": {
+          "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "response": {
             "$ref": "Operation"
           },
@@ -58,69 +101,47 @@
           "httpMethod": "GET",
           "parameters": {
             "name": {
+              "location": "path",
               "description": "The name of the operation resource.",
               "required": true,
               "type": "string",
-              "pattern": "^operations/.+$",
-              "location": "path"
+              "pattern": "^operations/.+$"
             }
           },
           "flatPath": "v1/operations/{operationsId}",
           "path": "v1/{+name}",
-          "id": "monitoring.operations.get",
-          "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
-        },
-        "cancel": {
-          "request": {
-            "$ref": "CancelOperationRequest"
-          },
-          "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "POST",
-          "parameters": {
-            "name": {
-              "pattern": "^operations/.+$",
-              "location": "path",
-              "description": "The name of the operation resource to be cancelled.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/operations/{operationsId}:cancel",
-          "path": "v1/{+name}:cancel",
-          "id": "monitoring.operations.cancel"
-        },
-        "delete": {
-          "flatPath": "v1/operations/{operationsId}",
-          "path": "v1/{+name}",
-          "id": "monitoring.operations.delete",
-          "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "DELETE",
-          "parameters": {
-            "name": {
-              "description": "The name of the operation resource to be deleted.",
-              "required": true,
-              "type": "string",
-              "pattern": "^operations/.+$",
-              "location": "path"
-            }
-          }
+          "id": "monitoring.operations.get"
         }
       }
     }
   },
   "parameters": {
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
@@ -130,16 +151,6 @@
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -154,7 +165,22 @@
       "description": "V1 error format.",
       "type": "string"
     },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
     "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -163,45 +189,14 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
+      "default": "json"
     }
   },
   "version": "v1",
   "baseUrl": "https://monitoring.googleapis.com/",
+  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages.",
-  "servicePath": "",
   "basePath": "",
   "revision": "20181217",
   "documentationLink": "https://cloud.google.com/monitoring/api/",
@@ -209,56 +204,13 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Status": {
-      "properties": {
-        "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "type": "array",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          }
-        },
-        "code": {
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        }
-      },
-      "id": "Status",
-      "description": "The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:\nSimple to use and understand for most users\nFlexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:\nPartial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.\nWorkflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.\nBatch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.\nAsynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.\nLogging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.",
-      "type": "object"
-    },
     "Field": {
       "id": "Field",
       "description": "A single field of a message type.",
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "The field name."
-        },
-        "typeUrl": {
-          "description": "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\".",
-          "type": "string"
-        },
-        "number": {
-          "description": "The field number.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "jsonName": {
-          "description": "The field JSON name.",
-          "type": "string"
-        },
         "kind": {
+          "description": "The field type.",
           "type": "string",
           "enumDescriptions": [
             "Field type unknown.",
@@ -301,15 +253,18 @@
             "TYPE_SFIXED64",
             "TYPE_SINT32",
             "TYPE_SINT64"
-          ],
-          "description": "The field type."
+          ]
+        },
+        "jsonName": {
+          "description": "The field JSON name.",
+          "type": "string"
         },
         "options": {
-          "description": "The protocol buffer options.",
           "type": "array",
           "items": {
             "$ref": "Option"
-          }
+          },
+          "description": "The protocol buffer options."
         },
         "oneofIndex": {
           "description": "The index of the field type in Type.oneofs, for message or enumeration types. The first type has index 1; zero means the type is not in the list.",
@@ -333,50 +288,138 @@
           ]
         },
         "packed": {
-          "description": "Whether to use alternative packed wire representation.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether to use alternative packed wire representation."
         },
         "defaultValue": {
           "description": "The string value of the default value of this field. Proto2 syntax only.",
           "type": "string"
+        },
+        "name": {
+          "description": "The field name.",
+          "type": "string"
+        },
+        "typeUrl": {
+          "description": "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\".",
+          "type": "string"
+        },
+        "number": {
+          "description": "The field number.",
+          "format": "int32",
+          "type": "integer"
         }
       }
+    },
+    "Status": {
+      "description": "The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:\nSimple to use and understand for most users\nFlexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:\nPartial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.\nWorkflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.\nBatch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.\nAsynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.\nLogging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          }
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "Status"
     },
     "SourceContext": {
       "description": "SourceContext represents information about the source of a protobuf element, like the file in which it is defined.",
       "type": "object",
       "properties": {
         "fileName": {
-          "type": "string",
-          "description": "The path-qualified name of the .proto file that contained the associated protobuf element. For example: \"google/protobuf/source_context.proto\"."
+          "description": "The path-qualified name of the .proto file that contained the associated protobuf element. For example: \"google/protobuf/source_context.proto\".",
+          "type": "string"
         }
       },
       "id": "SourceContext"
     },
     "Empty": {
-      "properties": {},
-      "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
-      "type": "object"
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
     },
     "Option": {
-      "type": "object",
       "properties": {
+        "name": {
+          "description": "The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, \"map_entry\". For custom options, it should be the fully-qualified name. For example, \"google.api.http\".",
+          "type": "string"
+        },
         "value": {
-          "description": "The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
-        },
-        "name": {
-          "type": "string",
-          "description": "The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, \"map_entry\". For custom options, it should be the fully-qualified name. For example, \"google.api.http\"."
+          },
+          "description": "The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.",
+          "type": "object"
         }
       },
       "id": "Option",
-      "description": "A protocol buffer option, which can be attached to a message, field, enumeration, etc."
+      "description": "A protocol buffer option, which can be attached to a message, field, enumeration, etc.",
+      "type": "object"
+    },
+    "Type": {
+      "description": "A protocol buffer message type.",
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "Option"
+          },
+          "description": "The protocol buffer options."
+        },
+        "fields": {
+          "description": "The list of fields.",
+          "type": "array",
+          "items": {
+            "$ref": "Field"
+          }
+        },
+        "name": {
+          "description": "The fully qualified message name.",
+          "type": "string"
+        },
+        "oneofs": {
+          "description": "The list of types appearing in oneof definitions in this type.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "syntax": {
+          "type": "string",
+          "enumDescriptions": [
+            "Syntax proto2.",
+            "Syntax proto3."
+          ],
+          "enum": [
+            "SYNTAX_PROTO2",
+            "SYNTAX_PROTO3"
+          ],
+          "description": "The source syntax."
+        },
+        "sourceContext": {
+          "$ref": "SourceContext",
+          "description": "The source context."
+        }
+      },
+      "id": "Type"
     },
     "DroppedLabels": {
       "description": "A set of (label, value) pairs which were dropped during aggregation, attached to google.api.Distribution.Exemplars in google.api.Distribution values during aggregation.These values are used in combination with the label values that remain on the aggregated Distribution timeseries to construct the full label set for the exemplar values. The resulting full label set may be used to identify the specific task/job/instance (for example) which may be contributing to a long-tail, while allowing the storage savings of only storing aggregated distribution values for a large group.Note that there are no guarantees on ordering of the labels from exemplar-to-exemplar and from distribution-to-distribution in the same stream, and there may be duplicates. It is up to clients to resolve any ambiguities.",
@@ -392,54 +435,6 @@
       },
       "id": "DroppedLabels"
     },
-    "Type": {
-      "description": "A protocol buffer message type.",
-      "type": "object",
-      "properties": {
-        "fields": {
-          "description": "The list of fields.",
-          "type": "array",
-          "items": {
-            "$ref": "Field"
-          }
-        },
-        "name": {
-          "description": "The fully qualified message name.",
-          "type": "string"
-        },
-        "oneofs": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The list of types appearing in oneof definitions in this type."
-        },
-        "sourceContext": {
-          "$ref": "SourceContext",
-          "description": "The source context."
-        },
-        "syntax": {
-          "enumDescriptions": [
-            "Syntax proto2.",
-            "Syntax proto3."
-          ],
-          "enum": [
-            "SYNTAX_PROTO2",
-            "SYNTAX_PROTO3"
-          ],
-          "description": "The source syntax.",
-          "type": "string"
-        },
-        "options": {
-          "description": "The protocol buffer options.",
-          "type": "array",
-          "items": {
-            "$ref": "Option"
-          }
-        }
-      },
-      "id": "Type"
-    },
     "CancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
       "type": "object",
@@ -450,39 +445,36 @@
       "description": "The response message for Operations.ListOperations.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
         "operations": {
           "description": "A list of operations that matches the specified filter in the request.",
           "type": "array",
           "items": {
             "$ref": "Operation"
           }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
         }
       },
       "id": "ListOperationsResponse"
     },
     "Operation": {
+      "id": "Operation",
       "description": "This resource represents a long-running operation that is the result of a network API call.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name.",
-          "type": "string"
-        },
         "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
         },
         "metadata": {
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
           "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
+          },
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
         },
         "done": {
           "description": "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.",
@@ -495,25 +487,33 @@
           },
           "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse.",
           "type": "object"
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should have the format of operations/some/unique/name.",
+          "type": "string"
         }
-      },
-      "id": "Operation"
+      }
     },
     "SpanContext": {
+      "description": "The context of a span, attached to google.api.Distribution.Exemplars in google.api.Distribution values during aggregation.It contains the name of a span with format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID",
       "type": "object",
       "properties": {
         "spanName": {
-          "type": "string",
-          "description": "The resource name of the span in the following format:\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]\nTRACE_ID is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array."
+          "description": "The resource name of the span in the following format:\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]\nTRACE_ID is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.",
+          "type": "string"
         }
       },
-      "id": "SpanContext",
-      "description": "The context of a span, attached to google.api.Distribution.Exemplars in google.api.Distribution values during aggregation.It contains the name of a span with format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID"
+      "id": "SpanContext"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest"
+  "canonicalName": "Monitoring",
+  "rootUrl": "https://monitoring.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "monitoring",
+  "batchPath": "batch"
 }

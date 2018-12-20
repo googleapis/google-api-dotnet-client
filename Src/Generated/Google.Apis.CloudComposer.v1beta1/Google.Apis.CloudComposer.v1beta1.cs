@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181120 (1419)
+ *      <tr><th>API Rev<td>20181217 (1446)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -760,6 +760,12 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
                     /// environment variables.
                     ///
+                    /// config.softwareConfig.imageVersion Upgrade the version of the environment in-place. Refer to
+                    /// `SoftwareConfig.image_version` for information on how to format the new image version.
+                    /// Additionally, the new image version cannot effect a version downgrade and must match the current
+                    /// image version's Composer major version and Airflow major and minor versions. Consult the Cloud
+                    /// Composer Version List for valid values.
+                    ///
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1386,11 +1392,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> EnvVariables { get; set; } 
 
-        /// <summary>Immutable. The version of the software running in the environment. This encapsulates both the
-        /// version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular
-        /// expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as
-        /// input, the server will also check if the provided version is supported and deny the creation request for an
-        /// unsupported version.
+        /// <summary>The version of the software running in the environment. This encapsulates both the version of Cloud
+        /// Composer functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
+        /// server will also check if the provided version is supported and deny the request for an unsupported version.
         ///
         /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. The patch
         /// version can be omitted and the current Cloud Composer patch version will be selected. When `latest` is

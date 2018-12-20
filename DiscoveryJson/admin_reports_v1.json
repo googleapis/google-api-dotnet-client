@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/4CwJz4rRiRXvebZ8Q6JKY8uxMSU\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/UhkzND9lss5vlQ2BT91BGxI64WA\"",
  "discoveryVersion": "v1",
  "id": "admin:reports_v1",
  "name": "admin",
  "canonicalName": "reports",
  "version": "reports_v1",
- "revision": "20180806",
+ "revision": "20181219",
  "title": "Admin Reports API",
  "description": "Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.",
  "ownerDomain": "google.com",
@@ -503,6 +503,13 @@
        "maximum": "1000",
        "location": "query"
       },
+      "orgUnitID": {
+       "type": "string",
+       "description": "the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or one of its sub-OU(s)",
+       "default": "",
+       "pattern": "(id:[a-z0-9]+)",
+       "location": "query"
+      },
       "pageToken": {
        "type": "string",
        "description": "Token to specify next page.",
@@ -580,6 +587,13 @@
        "format": "int32",
        "minimum": "1",
        "maximum": "1000",
+       "location": "query"
+      },
+      "orgUnitID": {
+       "type": "string",
+       "description": "the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or one of its sub-OU(s)",
+       "default": "",
+       "pattern": "(id:[a-z0-9]+)",
        "location": "query"
       },
       "pageToken": {
@@ -785,6 +799,13 @@
        "description": "Maximum number of results to return. Maximum allowed is 1000",
        "format": "uint32",
        "maximum": "1000",
+       "location": "query"
+      },
+      "orgUnitID": {
+       "type": "string",
+       "description": "the organizational unit's ID to filter usage parameters from users belonging to a specific OU or one of its sub-OU(s).",
+       "default": "",
+       "pattern": "(id:[a-z0-9]+)",
        "location": "query"
       },
       "pageToken": {

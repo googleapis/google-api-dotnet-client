@@ -1,4 +1,8 @@
 {
+  "id": "abusiveexperiencereport:v1",
+  "documentationLink": "https://developers.google.com/abusive-experience-report/",
+  "revision": "20181204",
+  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "ViolatingSitesResponse": {
@@ -19,7 +23,46 @@
       "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
+        "reportUrl": {
+          "description": "A link that leads to a full abusive experience report.",
+          "type": "string"
+        },
+        "lastChangeTime": {
+          "description": "The last time that the site changed status.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
+        },
+        "abusiveStatus": {
+          "enum": [
+            "UNKNOWN",
+            "PASSING",
+            "FAILING"
+          ],
+          "description": "The status of the site reviewed for the abusive experiences.",
+          "type": "string",
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
+          ]
+        },
+        "enforcementTime": {
+          "description": "The date on which enforcement begins.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "filterStatus": {
+          "enumDescriptions": [
+            "N/A.",
+            "Ad filtering is on.",
+            "Ad filtering is off.",
+            "Ad filtering is paused.",
+            "Ad filtering is pending."
+          ],
           "enum": [
             "UNKNOWN",
             "ON",
@@ -28,50 +71,11 @@
             "PENDING"
           ],
           "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
-          "enumDescriptions": [
-            "N/A.",
-            "Ad filtering is on.",
-            "Ad filtering is off.",
-            "Ad filtering is paused.",
-            "Ad filtering is pending."
-          ]
+          "type": "string"
         },
         "underReview": {
-          "type": "boolean",
-          "description": "Whether the site is currently under review."
-        },
-        "reportUrl": {
-          "description": "A link that leads to a full abusive experience report.",
-          "type": "string"
-        },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
-        "lastChangeTime": {
-          "description": "The last time that the site changed status.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "abusiveStatus": {
-          "type": "string",
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ],
-          "enum": [
-            "UNKNOWN",
-            "PASSING",
-            "FAILING"
-          ],
-          "description": "The status of the site reviewed for the abusive experiences."
-        },
-        "enforcementTime": {
-          "description": "The date on which enforcement begins.",
-          "format": "google-datetime",
-          "type": "string"
+          "description": "Whether the site is currently under review.",
+          "type": "boolean"
         }
       },
       "id": "SiteSummaryResponse"
@@ -103,6 +107,9 @@
     "sites": {
       "methods": {
         "get": {
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get",
+          "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
@@ -110,9 +117,6 @@
             "name"
           ],
           "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
           "parameters": {
             "name": {
               "pattern": "^sites/[^/]+$",
@@ -122,43 +126,43 @@
               "type": "string"
             }
           },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get",
-          "description": "Gets a summary of the abusive experience rating of a site."
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ],
+          "flatPath": "v1/sites/{sitesId}"
         }
       }
     },
     "violatingSites": {
       "methods": {
         "list": {
-          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "parameters": {},
           "flatPath": "v1/violatingSites",
           "path": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list"
+          "id": "abusiveexperiencereport.violatingSites.list",
+          "description": "Lists sites with Abusive Experience Report statuses of \"Failing\"."
         }
       }
     }
   },
   "parameters": {
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
     },
     "$.xgafv": {
       "enum": [
@@ -184,8 +188,6 @@
       "type": "string"
     },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -197,7 +199,9 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
     },
     "key": {
       "location": "query",
@@ -210,15 +214,15 @@
       "type": "string"
     },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
+      "default": "true"
     },
     "quotaUser": {
       "location": "query",
@@ -231,9 +235,5 @@
   "kind": "discovery#restDescription",
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "servicePath": "",
-  "basePath": "",
-  "revision": "20181204",
-  "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "id": "abusiveexperiencereport:v1",
-  "discoveryVersion": "v1"
+  "basePath": ""
 }
