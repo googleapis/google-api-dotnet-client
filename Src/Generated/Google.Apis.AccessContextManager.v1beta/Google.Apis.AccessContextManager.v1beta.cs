@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190102 (1462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1665,8 +1665,7 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
 {    
 
     /// <summary>An `AccessLevel` is a label that can be applied to requests to GCP services, along with a list of
-    /// requirements necessary for the label to be applied. `AccessLevels` can be referenced in `AccessZones` and in the
-    /// `Cloud Org Policy` API.</summary>
+    /// requirements necessary for the label to be applied.</summary>
     public class AccessLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A `BasicLevel` composed of `Conditions`.</summary>

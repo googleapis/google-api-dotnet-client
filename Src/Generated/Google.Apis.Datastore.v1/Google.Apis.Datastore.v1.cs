@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181121 (1420)
+ *      <tr><th>API Rev<td>20181207 (1436)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A minimal index definition. Next tag: 8</summary>
+    /// <summary>A minimal index definition.</summary>
     public class GoogleDatastoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED. Required.</summary>
@@ -1937,7 +1937,7 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Next tag: 3</summary>
+    /// <summary>A property of an index.</summary>
     public class GoogleDatastoreAdminV1IndexedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED. Required.</summary>

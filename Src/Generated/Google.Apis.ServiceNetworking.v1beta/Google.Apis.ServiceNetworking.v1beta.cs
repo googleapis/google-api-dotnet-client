@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190103 (1463)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -612,7 +612,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// <summary>For service producers, provisions a new subnet in a peered service's shared VPC network in the
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
-        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
+        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and
         /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
         /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
         /// completes.</summary>
@@ -630,7 +630,7 @@ namespace Google.Apis.ServiceNetworking.v1beta
         /// <summary>For service producers, provisions a new subnet in a peered service's shared VPC network in the
         /// requested region and with the requested size that's expressed as a CIDR range (number of leading bits of
         /// ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP
-        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region,
+        /// address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and
         /// prefix length. This method will make producer's tenant project to be a shared VPC service project as needed.
         /// The response from the `get` operation will be of type `Subnetwork` if the operation successfully
         /// completes.</summary>
@@ -2657,7 +2657,9 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
         public virtual Monitoring Monitoring { get; set; } 
 
-        /// <summary>The DNS address at which this service is available, e.g. `calendar.googleapis.com`.</summary>
+        /// <summary>The service name, which is a DNS-like logical identifier for the service, such as
+        /// `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner
+        /// of the service also owns the DNS name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2791,7 +2793,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a subnet that was created by a peered service.</summary>
+    /// <summary>Represents a subnet that was created or discovered by a private access management service.</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Subnetwork CIDR range in `10.x.x.x/y` format.</summary>
@@ -2806,6 +2808,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// example: `projects/1234321/global/networks/host-network`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>This is a discovered subnet that is not within the current consumer allocated ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocation")]
+        public virtual System.Nullable<bool> OutsideAllocation { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181218 (1447)
+ *      <tr><th>API Rev<td>20190102 (1462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1389,14 +1389,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1404,6 +1396,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1439,15 +1439,6 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1460,6 +1451,15 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1903,12 +1903,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.
-            ///
-            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1921,6 +1915,12 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.
+            ///
+            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1956,18 +1956,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4093,14 +4093,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class Monitoring : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Monitoring configurations for sending metrics to the consumer project. There can be multiple
-        /// consumer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one consumer destination.</summary>
+        /// consumer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ConsumerDestinations { get; set; } 
 
         /// <summary>Monitoring configurations for sending metrics to the producer project. There can be multiple
-        /// producer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one producer destination.</summary>
+        /// producer destinations. A monitored resouce type may appear in multiple monitoring destinations if different
+        /// aggregations are needed for different sets of metrics associated with that monitored resource type. A
+        /// monitored resource and metric pair may only be used once in the Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]
         public virtual System.Collections.Generic.IList<MonitoringDestination> ProducerDestinations { get; set; } 
 
@@ -4112,7 +4114,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// project).</summary>
     public class MonitoringDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Names of the metrics to report to this monitoring destination. Each name must be defined in
+        /// <summary>Types of the metrics to report to this monitoring destination. Each type must be defined in
         /// Service.metrics section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
@@ -4585,7 +4587,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
         public virtual Monitoring Monitoring { get; set; } 
 
-        /// <summary>The DNS address at which this service is available, e.g. `calendar.googleapis.com`.</summary>
+        /// <summary>The service name, which is a DNS-like logical identifier for the service, such as
+        /// `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner
+        /// of the service also owns the DNS name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

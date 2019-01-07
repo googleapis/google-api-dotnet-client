@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181210 (1439)
+ *      <tr><th>API Rev<td>20181217 (1446)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>

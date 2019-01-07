@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190102 (1462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>

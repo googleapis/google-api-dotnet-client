@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Sheets.v4 Client Library</Title>
-    <Version>1.36.1.1443</Version>
+    <Version>1.36.1.1448</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181214 (1443)
+ *      <tr><th>API Rev<td>20181229 (1458)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1875,13 +1875,17 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Location information about a resource.</summary>
     public class ResourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The locations of a resource after the execution of the operation. For example:
+        /// <summary>The locations of a resource after the execution of the operation. Requests to create or delete a
+        /// location based resource must populate the 'current_locations' field and not the 'original_locations' field.
+        /// For example:
         ///
         /// "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocations")]
         public virtual System.Collections.Generic.IList<string> CurrentLocations { get; set; } 
 
-        /// <summary>The locations of a resource prior to the execution of the operation. For example:
+        /// <summary>The locations of a resource prior to the execution of the operation. Requests that mutate the
+        /// resource's location must populate both the 'original_locations' as well as the 'current_locations' fields.
+        /// For example:
         ///
         /// "europe-west1-a" "us-east1" "nam3"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalLocations")]

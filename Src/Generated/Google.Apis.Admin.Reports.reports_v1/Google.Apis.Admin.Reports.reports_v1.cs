@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20181219 (1448)
+ *      <tr><th>API Rev<td>20181220 (1449)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
