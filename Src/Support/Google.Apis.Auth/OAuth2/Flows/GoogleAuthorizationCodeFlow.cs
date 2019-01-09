@@ -51,6 +51,14 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the login_hint.</summary>
         public string LoginHint { get; private set; }
 
+        /// <summary>
+        /// Gets the prompt for consent behaviour.
+        /// Value can be <c>null</c>, <c>"none"</c>, <c>"consent"</c>, or <c>"select_account"</c>.
+        /// See <a href="https://developers.google.com/identity/protocols/OpenIDConnect#prompt">OpenIDConnect documentation</a>
+        /// for details.
+        /// </summary>
+        public string Prompt { get; private set; }
+
         private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
 
         /// <summary>Gets the user defined query parameters.</summary>
@@ -67,6 +75,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             revokeTokenUrl = initializer.RevokeTokenUrl;
             includeGrantedScopes = initializer.IncludeGrantedScopes;
             LoginHint = initializer.LoginHint;
+            Prompt = initializer.Prompt;
             userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
@@ -81,6 +90,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
                 LoginHint = LoginHint,
+                Prompt = Prompt,
                 UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
@@ -130,6 +140,14 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             /// <summary>Gets or sets the login_hint.</summary>
             public string LoginHint { get; set; }
+
+            /// <summary>
+            /// Gets or sets the prompt for consent behaviour.
+            /// Value can be <c>null</c>, <c>"none"</c>, <c>"consent"</c>, or <c>"select_account"</c>.
+            /// See <a href="https://developers.google.com/identity/protocols/OpenIDConnect#prompt">OpenIDConnect documentation</a>
+            /// for details.
+            /// </summary>
+            public string Prompt { get; set; }
 
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
             public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
