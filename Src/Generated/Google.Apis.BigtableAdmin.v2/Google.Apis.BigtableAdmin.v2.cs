@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181203 (1432)
+ *      <tr><th>API Rev<td>20190106 (1466)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -447,6 +447,10 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -454,10 +458,6 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -493,6 +493,15 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^operations/projects/.+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -505,15 +514,6 @@ namespace Google.Apis.BigtableAdmin.v2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1140,14 +1140,14 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
-
                     /// <summary>The subset of app profile fields which should be replaced. If unset, all fields will be
                     /// replaced.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1189,18 +1189,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "ignoreWarnings",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "ignoreWarnings",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2082,6 +2082,10 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The value of `next_page_token` returned by a previous call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Maximum number of results per page. CURRENTLY UNIMPLEMENTED AND IGNORED.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2106,10 +2110,6 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
-
-                    /// <summary>The value of `next_page_token` returned by a previous call.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2145,6 +2145,15 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -2157,15 +2166,6 @@ namespace Google.Apis.BigtableAdmin.v2
                             "view", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3117,6 +3117,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
         public virtual object RequestTime { get; set; } 
 
+        /// <summary>Keys: the full `name` of each table that existed in the instance when CreateCluster was first
+        /// called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be
+        /// created in the new cluster by that API call, not this one.
+        ///
+        /// Values: information on how much of a table's data has been copied to the newly-created cluster so
+        /// far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IDictionary<string,TableProgress> Tables { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3752,6 +3761,25 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// /_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Progress info for copying a table's data to the new cluster.</summary>
+    public class TableProgress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Estimate of the number of bytes copied so far for this table. This will eventually reach
+        /// 'estimated_size_bytes' unless the table copy is CANCELLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedCopiedBytes")]
+        public virtual System.Nullable<long> EstimatedCopiedBytes { get; set; } 
+
+        /// <summary>Estimate of the size of the table to be copied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedSizeBytes")]
+        public virtual System.Nullable<long> EstimatedSizeBytes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

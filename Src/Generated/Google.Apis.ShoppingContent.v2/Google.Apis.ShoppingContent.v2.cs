@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190107 (1467)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9597,6 +9597,18 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
 
+        /// <summary>Whether user is an order manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderManager")]
+        public virtual System.Nullable<bool> OrderManager { get; set; } 
+
+        /// <summary>Whether user can access payment statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsAnalyst")]
+        public virtual System.Nullable<bool> PaymentsAnalyst { get; set; } 
+
+        /// <summary>Whether user can manage payment settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
+        public virtual System.Nullable<bool> PaymentsManager { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -11592,6 +11604,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
+        /// <summary>The party responsible for collecting and remitting taxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxCollector")]
+        public virtual string TaxCollector { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12151,6 +12167,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productAmount")]
         public virtual Amount ProductAmount { get; set; } 
 
+        /// <summary>Total amount with remitted tax for the items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAmountWithRemittedTax")]
+        public virtual ProductAmount ProductAmountWithRemittedTax { get; set; } 
+
         /// <summary>The date of the transaction, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionDate")]
         public virtual string TransactionDate { get; set; } 
@@ -12578,7 +12598,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to cancellation amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then
+        /// amountPretax must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -12854,7 +12875,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to cancellation amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then
+        /// amountPretax must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -12938,12 +12960,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
-        /// <summary>The amount that is refunded. Either amount or amountPretax and amountTax should be
-        /// filled.</summary>
+        /// <summary>The amount that is refunded. Either amount or amountPretax should be filled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax
+        /// must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -13016,11 +13038,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrdersCustomBatchRequestEntryReturnRefundLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
-        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
+        /// returnLineItem method).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then
+        /// amountPretax must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -13322,12 +13345,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
-        /// <summary>The amount that is refunded. Either amount or amountPretax and amountTax should be
-        /// filled.</summary>
+        /// <summary>The amount that is refunded. Either amount or amountPretax should be filled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax
+        /// must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -13457,11 +13480,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
     public class OrdersReturnRefundLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The amount that is refunded. If omitted, refundless return is assumed (same as calling
-        /// returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set.</summary>
+        /// returnLineItem method).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
         public virtual Price AmountPretax { get; set; } 
 
-        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        /// <summary>Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then
+        /// amountPretax must be set. Calculated automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
         public virtual Price AmountTax { get; set; } 
 
@@ -14521,6 +14545,24 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Read-only warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Error> Warnings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductAmount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pre-tax or post-tax price depending on the location of the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
+        public virtual Price PriceAmount { get; set; } 
+
+        /// <summary>Remitted tax value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remittedTaxAmount")]
+        public virtual Price RemittedTaxAmount { get; set; } 
+
+        /// <summary>Tax value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
+        public virtual Price TaxAmount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

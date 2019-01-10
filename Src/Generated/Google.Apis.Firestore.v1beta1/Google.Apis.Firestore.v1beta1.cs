@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181207 (1436)
+ *      <tr><th>API Rev<td>20181222 (1451)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -632,16 +632,16 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
 
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
                     /// <summary>The client-assigned document ID to use for this document.
                     ///
                     /// Optional. If not specified, an ID will be assigned by the service.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DocumentId { get; set; }
-
-                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
-                    /// reference.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -692,18 +692,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "documentId", new Google.Apis.Discovery.Parameter
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "documentId",
+                                Name = "mask.fieldPaths",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            "documentId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "mask.fieldPaths",
+                                Name = "documentId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -738,15 +738,15 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>When set, the target document must exist and have been last updated at that
-                    /// time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object CurrentDocumentUpdateTime { get; set; }
-
                     /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
                     /// document must not exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
+
+                    /// <summary>When set, the target document must exist and have been last updated at that
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CurrentDocumentUpdateTime { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -782,18 +782,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
                             });
                         RequestParameters.Add(
-                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "currentDocument.updateTime",
+                                Name = "currentDocument.exists",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
+                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "currentDocument.exists",
+                                Name = "currentDocument.updateTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1257,6 +1257,11 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>When set, the target document must exist and have been last updated at that
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CurrentDocumentUpdateTime { get; set; }
+
                     /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
                     /// document must not exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
@@ -1271,11 +1276,6 @@ namespace Google.Apis.Firestore.v1beta1
                     /// reference.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
-
-                    /// <summary>When set, the target document must exist and have been last updated at that
-                    /// time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object CurrentDocumentUpdateTime { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1317,6 +1317,15 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
                             });
                         RequestParameters.Add(
+                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.updateTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "currentDocument.exists", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "currentDocument.exists",
@@ -1338,15 +1347,6 @@ namespace Google.Apis.Firestore.v1beta1
                             "mask.fieldPaths", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "mask.fieldPaths",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.updateTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2494,6 +2494,38 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>The path of the field. See Document.fields for the field path syntax reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; } 
+
+        /// <summary>Adds the given value to the field's current value.
+        ///
+        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
+        /// not yet exist, the transformation will set the field to the given value. If either of the given value or the
+        /// current field value are doubles, both values will be interpreted as doubles. Double arithmetic and
+        /// representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow,
+        /// the field is resolved to the largest magnitude positive/negative integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("increment")]
+        public virtual Value Increment { get; set; } 
+
+        /// <summary>Sets the field to the maximum of its current value and the given value.
+        ///
+        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
+        /// not yet exist, the transformation will set the field to the given value. If a maximum operation is applied
+        /// where the field and the input value are of mixed types (that is - one is an integer and one is a double) the
+        /// field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field
+        /// does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is
+        /// always the stored value. The maximum of any numeric value x and NaN is NaN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual Value Maximum { get; set; } 
+
+        /// <summary>Sets the field to the minimum of its current value and the given value.
+        ///
+        /// This must be an integer or a double value. If the field is not an integer or double, or if the field does
+        /// not yet exist, the transformation will set the field to the input value. If a minimum operation is applied
+        /// where the field and the input value are of mixed types (that is - one is an integer and one is a double) the
+        /// field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field
+        /// does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is
+        /// always the stored value. The minimum of any numeric value x and NaN is NaN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual Value Minimum { get; set; } 
 
         /// <summary>Remove all of the given elements from the array in the field. If the field is not an array, or if
         /// the field does not yet exist, it is set to the empty array.

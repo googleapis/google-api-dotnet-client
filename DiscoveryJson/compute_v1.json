@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/QO5DNy8FNfB2zBHJ9HRNOAf_q30\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/oxpkiPWMWiOlkpdwu0pVk3Aagog\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20181205",
+ "revision": "20181217",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -103,7 +103,7 @@
     },
     "acceleratorType": {
      "type": "string",
-     "description": "Full or partial URL of the accelerator type resource to attach to this instance. If you are creating an instance template, specify only the accelerator name."
+     "description": "Full or partial URL of the accelerator type resource to attach to this instance. For example: projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100 If you are creating an instance template, specify only the accelerator name. See GPUs on Compute Engine for a full list of accelerator types."
     }
    }
   },
@@ -1006,7 +1006,7 @@
     },
     "deviceName": {
      "type": "string",
-     "description": "Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance.\n\nIf not specified, the server chooses a default device name to apply to this disk, in the form persistent-disks-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks."
+     "description": "Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance.\n\nIf not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks."
     },
     "diskEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
@@ -1731,7 +1731,7 @@
    "properties": {
     "utilizationTarget": {
      "type": "number",
-     "description": "Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.",
+     "description": "Fraction of backend capacity utilization (set in HTTP(S) load balancing configuration) that autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.",
      "format": "double"
     }
    }
@@ -3270,11 +3270,13 @@
      "description": "[Output Only] The status of disk creation.",
      "enum": [
       "CREATING",
+      "DELETING",
       "FAILED",
       "READY",
       "RESTORING"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -5763,11 +5765,13 @@
      "type": "string",
      "description": "[Output Only] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.",
      "enum": [
+      "DELETING",
       "FAILED",
       "PENDING",
       "READY"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -5925,6 +5929,9 @@
      "items": {
       "$ref": "AcceleratorConfig"
      }
+    },
+    "hostname": {
+     "type": "string"
     },
     "id": {
      "type": "string",
@@ -6452,6 +6459,13 @@
    "type": "object",
    "description": "An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)",
    "properties": {
+    "autoHealingPolicies": {
+     "type": "array",
+     "description": "The autohealing policy for this managed instance group. You can specify only one value.",
+     "items": {
+      "$ref": "InstanceGroupManagerAutoHealingPolicy"
+     }
+    },
     "baseInstanceName": {
      "type": "string",
      "description": "The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.",
@@ -6711,6 +6725,22 @@
        "description": "[Output Only] A human-readable description of the warning code."
       }
      }
+    }
+   }
+  },
+  "InstanceGroupManagerAutoHealingPolicy": {
+   "id": "InstanceGroupManagerAutoHealingPolicy",
+   "type": "object",
+   "description": "",
+   "properties": {
+    "healthCheck": {
+     "type": "string",
+     "description": "The URL for the health check that signals autohealing."
+    },
+    "initialDelaySec": {
+     "type": "integer",
+     "description": "The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].",
+     "format": "int32"
     }
    }
   },
@@ -8044,7 +8074,7 @@
     },
     "linkType": {
      "type": "string",
-     "description": "Type of link requested. This field indicates speed of each of the links in the bundle, not the entire bundle. Only 10G per link is allowed for a dedicated interconnect. Options: Ethernet_10G_LR",
+     "description": "Type of link requested. This field indicates speed of each of the links in the bundle, not the entire bundle.",
      "enum": [
       "LINK_TYPE_ETHERNET_10G_LR"
      ],
@@ -8986,6 +9016,18 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "status": {
+     "type": "string",
+     "description": "[Output Only] The status of this InterconnectLocation. If the status is AVAILABLE, new Interconnects may be provisioned in this InterconnectLocation. Otherwise, no new Interconnects may be provisioned.",
+     "enum": [
+      "AVAILABLE",
+      "CLOSED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -12707,6 +12749,10 @@
       "",
       ""
      ]
+    },
+    "owner": {
+     "type": "string",
+     "description": "[Output Only] Owning resource. This is the resource on which this quota is applied."
     },
     "usage": {
      "type": "number",
@@ -19925,7 +19971,7 @@
        "type": "string",
        "description": "Name of the accelerator type to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20077,7 +20123,7 @@
        "type": "string",
        "description": "Name of the address resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20123,7 +20169,7 @@
        "type": "string",
        "description": "Name of the address resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20316,7 +20362,7 @@
        "type": "string",
        "description": "Name of the autoscaler to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20362,7 +20408,7 @@
        "type": "string",
        "description": "Name of the autoscaler to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20501,7 +20547,7 @@
       "autoscaler": {
        "type": "string",
        "description": "Name of the autoscaler to patch.",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "query"
       },
       "project": {
@@ -20548,7 +20594,7 @@
       "autoscaler": {
        "type": "string",
        "description": "Name of the autoscaler to update.",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "query"
       },
       "project": {
@@ -20640,7 +20686,7 @@
        "type": "string",
        "description": "Name of the BackendBucket resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20722,7 +20768,7 @@
        "type": "string",
        "description": "Name of the BackendBucket resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20838,7 +20884,7 @@
        "type": "string",
        "description": "Name of the BackendBucket resource to patch.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -20879,7 +20925,7 @@
        "type": "string",
        "description": "Name of the BackendBucket resource to update.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -21013,7 +21059,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -21095,7 +21141,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -21129,7 +21175,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to which the queried instance belongs.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -21328,7 +21374,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to update.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -21422,7 +21468,7 @@
        "type": "string",
        "description": "Name of the disk type to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22339,7 +22385,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22385,7 +22431,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22525,7 +22571,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource in which target is to be set.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22578,7 +22624,7 @@
        "type": "string",
        "description": "Name of the address resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22616,7 +22662,7 @@
        "type": "string",
        "description": "Name of the address resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22736,7 +22782,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22774,7 +22820,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -22890,7 +22936,7 @@
        "type": "string",
        "description": "Name of the ForwardingRule resource in which target is to be set.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -25269,7 +25315,7 @@
      "id": "compute.instanceTemplates.delete",
      "path": "{project}/global/instanceTemplates/{instanceTemplate}",
      "httpMethod": "DELETE",
-     "description": "Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone. It's not possible to delete templates which are in use by an instance group.",
+     "description": "Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone. It is not possible to delete templates that are already in use by a managed instance group.",
      "parameters": {
       "instanceTemplate": {
        "type": "string",
@@ -25408,7 +25454,7 @@
      "id": "compute.instanceTemplates.list",
      "path": "{project}/global/instanceTemplates",
      "httpMethod": "GET",
-     "description": "Retrieves a list of instance templates that are contained within the specified project and zone.",
+     "description": "Retrieves a list of instance templates that are contained within the specified project.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -29017,7 +29063,7 @@
      "parameters": {
       "nodeGroup": {
        "type": "string",
-       "description": "Name of the NodeGroup resource to delete.",
+       "description": "Name of the NodeGroup resource to update.",
        "required": true,
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
@@ -30087,7 +30133,7 @@
        "type": "string",
        "description": "Name of the autoscaler to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30133,7 +30179,7 @@
        "type": "string",
        "description": "Name of the autoscaler to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30272,7 +30318,7 @@
       "autoscaler": {
        "type": "string",
        "description": "Name of the autoscaler to patch.",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "query"
       },
       "project": {
@@ -30319,7 +30365,7 @@
       "autoscaler": {
        "type": "string",
        "description": "Name of the autoscaler to update.",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "query"
       },
       "project": {
@@ -30371,7 +30417,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to delete.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30417,7 +30463,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30459,7 +30505,7 @@
        "type": "string",
        "description": "Name of the BackendService resource for which to get health.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30650,7 +30696,7 @@
        "type": "string",
        "description": "Name of the BackendService resource to update.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30752,7 +30798,7 @@
        "type": "string",
        "description": "Name of the commitment to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {
@@ -30896,7 +30942,7 @@
        "type": "string",
        "description": "Name of the disk type to return.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "location": "path"
       },
       "project": {

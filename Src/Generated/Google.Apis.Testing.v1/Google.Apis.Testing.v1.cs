@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181231 (1460)
+ *      <tr><th>API Rev<td>20190107 (1467)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1963,6 +1963,13 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Required. How the host machine(s) are configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; } 
+
+        /// <summary>The number of times a TestExecution should be re-attempted if one or more of its test cases fail
+        /// for any reason. The maximum number of reruns allowed is 10.
+        ///
+        /// Default is 0, which implies no reruns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flakyTestAttempts")]
+        public virtual System.Nullable<int> FlakyTestAttempts { get; set; } 
 
         /// <summary>Output only. Describes why the matrix is considered invalid. Only useful for matrices in the
         /// INVALID state.</summary>

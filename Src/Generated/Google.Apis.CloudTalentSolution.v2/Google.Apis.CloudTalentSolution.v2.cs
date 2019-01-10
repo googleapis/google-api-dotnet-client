@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181210 (1439)
+ *      <tr><th>API Rev<td>20190107 (1467)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.JobService.v2
+namespace Google.Apis.CloudTalentSolution.v2
 {
-    /// <summary>The JobService Service.</summary>
-    public class JobServiceService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudTalentSolution Service.</summary>
+    public class CloudTalentSolutionService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v2";
@@ -56,12 +56,12 @@ namespace Google.Apis.JobService.v2
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public JobServiceService() :
+        public CloudTalentSolutionService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public JobServiceService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudTalentSolutionService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             companies = new CompaniesResource(this);
@@ -145,11 +145,11 @@ namespace Google.Apis.JobService.v2
         }
     }
 
-    ///<summary>A base abstract class for JobService requests.</summary>
-    public abstract class JobServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudTalentSolution requests.</summary>
+    public abstract class CloudTalentSolutionBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new JobServiceBaseServiceRequest instance.</summary>
-        protected JobServiceBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudTalentSolutionBaseServiceRequest instance.</summary>
+        protected CloudTalentSolutionBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -227,7 +227,7 @@ namespace Google.Apis.JobService.v2
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes JobService parameter list.</summary>
+        /// <summary>Initializes CloudTalentSolution parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -389,7 +389,7 @@ namespace Google.Apis.JobService.v2
             /// <summary>Deprecated. Use ListJobs instead.
             ///
             /// Lists all jobs associated with a company.</summary>
-            public class ListRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.ListCompanyJobsResponse>
+            public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListCompanyJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string companyName)
@@ -538,16 +538,16 @@ namespace Google.Apis.JobService.v2
 
         /// <summary>Creates a new company entity.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.JobService.v2.Data.Company body)
+        public virtual CreateRequest Create(Google.Apis.CloudTalentSolution.v2.Data.Company body)
         {
             return new CreateRequest(service, body);
         }
 
         /// <summary>Creates a new company entity.</summary>
-        public class CreateRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Company>
+        public class CreateRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.Company body)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body)
                 : base(service)
             {
                 Body = body;
@@ -557,7 +557,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.Company Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.Company Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -600,7 +600,7 @@ namespace Google.Apis.JobService.v2
         }
 
         /// <summary>Deletes the specified company.</summary>
-        public class DeleteRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Empty>
+        public class DeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -665,7 +665,7 @@ namespace Google.Apis.JobService.v2
         }
 
         /// <summary>Retrieves the specified company.</summary>
-        public class GetRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Company>
+        public class GetRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -727,7 +727,7 @@ namespace Google.Apis.JobService.v2
         }
 
         /// <summary>Lists all companies associated with a Cloud Talent Solution account.</summary>
-        public class ListRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.ListCompaniesResponse>
+        public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListCompaniesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -736,6 +736,13 @@ namespace Google.Apis.JobService.v2
                 InitParameters();
             }
 
+
+            /// <summary>Optional.
+            ///
+            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
+            /// provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional.
             ///
@@ -753,13 +760,6 @@ namespace Google.Apis.JobService.v2
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
-            /// provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -786,6 +786,15 @@ namespace Google.Apis.JobService.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mustHaveOpenJobs",
@@ -803,15 +812,6 @@ namespace Google.Apis.JobService.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -823,17 +823,17 @@ namespace Google.Apis.JobService.v2
         ///
         /// The resource name for a company. This is generated by the service when a company is created, for example,
         /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</param>
-        public virtual PatchRequest Patch(Google.Apis.JobService.v2.Data.Company body, string name)
+        public virtual PatchRequest Patch(Google.Apis.CloudTalentSolution.v2.Data.Company body, string name)
         {
             return new PatchRequest(service, body, name);
         }
 
         /// <summary>Updates the specified company. Company names can't be updated. To update a company name, delete the
         /// company and all jobs associated with it, and only then re-create them.</summary>
-        public class PatchRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Company>
+        public class PatchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Company>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.Company body, string name)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.Company body, string name)
                 : base(service)
             {
                 Name = name;
@@ -864,7 +864,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.Company Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.Company Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -933,16 +933,16 @@ namespace Google.Apis.JobService.v2
 
         /// <summary>Deletes a list of Job postings by filter.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual BatchDeleteRequest BatchDelete(Google.Apis.JobService.v2.Data.BatchDeleteJobsRequest body)
+        public virtual BatchDeleteRequest BatchDelete(Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest body)
         {
             return new BatchDeleteRequest(service, body);
         }
 
         /// <summary>Deletes a list of Job postings by filter.</summary>
-        public class BatchDeleteRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Empty>
+        public class BatchDeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
-            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.BatchDeleteJobsRequest body)
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest body)
                 : base(service)
             {
                 Body = body;
@@ -952,7 +952,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.BatchDeleteJobsRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.BatchDeleteJobsRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -988,7 +988,7 @@ namespace Google.Apis.JobService.v2
         ///
         /// Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.JobService.v2.Data.CreateJobRequest body)
+        public virtual CreateRequest Create(Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest body)
         {
             return new CreateRequest(service, body);
         }
@@ -996,10 +996,10 @@ namespace Google.Apis.JobService.v2
         /// <summary>Creates a new job.
         ///
         /// Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.</summary>
-        public class CreateRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
+        public class CreateRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.CreateJobRequest body)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1009,7 +1009,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.CreateJobRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.CreateJobRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1055,7 +1055,7 @@ namespace Google.Apis.JobService.v2
         /// <summary>Deletes the specified job.
         ///
         /// Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
-        public class DeleteRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Empty>
+        public class DeleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1133,7 +1133,7 @@ namespace Google.Apis.JobService.v2
         /// Deletes the specified job by filter. You can specify whether to synchronously wait for validation, indexing,
         /// and general processing to be completed before the response is returned.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual DeleteByFilterRequest DeleteByFilter(Google.Apis.JobService.v2.Data.DeleteJobsByFilterRequest body)
+        public virtual DeleteByFilterRequest DeleteByFilter(Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest body)
         {
             return new DeleteByFilterRequest(service, body);
         }
@@ -1142,10 +1142,10 @@ namespace Google.Apis.JobService.v2
         ///
         /// Deletes the specified job by filter. You can specify whether to synchronously wait for validation, indexing,
         /// and general processing to be completed before the response is returned.</summary>
-        public class DeleteByFilterRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Empty>
+        public class DeleteByFilterRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Empty>
         {
             /// <summary>Constructs a new DeleteByFilter request.</summary>
-            public DeleteByFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.DeleteJobsByFilterRequest body)
+            public DeleteByFilterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1155,7 +1155,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.DeleteJobsByFilterRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.DeleteJobsByFilterRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1199,7 +1199,7 @@ namespace Google.Apis.JobService.v2
 
         /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90
         /// days.</summary>
-        public class GetRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
+        public class GetRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1264,7 +1264,7 @@ namespace Google.Apis.JobService.v2
         ///
         /// For example, use this call to generate the number of jobs in the U.S. by state.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual HistogramRequest Histogram(Google.Apis.JobService.v2.Data.GetHistogramRequest body)
+        public virtual HistogramRequest Histogram(Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest body)
         {
             return new HistogramRequest(service, body);
         }
@@ -1279,10 +1279,10 @@ namespace Google.Apis.JobService.v2
         /// permission to search against.
         ///
         /// For example, use this call to generate the number of jobs in the U.S. by state.</summary>
-        public class HistogramRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.GetHistogramResponse>
+        public class HistogramRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.GetHistogramResponse>
         {
             /// <summary>Constructs a new Histogram request.</summary>
-            public HistogramRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.GetHistogramRequest body)
+            public HistogramRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1292,7 +1292,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.GetHistogramRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.GetHistogramRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1331,7 +1331,7 @@ namespace Google.Apis.JobService.v2
         }
 
         /// <summary>Lists jobs by filter.</summary>
-        public class ListRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.ListJobsResponse>
+        public class ListRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.ListJobsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -1340,6 +1340,22 @@ namespace Google.Apis.JobService.v2
                 InitParameters();
             }
 
+
+            /// <summary>Required.
+            ///
+            /// The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
             /// <summary>Optional.
             ///
@@ -1368,22 +1384,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1408,6 +1408,15 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -1435,15 +1444,6 @@ namespace Google.Apis.JobService.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -1457,7 +1457,7 @@ namespace Google.Apis.JobService.v2
         ///
         /// Resource name assigned to a job by the API, for example, "/jobs/foo". Use of this field in job queries and API calls
         /// is preferred over the use of requisition_id since this value is unique.</param>
-        public virtual PatchRequest Patch(Google.Apis.JobService.v2.Data.UpdateJobRequest body, string name)
+        public virtual PatchRequest Patch(Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest body, string name)
         {
             return new PatchRequest(service, body, name);
         }
@@ -1466,10 +1466,10 @@ namespace Google.Apis.JobService.v2
         ///
         /// Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5
         /// minutes.</summary>
-        public class PatchRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.Job>
+        public class PatchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.Job>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.UpdateJobRequest body, string name)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest body, string name)
                 : base(service)
             {
                 Name = name;
@@ -1487,7 +1487,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.UpdateJobRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.UpdateJobRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1533,7 +1533,7 @@ namespace Google.Apis.JobService.v2
         /// This call constrains the visibility of jobs present in the database, and only returns jobs that the caller
         /// has permission to search against.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual SearchRequest Search(Google.Apis.JobService.v2.Data.SearchJobsRequest body)
+        public virtual SearchRequest Search(Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
         {
             return new SearchRequest(service, body);
         }
@@ -1542,10 +1542,10 @@ namespace Google.Apis.JobService.v2
         ///
         /// This call constrains the visibility of jobs present in the database, and only returns jobs that the caller
         /// has permission to search against.</summary>
-        public class SearchRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.SearchJobsResponse>
+        public class SearchRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.SearchJobsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.SearchJobsRequest body)
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1555,7 +1555,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.SearchJobsRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1596,7 +1596,7 @@ namespace Google.Apis.JobService.v2
         /// This call constrains the visibility of jobs present in the database, and only returns jobs the caller has
         /// permission to search against.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual SearchForAlertRequest SearchForAlert(Google.Apis.JobService.v2.Data.SearchJobsRequest body)
+        public virtual SearchForAlertRequest SearchForAlert(Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
         {
             return new SearchForAlertRequest(service, body);
         }
@@ -1609,10 +1609,10 @@ namespace Google.Apis.JobService.v2
         ///
         /// This call constrains the visibility of jobs present in the database, and only returns jobs the caller has
         /// permission to search against.</summary>
-        public class SearchForAlertRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.SearchJobsResponse>
+        public class SearchForAlertRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.SearchJobsResponse>
         {
             /// <summary>Constructs a new SearchForAlert request.</summary>
-            public SearchForAlertRequest(Google.Apis.Services.IClientService service, Google.Apis.JobService.v2.Data.SearchJobsRequest body)
+            public SearchForAlertRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest body)
                 : base(service)
             {
                 Body = body;
@@ -1622,7 +1622,7 @@ namespace Google.Apis.JobService.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.JobService.v2.Data.SearchJobsRequest Body { get; set; }
+            Google.Apis.CloudTalentSolution.v2.Data.SearchJobsRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1680,7 +1680,7 @@ namespace Google.Apis.JobService.v2
 
         /// <summary>Completes the specified prefix with job keyword suggestions. Intended for use by a job search auto-
         /// complete search box.</summary>
-        public class CompleteRequest : JobServiceBaseServiceRequest<Google.Apis.JobService.v2.Data.CompleteQueryResponse>
+        public class CompleteRequest : CloudTalentSolutionBaseServiceRequest<Google.Apis.CloudTalentSolution.v2.Data.CompleteQueryResponse>
         {
             /// <summary>Constructs a new Complete request.</summary>
             public CompleteRequest(Google.Apis.Services.IClientService service)
@@ -1689,27 +1689,6 @@ namespace Google.Apis.JobService.v2
                 InitParameters();
             }
 
-
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
 
             /// <summary>Optional.
             ///
@@ -1763,6 +1742,27 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1787,24 +1787,6 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1841,13 +1823,31 @@ namespace Google.Apis.JobService.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
     }
 }
 
-namespace Google.Apis.JobService.v2.Data
+namespace Google.Apis.CloudTalentSolution.v2.Data
 {    
 
     /// <summary>Input only.
@@ -2448,7 +2448,7 @@ namespace Google.Apis.JobService.v2.Data
         /// <summary>Optional but at least one of string_values or long_value must be specified.
         ///
         /// This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable
-        /// `long_value`. For `long_value`, a value between Long.MIN and Long.MIN is allowed.</summary>
+        /// `long_value`. For `long_value`, a value between Long.MIN and Long.MAX is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
         public virtual System.Nullable<long> LongValue { get; set; } 
 

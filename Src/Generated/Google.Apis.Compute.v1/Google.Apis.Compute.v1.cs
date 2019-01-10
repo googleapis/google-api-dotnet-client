@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181205 (1434)
+ *      <tr><th>API Rev<td>20181217 (1446)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1014,7 +1014,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -1433,7 +1433,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -1533,7 +1533,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -2060,7 +2060,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -2162,7 +2162,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -2537,7 +2537,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -2656,7 +2656,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -2878,7 +2878,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -3080,7 +3080,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -3412,7 +3412,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -3518,7 +3518,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -3884,7 +3884,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -4084,7 +4084,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -4168,7 +4168,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -4723,7 +4723,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -4983,7 +4983,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -7360,7 +7360,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -7461,7 +7461,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -7843,7 +7843,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -7958,7 +7958,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -8045,7 +8045,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -8384,7 +8384,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -8471,7 +8471,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -8803,7 +8803,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -15162,7 +15162,8 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
-        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
+        /// undone. It is not possible to delete templates that are already in use by a managed instance
+        /// group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -15172,7 +15173,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
-        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
+        /// undone. It is not possible to delete templates that are already in use by a managed instance
+        /// group.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -15511,16 +15513,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of instance templates that are contained within the specified project and
-        /// zone.</summary>
+        /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of instance templates that are contained within the specified project and
-        /// zone.</summary>
+        /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceTemplateList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -24667,7 +24667,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="nodeGroup">Name of the NodeGroup resource to delete.</param>
+        /// <param name="nodeGroup">Name of the NodeGroup resource to update.</param>
         public virtual SetNodeTemplateRequest SetNodeTemplate(Google.Apis.Compute.v1.Data.NodeGroupsSetNodeTemplateRequest body, string project, string zone, string nodeGroup)
         {
             return new SetNodeTemplateRequest(service, body, project, zone, nodeGroup);
@@ -24696,7 +24696,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the NodeGroup resource to delete.</summary>
+            /// <summary>Name of the NodeGroup resource to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("nodeGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string NodeGroup { get; private set; }
 
@@ -27556,7 +27556,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -27656,7 +27656,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28031,7 +28031,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28150,7 +28150,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28281,7 +28281,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -28382,7 +28382,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28481,7 +28481,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -28995,7 +28995,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -29255,7 +29255,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -29628,7 +29628,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -46850,8 +46850,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
-        /// <summary>Full or partial URL of the accelerator type resource to attach to this instance. If you are
-        /// creating an instance template, specify only the accelerator name.</summary>
+        /// <summary>Full or partial URL of the accelerator type resource to attach to this instance. For example:
+        /// projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100 If you are creating an instance
+        /// template, specify only the accelerator name. See GPUs on Compute Engine for a full list of accelerator
+        /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
@@ -47489,7 +47491,7 @@ namespace Google.Apis.Compute.v1.Data
         /// for mounting, resizing, and so on, from within the instance.
         ///
         /// If not specified, the server chooses a default device name to apply to this disk, in the form persistent-
-        /// disks-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent
+        /// disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent
         /// disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
@@ -48083,7 +48085,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Configuration parameters of autoscaling based on load balancing.</summary>
     public class AutoscalingPolicyLoadBalancingUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that
+        /// <summary>Fraction of backend capacity utilization (set in HTTP(S) load balancing configuration) that
         /// autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
@@ -51446,6 +51448,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -51848,6 +51853,10 @@ namespace Google.Apis.Compute.v1.Data
     /// v1.regionInstanceGroupManagers ==)</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The autohealing policy for this managed instance group. You can specify only one value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoHealingPolicies")]
+        public virtual System.Collections.Generic.IList<InstanceGroupManagerAutoHealingPolicy> AutoHealingPolicies { get; set; } 
+
         /// <summary>The base instance name to use for instances in this group. The value must be 1-58 characters long.
         /// Instances are named by appending a hyphen and a random four-character string to the base instance name. The
         /// base instance name must comply with RFC1035.</summary>
@@ -52066,6 +52075,24 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class InstanceGroupManagerAutoHealingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL for the health check that signals autohealing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
+        public virtual string HealthCheck { get; set; } 
+
+        /// <summary>The number of seconds that the managed instance group waits before it applies autohealing policies
+        /// to new instances or recently recreated instances. This initial delay allows instances to initialize and run
+        /// their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the
+        /// managed instance group from recreating its instances prematurely. This value must be from range [0,
+        /// 3600].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySec")]
+        public virtual System.Nullable<int> InitialDelaySec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>[Output Only] A list of managed instance groups.</summary>
@@ -53025,7 +53052,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>Type of link requested. This field indicates speed of each of the links in the bundle, not the
-        /// entire bundle. Only 10G per link is allowed for a dedicated interconnect. Options: Ethernet_10G_LR</summary>
+        /// entire bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -53708,6 +53735,12 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] The status of this InterconnectLocation. If the status is AVAILABLE, new
+        /// Interconnects may be provisioned in this InterconnectLocation. Otherwise, no new Interconnects may be
+        /// provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56381,6 +56414,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Name of the quota metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
+
+        /// <summary>[Output Only] Owning resource. This is the resource on which this quota is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; } 
 
         /// <summary>[Output Only] Current usage of this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]

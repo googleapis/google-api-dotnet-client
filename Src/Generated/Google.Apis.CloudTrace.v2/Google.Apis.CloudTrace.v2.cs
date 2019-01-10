@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181210 (1439)
+ *      <tr><th>API Rev<td>20190102 (1462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -576,7 +576,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
-        /// up to 256 bytes, an integer, or the Boolean values `true` and `false`. For example:
+        /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
         ///
         /// "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
         /// true</summary>

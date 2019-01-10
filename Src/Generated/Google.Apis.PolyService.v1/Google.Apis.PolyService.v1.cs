@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181212 (1441)
+ *      <tr><th>API Rev<td>20190107 (1467)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -413,6 +413,30 @@ namespace Google.Apis.PolyService.v1
             }
 
 
+            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
+            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Keywords { get; set; }
+
+            /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
+            /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
+            /// `GLTF2`, `OBJ`, `TILT`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Format { get; set; }
+
+            /// <summary>Return only assets that have been curated by the Poly team.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Curated { get; set; }
+
+            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
+            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Category { get; set; }
+
             /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
             /// pages. To get the next page, submit the same request specifying the value from
             /// next_page_token.</summary>
@@ -443,30 +467,6 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
-            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Keywords { get; set; }
-
-            /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
-            /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
-            /// `GLTF2`, `OBJ`, `TILT`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Format { get; set; }
-
-            /// <summary>Return only assets that have been curated by the Poly team.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Curated { get; set; }
-
-            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
-            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Category { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -491,33 +491,6 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxComplexity", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxComplexity",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "keywords", new Google.Apis.Discovery.Parameter
                     {
@@ -558,6 +531,33 @@ namespace Google.Apis.PolyService.v1
                     "category", new Google.Apis.Discovery.Parameter
                     {
                         Name = "category",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxComplexity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxComplexity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -639,6 +639,17 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Specifies a continuation token from a previous search whose results were split into
+                /// multiple pages. To get the next page, submit the same request specifying the value from
+                /// next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
+                /// Defaults to `20`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
                 /// returns all assets.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
@@ -666,17 +677,6 @@ namespace Google.Apis.PolyService.v1
                 /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Format { get; set; }
-
-                /// <summary>Specifies a continuation token from a previous search whose results were split into
-                /// multiple pages. To get the next page, submit the same request specifying the value from
-                /// next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
-                /// Defaults to `20`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -712,6 +712,24 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "visibility", new Google.Apis.Discovery.Parameter
                         {
                             Name = "visibility",
@@ -733,24 +751,6 @@ namespace Google.Apis.PolyService.v1
                         "format", new Google.Apis.Discovery.Parameter
                         {
                             Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

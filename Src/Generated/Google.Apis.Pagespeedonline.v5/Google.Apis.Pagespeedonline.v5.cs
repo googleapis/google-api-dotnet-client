@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20181127 (1426)
+ *      <tr><th>API Rev<td>20190103 (1463)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>
  *              https://developers.google.com/speed/docs/insights/v5/get-started</a>

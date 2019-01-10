@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/discovery/'>APIs Discovery Service</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181209 (0)
+ *      <tr><th>API Rev<td>20190102 (0)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/discovery/'>
  *              https://developers.google.com/discovery/</a>

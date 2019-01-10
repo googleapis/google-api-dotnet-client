@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190104 (1464)
+ *      <tr><th>API Rev<td>20190109 (1469)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -540,13 +540,13 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             [Google.Apis.Util.RequestParameterAttribute("dynamicLink", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DynamicLink { get; private set; }
 
-            /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("sdkVersion", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SdkVersion { get; set; }
-
             /// <summary>The span of time requested in days.</summary>
             [Google.Apis.Util.RequestParameterAttribute("durationDays", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> DurationDays { get; set; }
+
+            /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sdkVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SdkVersion { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -582,18 +582,18 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "sdkVersion", new Google.Apis.Discovery.Parameter
+                    "durationDays", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "sdkVersion",
+                        Name = "durationDays",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "durationDays", new Google.Apis.Discovery.Parameter
+                    "sdkVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "durationDays",
+                        Name = "sdkVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1160,6 +1160,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Optional invitation ID, for only invite typed requested FDL links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
         public virtual string InvitationId { get; set; } 
+
+        /// <summary>FDL input value of the "=" parameter, minimum app version to be returned to Google Firebase SDK
+        /// running on iOS-9.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosMinAppVersion")]
+        public virtual string IosMinAppVersion { get; set; } 
 
         /// <summary>The entire FDL, expanded from a short link. It is the same as the requested_link, if it is
         /// long.</summary>

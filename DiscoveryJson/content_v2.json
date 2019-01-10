@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/csmBUv_0jDT6PYpBAf6nwtEqTQI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/0TCLgXZWRV_u3CJuMzbjjgElfPQ\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20181217",
+ "revision": "20190107",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -584,6 +584,18 @@
     "emailAddress": {
      "type": "string",
      "description": "User's email address."
+    },
+    "orderManager": {
+     "type": "boolean",
+     "description": "Whether user is an order manager."
+    },
+    "paymentsAnalyst": {
+     "type": "boolean",
+     "description": "Whether user can access payment statements."
+    },
+    "paymentsManager": {
+     "type": "boolean",
+     "description": "Whether user can manage payment settings."
     }
    }
   },
@@ -2717,6 +2729,10 @@
     "status": {
      "type": "string",
      "description": "The status of the order."
+    },
+    "taxCollector": {
+     "type": "string",
+     "description": "The party responsible for collecting and remitting taxes."
     }
    }
   },
@@ -3338,6 +3354,10 @@
      "$ref": "Amount",
      "description": "Total amount for the items."
     },
+    "productAmountWithRemittedTax": {
+     "$ref": "ProductAmount",
+     "description": "Total amount with remitted tax for the items."
+    },
     "transactionDate": {
      "type": "string",
      "description": "The date of the transaction, in ISO 8601 format."
@@ -3782,7 +3802,7 @@
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to cancellation amount in amountPretax."
+     "description": "Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."
     },
     "lineItemId": {
      "type": "string",
@@ -4058,7 +4078,7 @@
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to cancellation amount in amountPretax."
+     "description": "Tax amount that corresponds to cancellation amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."
     },
     "lineItemId": {
      "type": "string",
@@ -4143,11 +4163,11 @@
     },
     "amountPretax": {
      "$ref": "Price",
-     "description": "The amount that is refunded. Either amount or amountPretax and amountTax should be filled."
+     "description": "The amount that is refunded. Either amount or amountPretax should be filled."
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to refund amount in amountPretax."
+     "description": "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax must be set. Calculated automatically if not provided."
     },
     "reason": {
      "type": "string",
@@ -4219,11 +4239,11 @@
    "properties": {
     "amountPretax": {
      "$ref": "Price",
-     "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set."
+     "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method)."
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to refund amount in amountPretax."
+     "description": "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."
     },
     "lineItemId": {
      "type": "string",
@@ -4536,11 +4556,11 @@
     },
     "amountPretax": {
      "$ref": "Price",
-     "description": "The amount that is refunded. Either amount or amountPretax and amountTax should be filled."
+     "description": "The amount that is refunded. Either amount or amountPretax should be filled."
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to refund amount in amountPretax."
+     "description": "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, amountPretax must be set. Calculated automatically if not provided."
     },
     "operationId": {
      "type": "string",
@@ -4669,11 +4689,11 @@
    "properties": {
     "amountPretax": {
      "$ref": "Price",
-     "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method). Optional, but if filled then both amountPretax and amountTax must be set."
+     "description": "The amount that is refunded. If omitted, refundless return is assumed (same as calling returnLineItem method)."
     },
     "amountTax": {
      "$ref": "Price",
-     "description": "Tax amount that correspond to refund amount in amountPretax."
+     "description": "Tax amount that corresponds to refund amount in amountPretax. Optional, but if filled, then amountPretax must be set. Calculated automatically if not provided."
     },
     "lineItemId": {
      "type": "string",
@@ -6023,6 +6043,24 @@
      "items": {
       "$ref": "Error"
      }
+    }
+   }
+  },
+  "ProductAmount": {
+   "id": "ProductAmount",
+   "type": "object",
+   "properties": {
+    "priceAmount": {
+     "$ref": "Price",
+     "description": "The pre-tax or post-tax price depending on the location of the order."
+    },
+    "remittedTaxAmount": {
+     "$ref": "Price",
+     "description": "Remitted tax value."
+    },
+    "taxAmount": {
+     "$ref": "Price",
+     "description": "Tax value."
     }
    }
   },
