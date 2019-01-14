@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20181106 (1405)
+ *      <tr><th>API Rev<td>20190104 (1464)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -1266,6 +1266,18 @@ namespace Google.Apis.CloudTasks.v2beta3
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "state: PAUSED".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested page_size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1282,18 +1294,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                     /// response to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "state: PAUSED".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested page_size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1329,6 +1329,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1341,15 +1350,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2271,7 +2271,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchTime")]
         public virtual object DispatchTime { get; set; } 
 
-        /// <summary>Output only. The response from the target for this attempt.
+        /// <summary>Output only. The response from the worker for this attempt.
         ///
         /// If `response_time` is unset, then the task has not been attempted or is currently running and the
         /// `response_status` field is meaningless.</summary>
@@ -2580,9 +2580,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// dispatched. Configurable properties include rate limits, retry options, queue types, and others.</summary>
     public class Queue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App Engine HTTP queue.
-        ///
-        /// An App Engine queue is a queue that has an AppEngineHttpQueue type.</summary>
+        /// <summary>AppEngineHttpQueue settings apply only to AppEngine tasks in this queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpQueue")]
         public virtual AppEngineHttpQueue AppEngineHttpQueue { get; set; } 
 
@@ -2616,13 +2614,19 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
 
         /// <summary>Rate limits for task dispatches.
         ///
-        /// rate_limits and retry_config are related because they both control task attempts however they control how
-        /// tasks are attempted in different ways:
+        /// rate_limits and retry_config are related because they both control task attempts. However they control task
+        /// attempts in different ways:
         ///
         /// * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the
         /// queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what
         /// happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the
-        /// second attempt, third attempt, etc).</summary>
+        /// second attempt, third attempt, etc).
+        ///
+        /// The queue's actual dispatch rate is the result of:
+        ///
+        /// * Number of tasks in the queue * User-specified throttling: rate limits retry configuration, and the queue's
+        /// state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from
+        /// the worker, high error rates, or to smooth sudden large traffic spikes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateLimits")]
         public virtual RateLimits RateLimits { get; set; } 
 
@@ -2890,8 +2894,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>A unit of scheduled work.</summary>
     public class Task : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_queue
-        /// is set on the queue.
+        /// <summary>HTTP request that is sent to the App Engine app handler.
         ///
         /// An App Engine task is a task that has AppEngineHttpRequest set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpRequest")]

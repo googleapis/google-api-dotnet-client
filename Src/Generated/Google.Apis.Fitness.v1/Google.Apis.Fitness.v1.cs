@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190101 (1461)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -2092,6 +2092,8 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual Application Application { get; set; } 
 
+        /// <summary>DO NOT USE THIS FIELD. It is never populated in responses from the platform, and is ignored in
+        /// queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityStandard")]
         public virtual System.Collections.Generic.IList<string> DataQualityStandard { get; set; } 
 

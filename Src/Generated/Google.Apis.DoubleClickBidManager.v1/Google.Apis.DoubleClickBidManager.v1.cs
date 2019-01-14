@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180821 (1328)
+ *      <tr><th>API Rev<td>20190103 (1463)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -885,12 +885,14 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to fetch stored campaigns, insertion orders, line items, TrueView ad groups and ads.</summary>
+    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, TrueView ad groups
+    /// and ads.</summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File types that will be returned.
         ///
-        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "LINE_ITEM"</summary>
+        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "LINE_ITEM" -
+        /// "INVENTORY_SOURCE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
 
@@ -930,6 +932,9 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         /// <summary>Retrieved insertion orders in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
         public virtual string InsertionOrders { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
+        public virtual string InventorySources { get; set; } 
 
         /// <summary>Retrieved line items in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]

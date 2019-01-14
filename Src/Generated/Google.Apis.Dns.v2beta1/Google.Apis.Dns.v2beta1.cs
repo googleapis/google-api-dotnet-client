@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20181115 (1414)
+ *      <tr><th>API Rev<td>20181212 (1441)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2001,7 +2001,11 @@ namespace Google.Apis.Dns.v2beta1
 namespace Google.Apis.Dns.v2beta1.Data
 {    
 
-    /// <summary>An atomic update to a collection of ResourceRecordSets.</summary>
+    /// <summary>A Change represents a set of ResourceRecordSet additions and deletions applied atomically to a
+    /// ManagedZone. ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the
+    /// Changes collection. In turn the Changes collection also records the past modifications to the ResourceRecordSets
+    /// in a ManagedZone. The current state of the ManagedZone is the sum effect of applying all Change elements in the
+    /// Changes collection in sequence.</summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Which ResourceRecordSets to add?</summary>
@@ -2029,7 +2033,8 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
-        /// <summary>Status of the operation (output only).</summary>
+        /// <summary>Status of the operation (output only). A status of "done" means that the request to update the
+        /// authoritative servers has been sent, but the servers might not be updated yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -2155,10 +2160,10 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
         public virtual System.Nullable<long> KeyLength { get; set; } 
 
-        /// <summary>One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag
-        /// set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure
-        /// Entry Point flag will be cleared and this key will be used to sign only resource record sets of other
-        /// types.</summary>
+        /// <summary>Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys
+        /// have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of
+        /// type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all
+        /// other types of resource record sets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
         public virtual string KeyType { get; set; } 
 
@@ -2356,7 +2361,9 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; } 
 
-        /// <summary>Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only).</summary>
+        /// <summary>Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only). A status
+        /// of "DONE" means that the request to update the authoritative servers has been sent, but the servers might
+        /// not be updated yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -2496,7 +2503,7 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual System.Nullable<int> Ttl { get; set; } 
 
-        /// <summary>The identifier of a supported record type, for example, A, AAAA, MX, TXT, and so on.</summary>
+        /// <summary>The identifier of a supported record type. See the list of Supported DNS record types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

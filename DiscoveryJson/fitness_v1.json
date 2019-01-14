@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/pUKgbcIEJrptjVbWOLVTBFOqPWA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/4iC6UhHeBH4Kvfc2YWJ1Z3_e2eA\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",
  "version": "v1",
- "revision": "20181217",
+ "revision": "20190101",
  "title": "Fitness",
  "description": "Stores and accesses user data in the fitness store from apps on any platform.",
  "ownerDomain": "google.com",
@@ -472,7 +472,7 @@
     },
     "dataQualityStandard": {
      "type": "array",
-     "description": "",
+     "description": "DO NOT USE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries.",
      "items": {
       "type": "string",
       "enum": [

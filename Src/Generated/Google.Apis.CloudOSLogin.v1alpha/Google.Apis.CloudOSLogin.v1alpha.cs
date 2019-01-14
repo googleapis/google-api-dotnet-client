@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Cloud OS Login API</a>
+ *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20181210 (1439)
+ *      <tr><th>API Rev<td>20190107 (1467)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
- *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
+ *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>
+ *              https://cloud.google.com/compute/docs/oslogin/</a>
  *      <tr><th>Discovery Name<td>oslogin
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud OS Login API can be found at
- * <a href='https://cloud.google.com/compute/docs/oslogin/rest/'>https://cloud.google.com/compute/docs/oslogin/rest/</a>.
+ * <a href='https://cloud.google.com/compute/docs/oslogin/'>https://cloud.google.com/compute/docs/oslogin/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

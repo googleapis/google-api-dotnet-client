@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190108 (1468)
+ *      <tr><th>API Rev<td>20190109 (1469)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -1159,6 +1159,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
+        /// <summary>The JWT audience is used when generating a JWT id token for the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
+        public virtual string JwtAudience { get; set; } 
+
         /// <summary>Minimum deadline in seconds needed for this method. Calls having deadline value lower than this
         /// will be rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
@@ -1168,6 +1172,9 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// deadline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationDeadline")]
         public virtual System.Nullable<double> OperationDeadline { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("pathTranslation")]
+        public virtual string PathTranslation { get; set; } 
 
         /// <summary>Selects the methods to which this rule applies.
         ///
