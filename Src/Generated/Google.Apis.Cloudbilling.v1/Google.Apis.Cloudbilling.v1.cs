@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181111 (1410)
+ *      <tr><th>API Rev<td>20190114 (1474)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -678,12 +678,6 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
-            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -694,6 +688,12 @@ namespace Google.Apis.Cloudbilling.v1
             /// and other fields are not currently supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -720,15 +720,6 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -741,6 +732,15 @@ namespace Google.Apis.Cloudbilling.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1894,6 +1894,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
     /// <summary>Encapsulates a single service in Google Cloud Platform.</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The business under which the service is offered. Ex. "businessEntities/GCP",
+        /// "businessEntities/Maps"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessEntityName")]
+        public virtual string BusinessEntityName { get; set; } 
+
         /// <summary>A human readable display name for this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/hmO83jgNTOCnU85JSkMPWj7Ip_M\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/8SmcWQR6ppjXAW1i1HGCvU1RHc0\"",
  "discoveryVersion": "v1",
  "id": "analytics:v2.4",
  "name": "analytics",
  "version": "v2.4",
- "revision": "20180622",
+ "revision": "20180730",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",

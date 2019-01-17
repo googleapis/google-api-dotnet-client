@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190109 (1469)
+ *      <tr><th>API Rev<td>20190114 (1474)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -1624,6 +1624,30 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a subnet that was created or discovered by a private access management service.</summary>
+    public class GoogleCloudServicenetworkingV1betaSubnetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subnetwork CIDR range in `10.x.x.x/y` format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>Subnetwork name. See https://cloud.google.com/compute/docs/vpc/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>In the Shared VPC host project, the VPC network that's peered with the consumer network. For
+        /// example: `projects/1234321/global/networks/host-network`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>This is a discovered subnet that is not within the current consumer allocated ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocation")]
+        public virtual System.Nullable<bool> OutsideAllocation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the
     /// mapping of an RPC method to one or more HTTP REST API methods.</summary>
     public class Http : Google.Apis.Requests.IDirectResponseSchema
@@ -2538,6 +2562,23 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a found unused range.</summary>
+    public class Range : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CIDR range in "10.x.x.x/y" format that is within the allocated ranges and currently
+        /// unused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>In the Shared VPC host project, the VPC network that's peered with the consumer network. For
+        /// example: `projects/1234321/global/networks/host-network`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

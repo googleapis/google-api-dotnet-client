@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20190107 (1467)
+ *      <tr><th>API Rev<td>20190115 (1475)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -519,11 +519,6 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
             ///
             /// * createTime The time this job was created * events The set of event (names) that have occurred while
@@ -550,6 +545,11 @@ namespace Google.Apis.Genomics.v1alpha2
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -585,15 +585,6 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -606,6 +597,15 @@ namespace Google.Apis.Genomics.v1alpha2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -916,6 +916,11 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
+            /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
+            /// of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -929,11 +934,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// in the project, up to `pageSize`, will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NamePrefix { get; set; }
-
-            /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
-            /// of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -960,6 +960,15 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -981,15 +990,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "namePrefix", new Google.Apis.Discovery.Parameter
                     {
                         Name = "namePrefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

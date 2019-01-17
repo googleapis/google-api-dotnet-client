@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190111 (1471)
+ *      <tr><th>API Rev<td>20190114 (1474)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.Speech.v1p1beta1
             : base(initializer)
         {
             operations = new OperationsResource(this);
+            projects = new ProjectsResource(this);
             speech = new SpeechResource(this);
         }
 
@@ -122,6 +123,14 @@ namespace Google.Apis.Speech.v1p1beta1
         public virtual OperationsResource Operations
         {
             get { return operations; }
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
         }
 
         private readonly SpeechResource speech;
@@ -431,6 +440,10 @@ namespace Google.Apis.Speech.v1p1beta1
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -442,10 +455,6 @@ namespace Google.Apis.Speech.v1p1beta1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -471,6 +480,15 @@ namespace Google.Apis.Speech.v1p1beta1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
@@ -498,17 +516,362 @@ namespace Google.Apis.Speech.v1p1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            locations = new LocationsResource(service);
+            operations = new OperationsResource(service);
+
+        }
+
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
+        }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                operations = new OperationsResource(service);
+
+            }
+
+            private readonly OperationsResource operations;
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations
+            {
+                get { return operations; }
+            }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1p1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns `UNIMPLEMENTED`.
+                ///
+                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
+                /// default name includes the operations collection id, however overriding users must ensure the name
+                /// binding is the parent resource, without the operations collection id.</summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns `UNIMPLEMENTED`.
+                ///
+                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
+                /// default name includes the operations collection id, however overriding users must ensure the name
+                /// binding is the parent resource, without the operations collection id.</summary>
+                public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1p1beta1/{+name}/operations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                manualRecognitionTasks = new ManualRecognitionTasksResource(service);
+
+            }
+
+            private readonly ManualRecognitionTasksResource manualRecognitionTasks;
+
+            /// <summary>Gets the ManualRecognitionTasks resource.</summary>
+            public virtual ManualRecognitionTasksResource ManualRecognitionTasks
+            {
+                get { return manualRecognitionTasks; }
+            }
+
+            /// <summary>The "manualRecognitionTasks" collection of methods.</summary>
+            public class ManualRecognitionTasksResource
+            {
+                private const string Resource = "manualRecognitionTasks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ManualRecognitionTasksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1p1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1p1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/operations/manualRecognitionTasks/[^/]+$",
+                            });
+                    }
+
+                }
+            }
         }
     }
 
@@ -814,7 +1177,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
         public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; } 
 
-        /// <summary>This needs to be set to ‘true’ explicitly and `audio_channel_count` > 1 to get each channel
+        /// <summary>This needs to be set to `true` explicitly and `audio_channel_count` > 1 to get each channel
         /// recognized separately. The recognition result will contain a `channel_tag` field to state which channel that
         /// result belongs to. If this is not true, we will only recognize the first channel. The request is billed
         /// cumulatively for all channels recognized: `audio_channel_count` multiplied by the length of the

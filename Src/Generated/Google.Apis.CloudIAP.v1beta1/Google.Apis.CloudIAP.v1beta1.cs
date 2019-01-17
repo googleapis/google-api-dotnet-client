@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181230 (1459)
+ *      <tr><th>API Rev<td>20190109 (1469)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -64,7 +64,7 @@ namespace Google.Apis.CloudIAP.v1beta1
         public CloudIAPService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            projects = new ProjectsResource(this);
+            v1beta1 = new V1beta1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -115,12 +115,12 @@ namespace Google.Apis.CloudIAP.v1beta1
 
 
 
-        private readonly ProjectsResource projects;
+        private readonly V1beta1Resource v1beta1;
 
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects
+        /// <summary>Gets the V1beta1 resource.</summary>
+        public virtual V1beta1Resource V1beta1
         {
-            get { return projects; }
+            get { return v1beta1; }
         }
     }
 
@@ -313,1522 +313,244 @@ namespace Google.Apis.CloudIAP.v1beta1
         }
     }
 
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
+    /// <summary>The "v1beta1" collection of methods.</summary>
+    public class V1beta1Resource
     {
-        private const string Resource = "projects";
+        private const string Resource = "v1beta1";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
+        public V1beta1Resource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            iapTunnel = new IapTunnelResource(service);
-            iapWeb = new IapWebResource(service);
 
         }
 
-        private readonly IapTunnelResource iapTunnel;
 
-        /// <summary>Gets the IapTunnel resource.</summary>
-        public virtual IapTunnelResource IapTunnel
+        /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
+        /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
+        /// access#managing_access_via_the_api</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
-            get { return iapTunnel; }
+            return new GetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>The "iap_tunnel" collection of methods.</summary>
-        public class IapTunnelResource
+        /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
+        /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
+        /// access#managing_access_via_the_api</summary>
+        public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
         {
-            private const string Resource = "iapTunnel";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public IapTunnelResource(Google.Apis.Services.IClientService service)
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
+                : base(service)
             {
-                this.service = service;
-                zones = new ZonesResource(service);
-
+                Resource = resource;
+                Body = body;
+                InitParameters();
             }
 
-            private readonly ZonesResource zones;
 
-            /// <summary>Gets the Zones resource.</summary>
-            public virtual ZonesResource Zones
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
             {
-                get { return zones; }
+                get { return "getIamPolicy"; }
             }
 
-            /// <summary>The "zones" collection of methods.</summary>
-            public class ZonesResource
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
             {
-                private const string Resource = "zones";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ZonesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    instances = new InstancesResource(service);
-
-                }
-
-                private readonly InstancesResource instances;
-
-                /// <summary>Gets the Instances resource.</summary>
-                public virtual InstancesResource Instances
-                {
-                    get { return instances; }
-                }
-
-                /// <summary>The "instances" collection of methods.</summary>
-                public class InstancesResource
-                {
-                    private const string Resource = "instances";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public InstancesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                    /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                    /// /managing-access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                    {
-                        return new GetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                    /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                    /// /managing-access#managing_access_via_the_api</summary>
-                    public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                        /// documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "getIamPolicy"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:getIamPolicy"; }
-                        }
-
-                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+/instances/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces
-                    /// any existing policy. More information about managing access via IAP can be found at:
-                    /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces
-                    /// any existing policy. More information about managing access via IAP can be found at:
-                    /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                    public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                        /// documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "setIamPolicy"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:setIamPolicy"; }
-                        }
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+/instances/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource.
-                    /// If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                    /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via
-                    /// IAP can be found at: https://cloud.google.com/iap/docs/managing-
-                    /// access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                    {
-                        return new TestIamPermissionsRequest(service, body, resource);
-                    }
-
-                    /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource.
-                    /// If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                    /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via
-                    /// IAP can be found at: https://cloud.google.com/iap/docs/managing-
-                    /// access#managing_access_via_the_api</summary>
-                    public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
-                    {
-                        /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
-                        /// operation documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "testIamPermissions"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:testIamPermissions"; }
-                        }
-
-                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+/instances/[^/]+$",
-                                });
-                        }
-
-                    }
-                }
-
-                /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                /// /managing-access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                {
-                    return new GetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                /// /managing-access#managing_access_via_the_api</summary>
-                public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "getIamPolicy"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:getIamPolicy"; }
-                    }
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-                /// existing policy. More information about managing access via IAP can be found at:
-                /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-                /// existing policy. More information about managing access via IAP can be found at:
-                /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "setIamPolicy"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:setIamPolicy"; }
-                    }
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If
-                /// the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP
-                /// can be found at: https://cloud.google.com/iap/docs/managing-
-                /// access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(service, body, resource);
-                }
-
-                /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If
-                /// the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP
-                /// can be found at: https://cloud.google.com/iap/docs/managing-
-                /// access#managing_access_via_the_api</summary>
-                public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
-                    /// operation documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "testIamPermissions"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:testIamPermissions"; }
-                    }
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_tunnel/zones/[^/]+$",
-                            });
-                    }
-
-                }
+                get { return "POST"; }
             }
 
-            /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
-            /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
-            /// access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                get { return "v1beta1/{+resource}:getIamPolicy"; }
             }
 
-            /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
-            /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
-            /// access#managing_access_via_the_api</summary>
-            public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
             {
-                /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
+                base.InitParameters();
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "getIamPolicy"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:getIamPolicy"; }
-                }
-
-                /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_tunnel$",
-                        });
-                }
-
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.+$",
+                    });
             }
 
-            /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-            /// existing policy. More information about managing access via IAP can be found at:
-            /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-            {
-                return new SetIamPolicyRequest(service, body, resource);
-            }
-
-            /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-            /// existing policy. More information about managing access via IAP can be found at:
-            /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-            {
-                /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "setIamPolicy"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:setIamPolicy"; }
-                }
-
-                /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_tunnel$",
-                        });
-                }
-
-            }
-
-            /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
-            /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-            /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can
-            /// be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-            {
-                return new TestIamPermissionsRequest(service, body, resource);
-            }
-
-            /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
-            /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-            /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can
-            /// be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
-            {
-                /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "testIamPermissions"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:testIamPermissions"; }
-                }
-
-                /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_tunnel$",
-                        });
-                }
-
-            }
-        }
-        private readonly IapWebResource iapWeb;
-
-        /// <summary>Gets the IapWeb resource.</summary>
-        public virtual IapWebResource IapWeb
-        {
-            get { return iapWeb; }
         }
 
-        /// <summary>The "iap_web" collection of methods.</summary>
-        public class IapWebResource
+        /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
+        /// existing policy. More information about managing access via IAP can be found at:
+        /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
-            private const string Resource = "iapWeb";
+            return new SetIamPolicyRequest(service, body, resource);
+        }
 
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public IapWebResource(Google.Apis.Services.IClientService service)
+        /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
+        /// existing policy. More information about managing access via IAP can be found at:
+        /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
+        public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
+                : base(service)
             {
-                this.service = service;
-                services = new ServicesResource(service);
-
+                Resource = resource;
+                Body = body;
+                InitParameters();
             }
 
-            private readonly ServicesResource services;
 
-            /// <summary>Gets the Services resource.</summary>
-            public virtual ServicesResource Services
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
             {
-                get { return services; }
+                get { return "setIamPolicy"; }
             }
 
-            /// <summary>The "services" collection of methods.</summary>
-            public class ServicesResource
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
             {
-                private const string Resource = "services";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ServicesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    versions = new VersionsResource(service);
-
-                }
-
-                private readonly VersionsResource versions;
-
-                /// <summary>Gets the Versions resource.</summary>
-                public virtual VersionsResource Versions
-                {
-                    get { return versions; }
-                }
-
-                /// <summary>The "versions" collection of methods.</summary>
-                public class VersionsResource
-                {
-                    private const string Resource = "versions";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public VersionsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                    /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                    /// /managing-access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                    {
-                        return new GetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                    /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                    /// /managing-access#managing_access_via_the_api</summary>
-                    public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                        /// documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "getIamPolicy"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:getIamPolicy"; }
-                        }
-
-                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+/versions/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces
-                    /// any existing policy. More information about managing access via IAP can be found at:
-                    /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces
-                    /// any existing policy. More information about managing access via IAP can be found at:
-                    /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                    public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                        /// documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "setIamPolicy"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:setIamPolicy"; }
-                        }
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+/versions/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource.
-                    /// If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                    /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via
-                    /// IAP can be found at: https://cloud.google.com/iap/docs/managing-
-                    /// access#managing_access_via_the_api</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                    {
-                        return new TestIamPermissionsRequest(service, body, resource);
-                    }
-
-                    /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource.
-                    /// If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                    /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via
-                    /// IAP can be found at: https://cloud.google.com/iap/docs/managing-
-                    /// access#managing_access_via_the_api</summary>
-                    public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
-                    {
-                        /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                            : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
-                        /// operation documentation for the appropriate value for this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "testIamPermissions"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+resource}:testIamPermissions"; }
-                        }
-
-                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "resource", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "resource",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+/versions/[^/]+$",
-                                });
-                        }
-
-                    }
-                }
-
-                /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                /// /managing-access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                {
-                    return new GetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More
-                /// information about managing access via IAP can be found at: https://cloud.google.com/iap/docs
-                /// /managing-access#managing_access_via_the_api</summary>
-                public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                {
-                    /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "getIamPolicy"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:getIamPolicy"; }
-                    }
-
-                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-                /// existing policy. More information about managing access via IAP can be found at:
-                /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                {
-                    return new SetIamPolicyRequest(service, body, resource);
-                }
-
-                /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-                /// existing policy. More information about managing access via IAP can be found at:
-                /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-                public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
-                {
-                    /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "setIamPolicy"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:setIamPolicy"; }
-                    }
-
-                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If
-                /// the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP
-                /// can be found at: https://cloud.google.com/iap/docs/managing-
-                /// access#managing_access_via_the_api</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                {
-                    return new TestIamPermissionsRequest(service, body, resource);
-                }
-
-                /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If
-                /// the resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-                /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP
-                /// can be found at: https://cloud.google.com/iap/docs/managing-
-                /// access#managing_access_via_the_api</summary>
-                public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
-                {
-                    /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                        : base(service)
-                    {
-                        Resource = resource;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
-                    /// operation documentation for the appropriate value for this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Resource { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "testIamPermissions"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+resource}:testIamPermissions"; }
-                    }
-
-                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/iap_web/[^/]+/services/[^/]+$",
-                            });
-                    }
-
-                }
+                get { return "POST"; }
             }
 
-            /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
-            /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
-            /// access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
             {
-                return new GetIamPolicyRequest(service, body, resource);
+                get { return "v1beta1/{+resource}:setIamPolicy"; }
             }
 
-            /// <summary>Gets the access control policy for an Identity-Aware Proxy protected resource. More information
-            /// about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-
-            /// access#managing_access_via_the_api</summary>
-            public class GetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
             {
-                /// <summary>Constructs a new GetIamPolicy request.</summary>
-                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
+                base.InitParameters();
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "getIamPolicy"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:getIamPolicy"; }
-                }
-
-                /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_web/[^/]+$",
-                        });
-                }
-
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.+$",
+                    });
             }
 
-            /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-            /// existing policy. More information about managing access via IAP can be found at:
-            /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
+        }
+
+        /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
+        /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
+        /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can be
+        /// found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
+        /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
+        /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can be
+        /// found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
+        public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
+                : base(service)
             {
-                return new SetIamPolicyRequest(service, body, resource);
+                Resource = resource;
+                Body = body;
+                InitParameters();
             }
 
-            /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
-            /// existing policy. More information about managing access via IAP can be found at:
-            /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            public class SetIamPolicyRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.Policy>
+
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
             {
-                /// <summary>Constructs a new SetIamPolicy request.</summary>
-                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "setIamPolicy"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:setIamPolicy"; }
-                }
-
-                /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_web/[^/]+$",
-                        });
-                }
-
+                get { return "testIamPermissions"; }
             }
 
-            /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
-            /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-            /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can
-            /// be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
-            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
             {
-                return new TestIamPermissionsRequest(service, body, resource);
+                get { return "POST"; }
             }
 
-            /// <summary>Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the
-            /// resource does not exist or the caller does not have Identity-Aware Proxy permissions a
-            /// [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can
-            /// be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
-            public class TestIamPermissionsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsResponse>
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
             {
-                /// <summary>Constructs a new TestIamPermissions request.</summary>
-                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                    : base(service)
-                {
-                    Resource = resource;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Resource { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudIAP.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "testIamPermissions"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+resource}:testIamPermissions"; }
-                }
-
-                /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resource", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resource",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/iap_web/[^/]+$",
-                        });
-                }
-
+                get { return "v1beta1/{+resource}:testIamPermissions"; }
             }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.+$",
+                    });
+            }
+
         }
     }
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20181215 (1444)
+ *      <tr><th>API Rev<td>20190115 (1475)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1026,6 +1026,11 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
                     /// default language is used. [More than a dozen
                     /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
@@ -1036,11 +1041,6 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1076,6 +1076,15 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1093,23 +1102,14 @@ namespace Google.Apis.Dialogflow.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
                 /// <summary>Updates the specified entity type.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required for all methods except `create` (`create` populates the name automatically. The unique
-                /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</param>
+                /// <param name="name">The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+                /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1128,8 +1128,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Required for all methods except `create` (`create` populates the name automatically.
-                    /// The unique identifier of the entity type. Format: `projects//agent/entityTypes/`.</summary>
+                    /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+                    /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1485,9 +1485,7 @@ namespace Google.Apis.Dialogflow.v2
 
                 /// <summary>Deletes the specified intent and its direct or indirect followup intents.</summary>
                 /// <param name="name">Required. The name of the intent to delete. If this intent has direct or indirect followup
-                /// intents, we also delete them.
-                ///
-                /// Format: `projects//agent/intents/`.</param>
+                /// intents, we also delete them. Format: `projects//agent/intents/`.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1506,9 +1504,7 @@ namespace Google.Apis.Dialogflow.v2
 
 
                     /// <summary>Required. The name of the intent to delete. If this intent has direct or indirect
-                    /// followup intents, we also delete them.
-                    ///
-                    /// Format: `projects//agent/intents/`.</summary>
+                    /// followup intents, we also delete them. Format: `projects//agent/intents/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1670,10 +1666,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1698,6 +1690,10 @@ namespace Google.Apis.Dialogflow.v2
                     /// be enabled in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1733,15 +1729,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1768,14 +1755,23 @@ namespace Google.Apis.Dialogflow.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Updates the specified intent.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required for all methods except `create` (`create` populates the name automatically. The unique
-                /// identifier of this intent. Format: `projects//agent/intents/`.</param>
+                /// <param name="name">The unique identifier of this intent. Required for Intents.UpdateIntent and
+                /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1794,8 +1790,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
 
-                    /// <summary>Required for all methods except `create` (`create` populates the name automatically.
-                    /// The unique identifier of this intent. Format: `projects//agent/intents/`.</summary>
+                    /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+                    /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2164,15 +2160,15 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The next_page_token value returned from a previous list
-                        /// request.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>Optional. The maximum number of items to return in a single page. By default 100
                         /// and at most 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The next_page_token value returned from a previous list
+                        /// request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2208,18 +2204,18 @@ namespace Google.Apis.Dialogflow.v2
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3730,8 +3726,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Required for all methods except `create` (`create` populates the name automatically. The unique
-        /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</summary>
+        /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+        /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3925,8 +3921,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mlDisabled")]
         public virtual System.Nullable<bool> MlDisabled { get; set; } 
 
-        /// <summary>Required for all methods except `create` (`create` populates the name automatically. The unique
-        /// identifier of this intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+        /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3967,7 +3963,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
-        /// <summary>Optional. The collection of examples/templates that the agent is trained on.</summary>
+        /// <summary>Optional. The collection of examples that the agent is trained on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrase> TrainingPhrases { get; set; } 
 
@@ -4399,7 +4395,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an example or template that the agent is trained on.</summary>
+    /// <summary>Represents an example that the agent is trained on.</summary>
     public class GoogleCloudDialogflowV2IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier of this training phrase.</summary>
@@ -4412,8 +4408,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrasePart> Parts { get; set; } 
 
-        /// <summary>Optional. Indicates how many times this example or template was added to the intent. Each time a
-        /// developer adds an existing sample by editing an intent or training, this counter is increased.</summary>
+        /// <summary>Optional. Indicates how many times this example was added to the intent. Each time a developer adds
+        /// an existing sample by editing an intent or training, this counter is increased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timesAddedCount")]
         public virtual System.Nullable<int> TimesAddedCount { get; set; } 
 
@@ -4438,8 +4434,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; } 
 
-        /// <summary>Required. The text corresponding to the example or template, if there are no annotations. For
-        /// annotated examples, it is the text for one of the example's parts.</summary>
+        /// <summary>Required. The text corresponding to the example, if there are no annotations. For annotated
+        /// examples, it is the text for one of the example's parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
@@ -4629,7 +4625,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; } 
 
-        /// <summary>The text to be pronounced to the user or shown on the screen.</summary>
+        /// <summary>The text to be pronounced to the user or shown on the screen. Note: This is a legacy field,
+        /// `fulfillment_messages` should be preferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
         public virtual string FulfillmentText { get; set; } 
 
@@ -4924,8 +4921,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Required for all methods except `create` (`create` populates the name automatically. The unique
-        /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</summary>
+        /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+        /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5060,8 +5057,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mlEnabled")]
         public virtual System.Nullable<bool> MlEnabled { get; set; } 
 
-        /// <summary>Required for all methods except `create` (`create` populates the name automatically. The unique
-        /// identifier of this intent. Format: `projects//agent/intents/`.</summary>
+        /// <summary>The unique identifier of this intent. Required for Intents.UpdateIntent and
+        /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5102,7 +5099,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
         public virtual string RootFollowupIntentName { get; set; } 
 
-        /// <summary>Optional. The collection of examples/templates that the agent is trained on.</summary>
+        /// <summary>Optional. The collection of examples that the agent is trained on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> TrainingPhrases { get; set; } 
 
@@ -5588,7 +5585,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an example or template that the agent is trained on.</summary>
+    /// <summary>Represents an example that the agent is trained on.</summary>
     public class GoogleCloudDialogflowV2beta1IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier of this training phrase.</summary>
@@ -5601,8 +5598,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> Parts { get; set; } 
 
-        /// <summary>Optional. Indicates how many times this example or template was added to the intent. Each time a
-        /// developer adds an existing sample by editing an intent or training, this counter is increased.</summary>
+        /// <summary>Optional. Indicates how many times this example was added to the intent. Each time a developer adds
+        /// an existing sample by editing an intent or training, this counter is increased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timesAddedCount")]
         public virtual System.Nullable<int> TimesAddedCount { get; set; } 
 
@@ -5627,8 +5624,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; } 
 
-        /// <summary>Required. The text corresponding to the example or template, if there are no annotations. For
-        /// annotated examples, it is the text for one of the example's parts.</summary>
+        /// <summary>Required. The text corresponding to the example, if there are no annotations. For annotated
+        /// examples, it is the text for one of the example's parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
@@ -5748,7 +5745,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; } 
 
-        /// <summary>The text to be pronounced to the user or shown on the screen.</summary>
+        /// <summary>The text to be pronounced to the user or shown on the screen. Note: This is a legacy field,
+        /// `fulfillment_messages` should be preferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
         public virtual string FulfillmentText { get; set; } 
 

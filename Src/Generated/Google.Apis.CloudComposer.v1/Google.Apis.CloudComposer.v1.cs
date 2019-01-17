@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181217 (1446)
+ *      <tr><th>API Rev<td>20190110 (1470)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -350,6 +350,7 @@ namespace Google.Apis.CloudComposer.v1
             {
                 this.service = service;
                 environments = new EnvironmentsResource(service);
+                imageVersions = new ImageVersionsResource(service);
                 operations = new OperationsResource(service);
 
             }
@@ -595,13 +596,13 @@ namespace Google.Apis.CloudComposer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of environments to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -637,18 +638,18 @@ namespace Google.Apis.CloudComposer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -807,6 +808,118 @@ namespace Google.Apis.CloudComposer.v1
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly ImageVersionsResource imageVersions;
+
+            /// <summary>Gets the ImageVersions resource.</summary>
+            public virtual ImageVersionsResource ImageVersions
+            {
+                get { return imageVersions; }
+            }
+
+            /// <summary>The "imageVersions" collection of methods.</summary>
+            public class ImageVersionsResource
+            {
+                private const string Resource = "imageVersions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ImageVersionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List ImageVersions for provided location.</summary>
+                /// <param name="parent">List ImageVersions in the given project and location, in the form:
+                /// "projects/{projectId}/locations/{locationId}"</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List ImageVersions for provided location.</summary>
+                public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListImageVersionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>List ImageVersions in the given project and location, in the form:
+                    /// "projects/{projectId}/locations/{locationId}"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of image_versions to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/imageVersions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1003,6 +1116,10 @@ namespace Google.Apis.CloudComposer.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1010,10 +1127,6 @@ namespace Google.Apis.CloudComposer.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1049,6 +1162,15 @@ namespace Google.Apis.CloudComposer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1061,15 +1183,6 @@ namespace Google.Apis.CloudComposer.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1176,12 +1289,47 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ImageVersion information</summary>
+    public class ImageVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b(.c)"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
+        public virtual string ImageVersionId { get; set; } 
+
+        /// <summary>Whether this is the default ImageVersion used by Composer during environment creation if no input
+        /// ImageVersion is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; } 
+
+        /// <summary>supported python versions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedPythonVersions")]
+        public virtual System.Collections.Generic.IList<string> SupportedPythonVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The environments in a project and location.</summary>
     public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of environments returned by a ListEnvironmentsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
         public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
+
+        /// <summary>The page token used to query for the next page if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ImageVersions in a project and location.</summary>
+    public class ListImageVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of supported ImageVersions in a location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersions")]
+        public virtual System.Collections.Generic.IList<ImageVersion> ImageVersions { get; set; } 
 
         /// <summary>The page token used to query for the next page if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181214 (1443)
+ *      <tr><th>API Rev<td>20190111 (1471)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1062,13 +1062,13 @@ namespace Google.Apis.Vision.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The next_page_token returned from a previous List request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1104,18 +1104,18 @@ namespace Google.Apis.Vision.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/productSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2191,16 +2191,16 @@ namespace Google.Apis.Vision.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>A token identifying a page of results to be returned. This is the value of
                         /// `nextPageToken` returned in a previous reference image list request.
                         ///
                         /// Defaults to the first page if not specified.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2236,18 +2236,18 @@ namespace Google.Apis.Vision.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/products/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2543,13 +2543,13 @@ namespace Google.Apis.Vision.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of items to return. Default 10, maximum 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2585,18 +2585,18 @@ namespace Google.Apis.Vision.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3109,7 +3109,7 @@ namespace Google.Apis.Vision.v1.Data
     public class CropHint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The bounding polygon for the crop region. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`.</summary>
+        /// image's scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
@@ -3269,10 +3269,10 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string BlurredLikelihood { get; set; } 
 
         /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
-        /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
-        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
-        /// the image to be annotated.</summary>
+        /// image's scale. The bounding box is computed to "frame" the face in accordance with human expectations. It is
+        /// based on the landmarker results. Note that one or more x and/or y coordinates may not be generated in the
+        /// `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in the image to be
+        /// annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
@@ -3573,7 +3573,7 @@ namespace Google.Apis.Vision.v1.Data
     public class GoogleCloudVisionV1p1beta1CropHint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The bounding polygon for the crop region. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`.</summary>
+        /// image's scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -3676,10 +3676,10 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string BlurredLikelihood { get; set; } 
 
         /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
-        /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
-        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
-        /// the image to be annotated.</summary>
+        /// image's scale. The bounding box is computed to "frame" the face in accordance with human expectations. It is
+        /// based on the landmarker results. Note that one or more x and/or y coordinates may not be generated in the
+        /// `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in the image to be
+        /// annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -4602,7 +4602,7 @@ namespace Google.Apis.Vision.v1.Data
     public class GoogleCloudVisionV1p2beta1CropHint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The bounding polygon for the crop region. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`.</summary>
+        /// image's scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -4705,10 +4705,10 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string BlurredLikelihood { get; set; } 
 
         /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
-        /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
-        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
-        /// the image to be annotated.</summary>
+        /// image's scale. The bounding box is computed to "frame" the face in accordance with human expectations. It is
+        /// based on the landmarker results. Note that one or more x and/or y coordinates may not be generated in the
+        /// `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in the image to be
+        /// annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -5654,7 +5654,7 @@ namespace Google.Apis.Vision.v1.Data
     public class GoogleCloudVisionV1p3beta1CropHint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The bounding polygon for the crop region. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`.</summary>
+        /// image's scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -5757,10 +5757,10 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string BlurredLikelihood { get; set; } 
 
         /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
-        /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
-        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
-        /// the image to be annotated.</summary>
+        /// image's scale. The bounding box is computed to "frame" the face in accordance with human expectations. It is
+        /// based on the landmarker results. Note that one or more x and/or y coordinates may not be generated in the
+        /// `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in the image to be
+        /// annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
 
@@ -7261,7 +7261,8 @@ namespace Google.Apis.Vision.v1.Data
         public virtual Status IndexError { get; set; } 
 
         /// <summary>Output only. The time at which this ProductSet was last indexed. Query results will reflect all
-        /// updates before this time. If this ProductSet has never been indexed, this field is 0.
+        /// updates before this time. If this ProductSet has never been indexed, this timestamp is the default value
+        /// "1970-01-01T00:00:00Z".
         ///
         /// This field is ignored when creating a ProductSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]

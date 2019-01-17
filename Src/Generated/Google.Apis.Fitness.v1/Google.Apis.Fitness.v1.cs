@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190101 (1461)
+ *      <tr><th>API Rev<td>20190109 (1469)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1910,9 +1910,8 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
         public virtual System.Nullable<long> EndTimeMillis { get; set; } 
 
-        /// <summary>A list of acceptable data quality standards. Only data points which conform to at least one of the
-        /// specified data quality standards will be returned. If the list is empty, all data points are
-        /// returned.</summary>
+        /// <summary>DO NOT POPULATE THIS FIELD. As data quality standards are deprecated, filling it in will result in
+        /// no data sources being returned. It will be removed in a future version entirely.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredDataQualityStandard")]
         public virtual System.Collections.Generic.IList<string> FilteredDataQualityStandard { get; set; } 
 
@@ -2092,8 +2091,8 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual Application Application { get; set; } 
 
-        /// <summary>DO NOT USE THIS FIELD. It is never populated in responses from the platform, and is ignored in
-        /// queries.</summary>
+        /// <summary>DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in
+        /// queries. It will be removed in a future version entirely.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityStandard")]
         public virtual System.Collections.Generic.IList<string> DataQualityStandard { get; set; } 
 
@@ -2200,7 +2199,7 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual string DataSourceId { get; set; } 
 
         /// <summary>The largest end time of all data points in this possibly partial representation of the dataset.
-        /// Time is in nanoseconds from epoch. This should also match the first part of the dataset
+        /// Time is in nanoseconds from epoch. This should also match the second part of the dataset
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEndTimeNs")]
         public virtual System.Nullable<long> MaxEndTimeNs { get; set; } 

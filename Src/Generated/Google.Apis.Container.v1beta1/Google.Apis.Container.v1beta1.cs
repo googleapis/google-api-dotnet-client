@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20181207 (1436)
+ *      <tr><th>API Rev<td>20190102 (1462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -533,6 +533,7 @@ namespace Google.Apis.Container.v1beta1
                 {
                     this.service = service;
                     nodePools = new NodePoolsResource(service);
+                    wellKnown = new WellKnownResource(service);
 
                 }
 
@@ -655,6 +656,11 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
+
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -671,11 +677,6 @@ namespace Google.Apis.Container.v1beta1
                         /// the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -711,6 +712,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -732,15 +742,6 @@ namespace Google.Apis.Container.v1beta1
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -775,6 +776,12 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
+                        /// deprecated and replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ProjectId { get; set; }
+
                         /// <summary>Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -790,12 +797,6 @@ namespace Google.Apis.Container.v1beta1
                         /// by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
-
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ProjectId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -831,6 +832,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
@@ -852,15 +862,6 @@ namespace Google.Apis.Container.v1beta1
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1329,6 +1330,98 @@ namespace Google.Apis.Container.v1beta1
 
                     }
                 }
+                private readonly WellKnownResource wellKnown;
+
+                /// <summary>Gets the WellKnown resource.</summary>
+                public virtual WellKnownResource WellKnown
+                {
+                    get { return wellKnown; }
+                }
+
+                /// <summary>The "well-known" collection of methods.</summary>
+                public class WellKnownResource
+                {
+                    private const string Resource = "wellKnown";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WellKnownResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>GetOpenIDConfig gets the OIDC discovery document for the cluster. See the OpenID
+                    /// Connect Discovery 1.0 specification for details. https://openid.net/specs/openid-connect-
+                    /// discovery-1_0.html This API is not yet intended for general use, and is not available for all
+                    /// clusters.</summary>
+                    /// <param name="parent">The cluster (project, location, cluster id) to get the discovery document for. Specified in the
+                    /// format 'projects/locations/clusters'.</param>
+                    public virtual GetOpenidConfigurationRequest GetOpenidConfiguration(string parent)
+                    {
+                        return new GetOpenidConfigurationRequest(service, parent);
+                    }
+
+                    /// <summary>GetOpenIDConfig gets the OIDC discovery document for the cluster. See the OpenID
+                    /// Connect Discovery 1.0 specification for details. https://openid.net/specs/openid-connect-
+                    /// discovery-1_0.html This API is not yet intended for general use, and is not available for all
+                    /// clusters.</summary>
+                    public class GetOpenidConfigurationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.GetOpenIDConfigResponse>
+                    {
+                        /// <summary>Constructs a new GetOpenidConfiguration request.</summary>
+                        public GetOpenidConfigurationRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The cluster (project, location, cluster id) to get the discovery document for.
+                        /// Specified in the format 'projects/locations/clusters'.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "getOpenid-configuration"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta1/{+parent}/.well-known/openid-configuration"; }
+                        }
+
+                        /// <summary>Initializes GetOpenidConfiguration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
 
                 /// <summary>Completes master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -1707,6 +1800,72 @@ namespace Google.Apis.Container.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>GetJSONWebKeys gets the public component of the cluster signing keys in JSON Web Key
+                /// format. This API is not yet intended for general use, and is not available for all
+                /// clusters.</summary>
+                /// <param name="parent">The cluster (project, location, cluster id) to get keys for. Specified in the format
+                /// 'projects/locations/clusters'.</param>
+                public virtual GetJwksRequest GetJwks(string parent)
+                {
+                    return new GetJwksRequest(service, parent);
+                }
+
+                /// <summary>GetJSONWebKeys gets the public component of the cluster signing keys in JSON Web Key
+                /// format. This API is not yet intended for general use, and is not available for all
+                /// clusters.</summary>
+                public class GetJwksRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.GetJSONWebKeysResponse>
+                {
+                    /// <summary>Constructs a new GetJwks request.</summary>
+                    public GetJwksRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The cluster (project, location, cluster id) to get keys for. Specified in the format
+                    /// 'projects/locations/clusters'.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getJwks"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/jwks"; }
+                    }
+
+                    /// <summary>Initializes GetJwks parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                     }
 
@@ -2767,6 +2926,11 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+                    /// and replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OperationId { get; set; }
+
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -2778,11 +2942,6 @@ namespace Google.Apis.Container.v1beta1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
-
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OperationId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2818,6 +2977,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2830,15 +2998,6 @@ namespace Google.Apis.Container.v1beta1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6776,6 +6935,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentNodeVersion")]
         public virtual string CurrentNodeVersion { get; set; } 
 
+        /// <summary>Configuration of etcd encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseEncryption")]
+        public virtual DatabaseEncryption DatabaseEncryption { get; set; } 
+
         /// <summary>The default constraint on the maximum number of pods that can be run simultaneously on a node in
         /// the node pool of this cluster. Only honored if cluster created with IP Alias support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMaxPodsConstraint")]
@@ -7219,6 +7382,22 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration of etcd encryption.</summary>
+    public class DatabaseEncryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-
+        /// project/locations/global/keyRings/my-ring/cryptoKeys/my-key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; } 
+
+        /// <summary>Denotes the state of etcd encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -7227,6 +7406,53 @@ namespace Google.Apis.Container.v1beta1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517</summary>
+    public class GetJSONWebKeysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The public component of the keys used by the cluster to sign token requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<Jwk> Keys { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>GetOpenIDConfigResponse is an OIDC discovery document for the cluster. See the OpenID Connect Discovery
+    /// 1.0 specification for details.</summary>
+    public class GetOpenIDConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claims_supported")]
+        public virtual System.Collections.Generic.IList<string> ClaimsSupported { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grant_types")]
+        public virtual System.Collections.Generic.IList<string> GrantTypes { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id_token_signing_alg_values_supported")]
+        public virtual System.Collections.Generic.IList<string> IdTokenSigningAlgValuesSupported { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwks_uri")]
+        public virtual string JwksUri { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response_types_supported")]
+        public virtual System.Collections.Generic.IList<string> ResponseTypesSupported { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject_types_supported")]
+        public virtual System.Collections.Generic.IList<string> SubjectTypesSupported { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7387,6 +7613,49 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether Istio is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Jwk is a JSON Web Key as specified in RFC 7517</summary>
+    public class Jwk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alg")]
+        public virtual string Alg { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crv")]
+        public virtual string Crv { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("e")]
+        public virtual string E { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kid")]
+        public virtual string Kid { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kty")]
+        public virtual string Kty { get; set; } 
+
+        /// <summary>Fields for RSA keys. NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("n")]
+        public virtual string N { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("use")]
+        public virtual string Use { get; set; } 
+
+        /// <summary>Fields for ECDSA keys. NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual string X { get; set; } 
+
+        /// <summary>NOLINT</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual string Y { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

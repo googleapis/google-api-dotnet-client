@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190108 (1468)
+ *      <tr><th>API Rev<td>20190115 (1475)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -970,6 +970,10 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
+            /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -994,10 +998,6 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1024,6 +1024,15 @@ namespace Google.Apis.CloudIdentity.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1045,15 +1054,6 @@ namespace Google.Apis.CloudIdentity.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180622 (1268)
+ *      <tr><th>API Rev<td>20180730 (1306)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -8115,18 +8115,18 @@ namespace Google.Apis.Analytics.v3
             }
 
 
-            /// <summary>Deletes a web property-AdWords link.</summary>
+            /// <summary>Deletes a web property-Google Ads link.</summary>
             /// <param name="accountId">ID of the account which the given web property belongs to.</param>
             /// <param
-            /// name="webPropertyId">Web property ID to delete the AdWords link for.</param>
+            /// name="webPropertyId">Web property ID to delete the Google Ads link for.</param>
             /// <param
-            /// name="webPropertyAdWordsLinkId">Web property AdWords link ID.</param>
+            /// name="webPropertyAdWordsLinkId">Web property Google Ads link ID.</param>
             public virtual DeleteRequest Delete(string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
                 return new DeleteRequest(service, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
-            /// <summary>Deletes a web property-AdWords link.</summary>
+            /// <summary>Deletes a web property-Google Ads link.</summary>
             public class DeleteRequest : AnalyticsBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -8144,11 +8144,11 @@ namespace Google.Apis.Analytics.v3
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to delete the AdWords link for.</summary>
+                /// <summary>Web property ID to delete the Google Ads link for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>Web property AdWords link ID.</summary>
+                /// <summary>Web property Google Ads link ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyAdWordsLinkId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
@@ -8207,18 +8207,18 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Returns a web property-AdWords link to which the user has access.</summary>
+            /// <summary>Returns a web property-Google Ads link to which the user has access.</summary>
             /// <param name="accountId">ID of the account which the given web property belongs to.</param>
             /// <param
-            /// name="webPropertyId">Web property ID to retrieve the AdWords link for.</param>
+            /// name="webPropertyId">Web property ID to retrieve the Google Ads link for.</param>
             /// <param
-            /// name="webPropertyAdWordsLinkId">Web property-AdWords link ID.</param>
+            /// name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual GetRequest Get(string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
                 return new GetRequest(service, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
-            /// <summary>Returns a web property-AdWords link to which the user has access.</summary>
+            /// <summary>Returns a web property-Google Ads link to which the user has access.</summary>
             public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -8236,11 +8236,11 @@ namespace Google.Apis.Analytics.v3
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to retrieve the AdWords link for.</summary>
+                /// <summary>Web property ID to retrieve the Google Ads link for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>Web property-AdWords link ID.</summary>
+                /// <summary>Web property-Google Ads link ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyAdWordsLinkId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
@@ -8299,7 +8299,7 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Creates a webProperty-AdWords link.</summary>
+            /// <summary>Creates a webProperty-Google Ads link.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">ID of the Google Analytics account to create the link for.</param>
             /// <param
@@ -8309,7 +8309,7 @@ namespace Google.Apis.Analytics.v3
                 return new InsertRequest(service, body, accountId, webPropertyId);
             }
 
-            /// <summary>Creates a webProperty-AdWords link.</summary>
+            /// <summary>Creates a webProperty-Google Ads link.</summary>
             public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Insert request.</summary>
@@ -8383,16 +8383,16 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Lists webProperty-AdWords links for a given web property.</summary>
+            /// <summary>Lists webProperty-Google Ads links for a given web property.</summary>
             /// <param name="accountId">ID of the account which the given web property belongs to.</param>
             /// <param
-            /// name="webPropertyId">Web property ID to retrieve the AdWords links for.</param>
+            /// name="webPropertyId">Web property ID to retrieve the Google Ads links for.</param>
             public virtual ListRequest List(string accountId, string webPropertyId)
             {
                 return new ListRequest(service, accountId, webPropertyId);
             }
 
-            /// <summary>Lists webProperty-AdWords links for a given web property.</summary>
+            /// <summary>Lists webProperty-Google Ads links for a given web property.</summary>
             public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLinks>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -8409,15 +8409,15 @@ namespace Google.Apis.Analytics.v3
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to retrieve the AdWords links for.</summary>
+                /// <summary>Web property ID to retrieve the Google Ads links for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>The maximum number of webProperty-AdWords links to include in this response.</summary>
+                /// <summary>The maximum number of webProperty-Google Ads links to include in this response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("max-results", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>An index of the first webProperty-AdWords link to retrieve. Use this parameter as a
+                /// <summary>An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a
                 /// pagination mechanism along with the max-results parameter.</summary>
                 /// [minimum: 1]
                 [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
@@ -8487,19 +8487,21 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Updates an existing webProperty-AdWords link. This method supports patch semantics.</summary>
+            /// <summary>Updates an existing webProperty-Google Ads link. This method supports patch
+            /// semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">ID of the account which the given web property belongs to.</param>
             /// <param
-            /// name="webPropertyId">Web property ID to retrieve the AdWords link for.</param>
+            /// name="webPropertyId">Web property ID to retrieve the Google Ads link for.</param>
             /// <param
-            /// name="webPropertyAdWordsLinkId">Web property-AdWords link ID.</param>
+            /// name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
                 return new PatchRequest(service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
-            /// <summary>Updates an existing webProperty-AdWords link. This method supports patch semantics.</summary>
+            /// <summary>Updates an existing webProperty-Google Ads link. This method supports patch
+            /// semantics.</summary>
             public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -8518,11 +8520,11 @@ namespace Google.Apis.Analytics.v3
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to retrieve the AdWords link for.</summary>
+                /// <summary>Web property ID to retrieve the Google Ads link for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>Web property-AdWords link ID.</summary>
+                /// <summary>Web property-Google Ads link ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyAdWordsLinkId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
@@ -8587,19 +8589,19 @@ namespace Google.Apis.Analytics.v3
 
             }
 
-            /// <summary>Updates an existing webProperty-AdWords link.</summary>
+            /// <summary>Updates an existing webProperty-Google Ads link.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">ID of the account which the given web property belongs to.</param>
             /// <param
-            /// name="webPropertyId">Web property ID to retrieve the AdWords link for.</param>
+            /// name="webPropertyId">Web property ID to retrieve the Google Ads link for.</param>
             /// <param
-            /// name="webPropertyAdWordsLinkId">Web property-AdWords link ID.</param>
+            /// name="webPropertyAdWordsLinkId">Web property-Google Ads link ID.</param>
             public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.EntityAdWordsLink body, string accountId, string webPropertyId, string webPropertyAdWordsLinkId)
             {
                 return new UpdateRequest(service, body, accountId, webPropertyId, webPropertyAdWordsLinkId);
             }
 
-            /// <summary>Updates an existing webProperty-AdWords link.</summary>
+            /// <summary>Updates an existing webProperty-Google Ads link.</summary>
             public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.EntityAdWordsLink>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -8618,11 +8620,11 @@ namespace Google.Apis.Analytics.v3
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Web property ID to retrieve the AdWords link for.</summary>
+                /// <summary>Web property ID to retrieve the Google Ads link for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyId { get; private set; }
 
-                /// <summary>Web property-AdWords link ID.</summary>
+                /// <summary>Web property-Google Ads link ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("webPropertyAdWordsLinkId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string WebPropertyAdWordsLinkId { get; private set; }
 
@@ -10080,9 +10082,6 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
         public virtual string AccountName { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("accountSettings")]
-        public virtual AccountTreeRequest.AccountSettingsData AccountSettings { get; set; } 
-
         /// <summary>Resource type for account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -10101,23 +10100,6 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
-
-        public class AccountSettingsData
-        {
-            [Newtonsoft.Json.JsonPropertyAttribute("shareAnonymouslyWithOthers")]
-            public virtual System.Nullable<bool> ShareAnonymouslyWithOthers { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithGoogleProducts")]
-            public virtual System.Nullable<bool> ShareWithGoogleProducts { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSpecialists")]
-            public virtual System.Nullable<bool> ShareWithSpecialists { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSupport")]
-            public virtual System.Nullable<bool> ShareWithSupport { get; set; } 
-
-        }
     }    
 
     /// <summary>JSON template for an Analytics account tree response. The account tree response is used in the
@@ -10127,9 +10109,6 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>The account created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("accountSettings")]
-        public virtual AccountTreeResponse.AccountSettingsData AccountSettings { get; set; } 
 
         /// <summary>Resource type for account ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -10145,23 +10124,6 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
-
-        public class AccountSettingsData
-        {
-            [Newtonsoft.Json.JsonPropertyAttribute("shareAnonymouslyWithOthers")]
-            public virtual System.Nullable<bool> ShareAnonymouslyWithOthers { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithGoogleProducts")]
-            public virtual System.Nullable<bool> ShareWithGoogleProducts { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSpecialists")]
-            public virtual System.Nullable<bool> ShareWithSpecialists { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSupport")]
-            public virtual System.Nullable<bool> ShareWithSupport { get; set; } 
-
-        }
     }    
 
     /// <summary>An account collection provides a list of Analytics accounts to which a user has access. The account
@@ -10209,19 +10171,19 @@ namespace Google.Apis.Analytics.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for an AdWords account.</summary>
+    /// <summary>JSON template for an Google Ads account.</summary>
     public class AdWordsAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if auto-tagging is enabled on the AdWords account. Read-only after the insert
+        /// <summary>True if auto-tagging is enabled on the Google Ads account. Read-only after the insert
         /// operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoTaggingEnabled")]
         public virtual System.Nullable<bool> AutoTaggingEnabled { get; set; } 
 
-        /// <summary>Customer ID. This field is required when creating an AdWords link.</summary>
+        /// <summary>Customer ID. This field is required when creating a Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
-        /// <summary>Resource type for AdWords account.</summary>
+        /// <summary>Resource type for Google Ads account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -10754,11 +10716,11 @@ namespace Google.Apis.Analytics.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JSON template for Analytics Entity AdWords Link.</summary>
+    /// <summary>JSON template for Analytics Entity Google Ads Link.</summary>
     public class EntityAdWordsLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of AdWords client accounts. These cannot be MCC accounts. This field is required when
-        /// creating an AdWords link. It cannot be empty.</summary>
+        /// <summary>A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when
+        /// creating a Google Ads link. It cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adWordsAccounts")]
         public virtual System.Collections.Generic.IList<AdWordsAccount> AdWordsAccounts { get; set; } 
 
@@ -10766,15 +10728,15 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual EntityAdWordsLink.EntityData Entity { get; set; } 
 
-        /// <summary>Entity AdWords link ID</summary>
+        /// <summary>Entity Google Ads link ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Resource type for entity AdWords link.</summary>
+        /// <summary>Resource type for entity Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the link. This field is required when creating an AdWords link.</summary>
+        /// <summary>Name of the link. This field is required when creating a Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -10782,7 +10744,7 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileIds")]
         public virtual System.Collections.Generic.IList<string> ProfileIds { get; set; } 
 
-        /// <summary>URL link for this Google Analytics - Google AdWords link.</summary>
+        /// <summary>URL link for this Google Analytics - Google Ads link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -10799,11 +10761,11 @@ namespace Google.Apis.Analytics.v3.Data
         }
     }    
 
-    /// <summary>An entity AdWords link collection provides a list of GA-AdWords links Each resource in this collection
-    /// corresponds to a single link.</summary>
+    /// <summary>An entity Google Ads link collection provides a list of GA-Google Ads links Each resource in this
+    /// collection corresponds to a single link.</summary>
     public class EntityAdWordsLinks : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of entity AdWords links.</summary>
+        /// <summary>A list of entity Google Ads links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<EntityAdWordsLink> Items { get; set; } 
 
@@ -10817,11 +10779,11 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Next link for this AdWords link collection.</summary>
+        /// <summary>Next link for this Google Ads link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>Previous link for this AdWords link collection.</summary>
+        /// <summary>Previous link for this Google Ads link collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
         public virtual string PreviousLink { get; set; } 
 
@@ -12162,8 +12124,8 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The foreign account ID. For example the an AdWords `linkedAccountId` has the following format XXX-
-        /// XXX-XXXX.</summary>
+        /// <summary>The foreign account ID. For example the an Google Ads `linkedAccountId` has the following format
+        /// XXX-XXX-XXXX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; } 
 

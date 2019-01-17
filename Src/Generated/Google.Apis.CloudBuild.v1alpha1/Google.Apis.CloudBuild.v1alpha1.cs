@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190109 (1469)
+ *      <tr><th>API Rev<td>20190116 (1476)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1272,8 +1272,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// this build.</summary>
     public class SourceProvenance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Hash(es) of the build source, which can be used to verify that the originalsource
-        /// integrity was maintained in the build. Note that `FileHashes` willonly be populated if `BuildOptions` has
+        /// <summary>Output only. Hash(es) of the build source, which can be used to verify that the original source
+        /// integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has
         /// requested a `SourceProvenanceHash`.
         ///
         /// The keys to this map are file paths used as build source and the values contain the hash values for those
