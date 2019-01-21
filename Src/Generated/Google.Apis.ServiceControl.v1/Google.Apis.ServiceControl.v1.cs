@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190111 (1471)
+ *      <tr><th>API Rev<td>20190114 (1474)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -935,7 +935,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>Indicates if service activation check should be skipped for this request. Default behavior is to
-        /// perform the check and apply relevant quota.</summary>
+        /// perform the check and apply relevant quota. WARNING: Setting this flag to "true" will disable quota
+        /// enforcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipActivationCheck")]
         public virtual System.Nullable<bool> SkipActivationCheck { get; set; } 
 

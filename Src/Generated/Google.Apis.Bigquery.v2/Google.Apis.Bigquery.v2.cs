@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190106 (1466)
+ *      <tr><th>API Rev<td>20190108 (1468)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3195,6 +3195,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
         public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; } 
 
+        /// <summary>[Optional, Experimental] If hive partitioning is enabled, which mode to use. Two modes are
+        /// supported: - AUTO: automatically infer partition key name(s) and type(s). - STRINGS: automatic infer
+        /// partition key name(s). All types are strings. Not all storage formats support hive partitioning --
+        /// requesting hive partitioning on an unsupported format will lead to an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
+        public virtual string HivePartitioningMode { get; set; } 
+
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
         /// records, and if there are too many bad records, an invalid error is returned in the job result. The default
@@ -3560,6 +3567,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// default value is a comma (',').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; } 
+
+        /// <summary>[Optional, Experimental] If hive partitioning is enabled, which mode to use. Two modes are
+        /// supported: - AUTO: automatically infer partition key name(s) and type(s). - STRINGS: automatic infer
+        /// partition key name(s). All types are strings. Not all storage formats support hive partitioning --
+        /// requesting hive partitioning on an unsupported format will lead to an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
+        public virtual string HivePartitioningMode { get; set; } 
 
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad

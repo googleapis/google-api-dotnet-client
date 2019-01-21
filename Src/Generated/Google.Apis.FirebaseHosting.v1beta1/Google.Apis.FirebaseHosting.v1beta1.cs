@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190114 (1474)
+ *      <tr><th>API Rev<td>20190118 (1478)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -1094,15 +1094,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
-                /// legacy version uploads.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> SizeBytes { get; set; }
-
                 /// <summary>A unique id for the new version. This is only specified for legacy version
                 /// creations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionId { get; set; }
+
+                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
+                /// legacy version uploads.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> SizeBytes { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1144,18 +1144,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "sizeBytes", new Google.Apis.Discovery.Parameter
+                        "versionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "sizeBytes",
+                            Name = "versionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "versionId", new Google.Apis.Discovery.Parameter
+                        "sizeBytes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "versionId",
+                            Name = "sizeBytes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

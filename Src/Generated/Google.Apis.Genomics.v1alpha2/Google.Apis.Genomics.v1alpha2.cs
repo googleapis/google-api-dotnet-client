@@ -916,6 +916,11 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
+            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
+            /// in the project, up to `pageSize`, will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NamePrefix { get; set; }
+
             /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
             /// of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -929,11 +934,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
-            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
-            /// in the project, up to `pageSize`, will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string NamePrefix { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -960,6 +960,15 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "namePrefix", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "namePrefix",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -981,15 +990,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "namePrefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "namePrefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

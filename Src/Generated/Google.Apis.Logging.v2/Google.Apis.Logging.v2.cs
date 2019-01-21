@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190105 (1465)
+ *      <tr><th>API Rev<td>20190115 (1475)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -957,17 +957,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1003,18 +1003,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1371,7 +1371,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -1384,7 +1384,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -1488,7 +1488,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -1501,7 +1501,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3055,17 +3055,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3101,18 +3101,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3123,7 +3123,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -3136,7 +3136,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3240,7 +3240,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -3253,7 +3253,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3573,17 +3573,17 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
-            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
-            /// method parameters should be identical to those in the previous call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
             /// ignored. The presence of nextPageToken in the response indicates that more results might be
             /// available.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
+            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
+            /// method parameters should be identical to those in the previous call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3610,18 +3610,18 @@ namespace Google.Apis.Logging.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3910,17 +3910,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3956,18 +3956,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4192,17 +4192,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4238,18 +4238,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4606,7 +4606,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -4619,7 +4619,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -4723,7 +4723,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -4736,7 +4736,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -5402,17 +5402,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5448,18 +5448,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5711,17 +5711,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5757,18 +5757,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6197,7 +6197,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -6210,7 +6210,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -6314,7 +6314,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -6327,7 +6327,7 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+            /// the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
             /// unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -6769,7 +6769,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from the
-        /// new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+        /// new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
         /// unique_writer_identity field.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
@@ -6782,7 +6782,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from the
-        /// new sink: destination, and filter. The updated sink might also have a new writer_identity; see the
+        /// new sink: destination, and filter.The updated sink might also have a new writer_identity; see the
         /// unique_writer_identity field.</summary>
         public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
@@ -7257,9 +7257,9 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Required. The resource name of the log to which this log entry belongs:
         /// "projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]" "folders/[FOLDER_ID]/logs/[LOG_ID]" A project number
-        /// may optionally be used in place of PROJECT_ID. The  project number is translated to its corresponding
-        /// PROJECT_ID internally  and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must
-        /// be URL-encoded within log_name. Example:
+        /// may optionally be used in place of PROJECT_ID. The project number is translated to its corresponding
+        /// PROJECT_ID internally and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
+        /// URL-encoded within log_name. Example:
         /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
         /// 512 characters long and can only include the following characters: upper and lower case alphanumeric
         /// characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins
@@ -7269,7 +7269,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
-        /// <summary>Output only. Additional metadata about the monitored resource. Only k8s_container, k8s_pod, and
+        /// <summary>Output only. Additional metadata about the monitored resource.Only k8s_container, k8s_pod, and
         /// k8s_node MonitoredResources have this field populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MonitoredResourceMetadata Metadata { get; set; } 
@@ -7287,7 +7287,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("receiveTimestamp")]
         public virtual object ReceiveTimestamp { get; set; } 
 
-        /// <summary>Required. The primary monitored resource associated with this log entry. Example: a log entry that
+        /// <summary>Required. The primary monitored resource associated with this log entry.Example: a log entry that
         /// reports a database error would be associated with the monitored resource designating the particular database
         /// that reported the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -7301,7 +7301,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
         public virtual LogEntrySourceLocation SourceLocation { get; set; } 
 
-        /// <summary>Optional. The span ID within the trace associated with the log entry. For Trace spans, this is the
+        /// <summary>Optional. The span ID within the trace associated with the log entry.For Trace spans, this is the
         /// same format that the Trace API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as
         /// "000000000000004a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
@@ -7327,7 +7327,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trace")]
         public virtual string Trace { get; set; } 
 
-        /// <summary>Optional. The sampling decision of the trace associated with the log entry. True means that the
+        /// <summary>Optional. The sampling decision of the trace associated with the log entry.True means that the
         /// trace resource name in the trace field was sampled for storage in a trace backend. False means that the
         /// trace was not sampled for storage when this log entry was written, or the sampling decision was unknown at
         /// the time. A non-sampled trace value is still useful as a request correlation identifier. The default is
@@ -7395,12 +7395,17 @@ namespace Google.Apis.Logging.v2.Data
     /// Amazon Web Services are never excluded.</summary>
     public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The creation timestamp of the exclusion.This field may not be present for older
+        /// exclusions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
         /// <summary>Optional. A description of this exclusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
         /// <summary>Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries.
-        /// You can use exclusions.patch to change the value of this field.</summary>
+        /// You can update an exclusion to change the value of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
@@ -7415,6 +7420,11 @@ namespace Google.Apis.Logging.v2.Data
         /// to 100 characters and can include only letters, digits, underscores, hyphens, and periods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The last update timestamp of the exclusion.This field may not be present for older
+        /// exclusions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7453,6 +7463,11 @@ namespace Google.Apis.Logging.v2.Data
         /// type and it describes the bucket boundaries used to create a histogram of the extracted values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
         public virtual BucketOptions BucketOptions { get; set; } 
+
+        /// <summary>Output only. The creation timestamp of the metric.This field may not be present for older
+        /// metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>Optional. A description of this metric, which is used in documentation. The maximum length of the
         /// description is 8000 characters.</summary>
@@ -7498,6 +7513,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Output only. The last update timestamp of the metric.This field may not be present for older
+        /// metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
         /// <summary>Optional. A value_extractor is required when using a distribution logs-based metric to extract the
         /// values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or
         /// REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the
@@ -7525,11 +7545,16 @@ namespace Google.Apis.Logging.v2.Data
     /// exported. The sink must be created within a project, organization, billing account, or folder.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The creation timestamp of the sink.This field may not be present for older
+        /// sinks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
         /// <summary>Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the
         /// sink is created, must have permission to write to the destination or else the log entries are not exported.
-        /// For more information, see Exporting Logs With Sinks.</summary>
+        /// For more information, see Exporting Logs with Sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
@@ -7562,11 +7587,16 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
 
+        /// <summary>Output only. The last update timestamp of the sink.This field may not be present for older
+        /// sinks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
         /// <summary>Output only. An IAM identitya service account or groupunder which Logging writes the exported log
-        /// entries to the sink's destination. This field is set by sinks.create and sinks.update, based on the setting
-        /// of unique_writer_identity in those methods.Until you grant this identity write-access to the destination,
-        /// log entry exports from this sink will fail. For more information, see Granting access for a resource.
-        /// Consult the destination service's documentation to determine the appropriate IAM roles to assign to the
+        /// entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of
+        /// unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log
+        /// entry exports from this sink will fail. For more information, see Granting Access for a Resource. Consult
+        /// the destination service's documentation to determine the appropriate IAM roles to assign to the
         /// identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
         public virtual string WriterIdentity { get; set; } 

@@ -16,11 +16,11 @@
           },
           "parameters": {
             "name": {
+              "location": "path",
               "description": "Output only. The resource name, in the format `projects/*/policy`. There is\nat most one policy per project.",
               "required": true,
               "type": "string",
-              "pattern": "^projects/[^/]+/policy$",
-              "location": "path"
+              "pattern": "^projects/[^/]+/policy$"
             }
           },
           "scopes": [
@@ -35,64 +35,88 @@
           }
         },
         "getPolicy": {
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "name"
-          ],
           "response": {
             "$ref": "Policy"
           },
-          "parameters": {
-            "name": {
-              "description": "Required. The resource name of the policy to retrieve,\nin the format `projects/*/policy`.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+/policy$",
-              "location": "path"
-            }
-          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "name": {
+              "pattern": "^projects/[^/]+/policy$",
+              "location": "path",
+              "description": "Required. The resource name of the policy to retrieve,\nin the format `projects/*/policy`.",
+              "required": true,
+              "type": "string"
+            }
+          },
           "flatPath": "v1beta1/projects/{projectsId}/policy",
-          "id": "binaryauthorization.projects.getPolicy",
           "path": "v1beta1/{+name}",
+          "id": "binaryauthorization.projects.getPolicy",
           "description": "Gets the policy for this project. Returns a default\npolicy if the project does not have one."
         }
       },
       "resources": {
         "policy": {
           "methods": {
-            "setIamPolicy": {
-              "request": {
-                "$ref": "SetIamPolicyRequest"
-              },
-              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+            "getIamPolicy": {
               "response": {
                 "$ref": "IamPolicy"
               },
               "parameterOrder": [
                 "resource"
               ],
-              "httpMethod": "POST",
+              "httpMethod": "GET",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
                 "resource": {
-                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
                   "pattern": "^projects/[^/]+/policy$",
-                  "location": "path"
+                  "location": "path",
+                  "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string"
                 }
               },
+              "flatPath": "v1beta1/projects/{projectsId}/policy:getIamPolicy",
+              "path": "v1beta1/{+resource}:getIamPolicy",
+              "id": "binaryauthorization.projects.policy.getIamPolicy",
+              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
+            },
+            "setIamPolicy": {
+              "parameters": {
+                "resource": {
+                  "pattern": "^projects/[^/]+/policy$",
+                  "location": "path",
+                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1beta1/projects/{projectsId}/policy:setIamPolicy",
+              "id": "binaryauthorization.projects.policy.setIamPolicy",
               "path": "v1beta1/{+resource}:setIamPolicy",
-              "id": "binaryauthorization.projects.policy.setIamPolicy"
+              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+              "request": {
+                "$ref": "SetIamPolicyRequest"
+              },
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "resource"
+              ],
+              "response": {
+                "$ref": "IamPolicy"
+              }
             },
             "testIamPermissions": {
-              "flatPath": "v1beta1/projects/{projectsId}/policy:testIamPermissions",
               "id": "binaryauthorization.projects.policy.testIamPermissions",
               "path": "v1beta1/{+resource}:testIamPermissions",
               "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
@@ -108,51 +132,170 @@
               },
               "parameters": {
                 "resource": {
+                  "pattern": "^projects/[^/]+/policy$",
                   "location": "path",
                   "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/policy$"
+                  "type": "string"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ]
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/policy:testIamPermissions"
+            }
+          }
+        },
+        "attestors": {
+          "methods": {
+            "delete": {
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Required. The name of the attestors to delete, in the format\n`projects/*/attestors/*`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/attestors/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}",
+              "path": "v1beta1/{+name}",
+              "id": "binaryauthorization.projects.attestors.delete",
+              "description": "Deletes an attestor. Returns NOT_FOUND if the\nattestor does not exist."
             },
-            "getIamPolicy": {
+            "list": {
+              "response": {
+                "$ref": "ListAttestorsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The resource name of the project associated with the\nattestors, in the format `projects/*`."
+                },
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of ListAttestorsResponse.next_page_token returned\nfrom the previous call to the `ListAttestors` method."
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Requested page size. The server may return fewer results than requested. If\nunspecified, the server will pick an appropriate default.",
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/attestors",
+              "path": "v1beta1/{+parent}/attestors",
+              "id": "binaryauthorization.projects.attestors.list",
+              "description": "Lists attestors.\nReturns INVALID_ARGUMENT if the project does not exist."
+            },
+            "create": {
+              "response": {
+                "$ref": "Attestor"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "attestorId": {
+                  "description": "Required. The attestors ID.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The parent of this attestor.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/attestors",
+              "path": "v1beta1/{+parent}/attestors",
+              "id": "binaryauthorization.projects.attestors.create",
+              "request": {
+                "$ref": "Attestor"
+              },
+              "description": "Creates an attestor, and returns a copy of the new\nattestor. Returns NOT_FOUND if the project does not exist,\nINVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the\nattestor already exists."
+            },
+            "setIamPolicy": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "pattern": "^projects/[^/]+/attestors/[^/]+$",
+                  "location": "path",
+                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}:setIamPolicy",
+              "path": "v1beta1/{+resource}:setIamPolicy",
+              "id": "binaryauthorization.projects.attestors.setIamPolicy",
+              "request": {
+                "$ref": "SetIamPolicyRequest"
+              },
+              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
               "response": {
                 "$ref": "IamPolicy"
               },
               "parameterOrder": [
                 "resource"
               ],
+              "httpMethod": "POST"
+            },
+            "getIamPolicy": {
+              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
               "httpMethod": "GET",
+              "response": {
+                "$ref": "IamPolicy"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
               "parameters": {
                 "resource": {
-                  "location": "path",
                   "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/policy$"
+                  "pattern": "^projects/[^/]+/attestors/[^/]+$",
+                  "location": "path"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/projects/{projectsId}/policy:getIamPolicy",
-              "path": "v1beta1/{+resource}:getIamPolicy",
-              "id": "binaryauthorization.projects.policy.getIamPolicy",
-              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
-            }
-          }
-        },
-        "attestors": {
-          "methods": {
+              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}:getIamPolicy",
+              "id": "binaryauthorization.projects.attestors.getIamPolicy",
+              "path": "v1beta1/{+resource}:getIamPolicy"
+            },
             "get": {
-              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}",
-              "path": "v1beta1/{+name}",
-              "id": "binaryauthorization.projects.attestors.get",
-              "description": "Gets an attestor.\nReturns NOT_FOUND if the attestor does not exist.",
               "response": {
                 "$ref": "Attestor"
               },
@@ -171,9 +314,15 @@
                   "type": "string",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$"
                 }
-              }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}",
+              "path": "v1beta1/{+name}",
+              "id": "binaryauthorization.projects.attestors.get",
+              "description": "Gets an attestor.\nReturns NOT_FOUND if the attestor does not exist."
             },
             "update": {
+              "path": "v1beta1/{+name}",
+              "id": "binaryauthorization.projects.attestors.update",
               "request": {
                 "$ref": "Attestor"
               },
@@ -190,191 +339,42 @@
               ],
               "parameters": {
                 "name": {
+                  "pattern": "^projects/[^/]+/attestors/[^/]+$",
                   "location": "path",
                   "description": "Required. The resource name, in the format:\n`projects/*/attestors/*`. This field may not be updated.",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/attestors/[^/]+$"
+                  "type": "string"
                 }
               },
-              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}",
-              "path": "v1beta1/{+name}",
-              "id": "binaryauthorization.projects.attestors.update"
+              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}"
             },
             "testIamPermissions": {
               "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}:testIamPermissions",
-              "path": "v1beta1/{+resource}:testIamPermissions",
               "id": "binaryauthorization.projects.attestors.testIamPermissions",
+              "path": "v1beta1/{+resource}:testIamPermissions",
+              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
               "request": {
                 "$ref": "TestIamPermissionsRequest"
               },
-              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "resource"
+              ],
               "response": {
                 "$ref": "TestIamPermissionsResponse"
               },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "resource": {
-                  "location": "path",
-                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/attestors/[^/]+$"
-                }
-              }
-            },
-            "delete": {
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE",
-              "parameters": {
-                "name": {
-                  "description": "Required. The name of the attestors to delete, in the format\n`projects/*/attestors/*`.",
                   "required": true,
                   "type": "string",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}",
-              "path": "v1beta1/{+name}",
-              "id": "binaryauthorization.projects.attestors.delete",
-              "description": "Deletes an attestor. Returns NOT_FOUND if the\nattestor does not exist."
-            },
-            "list": {
-              "flatPath": "v1beta1/projects/{projectsId}/attestors",
-              "path": "v1beta1/{+parent}/attestors",
-              "id": "binaryauthorization.projects.attestors.list",
-              "description": "Lists attestors.\nReturns INVALID_ARGUMENT if the project does not exist.",
-              "response": {
-                "$ref": "ListAttestorsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of ListAttestorsResponse.next_page_token returned\nfrom the previous call to the `ListAttestors` method.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "Requested page size. The server may return fewer results than requested. If\nunspecified, the server will pick an appropriate default.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "parent": {
-                  "description": "Required. The resource name of the project associated with the\nattestors, in the format `projects/*`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                }
-              }
-            },
-            "create": {
-              "response": {
-                "$ref": "Attestor"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "attestorId": {
-                  "location": "query",
-                  "description": "Required. The attestors ID.",
-                  "type": "string"
-                },
-                "parent": {
-                  "description": "Required. The parent of this attestor.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/attestors",
-              "path": "v1beta1/{+parent}/attestors",
-              "id": "binaryauthorization.projects.attestors.create",
-              "description": "Creates an attestor, and returns a copy of the new\nattestor. Returns NOT_FOUND if the project does not exist,\nINVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the\nattestor already exists.",
-              "request": {
-                "$ref": "Attestor"
-              }
-            },
-            "setIamPolicy": {
-              "response": {
-                "$ref": "IamPolicy"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "resource": {
                   "location": "path",
-                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/attestors/[^/]+$"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}:setIamPolicy",
-              "path": "v1beta1/{+resource}:setIamPolicy",
-              "id": "binaryauthorization.projects.attestors.setIamPolicy",
-              "request": {
-                "$ref": "SetIamPolicyRequest"
-              },
-              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy."
-            },
-            "getIamPolicy": {
-              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "IamPolicy"
-              },
-              "parameters": {
-                "resource": {
-                  "location": "path",
-                  "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/attestors/[^/]+$"
+                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/attestors/{attestorsId}:getIamPolicy",
-              "id": "binaryauthorization.projects.attestors.getIamPolicy",
-              "path": "v1beta1/{+resource}:getIamPolicy"
+              ]
             }
           }
         }
@@ -382,6 +382,16 @@
     }
   },
   "parameters": {
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
     "$.xgafv": {
       "enumDescriptions": [
         "v1 error format",
@@ -395,19 +405,7 @@
       "description": "V1 error format.",
       "type": "string"
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -419,36 +417,33 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
+      "default": "true",
+      "location": "query"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -456,82 +451,30 @@
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v1beta1",
   "baseUrl": "https://binaryauthorization.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.\n",
   "servicePath": "",
+  "description": "The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.\n",
+  "kind": "discovery#restDescription",
   "basePath": "",
   "revision": "20190110",
-  "id": "binaryauthorization:v1beta1",
   "documentationLink": "https://cloud.google.com/binary-authorization/",
+  "id": "binaryauthorization:v1beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
-          "$ref": "IamPolicy"
-        }
-      },
-      "id": "SetIamPolicyRequest"
-    },
-    "IamPolicy": {
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-      "type": "object",
-      "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "description": "Deprecated.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          }
-        }
-      },
-      "id": "IamPolicy"
-    },
-    "Binding": {
-      "description": "Associates `members` with a `role`.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "$ref": "Expr",
-          "description": "Unimplemented. The condition that is associated with this binding.\nNOTE: an unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
-        },
-        "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        }
-      },
-      "id": "Binding"
-    },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
     },
     "Expr": {
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
@@ -557,9 +500,14 @@
       "id": "Expr"
     },
     "AttestorPublicKey": {
+      "id": "AttestorPublicKey",
       "description": "An attestator public key that will be used to\nverify attestations signed by this attestor.",
       "type": "object",
       "properties": {
+        "asciiArmoredPgpPublicKey": {
+          "type": "string",
+          "description": "ASCII-armored representation of a PGP public key, as the entire output by\nthe command `gpg --export --armor foo@example.com` (either LF or CRLF\nline endings)."
+        },
         "comment": {
           "description": "Optional. A descriptive comment. This field may be updated.",
           "type": "string"
@@ -567,13 +515,8 @@
         "id": {
           "description": "Output only. This field will be overwritten with key ID information, for\nexample, an identifier extracted from a PGP public key. This field may not\nbe updated.",
           "type": "string"
-        },
-        "asciiArmoredPgpPublicKey": {
-          "description": "ASCII-armored representation of a PGP public key, as the entire output by\nthe command `gpg --export --armor foo@example.com` (either LF or CRLF\nline endings).",
-          "type": "string"
         }
-      },
-      "id": "AttestorPublicKey"
+      }
     },
     "AdmissionWhitelistPattern": {
       "description": "An admission whitelist pattern exempts images\nfrom checks by admission rules.",
@@ -590,65 +533,63 @@
       "description": "An attestor that attests to container image\nartifacts. An existing attestor cannot be modified except where\nindicated.",
       "type": "object",
       "properties": {
+        "name": {
+          "description": "Required. The resource name, in the format:\n`projects/*/attestors/*`. This field may not be updated.",
+          "type": "string"
+        },
         "description": {
           "description": "Optional. A descriptive comment.  This field may be updated.\nThe field may be displayed in chooser dialogs.",
           "type": "string"
         },
         "userOwnedDrydockNote": {
-          "description": "A Drydock ATTESTATION_AUTHORITY Note, created by the user.",
-          "$ref": "UserOwnedDrydockNote"
+          "$ref": "UserOwnedDrydockNote",
+          "description": "A Drydock ATTESTATION_AUTHORITY Note, created by the user."
         },
         "updateTime": {
           "description": "Output only. Time when the attestor was last updated.",
           "format": "google-datetime",
-          "type": "string"
-        },
-        "name": {
-          "description": "Required. The resource name, in the format:\n`projects/*/attestors/*`. This field may not be updated.",
           "type": "string"
         }
       },
       "id": "Attestor"
     },
     "UserOwnedDrydockNote": {
-      "description": "An user owned drydock note references a Drydock\nATTESTATION_AUTHORITY Note created by the user.",
-      "type": "object",
       "properties": {
+        "noteReference": {
+          "type": "string",
+          "description": "Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note,\ncreated by the user, in the format: `projects/*/notes/*` (or the legacy\n`providers/*/notes/*`). This field may not be updated.\n\nAn attestation by this attestor is stored as a Drydock\nATTESTATION_AUTHORITY Occurrence that names a container image and that\nlinks to this Note. Drydock is an external dependency."
+        },
+        "delegationServiceAccountEmail": {
+          "description": "Output only. This field will contain the service account email address\nthat this Attestor will use as the principal when querying Container\nAnalysis. Attestor administrators must grant this service account the\nIAM role needed to read attestations from the note_reference in\nContainer Analysis (`containeranalysis.notes.occurrences.viewer`).\n\nThis email address is fixed for the lifetime of the Attestor, but callers\nshould not make any other assumptions about the service account email;\nfuture versions may use an email based on a different naming pattern.",
+          "type": "string"
+        },
         "publicKeys": {
           "description": "Optional. Public keys that verify attestations signed by this\nattestor.  This field may be updated.\n\nIf this field is non-empty, one of the specified public keys must\nverify that an attestation was signed by this attestor for the\nimage specified in the admission request.\n\nIf this field is empty, this attestor always returns that no\nvalid attestations exist.",
           "type": "array",
           "items": {
             "$ref": "AttestorPublicKey"
           }
-        },
-        "noteReference": {
-          "description": "Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note,\ncreated by the user, in the format: `projects/*/notes/*` (or the legacy\n`providers/*/notes/*`). This field may not be updated.\n\nAn attestation by this attestor is stored as a Drydock\nATTESTATION_AUTHORITY Occurrence that names a container image and that\nlinks to this Note. Drydock is an external dependency.",
-          "type": "string"
-        },
-        "delegationServiceAccountEmail": {
-          "description": "Output only. This field will contain the service account email address\nthat this Attestor will use as the principal when querying Container\nAnalysis. Attestor administrators must grant this service account the\nIAM role needed to read attestations from the note_reference in\nContainer Analysis (`containeranalysis.notes.occurrences.viewer`).\n\nThis email address is fixed for the lifetime of the Attestor, but callers\nshould not make any other assumptions about the service account email;\nfuture versions may use an email based on a different naming pattern.",
-          "type": "string"
         }
       },
-      "id": "UserOwnedDrydockNote"
+      "id": "UserOwnedDrydockNote",
+      "description": "An user owned drydock note references a Drydock\nATTESTATION_AUTHORITY Note created by the user.",
+      "type": "object"
     },
     "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."
         }
       },
-      "id": "TestIamPermissionsResponse"
+      "id": "TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method."
     },
     "ListAttestorsResponse": {
-      "description": "Response message for BinauthzManagementService.ListAttestors.",
-      "type": "object",
       "properties": {
         "attestors": {
           "description": "The list of attestors.",
@@ -658,11 +599,13 @@
           }
         },
         "nextPageToken": {
-          "description": "A token to retrieve the next page of results. Pass this value in the\nListAttestorsRequest.page_token field in the subsequent call to the\n`ListAttestors` method to retrieve the next page of results.",
-          "type": "string"
+          "type": "string",
+          "description": "A token to retrieve the next page of results. Pass this value in the\nListAttestorsRequest.page_token field in the subsequent call to the\n`ListAttestors` method to retrieve the next page of results."
         }
       },
-      "id": "ListAttestorsResponse"
+      "id": "ListAttestorsResponse",
+      "description": "Response message for BinauthzManagementService.ListAttestors.",
+      "type": "object"
     },
     "TestIamPermissionsRequest": {
       "description": "Request message for `TestIamPermissions` method.",
@@ -679,9 +622,19 @@
       "id": "TestIamPermissionsRequest"
     },
     "Policy": {
-      "description": "A policy for container image binary authorization.",
       "type": "object",
       "properties": {
+        "defaultAdmissionRule": {
+          "$ref": "AdmissionRule",
+          "description": "Required. Default admission rule for a cluster without a per-cluster\nadmission rule."
+        },
+        "clusterAdmissionRules": {
+          "additionalProperties": {
+            "$ref": "AdmissionRule"
+          },
+          "description": "Optional. Per-cluster admission rules. Cluster spec format:\n`location.clusterId`. There can be at most one admission rule per cluster\nspec.\nA `location` is either a compute zone (e.g. us-central1-a) or a region\n(e.g. us-central1).\nFor `clusterId` syntax restrictions see\nhttps://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.",
+          "type": "object"
+        },
         "description": {
           "description": "Optional. A descriptive comment.",
           "type": "string"
@@ -694,32 +647,39 @@
           }
         },
         "updateTime": {
+          "type": "string",
           "description": "Output only. Time when the policy was last updated.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "name": {
           "description": "Output only. The resource name, in the format `projects/*/policy`. There is\nat most one policy per project.",
           "type": "string"
-        },
-        "defaultAdmissionRule": {
-          "$ref": "AdmissionRule",
-          "description": "Required. Default admission rule for a cluster without a per-cluster\nadmission rule."
-        },
-        "clusterAdmissionRules": {
-          "additionalProperties": {
-            "$ref": "AdmissionRule"
-          },
-          "description": "Optional. Per-cluster admission rules. Cluster spec format:\n`location.clusterId`. There can be at most one admission rule per cluster\nspec.\nA `location` is either a compute zone (e.g. us-central1-a) or a region\n(e.g. us-central1).\nFor `clusterId` syntax restrictions see\nhttps://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.",
-          "type": "object"
         }
       },
-      "id": "Policy"
+      "id": "Policy",
+      "description": "A policy for container image binary authorization."
     },
     "AdmissionRule": {
-      "description": "An admission rule specifies either that all container images\nused in a pod creation request must be attested to by one or more\nattestors, that all pod creations will be allowed, or that all\npod creations will be denied.\n\nImages matching an admission whitelist pattern\nare exempted from admission rules and will never block a pod creation.",
-      "type": "object",
       "properties": {
+        "enforcementMode": {
+          "enumDescriptions": [
+            "Mandatory.",
+            "Enforce the admission rule by blocking the pod creation."
+          ],
+          "enum": [
+            "ENFORCEMENT_MODE_UNSPECIFIED",
+            "ENFORCED_BLOCK_AND_AUDIT_LOG"
+          ],
+          "description": "Required. The action when a pod creation is denied by the admission rule.",
+          "type": "string"
+        },
+        "requireAttestationsBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional. The resource names of the attestors that must attest to\na container image, in the format `projects/*/attestors/*`. Each\nattestor must exist before a policy can reference it.  To add an attestor\nto a policy the principal issuing the policy change request must be able\nto read the attestor resource.\n\nNote: this field must be non-empty when the evaluation_mode field specifies\nREQUIRE_ATTESTATION, otherwise it must be empty."
+        },
         "evaluationMode": {
           "enumDescriptions": [
             "Mandatory.",
@@ -735,28 +695,68 @@
           ],
           "description": "Required. How this admission rule will be evaluated.",
           "type": "string"
+        }
+      },
+      "id": "AdmissionRule",
+      "description": "An admission rule specifies either that all container images\nused in a pod creation request must be attested to by one or more\nattestors, that all pod creations will be allowed, or that all\npod creations will be denied.\n\nImages matching an admission whitelist pattern\nare exempted from admission rules and will never block a pod creation.",
+      "type": "object"
+    },
+    "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
+      "properties": {
+        "policy": {
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "$ref": "IamPolicy"
+        }
+      },
+      "id": "SetIamPolicyRequest"
+    },
+    "IamPolicy": {
+      "type": "object",
+      "properties": {
+        "etag": {
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+          "format": "byte",
+          "type": "string"
         },
-        "enforcementMode": {
-          "description": "Required. The action when a pod creation is denied by the admission rule.",
-          "type": "string",
-          "enumDescriptions": [
-            "Mandatory.",
-            "Enforce the admission rule by blocking the pod creation."
-          ],
-          "enum": [
-            "ENFORCEMENT_MODE_UNSPECIFIED",
-            "ENFORCED_BLOCK_AND_AUDIT_LOG"
-          ]
+        "version": {
+          "description": "Deprecated.",
+          "format": "int32",
+          "type": "integer"
         },
-        "requireAttestationsBy": {
-          "description": "Optional. The resource names of the attestors that must attest to\na container image, in the format `projects/*/attestors/*`. Each\nattestor must exist before a policy can reference it.  To add an attestor\nto a policy the principal issuing the policy change request must be able\nto read the attestor resource.\n\nNote: this field must be non-empty when the evaluation_mode field specifies\nREQUIRE_ATTESTATION, otherwise it must be empty.",
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "Binding"
           }
         }
       },
-      "id": "AdmissionRule"
+      "id": "IamPolicy",
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs)."
+    },
+    "Binding": {
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
+        },
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
+        "condition": {
+          "description": "Unimplemented. The condition that is associated with this binding.\nNOTE: an unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
+          "$ref": "Expr"
+        }
+      },
+      "id": "Binding"
     }
   },
   "protocol": "rest",

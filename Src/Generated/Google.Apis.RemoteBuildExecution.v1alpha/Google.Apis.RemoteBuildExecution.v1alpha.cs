@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190108 (1468)
+ *      <tr><th>API Rev<td>20190116 (1476)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1229,16 +1229,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// environment variables; these defaults can be overridden using this field. Additional variables can also be
         /// specified.
         ///
-        /// In order to ensure that equivalent `Command`s always hash to the same value, the environment variables MUST
-        /// be lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8
+        /// In order to ensure that equivalent Commands always hash to the same value, the environment variables MUST be
+        /// lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2CommandEnvironmentVariable> EnvironmentVariables { get; set; } 
 
         /// <summary>A list of the output directories that the client expects to retrieve from the action. Only the
-        /// contents of the indicated directories (recursively including the contents of their subdirectories) will be
-        /// returned, as well as files listed in `output_files`. Other files that may be created during command
-        /// execution are discarded.
+        /// listed directories will be returned (an entire directory structure will be returned as a Tree message
+        /// digest, see OutputDirectory), as well as files listed in `output_files`. Other files or directories that may
+        /// be created during command execution are discarded.
         ///
         /// The paths are relative to the working directory of the action execution. The paths are specified using a
         /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
@@ -1249,14 +1249,16 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
         /// by code point (or, equivalently, by UTF-8 bytes).
         ///
-        /// An output directory cannot be duplicated, be a parent of another output directory, be a parent of a listed
-        /// output file, or have the same path as any of the listed output files.</summary>
+        /// An output directory cannot be duplicated or have the same path as any of the listed output files.
+        ///
+        /// Directories leading up to the output directories (but not the output directories themselves) are created by
+        /// the worker prior to execution, even if they are not explicitly part of the input root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<string> OutputDirectories { get; set; } 
 
         /// <summary>A list of the output files that the client expects to retrieve from the action. Only the listed
         /// files, as well as directories listed in `output_directories`, will be returned to the client as output.
-        /// Other files that may be created during command execution are discarded.
+        /// Other files or directories that may be created during command execution are discarded.
         ///
         /// The paths are relative to the working directory of the action execution. The paths are specified using a
         /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
@@ -1265,8 +1267,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
         /// by code point (or, equivalently, by UTF-8 bytes).
         ///
-        /// An output file cannot be duplicated, be a parent of another output file, be a child of a listed output
-        /// directory, or have the same path as any of the listed output directories.</summary>
+        /// An output file cannot be duplicated, be a parent of another output file, or have the same path as any of the
+        /// listed output directories.
+        ///
+        /// Directories leading up to the output files are created by the worker prior to execution, even if they are
+        /// not explicitly part of the input root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<string> OutputFiles { get; set; } 
 
@@ -1317,9 +1322,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     ///
     /// When a `Digest` is used to refer to a proto message, it always refers to the message in binary encoded form. To
     /// ensure consistent hashing, clients and servers MUST ensure that they serialize messages according to the
-    /// following rules, even if there are alternate valid encodings for the same message. - Fields are serialized in
-    /// tag order. - There are no unknown fields. - There are no duplicate fields. - Fields are serialized according to
-    /// the default semantics for their type.
+    /// following rules, even if there are alternate valid encodings for the same message:
+    ///
+    /// * Fields are serialized in tag order. * There are no unknown fields. * There are no duplicate fields. * Fields
+    /// are serialized according to the default semantics for their type.
     ///
     /// Most protocol buffer implementations will always follow these rules when serializing, but care should be taken
     /// to avoid shortcuts. For instance, concatenating two messages to merge them may produce duplicate
@@ -1345,10 +1351,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// the file or directory.
     ///
     /// In order to ensure that two equivalent directory trees hash to the same value, the following restrictions MUST
-    /// be obeyed when constructing a a `Directory`: - Every child in the directory must have a path of exactly one
-    /// segment. Multiple levels of directory hierarchy may not be collapsed. - Each child in the directory must have a
-    /// unique path segment (file name). - The files, directories and symlinks in the directory must each be sorted in
-    /// lexicographical order by path. The path strings must be sorted by code point, equivalently, by UTF-8 bytes.
+    /// be obeyed when constructing a a `Directory`:
+    ///
+    /// * Every child in the directory must have a path of exactly one segment. Multiple levels of directory hierarchy
+    /// may not be collapsed. * Each child in the directory must have a unique path segment (file name). * The files,
+    /// directories and symlinks in the directory must each be sorted in lexicographical order by path. The path strings
+    /// must be sorted by code point, equivalently, by UTF-8 bytes.
     ///
     /// A `Directory` that obeys the restrictions is said to be in canonical form.
     ///
@@ -1425,6 +1433,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// <summary>True if the result was served from cache, false if it was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cachedResult")]
         public virtual System.Nullable<bool> CachedResult { get; set; } 
+
+        /// <summary>Freeform informational message with details on the execution of the action that may be displayed to
+        /// the user upon failure or when requested explicitly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The result of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
@@ -1642,8 +1655,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
     /// <summary>An optional Metadata to attach to any RPC request to tell the server about an external context of the
     /// request. The server may use this for logging or other purposes. To use it, the client attaches the header to the
-    /// call using the canonical proto serialization: name: build.bazel.remote.execution.v2.requestmetadata-bin
-    /// contents: the base64 encoded binary RequestMetadata message.</summary>
+    /// call using the canonical proto serialization:
+    ///
+    /// * name: `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the base64 encoded binary
+    /// `RequestMetadata` message.</summary>
     public class BuildBazelRemoteExecutionV2RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An identifier that ties multiple requests to the same action. For example, multiple requests to the
@@ -1879,6 +1894,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
+        /// <summary>Output only. Whether stack driver logging is enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingEnabled")]
+        public virtual System.Nullable<bool> LoggingEnabled { get; set; } 
+
         /// <summary>Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         /// Name should not be populated when creating an instance since it is provided in the `instance_id`
         /// field.</summary>
@@ -1976,7 +1995,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
-        /// <summary>Output only. `reserved=true` means the worker is reserved and won't be preempted.</summary>
+        /// <summary>Determines whether the worker is reserved (and therefore won't be preempted). See [Preemptible
+        /// VMs](https://cloud.google.com/preemptible-vms/) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; } 
 
@@ -2503,6 +2523,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
         public virtual System.Nullable<int> ExitCode { get; set; } 
 
+        /// <summary>Implementation-dependent metadata about the task. Both servers and bots may define messages which
+        /// can be encoded here; bots are free to provide metadata in multiple formats, and servers are free to choose
+        /// one or more of the values to process and ignore others. In particular, it is *not* considered an error for
+        /// the bot to provide the server with a field that it doesn't know about.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metadata { get; set; } 
+
         /// <summary>The output files. The blob referenced by the digest should contain one of the following
         /// (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style
         /// .isolated file</summary>
@@ -2512,13 +2539,6 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// <summary>The amount of time *not* spent executing the command (ie uploading/downloading files).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overhead")]
         public virtual object Overhead { get; set; } 
-
-        /// <summary>Implementation-dependent statistics about the task. Both servers and bots may define messages which
-        /// can be encoded here; bots are free to provide statistics in multiple formats, and servers are free to choose
-        /// one or more of the values to process and ignore others. In particular, it is *not* considered an error for
-        /// the bot to provide the server with a field that it doesn't know about.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Statistics { get; set; } 
 
         /// <summary>An overall status for the command. For example, if the command timed out, this might have a code of
         /// DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of

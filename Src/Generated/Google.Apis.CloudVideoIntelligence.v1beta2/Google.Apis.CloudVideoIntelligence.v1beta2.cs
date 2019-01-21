@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20181126 (1425)
+ *      <tr><th>API Rev<td>20190112 (1472)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -1645,13 +1645,23 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual GoogleCloudVideointelligenceV1p2beta1Entity Entity { get; set; } 
 
-        /// <summary>Information corresponding to all frames where this object track appears.</summary>
+        /// <summary>Information corresponding to all frames where this object track appears. Non-streaming batch mode:
+        /// it may be one or multiple ObjectTrackingFrame messages in frames. Streaming mode: it can only be one
+        /// ObjectTrackingFrame message in frames.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frames")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame> Frames { get; set; } 
 
-        /// <summary>Each object track corresponds to one video segment where it appears.</summary>
+        /// <summary>Non-streaming batch mode ONLY. Each object track corresponds to one video segment where it
+        /// appears.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
         public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
+
+        /// <summary>Streaming mode ONLY. In streaming mode, we do not know the end time of a tracked object before it
+        /// is completed. Hence, there is no VideoSegment info returned. Instead, we provide a unique identifiable
+        /// integer track_id so that the customers can correlate the results of the ongoing ObjectTrackAnnotation of the
+        /// same track_id over time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
+        public virtual System.Nullable<long> TrackId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

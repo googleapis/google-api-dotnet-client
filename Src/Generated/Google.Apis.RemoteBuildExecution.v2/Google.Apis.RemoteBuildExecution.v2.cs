@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190108 (1468)
+ *      <tr><th>API Rev<td>20190116 (1476)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -367,7 +367,9 @@ namespace Google.Apis.RemoteBuildExecution.v2
 
         /// <summary>Retrieve a cached execution result.
         ///
-        /// Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the cache.</summary>
+        /// Errors:
+        ///
+        /// * `NOT_FOUND`: The requested `ActionResult` is not in the cache.</summary>
         /// <param name="instanceName">The instance of the execution system to operate against. A server may support multiple
         /// instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of
         /// this field to select between them in an implementation-defined fashion, otherwise it can be omitted.</param>
@@ -382,7 +384,9 @@ namespace Google.Apis.RemoteBuildExecution.v2
 
         /// <summary>Retrieve a cached execution result.
         ///
-        /// Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the cache.</summary>
+        /// Errors:
+        ///
+        /// * `NOT_FOUND`: The requested `ActionResult` is not in the cache.</summary>
         public class GetRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v2.Data.BuildBazelRemoteExecutionV2ActionResult>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -469,15 +473,15 @@ namespace Google.Apis.RemoteBuildExecution.v2
 
         /// <summary>Upload a new execution result.
         ///
-        /// This method is intended for servers which implement the distributed cache independently of the Execution
-        /// API. As a result, it is OPTIONAL for servers to implement.
-        ///
         /// In order to allow the server to perform access control based on the type of action, and to assist with
         /// client debugging, the client MUST first upload the Action that produced the result, along with its Command,
         /// into the `ContentAddressableStorage`.
         ///
-        /// Errors: * `UNIMPLEMENTED`: This method is not supported by the server. * `RESOURCE_EXHAUSTED`: There is
-        /// insufficient storage space to add the entry to the cache.</summary>
+        /// Errors:
+        ///
+        /// * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
+        /// occurred in updating the action result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There
+        /// is insufficient storage space to add the entry to the cache.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="instanceName">The instance of the execution system to operate against. A server may support multiple
         /// instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of
@@ -493,15 +497,15 @@ namespace Google.Apis.RemoteBuildExecution.v2
 
         /// <summary>Upload a new execution result.
         ///
-        /// This method is intended for servers which implement the distributed cache independently of the Execution
-        /// API. As a result, it is OPTIONAL for servers to implement.
-        ///
         /// In order to allow the server to perform access control based on the type of action, and to assist with
         /// client debugging, the client MUST first upload the Action that produced the result, along with its Command,
         /// into the `ContentAddressableStorage`.
         ///
-        /// Errors: * `UNIMPLEMENTED`: This method is not supported by the server. * `RESOURCE_EXHAUSTED`: There is
-        /// insufficient storage space to add the entry to the cache.</summary>
+        /// Errors:
+        ///
+        /// * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
+        /// occurred in updating the action result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There
+        /// is insufficient storage space to add the entry to the cache.</summary>
         public class UpdateRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v2.Data.BuildBazelRemoteExecutionV2ActionResult>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -653,14 +657,17 @@ namespace Google.Apis.RemoteBuildExecution.v2
         ///
         /// Errors discovered during creation of the `Operation` will be reported as gRPC Status errors, while errors
         /// that occurred while running the action will be reported in the `status` field of the `ExecuteResponse`. The
-        /// server MUST NOT set the `error` field of the `Operation` proto. The possible errors include: *
-        /// `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors occurred
-        /// in setting up the action requested, such as a missing input or command or no worker being available. The
-        /// client may be able to fix the errors and retry. * `RESOURCE_EXHAUSTED`: There is insufficient quota of some
-        /// resource to run the action. * `UNAVAILABLE`: Due to a transient condition, such as all workers being
-        /// occupied (and the server does not support a queue), the action could not be started. The client should
+        /// server MUST NOT set the `error` field of the `Operation` proto. The possible errors include:
+        ///
+        /// * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
+        /// occurred in setting up the action requested, such as a missing input or command or no worker being
+        /// available. The client may be able to fix the errors and retry. * `RESOURCE_EXHAUSTED`: There is insufficient
+        /// quota of some resource to run the action. * `UNAVAILABLE`: Due to a transient condition, such as all workers
+        /// being occupied (and the server does not support a queue), the action could not be started. The client should
         /// retry. * `INTERNAL`: An internal error occurred in the execution engine or the worker. *
-        /// `DEADLINE_EXCEEDED`: The execution timed out.
+        /// `DEADLINE_EXCEEDED`: The execution timed out. * `CANCELLED`: The operation was cancelled by the client. This
+        /// status is only possible if the server implements the Operations API CancelOperation method, and it was
+        /// called for the current execution.
         ///
         /// In the case of a missing input or command, the server SHOULD additionally send a PreconditionFailure error
         /// detail where, for each requested blob not present in the CAS, there is a `Violation` with a `type` of
@@ -698,14 +705,17 @@ namespace Google.Apis.RemoteBuildExecution.v2
         ///
         /// Errors discovered during creation of the `Operation` will be reported as gRPC Status errors, while errors
         /// that occurred while running the action will be reported in the `status` field of the `ExecuteResponse`. The
-        /// server MUST NOT set the `error` field of the `Operation` proto. The possible errors include: *
-        /// `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors occurred
-        /// in setting up the action requested, such as a missing input or command or no worker being available. The
-        /// client may be able to fix the errors and retry. * `RESOURCE_EXHAUSTED`: There is insufficient quota of some
-        /// resource to run the action. * `UNAVAILABLE`: Due to a transient condition, such as all workers being
-        /// occupied (and the server does not support a queue), the action could not be started. The client should
+        /// server MUST NOT set the `error` field of the `Operation` proto. The possible errors include:
+        ///
+        /// * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
+        /// occurred in setting up the action requested, such as a missing input or command or no worker being
+        /// available. The client may be able to fix the errors and retry. * `RESOURCE_EXHAUSTED`: There is insufficient
+        /// quota of some resource to run the action. * `UNAVAILABLE`: Due to a transient condition, such as all workers
+        /// being occupied (and the server does not support a queue), the action could not be started. The client should
         /// retry. * `INTERNAL`: An internal error occurred in the execution engine or the worker. *
-        /// `DEADLINE_EXCEEDED`: The execution timed out.
+        /// `DEADLINE_EXCEEDED`: The execution timed out. * `CANCELLED`: The operation was cancelled by the client. This
+        /// status is only possible if the server implements the Operations API CancelOperation method, and it was
+        /// called for the current execution.
         ///
         /// In the case of a missing input or command, the server SHOULD additionally send a PreconditionFailure error
         /// detail where, for each requested blob not present in the CAS, there is a `Violation` with a `type` of
@@ -798,7 +808,9 @@ namespace Google.Apis.RemoteBuildExecution.v2
         /// This request is equivalent to calling a Bytestream `Read` request on each individual blob, in parallel. The
         /// requests may succeed or fail independently.
         ///
-        /// Errors: * `INVALID_ARGUMENT`: The client attempted to read more than the server supported limit.
+        /// Errors:
+        ///
+        /// * `INVALID_ARGUMENT`: The client attempted to read more than the server supported limit.
         ///
         /// Every error on individual read will be returned in the corresponding digest status.</summary>
         /// <param name="body">The body of the request.</param>
@@ -819,7 +831,9 @@ namespace Google.Apis.RemoteBuildExecution.v2
         /// This request is equivalent to calling a Bytestream `Read` request on each individual blob, in parallel. The
         /// requests may succeed or fail independently.
         ///
-        /// Errors: * `INVALID_ARGUMENT`: The client attempted to read more than the server supported limit.
+        /// Errors:
+        ///
+        /// * `INVALID_ARGUMENT`: The client attempted to read more than the server supported limit.
         ///
         /// Every error on individual read will be returned in the corresponding digest status.</summary>
         public class BatchReadRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v2.Data.BuildBazelRemoteExecutionV2BatchReadBlobsResponse>
@@ -893,11 +907,14 @@ namespace Google.Apis.RemoteBuildExecution.v2
         /// This request is equivalent to calling a Bytestream `Write` request on each individual blob, in parallel. The
         /// requests may succeed or fail independently.
         ///
-        /// Errors: * `INVALID_ARGUMENT`: The client attempted to upload more than the server supported limit.
+        /// Errors:
         ///
-        /// Individual requests may return the following errors, additionally: * `RESOURCE_EXHAUSTED`: There is
-        /// insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The Digest does not match the provided
-        /// data.</summary>
+        /// * `INVALID_ARGUMENT`: The client attempted to upload more than the server supported limit.
+        ///
+        /// Individual requests may return the following errors, additionally:
+        ///
+        /// * `RESOURCE_EXHAUSTED`: There is insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The Digest
+        /// does not match the provided data.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="instanceName">The instance of the execution system to operate against. A server may support multiple
         /// instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of
@@ -916,11 +933,14 @@ namespace Google.Apis.RemoteBuildExecution.v2
         /// This request is equivalent to calling a Bytestream `Write` request on each individual blob, in parallel. The
         /// requests may succeed or fail independently.
         ///
-        /// Errors: * `INVALID_ARGUMENT`: The client attempted to upload more than the server supported limit.
+        /// Errors:
         ///
-        /// Individual requests may return the following errors, additionally: * `RESOURCE_EXHAUSTED`: There is
-        /// insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The Digest does not match the provided
-        /// data.</summary>
+        /// * `INVALID_ARGUMENT`: The client attempted to upload more than the server supported limit.
+        ///
+        /// Individual requests may return the following errors, additionally:
+        ///
+        /// * `RESOURCE_EXHAUSTED`: There is insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The Digest
+        /// does not match the provided data.</summary>
         public class BatchUpdateRequest : RemoteBuildExecutionBaseServiceRequest<Google.Apis.RemoteBuildExecution.v2.Data.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1137,17 +1157,17 @@ namespace Google.Apis.RemoteBuildExecution.v2
             [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long SizeBytes { get; private set; }
 
-            /// <summary>A page token, which must be a value received in a previous GetTreeResponse. If present, the
-            /// server will use it to return the following page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>A maximum page size to request. If present, the server will request no more than this many
             /// items. Regardless of whether a page size is specified, the server may place its own limit on the number
             /// of items to be returned and require the client to retrieve more items using a subsequent
             /// request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A page token, which must be a value received in a previous GetTreeResponse. If present, the
+            /// server will use it to return the following page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1201,18 +1221,18 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1691,16 +1711,16 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// environment variables; these defaults can be overridden using this field. Additional variables can also be
         /// specified.
         ///
-        /// In order to ensure that equivalent `Command`s always hash to the same value, the environment variables MUST
-        /// be lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8
+        /// In order to ensure that equivalent Commands always hash to the same value, the environment variables MUST be
+        /// lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2CommandEnvironmentVariable> EnvironmentVariables { get; set; } 
 
         /// <summary>A list of the output directories that the client expects to retrieve from the action. Only the
-        /// contents of the indicated directories (recursively including the contents of their subdirectories) will be
-        /// returned, as well as files listed in `output_files`. Other files that may be created during command
-        /// execution are discarded.
+        /// listed directories will be returned (an entire directory structure will be returned as a Tree message
+        /// digest, see OutputDirectory), as well as files listed in `output_files`. Other files or directories that may
+        /// be created during command execution are discarded.
         ///
         /// The paths are relative to the working directory of the action execution. The paths are specified using a
         /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
@@ -1711,14 +1731,16 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
         /// by code point (or, equivalently, by UTF-8 bytes).
         ///
-        /// An output directory cannot be duplicated, be a parent of another output directory, be a parent of a listed
-        /// output file, or have the same path as any of the listed output files.</summary>
+        /// An output directory cannot be duplicated or have the same path as any of the listed output files.
+        ///
+        /// Directories leading up to the output directories (but not the output directories themselves) are created by
+        /// the worker prior to execution, even if they are not explicitly part of the input root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<string> OutputDirectories { get; set; } 
 
         /// <summary>A list of the output files that the client expects to retrieve from the action. Only the listed
         /// files, as well as directories listed in `output_directories`, will be returned to the client as output.
-        /// Other files that may be created during command execution are discarded.
+        /// Other files or directories that may be created during command execution are discarded.
         ///
         /// The paths are relative to the working directory of the action execution. The paths are specified using a
         /// single forward slash (`/`) as a path separator, even if the execution platform natively uses a different
@@ -1727,8 +1749,11 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
         /// by code point (or, equivalently, by UTF-8 bytes).
         ///
-        /// An output file cannot be duplicated, be a parent of another output file, be a child of a listed output
-        /// directory, or have the same path as any of the listed output directories.</summary>
+        /// An output file cannot be duplicated, be a parent of another output file, or have the same path as any of the
+        /// listed output directories.
+        ///
+        /// Directories leading up to the output files are created by the worker prior to execution, even if they are
+        /// not explicitly part of the input root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<string> OutputFiles { get; set; } 
 
@@ -1779,9 +1804,10 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
     ///
     /// When a `Digest` is used to refer to a proto message, it always refers to the message in binary encoded form. To
     /// ensure consistent hashing, clients and servers MUST ensure that they serialize messages according to the
-    /// following rules, even if there are alternate valid encodings for the same message. - Fields are serialized in
-    /// tag order. - There are no unknown fields. - There are no duplicate fields. - Fields are serialized according to
-    /// the default semantics for their type.
+    /// following rules, even if there are alternate valid encodings for the same message:
+    ///
+    /// * Fields are serialized in tag order. * There are no unknown fields. * There are no duplicate fields. * Fields
+    /// are serialized according to the default semantics for their type.
     ///
     /// Most protocol buffer implementations will always follow these rules when serializing, but care should be taken
     /// to avoid shortcuts. For instance, concatenating two messages to merge them may produce duplicate
@@ -1807,10 +1833,12 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
     /// the file or directory.
     ///
     /// In order to ensure that two equivalent directory trees hash to the same value, the following restrictions MUST
-    /// be obeyed when constructing a a `Directory`: - Every child in the directory must have a path of exactly one
-    /// segment. Multiple levels of directory hierarchy may not be collapsed. - Each child in the directory must have a
-    /// unique path segment (file name). - The files, directories and symlinks in the directory must each be sorted in
-    /// lexicographical order by path. The path strings must be sorted by code point, equivalently, by UTF-8 bytes.
+    /// be obeyed when constructing a a `Directory`:
+    ///
+    /// * Every child in the directory must have a path of exactly one segment. Multiple levels of directory hierarchy
+    /// may not be collapsed. * Each child in the directory must have a unique path segment (file name). * The files,
+    /// directories and symlinks in the directory must each be sorted in lexicographical order by path. The path strings
+    /// must be sorted by code point, equivalently, by UTF-8 bytes.
     ///
     /// A `Directory` that obeys the restrictions is said to be in canonical form.
     ///
@@ -1914,6 +1942,11 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// <summary>True if the result was served from cache, false if it was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cachedResult")]
         public virtual System.Nullable<bool> CachedResult { get; set; } 
+
+        /// <summary>Freeform informational message with details on the execution of the action that may be displayed to
+        /// the user upon failure or when requested explicitly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The result of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
@@ -2228,8 +2261,10 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
 
     /// <summary>An optional Metadata to attach to any RPC request to tell the server about an external context of the
     /// request. The server may use this for logging or other purposes. To use it, the client attaches the header to the
-    /// call using the canonical proto serialization: name: build.bazel.remote.execution.v2.requestmetadata-bin
-    /// contents: the base64 encoded binary RequestMetadata message.</summary>
+    /// call using the canonical proto serialization:
+    ///
+    /// * name: `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the base64 encoded binary
+    /// `RequestMetadata` message.</summary>
     public class BuildBazelRemoteExecutionV2RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An identifier that ties multiple requests to the same action. For example, multiple requests to the
@@ -2357,17 +2392,23 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The full version of a given tool.</summary>
     public class BuildBazelSemverSemVer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The major version, e.g 10 for 10.2.3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("major")]
         public virtual System.Nullable<int> Major { get; set; } 
 
+        /// <summary>The minor version, e.g. 2 for 10.2.3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minor")]
         public virtual System.Nullable<int> Minor { get; set; } 
 
+        /// <summary>The patch version, e.g 3 for 10.2.3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patch")]
         public virtual System.Nullable<int> Patch { get; set; } 
 
+        /// <summary>The pre-release version. Either this field or major/minor/patch fields must be filled. They are
+        /// mutually exclusive. Pre-release versions are assumed to be earlier than any released versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prerelease")]
         public virtual string Prerelease { get; set; } 
 
@@ -2534,6 +2575,10 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
+        /// <summary>Output only. Whether stack driver logging is enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingEnabled")]
+        public virtual System.Nullable<bool> LoggingEnabled { get; set; } 
+
         /// <summary>Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         /// Name should not be populated when creating an instance since it is provided in the `instance_id`
         /// field.</summary>
@@ -2631,7 +2676,8 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
-        /// <summary>Output only. `reserved=true` means the worker is reserved and won't be preempted.</summary>
+        /// <summary>Determines whether the worker is reserved (and therefore won't be preempted). See [Preemptible
+        /// VMs](https://cloud.google.com/preemptible-vms/) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; } 
 
@@ -3158,6 +3204,13 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
         public virtual System.Nullable<int> ExitCode { get; set; } 
 
+        /// <summary>Implementation-dependent metadata about the task. Both servers and bots may define messages which
+        /// can be encoded here; bots are free to provide metadata in multiple formats, and servers are free to choose
+        /// one or more of the values to process and ignore others. In particular, it is *not* considered an error for
+        /// the bot to provide the server with a field that it doesn't know about.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metadata { get; set; } 
+
         /// <summary>The output files. The blob referenced by the digest should contain one of the following
         /// (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style
         /// .isolated file</summary>
@@ -3167,13 +3220,6 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// <summary>The amount of time *not* spent executing the command (ie uploading/downloading files).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overhead")]
         public virtual object Overhead { get; set; } 
-
-        /// <summary>Implementation-dependent statistics about the task. Both servers and bots may define messages which
-        /// can be encoded here; bots are free to provide statistics in multiple formats, and servers are free to choose
-        /// one or more of the values to process and ignore others. In particular, it is *not* considered an error for
-        /// the bot to provide the server with a field that it doesn't know about.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Statistics { get; set; } 
 
         /// <summary>An overall status for the command. For example, if the command timed out, this might have a code of
         /// DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of
