@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Wh4NAN5Zp83cU6VJnnnZMEj1J9U\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/62CTAjcZgObMIh6Lb59rsOBAAME\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20190102",
+ "revision": "20190117",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -418,7 +418,7 @@
     },
     "autoInstallMode": {
      "type": "string",
-     "description": "The auto install mode. If unset defaults to AVAILABLE."
+     "description": "The auto install mode. If unset defaults to \"doNotAutoInstall\"."
     },
     "autoInstallPriority": {
      "type": "integer",
@@ -1863,7 +1863,7 @@
     },
     "icons": {
      "type": "array",
-     "description": "A list of icons representing this website. Must have at least one element.",
+     "description": "A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used.",
      "items": {
       "$ref": "WebAppIcon"
      }
@@ -2292,29 +2292,6 @@
      ],
      "response": {
       "$ref": "Enterprise"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
-    "getAndroidDevicePolicyConfig": {
-     "id": "androidenterprise.enterprises.getAndroidDevicePolicyConfig",
-     "path": "enterprises/{enterpriseId}/androidDevicePolicyConfig",
-     "httpMethod": "GET",
-     "description": "Deprecated and unused.",
-     "parameters": {
-      "enterpriseId": {
-       "type": "string",
-       "description": "The ID of the enterprise.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "enterpriseId"
-     ],
-     "response": {
-      "$ref": "AndroidDevicePolicyConfig"
      },
      "scopes": [
       "https://www.googleapis.com/auth/androidenterprise"

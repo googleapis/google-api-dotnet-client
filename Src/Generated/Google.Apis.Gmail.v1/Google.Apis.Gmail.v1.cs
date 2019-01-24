@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181202 (1431)
+ *      <tr><th>API Rev<td>20190120 (1480)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -7127,7 +7127,8 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of messages.</summary>
+        /// <summary>List of messages. Note that each message resource contains only an id and a threadId. Additional
+        /// message details can be fetched using the messages.get method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; } 
 
@@ -7174,7 +7175,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resultSizeEstimate")]
         public virtual System.Nullable<long> ResultSizeEstimate { get; set; } 
 
-        /// <summary>List of threads.</summary>
+        /// <summary>List of threads. Note that each thread resource does not contain a list of messages. The list of
+        /// messages for a given thread can be fetched using the threads.get method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threads")]
         public virtual System.Collections.Generic.IList<Thread> Threads { get; set; } 
 

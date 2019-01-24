@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190111 (1471)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -406,10 +406,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The filter expression.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -417,6 +413,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     /// <summary>Number of occurrences to return in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The filter expression.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -452,15 +452,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                                 Pattern = @"^projects/[^/]+/notes/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -473,6 +464,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3193,6 +3193,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class KnowledgeBase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The KB name (generally of the form KB[0-9]+ i.e. KB123456).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A link to the KB in the Windows update catalog -
+        /// https://www.catalog.update.microsoft.com/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Layer holds metadata specific to a layer of a Docker image.</summary>
     public class Layer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3849,6 +3864,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
+        /// <summary>Windows details get their own format because the information format and model don't match a normal
+        /// detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing
+        /// package, rather than a package being at an incorrect version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsDetails")]
+        public virtual System.Collections.Generic.IList<WindowsDetail> WindowsDetails { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3879,6 +3900,31 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>A listing by resource of the number of fixable and total vulnerabilities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counts")]
         public virtual System.Collections.Generic.IList<FixableTotalByDigest> Counts { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class WindowsDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the
+        /// vulnerability manifests. Examples include distro or storage location for vulnerable jar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; } 
+
+        /// <summary>The description of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there
+        /// may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed
+        /// kb's presence is considered a fix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixingKbs")]
+        public virtual System.Collections.Generic.IList<KnowledgeBase> FixingKbs { get; set; } 
+
+        /// <summary>Required. The name of the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

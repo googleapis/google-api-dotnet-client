@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190114 (1474)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -579,6 +579,10 @@ namespace Google.Apis.ServiceUsage.v1
             }
 
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -590,10 +594,6 @@ namespace Google.Apis.ServiceUsage.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -619,6 +619,15 @@ namespace Google.Apis.ServiceUsage.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
@@ -646,15 +655,6 @@ namespace Google.Apis.ServiceUsage.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -677,9 +677,7 @@ namespace Google.Apis.ServiceUsage.v1
 
 
         /// <summary>Enable multiple services on a project. The operation is atomic: if enabling any service fails, then
-        /// the entire batch fails, and no state changes occur.
-        ///
-        /// Operation</summary>
+        /// the entire batch fails, and no state changes occur.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Parent to enable services on.
         ///
@@ -692,9 +690,7 @@ namespace Google.Apis.ServiceUsage.v1
         }
 
         /// <summary>Enable multiple services on a project. The operation is atomic: if enabling any service fails, then
-        /// the entire batch fails, and no state changes occur.
-        ///
-        /// Operation</summary>
+        /// the entire batch fails, and no state changes occur.</summary>
         public class BatchEnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
         {
             /// <summary>Constructs a new BatchEnable request.</summary>
@@ -762,9 +758,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// that may cause unexpected billing charges or security leaks.
         ///
         /// It is not valid to call the disable method on a service that is not currently enabled. Callers will receive
-        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.
-        ///
-        /// Operation</summary>
+        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Name of the consumer and service to disable the service on.
         ///
@@ -781,9 +775,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// that may cause unexpected billing charges or security leaks.
         ///
         /// It is not valid to call the disable method on a service that is not currently enabled. Callers will receive
-        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.
-        ///
-        /// Operation</summary>
+        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.</summary>
         public class DisableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
         {
             /// <summary>Constructs a new Disable request.</summary>
@@ -848,9 +840,7 @@ namespace Google.Apis.ServiceUsage.v1
 
         }
 
-        /// <summary>Enable a service so that it can be used with a project.
-        ///
-        /// Operation</summary>
+        /// <summary>Enable a service so that it can be used with a project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Name of the consumer and service to enable the service on.
         ///
@@ -865,9 +855,7 @@ namespace Google.Apis.ServiceUsage.v1
             return new EnableRequest(service, body, name);
         }
 
-        /// <summary>Enable a service so that it can be used with a project.
-        ///
-        /// Operation</summary>
+        /// <summary>Enable a service so that it can be used with a project.</summary>
         public class EnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
@@ -1035,6 +1023,11 @@ namespace Google.Apis.ServiceUsage.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
+            /// `state:ENABLED` and `state:DISABLED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Token identifying which result to start with, which is returned by a previous list
             /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1044,11 +1037,6 @@ namespace Google.Apis.ServiceUsage.v1
             /// default page size is 50.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
-            /// `state:ENABLED` and `state:DISABLED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1084,6 +1072,15 @@ namespace Google.Apis.ServiceUsage.v1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1096,15 +1093,6 @@ namespace Google.Apis.ServiceUsage.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

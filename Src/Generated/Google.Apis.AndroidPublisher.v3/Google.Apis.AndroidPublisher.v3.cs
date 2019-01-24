@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190114 (1474)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6850,7 +6850,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
-        /// account) - Promo (i.e. purchased using a promo code)</summary>
+        /// account) - Promo (i.e. purchased using a promo code) - Rewarded (i.e. from watching a video ad instead of
+        /// paying)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
 

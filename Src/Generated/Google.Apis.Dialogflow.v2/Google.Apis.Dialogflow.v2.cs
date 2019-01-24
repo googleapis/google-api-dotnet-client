@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190115 (1475)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1026,6 +1026,11 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
                     /// default language is used. [More than a dozen
                     /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
@@ -1036,11 +1041,6 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1076,6 +1076,15 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1088,15 +1097,6 @@ namespace Google.Apis.Dialogflow.v2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1666,6 +1666,17 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
+                    /// not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1683,17 +1694,6 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
-                    /// not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1729,24 +1729,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1759,6 +1741,24 @@ namespace Google.Apis.Dialogflow.v2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2562,15 +2562,15 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
-                        /// and at most 1000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Optional. The next_page_token value returned from a previous list
                         /// request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
+                        /// and at most 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2606,18 +2606,18 @@ namespace Google.Apis.Dialogflow.v2
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3718,7 +3718,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Optional. The collection of entities associated with the entity type.</summary>
+        /// <summary>Optional. The collection of entity entries associated with the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
 
@@ -3746,17 +3746,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Optional. Represents an entity.</summary>
+    /// <summary>An **entity entry** for an associated entity type.</summary>
     public class GoogleCloudDialogflowV2EntityTypeEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A collection of synonyms. For `KIND_LIST` entity types this must contain exactly one
-        /// synonym equal to `value`.</summary>
+        /// <summary>Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and
+        /// `value` is *scallions*, a synonym could be *green onions*.
+        ///
+        /// For `KIND_LIST` entity types:
+        ///
+        /// *   This collection must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
 
-        /// <summary>Required. For `KIND_MAP` entity types: A canonical name to be used in place of synonyms. For
-        /// `KIND_LIST` entity types: A string that can contain references to other entity types (with or without
-        /// aliases).</summary>
+        /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
+        /// *vegetable*, the value could be *scallions*.
+        ///
+        /// For `KIND_MAP` entity types:
+        ///
+        /// *   A canonical value to be used in place of synonyms.
+        ///
+        /// For `KIND_LIST` entity types:
+        ///
+        /// *   A string that can contain references to other entity types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -3766,7 +3777,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>Events allow for matching intents by event name instead of the natural language input. For instance,
     /// input `` can trigger a personalized welcome response. The parameter `name` may be used by the agent in the
-    /// response: `“Hello #welcome_event.name! What can I do for you today?”`.</summary>
+    /// response: `"Hello #welcome_event.name! What can I do for you today?"`.</summary>
     public class GoogleCloudDialogflowV2EventInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The language of this query. See [Language Support](https://dialogflow.com/docs/languages)
@@ -4913,7 +4924,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Optional. The collection of entities associated with the entity type.</summary>
+        /// <summary>Optional. The collection of entity entries associated with the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
 
@@ -4930,17 +4941,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Optional. Represents an entity.</summary>
+    /// <summary>An **entity entry** for an associated entity type.</summary>
     public class GoogleCloudDialogflowV2beta1EntityTypeEntity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A collection of synonyms. For `KIND_LIST` entity types this must contain exactly one
-        /// synonym equal to `value`.</summary>
+        /// <summary>Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and
+        /// `value` is *scallions*, a synonym could be *green onions*.
+        ///
+        /// For `KIND_LIST` entity types:
+        ///
+        /// *   This collection must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
         public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
 
-        /// <summary>Required. For `KIND_MAP` entity types: A canonical name to be used in place of synonyms. For
-        /// `KIND_LIST` entity types: A string that can contain references to other entity types (with or without
-        /// aliases).</summary>
+        /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
+        /// *vegetable*, the value could be *scallions*.
+        ///
+        /// For `KIND_MAP` entity types:
+        ///
+        /// *   A canonical value to be used in place of synonyms.
+        ///
+        /// For `KIND_LIST` entity types:
+        ///
+        /// *   A string that can contain references to other entity types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -4950,7 +4972,7 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>Events allow for matching intents by event name instead of the natural language input. For instance,
     /// input `` can trigger a personalized welcome response. The parameter `name` may be used by the agent in the
-    /// response: `“Hello #welcome_event.name! What can I do for you today?”`.</summary>
+    /// response: `"Hello #welcome_event.name! What can I do for you today?"`.</summary>
     public class GoogleCloudDialogflowV2beta1EventInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The language of this query. See [Language Support](https://dialogflow.com/docs/languages)

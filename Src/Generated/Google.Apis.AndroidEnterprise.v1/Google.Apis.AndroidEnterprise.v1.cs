@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190102 (1462)
+ *      <tr><th>API Rev<td>20190117 (1477)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1391,66 +1391,6 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
             /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Deprecated and unused.</summary>
-        /// <param name="enterpriseId">The ID of the enterprise.</param>
-        public virtual GetAndroidDevicePolicyConfigRequest GetAndroidDevicePolicyConfig(string enterpriseId)
-        {
-            return new GetAndroidDevicePolicyConfigRequest(service, enterpriseId);
-        }
-
-        /// <summary>Deprecated and unused.</summary>
-        public class GetAndroidDevicePolicyConfigRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig>
-        {
-            /// <summary>Constructs a new GetAndroidDevicePolicyConfig request.</summary>
-            public GetAndroidDevicePolicyConfigRequest(Google.Apis.Services.IClientService service, string enterpriseId)
-                : base(service)
-            {
-                EnterpriseId = enterpriseId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string EnterpriseId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getAndroidDevicePolicyConfig"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "enterprises/{enterpriseId}/androidDevicePolicyConfig"; }
-            }
-
-            /// <summary>Initializes GetAndroidDevicePolicyConfig parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -8423,7 +8363,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallConstraint")]
         public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; } 
 
-        /// <summary>The auto install mode. If unset defaults to AVAILABLE.</summary>
+        /// <summary>The auto install mode. If unset defaults to "doNotAutoInstall".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallMode")]
         public virtual string AutoInstallMode { get; set; } 
 
@@ -9945,7 +9885,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
         public virtual string DisplayMode { get; set; } 
 
-        /// <summary>A list of icons representing this website. Must have at least one element.</summary>
+        /// <summary>A list of icons representing this website. If absent, a default icon (for create) or the current
+        /// icon (for update) will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icons")]
         public virtual System.Collections.Generic.IList<WebAppIcon> Icons { get; set; } 
 

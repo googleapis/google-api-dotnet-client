@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181226 (1455)
+ *      <tr><th>API Rev<td>20190116 (1476)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -369,8 +369,8 @@ namespace Google.Apis.Pubsub.v1
             /// less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
             /// If the name is not provided in the request, the server will assign a random name for this snapshot on
             /// the same project as the subscription, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
-            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
+            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Optional user-provided name for this snapshot. If the name is not provided in the request, the
@@ -394,8 +394,8 @@ namespace Google.Apis.Pubsub.v1
             /// less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
             /// If the name is not provided in the request, the server will assign a random name for this snapshot on
             /// the same project as the subscription, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
-            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
+            /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
@@ -702,15 +702,15 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
-                /// <summary>Maximum number of snapshots to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The value returned by the last `ListSnapshotsResponse`; indicates that this is a
                 /// continuation of a prior `ListSnapshots` call, and that the system should return the next page of
                 /// data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of snapshots to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -746,18 +746,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1104,8 +1104,8 @@ namespace Google.Apis.Pubsub.v1
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
             /// on the same project as the topic, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
-            /// returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
+            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the subscription. It must have the format
@@ -1125,8 +1125,8 @@ namespace Google.Apis.Pubsub.v1
             ///
             /// If the name is not provided in the request, the server will assign a random name for this subscription
             /// on the same project as the topic, conforming to the [resource name
-            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
-            /// returned Subscription object. Note that for REST API requests, you must specify a name in the
+            /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
+            /// the returned Subscription object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
             {
@@ -2204,15 +2204,15 @@ namespace Google.Apis.Pubsub.v1
                     [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Topic { get; private set; }
 
-                    /// <summary>Maximum number of subscription names to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The value returned by the last `ListTopicSubscriptionsResponse`; indicates that this is
                     /// a continuation of a prior `ListTopicSubscriptions` call, and that the system should return the
                     /// next page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum number of subscription names to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2248,18 +2248,18 @@ namespace Google.Apis.Pubsub.v1
                                 Pattern = @"^projects/[^/]+/topics/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
