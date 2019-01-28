@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190122 (1482)
+ *      <tr><th>API Rev<td>20190124 (1484)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -697,107 +697,6 @@ namespace Google.Apis.ServiceNetworking.v1beta
 
         }
 
-        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
-        /// operation will be of type `Connection` if the operation successfully completes.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The service producer peering service that is managing peering connectivity for a service producer
-        /// organization. For Google services that support this functionality, this is
-        /// `services/servicenetworking.googleapis.com`.</param>
-        public virtual PatchRequest Patch(Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string name)
-        {
-            return new PatchRequest(service, body, name);
-        }
-
-        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
-        /// operation will be of type `Connection` if the operation successfully completes.</summary>
-        public class PatchRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string name)
-                : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The service producer peering service that is managing peering connectivity for a service
-            /// producer organization. For Google services that support this functionality, this is
-            /// `services/servicenetworking.googleapis.com`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>The update mask. If this is omitted, it defaults to "*". You can only update the listed peering
-            /// ranges.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>If a previously defined allocated range is removed, force flag must be set to true.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Force { get; set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceNetworking.v1beta.Data.Connection Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "patch"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "PATCH"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1beta/{+name}"; }
-            }
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "force", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "force",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
         /// <summary>Service producers can use this method to find a currently unused range within consumer allocated
         /// ranges.   This returned range is not reserved, and not guaranteed to remain unused. It will validate
         /// previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number
@@ -869,6 +768,107 @@ namespace Google.Apis.ServiceNetworking.v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^services/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
+        /// operation will be of type `Connection` if the operation successfully completes.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The service producer peering service that is managing peering connectivity for a service producer
+        /// organization. For Google services that support this functionality, this is
+        /// `services/servicenetworking.googleapis.com`.</param>
+        public virtual UpdateConnectionsRequest UpdateConnections(Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string name)
+        {
+            return new UpdateConnectionsRequest(service, body, name);
+        }
+
+        /// <summary>Updates the allocated ranges that are assigned to a connection. The response from the `get`
+        /// operation will be of type `Connection` if the operation successfully completes.</summary>
+        public class UpdateConnectionsRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1beta.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateConnections request.</summary>
+            public UpdateConnectionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1beta.Data.Connection body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The service producer peering service that is managing peering connectivity for a service
+            /// producer organization. For Google services that support this functionality, this is
+            /// `services/servicenetworking.googleapis.com`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The update mask. If this is omitted, it defaults to "*". You can only update the listed peering
+            /// ranges.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>If a previously defined allocated range is removed, force flag must be set to true.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Force { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceNetworking.v1beta.Data.Connection Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateConnections"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta/{+name}/connections"; }
+            }
+
+            /// <summary>Initializes UpdateConnections parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "force", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "force",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 

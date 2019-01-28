@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20180917 (1355)
+ *      <tr><th>API Rev<td>20190118 (1478)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -12516,6 +12516,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; } 
 
+        /// <summary>Recovery email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryEmail")]
+        public virtual string RecoveryEmail { get; set; } 
+
+        /// <summary>Recovery phone of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryPhone")]
+        public virtual string RecoveryPhone { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; } 
 
@@ -12950,7 +12958,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.</summary>
     public class UserPosixAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A POSIX account field identifier. (Read-only)</summary>
+        /// <summary>A POSIX account field identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 

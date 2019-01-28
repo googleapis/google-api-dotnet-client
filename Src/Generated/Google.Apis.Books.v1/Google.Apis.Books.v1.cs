@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180824 (1331)
+ *      <tr><th>API Rev<td>20181212 (1441)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7967,6 +7967,9 @@ namespace Google.Apis.Books.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("targetUrl")]
         public virtual string TargetUrl { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeToExpireMs")]
+        public virtual System.Nullable<long> TimeToExpireMs { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 

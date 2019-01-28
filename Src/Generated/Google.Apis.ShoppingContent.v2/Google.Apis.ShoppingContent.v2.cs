@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190107 (1467)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1255,14 +1255,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-
+        /// <summary>Retrieves multiple Merchant Center account statuses in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.AccountstatusesCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-
+        /// <summary>Retrieves multiple Merchant Center account statuses in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -11575,8 +11575,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
-        /// about the program are here.</summary>
+        /// <summary>Deprecated. Ignored if provided for createTestOrder. The details of the merchant provided
+        /// promotions applied to the order. More details about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
@@ -12378,9 +12378,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderpaymentsNotifyAuthApprovedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Authorized amount for pre-tax charge on user's credit card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authAmountPretax")]
         public virtual Price AuthAmountPretax { get; set; } 
 
+        /// <summary>Authorized amount for tax charge on user's credit card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authAmountTax")]
         public virtual Price AuthAmountTax { get; set; } 
 
@@ -15532,7 +15534,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingDetails")]
         public virtual OrderLineItemShippingDetails ShippingDetails { get; set; } 
 
-        /// <summary>Unit tax for the line item.</summary>
+        /// <summary>Deprecated. Ignored if provided. Tax is automatically calculated for MFL orders. For non-MFL
+        /// orders, tax settings from Merchant Center are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitTax")]
         public virtual Price UnitTax { get; set; } 
 
@@ -15578,7 +15581,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
-        /// <summary>The price for the product.</summary>
+        /// <summary>The price for the product. Tax is automatically calculated for MFL orders. For non-MFL orders, tax
+        /// settings from Merchant Center are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 

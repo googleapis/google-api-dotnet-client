@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/3gWnYLZX6BDruNsFQ2Dxff52vJg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/P-4B11WcMvVB7cxHhUyxObdpF6w\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20180917",
+ "revision": "20190118",
  "title": "Admin Directory API",
  "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -2445,6 +2445,14 @@
       ]
      }
     },
+    "recoveryEmail": {
+     "type": "string",
+     "description": "Recovery email of the user."
+    },
+    "recoveryPhone": {
+     "type": "string",
+     "description": "Recovery phone of the user."
+    },
     "relations": {
      "type": "any"
     },
@@ -2896,8 +2904,7 @@
    "properties": {
     "accountId": {
      "type": "string",
-     "description": "A POSIX account field identifier. (Read-only)",
-     "readOnly": true
+     "description": "A POSIX account field identifier."
     },
     "gecos": {
      "type": "string",

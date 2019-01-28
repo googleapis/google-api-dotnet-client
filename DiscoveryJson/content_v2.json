@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/0TCLgXZWRV_u3CJuMzbjjgElfPQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/aoLJVRoELXoGluLLA5j3eAQmbRA\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20190107",
+ "revision": "20190122",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -2695,7 +2695,7 @@
     },
     "promotions": {
      "type": "array",
-     "description": "Deprecated. The details of the merchant provided promotions applied to the order. More details about the program are here.",
+     "description": "Deprecated. Ignored if provided for createTestOrder. The details of the merchant provided promotions applied to the order. More details about the program are here.",
      "items": {
       "$ref": "OrderLegacyPromotion"
      }
@@ -3568,10 +3568,12 @@
    "type": "object",
    "properties": {
     "authAmountPretax": {
-     "$ref": "Price"
+     "$ref": "Price",
+     "description": "Authorized amount for pre-tax charge on user's credit card."
     },
     "authAmountTax": {
-     "$ref": "Price"
+     "$ref": "Price",
+     "description": "Authorized amount for tax charge on user's credit card."
     }
    }
   },
@@ -7154,12 +7156,7 @@
     },
     "unitTax": {
      "$ref": "Price",
-     "description": "Unit tax for the line item.",
-     "annotations": {
-      "required": [
-       "content.orders.createtestorder"
-      ]
-     }
+     "description": "Deprecated. Ignored if provided. Tax is automatically calculated for MFL orders. For non-MFL orders, tax settings from Merchant Center are applied."
     }
    }
   },
@@ -7235,7 +7232,7 @@
     },
     "price": {
      "$ref": "Price",
-     "description": "The price for the product.",
+     "description": "The price for the product. Tax is automatically calculated for MFL orders. For non-MFL orders, tax settings from Merchant Center are applied.",
      "annotations": {
       "required": [
        "content.orders.createtestorder"
@@ -7745,6 +7742,7 @@
      "id": "content.accountstatuses.custombatch",
      "path": "accountstatuses/batch",
      "httpMethod": "POST",
+     "description": "Retrieves multiple Merchant Center account statuses in a single request.",
      "request": {
       "$ref": "AccountstatusesCustomBatchRequest"
      },
