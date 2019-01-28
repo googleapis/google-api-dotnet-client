@@ -5,8 +5,6 @@
   <PropertyGroup>
     <!-- ASP.NET Core <2.0 not supported, so no need to support netstandard <2.0 -->
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!-- Beta release -->
-    <Version>$(Version)-beta01</Version>
   </PropertyGroup>
 
   <!-- nupkg information -->
