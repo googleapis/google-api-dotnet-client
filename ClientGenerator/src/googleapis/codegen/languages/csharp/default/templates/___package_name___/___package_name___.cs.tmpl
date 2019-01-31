@@ -124,6 +124,14 @@ public class Scope
 {% indent %}{% for authscope in api.authscopes %}{% doc_comment_if authscope.description %}
 public static string {{ authscope.constantName }} = {% literal authscope.value %};
 
+{% endfor %}{% endindent %}}
+
+/// <summary>Available OAuth 2.0 scope constants for use with the {{ api.title }}.</summary>
+public static class ScopeConstants
+{
+{% indent %}{% for authscope in api.authscopes %}{% doc_comment_if authscope.description %}
+public const string {{ authscope.constantName }} = {% literal authscope.value %};
+
 {% endfor %}{% endindent %}}{% endif %}
 {% for method in api.methods %}{% call_template _method method=method service='this' %}{% endfor %}
 {% for resource in api.resources %}{% eol %}{% eol %}{% call_template _get_resource resource=resource %}{% endfor %}{% endindent %}
