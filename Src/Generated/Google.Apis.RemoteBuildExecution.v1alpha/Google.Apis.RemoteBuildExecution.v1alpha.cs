@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190116 (1476)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1985,8 +1985,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
-        /// <summary>Required. Machine type of the worker, such as n1-standard-2. See
-        /// https://cloud.google.com/compute/docs/machine-types for a list of supported machine types.</summary>
+        /// <summary>Required. Machine type of the worker, such as `n1-standard-2`. See
+        /// https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that
+        /// `f1-micro` and `g1-small` are not yet supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 

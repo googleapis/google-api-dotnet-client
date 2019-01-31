@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Pagespeedonline.v2 Client Library</Title>
-    <Version>1.37.0.1463</Version>
+    <Version>1.37.0.1489</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

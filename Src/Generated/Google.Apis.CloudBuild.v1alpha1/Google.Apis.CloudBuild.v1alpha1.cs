@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190123 (1483)
+ *      <tr><th>API Rev<td>20190130 (1490)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1148,7 +1148,7 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// <summary>Network describes the GCP network used to create workers in.</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Network on which the workers are created. “default” network is used if empty.</summary>
+        /// <summary>Network on which the workers are created. "default" network is used if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string NetworkValue { get; set; } 
 
@@ -1159,7 +1159,7 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Subnetwork on which the workers are created. “default” subnetwork is used if empty.</summary>
+        /// <summary>Subnetwork on which the workers are created. "default" subnetwork is used if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -1413,7 +1413,7 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>List of regions to create the `WorkerPool`. Regions can’t be empty. If Cloud Build adds a new GCP
+        /// <summary>List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP
         /// region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you
         /// must add the new region to the `regions` field to enable the `WorkerPool` in that region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]

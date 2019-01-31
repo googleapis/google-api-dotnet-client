@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181219 (1448)
+ *      <tr><th>API Rev<td>20190122 (1482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -1010,7 +1010,7 @@ namespace Google.Apis.CloudFunctions.v1
 
                 }
 
-                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// <summary>Gets the IAM access control policy for a function. Returns an empty policy if the function
                 /// exists and does not have a policy set.</summary>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1019,7 +1019,7 @@ namespace Google.Apis.CloudFunctions.v1
                     return new GetIamPolicyRequest(service, resource);
                 }
 
-                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// <summary>Gets the IAM access control policy for a function. Returns an empty policy if the function
                 /// exists and does not have a policy set.</summary>
                 public class GetIamPolicyRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1.Data.Policy>
                 {
@@ -1248,7 +1248,7 @@ namespace Google.Apis.CloudFunctions.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// <summary>Sets the IAM access control policy on the specified function. Replaces any existing
                 /// policy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
@@ -1258,7 +1258,7 @@ namespace Google.Apis.CloudFunctions.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// <summary>Sets the IAM access control policy on the specified function. Replaces any existing
                 /// policy.</summary>
                 public class SetIamPolicyRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1.Data.Policy>
                 {
@@ -1320,11 +1320,9 @@ namespace Google.Apis.CloudFunctions.v1
 
                 }
 
-                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// <summary>Tests the specified permissions against the IAM access control policy for a function. If
+                /// the function does not exist, this will return an empty set of permissions, not a NOT_FOUND
+                /// error.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1333,11 +1331,9 @@ namespace Google.Apis.CloudFunctions.v1
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
 
-                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
-                ///
-                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// <summary>Tests the specified permissions against the IAM access control policy for a function. If
+                /// the function does not exist, this will return an empty set of permissions, not a NOT_FOUND
+                /// error.</summary>
                 public class TestIamPermissionsRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1422,10 +1418,6 @@ namespace Google.Apis.CloudFunctions.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1433,6 +1425,10 @@ namespace Google.Apis.CloudFunctions.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1468,15 +1464,6 @@ namespace Google.Apis.CloudFunctions.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1489,6 +1476,15 @@ namespace Google.Apis.CloudFunctions.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

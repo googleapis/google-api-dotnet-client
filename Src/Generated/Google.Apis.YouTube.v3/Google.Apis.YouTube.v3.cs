@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190109 (1469)
+ *      <tr><th>API Rev<td>20190128 (1488)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -11182,13 +11182,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("copyrightStrikesGoodStanding")]
         public virtual System.Nullable<bool> CopyrightStrikesGoodStanding { get; set; } 
 
-        /// <summary>Describes the general state of the channel. This field will always show if there are any issues
-        /// whatsoever with the channel. Currently this field represents the result of the logical and operation over
-        /// the community guidelines good standing, the copyright strikes good standing and the content ID claims good
-        /// standing, but this may change in the future.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("overallGoodStanding")]
-        public virtual System.Nullable<bool> OverallGoodStanding { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -11664,8 +11657,15 @@ namespace Google.Apis.YouTube.v3.Data
         }
 
         /// <summary>A map of thumbnail images associated with the channel. For each object in the map, the key is the
-        /// name of the thumbnail image, and the value is an object that contains other information about the
-        /// thumbnail.</summary>
+        /// name of the thumbnail image, and the value is an object that contains other information about the thumbnail.
+        ///
+        /// When displaying thumbnails in your application, make sure that your code uses the image URLs exactly as they
+        /// are returned in API responses. For example, your application should not use the http domain instead of the
+        /// https domain in a URL returned in an API response.
+        ///
+        /// Beginning in July 2018, channel thumbnail URLs will only be available in the https domain, which is how the
+        /// URLs appear in API responses. After that time, you might see broken images in your application if it tries
+        /// to load YouTube images from the http domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
         public virtual ThumbnailDetails Thumbnails { get; set; } 
 
@@ -13408,6 +13408,11 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("superChatDetails")]
         public virtual LiveChatSuperChatDetails SuperChatDetails { get; set; } 
 
+        /// <summary>Details about the Super Sticker event, this is only set if the type is
+        /// 'superStickerEvent'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superStickerDetails")]
+        public virtual LiveChatSuperStickerDetails SuperStickerDetails { get; set; } 
+
         /// <summary>Details about the text message, this is only set if the type is 'textMessageEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textMessageDetails")]
         public virtual LiveChatTextMessageDetails TextMessageDetails { get; set; } 
@@ -13583,7 +13588,7 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
         public virtual string Currency { get; set; } 
 
-        /// <summary>The tier in which the amount belongs to. Lower amounts belong to lower tiers. Starts at
+        /// <summary>The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual System.Nullable<long> Tier { get; set; } 
@@ -13591,6 +13596,33 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The comment added by the user to this Super Chat event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
         public virtual string UserComment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiveChatSuperStickerDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A rendered string that displays the fund amount and currency to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountDisplayString")]
+        public virtual string AmountDisplayString { get; set; } 
+
+        /// <summary>The amount purchased by the user, in micros (1,750,000 micros = 1.75).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+
+        /// <summary>The currency in which the purchase was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; } 
+
+        /// <summary>Information about the Super Sticker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superStickerMetadata")]
+        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; } 
+
+        /// <summary>The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is
+        /// 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual System.Nullable<long> Tier { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14901,6 +14933,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isSuperChatForGood")]
         public virtual System.Nullable<bool> IsSuperChatForGood { get; set; } 
 
+        /// <summary>True if this event is a Super Sticker event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSuperStickerEvent")]
+        public virtual System.Nullable<bool> IsSuperStickerEvent { get; set; } 
+
         /// <summary>The tier for the paid message, which is based on the amount of money spent to purchase the
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
@@ -14911,9 +14947,34 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonprofit")]
         public virtual Nonprofit Nonprofit { get; set; } 
 
+        /// <summary>If this event is a Super Sticker event, this field will contain metadata about the Super
+        /// Sticker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superStickerMetadata")]
+        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; } 
+
         /// <summary>Details about the supporter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supporterDetails")]
         public virtual ChannelProfileDetails SupporterDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SuperStickerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Internationalized alt text that describes the sticker image and any animation associated with
+        /// it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; } 
+
+        /// <summary>Specifies the localization language in which the alt text is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altTextLanguage")]
+        public virtual string AltTextLanguage { get; set; } 
+
+        /// <summary>Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack
+        /// name and a recognizable characteristic of the sticker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stickerId")]
+        public virtual string StickerId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

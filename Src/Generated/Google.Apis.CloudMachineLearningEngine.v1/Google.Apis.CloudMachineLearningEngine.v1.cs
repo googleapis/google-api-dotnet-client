@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190123 (1483)
+ *      <tr><th>API Rev<td>20190126 (1486)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -735,6 +735,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
+                /// more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
+                /// 'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
+                /// start with 'rnn': gcloud ml-engine jobs list --filter='jobId:rnn* AND state:FAILED' For more
+                /// examples, see the guide to monitoring jobs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -748,14 +756,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
-                /// more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
-                /// 'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
-                /// start with 'rnn': gcloud ml-engine jobs list --filter='jobId:rnn* AND state:FAILED' For more
-                /// examples, see the guide to monitoring jobs.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -791,6 +791,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -803,15 +812,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1551,10 +1551,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A page token to request the next page of results.
                     ///
                     /// You get the token from the `next_page_token` field of the response from the previous
@@ -1569,6 +1565,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1604,15 +1604,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1625,6 +1616,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2115,6 +2115,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2128,10 +2132,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2167,6 +2167,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2179,15 +2188,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3485,6 +3485,20 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents the configration for a replica in a cluster.</summary>
+    public class GoogleCloudMlV1ReplicaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
+        public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
+
+        /// <summary>The docker image to run on worker. This image must be in Google Container Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for the SetDefaultVersion request.</summary>
     public class GoogleCloudMlV1SetDefaultVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3511,6 +3525,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// benefit of specifying this field is that Cloud ML validates the path for use in training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobDir")]
         public virtual string JobDir { get; set; } 
+
+        /// <summary>Optional. The configuration for master.
+        ///
+        /// Only one of `masterConfig.imageUri` and `runtimeVersion` should be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
+        public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; } 
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker.
         ///
@@ -3588,6 +3608,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
         public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
 
+        /// <summary>Optional. The config of parameter servers.
+        ///
+        /// If `parameterServerConfig.imageUri` has not been set, the value of `masterConfig.imageUri` will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
+        public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; } 
+
         /// <summary>Optional. The number of parameter server replicas to use for the training job. Each replica in the
         /// cluster will be of the type specified in `parameter_server_type`.
         ///
@@ -3632,6 +3659,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
         public virtual string ScaleTier { get; set; } 
+
+        /// <summary>Optional. The configrations for workers.
+        ///
+        /// If `workerConfig.imageUri` has not been set, the value of `masterConfig.imageUri` will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
+        public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
 
         /// <summary>Optional. The number of worker replicas to use for the training job. Each replica in the cluster
         /// will be of the type specified in `worker_type`.

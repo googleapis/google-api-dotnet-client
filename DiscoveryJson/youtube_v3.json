@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1z3_rnikJXgRcwfI6RSAUmEEXcc\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1jg0CI2utjqWmZlLNTmtG27447k\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190109",
+ "revision": "20190128",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -745,9 +745,13 @@
      "description": "The method or protocol used to transmit the video stream.",
      "enum": [
       "dash",
-      "rtmp"
+      "http",
+      "rtmp",
+      "webrtc"
      ],
      "enumDescriptions": [
+      "",
+      "",
       "",
       ""
      ],
@@ -868,10 +872,6 @@
     "copyrightStrikesGoodStanding": {
      "type": "boolean",
      "description": "Whether or not the channel has any copyright strikes."
-    },
-    "overallGoodStanding": {
-     "type": "boolean",
-     "description": "Describes the general state of the channel. This field will always show if there are any issues whatsoever with the channel. Currently this field represents the result of the logical and operation over the community guidelines good standing, the copyright strikes good standing and the content ID claims good standing, but this may change in the future."
     }
    }
   },
@@ -1399,7 +1399,7 @@
     },
     "thumbnails": {
      "$ref": "ThumbnailDetails",
-     "description": "A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."
+     "description": "A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail.\n\nWhen displaying thumbnails in your application, make sure that your code uses the image URLs exactly as they are returned in API responses. For example, your application should not use the http domain instead of the https domain in a URL returned in an API response.\n\nBeginning in July 2018, channel thumbnail URLs will only be available in the https domain, which is how the URLs appear in API responses. After that time, you might see broken images in your application if it tries to load YouTube images from the http domain."
     },
     "title": {
      "type": "string",
@@ -2108,10 +2108,12 @@
       "cnc16",
       "cnc18",
       "cncE",
+      "cncInterdiction",
       "cncT",
       "cncUnrated"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -2190,14 +2192,46 @@
      "description": "The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil) rating.",
      "enum": [
       "djctq10",
+      "djctq1012",
+      "djctq1014",
+      "djctq1016",
+      "djctq1018",
       "djctq12",
+      "djctq1214",
+      "djctq1216",
+      "djctq1218",
       "djctq14",
+      "djctq1416",
+      "djctq1418",
       "djctq16",
+      "djctq1618",
       "djctq18",
+      "djctqEr",
       "djctqL",
+      "djctqL10",
+      "djctqL12",
+      "djctqL14",
+      "djctqL16",
+      "djctqL18",
       "djctqUnrated"
      ],
      "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "",
       "",
@@ -2910,9 +2944,11 @@
       "mpaaPg",
       "mpaaPg13",
       "mpaaR",
-      "mpaaUnrated"
+      "mpaaUnrated",
+      "mpaaX"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -4092,22 +4128,16 @@
      "type": "string",
      "description": "The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method.",
      "enum": [
-      "abandoned",
       "complete",
-      "completeStarting",
       "created",
       "live",
       "liveStarting",
       "ready",
-      "reclaimed",
       "revoked",
       "testStarting",
       "testing"
      ],
      "enumDescriptions": [
-      "",
-      "",
-      "",
       "",
       "",
       "",
@@ -4431,6 +4461,10 @@
      "$ref": "LiveChatSuperChatDetails",
      "description": "Details about the Super Chat event, this is only set if the type is 'superChatEvent'."
     },
+    "superStickerDetails": {
+     "$ref": "LiveChatSuperStickerDetails",
+     "description": "Details about the Super Sticker event, this is only set if the type is 'superStickerEvent'."
+    },
     "textMessageDetails": {
      "$ref": "LiveChatTextMessageDetails",
      "description": "Details about the text message, this is only set if the type is 'textMessageEvent'."
@@ -4451,11 +4485,13 @@
       "sponsorOnlyModeEndedEvent",
       "sponsorOnlyModeStartedEvent",
       "superChatEvent",
+      "superStickerEvent",
       "textMessageEvent",
       "tombstone",
       "userBannedEvent"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -4652,12 +4688,40 @@
     },
     "tier": {
      "type": "integer",
-     "description": "The tier in which the amount belongs to. Lower amounts belong to lower tiers. Starts at 1.",
+     "description": "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1.",
      "format": "uint32"
     },
     "userComment": {
      "type": "string",
      "description": "The comment added by the user to this Super Chat event."
+    }
+   }
+  },
+  "LiveChatSuperStickerDetails": {
+   "id": "LiveChatSuperStickerDetails",
+   "type": "object",
+   "properties": {
+    "amountDisplayString": {
+     "type": "string",
+     "description": "A rendered string that displays the fund amount and currency to the user."
+    },
+    "amountMicros": {
+     "type": "string",
+     "description": "The amount purchased by the user, in micros (1,750,000 micros = 1.75).",
+     "format": "uint64"
+    },
+    "currency": {
+     "type": "string",
+     "description": "The currency in which the purchase was made."
+    },
+    "superStickerMetadata": {
+     "$ref": "SuperStickerMetadata",
+     "description": "Information about the Super Sticker."
+    },
+    "tier": {
+     "type": "integer",
+     "description": "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1.",
+     "format": "uint32"
     }
    }
   },
@@ -6044,6 +6108,10 @@
      "type": "boolean",
      "description": "True if this event is a Super Chat for Good purchase."
     },
+    "isSuperStickerEvent": {
+     "type": "boolean",
+     "description": "True if this event is a Super Sticker event."
+    },
     "messageType": {
      "type": "integer",
      "description": "The tier for the paid message, which is based on the amount of money spent to purchase the message.",
@@ -6053,9 +6121,31 @@
      "$ref": "Nonprofit",
      "description": "If this event is a Super Chat for Good purchase, this field will contain information about the charity the purchase is donated to."
     },
+    "superStickerMetadata": {
+     "$ref": "SuperStickerMetadata",
+     "description": "If this event is a Super Sticker event, this field will contain metadata about the Super Sticker."
+    },
     "supporterDetails": {
      "$ref": "ChannelProfileDetails",
      "description": "Details about the supporter."
+    }
+   }
+  },
+  "SuperStickerMetadata": {
+   "id": "SuperStickerMetadata",
+   "type": "object",
+   "properties": {
+    "altText": {
+     "type": "string",
+     "description": "Internationalized alt text that describes the sticker image and any animation associated with it."
+    },
+    "altTextLanguage": {
+     "type": "string",
+     "description": "Specifies the localization language in which the alt text is returned."
+    },
+    "stickerId": {
+     "type": "string",
+     "description": "Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack name and a recognizable characteristic of the sticker."
     }
    }
   },

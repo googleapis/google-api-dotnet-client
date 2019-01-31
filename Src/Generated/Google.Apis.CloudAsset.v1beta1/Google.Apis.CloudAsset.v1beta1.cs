@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190109 (1469)
+ *      <tr><th>API Rev<td>20190130 (1490)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudAsset.v1beta1
         public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            folders = new FoldersResource(this);
             organizations = new OrganizationsResource(this);
             projects = new ProjectsResource(this);
         }
@@ -115,6 +116,14 @@ namespace Google.Apis.CloudAsset.v1beta1
         }
 
 
+
+        private readonly FoldersResource folders;
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders
+        {
+            get { return folders; }
+        }
 
         private readonly OrganizationsResource organizations;
 
@@ -322,6 +331,186 @@ namespace Google.Apis.CloudAsset.v1beta1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            operations = new OperationsResource(service);
+
+        }
+
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            public class GetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/operations/[^/]+/.+$",
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Exports assets with time and resource types to a given Cloud Storage location. The output format is
+        /// newline-delimited JSON. This API implements the google.longrunning.Operation API allowing you to keep track
+        /// of the export.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. The relative name of the root asset. This can only be an organization number (such as
+        /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"),
+        /// or a folder number (such as "folders/123").</param>
+        public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
+        {
+            return new ExportAssetsRequest(service, body, parent);
+        }
+
+        /// <summary>Exports assets with time and resource types to a given Cloud Storage location. The output format is
+        /// newline-delimited JSON. This API implements the google.longrunning.Operation API allowing you to keep track
+        /// of the export.</summary>
+        public class ExportAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new ExportAssets request.</summary>
+            public ExportAssetsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The relative name of the root asset. This can only be an organization number (such as
+            /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as
+            /// "projects/12345"), or a folder number (such as "folders/123").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "exportAssets"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+parent}:exportAssets"; }
+            }
+
+            /// <summary>Initializes ExportAssets parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "organizations" collection of methods.</summary>
     public class OrganizationsResource
     {
@@ -418,7 +607,7 @@ namespace Google.Apis.CloudAsset.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/operations/[^/]+/[^/]+$",
+                            Pattern = @"^organizations/[^/]+/operations/[^/]+/.+$",
                         });
                 }
 
@@ -427,8 +616,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
         /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
         /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output
-        /// history.</summary>
+        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
+        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         /// <param name="parent">Required. The relative name of the root asset. It can only be an organization number (such as
         /// "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
         /// "projects/12345").</param>
@@ -439,8 +628,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
         /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
         /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output
-        /// history.</summary>
+        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
+        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         public class BatchGetAssetsHistoryRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.BatchGetAssetsHistoryResponse>
         {
             /// <summary>Constructs a new BatchGetAssetsHistory request.</summary>
@@ -568,8 +757,8 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// of the export.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. This can only be an organization number (such as
-        /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-        /// "projects/12345").</param>
+        /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"),
+        /// or a folder number (such as "folders/123").</param>
         public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
         {
             return new ExportAssetsRequest(service, body, parent);
@@ -591,8 +780,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
 
             /// <summary>Required. The relative name of the root asset. This can only be an organization number (such as
-            /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-            /// "projects/12345").</summary>
+            /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as
+            /// "projects/12345"), or a folder number (such as "folders/123").</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -736,7 +925,7 @@ namespace Google.Apis.CloudAsset.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/operations/[^/]+/[^/]+$",
+                            Pattern = @"^projects/[^/]+/operations/[^/]+/.+$",
                         });
                 }
 
@@ -745,8 +934,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
         /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
         /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output
-        /// history.</summary>
+        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
+        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         /// <param name="parent">Required. The relative name of the root asset. It can only be an organization number (such as
         /// "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
         /// "projects/12345").</param>
@@ -757,8 +946,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
         /// <summary>Batch gets the update history of assets that overlap a time window. For RESOURCE content, this API
         /// outputs history with asset in both non-delete or deleted status. For IAM_POLICY content, this API outputs
-        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output
-        /// history.</summary>
+        /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
+        /// If a specified asset does not exist, this API returns an INVALID_ARGUMENT error.</summary>
         public class BatchGetAssetsHistoryRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1beta1.Data.BatchGetAssetsHistoryResponse>
         {
             /// <summary>Constructs a new BatchGetAssetsHistory request.</summary>
@@ -775,15 +964,6 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// "projects/12345").</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
             /// <summary>Required. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
@@ -807,6 +987,15 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <summary>Start time of the time window (exclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowStartTime { get; set; }
+
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -842,15 +1031,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "contentType", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentType",
@@ -877,6 +1057,15 @@ namespace Google.Apis.CloudAsset.v1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -886,8 +1075,8 @@ namespace Google.Apis.CloudAsset.v1beta1
         /// of the export.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. The relative name of the root asset. This can only be an organization number (such as
-        /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-        /// "projects/12345").</param>
+        /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"),
+        /// or a folder number (such as "folders/123").</param>
         public virtual ExportAssetsRequest ExportAssets(Google.Apis.CloudAsset.v1beta1.Data.ExportAssetsRequest body, string parent)
         {
             return new ExportAssetsRequest(service, body, parent);
@@ -909,8 +1098,8 @@ namespace Google.Apis.CloudAsset.v1beta1
 
 
             /// <summary>Required. The relative name of the root asset. This can only be an organization number (such as
-            /// "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-            /// "projects/12345").</summary>
+            /// "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as
+            /// "projects/12345"), or a folder number (such as "folders/123").</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 

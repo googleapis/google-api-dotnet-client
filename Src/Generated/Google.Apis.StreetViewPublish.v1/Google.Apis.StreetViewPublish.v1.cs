@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190124 (1484)
+ *      <tr><th>API Rev<td>20190126 (1486)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -520,12 +520,6 @@ namespace Google.Apis.StreetViewPublish.v1
             [Google.Apis.Util.RequestParameterAttribute("photoId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PhotoId { get; private set; }
 
-            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
-            /// user's language preference for Google services will be used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -540,6 +534,12 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
+
+            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
+            /// user's language preference for Google services will be used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -575,18 +575,18 @@ namespace Google.Apis.StreetViewPublish.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "languageCode",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "languageCode", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
