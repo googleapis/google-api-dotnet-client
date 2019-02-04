@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/KTIDBygtKAlYgB6UvlVpF8kTnLk\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/R-oIGXZXmcc1qto8wFr473V-oY4\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20190120",
+ "revision": "20190124",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -2239,6 +2239,19 @@
    "id": "TableFieldSchema",
    "type": "object",
    "properties": {
+    "categories": {
+     "type": "object",
+     "description": "[Optional] The categories attached to this field, used for field-level access control.",
+     "properties": {
+      "names": {
+       "type": "array",
+       "description": "A list of category resource names. For example, \"projects/1/taxonomies/2/categories/3\". At most 5 categories are allowed.",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    },
     "description": {
      "type": "string",
      "description": "[Optional] The field description. The maximum length is 1,024 characters."

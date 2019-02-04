@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190110 (1470)
+ *      <tr><th>API Rev<td>20190131 (1491)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -128,6 +128,9 @@ namespace Google.Apis.Games.v1
             /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
 
+            /// <summary>Know who you are on Google</summary>
+            public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
+
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services API.</summary>
@@ -138,6 +141,9 @@ namespace Google.Apis.Games.v1
 
             /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
+
+            /// <summary>Know who you are on Google</summary>
+            public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
         }
 

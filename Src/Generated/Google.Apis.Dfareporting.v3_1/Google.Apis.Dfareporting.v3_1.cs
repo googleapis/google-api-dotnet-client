@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.1
- *      <tr><th>API Rev<td>20180830 (1337)
+ *      <tr><th>API Rev<td>20190124 (1484)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>

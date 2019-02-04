@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190129 (1489)
+ *      <tr><th>API Rev<td>20190123 (1483)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -357,10 +357,448 @@ namespace Google.Apis.CloudFilestore.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                instances = new InstancesResource(service);
                 operations = new OperationsResource(service);
 
             }
 
+            private readonly InstancesResource instances;
+
+            /// <summary>Gets the Instances resource.</summary>
+            public virtual InstancesResource Instances
+            {
+                get { return instances; }
+            }
+
+            /// <summary>The "instances" collection of methods.</summary>
+            public class InstancesResource
+            {
+                private const string Resource = "instances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates an instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The instance's project and location, in the format projects/{project_id}/locations/{location}.
+                /// In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1.Data.Instance body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates an instance.</summary>
+                public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1.Data.Instance body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The instance's project and location, in the format
+                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
+                    /// example **us-west1-b**.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The name of the instance to create. The name must be unique for the specified project
+                    /// and location.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1.Data.Instance Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/instances"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "instanceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instanceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes an instance.</summary>
+                /// <param name="name">The instance resource name, in the format
+                /// projects/{project_id}/locations/{location}/instances/{instance_id}</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes an instance.</summary>
+                public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The instance resource name, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the details of a specific instance.</summary>
+                /// <param name="name">The instance resource name, in the format
+                /// projects/{project_id}/locations/{location}/instances/{instance_id}.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the details of a specific instance.</summary>
+                public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Instance>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The instance resource name, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists all instances in a project for either a specified location or for all
+                /// locations.</summary>
+                /// <param name="parent">The project and location for which to retrieve instance information, in the format
+                /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-
+                /// west1-b**. To retrieve instance information for all locations, use "-" for the {location} value.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all instances in a project for either a specified location or for all
+                /// locations.</summary>
+                public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.ListInstancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project and location for which to retrieve instance information, in the format
+                    /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for
+                    /// example **us-west1-b**. To retrieve instance information for all locations, use "-" for the
+                    /// {location} value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The next_page_token value to use if there are additional results to retrieve for this
+                    /// list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/instances"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates the settings of a specific instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The resource name of the instance, in the format
+                /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</param>
+                public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1.Data.Instance body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the settings of a specific instance.</summary>
+                public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1.Data.Instance body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only. The resource name of the instance, in the format
+                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Mask of fields to update.  At least one path must be supplied in this field.  The
+                    /// elements of the repeated paths field may only include these fields: "description"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1.Data.Instance Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
             private readonly OperationsResource operations;
 
             /// <summary>Gets the Operations resource.</summary>
@@ -628,6 +1066,10 @@ namespace Google.Apis.CloudFilestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -635,10 +1077,6 @@ namespace Google.Apis.CloudFilestore.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -674,6 +1112,15 @@ namespace Google.Apis.CloudFilestore.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -686,15 +1133,6 @@ namespace Google.Apis.CloudFilestore.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -788,10 +1226,6 @@ namespace Google.Apis.CloudFilestore.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -799,6 +1233,10 @@ namespace Google.Apis.CloudFilestore.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -834,15 +1272,6 @@ namespace Google.Apis.CloudFilestore.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -855,6 +1284,15 @@ namespace Google.Apis.CloudFilestore.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -885,6 +1323,94 @@ namespace Google.Apis.CloudFilestore.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>File share configuration for the instance.</summary>
+    public class FileShareConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
+        public virtual System.Nullable<long> CapacityGb { get; set; } 
+
+        /// <summary>The name of the file share (must be 16 characters or less).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Cloud Filestore instance.</summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. A description of the instance (2048 characters or less).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting
+        /// each other.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>File system shares on the instance. For this version, only a single file share is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileShares")]
+        public virtual System.Collections.Generic.IList<FileShareConfig> FileShares { get; set; } 
+
+        /// <summary>Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Output only. The resource name of the instance, in the format
+        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>VPC networks to which the instance is connected. For this version, only a single network is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; } 
+
+        /// <summary>Output only. The instance state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output only. Additional information about the instance state, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; } 
+
+        /// <summary>The service tier of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; } 
+
+    }    
+
+    /// <summary>ListInstancesResponse is the result of ListInstancesRequest.</summary>
+    public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of instances in the project for the specified location.
+        ///
+        /// If the {location} value in the request is "-", the response contains a list of instances from all locations.
+        /// If any location is unreachable, the response will only return instances in reachable locations and the
+        /// "unreachable" field will be populated with a list of unreachable locations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+
+        /// <summary>The token you can use to retrieve the next page of results. Not returned if there are no more
+        /// results in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -944,6 +1470,36 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Network configuration for the instance.</summary>
+    public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses
+        /// in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; } 
+
+        /// <summary>Internet protocol versions for which the instance has IP addresses assigned. For this version, only
+        /// MODE_IPV4 is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modes")]
+        public virtual System.Collections.Generic.IList<string> Modes { get; set; } 
+
+        /// <summary>The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks)
+        /// to which the instance is connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>A /29 CIDR block in one of the [internal IP address
+        /// ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses
+        /// reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap
+        /// with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the
+        /// selected VPC network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
+        public virtual string ReservedIpRange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190119 (1479)
+ *      <tr><th>API Rev<td>20190128 (1488)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -902,6 +902,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Free-form text providing details on the error cause of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
+
+        /// <summary>Contains public information about the check error. If available, `status.code` will be non zero and
+        /// client can propagate it out as public error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
 
         /// <summary>Subject to whom this error applies. See the specific code enum for more details on this field. For
         /// example: - “project:” - “folder:” - “organization:”</summary>

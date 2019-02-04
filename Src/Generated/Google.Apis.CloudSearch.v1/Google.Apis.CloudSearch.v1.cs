@@ -993,10 +993,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Maximum number of items to fetch in a request. Defaults to 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1026,6 +1022,10 @@ namespace Google.Apis.CloudSearch.v1
                     /// field, if asked by Google to help with debugging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1061,15 +1061,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^identitysources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1091,6 +1082,15 @@ namespace Google.Apis.CloudSearch.v1
                             "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1554,6 +1554,11 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>If set, the request will enable debugging features of Cloud Search. Only turn on this
+                    /// field, if asked by Google to help with debugging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
                     /// <summary>Name of connector making this call. Format:
                     /// datasources/{source_id}/connectors/{ID}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
@@ -1573,11 +1578,6 @@ namespace Google.Apis.CloudSearch.v1
                     /// true.  The max value is 10 if brief is false. The default value is 10</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>If set, the request will enable debugging features of Cloud Search. Only turn on this
-                    /// field, if asked by Google to help with debugging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1613,6 +1613,15 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^datasources/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "connectorName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "connectorName",
@@ -1643,15 +1652,6 @@ namespace Google.Apis.CloudSearch.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2543,15 +2543,6 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestOptionsLanguageCode { get; set; }
-
-                /// <summary>Id of the application created using SearchApplicationsService.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestOptions.searchApplicationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestOptionsSearchApplicationId { get; set; }
-
                 /// <summary>Current user's time zone id, such as "America/Los_Angeles" or "Australia/Sydney". These IDs
                 /// are defined by [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) project, and
                 /// currently available in the file
@@ -2567,6 +2558,15 @@ namespace Google.Apis.CloudSearch.v1
                 /// field, if asked by Google to help with debugging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequestOptionsDebugOptionsEnableDebugging { get; set; }
+
+                /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsLanguageCode { get; set; }
+
+                /// <summary>Id of the application created using SearchApplicationsService.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.searchApplicationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsSearchApplicationId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2593,24 +2593,6 @@ namespace Google.Apis.CloudSearch.v1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.languageCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestOptions.searchApplicationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.searchApplicationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "requestOptions.timeZone", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestOptions.timeZone",
@@ -2632,6 +2614,24 @@ namespace Google.Apis.CloudSearch.v1
                         "requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestOptions.debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "requestOptions.searchApplicationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.searchApplicationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

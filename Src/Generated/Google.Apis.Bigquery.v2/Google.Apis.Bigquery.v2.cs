@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190120 (1480)
+ *      <tr><th>API Rev<td>20190124 (1484)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4866,6 +4866,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual TableFieldSchema.CategoriesData Categories { get; set; } 
+
         /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -4893,6 +4897,17 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
+        public class CategoriesData
+        {
+            /// <summary>A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most
+            /// 5 categories are allowed.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("names")]
+            public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+
+        }
     }    
 
     public class TableList : Google.Apis.Requests.IDirectResponseSchema
