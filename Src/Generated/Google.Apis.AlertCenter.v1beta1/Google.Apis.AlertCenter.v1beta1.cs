@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190130 (1490)
+ *      <tr><th>API Rev<td>20190204 (1495)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -370,16 +370,17 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Creates new feedback for an alert.</summary>
+            /// <summary>Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert
+            /// returns `NOT_FOUND` error.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="alertId">Required. The identifier of the alert this feedback belongs to. Returns a `NOT_FOUND` error if
-            /// no such alert.</param>
+            /// <param name="alertId">Required. The identifier of the alert this feedback belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
             {
                 return new CreateRequest(service, body, alertId);
             }
 
-            /// <summary>Creates new feedback for an alert.</summary>
+            /// <summary>Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert
+            /// returns `NOT_FOUND` error.</summary>
             public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -392,8 +393,7 @@ namespace Google.Apis.AlertCenter.v1beta1
                 }
 
 
-                /// <summary>Required. The identifier of the alert this feedback belongs to. Returns a `NOT_FOUND` error
-                /// if no such alert.</summary>
+                /// <summary>Required. The identifier of the alert this feedback belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
@@ -454,15 +454,17 @@ namespace Google.Apis.AlertCenter.v1beta1
 
             }
 
-            /// <summary>Lists all the feedback for an alert.</summary>
-            /// <param name="alertId">Required. The alert identifier. The "-" wildcard could be used to represent all alerts. If
-            /// alert does not exist returns a `NOT_FOUND` error.</param>
+            /// <summary>Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert
+            /// returns `NOT_FOUND` error.</summary>
+            /// <param name="alertId">Required. The alert identifier. The "-" wildcard could be used to represent all
+            /// alerts.</param>
             public virtual ListRequest List(string alertId)
             {
                 return new ListRequest(service, alertId);
             }
 
-            /// <summary>Lists all the feedback for an alert.</summary>
+            /// <summary>Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert
+            /// returns `NOT_FOUND` error.</summary>
             public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertFeedbackResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -474,8 +476,8 @@ namespace Google.Apis.AlertCenter.v1beta1
                 }
 
 
-                /// <summary>Required. The alert identifier. The "-" wildcard could be used to represent all alerts. If
-                /// alert does not exist returns a `NOT_FOUND` error.</summary>
+                /// <summary>Required. The alert identifier. The "-" wildcard could be used to represent all
+                /// alerts.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
@@ -626,15 +628,16 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         }
 
-        /// <summary>Gets the specified alert.</summary>
-        /// <param name="alertId">Required. The identifier of the alert to retrieve. Returns a NOT_FOUND error if no such
-        /// alert.</param>
+        /// <summary>Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND`
+        /// error.</summary>
+        /// <param name="alertId">Required. The identifier of the alert to retrieve.</param>
         public virtual GetRequest Get(string alertId)
         {
             return new GetRequest(service, alertId);
         }
 
-        /// <summary>Gets the specified alert.</summary>
+        /// <summary>Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND`
+        /// error.</summary>
         public class GetRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -646,8 +649,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Required. The identifier of the alert to retrieve. Returns a NOT_FOUND error if no such
-            /// alert.</summary>
+            /// <summary>Required. The identifier of the alert to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AlertId { get; private set; }
 
@@ -719,16 +721,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
-            /// are associated with. Inferred from the caller identity if not provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomerId { get; set; }
-
-            /// <summary>Optional. The requested page size. Server may return fewer items than requested. If
-            /// unspecified, server picks an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
             /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
             /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
@@ -746,6 +738,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// `order_by="create_time desc"`. Currently, only sorting by `create_time desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
+            /// are associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Optional. The requested page size. Server may return fewer items than requested. If
+            /// unspecified, server picks an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -772,24 +774,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -811,6 +795,24 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
                         Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -970,14 +972,14 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         }
 
-        /// <summary>Update the customer-level settings.</summary>
+        /// <summary>Updates the customer-level settings.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.AlertCenter.v1beta1.Data.Settings body)
         {
             return new UpdateSettingsRequest(service, body);
         }
 
-        /// <summary>Update the customer-level settings.</summary>
+        /// <summary>Updates the customer-level settings.</summary>
         public class UpdateSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
         {
             /// <summary>Constructs a new UpdateSettings request.</summary>
@@ -1061,7 +1063,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An alert affecting a customer. All fields are read-only once created.</summary>
+    /// <summary>An alert affecting a customer.</summary>
     public class Alert : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier for the alert.</summary>
@@ -1095,7 +1097,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityInvestigationToolLink")]
         public virtual string SecurityInvestigationToolLink { get; set; } 
 
-        /// <summary>Required. A unique identifier for the system that reported the alert.
+        /// <summary>Required. A unique identifier for the system that reported the alert. This is output only after
+        /// alert is created.
         ///
         /// Supported sources are any of the following:
         ///
@@ -1108,8 +1111,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Required. The type of the alert. For a list of available alert types see [G Suite Alert types
-        /// ](/admin-sdk/alertcenter/reference/alert-types).</summary>
+        /// <summary>Required. The type of the alert. This is output only after alert is created. For a list of
+        /// available alert types see [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1143,6 +1146,17 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Required. The type of the feedback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Alerts from App Maker to notify admins to set up default SQL instance.</summary>
+    public class AppMakerSqlSetupNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of applications with requests for default SQL set up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestInfo")]
+        public virtual System.Collections.Generic.IList<RequestInfo> RequestInfo { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1497,6 +1511,25 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Requests for one application that needs default SQL setup.</summary>
+    public class RequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of app developers who triggered notifications for above application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDeveloperEmail")]
+        public virtual System.Collections.Generic.IList<string> AppDeveloperEmail { get; set; } 
+
+        /// <summary>Required. The application that requires the SQL setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; } 
+
+        /// <summary>Required. Number of requests sent for this application to set up default SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfRequests")]
+        public virtual System.Nullable<long> NumberOfRequests { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

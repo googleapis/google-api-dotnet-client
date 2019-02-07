@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/S1J3L7I8M7OR1Y-1Amot7nguFwo\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/psKDiISfxUEa5MGtkMDFTk4XUmg\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
@@ -114,6 +114,10 @@
      "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#administratorWebTokenSpec\".",
      "default": "androidenterprise#administratorWebTokenSpec"
     },
+    "managedConfigurations": {
+     "$ref": "AdministratorWebTokenSpecManagedConfigurations",
+     "description": "Options for displaying the Managed Configuration page."
+    },
     "parent": {
      "type": "string",
      "description": "The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at other URIs. This URI must be https."
@@ -140,6 +144,16 @@
     "webApps": {
      "$ref": "AdministratorWebTokenSpecWebApps",
      "description": "Options for displaying the Web Apps page."
+    }
+   }
+  },
+  "AdministratorWebTokenSpecManagedConfigurations": {
+   "id": "AdministratorWebTokenSpecManagedConfigurations",
+   "type": "object",
+   "properties": {
+    "enabled": {
+     "type": "boolean",
+     "description": "Whether the Managed Configuration page is displayed. Default is true."
     }
    }
   },
@@ -389,7 +403,7 @@
   "AutoInstallConstraint": {
    "id": "AutoInstallConstraint",
    "type": "object",
-   "description": "The Auto install constraint. Defines a set of restrictions for installation. At least one of the fields must be set.",
+   "description": "The auto-install constraint. Defines a set of restrictions for installation. At least one of the fields must be set.",
    "properties": {
     "chargingStateConstraint": {
      "type": "string",
@@ -411,7 +425,7 @@
    "properties": {
     "autoInstallConstraint": {
      "type": "array",
-     "description": "Constraints for auto-installing the app. You can specify a maximum of one constraint.",
+     "description": "The constraints for auto-installing the app. You can specify a maximum of one constraint.",
      "items": {
       "$ref": "AutoInstallConstraint"
      }
@@ -1370,7 +1384,7 @@
    "properties": {
     "autoInstallPolicy": {
      "$ref": "AutoInstallPolicy",
-     "description": "The auto install policy for the product."
+     "description": "The auto-install policy for the product."
     },
     "productId": {
      "type": "string",

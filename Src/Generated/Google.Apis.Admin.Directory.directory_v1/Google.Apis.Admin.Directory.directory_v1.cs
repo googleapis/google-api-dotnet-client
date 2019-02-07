@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20190118 (1478)
+ *      <tr><th>API Rev<td>20190128 (1488)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -5566,6 +5566,26 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                /// [default: SOURCE_UNSPECIFIED]
+                [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
+
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                public enum CoordinatesSourceEnum
+                {
+                    /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
+                    [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
+                    CLIENTSPECIFIED,
+                    /// <summary>Building.coordinates are automatically populated based on the postal address.</summary>
+                    [Google.Apis.Util.StringValueAttribute("RESOLVED_FROM_ADDRESS")]
+                    RESOLVEDFROMADDRESS,
+                    /// <summary>Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to
+                    /// CLIENT_SPECIFIED if coordinates are provided.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SOURCE_UNSPECIFIED")]
+                    SOURCEUNSPECIFIED,
+                }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Admin.Directory.directory_v1.Data.Building Body { get; set; }
@@ -5603,6 +5623,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "coordinatesSource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "coordinatesSource",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "SOURCE_UNSPECIFIED",
                             Pattern = null,
                         });
                 }
@@ -5733,6 +5762,26 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BuildingId { get; private set; }
 
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                /// [default: SOURCE_UNSPECIFIED]
+                [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
+
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                public enum CoordinatesSourceEnum
+                {
+                    /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
+                    [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
+                    CLIENTSPECIFIED,
+                    /// <summary>Building.coordinates are automatically populated based on the postal address.</summary>
+                    [Google.Apis.Util.StringValueAttribute("RESOLVED_FROM_ADDRESS")]
+                    RESOLVEDFROMADDRESS,
+                    /// <summary>Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to
+                    /// CLIENT_SPECIFIED if coordinates are provided.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SOURCE_UNSPECIFIED")]
+                    SOURCEUNSPECIFIED,
+                }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Admin.Directory.directory_v1.Data.Building Body { get; set; }
@@ -5781,6 +5830,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "coordinatesSource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "coordinatesSource",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "SOURCE_UNSPECIFIED",
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -5818,6 +5876,26 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>The ID of the building to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BuildingId { get; private set; }
+
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                /// [default: SOURCE_UNSPECIFIED]
+                [Google.Apis.Util.RequestParameterAttribute("coordinatesSource", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CoordinatesSourceEnum> CoordinatesSource { get; set; }
+
+                /// <summary>Source from which Building.coordinates are derived.</summary>
+                public enum CoordinatesSourceEnum
+                {
+                    /// <summary>Building.coordinates are set to the coordinates included in the request.</summary>
+                    [Google.Apis.Util.StringValueAttribute("CLIENT_SPECIFIED")]
+                    CLIENTSPECIFIED,
+                    /// <summary>Building.coordinates are automatically populated based on the postal address.</summary>
+                    [Google.Apis.Util.StringValueAttribute("RESOLVED_FROM_ADDRESS")]
+                    RESOLVEDFROMADDRESS,
+                    /// <summary>Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to
+                    /// CLIENT_SPECIFIED if coordinates are provided.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SOURCE_UNSPECIFIED")]
+                    SOURCEUNSPECIFIED,
+                }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -5865,6 +5943,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "coordinatesSource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "coordinatesSource",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "SOURCE_UNSPECIFIED",
                             Pattern = null,
                         });
                 }
@@ -10637,6 +10724,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Building object in Directory API.</summary>
     public class Building : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The postal address of the building. See PostalAddress for details. Note that only a single address
+        /// line and region code are required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual BuildingAddress Address { get; set; } 
+
         /// <summary>Unique identifier for the building. The maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
         public virtual string BuildingId { get; set; } 
@@ -10668,6 +10760,68 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Kind of resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for the postal address of a building in Directory API.</summary>
+    public class BuildingAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unstructured address lines describing the lower levels of an address. Because values in
+        /// addressLines do not have type information and may sometimes contain multiple values in a single field (e.g.
+        /// "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope
+        /// order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+        /// is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-
+        /// large). This way, the most specific line of an address can be selected based on the language. The minimum
+        /// permitted structural representation of an address consists of a regionCode with all remaining information
+        /// placed in the addressLines. It would be possible to format such an address very approximately without
+        /// geocoding, but no semantic reasoning could be made about any of the address components until it was at least
+        /// partially resolved. Creating an address only containing a regionCode and addressLines, and then geocoding is
+        /// the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the
+        /// address should be localities or administrative areas).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLines")]
+        public virtual System.Collections.Generic.IList<string> AddressLines { get; set; } 
+
+        /// <summary>Optional. Highest administrative subdivision which is used for postal addresses of a country or
+        /// region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain
+        /// this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries
+        /// don't use an administrative area in postal addresses. E.g. in Switzerland this should be left
+        /// unpopulated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; } 
+
+        /// <summary>Optional. BCP-47 language code of the contents of this address (if known). This is often the UI
+        /// language of the input form or is expected to match one of the languages used in the address' country/region,
+        /// or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to
+        /// the correctness of the data and will never affect any validation or other non-formatting related operations.
+        /// If this value is not known, it should be omitted (rather than specifying a possibly incorrect default).
+        /// Examples: "zh-Hant", "ja", "ja-Latn", "en".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune,
+        /// UK post town. In regions of the world where localities are not well defined or do not fit into this
+        /// structure well, leave locality empty and use addressLines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; } 
+
+        /// <summary>Optional. Postal code of the address. Not all countries use or require postal codes to be present,
+        /// but where they are used, they may trigger additional validation with other parts of the address (e.g.
+        /// state/zip validation in the U.S.A.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; } 
+
+        /// <summary>Required. CLDR region code of the country/region of the address. This is never inferred and it is
+        /// up to the user to ensure the value is correct. See http://cldr.unicode.org/ and
+        /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs,
+        /// districts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sublocality")]
+        public virtual string Sublocality { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

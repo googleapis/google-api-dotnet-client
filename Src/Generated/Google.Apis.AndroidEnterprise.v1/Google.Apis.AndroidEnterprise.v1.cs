@@ -8074,6 +8074,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Options for displaying the Managed Configuration page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurations")]
+        public virtual AdministratorWebTokenSpecManagedConfigurations ManagedConfigurations { get; set; } 
+
         /// <summary>The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at
         /// other URIs. This URI must be https.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -8098,6 +8102,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Options for displaying the Web Apps page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApps")]
         public virtual AdministratorWebTokenSpecWebApps WebApps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AdministratorWebTokenSpecManagedConfigurations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Managed Configuration page is displayed. Default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8345,7 +8359,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The Auto install constraint. Defines a set of restrictions for installation. At least one of the fields
+    /// <summary>The auto-install constraint. Defines a set of restrictions for installation. At least one of the fields
     /// must be set.</summary>
     public class AutoInstallConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8367,7 +8381,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     public class AutoInstallPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Constraints for auto-installing the app. You can specify a maximum of one constraint.</summary>
+        /// <summary>The constraints for auto-installing the app. You can specify a maximum of one constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallConstraint")]
         public virtual System.Collections.Generic.IList<AutoInstallConstraint> AutoInstallConstraint { get; set; } 
 
@@ -9387,7 +9401,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>The policy for a product.</summary>
     public class ProductPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The auto install policy for the product.</summary>
+        /// <summary>The auto-install policy for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
         public virtual AutoInstallPolicy AutoInstallPolicy { get; set; } 
 

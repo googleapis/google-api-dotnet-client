@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190129 (1489)
+ *      <tr><th>API Rev<td>20190205 (1496)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1854,6 +1854,10 @@ namespace Google.Apis.Testing.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("startActivity")]
         public virtual StartActivityIntent StartActivity { get; set; } 
+
+        /// <summary>Timeout in seconds for each intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

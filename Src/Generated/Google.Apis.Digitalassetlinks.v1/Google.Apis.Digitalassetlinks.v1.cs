@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/digital-asset-links/'>Digital Asset Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190113 (1473)
+ *      <tr><th>API Rev<td>20190205 (1496)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/digital-asset-links/'>
  *              https://developers.google.com/digital-asset-links/</a>
@@ -404,11 +404,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("target.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TargetAndroidAppCertificateSha256Fingerprint { get; set; }
 
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppPackageName { get; set; }
-
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
             ///
@@ -436,6 +431,11 @@ namespace Google.Apis.Digitalassetlinks.v1
             /// match) *   `https://www.google.com:444/`  (port does not match) REQUIRED</summary>
             [Google.Apis.Util.RequestParameterAttribute("source.web.site", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceWebSite { get; set; }
+
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppPackageName { get; set; }
 
             /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
             /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
@@ -542,18 +542,18 @@ namespace Google.Apis.Digitalassetlinks.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
+                    "source.web.site", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "source.androidApp.packageName",
+                        Name = "source.web.site",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "source.web.site", new Google.Apis.Discovery.Parameter
+                    "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "source.web.site",
+                        Name = "source.androidApp.packageName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

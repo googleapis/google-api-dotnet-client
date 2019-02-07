@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Speech API Version v1
+ *   Cloud Speech-to-Text API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech API</a>
+ *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190114 (1474)
+ *      <tr><th>API Rev<td>20190201 (1492)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Speech API can be found at
+ * The complete API documentation for using Cloud Speech-to-Text API can be found at
  * <a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -107,7 +107,7 @@ namespace Google.Apis.Speech.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Speech API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Speech-to-Text API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -115,7 +115,7 @@ namespace Google.Apis.Speech.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Speech API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Speech-to-Text API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -1214,8 +1214,8 @@ namespace Google.Apis.Speech.v1.Data
         /// <summary>Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid values are:
         /// 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If
         /// that's not possible, use the native sample rate of the audio source (instead of re-sampling). This field is
-        /// optional for `FLAC` and `WAV` audio files and required for all other audio formats. For details, see
-        /// AudioEncoding.</summary>
+        /// optional for `FLAC`,  `WAV`. and 'MP3' audio files, and is required for all other audio formats. For
+        /// details, see AudioEncoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 

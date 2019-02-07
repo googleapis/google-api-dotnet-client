@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/P-4B11WcMvVB7cxHhUyxObdpF6w\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/cPUnID--3btDDpOQYGlNcmkUBCw\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20190118",
+ "revision": "20190128",
  "title": "Admin Directory API",
  "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -317,6 +317,10 @@
    "type": "object",
    "description": "JSON template for Building object in Directory API.",
    "properties": {
+    "address": {
+     "$ref": "BuildingAddress",
+     "description": "The postal address of the building. See PostalAddress for details. Note that only a single address line and region code are required."
+    },
     "buildingId": {
      "type": "string",
      "description": "Unique identifier for the building. The maximum length is 100 characters."
@@ -348,6 +352,44 @@
      "type": "string",
      "description": "Kind of resource this is.",
      "default": "admin#directory#resources#buildings#Building"
+    }
+   }
+  },
+  "BuildingAddress": {
+   "id": "BuildingAddress",
+   "type": "object",
+   "description": "JSON template for the postal address of a building in Directory API.",
+   "properties": {
+    "addressLines": {
+     "type": "array",
+     "description": "Unstructured address lines describing the lower levels of an address. Because values in addressLines do not have type information and may sometimes contain multiple values in a single field (e.g. \"Austin, TX\"), it is important that the line order is clear. The order of address lines should be \"envelope order\" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. \"ja\" for large-to-small ordering and \"ja-Latn\" or \"en\" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a regionCode with all remaining information placed in the addressLines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a regionCode and addressLines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).",
+     "items": {
+      "type": "string"
+     }
+    },
+    "administrativeArea": {
+     "type": "string",
+     "description": "Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. \"Barcelona\" and not \"Catalonia\"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated."
+    },
+    "languageCode": {
+     "type": "string",
+     "description": "Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: \"zh-Hant\", \"ja\", \"ja-Latn\", \"en\"."
+    },
+    "locality": {
+     "type": "string",
+     "description": "Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines."
+    },
+    "postalCode": {
+     "type": "string",
+     "description": "Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.)."
+    },
+    "regionCode": {
+     "type": "string",
+     "description": "Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html"
+    },
+    "sublocality": {
+     "type": "string",
+     "description": "Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts."
     }
    }
   },
@@ -5006,6 +5048,22 @@
        "httpMethod": "POST",
        "description": "Inserts a building.",
        "parameters": {
+        "coordinatesSource": {
+         "type": "string",
+         "description": "Source from which Building.coordinates are derived.",
+         "default": "SOURCE_UNSPECIFIED",
+         "enum": [
+          "CLIENT_SPECIFIED",
+          "RESOLVED_FROM_ADDRESS",
+          "SOURCE_UNSPECIFIED"
+         ],
+         "enumDescriptions": [
+          "Building.coordinates are set to the coordinates included in the request.",
+          "Building.coordinates are automatically populated based on the postal address.",
+          "Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to CLIENT_SPECIFIED if coordinates are provided."
+         ],
+         "location": "query"
+        },
         "customer": {
          "type": "string",
          "description": "The unique ID for the customer's G Suite account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
@@ -5075,6 +5133,22 @@
          "required": true,
          "location": "path"
         },
+        "coordinatesSource": {
+         "type": "string",
+         "description": "Source from which Building.coordinates are derived.",
+         "default": "SOURCE_UNSPECIFIED",
+         "enum": [
+          "CLIENT_SPECIFIED",
+          "RESOLVED_FROM_ADDRESS",
+          "SOURCE_UNSPECIFIED"
+         ],
+         "enumDescriptions": [
+          "Building.coordinates are set to the coordinates included in the request.",
+          "Building.coordinates are automatically populated based on the postal address.",
+          "Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to CLIENT_SPECIFIED if coordinates are provided."
+         ],
+         "location": "query"
+        },
         "customer": {
          "type": "string",
          "description": "The unique ID for the customer's G Suite account. As an account administrator, you can also use the my_customer alias to represent your account's customer ID.",
@@ -5107,6 +5181,22 @@
          "description": "The ID of the building to update.",
          "required": true,
          "location": "path"
+        },
+        "coordinatesSource": {
+         "type": "string",
+         "description": "Source from which Building.coordinates are derived.",
+         "default": "SOURCE_UNSPECIFIED",
+         "enum": [
+          "CLIENT_SPECIFIED",
+          "RESOLVED_FROM_ADDRESS",
+          "SOURCE_UNSPECIFIED"
+         ],
+         "enumDescriptions": [
+          "Building.coordinates are set to the coordinates included in the request.",
+          "Building.coordinates are automatically populated based on the postal address.",
+          "Defaults to RESOLVED_FROM_ADDRESS if postal address is provided. Otherwise, defaults to CLIENT_SPECIFIED if coordinates are provided."
+         ],
+         "location": "query"
         },
         "customer": {
          "type": "string",
