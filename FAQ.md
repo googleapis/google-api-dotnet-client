@@ -89,7 +89,7 @@ Uri uri = demoRequest.CreateRequest().RequestUri;
 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 // Execute the request
 HttpResponseMessage response = service.HttpClient.PostAsync(uri, content).Result;
-// JSON repsonse data can now be read directly from the response
+// JSON response data can now be read directly from the response
 ```
 
 See issue [#1068](https://github.com/googleapis/google-api-dotnet-client/issues/1068) for more details.
