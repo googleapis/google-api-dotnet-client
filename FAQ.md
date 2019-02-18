@@ -70,8 +70,7 @@ generated code. This un-typed JSON is represented via the `GoogleApiHttpBody`
 type, usually for a property called `HttpBody`.
 
 Setting the data in this property directly does not work as
-expected. The workaround is to set the content directly in the
-`HttpRequestMessage` via an interceptor. For example:
+expected. The workaround is to use the service `HttpClient` directly. For example:
 
 ```csharp
 DemoService service = new DemoService(...);
@@ -85,13 +84,12 @@ DemoRequestBody emptyBody = new DemoRequestBody { HttpBody = new GoogleApiHttpBo
 // Create the service request as normal
 DemoRequest demoRequest = service.Demo(emptyBody);
 
-// Add an interceptor to modify the request before sending it.
-demoRequest.ModifyRequest = httpRequestMessage =>
-{
-    httpRequestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
-};
-// Execute the request.
-GoogleApiHttpBody response = demoRequest.Execute();
+// Prepare to send the request using the service HttpClient directly
+Uri uri = demoRequest.CreateRequest().RequestUri;
+HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+// Execute the request
+HttpResponseMessage response = service.HttpClient.PostAsync(uri, content).Result;
+// JSON repsonse data can now be read directly from the response
 ```
 
 See issue [#1068](https://github.com/googleapis/google-api-dotnet-client/issues/1068) for more details.
