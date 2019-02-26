@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190213 (1504)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -125,7 +125,7 @@ namespace Google.Apis.Games.v1
             /// <summary>View and manage its own configuration data in your Google Drive</summary>
             public static string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
-            /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
+            /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
 
             /// <summary>Know who you are on Google</summary>
@@ -139,7 +139,7 @@ namespace Google.Apis.Games.v1
             /// <summary>View and manage its own configuration data in your Google Drive</summary>
             public const string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
-            /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
+            /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
 
             /// <summary>Know who you are on Google</summary>

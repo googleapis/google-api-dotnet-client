@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190213 (1504)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -115,7 +115,7 @@ namespace Google.Apis.GamesManagement.v1management
         /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Services Management API.</summary>
         public class Scope
         {
-            /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
+            /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
 
         }
@@ -123,7 +123,7 @@ namespace Google.Apis.GamesManagement.v1management
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services Management API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Share your Google+ profile information and view and manage your game activity</summary>
+            /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
 
         }

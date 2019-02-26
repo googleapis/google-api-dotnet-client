@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190204 (1495)
+ *      <tr><th>API Rev<td>20190225 (1516)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -2106,7 +2106,10 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual System.Nullable<long> ModifiedTimeMillis { get; set; } 
 
         /// <summary>If the data point is contained in a dataset for a derived data source, this field will be populated
-        /// with the data source stream ID that created the data point originally.</summary>
+        /// with the data source stream ID that created the data point originally.
+        ///
+        /// WARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set
+        /// at all, is an implementation detail and is not guaranteed to remain consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originDataSourceId")]
         public virtual string OriginDataSourceId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190130 (1490)
+ *      <tr><th>API Rev<td>20190221 (1512)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -504,14 +504,14 @@ namespace Google.Apis.Safebrowsing.v4
             [Google.Apis.Util.RequestParameterAttribute("encodedRequest", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EncodedRequest { get; private set; }
 
-            /// <summary>The version of the client implementation.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ClientVersion { get; set; }
-
             /// <summary>A client ID that uniquely identifies the client implementation of the Safe Browsing
             /// API.</summary>
             [Google.Apis.Util.RequestParameterAttribute("clientId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientId { get; set; }
+
+            /// <summary>The version of the client implementation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientVersion { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -547,18 +547,18 @@ namespace Google.Apis.Safebrowsing.v4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "clientVersion", new Google.Apis.Discovery.Parameter
+                    "clientId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "clientVersion",
+                        Name = "clientId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "clientId", new Google.Apis.Discovery.Parameter
+                    "clientVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "clientId",
+                        Name = "clientVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

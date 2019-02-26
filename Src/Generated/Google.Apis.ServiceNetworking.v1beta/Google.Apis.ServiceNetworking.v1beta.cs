@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190223 (1514)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -1663,7 +1663,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// mapping of an RPC method to one or more HTTP REST API methods.</summary>
     public class Http : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When set to true, URL path parmeters will be fully URI-decoded except in cases of single segment
+        /// <summary>When set to true, URL path parameters will be fully URI-decoded except in cases of single segment
         /// matches in reserved expansion, where "%2F" will be left encoded.
         ///
         /// The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.</summary>

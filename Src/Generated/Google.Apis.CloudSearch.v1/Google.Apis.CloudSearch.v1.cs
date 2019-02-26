@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://gsuite.google.com/products/cloud-search/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190221 (1512)
  *      <tr><th>API Docs
  *          <td><a href='https://gsuite.google.com/products/cloud-search/'>
  *              https://gsuite.google.com/products/cloud-search/</a>
@@ -536,6 +536,11 @@ namespace Google.Apis.CloudSearch.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>If set, the request will enable debugging features of Cloud Search. Only turn on
+                        /// this field, if asked by Google to help with debugging.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
                         /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -543,11 +548,6 @@ namespace Google.Apis.CloudSearch.v1
                         /// <summary>Maximum number of items to fetch in a request. Defaults to 100.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>If set, the request will enable debugging features of Cloud Search. Only turn on
-                        /// this field, if asked by Google to help with debugging.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -583,6 +583,15 @@ namespace Google.Apis.CloudSearch.v1
                                     Pattern = @"^datasources/[^/]+/items/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "debugOptions.enableDebugging",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -595,15 +604,6 @@ namespace Google.Apis.CloudSearch.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "debugOptions.enableDebugging",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1554,11 +1554,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Name of connector making this call. Format:
-                    /// datasources/{source_id}/connectors/{ID}</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ConnectorName { get; set; }
-
                     /// <summary>When set to true, the indexing system only populates the following fields: name,
                     /// version, metadata.hash, structured_data.hash, content.hash. If this value is false, then all the
                     /// fields are populated in Item.</summary>
@@ -1578,6 +1573,11 @@ namespace Google.Apis.CloudSearch.v1
                     /// field, if asked by Google to help with debugging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
+                    /// <summary>Name of connector making this call. Format:
+                    /// datasources/{source_id}/connectors/{ID}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConnectorName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1613,15 +1613,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^datasources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "brief", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "brief",
@@ -1652,6 +1643,15 @@ namespace Google.Apis.CloudSearch.v1
                             "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "connectorName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "connectorName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2543,11 +2543,6 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestOptionsLanguageCode { get; set; }
-
                 /// <summary>Id of the application created using SearchApplicationsService.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.searchApplicationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsSearchApplicationId { get; set; }
@@ -2567,6 +2562,11 @@ namespace Google.Apis.CloudSearch.v1
                 /// field, if asked by Google to help with debugging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequestOptionsDebugOptionsEnableDebugging { get; set; }
+
+                /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+                /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsLanguageCode { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2592,15 +2592,6 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
-                    RequestParameters.Add(
-                        "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.languageCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                     RequestParameters.Add(
                         "requestOptions.searchApplicationId", new Google.Apis.Discovery.Parameter
                         {
@@ -2632,6 +2623,15 @@ namespace Google.Apis.CloudSearch.v1
                         "requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestOptions.debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.languageCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2794,14 +2794,14 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Creates data source.</summary>
+            /// <summary>Creates a datasource.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.DataSource body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Creates data source.</summary>
+            /// <summary>Creates a datasource.</summary>
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2847,14 +2847,14 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Deletes a data source.</summary>
-            /// <param name="name">Name of the data source. Format: datasources/{source_id}.</param>
+            /// <summary>Deletes a datasource.</summary>
+            /// <param name="name">Name of the datasource. Format: datasources/{source_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a data source.</summary>
+            /// <summary>Deletes a datasource.</summary>
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -2866,7 +2866,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source. Format: datasources/{source_id}.</summary>
+                /// <summary>Name of the datasource. Format: datasources/{source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2921,14 +2921,14 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets a data source.</summary>
-            /// <param name="name">Name of the data source resource. Format: datasources/{source_id}.</param>
+            /// <summary>Gets a datasource.</summary>
+            /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a data source.</summary>
+            /// <summary>Gets a datasource.</summary>
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -2940,7 +2940,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source resource. Format: datasources/{source_id}.</summary>
+                /// <summary>Name of the datasource resource. Format: datasources/{source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2995,13 +2995,13 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Lists data sources.</summary>
+            /// <summary>Lists datasources.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists data sources.</summary>
+            /// <summary>Lists datasources.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListDataSourceResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3012,11 +3012,7 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Starting index of the results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of data sources to fetch in a request. The max value is 100. The default
+                /// <summary>Maximum number of datasources to fetch in a request. The max value is 100. The default
                 /// value is 10</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -3025,6 +3021,10 @@ namespace Google.Apis.CloudSearch.v1
                 /// field, if asked by Google to help with debugging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
+                /// <summary>Starting index of the results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3051,15 +3051,6 @@ namespace Google.Apis.CloudSearch.v1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -3077,20 +3068,29 @@ namespace Google.Apis.CloudSearch.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Updates a data source.</summary>
+            /// <summary>Updates a datasource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the data source resource. Format: datasources/{source_id}. The name is ignored when
-            /// creating a data source.</param>
+            /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when
+            /// creating a datasource.</param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.UpdateDataSourceRequest body, string name)
             {
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a data source.</summary>
+            /// <summary>Updates a datasource.</summary>
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3103,8 +3103,8 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Name of the data source resource. Format: datasources/{source_id}. The name is ignored when
-                /// creating a data source.</summary>
+                /// <summary>Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when
+                /// creating a datasource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3827,6 +3827,10 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
+
             /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
             [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ToDateDay { get; set; }
@@ -3846,10 +3850,6 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> FromDateDay { get; set; }
-
-            /// <summary>Year of date. Must be from 1 to 9999.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> FromDateYear { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3875,6 +3875,15 @@ namespace Google.Apis.CloudSearch.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "toDate.day", new Google.Apis.Discovery.Parameter
                     {
@@ -3915,15 +3924,6 @@ namespace Google.Apis.CloudSearch.v1
                     "fromDate.day", new Google.Apis.Discovery.Parameter
                     {
                         Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4005,12 +4005,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Data source is a logical namespace for items to be indexed. All items must belong to a data source.
-    /// This is the prerequisite before items can be indexed into Cloud Search.</summary>
+    /// <summary>Datasource is a logical namespace for items to be indexed. All items must belong to a datasource.  This
+    /// is the prerequisite before items can be indexed into Cloud Search.</summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, Indexing API rejects any modification calls to this data source such as create, update,
-        /// and delete. Disabling this does not imply halting process of previously accepted data.</summary>
+        /// <summary>If true, Indexing API rejects any modification calls to this datasource such as create, update, and
+        /// delete. Disabling this does not imply halting process of previously accepted data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableModifications")]
         public virtual System.Nullable<bool> DisableModifications { get; set; } 
 
@@ -4018,7 +4018,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableServing")]
         public virtual System.Nullable<bool> DisableServing { get; set; } 
 
-        /// <summary>Required. Display name of the data source The maximum length is 300 characters.</summary>
+        /// <summary>Required. Display name of the datasource The maximum length is 300 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -4026,15 +4026,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexingServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> IndexingServiceAccounts { get; set; } 
 
-        /// <summary>This restricts visibility to items at a data source level to the disjunction of users/groups
-        /// mentioned with the field. Note that, this does not ensure access to a specific item, as users need to have
-        /// ACL permissions on the contained items. This ensures a high level access on the entire data source, and that
-        /// the individual items are not shared outside this visibility.</summary>
+        /// <summary>This field restricts visibility to items at the datasource level. Items within the datasource are
+        /// restricted to the union of users and groups included in this field. Note that, this does not ensure access
+        /// to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level
+        /// access on the entire datasource, and that the individual items are not shared outside this
+        /// visibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsVisibility")]
         public virtual System.Collections.Generic.IList<GSuitePrincipal> ItemsVisibility { get; set; } 
 
-        /// <summary>Name of the data source resource. Format: datasources/{source_id}. The name is ignored when
-        /// creating a data source.</summary>
+        /// <summary>Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating
+        /// a datasource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4044,9 +4045,9 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>A short name or alias for the source.  This value will be used to match the 'source' operator. For
         /// example, if the short name is *value* then queries like *source:value* will only return results for this
-        /// source. The value must be unique across all data sources. The value must only contain alphanumeric
-        /// characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail,
-        /// gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32
+        /// source. The value must be unique across all datasources. The value must only contain alphanumeric characters
+        /// (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs,
+        /// drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
         public virtual string ShortName { get; set; } 
@@ -4531,14 +4532,18 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// search query are considered higher quality and ranked accordingly.</summary>
     public class FreshnessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The duration (in seconds) after which an object should be considered stale.</summary>
+        /// <summary>The duration after which an object should be considered stale. The default value is 180 days (in
+        /// seconds).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessDuration")]
         public virtual object FreshnessDuration { get; set; } 
 
         /// <summary>This property indicates the freshness level of the object in the index. If set, this property must
         /// be a top-level property within the property definitions and it must be a timestamp type or date type.
         /// Otherwise, the Indexing API uses updateTime as the freshness indicator. The maximum length is 256
-        /// characters.</summary>
+        /// characters.
+        ///
+        /// When a property is used to calculate fresheness, the value defaults to 2 years from the current
+        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freshnessProperty")]
         public virtual string FreshnessProperty { get; set; } 
 
@@ -4579,6 +4584,56 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<DataSourceIndexStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gmail Action restricts (i.e. read/replied/snoozed).</summary>
+    public class GmailActionRestrict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).</summary>
+    public class GmailAttachmentRestrict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).</summary>
+    public class GmailFolderRestrict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gmail Intelligent restricts (i.e. smartlabels, important).</summary>
+    public class GmailIntelligentRestrict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Gmail Time restricts (i.e. received today, this week).</summary>
+    public class GmailTimeRestrict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4628,6 +4683,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class IndexItemOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies if the index request should allow gsuite principals that do not exist or are deleted in
+        /// the index request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowUnknownGsuitePrincipals")]
+        public virtual System.Nullable<bool> AllowUnknownGsuitePrincipals { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class IndexItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
@@ -4637,6 +4703,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("indexItemOptions")]
+        public virtual IndexItemOptions IndexItemOptions { get; set; } 
 
         /// <summary>Name of the item.  Format: datasources/{source_id}/items/{item_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
@@ -5118,7 +5187,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 
 
-        /// <summary>The last modified date for the object in the search result.</summary>
+        /// <summary>The last modified date for the object in the search result. If not set in the item, the value
+        /// returned here is empty. When `updateTime` is used for calculating freshness and is not set, this value
+        /// defaults to 2 years from the current time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -5782,20 +5853,39 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information relevant only to a restrict entry. NextId: 7</summary>
+    /// <summary>Information relevant only to a restrict entry. NextId: 12</summary>
     public class RestrictItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerank
+        /// ingUtils.java)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFollowUpRestrict")]
         public virtual DriveFollowUpRestrict DriveFollowUpRestrict { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveLocationRestrict")]
         public virtual DriveLocationRestrict DriveLocationRestrict { get; set; } 
 
+        /// <summary>LINT.IfChange Drive Types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveMimeTypeRestrict")]
         public virtual DriveMimeTypeRestrict DriveMimeTypeRestrict { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveTimeSpanRestrict")]
         public virtual DriveTimeSpanRestrict DriveTimeSpanRestrict { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailActionRestrict")]
+        public virtual GmailActionRestrict GmailActionRestrict { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailAttachmentRestrict")]
+        public virtual GmailAttachmentRestrict GmailAttachmentRestrict { get; set; } 
+
+        /// <summary>Gmail Types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailFolderRestrict")]
+        public virtual GmailFolderRestrict GmailFolderRestrict { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailIntelligentRestrict")]
+        public virtual GmailIntelligentRestrict GmailIntelligentRestrict { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailTimeRestrict")]
+        public virtual GmailTimeRestrict GmailTimeRestrict { get; set; } 
 
         /// <summary>The search restrict (e.g. "after:2017-09-11 before:2017-09-12").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchOperator")]
@@ -5992,7 +6082,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class SearchQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An indication of the quality of the item, used to influence search quality. Value should be between
-        /// 0.0 (lowest quality) and 1.0 (highest quality).</summary>
+        /// 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quality")]
         public virtual System.Nullable<double> Quality { get; set; } 
 
@@ -6358,6 +6448,7 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Structured results that are returned as part of search request.</summary>
     public class StructuredResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Representation of a person</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
         public virtual Person Person { get; set; } 
 

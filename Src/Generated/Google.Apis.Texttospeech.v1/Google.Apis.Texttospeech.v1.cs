@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>

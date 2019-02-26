@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190107 (1467)
+ *      <tr><th>API Rev<td>20190201 (1492)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -2787,6 +2787,127 @@ namespace Google.Apis.Compute.beta
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resizes the allocation (applicable to standalone allocations only)</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this
+        /// request.</param>
+        /// <param name="allocation">Name of the allocation to update.</param>
+        public virtual ResizeRequest Resize(Google.Apis.Compute.beta.Data.AllocationsResizeRequest body, string project, string zone, string allocation)
+        {
+            return new ResizeRequest(service, body, project, zone, allocation);
+        }
+
+        /// <summary>Resizes the allocation (applicable to standalone allocations only)</summary>
+        public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Resize request.</summary>
+            public ResizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.AllocationsResizeRequest body, string project, string zone, string allocation)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Allocation = allocation;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the allocation to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("allocation", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Allocation { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.AllocationsResizeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resize"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/allocations/{allocation}/resize"; }
+            }
+
+            /// <summary>Initializes Resize parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "allocation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allocation",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -19268,8 +19389,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Whether to force attach the disk even if it's currently attached to another instance. This is
-            /// only available for regional disks.</summary>
+            /// <summary>Whether to force attach the disk even if it's currently attached to another instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceAttach { get; set; }
 
@@ -20177,6 +20297,97 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual GetShieldedInstanceIdentityRequest GetShieldedInstanceIdentity(string project, string zone, string instance)
+        {
+            return new GetShieldedInstanceIdentityRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        public class GetShieldedInstanceIdentityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ShieldedInstanceIdentity>
+        {
+            /// <summary>Constructs a new GetShieldedInstanceIdentity request.</summary>
+            public GetShieldedInstanceIdentityRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getShieldedInstanceIdentity"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity"; }
+            }
+
+            /// <summary>Initializes GetShieldedInstanceIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -22199,6 +22410,131 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
+        /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual SetShieldedInstanceIntegrityPolicyRequest SetShieldedInstanceIntegrityPolicy(Google.Apis.Compute.beta.Data.ShieldedInstanceIntegrityPolicy body, string project, string zone, string instance)
+        {
+            return new SetShieldedInstanceIntegrityPolicyRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
+        /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class SetShieldedInstanceIntegrityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetShieldedInstanceIntegrityPolicy request.</summary>
+            public SetShieldedInstanceIntegrityPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.ShieldedInstanceIntegrityPolicy body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.ShieldedInstanceIntegrityPolicy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setShieldedInstanceIntegrityPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setShieldedInstanceIntegrityPolicy"; }
+            }
+
+            /// <summary>Initializes SetShieldedInstanceIntegrityPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Sets the Shielded VM integrity policy for a VM instance. You can only use this method on a running
         /// VM instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
         /// rules.</summary>
@@ -23514,6 +23850,131 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual UpdateShieldedInstanceConfigRequest UpdateShieldedInstanceConfig(Google.Apis.Compute.beta.Data.ShieldedInstanceConfig body, string project, string zone, string instance)
+        {
+            return new UpdateShieldedInstanceConfigRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class UpdateShieldedInstanceConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateShieldedInstanceConfig request.</summary>
+            public UpdateShieldedInstanceConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.ShieldedInstanceConfig body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.ShieldedInstanceConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateShieldedInstanceConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateShieldedInstanceConfig"; }
+            }
+
+            /// <summary>Initializes UpdateShieldedInstanceConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -35458,6 +35919,130 @@ namespace Google.Apis.Compute.beta
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update the shape of allocations for GPUS/Local SSDs of allocations within the
+        /// commitments.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="commitment">Name of the commitment of which the allocation's capacities are
+        /// being updated.</param>
+        public virtual UpdateAllocationsRequest UpdateAllocations(Google.Apis.Compute.beta.Data.RegionCommitmentsUpdateAllocationsRequest body, string project, string region, string commitment)
+        {
+            return new UpdateAllocationsRequest(service, body, project, region, commitment);
+        }
+
+        /// <summary>Update the shape of allocations for GPUS/Local SSDs of allocations within the
+        /// commitments.</summary>
+        public class UpdateAllocationsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateAllocations request.</summary>
+            public UpdateAllocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionCommitmentsUpdateAllocationsRequest body, string project, string region, string commitment)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Commitment = commitment;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the commitment of which the allocation's capacities are being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("commitment", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Commitment { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionCommitmentsUpdateAllocationsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateAllocations"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/commitments/{commitment}/updateAllocations"; }
+            }
+
+            /// <summary>Initializes UpdateAllocations parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "commitment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "commitment",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -56727,6 +57312,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -56751,6 +57338,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>Allocation for instances with specific machine shapes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specificAllocation")]
         public virtual AllocationSpecificSKUAllocation SpecificAllocation { get; set; } 
 
@@ -56760,6 +57348,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("specificAllocationRequired")]
         public virtual System.Nullable<bool> SpecificAllocationRequired { get; set; } 
 
+        /// <summary>Zone in which the allocation resides, must be provided if allocation is created with commitment
+        /// creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -56941,6 +57531,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inUseCount")]
         public virtual System.Nullable<long> InUseCount { get; set; } 
 
+        /// <summary>The instance properties for this specific sku allocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
         public virtual AllocationSpecificSKUAllocationAllocatedInstanceProperties InstanceProperties { get; set; } 
 
@@ -56984,6 +57575,16 @@ namespace Google.Apis.Compute.beta.Data
         /// default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AllocationsResizeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of allocated resources can be resized with minimum = 1 and maximum = 1000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specificSkuCount")]
+        public virtual System.Nullable<long> SpecificSkuCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -57171,6 +57772,14 @@ namespace Google.Apis.Compute.beta.Data
         /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.
+        ///
+        /// Guest OS features are applied by merging initializeParams.guestOsFeatures and
+        /// disks.guestOsFeatures</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
         /// <summary>Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field
         /// is only applicable for persistent disks.</summary>
@@ -58018,6 +58627,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
+        /// <summary>This field denotes the logging options for the load balancer traffic served by this backend
+        /// service. If logging is enabled, logs will be exported to Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual BackendServiceLogConfig LogConfig { get; set; } 
+
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
@@ -58284,6 +58898,25 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    /// <summary>The available logging options for the load balancer traffic served by this backend service.</summary>
+    public class BackendServiceLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field denotes whether to enable logging for the load balancer traffic served by this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>This field can only be specified if logging is enabled for this backend service. The value of the
+        /// field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means
+        /// all logged requests are reported and 0.0 means no logged requests are reported. The default value is
+        /// 1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<float> SampleRate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class BackendServiceReference : Google.Apis.Requests.IDirectResponseSchema
@@ -58731,11 +59364,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sys")]
         public virtual string Sys { get; set; } 
 
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
+        /// <summary>The objects of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
@@ -60051,6 +60680,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allPorts")]
         public virtual System.Nullable<bool> AllPorts { get; set; } 
 
+        /// <summary>This field is used along with the backend_service field for internal load balancing or with the
+        /// target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all
+        /// regions. Otherwise only allows access from clients in the same region as the internal load
+        /// balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGlobalAccess")]
+        public virtual System.Nullable<bool> AllowGlobalAccess { get; set; } 
+
         /// <summary>This field is only used for INTERNAL load balancing.
         ///
         /// For internal load balancing, this field identifies the BackendService resource to receive the matched
@@ -60196,7 +60832,7 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets are valid.</summary>
+        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -61553,6 +62189,12 @@ namespace Google.Apis.Compute.beta.Data
         /// authenticate applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceIntegrityPolicy")]
+        public virtual ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicy { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmConfig")]
         public virtual ShieldedVmConfig ShieldedVmConfig { get; set; } 
@@ -62922,6 +63564,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
+
         /// <summary>Specifies the Shielded VM options for the instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedVmConfig")]
         public virtual ShieldedVmConfig ShieldedVmConfig { get; set; } 
@@ -63835,12 +64480,17 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InterconnectDiagnosticsLinkOpticalPower : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of the current value when compared to the warning and alarm levels for the receiving or
+        /// transmitting transceiver. Possible states include: - OK: The value has not crossed a warning threshold. -
+        /// LOW_WARNING: The value has crossed below the low warning threshold. - HIGH_WARNING: The value has crossed
+        /// above the high warning threshold. - LOW_ALARM: The value has crossed below the low alarm threshold. -
+        /// HIGH_ALARM: The value has crossed above the high alarm threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Value of the current optical power, read in dBm. Take a known good optical value, give it a 10%
-        /// margin and trigger warnings relative to that value. In general, a -7dBm warning and a -11dBm alarm are good
-        /// optical value estimates for most links.</summary>
+        /// <summary>Value of the current receiving or transmitting optical power, read in dBm. Take a known good
+        /// optical value, give it a 10% margin and trigger warnings relative to that value. In general, a -7dBm warning
+        /// and a -11dBm alarm are good optical value estimates for most links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; } 
 
@@ -63866,9 +64516,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lacpStatus")]
         public virtual InterconnectDiagnosticsLinkLACPStatus LacpStatus { get; set; } 
 
+        /// <summary>An InterconnectDiagnostics.LinkOpticalPower object, describing the current value and status of the
+        /// received light level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivingOpticalPower")]
         public virtual InterconnectDiagnosticsLinkOpticalPower ReceivingOpticalPower { get; set; } 
 
+        /// <summary>An InterconnectDiagnostics.LinkOpticalPower object, describing the current value and status of the
+        /// transmitted light level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transmittingOpticalPower")]
         public virtual InterconnectDiagnosticsLinkOpticalPower TransmittingOpticalPower { get; set; } 
 
@@ -64869,8 +65523,9 @@ namespace Google.Apis.Compute.beta.Data
     /// (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The range of internal addresses that are legal on this network. This range is a CIDR specification,
-        /// for example: 192.168.0.0/16. Provided by the client when the network is created.</summary>
+        /// <summary>Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this
+        /// network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the
+        /// network is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; } 
 
@@ -65509,9 +66164,10 @@ namespace Google.Apis.Compute.beta.Data
     /// peering.</summary>
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether full mesh connectivity is created and managed automatically. When it is set to
-        /// true, Google Compute Engine will automatically create and manage the routes between two networks when the
-        /// state is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates whether
+        /// full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine
+        /// will automatically create and manage the routes between two networks when the state is ACTIVE. Otherwise,
+        /// user needs to create routes manually to route packets to peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -65572,7 +66228,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether Google Compute Engine manages the routes automatically.</summary>
+        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes in network_peering instead.
+        /// Whether Google Compute Engine manages the routes automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -65826,6 +66483,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; } 
 
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -66039,6 +66700,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
 
         /// <summary>[Output Only] The status of the node template. One of the following values: CREATING, READY, and
         /// DELETING.</summary>
@@ -67334,6 +67999,16 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
+    public class RegionCommitmentsUpdateAllocationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of allocations for the capacity move of VMs with accelerators and local ssds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocations")]
+        public virtual System.Collections.Generic.IList<Allocation> Allocations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RegionDiskTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
@@ -67882,6 +68557,10 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>
     public class ResourceCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; } 
+
         /// <summary>The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can
         /// just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to
         /// 6.5GB of memory per every vCPU.</summary>
@@ -69534,6 +70213,15 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ServerBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A service account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -69544,6 +70232,72 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The list of scopes to be made available for this service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of Shielded Instance options.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines whether the instance has integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
+
+        /// <summary>Defines whether the instance has Secure Boot enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
+
+        /// <summary>Defines whether the instance has the vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A shielded Instance identity entry.</summary>
+    public class ShieldedInstanceIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An Endorsement Key (EK) issued to the Shielded Instance's vTPM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual ShieldedInstanceIdentityEntry EncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#shieldedInstanceIdentity for shielded Instance
+        /// identity entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>An Attestation Key (AK) issued to the Shielded Instance's vTPM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKey")]
+        public virtual ShieldedInstanceIdentityEntry SigningKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Shielded Instance Identity Entry.</summary>
+    public class ShieldedInstanceIdentityEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A PEM-encoded X.509 certificate. This field can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekCert")]
+        public virtual string EkCert { get; set; } 
+
+        /// <summary>A PEM-encoded public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekPub")]
+        public virtual string EkPub { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The policy describes the baseline against which Instance boot integrity is measured.</summary>
+    public class ShieldedInstanceIntegrityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Updates the integrity policy baseline using the measurements from the VM instance's most recent
+        /// boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAutoLearnPolicy")]
+        public virtual System.Nullable<bool> UpdateAutoLearnPolicy { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -72628,6 +73382,23 @@ namespace Google.Apis.Compute.beta.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created. This field is exclusive with the field peerGcpGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerExternalGateway")]
+        public virtual string PeerExternalGateway { get; set; } 
+
+        /// <summary>The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerExternalGatewayInterface")]
+        public virtual System.Nullable<int> PeerExternalGatewayInterface { get; set; } 
+
+        /// <summary>URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC
+        /// network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN
+        /// tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerGcpGateway")]
+        public virtual string PeerGcpGateway { get; set; } 
 
         /// <summary>IP address of the peer VPN gateway. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIp")]

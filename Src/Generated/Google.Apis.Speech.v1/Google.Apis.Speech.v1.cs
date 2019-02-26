@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -448,6 +448,10 @@ namespace Google.Apis.Speech.v1
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -459,10 +463,6 @@ namespace Google.Apis.Speech.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -489,6 +489,15 @@ namespace Google.Apis.Speech.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -510,15 +519,6 @@ namespace Google.Apis.Speech.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -693,10 +693,6 @@ namespace Google.Apis.Speech.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -704,6 +700,10 @@ namespace Google.Apis.Speech.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -739,15 +739,6 @@ namespace Google.Apis.Speech.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -760,6 +751,15 @@ namespace Google.Apis.Speech.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1144,6 +1144,14 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>*Optional* The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL
+        /// recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid
+        /// value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one
+        /// channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on
+        /// each channel set `enable_separate_recognition_per_channel` to 'true'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioChannelCount")]
+        public virtual System.Nullable<int> AudioChannelCount { get; set; } 
+
         /// <summary>*Optional* If 'true', adds punctuation to recognition result hypotheses. This feature is only
         /// available in select languages. Setting this for requests in other languages has no effect at all. The
         /// default 'false' value does not add punctuation to result hypotheses. Note: This is currently offered as an
@@ -1183,6 +1191,10 @@ namespace Google.Apis.Speech.v1.Data
         /// of one. If omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
         public virtual System.Nullable<int> MaxAlternatives { get; set; } 
+
+        /// <summary>*Optional* Metadata regarding this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual RecognitionMetadata Metadata { get; set; } 
 
         /// <summary>*Optional* Which model to select for the given request. Select the model best suited to your domain
         /// to get best results. If a model is not explicitly specified, then we auto-select a model based on the
@@ -1236,6 +1248,55 @@ namespace Google.Apis.Speech.v1.Data
         /// audio logging, then you will receive an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEnhanced")]
         public virtual System.Nullable<bool> UseEnhanced { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Description of audio data to be recognized.</summary>
+    public class RecognitionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the content. Eg. "Recordings of federal supreme court hearings from 2012".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTopic")]
+        public virtual string AudioTopic { get; set; } 
+
+        /// <summary>The industry vertical to which this speech recognition request most closely applies. This is most
+        /// indicative of the topics contained in the audio.  Use the 6-digit NAICS code to identify the industry
+        /// vertical - see https://www.naics.com/search/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryNaicsCodeOfAudio")]
+        public virtual System.Nullable<long> IndustryNaicsCodeOfAudio { get; set; } 
+
+        /// <summary>The use case most closely describing the audio content to be recognized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
+        public virtual string InteractionType { get; set; } 
+
+        /// <summary>The audio type that most closely describes the audio being recognized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microphoneDistance")]
+        public virtual string MicrophoneDistance { get; set; } 
+
+        /// <summary>Obfuscated (privacy-protected) ID of the user, to identify number of unique users using the
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedId")]
+        public virtual System.Nullable<long> ObfuscatedId { get; set; } 
+
+        /// <summary>The original media the speech was recorded on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalMediaType")]
+        public virtual string OriginalMediaType { get; set; } 
+
+        /// <summary>Mime type of the original audio file.  For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`,
+        /// `audio/3gpp`. A list of possible audio mime types is maintained at http://www.iana.org/assignments/media-
+        /// types/media-types.xhtml#audio</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalMimeType")]
+        public virtual string OriginalMimeType { get; set; } 
+
+        /// <summary>The device used to make the recording.  Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or
+        /// 'POTS' or 'VoIP' or 'Cardioid Microphone'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordingDeviceName")]
+        public virtual string RecordingDeviceName { get; set; } 
+
+        /// <summary>The type of device the speech was recorded with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordingDeviceType")]
+        public virtual string RecordingDeviceType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

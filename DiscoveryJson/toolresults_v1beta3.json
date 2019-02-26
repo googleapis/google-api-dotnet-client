@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/aSTdoy3v5o0c7_oPMMkqMW7CiCI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/sopM9Td8_L8mYR90bBI8SXVKvlA\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20190206",
+ "revision": "20190225",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -572,6 +572,35 @@
     }
    }
   },
+  "IndividualOutcome": {
+   "id": "IndividualOutcome",
+   "type": "object",
+   "description": "Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.",
+   "properties": {
+    "outcomeSummary": {
+     "type": "string",
+     "enum": [
+      "failure",
+      "flaky",
+      "inconclusive",
+      "skipped",
+      "success",
+      "unset"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "stepId": {
+     "type": "string"
+    }
+   }
+  },
   "ListExecutionsResponse": {
    "id": "ListExecutionsResponse",
    "type": "object",
@@ -698,6 +727,26 @@
      "type": "string",
      "description": "Total memory available on the device in KiB",
      "format": "int64"
+    }
+   }
+  },
+  "MultiStep": {
+   "id": "MultiStep",
+   "type": "object",
+   "description": "Details when multiple steps are run with the same configuration as a group.",
+   "properties": {
+    "multistepNumber": {
+     "type": "integer",
+     "description": "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.",
+     "format": "int32"
+    },
+    "primaryStep": {
+     "$ref": "PrimaryStep",
+     "description": "Present if it is a primary (original) step."
+    },
+    "primaryStepId": {
+     "type": "string",
+     "description": "Step Id of the primary (original) step, which might be this step."
     }
    }
   },
@@ -858,6 +907,40 @@
     "stepId": {
      "type": "string",
      "description": "A tool results step ID."
+    }
+   }
+  },
+  "PrimaryStep": {
+   "id": "PrimaryStep",
+   "type": "object",
+   "description": "Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.",
+   "properties": {
+    "individualOutcome": {
+     "type": "array",
+     "description": "Step Id and outcome of each individual step.",
+     "items": {
+      "$ref": "IndividualOutcome"
+     }
+    },
+    "rollUp": {
+     "type": "string",
+     "description": "Rollup test status of multiple steps that were run with the same configuration as a group.",
+     "enum": [
+      "failure",
+      "flaky",
+      "inconclusive",
+      "skipped",
+      "success",
+      "unset"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -1038,6 +1121,10 @@
      "items": {
       "$ref": "StepLabelsEntry"
      }
+    },
+    "multiStep": {
+     "$ref": "MultiStep",
+     "description": "Details when multiple steps are run with the same configuration as a group. These details can be used identify which group this step is part of. It also identifies the groups 'primary step' which indexes all the group members.\n\n- In response: present if previously set. - In create request: optional, set iff this step was performed more than once. - In update request: optional"
     },
     "name": {
      "type": "string",

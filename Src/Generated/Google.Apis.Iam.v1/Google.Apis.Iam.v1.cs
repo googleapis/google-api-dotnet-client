@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190215 (1506)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -796,10 +796,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional limit on the number of roles to include in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -820,6 +816,10 @@ namespace Google.Apis.Iam.v1
                 /// <summary>Include Roles that have been deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -855,15 +855,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -885,6 +876,15 @@ namespace Google.Apis.Iam.v1
                         "showDeleted", new Google.Apis.Discovery.Parameter
                         {
                             Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2325,16 +2325,16 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional pagination token returned in an earlier
+                /// ListServiceAccountsResponse.next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
                 /// in a subsequent request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional pagination token returned in an earlier
-                /// ListServiceAccountsResponse.next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2370,18 +2370,18 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2703,6 +2703,78 @@ namespace Google.Apis.Iam.v1
 
             }
 
+            /// <summary>Restores a deleted ServiceAccount.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the service account in the following format:
+            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
+            /// the project from the account.</param>
+            public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteServiceAccountRequest body, string name)
+            {
+                return new UndeleteRequest(service, body, name);
+            }
+
+            /// <summary>Restores a deleted ServiceAccount.</summary>
+            public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.UndeleteServiceAccountResponse>
+            {
+                /// <summary>Constructs a new Undelete request.</summary>
+                public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteServiceAccountRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the service account in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the
+                /// `PROJECT_ID` will infer the project from the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Iam.v1.Data.UndeleteServiceAccountRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "undelete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:undelete"; }
+                }
+
+                /// <summary>Initializes Undelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Updates a ServiceAccount.
             ///
             /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
@@ -2886,6 +2958,19 @@ namespace Google.Apis.Iam.v1
             }
 
 
+            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
+            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Include Roles that have been deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Optional limit on the number of roles to include in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2902,19 +2987,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
-            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
-            /// <summary>Include Roles that have been deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2941,24 +3013,6 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2980,6 +3034,24 @@ namespace Google.Apis.Iam.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3689,6 +3761,10 @@ namespace Google.Apis.Iam.v1.Data
     /// account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>@OutputOnly A bool indicate if the service account is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
         /// <summary>Optional. A user-specified name for the service account. Must be less than or equal to 100 UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -3887,5 +3963,22 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
+    }    
+
+    /// <summary>The service account undelete request.</summary>
+    public class UndeleteServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UndeleteServiceAccountResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata for the restored service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoredAccount")]
+        public virtual ServiceAccount RestoredAccount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190128 (1488)
+ *      <tr><th>API Rev<td>20190217 (1508)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -846,6 +846,13 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; } 
 
+        /// <summary>Identity delegation history of an authenticated service account that makes the request. It contains
+        /// information on the real authorities that try to access GCP resources by delegating on a service account.
+        /// When multiple authorities present, they are guaranteed to be sorted based on the original ordering of the
+        /// identity delegation events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountDelegationInfo")]
+        public virtual System.Collections.Generic.IList<ServiceAccountDelegationInfo> ServiceAccountDelegationInfo { get; set; } 
+
         /// <summary>The name of the service account key used to create or exchange credentials for authenticating the
         /// service account making the request. This is a scheme-less URI full resource name. For example:
         ///
@@ -1109,6 +1116,21 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// growth_factor^i) where i ranges from 1 to num_finite_buckets inclusive. Must be > 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<double> Scale { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>First party identity principal.</summary>
+    public class FirstPartyPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address of a Google account. .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; } 
+
+        /// <summary>Metadata about the service that uses the service account. .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ServiceMetadata { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1390,7 +1412,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// operations initiated by a consumer, but not for service-initiated operations that are not related to a
         /// specific consumer.
         ///
-        /// This can be in one of the following formats: project:, project_number:, api_key:.</summary>
+        /// - This can be in one of the following formats: - project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
+        /// projects/RPOJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, - organizations/ORGANIZATION_NUMBER, -
+        /// api`_`key:API_KEY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
@@ -1912,6 +1936,21 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Identity delegation history of an authenticated service account.</summary>
+    public class ServiceAccountDelegationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>First party (Google) identity as the real authority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPartyPrincipal")]
+        public virtual FirstPartyPrincipal FirstPartyPrincipal { get; set; } 
+
+        /// <summary>Third party identity as the real authority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyPrincipal")]
+        public virtual ThirdPartyPrincipal ThirdPartyPrincipal { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be:
@@ -1970,6 +2009,17 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Third party identity principal.</summary>
+    public class ThirdPartyPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata about third party identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyClaims")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ThirdPartyClaims { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

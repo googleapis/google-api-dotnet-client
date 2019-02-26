@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190124 (1484)
+ *      <tr><th>API Rev<td>20190215 (1506)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1401,6 +1401,11 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
+            /// no parent.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ParentJobId { get; set; }
+
             /// <summary>Restrict information returned to a set of selected fields</summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
@@ -1507,6 +1512,15 @@ namespace Google.Apis.Bigquery.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parentJobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parentJobId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3022,6 +3036,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; } 
 
+        /// <summary>[Optional] The labels associated with this table. You can use these to organize and group your
+        /// tables. This will only be used if the destination table is newly created. If the table already exists and
+        /// labels are different than the current labels are provided, the job will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3991,6 +4011,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
         public virtual JobStatistics3 Load { get; set; } 
 
+        /// <summary>[Output-only] Number of child jobs executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numChildJobs")]
+        public virtual System.Nullable<long> NumChildJobs { get; set; } 
+
+        /// <summary>[Output-only] If this is a child job, the id of the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentJobId")]
+        public virtual string ParentJobId { get; set; } 
+
         /// <summary>[Output-only] Statistics for a query job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual JobStatistics2 Query { get; set; } 
@@ -4195,6 +4223,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUriFileCounts")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DestinationUriFileCounts { get; set; } 
+
+        /// <summary>[Output-only] Number of user bytes extracted into the result. This is the byte count as computed by
+        /// BigQuery for billing purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputBytes")]
+        public virtual System.Nullable<long> InputBytes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

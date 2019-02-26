@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20190220 (1511)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>
  *              https://developers.google.com/tag-manager/api/v2/</a>
@@ -618,90 +618,6 @@ namespace Google.Apis.TagManager.v2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="path">GTM Environment's API relative path. Example:
-                /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}</param>
-                public virtual PatchRequest Patch(Google.Apis.TagManager.v2.Data.Environment body, string path)
-                {
-                    return new PatchRequest(service, body, path);
-                }
-
-                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
-                public class PatchRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Environment>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.Environment body, string path)
-                        : base(service)
-                    {
-                        Path = path;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>GTM Environment's API relative path. Example:
-                    /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Path { get; private set; }
-
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the environment in
-                    /// storage.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Fingerprint { get; set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TagManager.v2.Data.Environment Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "patch"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PATCH"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "{+path}"; }
-                    }
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "path", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "path",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1571,10 +1487,10 @@ namespace Google.Apis.TagManager.v2
                     this.service = service;
                     builtInVariables = new BuiltInVariablesResource(service);
                     folders = new FoldersResource(service);
-                    proposal = new ProposalResource(service);
                     tags = new TagsResource(service);
                     triggers = new TriggersResource(service);
                     variables = new VariablesResource(service);
+                    zones = new ZonesResource(service);
 
                 }
 
@@ -3172,162 +3088,6 @@ namespace Google.Apis.TagManager.v2
 
                     }
                 }
-                private readonly ProposalResource proposal;
-
-                /// <summary>Gets the Proposal resource.</summary>
-                public virtual ProposalResource Proposal
-                {
-                    get { return proposal; }
-                }
-
-                /// <summary>The "proposal" collection of methods.</summary>
-                public class ProposalResource
-                {
-                    private const string Resource = "proposal";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ProposalResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Creates a GTM Workspace Proposal.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">GTM Workspace's API relative path. Example:
-                    /// accounts/{aid}/containers/{cid}/workspace/{wid}</param>
-                    public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.CreateWorkspaceProposalRequest body, string parent)
-                    {
-                        return new CreateRequest(service, body, parent);
-                    }
-
-                    /// <summary>Creates a GTM Workspace Proposal.</summary>
-                    public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.WorkspaceProposal>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.CreateWorkspaceProposalRequest body, string parent)
-                            : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>GTM Workspace's API relative path. Example:
-                        /// accounts/{aid}/containers/{cid}/workspace/{wid}</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.TagManager.v2.Data.CreateWorkspaceProposalRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "create"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "{+parent}/proposal"; }
-                        }
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Deletes a GTM Workspace Proposal.</summary>
-                    /// <param name="path">GTM workspace proposal's relative path: Example:
-                    /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</param>
-                    public virtual DeleteRequest Delete(string path)
-                    {
-                        return new DeleteRequest(service, path);
-                    }
-
-                    /// <summary>Deletes a GTM Workspace Proposal.</summary>
-                    public class DeleteRequest : TagManagerBaseServiceRequest<string>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string path)
-                            : base(service)
-                        {
-                            Path = path;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>GTM workspace proposal's relative path: Example:
-                        /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Path { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "delete"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "DELETE"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "{+path}"; }
-                        }
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "path", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "path",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-                }
                 private readonly TagsResource tags;
 
                 /// <summary>Gets the Tags resource.</summary>
@@ -4687,6 +4447,459 @@ namespace Google.Apis.TagManager.v2
 
                     }
                 }
+                private readonly ZonesResource zones;
+
+                /// <summary>Gets the Zones resource.</summary>
+                public virtual ZonesResource Zones
+                {
+                    get { return zones; }
+                }
+
+                /// <summary>The "zones" collection of methods.</summary>
+                public class ZonesResource
+                {
+                    private const string Resource = "zones";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ZonesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a GTM Zone.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</param>
+                    public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.Zone body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a GTM Zone.</summary>
+                    public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Zone>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.Zone body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.Zone Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+parent}/zones"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a GTM Zone.</summary>
+                    /// <param name="path">GTM Zone's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}</param>
+                    public virtual DeleteRequest Delete(string path)
+                    {
+                        return new DeleteRequest(service, path);
+                    }
+
+                    /// <summary>Deletes a GTM Zone.</summary>
+                    public class DeleteRequest : TagManagerBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_
+                        /// id}/workspaces/{workspace_id}/zones/{zone_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets a GTM Zone.</summary>
+                    /// <param name="path">GTM Zone's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}</param>
+                    public virtual GetRequest Get(string path)
+                    {
+                        return new GetRequest(service, path);
+                    }
+
+                    /// <summary>Gets a GTM Zone.</summary>
+                    public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Zone>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_
+                        /// id}/workspaces/{workspace_id}/zones/{zone_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists all GTM Zones of a GTM container workspace.</summary>
+                    /// <param name="parent">GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all GTM Zones of a GTM container workspace.</summary>
+                    public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.ListZonesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+parent}/zones"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Reverts changes to a GTM Zone in a GTM Workspace.</summary>
+                    /// <param name="path">GTM Zone's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}</param>
+                    public virtual RevertRequest Revert(string path)
+                    {
+                        return new RevertRequest(service, path);
+                    }
+
+                    /// <summary>Reverts changes to a GTM Zone in a GTM Workspace.</summary>
+                    public class RevertRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.RevertZoneResponse>
+                    {
+                        /// <summary>Constructs a new Revert request.</summary>
+                        public RevertRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_
+                        /// id}/workspaces/{workspace_id}/zones/{zone_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>When provided, this fingerprint must match the fingerprint of the zone in
+                        /// storage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "revert"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}:revert"; }
+                        }
+
+                        /// <summary>Initializes Revert parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fingerprint", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fingerprint",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates a GTM Zone.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="path">GTM Zone's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}</param>
+                    public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.Zone body, string path)
+                    {
+                        return new UpdateRequest(service, body, path);
+                    }
+
+                    /// <summary>Updates a GTM Zone.</summary>
+                    public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Zone>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.Zone body, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_
+                        /// id}/workspaces/{workspace_id}/zones/{zone_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>When provided, this fingerprint must match the fingerprint of the zone in
+                        /// storage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.Zone Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "update"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PUT"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fingerprint", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fingerprint",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a Workspace.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -4937,68 +5150,6 @@ namespace Google.Apis.TagManager.v2
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "path", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "path",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Gets a GTM Workspace Proposal.</summary>
-                /// <param name="path">GTM workspace proposal's relative path: Example:
-                /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</param>
-                public virtual GetProposalRequest GetProposal(string path)
-                {
-                    return new GetProposalRequest(service, path);
-                }
-
-                /// <summary>Gets a GTM Workspace Proposal.</summary>
-                public class GetProposalRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.WorkspaceProposal>
-                {
-                    /// <summary>Constructs a new GetProposal request.</summary>
-                    public GetProposalRequest(Google.Apis.Services.IClientService service, string path)
-                        : base(service)
-                    {
-                        Path = path;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>GTM workspace proposal's relative path: Example:
-                    /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Path { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "getProposal"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "{+path}"; }
-                    }
-
-                    /// <summary>Initializes GetProposal parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5444,76 +5595,6 @@ namespace Google.Apis.TagManager.v2
                                 Name = "fingerprint",
                                 IsRequired = false,
                                 ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Updates a GTM Workspace Proposal.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="path">GTM workspace proposal's relative path: Example:
-                /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</param>
-                public virtual UpdateProposalRequest UpdateProposal(Google.Apis.TagManager.v2.Data.UpdateWorkspaceProposalRequest body, string path)
-                {
-                    return new UpdateProposalRequest(service, body, path);
-                }
-
-                /// <summary>Updates a GTM Workspace Proposal.</summary>
-                public class UpdateProposalRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.WorkspaceProposal>
-                {
-                    /// <summary>Constructs a new UpdateProposal request.</summary>
-                    public UpdateProposalRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.UpdateWorkspaceProposalRequest body, string path)
-                        : base(service)
-                    {
-                        Path = path;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>GTM workspace proposal's relative path: Example:
-                    /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Path { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TagManager.v2.Data.UpdateWorkspaceProposalRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "updateProposal"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PUT"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "{+path}"; }
-                    }
-
-                    /// <summary>Initializes UpdateProposal parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "path", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "path",
-                                IsRequired = true,
-                                ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -6623,6 +6704,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
         public virtual string ContainerVersionId { get; set; } 
 
+        /// <summary>The custom templates in the container that this version was taken from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTemplate")]
+        public virtual System.Collections.Generic.IList<CustomTemplate> CustomTemplate { get; set; } 
+
         /// <summary>A value of true indicates this container version has been deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
@@ -6694,6 +6779,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Container version display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Number of custom templates in the container version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numCustomTemplates")]
+        public virtual string NumCustomTemplates { get; set; } 
 
         /// <summary>Number of macros in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numMacros")]
@@ -6777,16 +6866,45 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a workspace proposal to start a review of a workspace.</summary>
-    public class CreateWorkspaceProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Represents a Google Tag Manager Custom Template's contents.</summary>
+    public class CustomTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If present, an initial comment to associate with the workspace proposal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initialComment")]
-        public virtual WorkspaceProposalHistoryComment InitialComment { get; set; } 
+        /// <summary>GTM Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
 
-        /// <summary>List of users to review the workspace proposal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewers")]
-        public virtual System.Collections.Generic.IList<WorkspaceProposalUser> Reviewers { get; set; } 
+        /// <summary>GTM Container ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
+        public virtual string ContainerId { get; set; } 
+
+        /// <summary>The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed
+        /// whenever the template is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>Custom Template display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>GTM Custom Template's API relative path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>Auto generated link to the tag manager UI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
+        public virtual string TagManagerUrl { get; set; } 
+
+        /// <summary>The custom template in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateData")]
+        public virtual string TemplateData { get; set; } 
+
+        /// <summary>The Custom Template ID uniquely identifies the GTM custom template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
+        public virtual string TemplateId { get; set; } 
+
+        /// <summary>GTM Workspace ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
+        public virtual string WorkspaceId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,6 +7255,20 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListZonesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>All GTM Zones of a GTM Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual System.Collections.Generic.IList<Zone> Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a merge conflict.</summary>
     public class MergeConflict : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7280,6 +7412,18 @@ namespace Google.Apis.TagManager.v2.Data
         /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual Variable Variable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of reverting a zone in a workspace.</summary>
+    public class RevertZoneResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Zone as it appears in the latest container version since the last workspace synchronization
+        /// operation. If no zone is present, that means the zone was deleted in the latest container version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual Zone Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7458,13 +7602,16 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds
-    /// and fractions of seconds at nanosecond resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-    /// Calendar which extends the Gregorian calendar backwards to year one. It is encoded assuming all minutes are 60
-    /// seconds long, i.e. leap seconds are "smeared" so that no leap second table is needed for interpretation. Range
-    /// is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we
-    /// can convert to and from RFC 3339 date strings. See
-    /// [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
+    /// <summary>A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a
+    /// count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC
+    /// midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards
+    /// to year one.
+    ///
+    /// All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for
+    /// interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).
+    ///
+    /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we
+    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
     ///
     /// # Examples
     ///
@@ -7504,17 +7651,19 @@ namespace Google.Apis.TagManager.v2.Data
     /// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using four digits while
     /// {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can
     /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix indicates the timezone
-    /// ("UTC"); the timezone is required, though only UTC (as indicated by "Z") is presently supported.
+    /// ("UTC"); the timezone is required. A proto3 JSON serializer should always use UTC (as indicated by "Z") when
+    /// printing the Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones (as
+    /// indicated by an offset).
     ///
     /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.
     ///
     /// In JavaScript, one can convert a Date object to this format using the standard
     /// [toISOString()](https://developer.mozilla.org/en-
-    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString] method. In Python, a standard
+    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) method. In Python, a standard
     /// `datetime.datetime` object can be converted to this format using
     /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
-    /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`]( http
-    /// ://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a
+    /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`](
+    /// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
     /// formatter capable of generating timestamps in this format.</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7683,29 +7832,6 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates a workspace proposal with patch-like semantics.</summary>
-    public class UpdateWorkspaceProposalRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>When provided, this fingerprint must match the fingerprint of the proposal in storage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
-
-        /// <summary>If present, a new comment is added to the workspace proposal history.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newComment")]
-        public virtual WorkspaceProposalHistoryComment NewComment { get; set; } 
-
-        /// <summary>If present, the list of reviewers of the workspace proposal is updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewers")]
-        public virtual System.Collections.Generic.IList<WorkspaceProposalUser> Reviewers { get; set; } 
-
-        /// <summary>If present, the status of the workspace proposal is updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents a user's permissions to an account and its container.</summary>
     public class UserPermission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7761,6 +7887,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
+        /// <summary>Option to convert a variable value to other value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formatValue")]
+        public virtual VariableFormatValue FormatValue { get; set; } 
+
         /// <summary>Variable display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -7809,6 +7939,32 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class VariableFormatValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The option to convert a string-type variable value to either lowercase or uppercase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseConversionType")]
+        public virtual string CaseConversionType { get; set; } 
+
+        /// <summary>The value to convert if a variable value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertFalseToValue")]
+        public virtual Parameter ConvertFalseToValue { get; set; } 
+
+        /// <summary>The value to convert if a variable value is null.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertNullToValue")]
+        public virtual Parameter ConvertNullToValue { get; set; } 
+
+        /// <summary>The value to convert if a variable value is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertTrueToValue")]
+        public virtual Parameter ConvertTrueToValue { get; set; } 
+
+        /// <summary>The value to convert if a variable value is undefined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertUndefinedToValue")]
+        public virtual Parameter ConvertUndefinedToValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Google Tag Manager Container Workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7844,107 +8000,6 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>The Workspace ID uniquely identifies the GTM Workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
         public virtual string WorkspaceId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A workspace proposal represents an ongoing review of workspace changes in an effort to gain approval
-    /// for container version creation.</summary>
-    public class WorkspaceProposal : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of authors for the workspace proposal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authors")]
-        public virtual System.Collections.Generic.IList<WorkspaceProposalUser> Authors { get; set; } 
-
-        /// <summary>The fingerprint of the GTM workspace proposal as computed at storage time. This value is recomputed
-        /// whenever the proposal is modified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
-
-        /// <summary>Records the history of comments and status changes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("history")]
-        public virtual System.Collections.Generic.IList<WorkspaceProposalHistory> History { get; set; } 
-
-        /// <summary>GTM workspace proposal's relative path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
-
-        /// <summary>Lists of reviewers for the workspace proposal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviewers")]
-        public virtual System.Collections.Generic.IList<WorkspaceProposalUser> Reviewers { get; set; } 
-
-        /// <summary>The status of the workspace proposal as it goes through review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A history event that represents a comment or status change in the proposal.</summary>
-    public class WorkspaceProposalHistory : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A user or reviewer comment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual WorkspaceProposalHistoryComment Comment { get; set; } 
-
-        /// <summary>The party responsible for the change in history.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]
-        public virtual WorkspaceProposalUser CreatedBy { get; set; } 
-
-        /// <summary>When this history event was added to the workspace proposal.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdTimestamp")]
-        public virtual Timestamp CreatedTimestamp { get; set; } 
-
-        /// <summary>A change in the proposal's status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusChange")]
-        public virtual WorkspaceProposalHistoryStatusChange StatusChange { get; set; } 
-
-        /// <summary>The history type distinguishing between comments and status changes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A comment from the reviewer or author.</summary>
-    public class WorkspaceProposalHistoryComment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The contents of the reviewer or author comment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A change in the proposal's status.</summary>
-    public class WorkspaceProposalHistoryStatusChange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The new proposal status after that status change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newStatus")]
-        public virtual string NewStatus { get; set; } 
-
-        /// <summary>The old proposal status before the status change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oldStatus")]
-        public virtual string OldStatus { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents an external user or internal Google Tag Manager system.</summary>
-    public class WorkspaceProposalUser : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Gaia id associated with a user, absent for the Google Tag Manager system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gaiaId")]
-        public virtual System.Nullable<long> GaiaId { get; set; } 
-
-        /// <summary>User type distinguishes between a user and the Google Tag Manager system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

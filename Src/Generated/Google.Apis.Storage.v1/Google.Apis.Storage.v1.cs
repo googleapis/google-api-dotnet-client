@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190110 (1470)
+ *      <tr><th>API Rev<td>20190214 (1505)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -7148,11 +7148,13 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The bucket's IAM configuration.</summary>
         public class IamConfigurationData
         {
+            /// <summary>The bucket's Bucket Policy Only configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
             public virtual IamConfigurationData.BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
 
             
 
+            /// <summary>The bucket's Bucket Policy Only configuration.</summary>
             public class BucketPolicyOnlyData
             {
                 /// <summary>If set, access checks only use bucket-level IAM policies or above.</summary>
@@ -7555,6 +7557,39 @@ namespace Google.Apis.Storage.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>Represents an expression text. Example: title: "User account presence" description: "Determines whether
+    /// the request has a user account" expression: "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax. The application
+        /// context of the containing message determines which well-known feature set of CEL is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>The kind of item this is. For storage, this is always storage#expr. This field is ignored on
+        /// input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A subscription to receive Google PubSub notifications.</summary>
@@ -8013,8 +8048,11 @@ namespace Google.Apis.Storage.v1.Data
 
         public class BindingsData
         {
+            /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not
+            /// allow user access via current binding. Different bindings, including their conditions, are examined
+            /// independently.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-            public virtual object Condition { get; set; } 
+            public virtual Expr Condition { get; set; } 
 
             /// <summary>A collection of identifiers for members who may assume the provided role. Recognized
             /// identifiers are as follows: - allUsers — A special identifier that represents anyone on the internet;

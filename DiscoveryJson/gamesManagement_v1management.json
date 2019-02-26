@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/A9dUSNEFGBt4ZdOprGUqX7IlVi0\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ajGb1AcII2e0Nm-sSsFO942eqgo\"",
  "discoveryVersion": "v1",
  "id": "gamesManagement:v1management",
  "name": "gamesManagement",
  "canonicalName": "Games Management",
  "version": "v1management",
- "revision": "20190201",
+ "revision": "20190213",
  "title": "Google Play Game Services Management API",
  "description": "The Management API for Google Play Game Services.",
  "ownerDomain": "google.com",
@@ -71,7 +71,7 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/games": {
-     "description": "Share your Google+ profile information and view and manage your game activity"
+     "description": "Create, edit, and delete your Google Play Games activity"
     }
    }
   }

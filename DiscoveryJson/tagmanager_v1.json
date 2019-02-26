@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/AcojO3_w-JnZ8yjEeHtkNaX66BU\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/TbuGpxqx0Dewg2BYWTVb8kdexNU\"",
  "discoveryVersion": "v1",
  "id": "tagmanager:v1",
  "name": "tagmanager",
  "canonicalName": "Tag Manager",
  "version": "v1",
- "revision": "20171108",
+ "revision": "20190220",
  "title": "Tag Manager API",
  "description": "Accesses Tag Manager accounts and containers.",
  "ownerDomain": "google.com",
@@ -1986,51 +1986,6 @@
          "scopes": [
           "https://www.googleapis.com/auth/tagmanager.edit.containers",
           "https://www.googleapis.com/auth/tagmanager.readonly"
-         ]
-        },
-        "patch": {
-         "id": "tagmanager.accounts.containers.environments.patch",
-         "path": "accounts/{accountId}/containers/{containerId}/environments/{environmentId}",
-         "httpMethod": "PATCH",
-         "description": "Updates a GTM Environment. This method supports patch semantics.",
-         "parameters": {
-          "accountId": {
-           "type": "string",
-           "description": "The GTM Account ID.",
-           "required": true,
-           "location": "path"
-          },
-          "containerId": {
-           "type": "string",
-           "description": "The GTM Container ID.",
-           "required": true,
-           "location": "path"
-          },
-          "environmentId": {
-           "type": "string",
-           "description": "The GTM Environment ID.",
-           "required": true,
-           "location": "path"
-          },
-          "fingerprint": {
-           "type": "string",
-           "description": "When provided, this fingerprint must match the fingerprint of the environment in storage.",
-           "location": "query"
-          }
-         },
-         "parameterOrder": [
-          "accountId",
-          "containerId",
-          "environmentId"
-         ],
-         "request": {
-          "$ref": "Environment"
-         },
-         "response": {
-          "$ref": "Environment"
-         },
-         "scopes": [
-          "https://www.googleapis.com/auth/tagmanager.edit.containers"
          ]
         },
         "update": {

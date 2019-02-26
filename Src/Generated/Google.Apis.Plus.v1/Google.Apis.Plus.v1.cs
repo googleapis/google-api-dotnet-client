@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/api/'>Google+ API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181209 (1438)
+ *      <tr><th>API Rev<td>20190218 (1509)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/api/'>
  *              https://developers.google.com/+/api/</a>
@@ -110,7 +110,7 @@ namespace Google.Apis.Plus.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google+ API.</summary>
         public class Scope
         {
-            /// <summary>Know the list of people in your circles, your age range, and language</summary>
+            /// <summary>View your basic profile info, including your age range and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
             /// <summary>Know who you are on Google</summary>
@@ -127,7 +127,7 @@ namespace Google.Apis.Plus.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google+ API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Know the list of people in your circles, your age range, and language</summary>
+            /// <summary>View your basic profile info, including your age range and language</summary>
             public const string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
             /// <summary>Know who you are on Google</summary>

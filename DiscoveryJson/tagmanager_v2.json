@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Ly5SZRQhmBss2ESZ1jrbd2AlrXQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/PmEouyfH5b4k97WRPBvohMNYPc8\"",
  "discoveryVersion": "v1",
  "id": "tagmanager:v2",
  "name": "tagmanager",
  "canonicalName": "Tag Manager",
  "version": "v2",
- "revision": "20171108",
+ "revision": "20190220",
  "title": "Tag Manager API",
  "description": "Accesses Tag Manager accounts and containers.",
  "ownerDomain": "google.com",
@@ -588,6 +588,13 @@
      "type": "string",
      "description": "The Container Version ID uniquely identifies the GTM Container Version."
     },
+    "customTemplate": {
+     "type": "array",
+     "description": "The custom templates in the container that this version was taken from.",
+     "items": {
+      "$ref": "CustomTemplate"
+     }
+    },
     "deleted": {
      "type": "boolean",
      "description": "A value of true indicates this container version has been deleted."
@@ -674,6 +681,10 @@
      "type": "string",
      "description": "Container version display name."
     },
+    "numCustomTemplates": {
+     "type": "string",
+     "description": "Number of custom templates in the container version."
+    },
     "numMacros": {
      "type": "string",
      "description": "Number of macros in the container version."
@@ -755,21 +766,46 @@
     }
    }
   },
-  "CreateWorkspaceProposalRequest": {
-   "id": "CreateWorkspaceProposalRequest",
+  "CustomTemplate": {
+   "id": "CustomTemplate",
    "type": "object",
-   "description": "Creates a workspace proposal to start a review of a workspace.",
+   "description": "Represents a Google Tag Manager Custom Template's contents.",
    "properties": {
-    "initialComment": {
-     "$ref": "WorkspaceProposalHistoryComment",
-     "description": "If present, an initial comment to associate with the workspace proposal."
+    "accountId": {
+     "type": "string",
+     "description": "GTM Account ID."
     },
-    "reviewers": {
-     "type": "array",
-     "description": "List of users to review the workspace proposal.",
-     "items": {
-      "$ref": "WorkspaceProposalUser"
-     }
+    "containerId": {
+     "type": "string",
+     "description": "GTM Container ID."
+    },
+    "fingerprint": {
+     "type": "string",
+     "description": "The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified."
+    },
+    "name": {
+     "type": "string",
+     "description": "Custom Template display name."
+    },
+    "path": {
+     "type": "string",
+     "description": "GTM Custom Template's API relative path."
+    },
+    "tagManagerUrl": {
+     "type": "string",
+     "description": "Auto generated link to the tag manager UI"
+    },
+    "templateData": {
+     "type": "string",
+     "description": "The custom template in text format."
+    },
+    "templateId": {
+     "type": "string",
+     "description": "The Custom Template ID uniquely identifies the GTM custom template."
+    },
+    "workspaceId": {
+     "type": "string",
+     "description": "GTM Workspace ID."
     }
    }
   },
@@ -1199,6 +1235,23 @@
     }
    }
   },
+  "ListZonesResponse": {
+   "id": "ListZonesResponse",
+   "type": "object",
+   "properties": {
+    "nextPageToken": {
+     "type": "string",
+     "description": "Continuation token for fetching the next page of results."
+    },
+    "zone": {
+     "type": "array",
+     "description": "All GTM Zones of a GTM Container.",
+     "items": {
+      "$ref": "Zone"
+     }
+    }
+   }
+  },
   "MergeConflict": {
    "id": "MergeConflict",
    "type": "object",
@@ -1359,6 +1412,17 @@
     "variable": {
      "$ref": "Variable",
      "description": "Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version."
+    }
+   }
+  },
+  "RevertZoneResponse": {
+   "id": "RevertZoneResponse",
+   "type": "object",
+   "description": "The result of reverting a zone in a workspace.",
+   "properties": {
+    "zone": {
+     "$ref": "Zone",
+     "description": "Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version."
     }
    }
   },
@@ -1578,7 +1642,7 @@
   "Timestamp": {
    "id": "Timestamp",
    "type": "object",
-   "description": "A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds and fractions of seconds at nanosecond resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian Calendar which extends the Gregorian calendar backwards to year one. It is encoded assuming all minutes are 60 seconds long, i.e. leap seconds are \"smeared\" so that no leap second table is needed for interpretation. Range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from RFC 3339 date strings. See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).\n\n# Examples\n\nExample 1: Compute Timestamp from POSIX `time()`.\n\nTimestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);\n\nExample 2: Compute Timestamp from POSIX `gettimeofday()`.\n\nstruct timeval tv; gettimeofday(&tv, NULL);\n\nTimestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000);\n\nExample 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.\n\nFILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.dwHighDateTime) \u003c\u003c 32) | ft.dwLowDateTime;\n\n// A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));\n\nExample 4: Compute Timestamp from Java `System.currentTimeMillis()`.\n\nlong millis = System.currentTimeMillis();\n\nTimestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis % 1000) * 1000000)).build();\n\n\n\nExample 5: Compute Timestamp from current time in Python.\n\ntimestamp = Timestamp() timestamp.GetCurrentTime()\n\n# JSON Mapping\n\nIn JSON format, the Timestamp type is encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required, though only UTC (as indicated by \"Z\") is presently supported.\n\nFor example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.\n\nIn JavaScript, one can convert a Date object to this format using the standard [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString] method. In Python, a standard `datetime.datetime` object can be converted to this format using [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`]( http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a formatter capable of generating timestamps in this format.",
+   "description": "A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one.\n\nAll minutes are 60 seconds long. Leap seconds are \"smeared\" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).\n\nThe range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.\n\n# Examples\n\nExample 1: Compute Timestamp from POSIX `time()`.\n\nTimestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);\n\nExample 2: Compute Timestamp from POSIX `gettimeofday()`.\n\nstruct timeval tv; gettimeofday(&tv, NULL);\n\nTimestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000);\n\nExample 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.\n\nFILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.dwHighDateTime) \u003c\u003c 32) | ft.dwLowDateTime;\n\n// A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));\n\nExample 4: Compute Timestamp from Java `System.currentTimeMillis()`.\n\nlong millis = System.currentTimeMillis();\n\nTimestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis % 1000) * 1000000)).build();\n\n\n\nExample 5: Compute Timestamp from current time in Python.\n\ntimestamp = Timestamp() timestamp.GetCurrentTime()\n\n# JSON Mapping\n\nIn JSON format, the Timestamp type is encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required. A proto3 JSON serializer should always use UTC (as indicated by \"Z\") when printing the Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones (as indicated by an offset).\n\nFor example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.\n\nIn JavaScript, one can convert a Date object to this format using the standard [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) method. In Python, a standard `datetime.datetime` object can be converted to this format using [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a formatter capable of generating timestamps in this format.",
    "properties": {
     "nanos": {
      "type": "integer",
@@ -1816,48 +1880,6 @@
     }
    }
   },
-  "UpdateWorkspaceProposalRequest": {
-   "id": "UpdateWorkspaceProposalRequest",
-   "type": "object",
-   "description": "Updates a workspace proposal with patch-like semantics.",
-   "properties": {
-    "fingerprint": {
-     "type": "string",
-     "description": "When provided, this fingerprint must match the fingerprint of the proposal in storage."
-    },
-    "newComment": {
-     "$ref": "WorkspaceProposalHistoryComment",
-     "description": "If present, a new comment is added to the workspace proposal history."
-    },
-    "reviewers": {
-     "type": "array",
-     "description": "If present, the list of reviewers of the workspace proposal is updated.",
-     "items": {
-      "$ref": "WorkspaceProposalUser"
-     }
-    },
-    "status": {
-     "type": "string",
-     "description": "If present, the status of the workspace proposal is updated.",
-     "enum": [
-      "approved",
-      "cancelled",
-      "completed",
-      "requested",
-      "reviewed",
-      "statusUnspecified"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-     ]
-    }
-   }
-  },
   "UserPermission": {
    "id": "UserPermission",
    "type": "object",
@@ -1918,6 +1940,10 @@
     "fingerprint": {
      "type": "string",
      "description": "The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified."
+    },
+    "formatValue": {
+     "$ref": "VariableFormatValue",
+     "description": "Option to convert a variable value to other value."
     },
     "name": {
      "type": "string",
@@ -1982,6 +2008,42 @@
     }
    }
   },
+  "VariableFormatValue": {
+   "id": "VariableFormatValue",
+   "type": "object",
+   "properties": {
+    "caseConversionType": {
+     "type": "string",
+     "description": "The option to convert a string-type variable value to either lowercase or uppercase.",
+     "enum": [
+      "lowercase",
+      "none",
+      "uppercase"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
+    "convertFalseToValue": {
+     "$ref": "Parameter",
+     "description": "The value to convert if a variable value is false."
+    },
+    "convertNullToValue": {
+     "$ref": "Parameter",
+     "description": "The value to convert if a variable value is null."
+    },
+    "convertTrueToValue": {
+     "$ref": "Parameter",
+     "description": "The value to convert if a variable value is true."
+    },
+    "convertUndefinedToValue": {
+     "$ref": "Parameter",
+     "description": "The value to convert if a variable value is undefined."
+    }
+   }
+  },
   "Workspace": {
    "id": "Workspace",
    "type": "object",
@@ -2024,181 +2086,6 @@
     "workspaceId": {
      "type": "string",
      "description": "The Workspace ID uniquely identifies the GTM Workspace."
-    }
-   }
-  },
-  "WorkspaceProposal": {
-   "id": "WorkspaceProposal",
-   "type": "object",
-   "description": "A workspace proposal represents an ongoing review of workspace changes in an effort to gain approval for container version creation.",
-   "properties": {
-    "authors": {
-     "type": "array",
-     "description": "List of authors for the workspace proposal.",
-     "items": {
-      "$ref": "WorkspaceProposalUser"
-     }
-    },
-    "fingerprint": {
-     "type": "string",
-     "description": "The fingerprint of the GTM workspace proposal as computed at storage time. This value is recomputed whenever the proposal is modified."
-    },
-    "history": {
-     "type": "array",
-     "description": "Records the history of comments and status changes.",
-     "items": {
-      "$ref": "WorkspaceProposalHistory"
-     }
-    },
-    "path": {
-     "type": "string",
-     "description": "GTM workspace proposal's relative path."
-    },
-    "reviewers": {
-     "type": "array",
-     "description": "Lists of reviewers for the workspace proposal.",
-     "items": {
-      "$ref": "WorkspaceProposalUser"
-     }
-    },
-    "status": {
-     "type": "string",
-     "description": "The status of the workspace proposal as it goes through review.",
-     "enum": [
-      "approved",
-      "cancelled",
-      "completed",
-      "requested",
-      "reviewed",
-      "statusUnspecified"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-     ]
-    }
-   }
-  },
-  "WorkspaceProposalHistory": {
-   "id": "WorkspaceProposalHistory",
-   "type": "object",
-   "description": "A history event that represents a comment or status change in the proposal.",
-   "properties": {
-    "comment": {
-     "$ref": "WorkspaceProposalHistoryComment",
-     "description": "A user or reviewer comment."
-    },
-    "createdBy": {
-     "$ref": "WorkspaceProposalUser",
-     "description": "The party responsible for the change in history."
-    },
-    "createdTimestamp": {
-     "$ref": "Timestamp",
-     "description": "When this history event was added to the workspace proposal."
-    },
-    "statusChange": {
-     "$ref": "WorkspaceProposalHistoryStatusChange",
-     "description": "A change in the proposal's status."
-    },
-    "type": {
-     "type": "string",
-     "description": "The history type distinguishing between comments and status changes.",
-     "enum": [
-      "comment",
-      "statusChange",
-      "unspecified"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      ""
-     ]
-    }
-   }
-  },
-  "WorkspaceProposalHistoryComment": {
-   "id": "WorkspaceProposalHistoryComment",
-   "type": "object",
-   "description": "A comment from the reviewer or author.",
-   "properties": {
-    "content": {
-     "type": "string",
-     "description": "The contents of the reviewer or author comment."
-    }
-   }
-  },
-  "WorkspaceProposalHistoryStatusChange": {
-   "id": "WorkspaceProposalHistoryStatusChange",
-   "type": "object",
-   "description": "A change in the proposal's status.",
-   "properties": {
-    "newStatus": {
-     "type": "string",
-     "description": "The new proposal status after that status change.",
-     "enum": [
-      "approved",
-      "cancelled",
-      "completed",
-      "requested",
-      "reviewed",
-      "statusUnspecified"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-     ]
-    },
-    "oldStatus": {
-     "type": "string",
-     "description": "The old proposal status before the status change.",
-     "enum": [
-      "approved",
-      "cancelled",
-      "completed",
-      "requested",
-      "reviewed",
-      "statusUnspecified"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-     ]
-    }
-   }
-  },
-  "WorkspaceProposalUser": {
-   "id": "WorkspaceProposalUser",
-   "type": "object",
-   "description": "Represents an external user or internal Google Tag Manager system.",
-   "properties": {
-    "gaiaId": {
-     "type": "string",
-     "description": "Gaia id associated with a user, absent for the Google Tag Manager system.",
-     "format": "int64"
-    },
-    "type": {
-     "type": "string",
-     "description": "User type distinguishes between a user and the Google Tag Manager system.",
-     "enum": [
-      "gaiaId",
-      "system"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
     }
    }
   },
@@ -2632,37 +2519,6 @@
           "https://www.googleapis.com/auth/tagmanager.readonly"
          ]
         },
-        "patch": {
-         "id": "tagmanager.accounts.containers.environments.patch",
-         "path": "{+path}",
-         "httpMethod": "PATCH",
-         "description": "Updates a GTM Environment. This method supports patch semantics.",
-         "parameters": {
-          "fingerprint": {
-           "type": "string",
-           "description": "When provided, this fingerprint must match the fingerprint of the environment in storage.",
-           "location": "query"
-          },
-          "path": {
-           "type": "string",
-           "description": "GTM Environment's API relative path. Example: accounts/{account_id}/containers/{container_id}/environments/{environment_id}",
-           "required": true,
-           "location": "path"
-          }
-         },
-         "parameterOrder": [
-          "path"
-         ],
-         "request": {
-          "$ref": "Environment"
-         },
-         "response": {
-          "$ref": "Environment"
-         },
-         "scopes": [
-          "https://www.googleapis.com/auth/tagmanager.edit.containers"
-         ]
-        },
         "reauthorize": {
          "id": "tagmanager.accounts.containers.environments.reauthorize",
          "path": "{+path}:reauthorize",
@@ -3066,26 +2922,6 @@
           "https://www.googleapis.com/auth/tagmanager.readonly"
          ]
         },
-        "getProposal": {
-         "id": "tagmanager.accounts.containers.workspaces.getProposal",
-         "path": "{+path}",
-         "httpMethod": "GET",
-         "description": "Gets a GTM Workspace Proposal.",
-         "parameters": {
-          "path": {
-           "type": "string",
-           "description": "GTM workspace proposal's relative path: Example: accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal",
-           "required": true,
-           "location": "path"
-          }
-         },
-         "parameterOrder": [
-          "path"
-         ],
-         "response": {
-          "$ref": "WorkspaceProposal"
-         }
-        },
         "getStatus": {
          "id": "tagmanager.accounts.containers.workspaces.getStatus",
          "path": "{+path}/status",
@@ -3243,29 +3079,6 @@
          "scopes": [
           "https://www.googleapis.com/auth/tagmanager.edit.containers"
          ]
-        },
-        "updateProposal": {
-         "id": "tagmanager.accounts.containers.workspaces.updateProposal",
-         "path": "{+path}",
-         "httpMethod": "PUT",
-         "description": "Updates a GTM Workspace Proposal.",
-         "parameters": {
-          "path": {
-           "type": "string",
-           "description": "GTM workspace proposal's relative path: Example: accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal",
-           "required": true,
-           "location": "path"
-          }
-         },
-         "parameterOrder": [
-          "path"
-         ],
-         "request": {
-          "$ref": "UpdateWorkspaceProposalRequest"
-         },
-         "response": {
-          "$ref": "WorkspaceProposal"
-         }
         }
        },
        "resources": {
@@ -4247,50 +4060,6 @@
           }
          }
         },
-        "proposal": {
-         "methods": {
-          "create": {
-           "id": "tagmanager.accounts.containers.workspaces.proposal.create",
-           "path": "{+parent}/proposal",
-           "httpMethod": "POST",
-           "description": "Creates a GTM Workspace Proposal.",
-           "parameters": {
-            "parent": {
-             "type": "string",
-             "description": "GTM Workspace's API relative path. Example: accounts/{aid}/containers/{cid}/workspace/{wid}",
-             "required": true,
-             "location": "path"
-            }
-           },
-           "parameterOrder": [
-            "parent"
-           ],
-           "request": {
-            "$ref": "CreateWorkspaceProposalRequest"
-           },
-           "response": {
-            "$ref": "WorkspaceProposal"
-           }
-          },
-          "delete": {
-           "id": "tagmanager.accounts.containers.workspaces.proposal.delete",
-           "path": "{+path}",
-           "httpMethod": "DELETE",
-           "description": "Deletes a GTM Workspace Proposal.",
-           "parameters": {
-            "path": {
-             "type": "string",
-             "description": "GTM workspace proposal's relative path: Example: accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal",
-             "required": true,
-             "location": "path"
-            }
-           },
-           "parameterOrder": [
-            "path"
-           ]
-          }
-         }
-        },
         "tags": {
          "methods": {
           "create": {
@@ -4770,6 +4539,168 @@
            },
            "response": {
             "$ref": "Variable"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          }
+         }
+        },
+        "zones": {
+         "methods": {
+          "create": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.create",
+           "path": "{+parent}/zones",
+           "httpMethod": "POST",
+           "description": "Creates a GTM Zone.",
+           "parameters": {
+            "parent": {
+             "type": "string",
+             "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "parent"
+           ],
+           "request": {
+            "$ref": "Zone"
+           },
+           "response": {
+            "$ref": "Zone"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "delete": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.delete",
+           "path": "{+path}",
+           "httpMethod": "DELETE",
+           "description": "Deletes a GTM Zone.",
+           "parameters": {
+            "path": {
+             "type": "string",
+             "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "get": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.get",
+           "path": "{+path}",
+           "httpMethod": "GET",
+           "description": "Gets a GTM Zone.",
+           "parameters": {
+            "path": {
+             "type": "string",
+             "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "response": {
+            "$ref": "Zone"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+           ]
+          },
+          "list": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.list",
+           "path": "{+parent}/zones",
+           "httpMethod": "GET",
+           "description": "Lists all GTM Zones of a GTM container workspace.",
+           "parameters": {
+            "pageToken": {
+             "type": "string",
+             "description": "Continuation token for fetching the next page of results.",
+             "location": "query"
+            },
+            "parent": {
+             "type": "string",
+             "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "parent"
+           ],
+           "response": {
+            "$ref": "ListZonesResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+           ]
+          },
+          "revert": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.revert",
+           "path": "{+path}:revert",
+           "httpMethod": "POST",
+           "description": "Reverts changes to a GTM Zone in a GTM Workspace.",
+           "parameters": {
+            "fingerprint": {
+             "type": "string",
+             "description": "When provided, this fingerprint must match the fingerprint of the zone in storage.",
+             "location": "query"
+            },
+            "path": {
+             "type": "string",
+             "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "response": {
+            "$ref": "RevertZoneResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "update": {
+           "id": "tagmanager.accounts.containers.workspaces.zones.update",
+           "path": "{+path}",
+           "httpMethod": "PUT",
+           "description": "Updates a GTM Zone.",
+           "parameters": {
+            "fingerprint": {
+             "type": "string",
+             "description": "When provided, this fingerprint must match the fingerprint of the zone in storage.",
+             "location": "query"
+            },
+            "path": {
+             "type": "string",
+             "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "request": {
+            "$ref": "Zone"
+           },
+           "response": {
+            "$ref": "Zone"
            },
            "scopes": [
             "https://www.googleapis.com/auth/tagmanager.edit.containers"

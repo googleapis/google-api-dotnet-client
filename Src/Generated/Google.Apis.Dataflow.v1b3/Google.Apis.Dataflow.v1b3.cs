@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20190126 (1486)
+ *      <tr><th>API Rev<td>20190220 (1511)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -597,7 +597,12 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
 
-                /// <summary>Request the job status.</summary>
+                /// <summary>Request the job status.
+                ///
+                /// To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
+                /// are running in `us-central1`.</summary>
                 /// <param name="projectId">A project id.</param>
                 /// <param name="jobId">The job to get messages
                 /// about.</param>
@@ -606,7 +611,12 @@ namespace Google.Apis.Dataflow.v1b3
                     return new ListRequest(service, projectId, jobId);
                 }
 
-                /// <summary>Request the job status.</summary>
+                /// <summary>Request the job status.
+                ///
+                /// To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
+                /// are running in `us-central1`.</summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -627,24 +637,25 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
-                    /// <summary>The location which contains the job specified by job_id.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Location { get; set; }
-
                     /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
                     /// the latest messages available).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object EndTime { get; set; }
 
-                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
-                    /// This will cause the next page of results to be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains the job specified by job_id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Location { get; set; }
 
                     /// <summary>If specified, return only messages with timestamps >= start_time. The default is the
                     /// job creation time (i.e. beginning of messages).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
+
+                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
+                    /// This will cause the next page of results to be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
                     /// <summary>If specified, determines the maximum number of messages to return.  If unspecified, the
                     /// service may choose an appropriate default, or may return an arbitrarily large number of
@@ -716,15 +727,6 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "endTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "endTime",
@@ -734,9 +736,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "location", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "location",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -746,6 +748,15 @@ namespace Google.Apis.Dataflow.v1b3
                             "startTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -989,23 +1000,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
-                public enum ViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
-                }
-
                 /// <summary>The kind of filter to use.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FilterEnum> Filter { get; set; }
@@ -1023,7 +1017,8 @@ namespace Google.Apis.Dataflow.v1b3
                     ACTIVE,
                 }
 
-                /// <summary>The location that contains this job.</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1036,6 +1031,23 @@ namespace Google.Apis.Dataflow.v1b3
                 /// returned will be the lesser of max_responses and an unspecified server-defined limit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
+                    JOBVIEWUNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
+                    JOBVIEWSUMMARY,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
+                    JOBVIEWALL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
+                    JOBVIEWDESCRIPTION,
+                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1067,15 +1079,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1115,11 +1118,24 @@ namespace Google.Apis.Dataflow.v1b3
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Creates a Cloud Dataflow job.</summary>
+            /// <summary>Creates a Cloud Dataflow job.
+            ///
+            /// To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
+            /// not recommended, as your job will always start in `us-central1`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId)
@@ -1127,7 +1143,11 @@ namespace Google.Apis.Dataflow.v1b3
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates a Cloud Dataflow job.</summary>
+            /// <summary>Creates a Cloud Dataflow job.
+            ///
+            /// To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
+            /// not recommended, as your job will always start in `us-central1`.</summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1143,6 +1163,15 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
+
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
+                /// <summary>Deprecated. This field is now in the Job message.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ReplaceJobId { get; set; }
 
                 /// <summary>The level of information requested in response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -1160,14 +1189,6 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
-                /// <summary>The location that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
-                /// <summary>Deprecated. This field is now in the Job message.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ReplaceJobId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1209,15 +1230,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1235,11 +1247,24 @@ namespace Google.Apis.Dataflow.v1b3
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Gets the state of the specified Cloud Dataflow job.</summary>
+            /// <summary>Gets the state of the specified Cloud Dataflow job.
+            ///
+            /// To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             /// <param
             /// name="jobId">The job ID.</param>
@@ -1248,7 +1273,11 @@ namespace Google.Apis.Dataflow.v1b3
                 return new GetRequest(service, projectId, jobId);
             }
 
-            /// <summary>Gets the state of the specified Cloud Dataflow job.</summary>
+            /// <summary>Gets the state of the specified Cloud Dataflow job.
+            ///
+            /// To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint]
+            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1269,6 +1298,11 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>The level of information requested in response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1285,10 +1319,6 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
-                /// <summary>The location that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1333,18 +1363,18 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
+                        "location", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "view",
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
+                        "view", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "location",
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1354,7 +1384,12 @@ namespace Google.Apis.Dataflow.v1b3
 
             }
 
-            /// <summary>Request the job status.</summary>
+            /// <summary>Request the job status.
+            ///
+            /// To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional
+            /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
+            /// running in `us-central1`.</summary>
             /// <param name="projectId">A project id.</param>
             /// <param name="jobId">The job to get messages for.</param>
             public virtual GetMetricsRequest GetMetrics(string projectId, string jobId)
@@ -1362,7 +1397,12 @@ namespace Google.Apis.Dataflow.v1b3
                 return new GetMetricsRequest(service, projectId, jobId);
             }
 
-            /// <summary>Request the job status.</summary>
+            /// <summary>Request the job status.
+            ///
+            /// To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional
+            /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
+            /// running in `us-central1`.</summary>
             public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
             {
                 /// <summary>Constructs a new GetMetrics request.</summary>
@@ -1383,7 +1423,8 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The location which contains the job specified by job_id.</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains the job specified by job_id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1456,14 +1497,24 @@ namespace Google.Apis.Dataflow.v1b3
 
             }
 
-            /// <summary>List the jobs of a project in a given region.</summary>
+            /// <summary>List the jobs of a project.
+            ///
+            /// To list the jobs of a project in a region, we recommend using `projects.locations.jobs.get` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the
+            /// all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not
+            /// recommended, as you can only get the list of jobs that are running in `us-central1`.</summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>List the jobs of a project in a given region.</summary>
+            /// <summary>List the jobs of a project.
+            ///
+            /// To list the jobs of a project in a region, we recommend using `projects.locations.jobs.get` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the
+            /// all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not
+            /// recommended, as you can only get the list of jobs that are running in `us-central1`.</summary>
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1496,7 +1547,8 @@ namespace Google.Apis.Dataflow.v1b3
                     ACTIVE,
                 }
 
-                /// <summary>The location that contains this job.</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1693,7 +1745,12 @@ namespace Google.Apis.Dataflow.v1b3
 
             }
 
-            /// <summary>Updates the state of an existing Cloud Dataflow job.</summary>
+            /// <summary>Updates the state of an existing Cloud Dataflow job.
+            ///
+            /// To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in
+            /// `us-central1`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             /// <param
@@ -1703,7 +1760,12 @@ namespace Google.Apis.Dataflow.v1b3
                 return new UpdateRequest(service, body, projectId, jobId);
             }
 
-            /// <summary>Updates the state of an existing Cloud Dataflow job.</summary>
+            /// <summary>Updates the state of an existing Cloud Dataflow job.
+            ///
+            /// To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in
+            /// `us-central1`.</summary>
             public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1725,7 +1787,8 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The location that contains this job.</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1868,8 +1931,9 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project id.</param>
-                    /// <param name="location">The location which contains the job
-                    /// specified by job_id.</param>
+                    /// <param name="location">The [regional endpoint]
+                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
+                    /// job_id.</param>
                     /// <param name="jobId">The job id.</param>
                     public virtual GetConfigRequest GetConfig(Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string location, string jobId)
                     {
@@ -1895,7 +1959,8 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The location which contains the job specified by job_id.</summary>
+                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                        /// endpoints) that contains the job specified by job_id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -1967,8 +2032,9 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Send encoded debug capture data for component.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project id.</param>
-                    /// <param name="location">The location which contains the job
-                    /// specified by job_id.</param>
+                    /// <param name="location">The [regional endpoint]
+                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
+                    /// job_id.</param>
                     /// <param name="jobId">The job id.</param>
                     public virtual SendCaptureRequest SendCapture(Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string location, string jobId)
                     {
@@ -1994,7 +2060,8 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The location which contains the job specified by job_id.</summary>
+                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                        /// endpoints) that contains the job specified by job_id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -2087,17 +2154,28 @@ namespace Google.Apis.Dataflow.v1b3
                     }
 
 
-                    /// <summary>Request the job status.</summary>
+                    /// <summary>Request the job status.
+                    ///
+                    /// To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with
+                    /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                    /// Using `projects.jobs.messages.list` is not recommended, as you can only request the status of
+                    /// jobs that are running in `us-central1`.</summary>
                     /// <param name="projectId">A project id.</param>
-                    /// <param name="location">The location which contains the job
-                    /// specified by job_id.</param>
+                    /// <param name="location">The [regional endpoint]
+                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
+                    /// job_id.</param>
                     /// <param name="jobId">The job to get messages about.</param>
                     public virtual ListRequest List(string projectId, string location, string jobId)
                     {
                         return new ListRequest(service, projectId, location, jobId);
                     }
 
-                    /// <summary>Request the job status.</summary>
+                    /// <summary>Request the job status.
+                    ///
+                    /// To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with
+                    /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                    /// Using `projects.jobs.messages.list` is not recommended, as you can only request the status of
+                    /// jobs that are running in `us-central1`.</summary>
                     public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2115,13 +2193,19 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The location which contains the job specified by job_id.</summary>
+                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                        /// endpoints) that contains the job specified by job_id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
                         /// <summary>The job to get messages about.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
+
+                        /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
+                        /// to the latest messages available).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object EndTime { get; set; }
 
                         /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
                         /// call. This will cause the next page of results to be returned.</summary>
@@ -2159,11 +2243,6 @@ namespace Google.Apis.Dataflow.v1b3
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                             JOBMESSAGEERROR,
                         }
-
-                        /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
-                        /// to the latest messages available).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object EndTime { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2217,6 +2296,15 @@ namespace Google.Apis.Dataflow.v1b3
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
+                                "endTime", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "endTime",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2247,15 +2335,6 @@ namespace Google.Apis.Dataflow.v1b3
                                 "minimumImportance", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "minimumImportance",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "endTime", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "endTime",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2293,9 +2372,9 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">Identifies the project this worker belongs to.</param>
                     /// <param name="location">The
-                    /// location which contains the WorkItem's job.</param>
-                    /// <param name="jobId">Identifies the workflow job this
-                    /// worker belongs to.</param>
+                    /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
+                    /// WorkItem's job.</param>
+                    /// <param name="jobId">Identifies the workflow job this worker belongs to.</param>
                     public virtual LeaseRequest Lease(Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string location, string jobId)
                     {
                         return new LeaseRequest(service, body, projectId, location, jobId);
@@ -2320,7 +2399,8 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The location which contains the WorkItem's job.</summary>
+                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                        /// endpoints) that contains the WorkItem's job.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -2393,9 +2473,9 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project which owns the WorkItem's job.</param>
                     /// <param name="location">The
-                    /// location which contains the WorkItem's job.</param>
-                    /// <param name="jobId">The job which the WorkItem is part
-                    /// of.</param>
+                    /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
+                    /// WorkItem's job.</param>
+                    /// <param name="jobId">The job which the WorkItem is part of.</param>
                     public virtual ReportStatusRequest ReportStatus(Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string location, string jobId)
                     {
                         return new ReportStatusRequest(service, body, projectId, location, jobId);
@@ -2420,7 +2500,8 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The location which contains the WorkItem's job.</summary>
+                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                        /// endpoints) that contains the WorkItem's job.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -2490,17 +2571,26 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Creates a Cloud Dataflow job.</summary>
+                /// <summary>Creates a Cloud Dataflow job.
+                ///
+                /// To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
+                /// is not recommended, as your job will always start in `us-central1`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
                 /// <param
-                /// name="location">The location that contains this job.</param>
+                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location)
                 {
                     return new CreateRequest(service, body, projectId, location);
                 }
 
-                /// <summary>Creates a Cloud Dataflow job.</summary>
+                /// <summary>Creates a Cloud Dataflow job.
+                ///
+                /// To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
+                /// is not recommended, as your job will always start in `us-central1`.</summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2518,7 +2608,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location that contains this job.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains this job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -2613,17 +2704,28 @@ namespace Google.Apis.Dataflow.v1b3
 
                 }
 
-                /// <summary>Gets the state of the specified Cloud Dataflow job.</summary>
+                /// <summary>Gets the state of the specified Cloud Dataflow job.
+                ///
+                /// To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional
+                /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in
+                /// `us-central1`.</summary>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
                 /// <param
-                /// name="location">The location that contains this job.</param>
+                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.</param>
                 /// <param name="jobId">The job ID.</param>
                 public virtual GetRequest Get(string projectId, string location, string jobId)
                 {
                     return new GetRequest(service, projectId, location, jobId);
                 }
 
-                /// <summary>Gets the state of the specified Cloud Dataflow job.</summary>
+                /// <summary>Gets the state of the specified Cloud Dataflow job.
+                ///
+                /// To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional
+                /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in
+                /// `us-central1`.</summary>
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2641,7 +2743,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location that contains this job.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains this job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -2730,17 +2833,28 @@ namespace Google.Apis.Dataflow.v1b3
 
                 }
 
-                /// <summary>Request the job status.</summary>
+                /// <summary>Request the job status.
+                ///
+                /// To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
+                /// running in `us-central1`.</summary>
                 /// <param name="projectId">A project id.</param>
-                /// <param name="location">The location which contains the job
-                /// specified by job_id.</param>
+                /// <param name="location">The [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
+                /// job_id.</param>
                 /// <param name="jobId">The job to get messages for.</param>
                 public virtual GetMetricsRequest GetMetrics(string projectId, string location, string jobId)
                 {
                     return new GetMetricsRequest(service, projectId, location, jobId);
                 }
 
-                /// <summary>Request the job status.</summary>
+                /// <summary>Request the job status.
+                ///
+                /// To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
+                /// running in `us-central1`.</summary>
                 public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
                 {
                     /// <summary>Constructs a new GetMetrics request.</summary>
@@ -2758,7 +2872,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location which contains the job specified by job_id.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains the job specified by job_id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -2835,16 +2950,26 @@ namespace Google.Apis.Dataflow.v1b3
 
                 }
 
-                /// <summary>List the jobs of a project in a given region.</summary>
+                /// <summary>List the jobs of a project.
+                ///
+                /// To list the jobs of a project in a region, we recommend using `projects.locations.jobs.get` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list
+                /// the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not
+                /// recommended, as you can only get the list of jobs that are running in `us-central1`.</summary>
                 /// <param name="projectId">The project which owns the jobs.</param>
-                /// <param name="location">The location that
-                /// contains this job.</param>
+                /// <param name="location">The [regional
+                /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.</param>
                 public virtual ListRequest List(string projectId, string location)
                 {
                     return new ListRequest(service, projectId, location);
                 }
 
-                /// <summary>List the jobs of a project in a given region.</summary>
+                /// <summary>List the jobs of a project.
+                ///
+                /// To list the jobs of a project in a region, we recommend using `projects.locations.jobs.get` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list
+                /// the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not
+                /// recommended, as you can only get the list of jobs that are running in `us-central1`.</summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2861,7 +2986,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location that contains this job.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains this job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3090,18 +3216,29 @@ namespace Google.Apis.Dataflow.v1b3
 
                 }
 
-                /// <summary>Updates the state of an existing Cloud Dataflow job.</summary>
+                /// <summary>Updates the state of an existing Cloud Dataflow job.
+                ///
+                /// To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running
+                /// in `us-central1`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
                 /// <param
-                /// name="location">The location that contains this job.</param>
+                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.</param>
                 /// <param name="jobId">The job ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location, string jobId)
                 {
                     return new UpdateRequest(service, body, projectId, location, jobId);
                 }
 
-                /// <summary>Updates the state of an existing Cloud Dataflow job.</summary>
+                /// <summary>Updates the state of an existing Cloud Dataflow job.
+                ///
+                /// To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a
+                /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+                /// `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running
+                /// in `us-central1`.</summary>
                 public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -3120,7 +3257,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location that contains this job.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains this job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3217,7 +3355,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
                 ///
-                /// <param name="location">The location to which to direct the request.</param>
+                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                /// to which to direct the request.</param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId, string location)
                 {
                     return new CreateRequest(service, body, projectId, location);
@@ -3241,7 +3380,8 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location to which to direct the request.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) to which to direct the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3300,7 +3440,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Get the template associated with a template.</summary>
                 /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
                 ///
-                /// <param name="location">The location to which to direct the request.</param>
+                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                /// to which to direct the request.</param>
                 public virtual GetRequest Get(string projectId, string location)
                 {
                     return new GetRequest(service, projectId, location);
@@ -3323,9 +3464,15 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location to which to direct the request.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) to which to direct the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
+
+                    /// <summary>Required. A Cloud Storage path to the template from which to create the job. Must be
+                    /// valid Cloud Storage URL, beginning with 'gs://'.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GcsPath { get; set; }
 
                     /// <summary>The view to retrieve. Defaults to METADATA_ONLY.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -3337,11 +3484,6 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("METADATA_ONLY")]
                         METADATAONLY,
                     }
-
-                    /// <summary>Required. A Cloud Storage path to the template from which to create the job. Must be
-                    /// valid Cloud Storage URL, beginning with 'gs://'.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string GcsPath { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3386,18 +3528,18 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
+                            "gcsPath", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "view",
+                                Name = "gcsPath",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "gcsPath", new Google.Apis.Discovery.Parameter
+                            "view", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "gcsPath",
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3411,7 +3553,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
                 ///
-                /// <param name="location">The location to which to direct the request.</param>
+                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                /// to which to direct the request.</param>
                 public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId, string location)
                 {
                     return new LaunchRequest(service, body, projectId, location);
@@ -3435,19 +3578,10 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The location to which to direct the request.</summary>
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) to which to direct the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
-
-                    /// <summary>Path to dynamic template spec file on GCS. The file must be a Json serialized
-                    /// DynamicTemplateFieSpec object.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string DynamicTemplateGcsPath { get; set; }
-
-                    /// <summary>Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
-                    /// beginning with `gs://`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string DynamicTemplateStagingLocation { get; set; }
 
                     /// <summary>If true, the request is validated but not actually executed. Defaults to
                     /// false.</summary>
@@ -3458,6 +3592,16 @@ namespace Google.Apis.Dataflow.v1b3
                     /// Storage URL, beginning with 'gs://'.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string GcsPath { get; set; }
+
+                    /// <summary>Path to dynamic template spec file on GCS. The file must be a Json serialized
+                    /// DynamicTemplateFieSpec object.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DynamicTemplateGcsPath { get; set; }
+
+                    /// <summary>Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
+                    /// beginning with `gs://`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DynamicTemplateStagingLocation { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -3508,24 +3652,6 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "dynamicTemplate.gcsPath",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "dynamicTemplate.stagingLocation",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "validateOnly", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "validateOnly",
@@ -3543,6 +3669,24 @@ namespace Google.Apis.Dataflow.v1b3
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "dynamicTemplate.gcsPath", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dynamicTemplate.gcsPath",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dynamicTemplate.stagingLocation",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -3552,7 +3696,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The project to send the WorkerMessages to.</param>
             /// <param name="location">The
-            /// location which contains the job</param>
+            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
+            /// job.</param>
             public virtual WorkerMessagesRequest WorkerMessages(Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId, string location)
             {
                 return new WorkerMessagesRequest(service, body, projectId, location);
@@ -3576,7 +3721,8 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The location which contains the job</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains the job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Location { get; private set; }
 
@@ -3747,10 +3893,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The location to which to direct the request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
                 /// <summary>The view to retrieve. Defaults to METADATA_ONLY.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -3766,6 +3908,11 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Cloud Storage URL, beginning with 'gs://'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
+
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) to which to direct the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3801,15 +3948,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
@@ -3822,6 +3960,15 @@ namespace Google.Apis.Dataflow.v1b3
                         "gcsPath", new Google.Apis.Discovery.Parameter
                         {
                             Name = "gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3856,12 +4003,17 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                 /// <summary>A Cloud Storage path to the template from which to create the job. Must be valid Cloud
                 /// Storage URL, beginning with 'gs://'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
 
-                /// <summary>The location to which to direct the request.</summary>
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) to which to direct the request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -3874,10 +4026,6 @@ namespace Google.Apis.Dataflow.v1b3
                 /// with `gs://`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateStagingLocation { get; set; }
-
-                /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3919,6 +4067,15 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "gcsPath", new Google.Apis.Discovery.Parameter
                         {
                             Name = "gcsPath",
@@ -3949,15 +4106,6 @@ namespace Google.Apis.Dataflow.v1b3
                         "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dynamicTemplate.stagingLocation",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4497,7 +4645,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; } 
 
-        /// <summary>The location to which to direct the request.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        /// which to direct the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4735,6 +4884,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experiments")]
         public virtual System.Collections.Generic.IList<string> Experiments { get; set; } 
 
+        /// <summary>Which Flexible Resource Scheduling mode to run in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexResourceSchedulingGoal")]
+        public virtual string FlexResourceSchedulingGoal { get; set; } 
+
         /// <summary>Experimental settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalExperiments")]
         public virtual System.Collections.Generic.IDictionary<string,object> InternalExperiments { get; set; } 
@@ -4835,10 +4988,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Indicates which location failed to respond to a request for data.</summary>
+    /// <summary>Indicates which [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+    /// endpoints) failed to respond to a request for data.</summary>
     public class FailedLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the failed location.</summary>
+        /// <summary>The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+        /// endpoints) that failed to respond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4901,7 +5056,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
         public virtual string ComponentId { get; set; } 
 
-        /// <summary>The location which contains the job specified by job_id.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains the job specified by job_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -5121,7 +5277,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The location that contains this job.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -5258,7 +5415,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     }    
 
     /// <summary>Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job
-    /// SUMMARY view+.</summary>
+    /// SUMMARY view.</summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identification of a BigTable source used in the Dataflow job.</summary>
@@ -5293,7 +5450,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>JobMetrics contains a collection of metrics descibing the detailed progress of a Dataflow job. Metrics
+    /// <summary>JobMetrics contains a collection of metrics describing the detailed progress of a Dataflow job. Metrics
     /// correspond to user-defined and system-defined metrics in the job.
     ///
     /// This resource captures only the most recent values of each metric; time-series data can be queried for them
@@ -5404,7 +5561,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
         public virtual object CurrentWorkerTime { get; set; } 
 
-        /// <summary>The location which contains the WorkItem's job.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains the WorkItem's job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -5471,7 +5629,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// page size in the ListJobsRequest.</summary>
     public class ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Zero or more messages describing locations that failed to respond.</summary>
+        /// <summary>Zero or more messages describing the [regional endpoints]
+        /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedLocation")]
         public virtual System.Collections.Generic.IList<FailedLocation> FailedLocation { get; set; } 
 
@@ -5828,7 +5987,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     }    
 
     /// <summary>A descriptive representation of submitted pipeline as well as the executed form.  This data is provided
-    /// by the Dataflow service for ease of visualizing the pipeline and interpretting Dataflow provided
+    /// by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided
     /// metrics.</summary>
     public class PipelineDescription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5953,7 +6112,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
         public virtual object CurrentWorkerTime { get; set; } 
 
-        /// <summary>The location which contains the WorkItem's job.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains the WorkItem's job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -6087,7 +6247,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The version of the SDK used to run the jobl</summary>
+    /// <summary>The version of the SDK used to run the job.</summary>
     public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The support status for this SDK version.</summary>
@@ -6098,7 +6258,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
-        /// <summary>A readable string describing the version of the sdk.</summary>
+        /// <summary>A readable string describing the version of the SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionDisplayName")]
         public virtual string VersionDisplayName { get; set; } 
 
@@ -6117,7 +6277,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
-        /// <summary>The location which contains the job specified by job_id.</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains the job specified by job_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -6139,7 +6300,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A request for sending worker messages to the service.</summary>
     public class SendWorkerMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The location which contains the job</summary>
+        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -6829,6 +6991,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A task that carries configuration information for streaming computations.</summary>
     public class StreamingConfigTask : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Maximum size for work item commit supported windmill storage layer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWorkItemCommitBytes")]
+        public virtual System.Nullable<long> MaxWorkItemCommitBytes { get; set; } 
+
         /// <summary>Set of computation configuration information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingComputationConfigs")]
         public virtual System.Collections.Generic.IList<StreamingComputationConfig> StreamingComputationConfigs { get; set; } 
@@ -6920,7 +7086,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// structured data associated with the message for programmatic consumption.</summary>
     public class StructuredMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Idenfier for this message type.  Used by external systems to internationalize or personalize
+        /// <summary>Identifier for this message type.  Used by external systems to internationalize or personalize
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
         public virtual string MessageKey { get; set; } 

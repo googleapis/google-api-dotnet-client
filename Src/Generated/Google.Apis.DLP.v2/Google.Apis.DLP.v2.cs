@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190219 (1510)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -706,6 +706,11 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -724,11 +729,6 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -764,6 +764,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -776,15 +785,6 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2728,6 +2728,19 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
+                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// insignificant.
+                ///
+                /// Example: `name asc, end_time asc, create_time desc`
+                ///
+                /// Supported fields are:
+                ///
+                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
+                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TypeEnum> Type { get; set; }
@@ -2772,19 +2785,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, end_time asc, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
-                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2819,6 +2819,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
@@ -2849,15 +2858,6 @@ namespace Google.Apis.DLP.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3408,6 +3408,78 @@ namespace Google.Apis.DLP.v2
 
             }
 
+
+            /// <summary>Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the
+            /// trigger event to occur.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name of the trigger to activate, for example `projects/dlp-test-
+            /// project/jobTriggers/53234423`.</param>
+            public virtual ActivateRequest Activate(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ActivateJobTriggerRequest body, string name)
+            {
+                return new ActivateRequest(service, body, name);
+            }
+
+            /// <summary>Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the
+            /// trigger event to occur.</summary>
+            public class ActivateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
+            {
+                /// <summary>Constructs a new Activate request.</summary>
+                public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ActivateJobTriggerRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the trigger to activate, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ActivateJobTriggerRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "activate"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}:activate"; }
+                }
+
+                /// <summary>Initializes Activate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/jobTriggers/[^/]+$",
+                        });
+                }
+
+            }
 
             /// <summary>Creates a job trigger to run DLP actions such as scanning storage for sensitive information on
             /// a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.</summary>
@@ -4249,7 +4321,7 @@ namespace Google.Apis.DLP.v2.Data
     /// learn more.</summary>
     public class GooglePrivacyDlpV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enable email notification to project owners and editors on job‘s completion/failure.</summary>
+        /// <summary>Enable email notification to project owners and editors on job's completion/failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
         public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; } 
 
@@ -4265,6 +4337,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saveFindings")]
         public virtual GooglePrivacyDlpV2SaveFindings SaveFindings { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for ActivateJobTrigger.</summary>
+    public class GooglePrivacyDlpV2ActivateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4726,9 +4805,8 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>The field type of `value` and `field` do not need to match to be considered equal, but not all
-    /// comparisons are possible.
-    ///
-    /// A `value` of type:
+    /// comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all
+    /// other comparisons are invalid with incompatible types. A `value` of type:
     ///
     /// - `string` can be compared against all other types - `boolean` can only be compared against other booleans -
     /// `integer` can be compared against doubles or a string if the string value can be parsed as an integer. -
@@ -5622,13 +5700,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeLimit> MaxFindingsPerInfoType { get; set; } 
 
         /// <summary>Max number of findings that will be returned for each item scanned. When set within
-        /// `InspectDataSourceRequest`, the maximum returned is 1000 regardless if this is set higher. When set within
+        /// `InspectDataSourceRequest`, the maximum returned is 2000 regardless if this is set higher. When set within
         /// `InspectContentRequest`, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerItem")]
         public virtual System.Nullable<int> MaxFindingsPerItem { get; set; } 
 
         /// <summary>Max number of findings that will be returned per request/job. When set within
-        /// `InspectContentRequest`, the maximum returned is 1000 regardless if this is set higher.</summary>
+        /// `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindingsPerRequest")]
         public virtual System.Nullable<int> MaxFindingsPerRequest { get; set; } 
 

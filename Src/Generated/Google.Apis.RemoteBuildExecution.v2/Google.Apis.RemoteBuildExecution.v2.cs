@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190128 (1488)
+ *      <tr><th>API Rev<td>20190219 (1510)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2489,7 +2489,7 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance Instance { get; set; } 
 
-        /// <summary>ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contains only
+        /// <summary>ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only
         /// lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase
         /// letter or a digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]

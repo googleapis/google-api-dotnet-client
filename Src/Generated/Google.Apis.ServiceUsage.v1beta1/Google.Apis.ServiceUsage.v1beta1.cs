@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190223 (1514)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -451,10 +451,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -466,6 +462,10 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -492,15 +492,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -522,6 +513,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -907,6 +907,11 @@ namespace Google.Apis.ServiceUsage.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
+            /// `state:ENABLED` and `state:DISABLED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Token identifying which result to start with, which is returned by a previous list
             /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -916,11 +921,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// default page size is 50.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
-            /// `state:ENABLED` and `state:DISABLED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -956,6 +956,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -968,15 +977,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1993,7 +1993,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// mapping of an RPC method to one or more HTTP REST API methods.</summary>
     public class Http : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When set to true, URL path parmeters will be fully URI-decoded except in cases of single segment
+        /// <summary>When set to true, URL path parameters will be fully URI-decoded except in cases of single segment
         /// matches in reserved expansion, where "%2F" will be left encoded.
         ///
         /// The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.</summary>

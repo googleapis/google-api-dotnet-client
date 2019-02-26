@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190110 (1470)
+ *      <tr><th>API Rev<td>20190206 (1497)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -604,13 +604,13 @@ namespace Google.Apis.CloudComposer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of environments to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of environments to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -646,18 +646,18 @@ namespace Google.Apis.CloudComposer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1539,15 +1539,20 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> EnvVariables { get; set; } 
 
-        /// <summary>Output only. The version of the software running in the environment. This encapsulates both the
-        /// version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular
-        /// expression `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        /// <summary>The version of the software running in the environment. This encapsulates both the version of Cloud
+        /// Composer functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
+        /// server also checks if the provided version is supported and denies the request for an unsupported version.
         ///
-        /// The Cloud Composer portion of the version is a [semantic version](https://semver.org). The portion of the
-        /// image version following _airflow-_ is an official Apache Airflow repository [release
+        /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the
+        /// patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided
+        /// instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version
+        /// and stores that version number in the same field.
+        ///
+        /// The portion of the image version that follows airflow- is an official Apache Airflow repository [release
         /// name](https://github.com/apache/incubator-airflow/releases).
         ///
-        /// See also [Release Notes](/composer/docs/release-notes).</summary>
+        /// See also [Version List](/composer/docs/concepts/versioning/composer-versions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190206 (1497)
+ *      <tr><th>API Rev<td>20190225 (1516)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4099,6 +4099,20 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Step Id and outcome of each individual step that was run as a group with other steps with the same
+    /// configuration.</summary>
+    public class IndividualOutcome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("outcomeSummary")]
+        public virtual string OutcomeSummary { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
+        public virtual string StepId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Executions.
@@ -4223,6 +4237,26 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Total memory available on the device in KiB</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryTotalInKibibyte")]
         public virtual System.Nullable<long> MemoryTotalInKibibyte { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details when multiple steps are run with the same configuration as a group.</summary>
+    public class MultiStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The
+        /// primary step is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multistepNumber")]
+        public virtual System.Nullable<int> MultistepNumber { get; set; } 
+
+        /// <summary>Present if it is a primary (original) step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryStep")]
+        public virtual PrimaryStep PrimaryStep { get; set; } 
+
+        /// <summary>Step Id of the primary (original) step, which might be this step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryStepId")]
+        public virtual string PrimaryStepId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4368,6 +4402,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A tool results step ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stores rollup test status of multiple steps that were run as a group and outcome of each individual
+    /// step.</summary>
+    public class PrimaryStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Step Id and outcome of each individual step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualOutcome")]
+        public virtual System.Collections.Generic.IList<IndividualOutcome> IndividualOutcome { get; set; } 
+
+        /// <summary>Rollup test status of multiple steps that were run with the same configuration as a
+        /// group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollUp")]
+        public virtual string RollUp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4656,6 +4707,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// pair will be added to the map, and any new value for an existing key will update that key's value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<StepLabelsEntry> Labels { get; set; } 
+
+        /// <summary>Details when multiple steps are run with the same configuration as a group. These details can be
+        /// used identify which group this step is part of. It also identifies the groups 'primary step' which indexes
+        /// all the group members.
+        ///
+        /// - In response: present if previously set. - In create request: optional, set iff this step was performed
+        /// more than once. - In update request: optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiStep")]
+        public virtual MultiStep MultiStep { get; set; } 
 
         /// <summary>A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean
         /// build

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190129 (1489)
+ *      <tr><th>API Rev<td>20190212 (1503)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -933,7 +933,7 @@ namespace Google.Apis.Docs.v1.Data
         /// * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header,
         /// Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or
         /// Equation without deleting the entire element. * Deleting the newline character before a Table,
-        /// TableOfContents or SectionBreak without deleting the the element. * Deleting individual rows or cells of a
+        /// TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a
         /// table. Deleting the content within a table cell is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
@@ -1976,7 +1976,10 @@ namespace Google.Apis.Docs.v1.Data
     /// with the same name, but every named range has a unique ID.
     ///
     /// A named range is created with a single Range, and content inserted inside a named range generally expands that
-    /// range. However, certain document changes can cause the range to be split into multiple ranges.</summary>
+    /// range. However, certain document changes can cause the range to be split into multiple ranges.
+    ///
+    /// Named ranges are not private. All applications and collaborators that have access to the document can see its
+    /// named ranges.</summary>
     public class NamedRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the named range.</summary>
@@ -2320,11 +2323,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnBreak")]
         public virtual ColumnBreak ColumnBreak { get; set; } 
 
-        /// <summary>The zero-base end index of this paragraph element, exclusive, in Unicode code units of the UTF-16
-        /// encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-base end index of this paragraph element, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
@@ -2348,10 +2347,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageBreak")]
         public virtual PageBreak PageBreak { get; set; } 
 
-        /// <summary>The zero-based start index of this paragraph element, in Unicode code units of the UTF-16 encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based start index of this paragraph element, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
@@ -2701,7 +2697,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Specifies a contiguous range of text.</summary>
     public class Range : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based end index of this range, exclusive, in Unicode code units of the UTF-16 encoding.
+        /// <summary>The zero-based end index of this range, exclusive, in UTF-16 code units.
         ///
         /// In all current uses, an end index must be provided. This field is an Int32Value in order to accommodate
         /// future use cases with open-ended ranges.</summary>
@@ -2713,7 +2709,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
         public virtual string SegmentId { get; set; } 
 
-        /// <summary>The zero-based start index of this range, in Unicode code units of the UTF-16 encoding.
+        /// <summary>The zero-based start index of this range, in UTF-16 code units.
         ///
         /// In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate
         /// future use cases with open-ended ranges.</summary>
@@ -3006,11 +3002,7 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A StructuralElement describes content that provides structure to the document.</summary>
     public class StructuralElement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based end index of this structural element, exclusive, in Unicode code units of the UTF-16
-        /// encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based end index of this structural element, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
@@ -3022,11 +3014,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionBreak")]
         public virtual SectionBreak SectionBreak { get; set; } 
 
-        /// <summary>The zero-based start index of this structural element, in Unicode code units of the UTF-16
-        /// encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based start index of this structural element, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
@@ -3289,17 +3277,11 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; } 
 
-        /// <summary>The zero-based end index of this cell, exclusive, in Unicode code units of the UTF-16 encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based end index of this cell, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
-        /// <summary>The zero-based start index of this cell, in Unicode code units of the UTF-16 encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based start index of this cell, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 
@@ -3518,17 +3500,11 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>The contents and style of a row in a Table.</summary>
     public class TableRow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The zero-based end index of this row, exclusive, in Unicode code units of the UTF-16 encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based end index of this row, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
-        /// <summary>The zero-based start index of this row, in Unicode code units of the UTF-16 encoding.
-        ///
-        /// Unicode code units of the UTF-16 encoding means that surrogate pairs consume two indexes. For example, the
-        /// "GRINNING FACE" emoji would be represented as "\uD83D\uDE00" and would consume two indexes.</summary>
+        /// <summary>The zero-based start index of this row, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
 

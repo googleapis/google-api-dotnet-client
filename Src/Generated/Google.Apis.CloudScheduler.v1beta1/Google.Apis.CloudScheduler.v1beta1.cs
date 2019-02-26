@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190125 (1485)
+ *      <tr><th>API Rev<td>20190209 (1500)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>

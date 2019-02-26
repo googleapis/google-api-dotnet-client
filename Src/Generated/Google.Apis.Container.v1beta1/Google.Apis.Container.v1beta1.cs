@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190114 (1474)
+ *      <tr><th>API Rev<td>20190206 (1497)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -664,6 +664,11 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
+
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -680,11 +685,6 @@ namespace Google.Apis.Container.v1beta1
                         /// the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -720,6 +720,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -741,15 +750,6 @@ namespace Google.Apis.Container.v1beta1
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3109,7 +3109,7 @@ namespace Google.Apis.Container.v1beta1
             }
 
             /// <summary>Returns configuration info about the Kubernetes Engine service.</summary>
-            /// <param name="name">The name (project and location) of the server config to get Specified in the format
+            /// <param name="name">The name (project and location) of the server config to get, specified in the format
             /// 'projects/locations'.</param>
             public virtual GetServerConfigRequest GetServerConfig(string name)
             {
@@ -3128,7 +3128,7 @@ namespace Google.Apis.Container.v1beta1
                 }
 
 
-                /// <summary>The name (project and location) of the server config to get Specified in the format
+                /// <summary>The name (project and location) of the server config to get, specified in the format
                 /// 'projects/locations'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6673,7 +6673,7 @@ namespace Google.Apis.Container.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Zone { get; private set; }
 
-                /// <summary>The name (project and location) of the server config to get Specified in the format
+                /// <summary>The name (project and location) of the server config to get, specified in the format
                 /// 'projects/locations'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
@@ -6791,6 +6791,22 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for returning group information from authenticators.</summary>
+    public class AuthenticatorGroupsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether this cluster should return group membership lookups during authentication using a group of
+        /// security groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The name of the security group-of-groups to be used. Only relevant if enabled = true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityGroup")]
+        public virtual string SecurityGroup { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will
     /// proceed.</summary>
     public class AutoUpgradeOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -6903,6 +6919,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
         public virtual AddonsConfig AddonsConfig { get; set; } 
+
+        /// <summary>Configuration controlling RBAC group membership information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
+        public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; } 
 
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
@@ -7201,6 +7221,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
         public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; } 
+
+        /// <summary>Configuration of etcd encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
+        public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; } 
 
         /// <summary>The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as
         /// well.</summary>
@@ -8003,8 +8027,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as
         /// part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
         /// other metadata keys for the project or be one of the reserved keys: "cluster-location" "cluster-name"
-        /// "cluster-uid" "configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-update-strategy" "instance-
-        /// template" "kube-env" "startup-script" "user-data"
+        /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-update-
+        /// strategy" "instance-template" "kube-env" "startup-script" "user-data"
         ///
         /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
         /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.

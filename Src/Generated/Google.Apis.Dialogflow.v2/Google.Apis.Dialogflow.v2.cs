@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190130 (1490)
+ *      <tr><th>API Rev<td>20190219 (1510)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1413,6 +1413,13 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1425,13 +1432,6 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1473,18 +1473,18 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1677,6 +1677,10 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1701,10 +1705,6 @@ namespace Google.Apis.Dialogflow.v2
                     /// be enabled in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1740,6 +1740,15 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1761,15 +1770,6 @@ namespace Google.Apis.Dialogflow.v2
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1806,17 +1806,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1829,6 +1818,17 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1870,6 +1870,15 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1882,15 +1891,6 @@ namespace Google.Apis.Dialogflow.v2
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2171,15 +2171,15 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
-                        /// and at most 1000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Optional. The next_page_token value returned from a previous list
                         /// request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
+                        /// and at most 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2215,18 +2215,18 @@ namespace Google.Apis.Dialogflow.v2
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3437,9 +3437,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>Optional. To filter out false positive results and still get variety in matched natural language
         /// inputs for your agent, you can tune the machine learning classification threshold. If the returned score
-        /// value is less than the threshold value, then a fallback intent is be triggered or, if there are no fallback
-        /// intents defined, no intent will be triggered. The score values range from 0.0 (completely uncertain) to 1.0
-        /// (completely certain). If set to 0.0, the default of 0.3 is used.</summary>
+        /// value is less than the threshold value, then a fallback intent will be triggered or, if there are no
+        /// fallback intents defined, no intent will be triggered. The score values range from 0.0 (completely
+        /// uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classificationThreshold")]
         public virtual System.Nullable<float> ClassificationThreshold { get; set; } 
 
@@ -3648,8 +3648,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The number of conversational query requests after which the context expires. If set to
-        /// `0` (the default) the context expires immediately. Contexts expire automatically after 20 minutes even if
-        /// there are no matching queries.</summary>
+        /// `0` (the default) the context expires immediately. Contexts expire automatically after 20 minutes if there
+        /// are no matching queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
@@ -4424,9 +4424,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The collection of training phrase parts (can be annotated). Fields: `entity_type`,
-        /// `alias` and `user_defined` should be populated only for the annotated parts of the training
-        /// phrase.</summary>
+        /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
+        /// the training phrase.
+        ///
+        /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+        ///
+        /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when
+        /// the parts are concatenated.
+        ///
+        /// If the training phrase does not need to be annotated with parameters, you just need a single part with only
+        /// the Part.text field set.
+        ///
+        /// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part
+        /// are populated in one of two ways:
+        ///
+        /// -   `Part.text` is set to a part of the phrase that has no parameters. -   `Part.text` is set to a part of
+        /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrasePart> Parts { get; set; } 
 
@@ -4446,22 +4460,23 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents a part of a training phrase.</summary>
     public class GoogleCloudDialogflowV2IntentTrainingPhrasePart : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The parameter name for the value extracted from the annotated part of the
-        /// example.</summary>
+        /// <summary>Optional. The parameter name for the value extracted from the annotated part of the example. This
+        /// field is required for annotated parts of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
         public virtual string Alias { get; set; } 
 
-        /// <summary>Optional. The entity type name prefixed with `@`. This field is required for the annotated part of
-        /// the text and applies only to examples.</summary>
+        /// <summary>Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the
+        /// training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; } 
 
-        /// <summary>Required. The text corresponding to the example, if there are no annotations. For annotated
-        /// examples, it is the text for one of the example's parts.</summary>
+        /// <summary>Required. The text for this part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
-        /// <summary>Optional. Indicates whether the text was manually annotated by the developer.</summary>
+        /// <summary>Optional. Indicates whether the text was manually annotated. This field is set to true when the
+        /// Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you
+        /// must set this to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
         public virtual System.Nullable<bool> UserDefined { get; set; } 
 
@@ -4898,8 +4913,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2beta1Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The number of conversational query requests after which the context expires. If set to
-        /// `0` (the default) the context expires immediately. Contexts expire automatically after 10 minutes even if
-        /// there are no matching queries.</summary>
+        /// `0` (the default) the context expires immediately. Contexts expire automatically after 20 minutes if there
+        /// are no matching queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
@@ -5625,9 +5640,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The collection of training phrase parts (can be annotated). Fields: `entity_type`,
-        /// `alias` and `user_defined` should be populated only for the annotated parts of the training
-        /// phrase.</summary>
+        /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
+        /// the training phrase.
+        ///
+        /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+        ///
+        /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when
+        /// the parts are concatenated.
+        ///
+        /// If the training phrase does not need to be annotated with parameters, you just need a single part with only
+        /// the Part.text field set.
+        ///
+        /// If you want to annotate the training phrase, you must create multiple parts, where the fields of each part
+        /// are populated in one of two ways:
+        ///
+        /// -   `Part.text` is set to a part of the phrase that has no parameters. -   `Part.text` is set to a part of
+        /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> Parts { get; set; } 
 
@@ -5647,22 +5676,23 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents a part of a training phrase.</summary>
     public class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The parameter name for the value extracted from the annotated part of the
-        /// example.</summary>
+        /// <summary>Optional. The parameter name for the value extracted from the annotated part of the example. This
+        /// field is required for annotated parts of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
         public virtual string Alias { get; set; } 
 
-        /// <summary>Optional. The entity type name prefixed with `@`. This field is required for the annotated part of
-        /// the text and applies only to examples.</summary>
+        /// <summary>Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the
+        /// training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; } 
 
-        /// <summary>Required. The text corresponding to the example, if there are no annotations. For annotated
-        /// examples, it is the text for one of the example's parts.</summary>
+        /// <summary>Required. The text for this part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
-        /// <summary>Optional. Indicates whether the text was manually annotated by the developer.</summary>
+        /// <summary>Optional. Indicates whether the text was manually annotated. This field is set to true when the
+        /// Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you
+        /// must set this to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
         public virtual System.Nullable<bool> UserDefined { get; set; } 
 

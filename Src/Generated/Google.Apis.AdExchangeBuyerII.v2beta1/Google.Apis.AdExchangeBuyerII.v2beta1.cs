@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190221 (1512)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/authorized-buyers/apis/reference/rest/'>
  *              https://developers.google.com/authorized-buyers/apis/reference/rest/</a>
@@ -1522,17 +1522,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CreativeId { get; private set; }
 
-                    /// <summary>An optional query string to filter deal associations. If no filter is specified, all
-                    /// associations will be returned. Supported queries are:
-                    ///
-                    /// accountId=account_id_string creativeId=creative_id_string dealsId=deals_id_string
-                    /// dealsStatus:{approved, conditionally_approved, disapproved, not_checked}
-                    /// openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked}
-                    ///
-                    /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Query { get; set; }
-
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
                     /// 'ListDealAssociations' method.</summary>
@@ -1543,6 +1532,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// unspecified, server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>An optional query string to filter deal associations. If no filter is specified, all
+                    /// associations will be returned. Supported queries are:
+                    ///
+                    /// accountId=account_id_string creativeId=creative_id_string dealsId=deals_id_string
+                    /// dealsStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    /// openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    ///
+                    /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Query { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1587,15 +1587,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1608,6 +1599,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "query", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "query",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2300,6 +2300,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
+                /// <summary>The page token as returned from ListProposalsResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Syntax the filter is written in. Current implementation defaults to PQL but in the future
                 /// it will be LIST_FILTER.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSyntax", Google.Apis.Util.RequestParameterType.Query)]
@@ -2322,15 +2331,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The page token as returned from ListProposalsResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
-                /// the server will pick an appropriate default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2366,24 +2366,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filterSyntax", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSyntax",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2396,6 +2378,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSyntax", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSyntax",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2530,6 +2530,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
+                /// <summary>An optional PQL query used to query for products. See https://developers.google.com/ad-
+                /// manager/docs/pqlreference for documentation about PQL and examples.
+                ///
+                /// Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The page token as returned from ListProductsResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2538,13 +2545,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// the server will pick an appropriate default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>An optional PQL query used to query for products. See https://developers.google.com/ad-
-                /// manager/docs/pqlreference for documentation about PQL and examples.
-                ///
-                /// Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2580,6 +2580,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2592,15 +2601,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9198,7 +9198,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     public class PauseProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The reason why the proposal is being paused. This human readable message will be displayed in the
-        /// seller's UI. (Max length: 100 unicode code units.)</summary>
+        /// seller's UI. (Max length: 1000 unicode code units.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 

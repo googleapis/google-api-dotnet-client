@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/HFOXBVmkagjcq83SLG-zp7gkeew\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/U5EXQKGUG9hiq9AyhuNHr4nL5-E\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v2",
  "name": "oauth2",
@@ -70,7 +70,7 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/plus.login": {
-     "description": "Know the list of people in your circles, your age range, and language"
+     "description": "View your basic profile info, including your age range and language"
     },
     "https://www.googleapis.com/auth/plus.me": {
      "description": "Know who you are on Google"

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.3
- *      <tr><th>API Rev<td>20190124 (1484)
+ *      <tr><th>API Rev<td>20190206 (1497)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -24797,12 +24797,12 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetIdentifier")]
         public virtual CreativeAssetId AssetIdentifier { get; set; } 
 
-        /// <summary>Audio stream bit rate in kbps.This is a read-only field. Applicable to the following creative
+        /// <summary>Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBitRate")]
         public virtual System.Nullable<int> AudioBitRate { get; set; } 
 
-        /// <summary>Audio sample bit rate in hertz.This is a read-only field. Applicable to the following creative
+        /// <summary>Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative
         /// types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioSampleRate")]
         public virtual System.Nullable<int> AudioSampleRate { get; set; } 
@@ -24878,7 +24878,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flashVersion")]
         public virtual System.Nullable<int> FlashVersion { get; set; } 
 
-        /// <summary>Video frame rate for video asset in frames per second.This is a read-only field. Applicable to the
+        /// <summary>Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the
         /// following creative types: INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<float> FrameRate { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190130 (1490)
+ *      <tr><th>API Rev<td>20190216 (1507)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2123,6 +2123,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2136,10 +2140,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2175,6 +2175,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2187,15 +2196,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2640,6 +2640,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2647,10 +2651,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2686,6 +2686,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2698,15 +2707,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2912,7 +2912,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
-        /// <summary>The available types of accelerators.</summary>
+        /// <summary>The type of accelerator to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3493,13 +3493,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the configration for a replica in a cluster.</summary>
+    /// <summary>Represents the configuration for a replica in a cluster.</summary>
     public class GoogleCloudMlV1ReplicaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Represents the type and number of accelerators used by the replica. [Learn about restrictions on
+        /// accelerator configurations for training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-
+        /// types-with-gpu)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
 
-        /// <summary>The docker image to run on worker. This image must be in Google Container Registry.</summary>
+        /// <summary>The Docker image to run on the replica. This image must be in Container Registry. Learn more about
+        /// [configuring custom containers](/ml-engine/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -3534,9 +3538,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobDir")]
         public virtual string JobDir { get; set; } 
 
-        /// <summary>Optional. The configuration for master.
+        /// <summary>Optional. The configuration for your master worker.
         ///
-        /// Only one of `masterConfig.imageUri` and `runtimeVersion` should be set.</summary>
+        /// You should only set `masterConfig.acceleratorConfig` if `masterType` is set to a Compute Engine machine
+        /// type. Learn about [restrictions on accelerator configurations for training.](/ml-engine/docs/tensorflow
+        /// /using-gpus#compute-engine-machine-types-with-gpu)
+        ///
+        /// Set `masterConfig.imageUri` only if you build a custom image. Only one of `masterConfig.imageUri` and
+        /// `runtimeVersion` should be set. Learn more about [configuring custom containers](/ml-engine/docs
+        /// /distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; } 
 
@@ -3607,6 +3617,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         ///
         /// A TPU VM including one Cloud TPU. See more about using TPUs to train your model.
         ///
+        /// You may also use certain Compute Engine machine types directly in this field. The following types are
+        /// supported:
+        ///
+        /// - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` -
+        /// `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` -
+        /// `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96`
+        ///
+        /// See more about [using Compute Engine machine types](/ml-engine/docs/tensorflow/machine-types#compute-engine-
+        /// machine-types).
+        ///
         /// You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
         public virtual string MasterType { get; set; } 
@@ -3616,10 +3636,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
         public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
 
-        /// <summary>Optional. The config of parameter servers.
+        /// <summary>Optional. The configuration for parameter servers.
         ///
-        /// If `parameterServerConfig.imageUri` has not been set, the value of `masterConfig.imageUri` will be
-        /// used.</summary>
+        /// You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerConfigType` is set to a
+        /// Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ml-
+        /// engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+        ///
+        /// Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If
+        /// `parameterServerConfig.imageUri` has not been set, Cloud ML Engine uses the value of
+        /// `masterConfig.imageUri`. Learn more about [configuring custom containers](/ml-engine/docs/distributed-
+        /// training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; } 
 
@@ -3636,6 +3662,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's parameter server.
         ///
         /// The supported values are the same as those described in the entry for `master_type`.
+        ///
+        /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
+        /// must be Cloud ML Engine machine types or both must be Compute Engine machine types.
         ///
         /// This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than
         /// zero.</summary>
@@ -3668,9 +3697,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
         public virtual string ScaleTier { get; set; } 
 
-        /// <summary>Optional. The configrations for workers.
+        /// <summary>Optional. The configuration for workers.
         ///
-        /// If `workerConfig.imageUri` has not been set, the value of `masterConfig.imageUri` will be used.</summary>
+        /// You should only set `workerConfig.acceleratorConfig` if `workerType` is set to a Compute Engine machine
+        /// type. [Learn about restrictions on accelerator configurations for training.](/ml-engine/docs/tensorflow
+        /// /using-gpus#compute-engine-machine-types-with-gpu)
+        ///
+        /// Set `workerConfig.imageUri` only if you build a custom image for your worker. If `workerConfig.imageUri` has
+        /// not been set, Cloud ML Engine uses the value of `masterConfig.imageUri`. Learn more about [configuring
+        /// custom containers](/ml-engine/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
 
@@ -3687,6 +3722,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's worker nodes.
         ///
         /// The supported values are the same as those described in the entry for `masterType`.
+        ///
+        /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
+        /// must be Cloud ML Engine machine types or both must be Compute Engine machine types.
+        ///
+        /// If you use `cloud_tpu` for this value, see special instructions for [configuring a custom TPU machine](/ml-
+        /// engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
         ///
         /// This value must be present when `scaleTier` is set to `CUSTOM` and `workerCount` is greater than
         /// zero.</summary>
@@ -3725,7 +3766,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     ///
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
     /// multiple versions. You can get information about all of the versions of a given model by calling
-    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
+    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list). Next ID:
+    /// 29</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
@@ -3790,9 +3832,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual object LastUseTime { get; set; } 
 
         /// <summary>Optional. The type of machine on which to serve the model. Currently only applies to online
-        /// prediction service. The following are currently supported and will be deprecated in Beta release.
-        /// mls1-highmem-1    1 core    2 Gb RAM mls1-highcpu-4    4 core    2 Gb RAM The following are available in
-        /// Beta: mls1-c1-m2        1 core    2 Gb RAM   Default mls1-c4-m2        4 core    2 Gb RAM</summary>
+        /// prediction service.
+        ///
+        /// mls1-c1-m2
+        ///
+        /// The default machine type, with 1 core and 2 GB RAM. The deprecated name for this machine type is
+        /// "mls1-highmem-1".
+        ///
+        /// mls1-c4-m2
+        ///
+        /// In Beta. This machine type has 4 cores and 2 GB RAM. The deprecated name for this machine type is
+        /// "mls1-highcpu-4".
+        ///
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 

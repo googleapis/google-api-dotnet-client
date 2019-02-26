@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190106 (1466)
+ *      <tr><th>API Rev<td>20190207 (1498)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -847,15 +847,15 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>If true, ignore safety checks when creating the app profile.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
-
                     /// <summary>The ID to be used when referring to the new app profile within its instance, e.g., just
                     /// `myprofile` rather than
                     /// `projects/myproject/instances/myinstance/appProfiles/myprofile`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appProfileId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AppProfileId { get; set; }
+
+                    /// <summary>If true, ignore safety checks when creating the app profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -897,18 +897,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            "appProfileId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "ignoreWarnings",
+                                Name = "appProfileId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "appProfileId", new Google.Apis.Discovery.Parameter
+                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "appProfileId",
+                                Name = "ignoreWarnings",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3112,7 +3112,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>The state of a table's data in a particular cluster.</summary>
     public class ClusterState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(`OutputOnly`) The state of replication for the table in this cluster.</summary>
+        /// <summary>Output only. The state of replication for the table in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationState")]
         public virtual string ReplicationState { get; set; } 
 
@@ -3771,10 +3771,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// resources of its parent cluster.</summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(`OutputOnly`) Map from cluster ID to per-cluster table state. If it could not be determined
-        /// whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then
-        /// there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`,
-        /// `FULL`</summary>
+        /// <summary>Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether
+        /// or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will
+        /// be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterStates")]
         public virtual System.Collections.Generic.IDictionary<string,ClusterState> ClusterStates { get; set; } 
 
@@ -3785,12 +3784,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>(`CreationOnly`) The granularity (i.e. `MILLIS`) at which timestamps are stored in this table.
         /// Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be
-        /// set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`</summary>
+        /// set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("granularity")]
         public virtual string Granularity { get; set; } 
 
-        /// <summary>(`OutputOnly`) The unique name of the table. Values are of the form `projects//instances//tables
-        /// /_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`</summary>
+        /// <summary>Output only. The unique name of the table. Values are of the form `projects//instances//tables/_a-
+        /// zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20190220 (1511)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>
  *              https://developers.google.com/tag-manager/api/v1/</a>
@@ -697,119 +697,6 @@ namespace Google.Apis.TagManager.v1
                                 Name = "containerId",
                                 IsRequired = true,
                                 ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
-                /// <param name="environmentId">The GTM Environment ID.</param>
-                public virtual PatchRequest Patch(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
-                {
-                    return new PatchRequest(service, body, accountId, containerId, environmentId);
-                }
-
-                /// <summary>Updates a GTM Environment. This method supports patch semantics.</summary>
-                public class PatchRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.Environment>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
-                        : base(service)
-                    {
-                        AccountId = accountId;
-                        ContainerId = containerId;
-                        EnvironmentId = environmentId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The GTM Account ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string AccountId { get; private set; }
-
-                    /// <summary>The GTM Container ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ContainerId { get; private set; }
-
-                    /// <summary>The GTM Environment ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string EnvironmentId { get; private set; }
-
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the environment in
-                    /// storage.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Fingerprint { get; set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "patch"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PATCH"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "accounts/{accountId}/containers/{containerId}/environments/{environmentId}"; }
-                    }
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "containerId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "containerId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "environmentId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "environmentId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fingerprint", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fingerprint",
-                                IsRequired = false,
-                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });

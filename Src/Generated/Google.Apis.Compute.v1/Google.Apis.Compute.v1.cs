@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190107 (1467)
+ *      <tr><th>API Rev<td>20190201 (1492)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -16184,8 +16184,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Whether to force attach the disk even if it's currently attached to another instance. This is
-            /// only available for regional disks.</summary>
+            /// <summary>Whether to force attach the disk even if it's currently attached to another instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceAttach { get; set; }
 
@@ -49117,11 +49116,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sys")]
         public virtual string Sys { get; set; } 
 
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
+        /// <summary>The objects of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
@@ -50277,6 +50272,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
+        /// <summary>This field is used along with the backend_service field for internal load balancing or with the
+        /// target field for internal TargetInstance. This field cannot be used with port or portRange fields.
+        ///
+        /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets
+        /// addressed to any ports will be forwarded to the backends configured with this forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allPorts")]
+        public virtual System.Nullable<bool> AllPorts { get; set; } 
+
         /// <summary>This field is only used for INTERNAL load balancing.
         ///
         /// For internal load balancing, this field identifies the BackendService resource to receive the matched
@@ -50408,7 +50411,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED" load balancing, only HTTP and HTTPS targets are valid.</summary>
+        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -53714,12 +53717,17 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InterconnectDiagnosticsLinkOpticalPower : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of the current value when compared to the warning and alarm levels for the receiving or
+        /// transmitting transceiver. Possible states include: - OK: The value has not crossed a warning threshold. -
+        /// LOW_WARNING: The value has crossed below the low warning threshold. - HIGH_WARNING: The value has crossed
+        /// above the high warning threshold. - LOW_ALARM: The value has crossed below the low alarm threshold. -
+        /// HIGH_ALARM: The value has crossed above the high alarm threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Value of the current optical power, read in dBm. Take a known good optical value, give it a 10%
-        /// margin and trigger warnings relative to that value. In general, a -7dBm warning and a -11dBm alarm are good
-        /// optical value estimates for most links.</summary>
+        /// <summary>Value of the current receiving or transmitting optical power, read in dBm. Take a known good
+        /// optical value, give it a 10% margin and trigger warnings relative to that value. In general, a -7dBm warning
+        /// and a -11dBm alarm are good optical value estimates for most links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; } 
 
@@ -53745,9 +53753,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lacpStatus")]
         public virtual InterconnectDiagnosticsLinkLACPStatus LacpStatus { get; set; } 
 
+        /// <summary>An InterconnectDiagnostics.LinkOpticalPower object, describing the current value and status of the
+        /// received light level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivingOpticalPower")]
         public virtual InterconnectDiagnosticsLinkOpticalPower ReceivingOpticalPower { get; set; } 
 
+        /// <summary>An InterconnectDiagnostics.LinkOpticalPower object, describing the current value and status of the
+        /// transmitted light level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transmittingOpticalPower")]
         public virtual InterconnectDiagnosticsLinkOpticalPower TransmittingOpticalPower { get; set; } 
 
@@ -54747,8 +54759,9 @@ namespace Google.Apis.Compute.v1.Data
     /// (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The range of internal addresses that are legal on this network. This range is a CIDR specification,
-        /// for example: 192.168.0.0/16. Provided by the client when the network is created.</summary>
+        /// <summary>Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this
+        /// network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the
+        /// network is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; } 
 
@@ -54952,11 +54965,18 @@ namespace Google.Apis.Compute.v1.Data
     /// peering.</summary>
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether full mesh connectivity is created and managed automatically. When it is set to
-        /// true, Google Compute Engine will automatically create and manage the routes between two networks when the
-        /// state is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates whether
+        /// full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine
+        /// will automatically create and manage the routes between two networks when the state is ACTIVE. Otherwise,
+        /// user needs to create routes manually to route packets to peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
+
+        /// <summary>Whether full mesh connectivity is created and managed automatically. When it is set to true, Google
+        /// Compute Engine will automatically create and manage the routes between two networks when the peering state
+        /// is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchangeSubnetRoutes")]
+        public virtual System.Nullable<bool> ExchangeSubnetRoutes { get; set; } 
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
@@ -55001,13 +55021,21 @@ namespace Google.Apis.Compute.v1.Data
 
     public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether Google Compute Engine manages the routes automatically.</summary>
+        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes in network_peering instead.
+        /// Whether Google Compute Engine manages the routes automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
         /// <summary>Name of the peering, which should conform to RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Network peering parameters. In order to specify route policies for peering using import/export
+        /// custom routes, you will have to fill all peering related parameters (name, peer network,
+        /// exchange_subnet_routes) in network_peeringfield. Corresponding fields in NetworksAddPeeringRequest will be
+        /// deprecated soon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
+        public virtual NetworkPeering NetworkPeering { get; set; } 
 
         /// <summary>URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a
         /// different project. If the partial URL does not contain project, it is assumed that the peer network is in

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190205 (1496)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -862,23 +862,23 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A single Android device.</summary>
     public class AndroidDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the Android device to be used. Use the EnvironmentDiscoveryService to get
+        /// <summary>Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get
         /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelId")]
         public virtual string AndroidModelId { get; set; } 
 
-        /// <summary>Required. The id of the Android OS version to be used. Use the EnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionId")]
         public virtual string AndroidVersionId { get; set; } 
 
-        /// <summary>Required. The locale the test device used for testing. Use the EnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
-        /// <summary>Required. How the device is oriented during the test. Use the EnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; } 
 
@@ -982,22 +982,22 @@ namespace Google.Apis.Testing.v1.Data
     /// ignored.</summary>
     public class AndroidMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ids of the set of Android device to be used. Use the EnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService
+        /// to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelIds")]
         public virtual System.Collections.Generic.IList<string> AndroidModelIds { get; set; } 
 
-        /// <summary>Required. The ids of the set of Android OS version to be used. Use the EnvironmentDiscoveryService
-        /// to get supported options.</summary>
+        /// <summary>Required. The ids of the set of Android OS version to be used. Use the
+        /// TestEnvironmentDiscoveryService to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionIds")]
         public virtual System.Collections.Generic.IList<string> AndroidVersionIds { get; set; } 
 
         /// <summary>Required. The set of locales the test device will enable for testing. Use the
-        /// EnvironmentDiscoveryService to get supported options.</summary>
+        /// TestEnvironmentDiscoveryService to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<string> Locales { get; set; } 
 
-        /// <summary>Required. The set of orientations to test with. Use the EnvironmentDiscoveryService to get
+        /// <summary>Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get
         /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientations")]
         public virtual System.Collections.Generic.IList<string> Orientations { get; set; } 
@@ -1494,23 +1494,23 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A single iOS device.</summary>
     public class IosDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the iOS device to be used. Use the EnvironmentDiscoveryService to get supported
-        /// options.</summary>
+        /// <summary>Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosModelId")]
         public virtual string IosModelId { get; set; } 
 
-        /// <summary>Required. The id of the iOS major software version to be used. Use the EnvironmentDiscoveryService
-        /// to get supported options.</summary>
+        /// <summary>Required. The id of the iOS major software version to be used. Use the
+        /// TestEnvironmentDiscoveryService to get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVersionId")]
         public virtual string IosVersionId { get; set; } 
 
-        /// <summary>Required. The locale the test device used for testing. Use the EnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
-        /// <summary>Required. How the device is oriented during the test. Use the EnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; } 
 
@@ -1656,7 +1656,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testsZip")]
         public virtual FileReference TestsZip { get; set; } 
 
-        /// <summary>The Xcode version that should be used for the test. Use the EnvironmentDiscoveryService to get
+        /// <summary>The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get
         /// supported options. Defaults to the latest Xcode version Firebase Test Lab supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
         public virtual string XcodeVersion { get; set; } 

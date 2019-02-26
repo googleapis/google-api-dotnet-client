@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/4qSVLqzayCpgVGY54eYy_0Lz8TQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/HfgI2-QxJJ0kpvSvsSfA1DROEv8\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.3",
  "name": "dfareporting",
  "version": "v3.3",
- "revision": "20190124",
+ "revision": "20190206",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -2618,12 +2618,12 @@
     },
     "audioBitRate": {
      "type": "integer",
-     "description": "Audio stream bit rate in kbps.This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.",
+     "description": "Audio stream bit rate in kbps. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.",
      "format": "int32"
     },
     "audioSampleRate": {
      "type": "integer",
-     "description": "Audio sample bit rate in hertz.This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.",
+     "description": "Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.",
      "format": "int32"
     },
     "backupImageExit": {
@@ -2874,7 +2874,7 @@
     },
     "frameRate": {
      "type": "number",
-     "description": "Video frame rate for video asset in frames per second.This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.",
+     "description": "Video frame rate for video asset in frames per second. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.",
      "format": "float"
     },
     "hideFlashObjects": {

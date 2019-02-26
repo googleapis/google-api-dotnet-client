@@ -1,102 +1,31 @@
 {
-  "servicePath": "",
-  "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
   "kind": "discovery#restDescription",
+  "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
+  "servicePath": "",
   "basePath": "",
-  "revision": "20190123",
-  "documentationLink": "https://cloud.google.com/filestore/",
   "id": "file:v1",
+  "documentationLink": "https://cloud.google.com/filestore/",
+  "revision": "20190225",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "FileShareConfig": {
-      "description": "File share configuration for the instance.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The name of the file share (must be 16 characters or less).",
-          "type": "string"
-        },
-        "capacityGb": {
-          "description": "File share capacity in gigabytes (GB).\nCloud Filestore defines 1 GB as 1024^3 bytes.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "id": "FileShareConfig"
-    },
-    "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
+    "ListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
       "type": "object",
       "properties": {
         "nextPageToken": {
           "description": "The standard List next-page token.",
           "type": "string"
         },
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          }
-        }
-      },
-      "id": "ListOperationsResponse"
-    },
-    "OperationMetadata": {
-      "description": "Represents the metadata of the long-running operation.",
-      "type": "object",
-      "properties": {
-        "endTime": {
-          "description": "[Output only] The time the operation finished running.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "cancelRequested": {
-          "description": "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-          "type": "boolean"
-        },
-        "verb": {
-          "description": "[Output only] Name of the verb executed by the operation.",
-          "type": "string"
-        },
-        "createTime": {
-          "description": "[Output only] The time the operation was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "statusDetail": {
-          "description": "[Output only] Human-readable status of the operation, if any.",
-          "type": "string"
-        },
-        "apiVersion": {
-          "description": "[Output only] API version used to start the operation.",
-          "type": "string"
-        },
-        "target": {
-          "description": "[Output only] Server-defined resource path for the target of the operation.",
-          "type": "string"
-        }
-      },
-      "id": "OperationMetadata"
-    },
-    "ListLocationsResponse": {
-      "properties": {
         "locations": {
           "description": "A list of locations that matches the specified filter in the request.",
           "type": "array",
           "items": {
             "$ref": "Location"
           }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
         }
       },
-      "id": "ListLocationsResponse",
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object"
+      "id": "ListLocationsResponse"
     },
     "ListInstancesResponse": {
       "description": "ListInstancesResponse is the result of ListInstancesRequest.",
@@ -110,27 +39,40 @@
           }
         },
         "nextPageToken": {
-          "description": "The token you can use to retrieve the next page of results. Not returned\nif there are no more results in the list.",
-          "type": "string"
+          "type": "string",
+          "description": "The token you can use to retrieve the next page of results. Not returned\nif there are no more results in the list."
         },
         "unreachable": {
-          "description": "Locations that could not be reached.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Locations that could not be reached."
         }
       },
       "id": "ListInstancesResponse"
     },
     "CancelOperationRequest": {
+      "id": "CancelOperationRequest",
       "description": "The request message for Operations.CancelOperation.",
       "type": "object",
-      "properties": {},
-      "id": "CancelOperationRequest"
+      "properties": {}
     },
     "Operation": {
+      "type": "object",
       "properties": {
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
+        },
         "done": {
           "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
           "type": "boolean"
@@ -144,25 +86,12 @@
           "type": "object"
         },
         "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`."
         }
       },
       "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object"
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
     },
     "NetworkConfig": {
       "description": "Network configuration for the instance.",
@@ -205,15 +134,23 @@
       "description": "A Cloud Filestore instance.",
       "type": "object",
       "properties": {
+        "etag": {
+          "description": "Server-specified ETag for the instance resource to prevent simultaneous\nupdates from overwriting each other.",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Output only.\nThe time when the instance was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource labels to represent user provided metadata.",
+          "type": "object"
+        },
         "state": {
-          "enumDescriptions": [
-            "State not set.",
-            "The instance is being created.",
-            "The instance is available for use.",
-            "Work is being done on the instance. You can get further details from the\n`statusMessage` field of the `Instance` resource.",
-            "The instance is shutting down.",
-            "The instance is experiencing an issue and might be unusable. You can get\nfurther details from the `statusMessage` field of the `Instance`\nresource."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -223,15 +160,23 @@
             "ERROR"
           ],
           "description": "Output only.\nThe instance state.",
-          "type": "string"
-        },
-        "statusMessage": {
-          "description": "Output only.\nAdditional information about the instance state, if available.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "State not set.",
+            "The instance is being created.",
+            "The instance is available for use.",
+            "Work is being done on the instance. You can get further details from the\n`statusMessage` field of the `Instance` resource.",
+            "The instance is shutting down.",
+            "The instance is experiencing an issue and might be unusable. You can get\nfurther details from the `statusMessage` field of the `Instance`\nresource."
+          ]
         },
         "name": {
           "description": "Output only.\nThe resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}.",
           "type": "string"
+        },
+        "statusMessage": {
+          "type": "string",
+          "description": "Output only.\nAdditional information about the instance state, if available."
         },
         "networks": {
           "description": "VPC networks to which the instance is connected.\nFor this version, only a single network is supported.",
@@ -248,37 +193,21 @@
           }
         },
         "tier": {
-          "enum": [
-            "TIER_UNSPECIFIED",
-            "STANDARD",
-            "PREMIUM"
-          ],
-          "description": "The service tier of the instance.",
           "type": "string",
           "enumDescriptions": [
             "Not set.",
             "STANDARD tier.",
             "PREMIUM tier."
-          ]
+          ],
+          "enum": [
+            "TIER_UNSPECIFIED",
+            "STANDARD",
+            "PREMIUM"
+          ],
+          "description": "The service tier of the instance."
         },
         "description": {
           "description": "Optional. A description of the instance (2048 characters or less).",
-          "type": "string"
-        },
-        "etag": {
-          "description": "Server-specified ETag for the instance resource to prevent simultaneous\nupdates from overwriting each other.",
-          "type": "string"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Resource labels to represent user provided metadata.",
-          "type": "object"
-        },
-        "createTime": {
-          "description": "Output only.\nThe time when the instance was created.",
-          "format": "google-datetime",
           "type": "string"
         }
       },
@@ -321,13 +250,6 @@
       "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object"
-        },
         "name": {
           "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
           "type": "string"
@@ -341,21 +263,99 @@
           "type": "string"
         },
         "metadata": {
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
+          }
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
           },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
           "type": "object"
         }
       },
       "id": "Location"
+    },
+    "ListOperationsResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
+        }
+      },
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations."
+    },
+    "FileShareConfig": {
+      "description": "File share configuration for the instance.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the file share (must be 16 characters or less).",
+          "type": "string"
+        },
+        "capacityGb": {
+          "description": "File share capacity in gigabytes (GB).\nCloud Filestore defines 1 GB as 1024^3 bytes.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "id": "FileShareConfig"
+    },
+    "OperationMetadata": {
+      "description": "Represents the metadata of the long-running operation.",
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "description": "[Output only] The time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "statusDetail": {
+          "description": "[Output only] Human-readable status of the operation, if any.",
+          "type": "string"
+        },
+        "apiVersion": {
+          "description": "[Output only] API version used to start the operation.",
+          "type": "string"
+        },
+        "target": {
+          "type": "string",
+          "description": "[Output only] Server-defined resource path for the target of the operation."
+        },
+        "endTime": {
+          "description": "[Output only] The time the operation finished running.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "cancelRequested": {
+          "description": "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+          "type": "boolean"
+        },
+        "verb": {
+          "description": "[Output only] Name of the verb executed by the operation.",
+          "type": "string"
+        }
+      },
+      "id": "OperationMetadata"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Cloud Filestore",
   "auth": {
@@ -381,25 +381,28 @@
           "methods": {
             "list": {
               "description": "Lists information about the supported locations for this service.",
-              "httpMethod": "GET",
               "response": {
                 "$ref": "ListLocationsResponse"
               },
               "parameterOrder": [
                 "name"
               ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "filter": {
+                  "location": "query",
                   "description": "The standard list filter.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "name": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
                   "description": "The resource that owns the locations collection, if applicable.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
                 },
                 "pageToken": {
                   "description": "The standard list page token.",
@@ -413,12 +416,9 @@
                   "location": "query"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectsId}/locations",
-              "id": "file.projects.locations.list",
-              "path": "v1/{+name}/locations"
+              "path": "v1/{+name}/locations",
+              "id": "file.projects.locations.list"
             },
             "get": {
               "description": "Gets information about a location.",
@@ -431,11 +431,11 @@
               "httpMethod": "GET",
               "parameters": {
                 "name": {
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path",
                   "description": "Resource name for the location.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
                 }
               },
               "scopes": [
@@ -447,9 +447,136 @@
             }
           },
           "resources": {
+            "operations": {
+              "methods": {
+                "list": {
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "pageSize": {
+                      "location": "query",
+                      "description": "The standard list page size.",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation's parent resource."
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The standard list page token.",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "id": "file.projects.locations.operations.list",
+                  "path": "v1/{+name}/operations",
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
+                },
+                "get": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1/{+name}",
+                  "id": "file.projects.locations.operations.get",
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+                },
+                "cancel": {
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource to be cancelled.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                  "id": "file.projects.locations.operations.cancel",
+                  "path": "v1/{+name}:cancel",
+                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  }
+                },
+                "delete": {
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1/{+name}",
+                  "id": "file.projects.locations.operations.delete",
+                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
+                }
+              }
+            },
             "instances": {
               "methods": {
                 "create": {
+                  "description": "Creates an instance.",
+                  "request": {
+                    "$ref": "Instance"
+                  },
                   "httpMethod": "POST",
                   "parameterOrder": [
                     "parent"
@@ -476,13 +603,12 @@
                   ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
                   "id": "file.projects.locations.instances.create",
-                  "path": "v1/{+parent}/instances",
-                  "description": "Creates an instance.",
-                  "request": {
-                    "$ref": "Instance"
-                  }
+                  "path": "v1/{+parent}/instances"
                 },
                 "delete": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                  "path": "v1/{+name}",
+                  "id": "file.projects.locations.instances.delete",
                   "description": "Deletes an instance.",
                   "response": {
                     "$ref": "Operation"
@@ -491,9 +617,76 @@
                     "name"
                   ],
                   "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "name": {
                       "description": "The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "location": "path"
+                    }
+                  }
+                },
+                "list": {
+                  "description": "Lists all instances in a project for either a specified location\nor for all locations.",
+                  "response": {
+                    "$ref": "ListInstancesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "pageToken": {
+                      "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "orderBy": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Sort results. Supported values are \"name\", \"name desc\" or \"\" (unsorted)."
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "location": "query",
+                      "description": "The maximum number of items to return.",
+                      "format": "int32"
+                    },
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The project and location for which to retrieve instance information,\nin the format projects/{project_id}/locations/{location}. In Cloud\nFilestore, locations map to GCP zones, for example **us-west1-b**. To\nretrieve instance information for all locations, use \"-\" for the {location}\nvalue.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "filter": {
+                      "description": "List filter.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
+                  "path": "v1/{+parent}/instances",
+                  "id": "file.projects.locations.instances.list"
+                },
+                "get": {
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "Instance"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}.",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
@@ -504,236 +697,43 @@
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-                  "path": "v1/{+name}",
-                  "id": "file.projects.locations.instances.delete"
-                },
-                "list": {
-                  "description": "Lists all instances in a project for either a specified location\nor for all locations.",
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListInstancesResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "The project and location for which to retrieve instance information,\nin the format projects/{project_id}/locations/{location}. In Cloud\nFilestore, locations map to GCP zones, for example **us-west1-b**. To\nretrieve instance information for all locations, use \"-\" for the {location}\nvalue.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "filter": {
-                      "description": "List filter.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageToken": {
-                      "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "orderBy": {
-                      "location": "query",
-                      "description": "Sort results. Supported values are \"name\", \"name desc\" or \"\" (unsorted).",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The maximum number of items to return.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
-                  "id": "file.projects.locations.instances.list",
-                  "path": "v1/{+parent}/instances"
-                },
-                "get": {
-                  "description": "Gets the details of a specific instance.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Instance"
-                  },
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                   "id": "file.projects.locations.instances.get",
-                  "path": "v1/{+name}"
+                  "path": "v1/{+name}",
+                  "description": "Gets the details of a specific instance."
                 },
                 "patch": {
-                  "httpMethod": "PATCH",
-                  "parameterOrder": [
-                    "name"
-                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                  "path": "v1/{+name}",
+                  "id": "file.projects.locations.instances.patch",
+                  "description": "Updates the settings of a specific instance.",
+                  "request": {
+                    "$ref": "Instance"
+                  },
                   "response": {
                     "$ref": "Operation"
                   },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH",
                   "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "location": "path",
+                      "description": "Output only.\nThe resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}.",
+                      "required": true,
+                      "type": "string"
+                    },
                     "updateMask": {
                       "description": "Mask of fields to update.  At least one path must be supplied in this\nfield.  The elements of the repeated paths field may only include these\nfields:\n\"description\"",
                       "format": "google-fieldmask",
                       "type": "string",
                       "location": "query"
-                    },
-                    "name": {
-                      "location": "path",
-                      "description": "Output only.\nThe resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-                  "id": "file.projects.locations.instances.patch",
-                  "path": "v1/{+name}",
-                  "description": "Updates the settings of a specific instance.",
-                  "request": {
-                    "$ref": "Instance"
-                  }
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "cancel": {
-                  "path": "v1/{+name}:cancel",
-                  "id": "file.projects.locations.operations.cancel",
-                  "request": {
-                    "$ref": "CancelOperationRequest"
-                  },
-                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be cancelled.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel"
-                },
-                "delete": {
-                  "id": "file.projects.locations.operations.delete",
-                  "path": "v1/{+name}",
-                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be deleted.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "pageToken": {
-                      "description": "The standard list page token.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageSize": {
-                      "description": "The standard list page size.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "path": "v1/{+name}/operations",
-                  "id": "file.projects.locations.operations.list",
-                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
-                },
-                "get": {
-                  "path": "v1/{+name}",
-                  "id": "file.projects.locations.operations.get",
-                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
+                  ]
                 }
               }
             }
@@ -743,36 +743,31 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "quotaUser": {
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "default": "true"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "callback": {
+      "location": "query",
       "description": "JSONP",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "oauth_token": {
       "location": "query",
@@ -793,8 +788,6 @@
       "type": "string"
     },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -806,17 +799,24 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
     }
   },
   "version": "v1",

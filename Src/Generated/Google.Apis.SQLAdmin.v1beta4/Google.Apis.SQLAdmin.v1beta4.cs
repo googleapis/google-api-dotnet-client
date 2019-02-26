@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20181101 (1400)
+ *      <tr><th>API Rev<td>20190225 (1516)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4785,21 +4785,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options for exporting data as CSV. Exporting in CSV format using the Cloud SQL Admin API is not
-        /// supported for PostgreSQL instances.</summary>
+        /// <summary>Options for exporting data as CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
         public virtual ExportContext.CsvExportOptionsData CsvExportOptions { get; set; } 
 
         /// <summary>Databases to be exported. MySQL instances: If fileType is SQL and no database is specified, all
         /// databases are exported, except for the mysql system database. If fileType is CSV, you can specify one
         /// database, either by using this property or by using the csvExportOptions.selectQuery property, which takes
-        /// precedence over this property. PostgreSQL instances: If fileType is SQL, you must specify one database to be
-        /// exported. A fileType of CSV is not supported for PostgreSQL instances.</summary>
+        /// precedence over this property. PostgreSQL instances: Specify exactly one database to be exported. If
+        /// fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery
+        /// property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; } 
 
         /// <summary>The file type for the specified uri. SQL: The file contains SQL statements. CSV: The file contains
-        /// CSV data. CSV is not supported for PostgreSQL instances.</summary>
+        /// CSV data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; } 
 
@@ -4821,8 +4821,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Options for exporting data as CSV. Exporting in CSV format using the Cloud SQL Admin API is not
-        /// supported for PostgreSQL instances.</summary>
+        /// <summary>Options for exporting data as CSV.</summary>
         public class CsvExportOptionsData
         {
             /// <summary>The select query used to extract the data.</summary>
@@ -4891,6 +4890,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; } 
 
+        /// <summary>True if the flag is only released in Beta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inBeta")]
+        public virtual System.Nullable<bool> InBeta { get; set; } 
+
         /// <summary>This is always sql#flag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -4940,8 +4943,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance import context.</summary>
     public class ImportContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options for importing data as CSV. Importing CSV data using the Cloud SQL Admin API is not
-        /// supported for PostgreSQL instances.</summary>
+        /// <summary>Options for importing data as CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvImportOptions")]
         public virtual ImportContext.CsvImportOptionsData CsvImportOptions { get; set; } 
 
@@ -4952,13 +4954,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Database { get; set; } 
 
         /// <summary>The file type for the specified uri. SQL: The file contains SQL statements. CSV: The file contains
-        /// CSV data. Importing CSV data using the Cloud SQL Admin API is not supported for PostgreSQL
-        /// instances.</summary>
+        /// CSV data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; } 
 
-        /// <summary>The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser. PostgreSQL instances
-        /// only.</summary>
+        /// <summary>The PostgreSQL user for this import operation. PostgreSQL instances only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importUser")]
         public virtual string ImportUser { get; set; } 
 
@@ -4976,8 +4976,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Options for importing data as CSV. Importing CSV data using the Cloud SQL Admin API is not
-        /// supported for PostgreSQL instances.</summary>
+        /// <summary>Options for importing data as CSV.</summary>
         public class CsvImportOptionsData
         {
             /// <summary>The columns to which CSV data is imported. If not specified, all columns of the database table

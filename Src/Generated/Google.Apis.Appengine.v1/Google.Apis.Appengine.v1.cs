@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190126 (1486)
+ *      <tr><th>API Rev<td>20190214 (1505)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -648,10 +648,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Continuation token for fetching the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Maximum results to return per page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -668,6 +664,10 @@ namespace Google.Apis.Appengine.v1
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
+
+                /// <summary>Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -703,15 +703,6 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -724,6 +715,15 @@ namespace Google.Apis.Appengine.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2302,6 +2302,10 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2309,10 +2313,6 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2348,6 +2348,15 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2360,15 +2369,6 @@ namespace Google.Apis.Appengine.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3692,13 +3692,13 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Maximum results to return per page.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3734,18 +3734,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3789,6 +3789,10 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServicesId { get; private set; }
 
+                /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Set to true to gradually shift traffic to one or more versions that you specify. By
                 /// default, traffic is shifted immediately. For gradual traffic migration, the target versions must be
                 /// located within instances that are configured for both warmup requests
@@ -3802,10 +3806,6 @@ namespace Google.Apis.Appengine.v1
                 /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("migrateTraffic", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> MigrateTraffic { get; set; }
-
-                /// <summary>Standard field mask for the set of fields to be updated.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3856,18 +3856,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "migrateTraffic", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "migrateTraffic",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "migrateTraffic", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "migrateTraffic",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5206,6 +5206,10 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Enable session affinity. Only applicable in the App Engine flexible environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
+        public virtual System.Nullable<bool> SessionAffinity { get; set; } 
+
         /// <summary>Google Cloud Platform sub-network where the virtual machines are created. Specify the short name,
         /// not the resource path.If a subnetwork name is specified, a network name will also be required unless it is
         /// for the default network. If the network that the instance is being created in is a Legacy network, then the
@@ -5276,40 +5280,6 @@ namespace Google.Apis.Appengine.v1.Data
         /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
-    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Timestamp that this operation completed.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>Timestamp that this operation was created.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.v1beta4.Version.CreateVersion.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
-
-        /// <summary>Type of this operation. Deprecated, use method field instead. Example:
-        /// "create_version".@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
-
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/modules/default.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>User who requested this operation.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5430,35 +5400,6 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
         public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
-    public class OperationMetadataV1Beta5 : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Timestamp that this operation completed.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>Timestamp that this operation was created.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
-        /// <summary>API method name that initiated this operation. Example:
-        /// google.appengine.v1beta5.Version.CreateVersion.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
-
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/services/default.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>User who requested this operation.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6012,7 +5953,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual System.Nullable<bool> Vm { get; set; } 
 
         /// <summary>The Google Compute Engine zones that are supported by this version in the App Engine flexible
-        /// environment.</summary>
+        /// environment. Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
 

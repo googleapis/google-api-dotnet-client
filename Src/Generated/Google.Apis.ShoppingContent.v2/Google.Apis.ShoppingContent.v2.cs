@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190122 (1482)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -562,7 +562,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -640,7 +641,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -817,7 +819,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1081,7 +1084,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1181,7 +1185,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1547,7 +1552,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1796,7 +1802,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1897,7 +1904,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1998,7 +2006,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2076,7 +2085,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2166,7 +2176,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2329,7 +2340,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2508,7 +2520,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2606,7 +2619,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -2974,7 +2988,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -3063,7 +3078,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -3173,7 +3189,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -3549,7 +3566,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -4106,7 +4124,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -6737,7 +6756,10 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sets (overrides) merchant provided annotations on the line item.</summary>
+        /// <summary>Sets (or overrides if it already exists) merchant provided annotations in the form of key-value
+        /// pairs. A common use case would be to supply us with additional structured information about a line item that
+        /// cannot be provided via other methods. Submitted key-value pairs can be retrieved as part of the orders
+        /// resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -6747,7 +6769,10 @@ namespace Google.Apis.ShoppingContent.v2
             return new SetlineitemmetadataRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Sets (overrides) merchant provided annotations on the line item.</summary>
+        /// <summary>Sets (or overrides if it already exists) merchant provided annotations in the form of key-value
+        /// pairs. A common use case would be to supply us with additional structured information about a line item that
+        /// cannot be provided via other methods. Submitted key-value pairs can be retrieved as part of the orders
+        /// resource.</summary>
         public class SetlineitemmetadataRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersSetLineItemMetadataResponse>
         {
             /// <summary>Constructs a new Setlineitemmetadata request.</summary>
@@ -7193,7 +7218,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7277,7 +7303,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("storeCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string StoreCode { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7469,7 +7496,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong TargetMerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7566,7 +7594,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong TargetMerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7739,7 +7768,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong TargetMerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7840,7 +7870,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -7918,7 +7949,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -8083,7 +8115,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -8596,7 +8629,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -8965,7 +8999,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -9066,7 +9101,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to run the request in dry-run mode.</summary>
+            /// <summary>Flag to simulate a request like in a live environment. If set to true, dry-run mode checks the
+            /// validity of the request and returns errors (if any).</summary>
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -10607,7 +10643,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<long> MaxHandlingTimeInDays { get; set; } 
 
         /// <summary>Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next
-        /// day delivery. Must be greater than or equal to minTransitTimeInDays. Required.</summary>
+        /// day delivery. Must be greater than or equal to minTransitTimeInDays.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
         public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
 
@@ -10617,9 +10653,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; } 
 
         /// <summary>Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next
-        /// day delivery. Required.</summary>
+        /// day delivery. Either {min,max}transitTimeInDays or transitTimeTable must be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
         public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
+
+        /// <summary>Transit time table, number of business days spent in transit based on row and column dimensions.
+        /// Either {min,max}transitTimeInDays or transitTimeTable can be set, but not both.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
+        public virtual TransitTable TransitTimeTable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10700,7 +10741,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
     }    
 
     /// <summary>A non-empty list of row or column headers for a table. Exactly one of prices, weights, numItems,
-    /// postalCodeGroupNames, or locations must be set.</summary>
+    /// postalCodeGroupNames, or location must be set.</summary>
     public class Headers : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of location ID sets. Must be non-empty. Can only be set if all other fields are not
@@ -11082,24 +11123,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeSummaries")]
         public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; } 
 
-        /// <summary>[required] Customer balance on this invoice. A negative amount means the customer is paying, a
-        /// positive one means the customer is receiving money. Note: the sum of merchant_balance, customer_balance and
-        /// google_balance must always be zero.
-        ///
-        /// Furthermore the absolute value of this amount is expected to be equal to the sum of product amount and
-        /// additional charges, minus promotions.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerBalance")]
         public virtual Amount CustomerBalance { get; set; } 
 
-        /// <summary>[required] Google balance on this invoice. A negative amount means Google is paying, a positive one
-        /// means Google is receiving money. Note: the sum of merchant_balance, customer_balance and google_balance must
-        /// always be zero.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleBalance")]
         public virtual Amount GoogleBalance { get; set; } 
 
-        /// <summary>[required] Merchant balance on this invoice. A negative amount means the merchant is paying, a
-        /// positive one means the merchant is receiving money. Note: the sum of merchant_balance, customer_balance and
-        /// google_balance must always be zero.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantBalance")]
         public virtual Amount MerchantBalance { get; set; } 
 
@@ -11107,7 +11139,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productTotal")]
         public virtual Amount ProductTotal { get; set; } 
 
-        /// <summary>Summary for each promotion.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionSummaries")]
         public virtual System.Collections.Generic.IList<Promotion> PromotionSummaries { get; set; } 
 
@@ -11547,7 +11579,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
         public virtual OrderDeliveryDetails DeliveryDetails { get; set; } 
 
-        /// <summary>The REST id of the order. Globally unique.</summary>
+        /// <summary>The REST ID of the order. Globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -11562,7 +11594,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
 
-        /// <summary>Merchant-provided id of the order.</summary>
+        /// <summary>Merchant-provided ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
         public virtual string MerchantOrderId { get; set; } 
 
@@ -11604,7 +11636,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCostTax")]
         public virtual Price ShippingCostTax { get; set; } 
 
-        /// <summary>The requested shipping option.</summary>
+        /// <summary>Deprecated. Shipping details are provided with line items instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
         public virtual string ShippingOption { get; set; } 
 
@@ -11823,7 +11855,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
         public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
 
-        /// <summary>The id of the line item.</summary>
+        /// <summary>The ID of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -11909,7 +11941,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; } 
 
-        /// <summary>The REST id of the product.</summary>
+        /// <summary>The REST ID of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -11946,7 +11978,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string Title { get; set; } 
 
         /// <summary>Variant attributes for the item. These are dimensions of the product, such as color, gender,
-        /// material, pattern, and size. You can find a comprehensive list of variant attributes here.</summary>
+        /// material, pattern, and size. You can find a comprehensive list of variant attributes </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
         public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
 
@@ -12233,7 +12265,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
         public virtual string DeliveryDate { get; set; } 
 
-        /// <summary>The id of the shipment.</summary>
+        /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -12245,7 +12277,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>The tracking id for the shipment.</summary>
+        /// <summary>The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -12255,7 +12287,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderShipmentLineItemShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the line item that is shipped. Either lineItemId or productId is required.</summary>
+        /// <summary>The ID of the line item that is shipped. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
@@ -12805,7 +12837,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
 
-        /// <summary>The merchant order id. Required for updateMerchantOrderId and getByMerchantOrderId
+        /// <summary>The merchant order ID. Required for updateMerchantOrderId and getByMerchantOrderId
         /// methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
         public virtual string MerchantOrderId { get; set; } 
@@ -13124,7 +13156,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentInfos")]
         public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; } 
 
-        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.</summary>
+        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -13139,11 +13171,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
-        /// <summary>The ID of the shipment.</summary>
+        /// <summary>The ID of the shipment. This is assigned by the merchant and is unique to each shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; } 
 
-        /// <summary>The tracking id for the shipment.</summary>
+        /// <summary>The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -13196,7 +13228,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>The tracking id for the shipment. Not updated if missing.</summary>
+        /// <summary>The tracking ID for the shipment. Not updated if missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -13608,7 +13640,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentInfos")]
         public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; } 
 
-        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.</summary>
+        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -13728,7 +13760,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>The tracking id for the shipment. Not updated if missing.</summary>
+        /// <summary>The tracking ID for the shipment. Not updated if missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -15147,6 +15179,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
         public virtual string CreationDate { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
+        public virtual string DeliveryDate { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
         public virtual string ReturnMethodType { get; set; } 
 
@@ -15155,6 +15190,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentTrackingInfos")]
         public virtual System.Collections.Generic.IList<ShipmentTrackingInfo> ShipmentTrackingInfos { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingDate")]
+        public virtual string ShippingDate { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15470,11 +15511,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
-        /// <summary>The total cost of shipping for all items.</summary>
+        /// <summary>The price of shipping for all items. Shipping tax is automatically calculated for MFL orders. For
+        /// non-MFL orders, tax settings from Merchant Center are applied. Note that shipping is not taxed in certain
+        /// states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]
         public virtual Price ShippingCost { get; set; } 
 
-        /// <summary>The tax for the total shipping cost.</summary>
+        /// <summary>Deprecated. Ignored if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCostTax")]
         public virtual Price ShippingCostTax { get; set; } 
 
@@ -15542,8 +15585,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shippingDetails")]
         public virtual OrderLineItemShippingDetails ShippingDetails { get; set; } 
 
-        /// <summary>Deprecated. Ignored if provided. Tax is automatically calculated for MFL orders. For non-MFL
-        /// orders, tax settings from Merchant Center are applied.</summary>
+        /// <summary>Deprecated. Ignored if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitTax")]
         public virtual Price UnitTax { get; set; } 
 
@@ -15637,13 +15679,57 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class TransitTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of postal group names. The last value can be "all other locations". Example: ["zone 1",
+        /// "zone 2", "all other locations"]. The referred postal code groups must match the delivery country of the
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRow> Rows { get; set; } 
+
+        /// <summary>A list of transit time labels. The last value can be "all other labels". Example: ["food",
+        /// "electronics", "all other labels"].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabels")]
+        public virtual System.Collections.Generic.IList<string> TransitTimeLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TransitTableTransitTimeRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRowTransitTimeValue> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TransitTableTransitTimeRowTransitTimeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than or equal to minTransitTimeInDays.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
+        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
+
+        /// <summary>Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day
+        /// delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
+        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class UnitInvoice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional charges for a unit, e.g. shipping costs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCharges")]
         public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; } 
 
-        /// <summary>Promotions applied to a unit.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; } 
 
@@ -15665,7 +15751,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeAmount")]
         public virtual Amount AdditionalChargeAmount { get; set; } 
 
-        /// <summary>Promotions applied to the additional charge.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargePromotions")]
         public virtual System.Collections.Generic.IList<Promotion> AdditionalChargePromotions { get; set; } 
 
