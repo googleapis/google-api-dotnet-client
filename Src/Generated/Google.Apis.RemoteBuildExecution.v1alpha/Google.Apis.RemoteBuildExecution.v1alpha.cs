@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190219 (1510)
+ *      <tr><th>API Rev<td>20190226 (1517)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1788,6 +1788,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerCacheHit")]
         public virtual System.Nullable<bool> DockerCacheHit { get; set; } 
 
+        /// <summary>The input cache miss ratio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputCacheMiss")]
+        public virtual System.Nullable<float> InputCacheMiss { get; set; } 
+
         /// <summary>The number of errors reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numErrors")]
         public virtual System.Nullable<ulong> NumErrors { get; set; } 
@@ -2004,8 +2008,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
-        /// <summary>Determines whether the worker is reserved (and therefore won't be preempted). See [Preemptible
-        /// VMs](https://cloud.google.com/preemptible-vms/) for more details.</summary>
+        /// <summary>Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and
+        /// therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
+        /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; } 
 

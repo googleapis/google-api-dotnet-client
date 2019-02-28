@@ -1,24 +1,15 @@
 {
+  "baseUrl": "https://indexing.googleapis.com/",
+  "servicePath": "",
+  "description": "Notifies Google when your web pages change.",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "id": "indexing:v3",
+  "documentationLink": "https://developers.google.com/search/apis/indexing-api/",
+  "revision": "20190222",
+  "discoveryVersion": "v1",
+  "version_module": true,
   "schemas": {
-    "UrlNotificationMetadata": {
-      "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
-      "type": "object",
-      "properties": {
-        "latestUpdate": {
-          "description": "Latest notification received with type `URL_UPDATED`.",
-          "$ref": "UrlNotification"
-        },
-        "url": {
-          "description": "URL to which this metadata refers.",
-          "type": "string"
-        },
-        "latestRemove": {
-          "description": "Latest notification received with type `URL_REMOVED`.",
-          "$ref": "UrlNotification"
-        }
-      },
-      "id": "UrlNotificationMetadata"
-    },
     "UrlNotification": {
       "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
       "type": "object",
@@ -54,11 +45,30 @@
       "type": "object",
       "properties": {
         "urlNotificationMetadata": {
-          "description": "Description of the notification events received for this URL.",
-          "$ref": "UrlNotificationMetadata"
+          "$ref": "UrlNotificationMetadata",
+          "description": "Description of the notification events received for this URL."
         }
       },
       "id": "PublishUrlNotificationResponse"
+    },
+    "UrlNotificationMetadata": {
+      "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
+      "type": "object",
+      "properties": {
+        "latestUpdate": {
+          "$ref": "UrlNotification",
+          "description": "Latest notification received with type `URL_UPDATED`."
+        },
+        "url": {
+          "description": "URL to which this metadata refers.",
+          "type": "string"
+        },
+        "latestRemove": {
+          "$ref": "UrlNotification",
+          "description": "Latest notification received with type `URL_REMOVED`."
+        }
+      },
+      "id": "UrlNotificationMetadata"
     }
   },
   "icons": {
@@ -87,22 +97,22 @@
     "urlNotifications": {
       "methods": {
         "publish": {
+          "flatPath": "v3/urlNotifications:publish",
+          "path": "v3/urlNotifications:publish",
+          "id": "indexing.urlNotifications.publish",
+          "request": {
+            "$ref": "UrlNotification"
+          },
+          "description": "Notifies that a URL has been updated or deleted.",
           "response": {
             "$ref": "PublishUrlNotificationResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/indexing"
           ],
-          "flatPath": "v3/urlNotifications:publish",
-          "path": "v3/urlNotifications:publish",
-          "id": "indexing.urlNotifications.publish",
-          "description": "Notifies that a URL has been updated or deleted.",
-          "request": {
-            "$ref": "UrlNotification"
-          }
+          "parameters": {}
         },
         "getMetadata": {
           "flatPath": "v3/urlNotifications/metadata",
@@ -119,9 +129,9 @@
           ],
           "parameters": {
             "url": {
-              "location": "query",
               "description": "URL that is being queried.",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             }
           }
         }
@@ -151,9 +161,9 @@
       "type": "string"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "callback": {
       "description": "JSONP",
@@ -166,8 +176,6 @@
       "type": "string"
     },
     "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -176,7 +184,9 @@
       "enum": [
         "1",
         "2"
-      ]
+      ],
+      "description": "V1 error format.",
+      "type": "string"
     },
     "alt": {
       "type": "string",
@@ -205,15 +215,5 @@
       "type": "string"
     }
   },
-  "version": "v3",
-  "baseUrl": "https://indexing.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Notifies Google when your web pages change.",
-  "servicePath": "",
-  "basePath": "",
-  "id": "indexing:v3",
-  "documentationLink": "https://developers.google.com/search/apis/indexing-api/",
-  "revision": "20190222",
-  "discoveryVersion": "v1",
-  "version_module": true
+  "version": "v3"
 }

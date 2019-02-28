@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190201 (1492)
+ *      <tr><th>API Rev<td>20190211 (1502)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17440,7 +17440,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Performs a reset on the instance. This is a hard reset; the VM does not do a graceful shutdown. For
+        /// <summary>Performs a reset on the instance. This is a hard reset the VM does not do a graceful shutdown. For
         /// more information, see Resetting an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -17451,7 +17451,7 @@ namespace Google.Apis.Compute.v1
             return new ResetRequest(service, project, zone, instance);
         }
 
-        /// <summary>Performs a reset on the instance. This is a hard reset; the VM does not do a graceful shutdown. For
+        /// <summary>Performs a reset on the instance. This is a hard reset the VM does not do a graceful shutdown. For
         /// more information, see Resetting an instance.</summary>
         public class ResetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -51399,7 +51399,7 @@ namespace Google.Apis.Compute.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("containerType")]
             public virtual string ContainerType { get; set; } 
 
-            /// <summary>An optional SHA1 checksum of the disk image before unpackaging; provided by the client when the
+            /// <summary>An optional SHA1 checksum of the disk image before unpackaging provided by the client when the
             /// disk image is created.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
             public virtual string Sha1Checksum { get; set; } 
@@ -53192,7 +53192,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleIpAddress")]
         public virtual string GoogleIpAddress { get; set; } 
 
-        /// <summary>[Output Only] Google reference ID; to be used when raising support tickets with Google or otherwise
+        /// <summary>[Output Only] Google reference ID to be used when raising support tickets with Google or otherwise
         /// to debug backend connectivity issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleReferenceId")]
         public virtual string GoogleReferenceId { get; set; } 
@@ -54654,6 +54654,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttempt")]
         public virtual ManagedInstanceLastAttempt LastAttempt { get; set; } 
 
+        /// <summary>[Output Only] Intended version of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ManagedInstanceVersion Version { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -54696,6 +54700,21 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class ManagedInstanceVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The intended template of the instance. This field is empty when current_action is one
+        /// of { DELETING, ABANDONING }.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
+        public virtual string InstanceTemplate { get; set; } 
+
+        /// <summary>[Output Only] Name of the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A metadata key/value entry.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>Tasks API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20141121 (0)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>
  *              https://developers.google.com/google-apps/tasks/firstapp</a>
@@ -473,7 +473,8 @@ namespace Google.Apis.Tasks.v1
             }
 
 
-            /// <summary>Maximum number of task lists returned on one page. Optional. The default is 100.</summary>
+            /// <summary>Maximum number of task lists returned on one page. Optional. The default is 20 (max allowed:
+            /// 100).</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1033,7 +1034,8 @@ namespace Google.Apis.Tasks.v1
             [Google.Apis.Util.RequestParameterAttribute("dueMin", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DueMin { get; set; }
 
-            /// <summary>Maximum number of task lists returned on one page. Optional. The default is 100.</summary>
+            /// <summary>Maximum number of task lists returned on one page. Optional. The default is 20 (max allowed:
+            /// 100).</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/W2TG0cyt9byJofHcFFCCyL93uQQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/-WJ16QjUY6WRx8nJZkprUvgFzIU\"",
  "discoveryVersion": "v1",
  "id": "tasks:v1",
  "name": "tasks",
  "version": "v1",
- "revision": "20141121",
+ "revision": "20190222",
  "title": "Tasks API",
- "description": "Lets you manage your tasks and task lists.",
+ "description": "Manages your tasks and task lists.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -321,7 +321,7 @@
      "parameters": {
       "maxResults": {
        "type": "string",
-       "description": "Maximum number of task lists returned on one page. Optional. The default is 100.",
+       "description": "Maximum number of task lists returned on one page. Optional. The default is 20 (max allowed: 100).",
        "format": "int64",
        "location": "query"
       },
@@ -537,7 +537,7 @@
       },
       "maxResults": {
        "type": "string",
-       "description": "Maximum number of task lists returned on one page. Optional. The default is 100.",
+       "description": "Maximum number of task lists returned on one page. Optional. The default is 20 (max allowed: 100).",
        "format": "int64",
        "location": "query"
       },

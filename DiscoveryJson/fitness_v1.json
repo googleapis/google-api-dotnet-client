@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GBmiZRO1unTMB9mtcMvt0wZ2_O8\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/1sg1LXl5PZtumIAZl1gGGz954YQ\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",
@@ -1130,47 +1130,6 @@
         "https://www.googleapis.com/auth/fitness.oxygen_saturation.read",
         "https://www.googleapis.com/auth/fitness.oxygen_saturation.write",
         "https://www.googleapis.com/auth/fitness.reproductive_health.read",
-        "https://www.googleapis.com/auth/fitness.reproductive_health.write"
-       ]
-      },
-      "patch": {
-       "id": "fitness.users.dataSources.patch",
-       "path": "{userId}/dataSources/{dataSourceId}",
-       "httpMethod": "PATCH",
-       "description": "Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified.\n\nData sources are identified by their dataStreamId. This method supports patch semantics.",
-       "parameters": {
-        "dataSourceId": {
-         "type": "string",
-         "description": "The data stream ID of the data source to update.",
-         "required": true,
-         "location": "path"
-        },
-        "userId": {
-         "type": "string",
-         "description": "Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.",
-         "required": true,
-         "location": "path"
-        }
-       },
-       "parameterOrder": [
-        "userId",
-        "dataSourceId"
-       ],
-       "request": {
-        "$ref": "DataSource"
-       },
-       "response": {
-        "$ref": "DataSource"
-       },
-       "scopes": [
-        "https://www.googleapis.com/auth/fitness.activity.write",
-        "https://www.googleapis.com/auth/fitness.blood_glucose.write",
-        "https://www.googleapis.com/auth/fitness.blood_pressure.write",
-        "https://www.googleapis.com/auth/fitness.body.write",
-        "https://www.googleapis.com/auth/fitness.body_temperature.write",
-        "https://www.googleapis.com/auth/fitness.location.write",
-        "https://www.googleapis.com/auth/fitness.nutrition.write",
-        "https://www.googleapis.com/auth/fitness.oxygen_saturation.write",
         "https://www.googleapis.com/auth/fitness.reproductive_health.write"
        ]
       },
