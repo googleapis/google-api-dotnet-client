@@ -118,7 +118,6 @@ namespace Microsoft.Extensions.DependencyInjection
                         {
                             if (authed)
                             {
-                                // TODO: Understand why incremental auth is not working properly.
                                 // If user is already authenticated, use incremental auth.
                                 ctx.ProtocolMessage.SetParameter("include_granted_scopes", "true");
                                 ctx.ProtocolMessage.Scope = incrementalScope;

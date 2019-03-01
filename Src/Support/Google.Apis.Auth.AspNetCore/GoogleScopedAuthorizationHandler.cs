@@ -49,11 +49,6 @@ namespace Google.Apis.Auth.AspNetCore
             var additionalScopes = requirement.Scopes.Except(existingScopes).ToList();
             if (additionalScopes.Any() || !authed)
             {
-                //// If further scopes are required and/or the user has not authenticated at all, then [re]authenticate.
-                //// Store the additional scopes required in the HttpContext.
-                //resource.HttpContext.Items[Consts.HttpContextAdditionalScopeName] = string.Join(" ", additionalScopes);
-                //// Issue challenge, to [re]authenticate.
-                //resource.Result = new ChallengeResult(requirement.Scheme);
                 resource.Result = CreateChallenge(resource.HttpContext, additionalScopes, requirement.Scheme);
             }
         }
