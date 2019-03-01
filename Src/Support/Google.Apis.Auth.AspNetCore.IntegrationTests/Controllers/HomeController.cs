@@ -44,10 +44,9 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
             return View(await auth.GetCurrentScopesAsync());
         }
 
-        // TODO: Update string literal to a const string defined in the Storage code, once code-gen updated to include consts.
         // Test showing use of incremental auth.
         // This attribute states that the listed scope(s) must be authorized in the handler.
-        [GoogleScopedAuthorize("https://www.googleapis.com/auth/cloud-platform.read-only")]
+        [GoogleScopedAuthorize(StorageService.ScopeConstants.CloudPlatformReadOnly)]
         public async Task<IActionResult> StorageBucketListing([FromServices] IGoogleAuthProvider auth, [FromServices] ClientInfo clientInfo)
         {
             var cred = await auth.GetCredentialAsync();
