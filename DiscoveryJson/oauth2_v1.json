@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/u_GPJA79BYUTOL4IK5pNEgXCpYQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/DF_b1m64s2vEmKK7Y1mkXAQ0CSc\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v1",
  "name": "oauth2",
  "version": "v1",
- "revision": "20190129",
+ "revision": "20190225",
  "title": "Google OAuth2 API",
  "description": "Obtains end-user authorization grants for use with other Google APIs.",
  "ownerDomain": "google.com",
@@ -16,10 +16,10 @@
  },
  "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
  "protocol": "rest",
- "baseUrl": "https://www.googleapis.com/",
- "basePath": "/",
+ "baseUrl": "https://www.googleapis.com/oauth2/v1/",
+ "basePath": "/oauth2/v1/",
  "rootUrl": "https://www.googleapis.com/",
- "servicePath": "",
+ "servicePath": "oauth2/v1/",
  "batchPath": "batch/oauth2/v1",
  "parameters": {
   "alt": {
@@ -66,87 +66,7 @@
    "location": "query"
   }
  },
- "auth": {
-  "oauth2": {
-   "scopes": {
-    "https://www.googleapis.com/auth/plus.login": {
-     "description": "View your basic profile info, including your age range and language"
-    },
-    "https://www.googleapis.com/auth/plus.me": {
-     "description": "Know who you are on Google"
-    },
-    "https://www.googleapis.com/auth/userinfo.email": {
-     "description": "View your email address"
-    },
-    "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "View your basic profile info"
-    }
-   }
-  }
- },
  "schemas": {
-  "Jwk": {
-   "id": "Jwk",
-   "type": "object",
-   "properties": {
-    "keys": {
-     "type": "array",
-     "items": {
-      "type": "object",
-      "properties": {
-       "alg": {
-        "type": "string",
-        "default": "RS256"
-       },
-       "e": {
-        "type": "string"
-       },
-       "kid": {
-        "type": "string"
-       },
-       "kty": {
-        "type": "string",
-        "default": "RSA"
-       },
-       "n": {
-        "type": "string"
-       },
-       "use": {
-        "type": "string",
-        "default": "sig"
-       }
-      }
-     }
-    }
-   }
-  },
-  "Raw": {
-   "id": "Raw",
-   "type": "object",
-   "properties": {
-    "keyvalues": {
-     "type": "array",
-     "items": {
-      "type": "object",
-      "properties": {
-       "algorithm": {
-        "type": "string",
-        "default": "RSA"
-       },
-       "exponent": {
-        "type": "string"
-       },
-       "keyid": {
-        "type": "string"
-       },
-       "modulus": {
-        "type": "string"
-       }
-      }
-     }
-    }
-   }
-  },
   "Tokeninfo": {
    "id": "Tokeninfo",
    "type": "object",
@@ -253,92 +173,12 @@
      "default": "true"
     }
    }
-  },
-  "X509": {
-   "id": "X509",
-   "type": "object",
-   "additionalProperties": {
-    "type": "string"
-   }
   }
  },
  "methods": {
-  "getCertForOpenIdConnect": {
-   "id": "oauth2.getCertForOpenIdConnect",
-   "path": "oauth2/v1/certs",
-   "httpMethod": "GET",
-   "response": {
-    "$ref": "X509"
-   }
-  },
-  "getCertForOpenIdConnectRaw": {
-   "id": "oauth2.getCertForOpenIdConnectRaw",
-   "path": "oauth2/v1/raw_public_keys",
-   "httpMethod": "GET",
-   "response": {
-    "$ref": "Raw"
-   }
-  },
-  "getRobotJwk": {
-   "id": "oauth2.getRobotJwk",
-   "path": "service_accounts/v1/jwk/{robotEmail}",
-   "httpMethod": "GET",
-   "parameters": {
-    "robotEmail": {
-     "type": "string",
-     "description": "The email of robot account.",
-     "required": true,
-     "location": "path"
-    }
-   },
-   "parameterOrder": [
-    "robotEmail"
-   ],
-   "response": {
-    "$ref": "Jwk"
-   }
-  },
-  "getRobotMetadataRaw": {
-   "id": "oauth2.getRobotMetadataRaw",
-   "path": "service_accounts/v1/metadata/raw/{robotEmail}",
-   "httpMethod": "GET",
-   "parameters": {
-    "robotEmail": {
-     "type": "string",
-     "description": "The email of robot account.",
-     "required": true,
-     "location": "path"
-    }
-   },
-   "parameterOrder": [
-    "robotEmail"
-   ],
-   "response": {
-    "$ref": "Raw"
-   }
-  },
-  "getRobotMetadataX509": {
-   "id": "oauth2.getRobotMetadataX509",
-   "path": "service_accounts/v1/metadata/x509/{robotEmail}",
-   "httpMethod": "GET",
-   "parameters": {
-    "robotEmail": {
-     "type": "string",
-     "description": "The email of robot account.",
-     "required": true,
-     "location": "path"
-    }
-   },
-   "parameterOrder": [
-    "robotEmail"
-   ],
-   "response": {
-    "$ref": "X509"
-   }
-  },
   "tokeninfo": {
    "id": "oauth2.tokeninfo",
-   "path": "oauth2/v1/tokeninfo",
+   "path": "tokeninfo",
    "httpMethod": "POST",
    "description": "Get token info",
    "parameters": {
@@ -363,18 +203,10 @@
    "methods": {
     "get": {
      "id": "oauth2.userinfo.get",
-     "path": "oauth2/v1/userinfo",
      "httpMethod": "GET",
-     "description": "Get user info",
      "response": {
       "$ref": "Userinfoplus"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.login",
-      "https://www.googleapis.com/auth/plus.me",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "https://www.googleapis.com/auth/userinfo.profile"
-     ]
+     }
     }
    },
    "resources": {
@@ -384,18 +216,10 @@
        "methods": {
         "get": {
          "id": "oauth2.userinfo.v2.me.get",
-         "path": "userinfo/v2/me",
          "httpMethod": "GET",
-         "description": "Get user info",
          "response": {
           "$ref": "Userinfoplus"
-         },
-         "scopes": [
-          "https://www.googleapis.com/auth/plus.login",
-          "https://www.googleapis.com/auth/plus.me",
-          "https://www.googleapis.com/auth/userinfo.email",
-          "https://www.googleapis.com/auth/userinfo.profile"
-         ]
+         }
         }
        }
       }

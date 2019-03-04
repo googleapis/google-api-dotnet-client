@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190216 (1507)
+ *      <tr><th>API Rev<td>20190226 (1517)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1559,10 +1559,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A page token to request the next page of results.
                     ///
                     /// You get the token from the `next_page_token` field of the response from the previous
@@ -1577,6 +1573,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1612,15 +1612,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1633,6 +1624,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3069,6 +3069,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameterMetricTag")]
         public virtual string HyperparameterMetricTag { get; set; } 
 
+        /// <summary>Optional. How many failed trials that need to be seen before failing the hyperparameter tuning job.
+        /// User can specify this field to override the default failing criteria for CloudML Engine hyperparameter
+        /// tuning jobs.
+        ///
+        /// Defaults to zero, which means to let the service decide when a hyperparameter job should fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFailedTrials")]
+        public virtual System.Nullable<int> MaxFailedTrials { get; set; } 
+
         /// <summary>Optional. The number of training trials to run concurrently. You can reduce the time it takes to
         /// perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the
         /// information gained in completed trials. That means that a trial does not get access to the results of trials
@@ -3394,11 +3402,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Represents input parameters for a prediction job.</summary>
     public class GoogleCloudMlV1PredictionInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The type and number of accelerators to be attached to each machine running the
-        /// job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accelerator")]
-        public virtual GoogleCloudMlV1AcceleratorConfig Accelerator { get; set; } 
-
         /// <summary>Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of
         /// records in memory before invoking one Tensorflow prediction call internally. So take the record size and
         /// memory available into consideration when setting this parameter.</summary>
@@ -3960,7 +3963,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>

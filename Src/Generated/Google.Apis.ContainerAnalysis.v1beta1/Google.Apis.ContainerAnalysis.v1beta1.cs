@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190131 (1491)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -414,6 +414,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The filter expression.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -421,10 +425,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     /// <summary>Number of occurrences to return in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The filter expression.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -460,6 +460,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                                 Pattern = @"^projects/[^/]+/notes/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -472,15 +481,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -867,6 +867,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -875,10 +879,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 /// not specified, page size defaults to 20.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -914,6 +914,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -926,15 +935,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2509,7 +2509,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>
@@ -2966,7 +2966,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Per resource and severity counts of fixable and total vulnerabilites.</summary>
+    /// <summary>Per resource and severity counts of fixable and total vulnerabilities.</summary>
     public class FixableTotalByDigest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of fixable vulnerabilities associated with this resource.</summary>
@@ -3125,6 +3125,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// indicates low severity and 10 indicates high severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; } 
+
+        /// <summary>The distro assigned severity for this vulnerability when it is available, and note provider
+        /// assigned severity when distro has not yet assigned a severity for this vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
+        public virtual string EffectiveSeverity { get; set; } 
 
         /// <summary>Output only. A detailed description of this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
@@ -3483,7 +3488,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
         public virtual VulnerabilityLocation FixedLocation { get; set; } 
 
-        /// <summary>The severity (e.g., distro assigned severity) for this vulnerability.</summary>
+        /// <summary>Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity)
+        /// for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; } 
 

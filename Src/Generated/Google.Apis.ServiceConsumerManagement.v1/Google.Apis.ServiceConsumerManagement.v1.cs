@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190225 (1516)
+ *      <tr><th>API Rev<td>20190227 (1518)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -587,10 +587,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -598,6 +594,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -633,15 +633,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -654,6 +645,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1112,6 +1112,12 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The continuation token, which is used to page through large result sets. To get the next
+                /// page of results, set this parameter to the value of `nextPageToken` from the previous
+                /// response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1119,12 +1125,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>Filter expression over tenancy resources field. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The continuation token, which is used to page through large result sets. To get the next
-                /// page of results, set this parameter to the value of `nextPageToken` from the previous
-                /// response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1160,6 +1160,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1172,15 +1181,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2976,33 +2976,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage.
-    ///
-    /// The quota configuration works this way: - The service configuration defines a set of metrics. - For API calls,
-    /// the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on
-    /// the metrics, which will be used for quota checks at runtime.
-    ///
-    /// An example quota configuration in yaml format:
-    ///
-    /// quota: limits:
-    ///
-    /// - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}"  # rate limit
-    /// for consumer projects values: STANDARD: 10000
-    ///
-    /// # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook
-    /// methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at
-    /// twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs:
-    /// library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook
-    /// metric_costs: library.googleapis.com/write_calls: 2 - selector:
-    /// google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1
-    ///
-    /// Corresponding Metric definition:
-    ///
-    /// metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type:
-    /// INT64
-    ///
-    /// - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type:
-    /// INT64</summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of `QuotaLimit` definitions for the service.</summary>

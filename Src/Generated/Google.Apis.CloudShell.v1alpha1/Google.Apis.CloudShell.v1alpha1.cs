@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190222 (1513)
+ *      <tr><th>API Rev<td>20190227 (1518)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -831,6 +831,11 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// <summary>The OAuth access token that should be sent to the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; } 
+
+        /// <summary>The time when the token expires. If not set, defaults to one hour from when the server received the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

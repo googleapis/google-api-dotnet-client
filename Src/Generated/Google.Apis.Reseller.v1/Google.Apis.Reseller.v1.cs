@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170228 (789)
+ *      <tr><th>API Rev<td>20190228 (1519)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -1132,7 +1132,7 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Cancel, suspend or transfer a subscription to direct.</summary>
+        /// <summary>Cancel or transfer a subscription to direct.</summary>
         /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
         /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
         /// customerId is changed, the Google system automatically updates.</param>
@@ -1148,7 +1148,7 @@ namespace Google.Apis.Reseller.v1
             return new DeleteRequest(service, customerId, subscriptionId, deletionType);
         }
 
-        /// <summary>Cancel, suspend or transfer a subscription to direct.</summary>
+        /// <summary>Cancel or transfer a subscription to direct.</summary>
         public class DeleteRequest : ResellerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1188,27 +1188,6 @@ namespace Google.Apis.Reseller.v1
                 /// subscription.</summary>
                 [Google.Apis.Util.StringValueAttribute("cancel")]
                 Cancel,
-                /// <summary>Downgrades a G Suite subscription to a Google Apps Free edition subscription only if the
-                /// customer was initially subscribed to a Google Apps Free edition (also known as the Standard
-                /// edition). Once downgraded, the customer no longer has access to the previous G Suite subscription
-                /// and is no longer managed by the reseller.
-                ///
-                /// A G Suite subscription's downgrade cannot be invoked if an active or suspended Google Drive or
-                /// Google Vault subscription is present. The Google Drive or Google Vault subscription must be
-                /// cancelled before the G Suite subscription's downgrade is invoked.
-                ///
-                /// The downgrade deletionType does not apply to other products or G Suite SKUs.</summary>
-                [Google.Apis.Util.StringValueAttribute("downgrade")]
-                Downgrade,
-                /// <summary>(DEPRECATED) The G Suite account is suspended for four days and then cancelled. Once
-                /// suspended, an administrator has access to the suspended account, but the account users can not
-                /// access their services. A suspension can be lifted, using the reseller tools.
-                ///
-                /// A G Suite subscription's suspension can not be invoked if an active or suspended Google Drive or
-                /// Google Vault subscription is present. The Google Drive or Google Vault subscription must be
-                /// cancelled before the G Suite subscription's suspension is invoked.</summary>
-                [Google.Apis.Util.StringValueAttribute("suspend")]
-                Suspend,
                 /// <summary>Transfers a subscription directly to Google.  The customer is immediately transferred to a
                 /// direct billing relationship with Google and is given a short amount of time with no service
                 /// interruption. The customer can then choose to set up billing directly with Google by using a credit
@@ -1814,9 +1793,9 @@ namespace Google.Apis.Reseller.v1.Data
         /// <summary>The planName property is required. This is the name of the subscription's payment plan. For more
         /// information about the Google payment plans, see API concepts.
         ///
-        /// Possible values are: - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments -
-        /// ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL -
-        /// The 30-day free trial plan</summary>
+        /// Possible values are: - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments  Caution:
+        /// ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY - The annual commitment
+        /// plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL - The 30-day free trial plan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planName")]
         public virtual string PlanName { get; set; } 
 
@@ -1862,8 +1841,9 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Customer contact phone number. This can be continuous numbers, with spaces, etc. But it must be a
-        /// real phone number and not, for example, "123". See phone  local format conventions.</summary>
+        /// <summary>Customer contact phone number. Must start with "+" followed by the country code. The rest of the
+        /// number can be contiguous numbers or respect the phone local format conventions, but it must be a real phone
+        /// number and not, for example, "123". This field is silently ignored if invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
 
@@ -1927,38 +1907,29 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for subscription seats.</summary>
     public class Seats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies the resource as a subscription change plan request. Value: subscriptions#seats</summary>
+        /// <summary>Identifies the resource as a subscription seat setting. Value: subscriptions#seats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Read-only field containing the current number of licensed seats for FLEXIBLE Google-Apps
-        /// subscriptions and secondary subscriptions such as Google-Vault and Drive-storage.</summary>
+        /// <summary>Read-only field containing the current number of users that are assigned a license for the product
+        /// defined in skuId. This field's value is equivalent to the numerical count of users returned by the
+        /// Enterprise License Manager API method: listForProductAndSku</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licensedNumberOfSeats")]
         public virtual System.Nullable<int> LicensedNumberOfSeats { get; set; } 
 
-        /// <summary>The maximumNumberOfSeats property is the maximum number of licenses that the customer can purchase.
-        /// This property applies to plans other than the annual commitment plan. How a user's licenses are managed
-        /// depends on the subscription's payment plan: - annual commitment plan (with monthly or yearly payments) — For
-        /// this plan, a reseller is invoiced on the number of user licenses in the numberOfSeats property. The
-        /// maximumNumberOfSeats property is a read-only property in the API's response. - flexible plan — For this
-        /// plan, a reseller is invoiced on the actual number of users which is capped by the maximumNumberOfSeats. This
-        /// is the maximum number of user licenses a customer has for user license provisioning. This quantity can be
-        /// increased up to the maximum limit defined in the reseller's contract. And the minimum quantity is the
-        /// current number of users in the customer account. - 30-day free trial plan — A subscription in a 30-day free
-        /// trial is restricted to maximum 10 seats.</summary>
+        /// <summary>This is a required property and is exclusive to subscriptions with FLEXIBLE or TRIAL plans. This
+        /// property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased
+        /// up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of
+        /// users in the customer account. Note: G Suite subscriptions automatically assign a license to every
+        /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumNumberOfSeats")]
         public virtual System.Nullable<int> MaximumNumberOfSeats { get; set; } 
 
-        /// <summary>The numberOfSeats property holds the customer's number of user licenses. How a user's licenses are
-        /// managed depends on the subscription's plan: - annual commitment plan (with monthly or yearly pay) — For this
-        /// plan, a reseller is invoiced on the number of user licenses in the numberOfSeats property. This is the
-        /// maximum number of user licenses that a reseller's customer can create. The reseller can add more licenses,
-        /// but once set, the numberOfSeats can not be reduced until renewal. The reseller is invoiced based on the
-        /// numberOfSeats value regardless of how many of these user licenses are provisioned users. - flexible plan —
-        /// For this plan, a reseller is invoiced on the actual number of users which is capped by the
-        /// maximumNumberOfSeats. The numberOfSeats property is not used in the request or response for flexible plan
-        /// customers. - 30-day free trial plan — The numberOfSeats property is not used in the request or response for
-        /// an account in a 30-day trial.</summary>
+        /// <summary>This is a required property and is exclusive to subscriptions with ANNUAL_MONTHLY_PAY and
+        /// ANNUAL_YEARLY_PAY plans. This property sets the maximum number of licenses assignable to users on a
+        /// subscription. The reseller can add more licenses, but once set, the numberOfSeats cannot be reduced until
+        /// renewal. The reseller is invoiced based on the numberOfSeats value regardless of how many of these user
+        /// licenses are assigned. Note: G Suite subscriptions automatically assign a license to every user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfSeats")]
         public virtual System.Nullable<int> NumberOfSeats { get; set; } 
 
@@ -2079,7 +2050,9 @@ namespace Google.Apis.Reseller.v1.Data
         /// see the API concepts.</summary>
         public class PlanData
         {
-            /// <summary>In this version of the API, annual commitment plan's interval is one year.</summary>
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.  Note: When
+            /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
+            /// all API responses.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("commitmentInterval")]
             public virtual PlanData.CommitmentIntervalData CommitmentInterval { get; set; } 
 
@@ -2092,18 +2065,22 @@ namespace Google.Apis.Reseller.v1.Data
             /// <summary>The planName property is required. This is the name of the subscription's plan. For more
             /// information about the Google payment plans, see the API concepts.
             ///
-            /// Possible values are: - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments -
-            /// ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments - FLEXIBLE — The flexible plan -
-            /// TRIAL — The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if
-            /// no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not
-            /// activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or
-            /// immediately after calling startPaidService.</summary>
+            /// Possible values are: - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.  Caution:
+            /// ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses. - ANNUAL_YEARLY_PAY — The annual
+            /// commitment plan with yearly payments - FLEXIBLE — The flexible plan - TRIAL — The 30-day free trial
+            /// plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned.
+            /// Calling changePlan will assign a payment plan to a trial but will not activate the plan. A trial will
+            /// automatically begin its assigned payment plan after its 30th free day or immediately after calling
+            /// startPaidService. - FREE — The free plan is exclusive to the Cloud Identity SKU and does not incur any
+            /// billing.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("planName")]
             public virtual string PlanName { get; set; } 
 
             
 
-            /// <summary>In this version of the API, annual commitment plan's interval is one year.</summary>
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.  Note: When
+            /// billingMethod value is OFFLINE, the subscription property object plan.commitmentInterval is omitted in
+            /// all API responses.</summary>
             public class CommitmentIntervalData
             {
                 /// <summary>An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format.

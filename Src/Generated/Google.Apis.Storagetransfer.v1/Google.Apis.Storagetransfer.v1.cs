@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190219 (1510)
+ *      <tr><th>API Rev<td>20190226 (1517)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -964,6 +964,10 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
             /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
             /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
@@ -975,10 +979,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1014,6 +1014,15 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1026,15 +1035,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1395,7 +1395,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Conditions that determine which objects will be transferred.</summary>
+    /// <summary>Conditions that determine which objects will be transferred. Applies only to S3 and GCS
+    /// objects.</summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>`excludePrefixes` must follow the requirements described for `includePrefixes`.
@@ -1434,16 +1435,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; } 
 
-        /// <summary>`maxTimeElapsedSinceLastModification` is the complement to
-        /// `minTimeElapsedSinceLastModification`.</summary>
+        /// <summary>If specified, only objects with a `lastModificationTime` on or after `NOW` -
+        /// `maxTimeElapsedSinceLastModification` and objects that don't have a `lastModificationTime` are transferred.
+        ///
+        /// Note that `NOW` refers to the creation time of the transfer job, and `lastModificationTime` refers to the
+        /// time of the last change to the object's content or metadata. Specifically, this would be the `updated`
+        /// property of GCS objects and the `LastModified` field of S3 objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
         public virtual object MaxTimeElapsedSinceLastModification { get; set; } 
 
-        /// <summary>If unspecified, `minTimeElapsedSinceLastModification` takes a zero value and
-        /// `maxTimeElapsedSinceLastModification` takes the maximum possible value of Duration. Objects that satisfy the
-        /// object conditions must either have a `lastModificationTime` greater or equal to `NOW` -
-        /// `maxTimeElapsedSinceLastModification` and less than `NOW` - `minTimeElapsedSinceLastModification`, or not
-        /// have a `lastModificationTime`.</summary>
+        /// <summary>If specified, only objects with a `lastModificationTime` before `NOW` -
+        /// `minTimeElapsedSinceLastModification` and objects that don't have a `lastModificationTime` are transferred.
+        ///
+        /// Note that `NOW` refers to the creation time of the transfer job, and `lastModificationTime` refers to the
+        /// time of the last change to the object's content or metadata. Specifically, this would be the `updated`
+        /// property of GCS objects and the `LastModified` field of S3 objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; } 
 

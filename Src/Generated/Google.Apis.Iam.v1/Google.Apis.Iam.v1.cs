@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190215 (1506)
+ *      <tr><th>API Rev<td>20190222 (1513)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -796,11 +796,23 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional view for the returned Role objects.</summary>
+                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional limit on the number of roles to include in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+                /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+                /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Optional view for the returned Role objects.</summary>
+                /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+                /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+                /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
                 public enum ViewEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -812,14 +824,6 @@ namespace Google.Apis.Iam.v1
                 /// <summary>Include Roles that have been deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional limit on the number of roles to include in the response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -855,24 +859,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -885,6 +871,24 @@ namespace Google.Apis.Iam.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1406,6 +1410,10 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1414,11 +1422,15 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional view for the returned Role objects.</summary>
+                /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+                /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+                /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Optional view for the returned Role objects.</summary>
+                /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+                /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+                /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
                 public enum ViewEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1426,10 +1438,6 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
-
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1465,6 +1473,15 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1486,15 +1503,6 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2238,7 +2246,16 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Returns the IAM access control policy for a ServiceAccount.</summary>
+            /// <summary>Returns the Cloud IAM access control policy for a ServiceAccount.
+            ///
+            /// Note: Service accounts are both [resources and identities](/iam/docs/service-
+            /// accounts#service_account_permissions). This method treats the service account as a resource. It returns
+            /// the Cloud IAM policy that reflects what members have access to the service account.
+            ///
+            /// This method does not return what resources the service account has access to. To see if a service
+            /// account has access to a resource, call the `getIamPolicy` method on the target resource. For example, to
+            /// view grants for a project, call the [projects.getIamPolicy](/resource-
+            /// manager/reference/rest/v1/projects/getIamPolicy) method.</summary>
             /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
             /// documentation for the appropriate value for this field.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
@@ -2246,7 +2263,16 @@ namespace Google.Apis.Iam.v1
                 return new GetIamPolicyRequest(service, resource);
             }
 
-            /// <summary>Returns the IAM access control policy for a ServiceAccount.</summary>
+            /// <summary>Returns the Cloud IAM access control policy for a ServiceAccount.
+            ///
+            /// Note: Service accounts are both [resources and identities](/iam/docs/service-
+            /// accounts#service_account_permissions). This method treats the service account as a resource. It returns
+            /// the Cloud IAM policy that reflects what members have access to the service account.
+            ///
+            /// This method does not return what resources the service account has access to. To see if a service
+            /// account has access to a resource, call the `getIamPolicy` method on the target resource. For example, to
+            /// view grants for a project, call the [projects.getIamPolicy](/resource-
+            /// manager/reference/rest/v1/projects/getIamPolicy) method.</summary>
             public class GetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2391,7 +2417,17 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Sets the IAM access control policy for a ServiceAccount.</summary>
+            /// <summary>Sets the Cloud IAM access control policy for a ServiceAccount.
+            ///
+            /// Note: Service accounts are both [resources and identities](/iam/docs/service-
+            /// accounts#service_account_permissions). This method treats the service account as a resource. Use it to
+            /// grant members access to the service account, such as when they need to impersonate it.
+            ///
+            /// This method does not grant the service account access to other resources, such as projects. To grant a
+            /// service account access to resources, include the service account in the Cloud IAM policy for the desired
+            /// resource, then call the appropriate `setIamPolicy` method on the target resource. For example, to grant
+            /// a service account access to a project, call the [projects.setIamPolicy](/resource-
+            /// manager/reference/rest/v1/projects/setIamPolicy) method.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -2400,7 +2436,17 @@ namespace Google.Apis.Iam.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the IAM access control policy for a ServiceAccount.</summary>
+            /// <summary>Sets the Cloud IAM access control policy for a ServiceAccount.
+            ///
+            /// Note: Service accounts are both [resources and identities](/iam/docs/service-
+            /// accounts#service_account_permissions). This method treats the service account as a resource. Use it to
+            /// grant members access to the service account, such as when they need to impersonate it.
+            ///
+            /// This method does not grant the service account access to other resources, such as projects. To grant a
+            /// service account access to resources, include the service account in the Cloud IAM policy for the desired
+            /// resource, then call the appropriate `setIamPolicy` method on the target resource. For example, to grant
+            /// a service account access to a project, call the [projects.setIamPolicy](/resource-
+            /// manager/reference/rest/v1/projects/setIamPolicy) method.</summary>
             public class SetIamPolicyRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2775,7 +2821,9 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Updates a ServiceAccount.
+            /// <summary>Note: This method is in the process of being deprecated. Use PatchServiceAccount instead.
+            ///
+            /// Updates a ServiceAccount.
             ///
             /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             /// <param name="body">The body of the request.</param>
@@ -2792,7 +2840,9 @@ namespace Google.Apis.Iam.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a ServiceAccount.
+            /// <summary>Note: This method is in the process of being deprecated. Use PatchServiceAccount instead.
+            ///
+            /// Updates a ServiceAccount.
             ///
             /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             public class UpdateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccount>
@@ -2958,19 +3008,15 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional limit on the number of roles to include in the response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional view for the returned Role objects.</summary>
+            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>Optional view for the returned Role objects.</summary>
+            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
             public enum ViewEnum
             {
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -2987,6 +3033,14 @@ namespace Google.Apis.Iam.v1
             /// <summary>Include Roles that have been deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional limit on the number of roles to include in the response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3013,24 +3067,6 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
@@ -3052,6 +3088,24 @@ namespace Google.Apis.Iam.v1
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
                         Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3225,7 +3279,7 @@ namespace Google.Apis.Iam.v1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>
