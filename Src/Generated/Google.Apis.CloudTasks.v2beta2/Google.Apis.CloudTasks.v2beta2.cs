@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20190211 (1502)
+ *      <tr><th>API Rev<td>20190228 (1519)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -2720,7 +2720,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>

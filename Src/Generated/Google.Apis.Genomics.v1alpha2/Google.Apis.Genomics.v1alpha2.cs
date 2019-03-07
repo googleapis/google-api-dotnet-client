@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20190216 (1507)
+ *      <tr><th>API Rev<td>20190305 (1524)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -854,13 +854,13 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-
-            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> ValidationToken { get; set; }
-
             /// <summary>The operation to retrieve controller configuration for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OperationId { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> ValidationToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -887,18 +887,18 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "validationToken", new Google.Apis.Discovery.Parameter
+                    "operationId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "validationToken",
+                        Name = "operationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "operationId", new Google.Apis.Discovery.Parameter
+                    "validationToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "operationId",
+                        Name = "validationToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

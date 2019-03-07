@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190227 (1518)
+ *      <tr><th>API Rev<td>20190305 (1524)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -350,9 +350,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// the uploaded Photo to Street View on Google Maps.
         ///
         /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is through the [Photo Sphere XMP
-        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. The
-        /// `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose are ignored for
-        /// CreatePhoto.
+        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. CreatePhoto
+        /// ignores the  `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
         ///
         /// This method returns the following error codes:
         ///
@@ -369,9 +368,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// the uploaded Photo to Street View on Google Maps.
         ///
         /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is through the [Photo Sphere XMP
-        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. The
-        /// `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose are ignored for
-        /// CreatePhoto.
+        /// metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. CreatePhoto
+        /// ignores the  `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
         ///
         /// This method returns the following error codes:
         ///
@@ -530,7 +528,7 @@ namespace Google.Apis.StreetViewPublish.v1
 
             /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
             /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
-            /// user's language preference for Google services will be used.</summary>
+            /// user's language preference for Google services is used.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
@@ -604,11 +602,11 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Creates an upload session to start uploading photo bytes. The upload URL of the returned UploadRef
-        /// is used to upload the bytes for the Photo.
+        /// <summary>Creates an upload session to start uploading photo bytes.  The method uses the upload URL of the
+        /// returned UploadRef to upload the bytes for the Photo.
         ///
         /// In addition to the photo requirements shown in
-        /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must also meet the following
+        /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must meet the following
         /// requirements:
         ///
         /// * Photo Sphere XMP metadata must be included in the photo medadata. See
@@ -617,7 +615,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, and the photo must be a full 360
         /// horizontally.
         ///
-        /// After the upload is complete, the UploadRef is used with CreatePhoto to create the Photo object
+        /// After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo object
         /// entry.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual StartUploadRequest StartUpload(Google.Apis.StreetViewPublish.v1.Data.Empty body)
@@ -625,11 +623,11 @@ namespace Google.Apis.StreetViewPublish.v1
             return new StartUploadRequest(service, body);
         }
 
-        /// <summary>Creates an upload session to start uploading photo bytes. The upload URL of the returned UploadRef
-        /// is used to upload the bytes for the Photo.
+        /// <summary>Creates an upload session to start uploading photo bytes.  The method uses the upload URL of the
+        /// returned UploadRef to upload the bytes for the Photo.
         ///
         /// In addition to the photo requirements shown in
-        /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must also meet the following
+        /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, the photo must meet the following
         /// requirements:
         ///
         /// * Photo Sphere XMP metadata must be included in the photo medadata. See
@@ -638,7 +636,7 @@ namespace Google.Apis.StreetViewPublish.v1
         /// https://support.google.com/maps/answer/7012050?hl=en_topic=6275604, and the photo must be a full 360
         /// horizontally.
         ///
-        /// After the upload is complete, the UploadRef is used with CreatePhoto to create the Photo object
+        /// After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo object
         /// entry.</summary>
         public class StartUploadRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.UploadRef>
         {
@@ -691,8 +689,6 @@ namespace Google.Apis.StreetViewPublish.v1
         /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
         /// applies to all fields.
         ///
-        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
-        ///
         /// This method returns the following error codes:
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
@@ -710,8 +706,6 @@ namespace Google.Apis.StreetViewPublish.v1
         ///
         /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
         /// applies to all fields.
-        ///
-        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         ///
         /// This method returns the following error codes:
         ///
@@ -735,17 +729,17 @@ namespace Google.Apis.StreetViewPublish.v1
             public virtual string Id { get; private set; }
 
             /// <summary>Mask that identifies fields on the photo metadata to update. If not present, the old Photo
-            /// metadata will be entirely replaced with the new Photo metadata in this request. The update fails if
-            /// invalid fields are specified. Multiple fields can be specified in a comma-delimited list.
+            /// metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid
+            /// fields are specified. Multiple fields can be specified in a comma-delimited list.
             ///
             /// The following fields are valid:
             ///
             /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
             /// `connections` * `places`
             ///
-            /// Note: Repeated fields in updateMask mean the entire set of repeated values will be replaced with the new
-            /// contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections`
-            /// is empty, all connections will be removed.</summary>
+            /// Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the
+            /// new contents. For example, if updateMask contains `connections` and
+            /// `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -820,10 +814,10 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Deletes a list of Photos and their metadata.
         ///
-        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there was an authentication
-        /// error. Even if BatchDeletePhotos succeeds, there may have been failures for single photos in the batch.
-        /// These failures will be specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See
-        /// DeletePhoto for specific failures that can occur per photo.</summary>
+        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication
+        /// error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures
+        /// are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for
+        /// specific failures that can occur per photo.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteRequest BatchDelete(Google.Apis.StreetViewPublish.v1.Data.BatchDeletePhotosRequest body)
         {
@@ -832,10 +826,10 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Deletes a list of Photos and their metadata.
         ///
-        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there was an authentication
-        /// error. Even if BatchDeletePhotos succeeds, there may have been failures for single photos in the batch.
-        /// These failures will be specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See
-        /// DeletePhoto for specific failures that can occur per photo.</summary>
+        /// Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication
+        /// error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures
+        /// are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for
+        /// specific failures that can occur per photo.</summary>
         public class BatchDeleteRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchDeletePhotosResponse>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
@@ -883,10 +877,10 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Gets the metadata of the specified Photo batch.
         ///
-        /// Note that if BatchGetPhotos fails, either critical fields are missing or there was an authentication error.
-        /// Even if BatchGetPhotos succeeds, there may have been failures for single photos in the batch. These failures
-        /// will be specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific
-        /// failures that can occur per photo.</summary>
+        /// Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error.
+        /// Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are
+        /// specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures
+        /// that can occur per photo.</summary>
         public virtual BatchGetRequest BatchGet()
         {
             return new BatchGetRequest(service);
@@ -894,10 +888,10 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Gets the metadata of the specified Photo batch.
         ///
-        /// Note that if BatchGetPhotos fails, either critical fields are missing or there was an authentication error.
-        /// Even if BatchGetPhotos succeeds, there may have been failures for single photos in the batch. These failures
-        /// will be specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific
-        /// failures that can occur per photo.</summary>
+        /// Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error.
+        /// Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are
+        /// specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures
+        /// that can occur per photo.</summary>
         public class BatchGetRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchGetPhotosResponse>
         {
             /// <summary>Constructs a new BatchGet request.</summary>
@@ -907,6 +901,17 @@ namespace Google.Apis.StreetViewPublish.v1
                 InitParameters();
             }
 
+
+            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
+            /// user's language preference for Google services is used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
@@ -922,17 +927,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-            /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
-            /// user's language preference for Google services will be used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -959,15 +953,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
@@ -985,6 +970,15 @@ namespace Google.Apis.StreetViewPublish.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -992,10 +986,10 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the
         /// pixels of photos is not supported.
         ///
-        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there was an authentication
-        /// error. Even if BatchUpdatePhotos succeeds, there may have been failures for single photos in the batch.
-        /// These failures will be specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See
-        /// UpdatePhoto for specific failures that can occur per photo.
+        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication
+        /// error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures
+        /// are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for
+        /// specific failures that can occur per photo.
         ///
         /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
         /// to all fields.
@@ -1013,10 +1007,10 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the
         /// pixels of photos is not supported.
         ///
-        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there was an authentication
-        /// error. Even if BatchUpdatePhotos succeeds, there may have been failures for single photos in the batch.
-        /// These failures will be specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See
-        /// UpdatePhoto for specific failures that can occur per photo.
+        /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication
+        /// error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures
+        /// are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for
+        /// specific failures that can occur per photo.
         ///
         /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
         /// to all fields.
@@ -1092,8 +1086,8 @@ namespace Google.Apis.StreetViewPublish.v1
 
 
             /// <summary>The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
-            /// or is not provided, the default page size of 100 will be used. The number of photos returned in the
-            /// response may be less than `pageSize` if the number of photos that belong to the user is less than
+            /// or is not provided, the default page size of 100 is used. The number of photos returned in the response
+            /// may be less than `pageSize` if the number of photos that belong to the user is less than
             /// `pageSize`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1121,7 +1115,7 @@ namespace Google.Apis.StreetViewPublish.v1
 
             /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
             /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the
-            /// user's language preference for Google services will be used.</summary>
+            /// user's language preference for Google services is used.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
@@ -1210,8 +1204,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Request to delete multiple Photos.</summary>
     public class BatchDeletePhotosRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-        /// `photoIds==&...`.</summary>
+        /// <summary>Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query
+        /// parameter: `photoIds==&...`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoIds")]
         public virtual System.Collections.Generic.IList<string> PhotoIds { get; set; } 
 
@@ -1329,8 +1323,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>List of photos. The maximum number of items returned is based on the pageSize field in the
-        /// request.</summary>
+        /// <summary>List of photos. The pageSize field in the request determines the number of items
+        /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
 
@@ -1392,8 +1386,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; } 
 
-        /// <summary>Output only. Status in Google Maps, whether this photo was published, or rejected for a possibly
-        /// specified reason.</summary>
+        /// <summary>Output only. Status in Google Maps, whether this photo was published or rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsPublishStatus")]
         public virtual string MapsPublishStatus { get; set; } 
 
@@ -1504,9 +1497,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
 
         /// <summary>Latitude and longitude pair of the pose, as explained here:
         /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng When creating a Photo, if the
-        /// latitude and longitude pair are not provided here, the geolocation from the exif header will be used. If the
-        /// latitude and longitude pair is not provided and cannot be found in the exif header, the create photo process
-        /// will fail.</summary>
+        /// latitude and longitude pair are not provided, the geolocation from the exif header is used. A latitude and
+        /// longitude pair not provided in the photo or exif header causes the photo process to fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLngPair")]
         public virtual LatLng LatLngPair { get; set; } 
 
@@ -1600,17 +1592,17 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         public virtual Photo Photo { get; set; } 
 
         /// <summary>Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata
-        /// will be entirely replaced with the new Photo metadata in this request. The update fails if invalid fields
-        /// are specified. Multiple fields can be specified in a comma-delimited list.
+        /// is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are
+        /// specified. Multiple fields can be specified in a comma-delimited list.
         ///
         /// The following fields are valid:
         ///
         /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
         /// `connections` * `places`
         ///
-        /// Note: Repeated fields in updateMask mean the entire set of repeated values will be replaced with the new
+        /// Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new
         /// contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is
-        /// empty, all connections will be removed.</summary>
+        /// empty, all connections are removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

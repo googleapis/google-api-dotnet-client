@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190228 (1519)
+ *      <tr><th>API Rev<td>20190306 (1525)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -433,7 +433,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
 
             }
 
-            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool ID.
+            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.
             ///
             /// This API is experimental.</summary>
             /// <param name="name">The field will contain name of the resource requested, for example:
@@ -443,7 +443,7 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool ID.
+            /// <summary>Deletes a `WorkerPool` by its project ID and WorkerPool name.
             ///
             /// This API is experimental.</summary>
             public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1alpha1.Data.Empty>

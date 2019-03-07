@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/digital-asset-links/'>Digital Asset Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190217 (1508)
+ *      <tr><th>API Rev<td>20190227 (1518)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/digital-asset-links/'>
  *              https://developers.google.com/digital-asset-links/</a>

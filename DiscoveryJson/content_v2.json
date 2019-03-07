@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/0plx6wutrRUyEys9iizIZM-pd2I\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GZmZvuq0wnJO-_buay64M_5ocFI\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20190222",
+ "revision": "20190304",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -551,7 +551,7 @@
     },
     "locationId": {
      "type": "string",
-     "description": "State (or province) is which the tax is applicable, described by its location id (also called criteria id).",
+     "description": "State (or province) is which the tax is applicable, described by its location ID (also called criteria ID).",
      "format": "uint64",
      "annotations": {
       "required": [
@@ -2847,7 +2847,7 @@
     },
     "marketingEmailAddress": {
      "type": "string",
-     "description": "Email address that can be used for marketing purposes. This field is only filled when explicitMarketingPreference is equal to 'granted'."
+     "description": "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted his account."
     }
    }
   },
@@ -3080,7 +3080,7 @@
     },
     "variantAttributes": {
      "type": "array",
-     "description": "Variant attributes for the item. These are dimensions of the product, such as color, gender, material, pattern, and size. You can find a comprehensive list of variant attributes \u003ca href=\"",
+     "description": "Variant attributes for the item. These are dimensions of the product, such as color, gender, material, pattern, and size. You can find a comprehensive list of variant attributes here.",
      "items": {
       "$ref": "OrderLineItemProductVariantAttribute"
      }
@@ -3348,11 +3348,11 @@
     },
     "merchantOrderId": {
      "type": "string",
-     "description": "Merchant-provided id of the order."
+     "description": "Merchant-provided ID of the order."
     },
     "orderId": {
      "type": "string",
-     "description": "The id of the order."
+     "description": "The ID of the order."
     },
     "productAmount": {
      "$ref": "Amount",
@@ -5847,7 +5847,7 @@
     },
     "id": {
      "type": "string",
-     "description": "The REST id of the product. Content API methods that operate on products take this as their productId parameter.\nThe REST id for a product is of the form channel:contentLanguage:targetCountry:offerId."
+     "description": "The REST ID of the product. Content API methods that operate on products take this as their productId parameter.\nThe REST ID for a product is of the form channel:contentLanguage:targetCountry:offerId."
     },
     "identifierExists": {
      "type": "boolean",
@@ -5919,7 +5919,7 @@
     },
     "offerId": {
      "type": "string",
-     "description": "A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details.\nNote: Content API methods that operate on products take the REST id of the product, not this identifier.",
+     "description": "A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details.\nNote: Content API methods that operate on products take the REST ID of the product, not this identifier.",
      "annotations": {
       "required": [
        "content.products.insert"
@@ -6116,7 +6116,7 @@
     },
     "locationId": {
      "type": "string",
-     "description": "The numeric id of a location that the shipping rate applies to as defined in the AdWords API.",
+     "description": "The numeric ID of a location that the shipping rate applies to as defined in the AdWords API.",
      "format": "int64"
     },
     "postalCode": {
@@ -6220,7 +6220,7 @@
     },
     "productId": {
      "type": "string",
-     "description": "The id of the product for which status is reported."
+     "description": "The ID of the product for which status is reported."
     },
     "title": {
      "type": "string",
@@ -6246,7 +6246,7 @@
     },
     "id": {
      "type": "string",
-     "description": "The id of the data quality issue."
+     "description": "The ID of the data quality issue."
     },
     "location": {
      "type": "string",
@@ -6340,7 +6340,7 @@
     },
     "locationId": {
      "type": "string",
-     "description": "The numeric id of a location that the tax rate applies to as defined in the AdWords API.",
+     "description": "The numeric ID of a location that the tax rate applies to as defined in the AdWords API.",
      "format": "int64"
     },
     "postalCode": {
@@ -7096,7 +7096,12 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "Deprecated."
+     "description": "Email address of the customer.",
+     "annotations": {
+      "required": [
+       "content.orders.createtestorder"
+      ]
+     }
     },
     "explicitMarketingPreference": {
      "type": "boolean",
@@ -8483,7 +8488,7 @@
       },
       "productId": {
        "type": "string",
-       "description": "The REST id of the product for which to update price and availability.",
+       "description": "The REST ID of the product for which to update price and availability.",
        "required": true,
        "location": "path"
       },
@@ -9606,7 +9611,7 @@
      "id": "content.orders.getbymerchantorderid",
      "path": "{merchantId}/ordersbymerchantid/{merchantOrderId}",
      "httpMethod": "GET",
-     "description": "Retrieves an order using merchant order id.",
+     "description": "Retrieves an order using merchant order ID.",
      "parameters": {
       "merchantId": {
        "type": "string",
@@ -9617,7 +9622,7 @@
       },
       "merchantOrderId": {
        "type": "string",
-       "description": "The merchant order id to be looked for.",
+       "description": "The merchant order ID to be looked for.",
        "required": true,
        "location": "path"
       }
@@ -10420,7 +10425,7 @@
       },
       "productId": {
        "type": "string",
-       "description": "The REST id of the product.",
+       "description": "The REST ID of the product.",
        "required": true,
        "location": "path"
       }
@@ -10448,7 +10453,7 @@
       },
       "productId": {
        "type": "string",
-       "description": "The REST id of the product.",
+       "description": "The REST ID of the product.",
        "required": true,
        "location": "path"
       }
@@ -10588,7 +10593,7 @@
       },
       "productId": {
        "type": "string",
-       "description": "The REST id of the product.",
+       "description": "The REST ID of the product.",
        "required": true,
        "location": "path"
       }

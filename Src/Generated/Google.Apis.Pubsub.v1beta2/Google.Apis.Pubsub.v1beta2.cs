@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190219 (1510)
+ *      <tr><th>API Rev<td>20190227 (1518)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -1934,7 +1934,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190209 (1500)
+ *      <tr><th>API Rev<td>20190302 (1521)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -612,13 +612,6 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A token identifying a page of results the server will return. To request the first page
-                    /// results, page_token must be empty. To request the next page of results, page_token must be the
-                    /// value of next_page_token returned from the previous call to ListJobs. It is an error to switch
-                    /// the value of filter or order_by while iterating through pages.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Requested page size.
                     ///
                     /// The maximum page size is 500. If unspecified, the page size will be the maximum. Fewer jobs than
@@ -626,6 +619,13 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     /// jobs exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server will return. To request the first page
+                    /// results, page_token must be empty. To request the next page of results, page_token must be the
+                    /// value of next_page_token returned from the previous call to ListJobs. It is an error to switch
+                    /// the value of filter or order_by while iterating through pages.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -661,18 +661,18 @@ namespace Google.Apis.CloudScheduler.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -690,10 +690,12 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the
                 /// UpdateJob request until a successful response is received.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
+                /// <param name="name">Optionally caller-specified in CreateJob, after which it becomes output only.
+                ///
+                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
                 ///
                 /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.).    For
-                /// more information, see    [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-
+                /// more information, see    [Identifying    projects](https://cloud.google.com/resource-manager/docs/creating-managing-
                 /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location.    The list of available
                 /// locations can be obtained by calling    ListLocations.    For more information, see
                 /// https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
@@ -722,7 +724,9 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
+                    /// <summary>Optionally caller-specified in CreateJob, after which it becomes output only.
+                    ///
+                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
                     ///
                     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or
                     /// periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-
@@ -1112,6 +1116,10 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1119,10 +1127,6 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1158,6 +1162,15 @@ namespace Google.Apis.CloudScheduler.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1170,15 +1183,6 @@ namespace Google.Apis.CloudScheduler.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1398,8 +1402,9 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpTarget")]
         public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; } 
 
-        /// <summary>A human-readable description for the job. This string must not contain more than 500
-        /// characters.</summary>
+        /// <summary>Optionally caller-specified in CreateJob or UpdateJob.
+        ///
+        /// A human-readable description for the job. This string must not contain more than 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1411,7 +1416,9 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
         public virtual object LastAttemptTime { get; set; } 
 
-        /// <summary>The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
+        /// <summary>Optionally caller-specified in CreateJob, after which it becomes output only.
+        ///
+        /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         ///
         /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For
         /// more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-
@@ -1430,9 +1437,14 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
         public virtual RetryConfig RetryConfig { get; set; } 
 
-        /// <summary>Required.
+        /// <summary>Required, except when used with UpdateJob.
         ///
         /// Describes the schedule on which the job will be executed.
+        ///
+        /// The schedule can be either of the following types:
+        ///
+        /// * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like
+        /// [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules)
         ///
         /// As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud
         /// Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the
@@ -1441,12 +1453,7 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         /// not ended when its scheduled time occurs.
         ///
         /// If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with
-        /// exponential backoff, until the next scheduled start time.
-        ///
-        /// The schedule can be either of the following types:
-        ///
-        /// * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like
-        /// [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules)</summary>
+        /// exponential backoff, until the next scheduled start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; } 
 

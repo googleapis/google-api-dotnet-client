@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190222 (1513)
+ *      <tr><th>API Rev<td>20190304 (1523)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -4738,16 +4738,16 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order ID.</summary>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
-        /// <param name="merchantOrderId">The merchant order id to be looked for.</param>
+        /// <param name="merchantOrderId">The merchant order ID to be looked for.</param>
         public virtual GetbymerchantorderidRequest Getbymerchantorderid(ulong merchantId, string merchantOrderId)
         {
             return new GetbymerchantorderidRequest(service, merchantId, merchantOrderId);
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order ID.</summary>
         public class GetbymerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrdersGetByMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Getbymerchantorderid request.</summary>
@@ -4764,7 +4764,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The merchant order id to be looked for.</summary>
+            /// <summary>The merchant order ID to be looked for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantOrderId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MerchantOrderId { get; private set; }
 
@@ -6461,7 +6461,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Deletes a product from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
-        /// <param name="productId">The REST id of the product.</param>
+        /// <param name="productId">The REST ID of the product.</param>
         public virtual DeleteRequest Delete(ulong merchantId, string productId)
         {
             return new DeleteRequest(service, merchantId, productId);
@@ -6485,7 +6485,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The REST id of the product.</summary>
+            /// <summary>The REST ID of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -6538,7 +6538,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Retrieves a product from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
-        /// <param name="productId">The REST id of the product.</param>
+        /// <param name="productId">The REST ID of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
             return new GetRequest(service, merchantId, productId);
@@ -6562,7 +6562,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The REST id of the product.</summary>
+            /// <summary>The REST ID of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -6845,7 +6845,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Gets the status of a product from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
-        /// <param name="productId">The REST id of the product.</param>
+        /// <param name="productId">The REST ID of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
             return new GetRequest(service, merchantId, productId);
@@ -6869,7 +6869,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The REST id of the product.</summary>
+            /// <summary>The REST ID of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -7110,7 +7110,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
-        /// <param name="productId">The REST id of the product for which to update the regional
+        /// <param name="productId">The REST ID of the product for which to update the regional
         /// inventory.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.RegionalInventory body, ulong merchantId, string productId)
         {
@@ -7137,7 +7137,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The REST id of the product for which to update the regional inventory.</summary>
+            /// <summary>The REST ID of the product for which to update the regional inventory.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -7993,8 +7993,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>State (or province) is which the tax is applicable, described by its location id (also called
-        /// criteria id).</summary>
+        /// <summary>State (or province) is which the tax is applicable, described by its location ID (also called
+        /// criteria ID).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<ulong> LocationId { get; set; } 
 
@@ -9797,10 +9797,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
-
         /// <summary>Full name of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
@@ -9825,8 +9821,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
         public virtual string LastUpdatedTimestamp { get; set; } 
 
-        /// <summary>Email address that can be used for marketing purposes. This field is only filled when
-        /// explicitMarketingPreference is equal to 'granted'.</summary>
+        /// <summary>Email address that can be used for marketing purposes. The field may be empty even if
+        /// explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who
+        /// deleted his account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
         public virtual string MarketingEmailAddress { get; set; } 
 
@@ -9981,7 +9978,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Title { get; set; } 
 
         /// <summary>Variant attributes for the item. These are dimensions of the product, such as color, gender,
-        /// material, pattern, and size. You can find a comprehensive list of variant attributes </summary>
+        /// material, pattern, and size. You can find a comprehensive list of variant attributes here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
         public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
 
@@ -10230,11 +10227,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
 
-        /// <summary>Merchant-provided id of the order.</summary>
+        /// <summary>Merchant-provided ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
         public virtual string MerchantOrderId { get; set; } 
 
-        /// <summary>The id of the order.</summary>
+        /// <summary>The ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
 
@@ -11747,8 +11744,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; } 
 
-        /// <summary>The REST id of the product. Content API methods that operate on products take this as their
-        /// productId parameter. The REST id for a product is of the form
+        /// <summary>The REST ID of the product. Content API methods that operate on products take this as their
+        /// productId parameter. The REST ID for a product is of the form
         /// channel:contentLanguage:targetCountry:offerId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -11829,7 +11826,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple
         /// whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted.
         /// See the products feed specification for details. Note: Content API methods that operate on products take the
-        /// REST id of the product, not this identifier.</summary>
+        /// REST ID of the product, not this identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
@@ -11954,7 +11951,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationGroupName")]
         public virtual string LocationGroupName { get; set; } 
 
-        /// <summary>The numeric id of a location that the shipping rate applies to as defined in the AdWords
+        /// <summary>The numeric ID of a location that the shipping rate applies to as defined in the AdWords
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; } 
@@ -12042,7 +12039,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
-        /// <summary>The id of the product for which status is reported.</summary>
+        /// <summary>The ID of the product for which status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -12111,7 +12108,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>The numeric id of a location that the tax rate applies to as defined in the AdWords API.</summary>
+        /// <summary>The numeric ID of a location that the tax rate applies to as defined in the AdWords API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; } 
 
@@ -12424,7 +12421,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>The id (name) of the region.</summary>
+        /// <summary>The ID (name) of the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionId")]
         public virtual string RegionId { get; set; } 
 
@@ -12819,10 +12816,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class TestOrder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The details of the customer who placed the order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
-        public virtual TestOrderCustomer Customer { get; set; } 
-
         /// <summary>Whether the orderinvoices service should support this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOrderinvoices")]
         public virtual System.Nullable<bool> EnableOrderinvoices { get; set; } 
@@ -12848,6 +12841,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
+        /// <summary>Email address of the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predefinedEmail")]
+        public virtual string PredefinedEmail { get; set; } 
+
         /// <summary>Promotions associated with the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
@@ -12861,40 +12858,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The requested shipping option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
         public virtual string ShippingOption { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class TestOrderCustomer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
-
-        /// <summary>Full name of the customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
-        public virtual string FullName { get; set; } 
-
-        /// <summary>Customer's marketing preferences.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("marketingRightsInfo")]
-        public virtual TestOrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class TestOrderCustomerMarketingRightsInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Last know user use selection regards marketing preferences. In certain cases selection might not be
-        /// known, so this field would be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
-        public virtual string ExplicitMarketingPreference { get; set; } 
-
-        /// <summary>Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a
-        /// selection yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
-        public virtual string LastUpdatedTimestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

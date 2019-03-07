@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190220 (1511)
+ *      <tr><th>API Rev<td>20190304 (1523)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -686,15 +686,6 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
-            /// listing should continue from. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The resource name of the Organization or Folder whose Folders are being listed. Must be of the
             /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
             /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
@@ -705,6 +696,15 @@ namespace Google.Apis.CloudResourceManager.v2
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
+            /// listing should continue from. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -731,24 +731,6 @@ namespace Google.Apis.CloudResourceManager.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -766,6 +748,24 @@ namespace Google.Apis.CloudResourceManager.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -774,7 +774,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// progress of the folder move workflow. Upon success the Operation.response field will be populated with the
         /// moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the
         /// failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and
-        /// if it occurs asynchronously then the FolderOperation will be returned via the the Operation.error field. In
+        /// if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In
         /// addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to
         /// stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout
         /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
@@ -790,7 +790,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// progress of the folder move workflow. Upon success the Operation.response field will be populated with the
         /// moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the
         /// failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and
-        /// if it occurs asynchronously then the FolderOperation will be returned via the the Operation.error field. In
+        /// if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In
         /// addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to
         /// stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout
         /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
@@ -1410,7 +1410,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>

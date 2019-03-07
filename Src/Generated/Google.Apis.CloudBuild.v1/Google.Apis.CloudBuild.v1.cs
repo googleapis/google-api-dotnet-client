@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190228 (1519)
+ *      <tr><th>API Rev<td>20190306 (1525)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -2006,6 +2006,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; } 
 
+        /// <summary>GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub
+        /// event is received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("github")]
+        public virtual GitHubEventsConfig Github { get; set; } 
+
         /// <summary>Output only. Unique identifier of the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -2079,6 +2084,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A CheckSuiteFilter is a filter that indicates that we should build on all check suite events.</summary>
+    public class CheckSuiteFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -2098,6 +2110,40 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub
+    /// event is received.
+    ///
+    /// This message is experimental.</summary>
+    public class GitHubEventsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Indicates that a build was generated from a check suite event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkSuite")]
+        public virtual CheckSuiteFilter CheckSuite { get; set; } 
+
+        /// <summary>The installationID that emmits the GitHub event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationId")]
+        public virtual System.Nullable<long> InstallationId { get; set; } 
+
+        /// <summary>Name of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Owner of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; } 
+
+        /// <summary>filter to match changes in pull requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
+        public virtual PullRequestFilter PullRequest { get; set; } 
+
+        /// <summary>filter to match changes in refs like branches, tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("push")]
+        public virtual PushFilter Push { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2190,6 +2236,45 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>PullRequestFilter contains filter properties for matching GitHub Pull Requests.</summary>
+    public class PullRequestFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regex of branches to match.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; } 
+
+        /// <summary>Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentControl")]
+        public virtual string CommentControl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Push contains filter properties for matching GitHub git pushes.</summary>
+    public class PushFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regexes of branches to match.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; } 
+
+        /// <summary>Regexes of tags to match.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

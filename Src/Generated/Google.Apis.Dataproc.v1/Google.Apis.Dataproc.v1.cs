@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190228 (1519)
+ *      <tr><th>API Rev<td>20190301 (1520)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1375,6 +1375,11 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1384,11 +1389,6 @@ namespace Google.Apis.Dataproc.v1
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1442,18 +1442,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2581,6 +2581,11 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -2615,11 +2620,6 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Optional. The number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2664,6 +2664,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -2694,15 +2703,6 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4549,10 +4549,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The cluster config.</summary>
     public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A Cloud Storage staging bucket used for sharing generated SSH keys and config. If you do
-        /// not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location (US, ASIA,
-        /// or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is
-        /// deployed, and then it will create and manage this project-level, per-location bucket for you.</summary>
+        /// <summary>Optional. A Google Cloud Storage bucket used to stage job dependencies, config files, and job
+        /// driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage
+        /// location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone
+        /// where your cluster is deployed, and then create and manage this project-level, per-location bucket (see
+        /// Cloud Dataproc staging bucket).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; } 
 
@@ -4560,7 +4561,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; } 
 
-        /// <summary>Required. The shared Compute Engine config settings for all instances in a cluster.</summary>
+        /// <summary>Optional. The shared Compute Engine config settings for all instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfig")]
         public virtual GceClusterConfig GceClusterConfig { get; set; } 
 
@@ -5615,10 +5616,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> OptionalComponents { get; set; } 
 
         /// <summary>Optional. The properties to set on daemon config files.Property keys are specified in
-        /// prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:
-        /// capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-
-        /// site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn:
-        /// yarn-site.xmlFor more information, see Cluster properties.</summary>
+        /// prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their
+        /// mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs:
+        /// hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf
+        /// yarn: yarn-site.xmlFor more information, see Cluster properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 

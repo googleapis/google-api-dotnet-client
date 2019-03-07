@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190215 (1506)
+ *      <tr><th>API Rev<td>20190306 (1525)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -1393,11 +1393,14 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An attestator public key that will be used to verify attestations signed by this attestor.</summary>
+    /// <summary>An attestor public key that will be used to verify attestations signed by this attestor.</summary>
     public class AttestorPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export
-        /// --armor foo@example.com` (either LF or CRLF line endings).</summary>
+        /// --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank.
+        /// The BinAuthz API handlers will calculate the ID and fill it in automatically.  BinAuthz computes this ID as
+        /// the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex.  If `id` is provided by the caller, it
+        /// will be overwritten by the API-calculated ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asciiArmoredPgpPublicKey")]
         public virtual string AsciiArmoredPgpPublicKey { get; set; } 
 
@@ -1405,8 +1408,10 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; } 
 
-        /// <summary>Output only. This field will be overwritten with key ID information, for example, an identifier
-        /// extracted from a PGP public key. This field may not be updated.</summary>
+        /// <summary>The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key
+        /// that can be used to verify them, and that ID must match the contents of this field exactly. Additional
+        /// restrictions on this field can be imposed based on which public key type is encapsulated. See the
+        /// documentation on `public_key` cases below for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -1440,7 +1445,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>
@@ -1577,7 +1582,8 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAdmissionRules")]
         public virtual System.Collections.Generic.IDictionary<string,AdmissionRule> ClusterAdmissionRules { get; set; } 
 
-        /// <summary>Required. Default admission rule for a cluster without a per-cluster admission rule.</summary>
+        /// <summary>Required. Default admission rule for a cluster without a per-cluster, per- kubernetes-service-
+        /// account, or per-istio-service-identity admission rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultAdmissionRule")]
         public virtual AdmissionRule DefaultAdmissionRule { get; set; } 
 

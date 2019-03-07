@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190227 (1518)
+ *      <tr><th>API Rev<td>20190306 (1525)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1431,12 +1431,6 @@ namespace Google.Apis.AccessContextManager.v1beta
             }
 
 
-            /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
-            ///
-            /// Format: `organizations/{org_id}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>Next page token for the next batch of AccessPolicy instances. Defaults to the first page of
             /// results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1445,6 +1439,12 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// <summary>Number of AccessPolicy instances to include in the list. Default 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
+            ///
+            /// Format: `organizations/{org_id}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1471,15 +1471,6 @@ namespace Google.Apis.AccessContextManager.v1beta
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1492,6 +1483,15 @@ namespace Google.Apis.AccessContextManager.v1beta
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1989,28 +1989,17 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; } 
 
-        /// <summary>GCP services that are subject to the Service Perimeter restrictions. May contain a list of services
-        /// or a single wildcard "*". For example, if `storage.googleapis.com` is specified, access to the storage
-        /// buckets inside the perimeter must meet the perimeter's access restrictions.
-        ///
-        /// Wildcard means that unless explicitly specified by "unrestricted_services" list, any service is treated as
-        /// restricted. One of the fields "restricted_services", "unrestricted_services" must contain a wildcard "*",
-        /// otherwise the Service Perimeter specification is invalid. It also means that both field being empty is
-        /// invalid as well. "restricted_services" can be empty if and only if "unrestricted_services" list contains a
-        /// "*" wildcard.</summary>
+        /// <summary>GCP services that are subject to the Service Perimeter restrictions. Must contain a list of
+        /// services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the
+        /// perimeter must meet the perimeter's access restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedServices")]
         public virtual System.Collections.Generic.IList<string> RestrictedServices { get; set; } 
 
-        /// <summary>GCP services that are not subject to the Service Perimeter restrictions. May contain a list of
-        /// services or a single wildcard "*". For example, if `logging.googleapis.com` is unrestricted, users can
-        /// access logs inside the perimeter as if the perimeter doesn't exist, and it also means VMs inside the
-        /// perimeter can access logs outside the perimeter.
+        /// <summary>GCP services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to
+        /// a single wildcard "*".
         ///
         /// The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as
-        /// unrestricted. One of the fields "restricted_services", "unrestricted_services" must contain a wildcard "*",
-        /// otherwise the Service Perimeter specification is invalid. It also means that both field being empty is
-        /// invalid as well. "unrestricted_services" can be empty if and only if "restricted_services" list contains a
-        /// "*" wildcard.</summary>
+        /// unrestricted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unrestrictedServices")]
         public virtual System.Collections.Generic.IList<string> UnrestrictedServices { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190221 (1512)
+ *      <tr><th>API Rev<td>20190302 (1521)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview</a>
@@ -1278,7 +1278,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
         /// </summary>
