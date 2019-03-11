@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190211 (1502)
+ *      <tr><th>API Rev<td>20190221 (1512)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -48369,6 +48369,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>Headers that the HTTP/S load balancer should add to proxied requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRequestHeaders")]
+        public virtual System.Collections.Generic.IList<string> CustomRequestHeaders { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -48762,7 +48766,7 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
@@ -49198,10 +49202,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replacement")]
         public virtual string Replacement { get; set; } 
 
-        /// <summary>The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations
-        /// which create a new resource using a DEPRECATED resource will return successfully, but with a warning
-        /// indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or
-        /// DELETED resources will be rejected and result in an error.</summary>
+        /// <summary>The deprecation state of this resource. This can be ACTIVE DEPRECATED, OBSOLETE, or DELETED.
+        /// Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a
+        /// new resource using a DEPRECATED resource will return successfully, but with a warning indicating the
+        /// deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources
+        /// will be rejected and result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -50670,6 +50675,41 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class HTTP2HealthCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the host header in the HTTP/2 health check request. If left empty (default value), the
+        /// IP on behalf of which this health check is performed will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
+
+        /// <summary>The TCP port number for the health check request. The default value is 443. Valid values are 1
+        /// through 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
+        /// takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
+        public virtual string PortName { get; set; } 
+
+        /// <summary>Specifies the type of proxy header to append before sending data to the backend, either NONE or
+        /// PROXY_V1. The default is NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>The request path of the HTTP/2 health check request. The default value is /.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
+        public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class HTTPHealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The value of the host header in the HTTP health check request. If left empty (default value), the
@@ -50761,6 +50801,9 @@ namespace Google.Apis.Compute.v1.Data
         /// default value is 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthyThreshold")]
         public virtual System.Nullable<int> HealthyThreshold { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("http2HealthCheck")]
+        public virtual HTTP2HealthCheck Http2HealthCheck { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("httpHealthCheck")]
         public virtual HTTPHealthCheck HttpHealthCheck { get; set; } 
@@ -58028,7 +58071,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Status of a NAT contained in this router.</summary>
+    /// <summary>Status of a NAT contained in this router. Next tag: 9</summary>
     public class RouterStatusNatStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
@@ -60604,7 +60647,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>[Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using
-        /// compute.forwardingRules.insert and associated to a VPN gateway.</summary>
+        /// compute.forwardingRules.insert and associated with a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; } 
 
@@ -60639,12 +60682,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of the VPN gateway.</summary>
+        /// <summary>[Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY,
+        /// FAILED, or DELETING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using
-        /// compute.vpntunnels.insert method and associated to a VPN gateway.</summary>
+        /// <summary>[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the
+        /// compute.vpntunnels.insert method and associated with a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tunnels")]
         public virtual System.Collections.Generic.IList<string> Tunnels { get; set; } 
 
@@ -60797,7 +60841,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetVpnGatewaysScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A list of target vpn gateways contained in this scope.</summary>
+        /// <summary>[Output Only] A list of target VPN gateways contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVpnGateways")]
         public virtual System.Collections.Generic.IList<TargetVpnGateway> TargetVpnGateways { get; set; } 
 
@@ -61373,8 +61417,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE
-        /// versions are 1 or 2. Default version is 2.</summary>
+        /// <summary>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable
+        /// IKE versions are 1 or 2. The default version is 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ikeVersion")]
         public virtual System.Nullable<int> IkeVersion { get; set; } 
 
@@ -61382,8 +61426,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// <summary>Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> LocalTrafficSelector { get; set; } 
@@ -61405,13 +61449,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
-        /// supported.</summary>
+        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The
+        /// value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only
+        /// IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
 
-        /// <summary>URL of router resource to be used for dynamic routing.</summary>
+        /// <summary>URL of the router resource to be used for dynamic routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("router")]
         public virtual string Router { get; set; } 
 
@@ -61428,7 +61472,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedSecretHash")]
         public virtual string SharedSecretHash { get; set; } 
 
-        /// <summary>[Output Only] The status of the VPN tunnel.</summary>
+        /// <summary>[Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING:
+        /// Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-
+        /// related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are
+        /// needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. -
+        /// ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated,
+        /// replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). -
+        /// NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+        /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -61586,7 +61637,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class VpnTunnelsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of vpn tunnels contained in this scope.</summary>
+        /// <summary>A list of VPN tunnels contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnels")]
         public virtual System.Collections.Generic.IList<VpnTunnel> VpnTunnels { get; set; } 
 

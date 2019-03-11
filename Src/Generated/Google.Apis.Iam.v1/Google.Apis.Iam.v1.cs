@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190222 (1513)
+ *      <tr><th>API Rev<td>20190301 (1520)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -1410,6 +1410,10 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1434,10 +1438,6 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
-
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1473,6 +1473,15 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1494,15 +1503,6 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2180,6 +2180,152 @@ namespace Google.Apis.Iam.v1
 
             }
 
+            /// <summary>Disables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the service account in the following format:
+            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
+            /// project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
+            public virtual DisableRequest Disable(Google.Apis.Iam.v1.Data.DisableServiceAccountRequest body, string name)
+            {
+                return new DisableRequest(service, body, name);
+            }
+
+            /// <summary>Disables a ServiceAccount. The API is currently in alpha phase.</summary>
+            public class DisableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Disable request.</summary>
+                public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.DisableServiceAccountRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the service account in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will
+                /// infer the project from the account. The `ACCOUNT` value can be the `email` address or the
+                /// `unique_id` of the service account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Iam.v1.Data.DisableServiceAccountRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "disable"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:disable"; }
+                }
+
+                /// <summary>Initializes Disable parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Enables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the service account in the following format:
+            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
+            /// the project from the account.</param>
+            public virtual EnableRequest Enable(Google.Apis.Iam.v1.Data.EnableServiceAccountRequest body, string name)
+            {
+                return new EnableRequest(service, body, name);
+            }
+
+            /// <summary>Enables a ServiceAccount. The API is currently in alpha phase.</summary>
+            public class EnableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Enable request.</summary>
+                public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.EnableServiceAccountRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the service account in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the
+                /// `PROJECT_ID` will infer the project from the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Iam.v1.Data.EnableServiceAccountRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "enable"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:enable"; }
+                }
+
+                /// <summary>Initializes Enable parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Gets a ServiceAccount.</summary>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
@@ -2749,7 +2895,8 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Restores a deleted ServiceAccount.</summary>
+            /// <summary>Restores a deleted ServiceAccount. This is to be used as an action of last resort.  A service
+            /// account may not always be restorable.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
@@ -2759,7 +2906,8 @@ namespace Google.Apis.Iam.v1
                 return new UndeleteRequest(service, body, name);
             }
 
-            /// <summary>Restores a deleted ServiceAccount.</summary>
+            /// <summary>Restores a deleted ServiceAccount. This is to be used as an action of last resort.  A service
+            /// account may not always be restorable.</summary>
             public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.UndeleteServiceAccountResponse>
             {
                 /// <summary>Constructs a new Undelete request.</summary>
@@ -3008,11 +3156,6 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
-            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>Include Roles that have been deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -3042,6 +3185,11 @@ namespace Google.Apis.Iam.v1
                 FULL,
             }
 
+            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
+            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3066,15 +3214,6 @@ namespace Google.Apis.Iam.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
@@ -3106,6 +3245,15 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3372,6 +3520,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The service account disable request.</summary>
+    public class DisableServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -3379,6 +3534,13 @@ namespace Google.Apis.Iam.v1.Data
     ///
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The service account enable request.</summary>
+    public class EnableServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3815,7 +3977,8 @@ namespace Google.Apis.Iam.v1.Data
     /// account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>@OutputOnly A bool indicate if the service account is disabled.</summary>
+        /// <summary>@OutputOnly A bool indicate if the service account is disabled. The field is currently in alpha
+        /// phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 

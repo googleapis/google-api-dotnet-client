@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/sXqmqAshED7kuWF0B4n3YF3752g\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ZZ-Eg1PTnD0rSNeMVHt1aiFwgck\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20190211",
+ "revision": "20190221",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1034,7 +1034,7 @@
    "properties": {
     "commitment": {
      "type": "string",
-     "description": "Full or partial url for commitment in which this allocation is to be created. This field is ignored when allocations are created during committment creation."
+     "description": "[OutputOnly] Full or partial url for parent commitment for allocations which are tied to a commitment."
     },
     "creationTimestamp": {
      "type": "string",
@@ -1520,24 +1520,6 @@
        "description": "[Output Only] A human-readable description of the warning code."
       }
      }
-    }
-   }
-  },
-  "AllocationsUpdateResourceShapeRequest": {
-   "id": "AllocationsUpdateResourceShapeRequest",
-   "type": "object",
-   "properties": {
-    "count": {
-     "type": "integer",
-     "description": "Number of allocated resources which are to be updated with minimum = 1 and maximum = 100.",
-     "format": "int32"
-    },
-    "destinationAllocation": {
-     "type": "string",
-     "description": "The name of destination allocation where the modified machines are added. If existing, its machine spec must match the modified machine spec. If non existing, new allocation with this name and modified machine spec is created automatically."
-    },
-    "updatedResourceProperties": {
-     "$ref": "AllocationSpecificSKUAllocationAllocatedInstanceProperties"
     }
    }
   },
@@ -3424,7 +3406,7 @@
     },
     "members": {
      "type": "array",
-     "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` .\n\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
+     "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` .\n\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.",
      "items": {
       "type": "string"
      }
@@ -4294,13 +4276,15 @@
     },
     "state": {
      "type": "string",
-     "description": "The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.",
+     "description": "The deprecation state of this resource. This can be ACTIVE DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.",
      "enum": [
+      "ACTIVE",
       "DELETED",
       "DEPRECATED",
       "OBSOLETE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -8738,6 +8722,7 @@
      "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.",
      "enum": [
       "PROVISIONING",
+      "REPAIRING",
       "RUNNING",
       "STAGING",
       "STOPPED",
@@ -8747,6 +8732,7 @@
       "TERMINATED"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -9722,6 +9708,18 @@
      "enumDescriptions": [
       "",
       "",
+      "",
+      ""
+     ]
+    },
+    "replacementMethod": {
+     "type": "string",
+     "description": "What action should be used to replace instances. See minimal_action.REPLACE",
+     "enum": [
+      "RECREATE",
+      "SUBSTITUTE"
+     ],
+     "enumDescriptions": [
       "",
       ""
      ]
@@ -10966,6 +10964,7 @@
      "description": "[Output Only] The status of the instance.",
      "enum": [
       "PROVISIONING",
+      "REPAIRING",
       "RUNNING",
       "STAGING",
       "STOPPED",
@@ -10975,6 +10974,7 @@
       "TERMINATED"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -13843,6 +13843,7 @@
      "description": "[Output Only] The status of the instance. This field is empty when the instance does not exist.",
      "enum": [
       "PROVISIONING",
+      "REPAIRING",
       "RUNNING",
       "STAGING",
       "STOPPED",
@@ -13852,6 +13853,7 @@
       "TERMINATED"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -19530,6 +19532,10 @@
     "description": {
      "type": "string"
     },
+    "groupPlacementPolicy": {
+     "$ref": "ResourcePolicyGroupPlacementPolicy",
+     "description": "Resource policy for instacnes for placement configuration."
+    },
     "id": {
      "type": "string",
      "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
@@ -19704,6 +19710,46 @@
     "startTime": {
      "type": "string",
      "description": "Time within the window to start the operations. It must be in format \"HH:MM\", where HH : [00-23] and MM : [00-00] GMT."
+    }
+   }
+  },
+  "ResourcePolicyGroupPlacementPolicy": {
+   "id": "ResourcePolicyGroupPlacementPolicy",
+   "type": "object",
+   "description": "A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality",
+   "properties": {
+    "locality": {
+     "type": "string",
+     "description": "Specifies network locality",
+     "enum": [
+      "BEST_EFFORT",
+      "STRICT",
+      "UNSPECIFIED_LOCALITY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
+    "style": {
+     "type": "string",
+     "description": "Specifies instances to hosts placement relationship",
+     "enum": [
+      "COMPACT",
+      "FULLY_SPREAD",
+      "UNSPECIFIED_PLACEMENT_TYPE"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
+    "vmCount": {
+     "type": "integer",
+     "description": "Number of vms in this placement group",
+     "format": "int32"
     }
    }
   },
@@ -20967,10 +21013,6 @@
      "type": "boolean",
      "description": "Indicates whether or not to export logs. This is false by default."
     },
-    "enabled": {
-     "type": "boolean",
-     "description": "Indicates whether or not to export logs. This is false by default. [Deprecated] Use 'enable' instead."
-    },
     "filter": {
      "type": "string",
      "description": "Specifies the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT.",
@@ -21121,7 +21163,7 @@
   "RouterStatusNatStatus": {
    "id": "RouterStatusNatStatus",
    "type": "object",
-   "description": "Status of a NAT contained in this router.",
+   "description": "Status of a NAT contained in this router. Next tag: 9",
    "properties": {
     "autoAllocatedNatIps": {
      "type": "array",
@@ -26213,7 +26255,7 @@
     },
     "forwardingRules": {
      "type": "array",
-     "description": "[Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated to a VPN gateway.",
+     "description": "[Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.",
      "items": {
       "type": "string"
      }
@@ -26269,7 +26311,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of the VPN gateway.",
+     "description": "[Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.",
      "enum": [
       "CREATING",
       "DELETING",
@@ -26285,7 +26327,7 @@
     },
     "tunnels": {
      "type": "array",
-     "description": "[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using compute.vpntunnels.insert method and associated to a VPN gateway.",
+     "description": "[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.",
      "items": {
       "type": "string"
      }
@@ -26522,7 +26564,7 @@
    "properties": {
     "targetVpnGateways": {
      "type": "array",
-     "description": "[Output Only] A list of target vpn gateways contained in this scope.",
+     "description": "[Output Only] A list of target VPN gateways contained in this scope.",
      "items": {
       "$ref": "TargetVpnGateway"
      }
@@ -28017,7 +28059,7 @@
     },
     "ikeVersion": {
      "type": "integer",
-     "description": "IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2. Default version is 2.",
+     "description": "IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.",
      "format": "int32"
     },
     "kind": {
@@ -28039,7 +28081,7 @@
     },
     "localTrafficSelector": {
      "type": "array",
-     "description": "Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.",
+     "description": "Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.",
      "items": {
       "type": "string"
      }
@@ -28077,14 +28119,14 @@
     },
     "remoteTrafficSelector": {
      "type": "array",
-     "description": "Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.",
+     "description": "Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.",
      "items": {
       "type": "string"
      }
     },
     "router": {
      "type": "string",
-     "description": "URL of router resource to be used for dynamic routing."
+     "description": "URL of the router resource to be used for dynamic routing."
     },
     "selfLink": {
      "type": "string",
@@ -28100,7 +28142,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of the VPN tunnel.",
+     "description": "[Output Only] The status of the VPN tunnel, which can be one of the following: \n- PROVISIONING: Resource is being allocated for the VPN tunnel. \n- WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are needed to setup the VPN tunnel. \n- FIRST_HANDSHAKE: Successful first handshake with the peer VPN. \n- ESTABLISHED: Secure session is successfully established with the peer VPN. \n- NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS \n- AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). \n- NEGOTIATION_FAILURE: Handshake failed. \n- DEPROVISIONING: Resources are being deallocated for the VPN tunnel. \n- FAILED: Tunnel creation has failed and the tunnel is not ready to be used.",
      "enum": [
       "ALLOCATING_RESOURCES",
       "AUTHORIZATION_ERROR",
@@ -28158,7 +28200,7 @@
      "description": "A list of VpnTunnelsScopedList resources.",
      "additionalProperties": {
       "$ref": "VpnTunnelsScopedList",
-      "description": "Name of the scope containing this set of vpn tunnels."
+      "description": "Name of the scope containing this set of VPN tunnels."
      }
     },
     "kind": {
@@ -28375,7 +28417,7 @@
    "properties": {
     "vpnTunnels": {
      "type": "array",
-     "description": "A list of vpn tunnels contained in this scope.",
+     "description": "A list of VPN tunnels contained in this scope.",
      "items": {
       "$ref": "VpnTunnel"
      }
@@ -29765,55 +29807,6 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "updateResourceShape": {
-     "id": "compute.allocations.updateResourceShape",
-     "path": "{project}/zones/{zone}/allocations/{allocation}/updateResourceShape",
-     "httpMethod": "POST",
-     "description": "Updates the shape of an allocation.",
-     "parameters": {
-      "allocation": {
-       "type": "string",
-       "description": "Name of the allocation to update.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-       "location": "path"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "requestId": {
-       "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-       "location": "query"
-      },
-      "zone": {
-       "type": "string",
-       "description": "Name of the zone for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "zone",
-      "allocation"
-     ],
-     "request": {
-      "$ref": "AllocationsUpdateResourceShapeRequest"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
      ]
     }
    }
@@ -43271,6 +43264,39 @@
      "parameterOrder": [
       "securityPolicy"
      ],
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "patch": {
+     "id": "compute.organizationSecurityPolicies.patch",
+     "path": "locations/global/securityPolicies/{securityPolicy}",
+     "httpMethod": "PATCH",
+     "description": "Patches the specified policy with the data included in the request.",
+     "parameters": {
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "securityPolicy": {
+       "type": "string",
+       "description": "Name of the security policy to update.",
+       "required": true,
+       "pattern": "[0-9]{0,20}",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "securityPolicy"
+     ],
+     "request": {
+      "$ref": "SecurityPolicy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"

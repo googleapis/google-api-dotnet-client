@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190305 (1524)
+ *      <tr><th>API Rev<td>20190307 (1526)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2728,6 +2728,14 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
                 /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
@@ -2777,14 +2785,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2819,6 +2819,24 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2840,24 +2858,6 @@ namespace Google.Apis.DLP.v2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4911,7 +4911,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; } 
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; } 
@@ -4928,7 +4928,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
 
         /// <summary>The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
@@ -4948,7 +4948,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; } 
 
         /// <summary>The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; } 
@@ -4965,7 +4965,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
 
         /// <summary>The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
-        /// match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to allow
+        /// match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow
         /// the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; } 
@@ -4982,8 +4982,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
 
         /// <summary>The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is,
-        /// it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to
-        /// allow the system to generate one.</summary>
+        /// it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty
+        /// to allow the system to generate one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypeId")]
         public virtual string StoredInfoTypeId { get; set; } 
 

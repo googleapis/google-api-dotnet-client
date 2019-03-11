@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190306 (1525)
+ *      <tr><th>API Rev<td>20190307 (1526)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1073,14 +1073,14 @@ namespace Google.Apis.AccessContextManager.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Next page token for the next batch of Service Perimeter instances. Defaults to the first
                 /// page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1116,18 +1116,18 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = @"^accessPolicies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1786,6 +1786,11 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("negate")]
         public virtual System.Nullable<bool> Negate { get; set; } 
 
+        /// <summary>The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1
+        /// alpha-2 codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+
         /// <summary>A list of other access levels defined in the same `Policy`, referenced by resource name.
         /// Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for
         /// the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`</summary>
@@ -1815,6 +1820,14 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
         public virtual System.Collections.Generic.IList<OsConstraint> OsConstraints { get; set; } 
+
+        /// <summary>Whether the device needs to be approved by the customer admin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
+        public virtual System.Nullable<bool> RequireAdminApproval { get; set; } 
+
+        /// <summary>Whether the device needs to be corp owned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
+        public virtual System.Nullable<bool> RequireCorpOwned { get; set; } 
 
         /// <summary>Whether or not screenlock is required for the DevicePolicy to be true. Defaults to
         /// `false`.</summary>
@@ -1920,6 +1933,12 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// <summary>Required. The allowed OS type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osType")]
         public virtual string OsType { get; set; } 
+
+        /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
+        /// that the device is enterprise-managed, conformant to Dasher domain policies, and the caller has permission
+        /// to call the API targeted by the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
+        public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -861,13 +861,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The page size to return. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The next_page_token from a previous request, if provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The page size to return. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -903,18 +903,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -997,15 +997,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
-                    /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>The page size to return. Defaults to 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The type of files in the version that should be listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatusEnum> Status { get; set; }
@@ -1020,6 +1011,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                         ACTIVE,
                     }
+
+                    /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
+                    /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The page size to return. Defaults to 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1055,6 +1055,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = @"^sites/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "status", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "status",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1067,15 +1076,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "status", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "status",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1111,15 +1111,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
-                /// legacy version uploads.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> SizeBytes { get; set; }
-
                 /// <summary>A unique id for the new version. This is only specified for legacy version
                 /// creations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionId { get; set; }
+
+                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
+                /// legacy version uploads.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> SizeBytes { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1161,18 +1161,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "sizeBytes", new Google.Apis.Discovery.Parameter
+                        "versionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "sizeBytes",
+                            Name = "versionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "versionId", new Google.Apis.Discovery.Parameter
+                        "sizeBytes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "versionId",
+                            Name = "sizeBytes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

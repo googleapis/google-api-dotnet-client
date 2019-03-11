@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190224 (1515)
+ *      <tr><th>API Rev<td>20190303 (1522)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2925,8 +2925,11 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("iamMember")]
             public virtual string IamMember { get; set; } 
 
-            /// <summary>[Required] Describes the rights granted to the user specified by the other member of the access
-            /// object. The following string values are supported: READER, WRITER, OWNER.</summary>
+            /// <summary>[Required] An IAM role ID that should be granted to the user, group, or domain specified in
+            /// this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER
+            /// roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above
+            /// formats, but will return only the legacy format. For example, if you set this field to
+            /// "roles/bigquery.dataOwner", it will be returned back as "OWNER".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; } 
 
@@ -4151,7 +4154,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the
         /// accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE:
         /// estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND:
-        /// estiamte is upper bound of what the query would cost.</summary>
+        /// estimate is upper bound of what the query would cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessedAccuracy")]
         public virtual string TotalBytesProcessedAccuracy { get; set; } 
 

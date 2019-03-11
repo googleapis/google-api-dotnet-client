@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190211 (1502)
+ *      <tr><th>API Rev<td>20190221 (1512)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -58910,6 +58910,11 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Allocation resource</summary>
     public class Allocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[OutputOnly] Full or partial url for parent commitment for allocations which are tied to a
+        /// commitment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
+        public virtual string Commitment { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -60608,7 +60613,7 @@ namespace Google.Apis.Compute.beta.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
-        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
@@ -61058,10 +61063,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replacement")]
         public virtual string Replacement { get; set; } 
 
-        /// <summary>The deprecation state of this resource. This can be DEPRECATED, OBSOLETE, or DELETED. Operations
-        /// which create a new resource using a DEPRECATED resource will return successfully, but with a warning
-        /// indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or
-        /// DELETED resources will be rejected and result in an error.</summary>
+        /// <summary>The deprecation state of this resource. This can be ACTIVE DEPRECATED, OBSOLETE, or DELETED.
+        /// Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a
+        /// new resource using a DEPRECATED resource will return successfully, but with a warning indicating the
+        /// deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources
+        /// will be rejected and result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -64674,6 +64680,23 @@ namespace Google.Apis.Compute.beta.Data
         /// managed instance group; and the managed instance group itself is not being modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isStable")]
         public virtual System.Nullable<bool> IsStable { get; set; } 
+
+        /// <summary>[Output Only] A status of consistency of Instances' versions with their target version specified by
+        /// version field on Instance Group Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionTarget")]
+        public virtual InstanceGroupManagerStatusVersionTarget VersionTarget { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstanceGroupManagerStatusVersionTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] A bit indicating whether version target has been reached in this managed instance
+        /// group, i.e. all instances are in their target version. Instances' target version are specified by version
+        /// field on Instance Group Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isReached")]
+        public virtual System.Nullable<bool> IsReached { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71474,7 +71497,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Status of a NAT contained in this router.</summary>
+    /// <summary>Status of a NAT contained in this router. Next tag: 9</summary>
     public class RouterStatusNatStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
@@ -72800,6 +72823,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>This field denotes the logging options for the load balancer traffic served by this backend
+        /// service. If logging is enabled, logs will be exported to Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual SubnetworkLogConfig LogConfig { get; set; } 
+
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The name
         /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
         /// and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
@@ -72980,6 +73008,36 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    /// <summary>The available logging options for this subnetwork.</summary>
+    public class SubnetworkLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation
+        /// interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow
+        /// logs for long lasting connections. Default is an interval of 5 seconds per connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
+        public virtual string AggregationInterval { get; set; } 
+
+        /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
+        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field
+        /// must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all
+        /// collected logs are reported and 0.0 means no logs are reported. Default is 0.5 which means half of all
+        /// collected logs are reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowSampling")]
+        public virtual System.Nullable<float> FlowSampling { get; set; } 
+
+        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether
+        /// metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual string Metadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Represents a secondary IP range of a subnetwork.</summary>
@@ -74329,7 +74387,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Description { get; set; } 
 
         /// <summary>[Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created using
-        /// compute.forwardingRules.insert and associated to a VPN gateway.</summary>
+        /// compute.forwardingRules.insert and associated with a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; } 
 
@@ -74378,12 +74436,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of the VPN gateway.</summary>
+        /// <summary>[Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY,
+        /// FAILED, or DELETING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using
-        /// compute.vpntunnels.insert method and associated to a VPN gateway.</summary>
+        /// <summary>[Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the
+        /// compute.vpntunnels.insert method and associated with a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tunnels")]
         public virtual System.Collections.Generic.IList<string> Tunnels { get; set; } 
 
@@ -74536,7 +74595,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class TargetVpnGatewaysScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A list of target vpn gateways contained in this scope.</summary>
+        /// <summary>[Output Only] A list of target VPN gateways contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVpnGateways")]
         public virtual System.Collections.Generic.IList<TargetVpnGateway> TargetVpnGateways { get; set; } 
 
@@ -75388,8 +75447,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE
-        /// versions are 1 or 2. Default version is 2.</summary>
+        /// <summary>IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable
+        /// IKE versions are 1 or 2. The default version is 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ikeVersion")]
         public virtual System.Nullable<int> IkeVersion { get; set; } 
 
@@ -75411,8 +75470,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// <summary>Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> LocalTrafficSelector { get; set; } 
@@ -75451,13 +75510,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
-        /// supported.</summary>
+        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The
+        /// value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only
+        /// IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
 
-        /// <summary>URL of router resource to be used for dynamic routing.</summary>
+        /// <summary>URL of the router resource to be used for dynamic routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("router")]
         public virtual string Router { get; set; } 
 
@@ -75474,7 +75533,14 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedSecretHash")]
         public virtual string SharedSecretHash { get; set; } 
 
-        /// <summary>[Output Only] The status of the VPN tunnel.</summary>
+        /// <summary>[Output Only] The status of the VPN tunnel, which can be one of the following: - PROVISIONING:
+        /// Resource is being allocated for the VPN tunnel. - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-
+        /// related configs from the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route resources are
+        /// needed to setup the VPN tunnel. - FIRST_HANDSHAKE: Successful first handshake with the peer VPN. -
+        /// ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated,
+        /// replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). -
+        /// NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+        /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -75642,7 +75708,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class VpnTunnelsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of vpn tunnels contained in this scope.</summary>
+        /// <summary>A list of VPN tunnels contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnels")]
         public virtual System.Collections.Generic.IList<VpnTunnel> VpnTunnels { get; set; } 
 
