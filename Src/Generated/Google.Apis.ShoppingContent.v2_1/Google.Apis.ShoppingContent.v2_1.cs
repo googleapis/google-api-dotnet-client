@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190304 (1523)
+ *      <tr><th>API Rev<td>20190308 (1527)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1155,8 +1155,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method
-        /// for sub-accounts.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client
+        /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
@@ -1166,8 +1166,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method
-        /// for sub-accounts.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client
+        /// accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9645,10 +9645,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billingAddress")]
         public virtual OrderAddress BillingAddress { get; set; } 
 
-        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
-        public virtual string ChannelType { get; set; } 
-
         /// <summary>The details of the customer who placed the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual OrderCustomer Customer { get; set; } 
@@ -9823,7 +9819,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>Email address that can be used for marketing purposes. The field may be empty even if
         /// explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who
-        /// deleted his account.</summary>
+        /// deleted their account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
         public virtual string MarketingEmailAddress { get; set; } 
 
@@ -9920,10 +9916,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Brand of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
-
-        /// <summary>The item's channel (online or local).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
 
         /// <summary>Condition or state of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -12006,8 +11998,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The status of a product, i.e., information about a product computed asynchronously by the data quality
-    /// analysis.</summary>
+    /// <summary>The status of a product, i.e., information about a product computed asynchronously.</summary>
     public class ProductStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
@@ -12890,10 +12881,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Brand of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
-
-        /// <summary>The item's channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
 
         /// <summary>Condition or state of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]

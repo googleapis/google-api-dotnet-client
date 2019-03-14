@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/api/'>Google+ API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190306 (1525)
+ *      <tr><th>API Rev<td>20190313 (1532)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/api/'>
  *              https://developers.google.com/+/api/</a>
@@ -119,7 +119,7 @@ namespace Google.Apis.Plus.v1
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>View your basic profile info</summary>
+            /// <summary>See your personal info, including any personal info you've made publically available</summary>
             public static string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -136,7 +136,7 @@ namespace Google.Apis.Plus.v1
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>View your basic profile info</summary>
+            /// <summary>See your personal info, including any personal info you've made publically available</summary>
             public const string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }

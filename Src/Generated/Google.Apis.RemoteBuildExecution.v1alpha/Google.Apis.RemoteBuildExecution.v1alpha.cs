@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190305 (1524)
+ *      <tr><th>API Rev<td>20190312 (1531)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2620,6 +2620,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// communications between itself and the remote CAS server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineBlobs")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsRemoteworkersV1test2Blob> InlineBlobs { get; set; } 
+
+        /// <summary>Directory from which a command is executed. It is a relative directory with respect to the bot's
+        /// working directory (i.e., "./"). If it is non-empty, then it must exist under "./". Otherwise, "./" will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDirectory")]
+        public virtual string WorkingDirectory { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

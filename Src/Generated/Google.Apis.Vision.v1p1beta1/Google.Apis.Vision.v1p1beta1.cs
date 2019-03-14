@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190301 (1520)
+ *      <tr><th>API Rev<td>20190309 (1528)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -672,7 +672,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// conversion to/from color representations in various languages over compactness; for example, the fields of this
     /// representation can be trivially provided to the constructor of "java.awt.Color" in Java; it can also be
     /// trivially provided to UIColor's "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little work, it
-    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well.
+    ///
+    /// Note: this proto does not carry information about the absolute color space that should be used to interpret the
+    /// RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+    /// space.
     ///
     /// Example (Java):
     ///

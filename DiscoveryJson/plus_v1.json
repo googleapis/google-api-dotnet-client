@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/KdZBoD4Uu_tX1vQD4mY2PFfhwkY\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/Yw4tbvtUc3nv84_EmeypAOy1Npo\"",
  "discoveryVersion": "v1",
  "id": "plus:v1",
  "name": "plus",
  "version": "v1",
- "revision": "20190306",
+ "revision": "20190313",
  "title": "Google+ API",
  "description": "Builds on top of the Google+ platform.",
  "ownerDomain": "google.com",
@@ -79,7 +79,7 @@
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "View your basic profile info"
+     "description": "See your personal info, including any personal info you've made publically available"
     }
    }
   }

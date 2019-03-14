@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/CIws1ElGHxaRfe1M3at4GRz6AHA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/aI3DC0Jiucj0DgH4QXgwPBq4xMc\"",
  "discoveryVersion": "v1",
  "id": "dns:v2beta1",
  "name": "dns",
  "version": "v2beta1",
- "revision": "20190227",
+ "revision": "20190312",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -349,6 +349,20 @@
      "items": {
       "type": "string"
      }
+    },
+    "privateVisibilityConfig": {
+     "$ref": "ManagedZonePrivateVisibilityConfig"
+    },
+    "visibility": {
+     "type": "string",
+     "enum": [
+      "PRIVATE",
+      "PUBLIC"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -413,6 +427,37 @@
      "items": {
       "$ref": "Operation"
      }
+    }
+   }
+  },
+  "ManagedZonePrivateVisibilityConfig": {
+   "id": "ManagedZonePrivateVisibilityConfig",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePrivateVisibilityConfig\".",
+     "default": "dns#managedZonePrivateVisibilityConfig"
+    },
+    "networks": {
+     "type": "array",
+     "items": {
+      "$ref": "ManagedZonePrivateVisibilityConfigNetwork"
+     }
+    }
+   }
+  },
+  "ManagedZonePrivateVisibilityConfigNetwork": {
+   "id": "ManagedZonePrivateVisibilityConfigNetwork",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePrivateVisibilityConfigNetwork\".",
+     "default": "dns#managedZonePrivateVisibilityConfigNetwork"
+    },
+    "networkUrl": {
+     "type": "string"
     }
    }
   },
@@ -538,6 +583,14 @@
      "default": "dns#quota"
     },
     "managedZones": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "managedZonesPerNetwork": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "networksPerManagedZone": {
      "type": "integer",
      "format": "int32"
     },

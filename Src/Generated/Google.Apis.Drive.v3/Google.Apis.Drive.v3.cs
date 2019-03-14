@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190221 (1512)
+ *      <tr><th>API Rev<td>20190311 (1530)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4008,8 +4008,9 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Permanently deletes a revision. This method is only applicable to files with binary content in
-        /// Drive.</summary>
+        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content,
+        /// like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file
+        /// version can't be deleted.</summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="revisionId">The ID of the
         /// revision.</param>
@@ -4018,8 +4019,9 @@ namespace Google.Apis.Drive.v3
             return new DeleteRequest(service, fileId, revisionId);
         }
 
-        /// <summary>Permanently deletes a revision. This method is only applicable to files with binary content in
-        /// Drive.</summary>
+        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content,
+        /// like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file
+        /// version can't be deleted.</summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.RemoteBuildExecution.v1alpha Client Library</Title>
-    <Version>1.38.0.1524</Version>
+    <Version>1.38.0.1531</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

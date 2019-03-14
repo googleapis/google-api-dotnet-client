@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190307 (1526)
+ *      <tr><th>API Rev<td>20190313 (1532)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1216,6 +1216,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Path to the artifact manifest. Only populated when artifacts are uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactManifest")]
         public virtual string ArtifactManifest { get; set; } 
+
+        /// <summary>Time to push all non-container artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactTiming")]
+        public virtual TimeSpan ArtifactTiming { get; set; } 
 
         /// <summary>List of build step digests, in the order corresponding to build step indices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]

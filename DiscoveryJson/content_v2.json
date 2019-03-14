@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/GZmZvuq0wnJO-_buay64M_5ocFI\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/_vzcX2m-YUsApzTF74HdX3hw9hM\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20190304",
+ "revision": "20190308",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -279,7 +279,7 @@
     },
     "dataQualityIssues": {
      "type": "array",
-     "description": "A list of data quality issues.",
+     "description": "DEPRECATED - never populated.",
      "items": {
       "$ref": "AccountStatusDataQualityIssue"
      }
@@ -341,79 +341,62 @@
    "type": "object",
    "properties": {
     "country": {
-     "type": "string",
-     "description": "Country for which this issue is reported."
+     "type": "string"
     },
     "destination": {
-     "type": "string",
-     "description": "The destination the issue applies to."
+     "type": "string"
     },
     "detail": {
-     "type": "string",
-     "description": "A more detailed description of the issue."
+     "type": "string"
     },
     "displayedValue": {
-     "type": "string",
-     "description": "Actual value displayed on the landing page."
+     "type": "string"
     },
     "exampleItems": {
      "type": "array",
-     "description": "Example items featuring the issue.",
      "items": {
       "$ref": "AccountStatusExampleItem"
      }
     },
     "id": {
-     "type": "string",
-     "description": "Issue identifier."
+     "type": "string"
     },
     "lastChecked": {
-     "type": "string",
-     "description": "Last time the account was checked for this issue."
+     "type": "string"
     },
     "location": {
-     "type": "string",
-     "description": "The attribute name that is relevant for the issue."
+     "type": "string"
     },
     "numItems": {
      "type": "integer",
-     "description": "Number of items in the account found to have the said issue.",
      "format": "uint32"
     },
     "severity": {
-     "type": "string",
-     "description": "Severity of the problem."
+     "type": "string"
     },
     "submittedValue": {
-     "type": "string",
-     "description": "Submitted value that causes the issue."
+     "type": "string"
     }
    }
   },
   "AccountStatusExampleItem": {
    "id": "AccountStatusExampleItem",
    "type": "object",
-   "description": "An example of an item that has poor data quality. An item value on the landing page differs from what is submitted, or conflicts with a policy.",
    "properties": {
     "itemId": {
-     "type": "string",
-     "description": "Unique item ID as specified in the uploaded product data."
+     "type": "string"
     },
     "link": {
-     "type": "string",
-     "description": "Landing page of the item."
+     "type": "string"
     },
     "submittedValue": {
-     "type": "string",
-     "description": "The item value that was submitted."
+     "type": "string"
     },
     "title": {
-     "type": "string",
-     "description": "Title of the item."
+     "type": "string"
     },
     "valueOnLandingPage": {
-     "type": "string",
-     "description": "The actual value on the landing page."
+     "type": "string"
     }
    }
   },
@@ -2647,7 +2630,7 @@
     },
     "channelType": {
      "type": "string",
-     "description": "The channel type of the order: \"purchaseOnGoogle\" or \"googleExpress\"."
+     "description": "Deprecated."
     },
     "customer": {
      "$ref": "OrderCustomer",
@@ -2699,7 +2682,7 @@
     },
     "promotions": {
      "type": "array",
-     "description": "Deprecated. Ignored if provided for createTestOrder. The details of the merchant provided promotions applied to the order. More details about the program are here.",
+     "description": "The details of the merchant provided promotions applied to the order. More details about the program are here.",
      "items": {
       "$ref": "OrderLegacyPromotion"
      }
@@ -2847,7 +2830,7 @@
     },
     "marketingEmailAddress": {
      "type": "string",
-     "description": "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted his account."
+     "description": "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted their account."
     }
    }
   },
@@ -6170,7 +6153,7 @@
   "ProductStatus": {
    "id": "ProductStatus",
    "type": "object",
-   "description": "The status of a product, i.e., information about a product computed asynchronously by the data quality analysis.",
+   "description": "The status of a product, i.e., information about a product computed asynchronously.",
    "properties": {
     "creationDate": {
      "type": "string",
@@ -6178,7 +6161,7 @@
     },
     "dataQualityIssues": {
      "type": "array",
-     "description": "A list of data quality issues associated with the product.",
+     "description": "DEPRECATED - never populated",
      "items": {
       "$ref": "ProductStatusDataQualityIssue"
      }
@@ -6233,40 +6216,31 @@
    "type": "object",
    "properties": {
     "destination": {
-     "type": "string",
-     "description": "The destination the issue applies to."
+     "type": "string"
     },
     "detail": {
-     "type": "string",
-     "description": "A more detailed error string."
+     "type": "string"
     },
     "fetchStatus": {
-     "type": "string",
-     "description": "The fetch status for landing_page_errors."
+     "type": "string"
     },
     "id": {
-     "type": "string",
-     "description": "The ID of the data quality issue."
+     "type": "string"
     },
     "location": {
-     "type": "string",
-     "description": "The attribute name that is relevant for the issue."
+     "type": "string"
     },
     "severity": {
-     "type": "string",
-     "description": "The severity of the data quality issue."
+     "type": "string"
     },
     "timestamp": {
-     "type": "string",
-     "description": "The time stamp of the data quality issue."
+     "type": "string"
     },
     "valueOnLandingPage": {
-     "type": "string",
-     "description": "The value of that attribute that was found on the landing page"
+     "type": "string"
     },
     "valueProvided": {
-     "type": "string",
-     "description": "The value the attribute had at time of evaluation."
+     "type": "string"
     }
    }
   },
@@ -7061,7 +7035,7 @@
     },
     "promotions": {
      "type": "array",
-     "description": "Deprecated. The details of the merchant provided promotions applied to the order. More details about the program are here.",
+     "description": "Deprecated. Ignored if provided.",
      "items": {
       "$ref": "OrderLegacyPromotion"
      }
@@ -7188,12 +7162,7 @@
     },
     "channel": {
      "type": "string",
-     "description": "The item's channel.",
-     "annotations": {
-      "required": [
-       "content.orders.createtestorder"
-      ]
-     }
+     "description": "Deprecated."
     },
     "condition": {
      "type": "string",
@@ -7824,7 +7793,7 @@
      "id": "content.accountstatuses.get",
      "path": "{merchantId}/accountstatuses/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method for sub-accounts.",
+     "description": "Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts.",
      "parameters": {
       "accountId": {
        "type": "string",

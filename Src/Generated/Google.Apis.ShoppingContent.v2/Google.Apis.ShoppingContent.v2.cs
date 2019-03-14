@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190304 (1523)
+ *      <tr><th>API Rev<td>20190308 (1527)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1321,8 +1321,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method
-        /// for sub-accounts.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client
+        /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
@@ -1332,8 +1332,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method
-        /// for sub-accounts.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client
+        /// accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9362,7 +9362,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountLevelIssues")]
         public virtual System.Collections.Generic.IList<AccountStatusAccountLevelIssue> AccountLevelIssues { get; set; } 
 
-        /// <summary>A list of data quality issues.</summary>
+        /// <summary>DEPRECATED - never populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityIssues")]
         public virtual System.Collections.Generic.IList<AccountStatusDataQualityIssue> DataQualityIssues { get; set; } 
 
@@ -9420,47 +9420,36 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class AccountStatusDataQualityIssue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country for which this issue is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>The destination the issue applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>A more detailed description of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
-        /// <summary>Actual value displayed on the landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayedValue")]
         public virtual string DisplayedValue { get; set; } 
 
-        /// <summary>Example items featuring the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exampleItems")]
         public virtual System.Collections.Generic.IList<AccountStatusExampleItem> ExampleItems { get; set; } 
 
-        /// <summary>Issue identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Last time the account was checked for this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChecked")]
         public virtual string LastChecked { get; set; } 
 
-        /// <summary>The attribute name that is relevant for the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>Number of items in the account found to have the said issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numItems")]
         public virtual System.Nullable<long> NumItems { get; set; } 
 
-        /// <summary>Severity of the problem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
-        /// <summary>Submitted value that causes the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submittedValue")]
         public virtual string SubmittedValue { get; set; } 
 
@@ -9468,27 +9457,20 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An example of an item that has poor data quality. An item value on the landing page differs from what
-    /// is submitted, or conflicts with a policy.</summary>
     public class AccountStatusExampleItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique item ID as specified in the uploaded product data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; } 
 
-        /// <summary>Landing page of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
-        /// <summary>The item value that was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submittedValue")]
         public virtual string SubmittedValue { get; set; } 
 
-        /// <summary>Title of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The actual value on the landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueOnLandingPage")]
         public virtual string ValueOnLandingPage { get; set; } 
 
@@ -11567,7 +11549,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
         public virtual System.Nullable<bool> Acknowledged { get; set; } 
 
-        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
         public virtual string ChannelType { get; set; } 
 
@@ -11615,8 +11597,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
         public virtual string PlacedDate { get; set; } 
 
-        /// <summary>Deprecated. Ignored if provided for createTestOrder. The details of the merchant provided
-        /// promotions applied to the order. More details about the program are here.</summary>
+        /// <summary>The details of the merchant provided promotions applied to the order. More details about the
+        /// program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
@@ -11757,7 +11739,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Email address that can be used for marketing purposes. The field may be empty even if
         /// explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who
-        /// deleted his account.</summary>
+        /// deleted their account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
         public virtual string MarketingEmailAddress { get; set; } 
 
@@ -14708,15 +14690,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The status of a product, i.e., information about a product computed asynchronously by the data quality
-    /// analysis.</summary>
+    /// <summary>The status of a product, i.e., information about a product computed asynchronously.</summary>
     public class ProductStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
         public virtual string CreationDate { get; set; } 
 
-        /// <summary>A list of data quality issues associated with the product.</summary>
+        /// <summary>DEPRECATED - never populated</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityIssues")]
         public virtual System.Collections.Generic.IList<ProductStatusDataQualityIssue> DataQualityIssues { get; set; } 
 
@@ -14763,39 +14744,30 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class ProductStatusDataQualityIssue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destination the issue applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>A more detailed error string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
-        /// <summary>The fetch status for landing_page_errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fetchStatus")]
         public virtual string FetchStatus { get; set; } 
 
-        /// <summary>The ID of the data quality issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The attribute name that is relevant for the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>The severity of the data quality issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
-        /// <summary>The time stamp of the data quality issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual string Timestamp { get; set; } 
 
-        /// <summary>The value of that attribute that was found on the landing page</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueOnLandingPage")]
         public virtual string ValueOnLandingPage { get; set; } 
 
-        /// <summary>The value the attribute had at time of evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueProvided")]
         public virtual string ValueProvided { get; set; } 
 
@@ -15507,8 +15479,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
-        /// <summary>Deprecated. The details of the merchant provided promotions applied to the order. More details
-        /// about the program are here.</summary>
+        /// <summary>Deprecated. Ignored if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
@@ -15600,7 +15571,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
-        /// <summary>The item's channel.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; } 
 

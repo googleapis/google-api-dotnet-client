@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/AxLljd28nD7hsq6AfEcWAnvtMYw\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/XBo3v2wypoRQ0OatiSPR_63Htp4\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20190221",
+ "revision": "20190311",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -4883,7 +4883,7 @@
      "id": "drive.revisions.delete",
      "path": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "DELETE",
-     "description": "Removes a revision.",
+     "description": "Permanently deletes a file version. You can only delete revisions for files with binary content, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.",
      "parameters": {
       "fileId": {
        "type": "string",

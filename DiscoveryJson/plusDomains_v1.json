@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/dkHqa7xN7L-o7WpIWtZ462xSoTA\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/i92XADu-jYkxWsaEBWE352t2jKE\"",
  "discoveryVersion": "v1",
  "id": "plusDomains:v1",
  "name": "plusDomains",
  "version": "v1",
- "revision": "20190306",
+ "revision": "20190313",
  "title": "Google+ Domains API",
  "description": "Builds on top of the Google+ platform for Google Apps Domains.",
  "ownerDomain": "google.com",
@@ -97,7 +97,7 @@
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "View your basic profile info"
+     "description": "See your personal info, including any personal info you've made publically available"
     }
    }
   }

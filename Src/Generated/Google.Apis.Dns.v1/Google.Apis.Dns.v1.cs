@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190227 (1518)
+ *      <tr><th>API Rev<td>20190312 (1531)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2133,6 +2133,12 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
+        public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2171,6 +2177,34 @@ namespace Google.Apis.Dns.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePrivateVisibilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePrivateVisibilityConfig".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigNetwork> Networks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePrivateVisibilityConfigNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePrivateVisibilityConfigNetwork".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2280,6 +2314,12 @@ namespace Google.Apis.Dns.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
         public virtual System.Nullable<int> ManagedZones { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerNetwork")]
+        public virtual System.Nullable<int> ManagedZonesPerNetwork { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networksPerManagedZone")]
+        public virtual System.Nullable<int> NetworksPerManagedZone { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecordsPerRrset")]
         public virtual System.Nullable<int> ResourceRecordsPerRrset { get; set; } 

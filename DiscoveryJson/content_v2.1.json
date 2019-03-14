@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/tPA0_g3dJ23l78NhK1kP4Y4uPDg\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/JLTtElhO_yZgirWM-iDsLteIwa0\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190304",
+ "revision": "20190308",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -2254,10 +2254,6 @@
      "$ref": "OrderAddress",
      "description": "The billing address."
     },
-    "channelType": {
-     "type": "string",
-     "description": "The channel type of the order: \"purchaseOnGoogle\" or \"googleExpress\"."
-    },
     "customer": {
      "$ref": "OrderCustomer",
      "description": "The details of the customer who placed the order."
@@ -2444,7 +2440,7 @@
     },
     "marketingEmailAddress": {
      "type": "string",
-     "description": "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted his account."
+     "description": "Email address that can be used for marketing purposes. The field may be empty even if explicitMarketingPreference is 'granted'. This happens when retrieving an old order from the customer who deleted their account."
     }
    }
   },
@@ -2550,10 +2546,6 @@
     "brand": {
      "type": "string",
      "description": "Brand of the item."
-    },
-    "channel": {
-     "type": "string",
-     "description": "The item's channel (online or local)."
     },
     "condition": {
      "type": "string",
@@ -5021,7 +5013,7 @@
   "ProductStatus": {
    "id": "ProductStatus",
    "type": "object",
-   "description": "The status of a product, i.e., information about a product computed asynchronously by the data quality analysis.",
+   "description": "The status of a product, i.e., information about a product computed asynchronously.",
    "properties": {
     "creationDate": {
      "type": "string",
@@ -6040,15 +6032,6 @@
       ]
      }
     },
-    "channel": {
-     "type": "string",
-     "description": "The item's channel.",
-     "annotations": {
-      "required": [
-       "content.orders.createtestorder"
-      ]
-     }
-    },
     "condition": {
      "type": "string",
      "description": "Condition or state of the item.",
@@ -6574,7 +6557,7 @@
      "id": "content.accountstatuses.get",
      "path": "{merchantId}/accountstatuses/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the status of a Merchant Center account. Multi-client accounts can only call this method for sub-accounts.",
+     "description": "Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts.",
      "parameters": {
       "accountId": {
        "type": "string",

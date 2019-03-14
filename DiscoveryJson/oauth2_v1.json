@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/u_GPJA79BYUTOL4IK5pNEgXCpYQ\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/izr_0N7-y4dagYg2GSFs18rZ6Tw\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v1",
  "name": "oauth2",
@@ -79,7 +79,7 @@
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "View your basic profile info"
+     "description": "See your personal info, including any personal info you've made publically available"
     }
    }
   }
