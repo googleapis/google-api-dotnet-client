@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190303 (1522)
+ *      <tr><th>API Rev<td>20190308 (1527)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1401,11 +1401,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
-            /// no parent.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ParentJobId { get; set; }
-
             /// <summary>Restrict information returned to a set of selected fields</summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
@@ -1512,15 +1507,6 @@ namespace Google.Apis.Bigquery.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parentJobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parentJobId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2764,6 +2750,114 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class BqmlIterationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only, Beta] Time taken to run the training iteration in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
+        public virtual System.Nullable<long> DurationMs { get; set; } 
+
+        /// <summary>[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss
+        /// is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as
+        /// no_split or auto_split with input data size less than 500 rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
+        public virtual System.Nullable<double> EvalLoss { get; set; } 
+
+        /// <summary>[Output-only, Beta] Index of the ML training iteration, starting from zero for each training
+        /// run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; } 
+
+        /// <summary>[Output-only, Beta] Learning rate used for this iteration, it varies for different training
+        /// iterations if learn_rate_strategy option is not constant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
+        public virtual System.Nullable<double> LearnRate { get; set; } 
+
+        /// <summary>[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The
+        /// training loss function is defined by model type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
+        public virtual System.Nullable<double> TrainingLoss { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BqmlTrainingRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only, Beta] List of each iteration results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iterationResults")]
+        public virtual System.Collections.Generic.IList<BqmlIterationResult> IterationResults { get; set; } 
+
+        /// <summary>[Output-only, Beta] Training run start time in milliseconds since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> StartTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
+            }
+            set
+            {
+                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in
+        /// progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully
+        /// completed. CANCELLED: Training run cancelled by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
+        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
+        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
+        /// query will be copied from the previous training run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
+        public virtual BqmlTrainingRun.TrainingOptionsData TrainingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
+        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
+        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
+        /// query will be copied from the previous training run.</summary>
+        public class TrainingOptionsData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
+            public virtual System.Nullable<bool> EarlyStop { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("l1Reg")]
+            public virtual System.Nullable<double> L1Reg { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("l2Reg")]
+            public virtual System.Nullable<double> L2Reg { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
+            public virtual System.Nullable<double> LearnRate { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("learnRateStrategy")]
+            public virtual string LearnRateStrategy { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("lineSearchInitLearnRate")]
+            public virtual System.Nullable<double> LineSearchInitLearnRate { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("maxIteration")]
+            public virtual System.Nullable<long> MaxIteration { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("minRelProgress")]
+            public virtual System.Nullable<double> MinRelProgress { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
+            public virtual System.Nullable<bool> WarmStart { get; set; } 
+
+        }
+    }    
+
     public class Clustering : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated,
@@ -3385,37 +3479,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// extract column names for the detected schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Output-only, Beta] Time taken to run the training iteration in milliseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<long> DurationMs { get; set; } 
-
-        /// <summary>[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss
-        /// is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as
-        /// no_split or auto_split with input data size less than 500 rows.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
-        public virtual System.Nullable<double> EvalLoss { get; set; } 
-
-        /// <summary>[Output-only, Beta] Index of the ML training iteration, starting from zero for each training
-        /// run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
-
-        /// <summary>[Output-only, Beta] Learning rate used for this iteration, it varies for different training
-        /// iterations if learn_rate_strategy option is not constant.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-        public virtual System.Nullable<double> LearnRate { get; set; } 
-
-        /// <summary>[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The
-        /// training loss function is defined by model type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
-        public virtual System.Nullable<double> TrainingLoss { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4083,6 +4146,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; } 
 
+        /// <summary>The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRoutine")]
+        public virtual RoutineReference DdlTargetRoutine { get; set; } 
+
         /// <summary>The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; } 
@@ -4134,8 +4201,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
         /// language. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR
         /// REPLACE] TABLE ... AS SELECT ... . "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW
-        /// ... AS SELECT ... . "DROP_VIEW": DROP VIEW query. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW
-        /// query.</summary>
+        /// ... AS SELECT ... . "DROP_VIEW": DROP VIEW query. "CREATE_FUNCTION": CREATE FUNCTION query. "DROP_FUNCTION"
+        /// : DROP FUNCTION query. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; } 
 
@@ -4284,7 +4351,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// iterations and there may be multiple training runs for the model if warm start is used or if a user decides
         /// to continue a previously cancelled query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
-        public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<BqmlTrainingRun> TrainingRuns { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4629,6 +4696,25 @@ namespace Google.Apis.Bigquery.v2.Data
             public virtual System.Nullable<long> Start { get; set; } 
 
         }
+    }    
+
+    public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] The ID of the dataset containing this routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>[Required] The ID of the project containing this routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>[Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineId")]
+        public virtual string RoutineId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class Streamingbuffer : Google.Apis.Requests.IDirectResponseSchema
@@ -5094,83 +5180,6 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
-
-    public class TrainingRun : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Output-only, Beta] List of each iteration results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iterationResults")]
-        public virtual System.Collections.Generic.IList<IterationResult> IterationResults { get; set; } 
-
-        /// <summary>[Output-only, Beta] Training run start time in milliseconds since the epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> StartTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
-
-        /// <summary>[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in
-        /// progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully
-        /// completed. CANCELLED: Training run cancelled by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
-        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
-        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
-        /// query will be copied from the previous training run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
-        public virtual TrainingRun.TrainingOptionsData TrainingOptions { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-        
-
-        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
-        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
-        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
-        /// query will be copied from the previous training run.</summary>
-        public class TrainingOptionsData
-        {
-            [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
-            public virtual System.Nullable<bool> EarlyStop { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("l1Reg")]
-            public virtual System.Nullable<double> L1Reg { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("l2Reg")]
-            public virtual System.Nullable<double> L2Reg { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-            public virtual System.Nullable<double> LearnRate { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("learnRateStrategy")]
-            public virtual string LearnRateStrategy { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("lineSearchInitLearnRate")]
-            public virtual System.Nullable<double> LineSearchInitLearnRate { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("maxIteration")]
-            public virtual System.Nullable<long> MaxIteration { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("minRelProgress")]
-            public virtual System.Nullable<double> MinRelProgress { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
-            public virtual System.Nullable<bool> WarmStart { get; set; } 
-
-        }
     }    
 
     public class UserDefinedFunctionResource : Google.Apis.Requests.IDirectResponseSchema

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190206 (1497)
+ *      <tr><th>API Rev<td>20190311 (1530)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -1295,9 +1295,63 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; } 
 
+        /// <summary>The configuration used for the private Composer environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateEnvironmentConfig")]
+        public virtual PrivateEnvironmentConfig PrivateEnvironmentConfig { get; set; } 
+
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for controlling how IPs are allocated in the GKE cluster.</summary>
+    public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The IP address range used to allocate IP addresses to pods in the cluster.
+        ///
+        /// This field is applicable only when `use_ip_aliases` is true.
+        ///
+        /// Set to blank to have GKE choose a range with the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
+        public virtual string ClusterIpv4CidrBlock { get; set; } 
+
+        /// <summary>Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify
+        /// either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
+        public virtual string ClusterSecondaryRangeName { get; set; } 
+
+        /// <summary>Optional. The IP address range of the services IP addresses in this cluster.
+        ///
+        /// This field is applicable only when `use_ip_aliases` is true.
+        ///
+        /// Set to blank to have GKE choose a range with the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
+        public virtual string ServicesIpv4CidrBlock { get; set; } 
+
+        /// <summary>Optional. The name of the services' secondary range used to allocate IP addresses to the cluster.
+        /// Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
+        public virtual string ServicesSecondaryRangeName { get; set; } 
+
+        /// <summary>Optional. Whether or not to enable Alias IPs in the GKE cluster. If true or if left blank, a VPC-
+        /// native cluster is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
+        public virtual System.Nullable<bool> UseIpAliases { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1376,6 +1430,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// 100GB. Cannot be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; } 
+
+        /// <summary>Optional. The IPAllocationPolicy fields for the GKE cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAllocationPolicy")]
+        public virtual IPAllocationPolicy IpAllocationPolicy { get; set; } 
 
         /// <summary>Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to
         /// run the Apache Airflow software, specified as a [relative resource
@@ -1513,6 +1571,41 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Output only. The current operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for private cluster of Composer environment.</summary>
+    public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, access to public endpoint of gke cluster will be denied.
+        /// `IPAllocationPolicy.use_ip_aliases` must be true if this field is set to true. Default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
+        public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; } 
+
+        /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
+        /// assigning internal IP addresses to the cluster master or set of masters, as well as the ILB VIP (Internal
+        /// Load Balance Virtual IP).This range must not overlap with any other ranges in use within the cluster's
+        /// network. If left blank, default value of '172.16.0.0/28' will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
+        public virtual string MasterIpv4CidrBlock { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The configuration information for configuring a private Composer environment.</summary>
+    public class PrivateEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If `true`, a private Composer environment is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
+        public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; } 
+
+        /// <summary>Optional. Configuration for private cluster for a private Composer environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
+        public virtual PrivateClusterConfig PrivateClusterConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

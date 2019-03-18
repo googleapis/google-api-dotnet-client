@@ -1,9 +1,4 @@
 {
-  "canonicalName": "Bigtable Admin",
-  "rootUrl": "https://bigtableadmin.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "bigtableadmin",
-  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Cloud Bigtable Admin API",
   "ownerName": "Google",
@@ -13,15 +8,29 @@
         "locations": {
           "methods": {
             "list": {
+              "path": "v1/{+name}/locations",
+              "id": "bigtableadmin.projects.locations.list",
               "description": "Lists information about the supported locations for this service.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
               "response": {
                 "$ref": "ListLocationsResponse"
               },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
               "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
+                },
+                "pageToken": {
+                  "description": "The standard list page token.",
+                  "type": "string",
+                  "location": "query"
+                },
                 "pageSize": {
                   "description": "The standard list page size.",
                   "format": "int32",
@@ -32,23 +41,9 @@
                   "description": "The standard list filter.",
                   "type": "string",
                   "location": "query"
-                },
-                "name": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable."
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "The standard list page token.",
-                  "type": "string"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/locations",
-              "id": "bigtableadmin.projects.locations.list",
-              "path": "v1/{+name}/locations"
+              "flatPath": "v1/projects/{projectsId}/locations"
             },
             "get": {
               "description": "Gets information about a location.",
@@ -61,11 +56,11 @@
               "httpMethod": "GET",
               "parameters": {
                 "name": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
                   "location": "path",
                   "description": "Resource name for the location.",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                  "type": "string"
                 }
               },
               "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
@@ -78,15 +73,31 @@
     }
   },
   "parameters": {
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "fields": {
-      "type": "string",
+    "prettyPrint": {
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -112,12 +123,6 @@
       "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -125,40 +130,30 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
     },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "access_token": {
       "description": "OAuth access token.",
       "type": "string",
       "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
     }
   },
   "version": "v1",
   "baseUrl": "https://bigtableadmin.googleapis.com/",
-  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "",
+  "servicePath": "",
   "basePath": "",
   "revision": "20190222",
   "documentationLink": "https://cloud.google.com/bigtable/",
@@ -166,11 +161,86 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "ListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
+      "type": "object",
+      "properties": {
+        "locations": {
+          "description": "A list of locations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          }
+        },
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        }
+      },
+      "id": "ListLocationsResponse"
+    },
+    "UpdateAppProfileMetadata": {
+      "description": "The metadata for the Operation returned by UpdateAppProfile.",
+      "type": "object",
+      "properties": {},
+      "id": "UpdateAppProfileMetadata"
+    },
+    "CreateInstanceMetadata": {
+      "properties": {
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "originalRequest": {
+          "$ref": "CreateInstanceRequest",
+          "description": "The request that prompted the initiation of this CreateInstance operation."
+        },
+        "requestTime": {
+          "description": "The time at which the original request was received.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "CreateInstanceMetadata",
+      "description": "The metadata for the Operation returned by CreateInstance.",
+      "type": "object"
+    },
+    "CreateClusterMetadata": {
+      "properties": {
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "originalRequest": {
+          "$ref": "CreateClusterRequest",
+          "description": "The request that prompted the initiation of this CreateCluster operation."
+        },
+        "requestTime": {
+          "description": "The time at which the original request was received.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "tables": {
+          "additionalProperties": {
+            "$ref": "TableProgress"
+          },
+          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far.",
+          "type": "object"
+        }
+      },
+      "id": "CreateClusterMetadata",
+      "description": "The metadata for the Operation returned by CreateCluster.",
+      "type": "object"
+    },
     "Instance": {
       "description": "A collection of Bigtable Tables and\nthe resources that serve them.\nAll tables in an instance are served from all\nClusters in the instance.",
       "type": "object",
       "properties": {
         "state": {
+          "description": "(`OutputOnly`)\nThe current state of the instance.",
+          "type": "string",
           "enumDescriptions": [
             "The state of the instance could not be determined.",
             "The instance has been successfully created and can serve requests\nto its tables.",
@@ -180,9 +250,7 @@
             "STATE_NOT_KNOWN",
             "READY",
             "CREATING"
-          ],
-          "description": "(`OutputOnly`)\nThe current state of the instance.",
-          "type": "string"
+          ]
         },
         "name": {
           "description": "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/\u003cproject\u003e/instances/a-z+[a-z0-9]`.",
@@ -207,18 +275,16 @@
           "type": "string"
         },
         "labels": {
-          "description": "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes.",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes.",
+          "type": "object"
         }
       },
       "id": "Instance"
     },
     "UpdateClusterMetadata": {
-      "description": "The metadata for the Operation returned by UpdateCluster.",
-      "type": "object",
       "properties": {
         "finishTime": {
           "description": "The time at which the operation failed or was completed successfully.",
@@ -235,15 +301,17 @@
           "type": "string"
         }
       },
-      "id": "UpdateClusterMetadata"
+      "id": "UpdateClusterMetadata",
+      "description": "The metadata for the Operation returned by UpdateCluster.",
+      "type": "object"
     },
     "CreateClusterRequest": {
       "description": "Request message for BigtableInstanceAdmin.CreateCluster.",
       "type": "object",
       "properties": {
         "cluster": {
-          "$ref": "Cluster",
-          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank."
+          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank.",
+          "$ref": "Cluster"
         },
         "parent": {
           "description": "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e`.",
@@ -257,6 +325,8 @@
       "id": "CreateClusterRequest"
     },
     "Location": {
+      "description": "A resource that represents Google Cloud Platform location.",
+      "type": "object",
       "properties": {
         "labels": {
           "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
@@ -286,18 +356,46 @@
           "type": "object"
         }
       },
-      "id": "Location",
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object"
+      "id": "Location"
+    },
+    "TableProgress": {
+      "description": "Progress info for copying a table's data to the new cluster.",
+      "type": "object",
+      "properties": {
+        "estimatedCopiedBytes": {
+          "description": "Estimate of the number of bytes copied so far for this table.\nThis will eventually reach 'estimated_size_bytes' unless the table copy\nis CANCELLED.",
+          "format": "int64",
+          "type": "string"
+        },
+        "estimatedSizeBytes": {
+          "description": "Estimate of the size of the table to be copied.",
+          "format": "int64",
+          "type": "string"
+        },
+        "state": {
+          "enumDescriptions": [
+            "",
+            "The table has not yet begun copying to the new cluster.",
+            "The table is actively being copied to the new cluster.",
+            "The table has been fully copied to the new cluster.",
+            "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "PENDING",
+            "COPYING",
+            "COMPLETED",
+            "CANCELLED"
+          ],
+          "type": "string"
+        }
+      },
+      "id": "TableProgress"
     },
     "CreateInstanceRequest": {
       "description": "Request message for BigtableInstanceAdmin.CreateInstance.",
       "type": "object",
       "properties": {
-        "parent": {
-          "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/\u003cproject\u003e`.",
-          "type": "string"
-        },
         "instanceId": {
           "description": "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`.",
           "type": "string"
@@ -312,55 +410,19 @@
         "instance": {
           "$ref": "Instance",
           "description": "The instance to create.\nFields marked `OutputOnly` must be left blank."
+        },
+        "parent": {
+          "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/\u003cproject\u003e`.",
+          "type": "string"
         }
       },
       "id": "CreateInstanceRequest"
-    },
-    "TableProgress": {
-      "properties": {
-        "estimatedCopiedBytes": {
-          "description": "Estimate of the number of bytes copied so far for this table.\nThis will eventually reach 'estimated_size_bytes' unless the table copy\nis CANCELLED.",
-          "format": "int64",
-          "type": "string"
-        },
-        "estimatedSizeBytes": {
-          "description": "Estimate of the size of the table to be copied.",
-          "format": "int64",
-          "type": "string"
-        },
-        "state": {
-          "type": "string",
-          "enumDescriptions": [
-            "",
-            "The table has not yet begun copying to the new cluster.",
-            "The table is actively being copied to the new cluster.",
-            "The table has been fully copied to the new cluster.",
-            "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "PENDING",
-            "COPYING",
-            "COMPLETED",
-            "CANCELLED"
-          ]
-        }
-      },
-      "id": "TableProgress",
-      "description": "Progress info for copying a table's data to the new cluster.",
-      "type": "object"
     },
     "Cluster": {
       "description": "A resizable group of nodes in a particular cloud location, capable\nof serving all Tables in the parent\nInstance.",
       "type": "object",
       "properties": {
-        "location": {
-          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
-          "type": "string"
-        },
         "state": {
-          "description": "(`OutputOnly`)\nThe current state of the cluster.",
-          "type": "string",
           "enumDescriptions": [
             "The state of the cluster could not be determined.",
             "The cluster has been successfully created and is ready to serve requests.",
@@ -374,7 +436,9 @@
             "CREATING",
             "RESIZING",
             "DISABLED"
-          ]
+          ],
+          "description": "(`OutputOnly`)\nThe current state of the cluster.",
+          "type": "string"
         },
         "name": {
           "description": "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/clusters/a-z*`.",
@@ -398,124 +462,60 @@
           ],
           "description": "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden.",
           "type": "string"
+        },
+        "location": {
+          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
+          "type": "string"
         }
       },
       "id": "Cluster"
     },
     "UpdateInstanceMetadata": {
+      "description": "The metadata for the Operation returned by UpdateInstance.",
       "type": "object",
       "properties": {
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "originalRequest": {
-          "$ref": "PartialUpdateInstanceRequest",
-          "description": "The request that prompted the initiation of this UpdateInstance operation."
+          "description": "The request that prompted the initiation of this UpdateInstance operation.",
+          "$ref": "PartialUpdateInstanceRequest"
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "finishTime": {
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime",
-          "type": "string"
         }
       },
-      "id": "UpdateInstanceMetadata",
-      "description": "The metadata for the Operation returned by UpdateInstance."
+      "id": "UpdateInstanceMetadata"
     },
     "PartialUpdateInstanceRequest": {
       "properties": {
-        "instance": {
-          "description": "The Instance which will (partially) replace the current value.",
-          "$ref": "Instance"
-        },
         "updateMask": {
           "description": "The subset of Instance fields which should be replaced.\nMust be explicitly set.",
           "format": "google-fieldmask",
           "type": "string"
+        },
+        "instance": {
+          "$ref": "Instance",
+          "description": "The Instance which will (partially) replace the current value."
         }
       },
       "id": "PartialUpdateInstanceRequest",
       "description": "Request message for BigtableInstanceAdmin.PartialUpdateInstance.",
       "type": "object"
-    },
-    "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          }
-        }
-      },
-      "id": "ListLocationsResponse"
-    },
-    "UpdateAppProfileMetadata": {
-      "description": "The metadata for the Operation returned by UpdateAppProfile.",
-      "type": "object",
-      "properties": {},
-      "id": "UpdateAppProfileMetadata"
-    },
-    "CreateInstanceMetadata": {
-      "description": "The metadata for the Operation returned by CreateInstance.",
-      "type": "object",
-      "properties": {
-        "originalRequest": {
-          "$ref": "CreateInstanceRequest",
-          "description": "The request that prompted the initiation of this CreateInstance operation."
-        },
-        "requestTime": {
-          "description": "The time at which the original request was received.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "finishTime": {
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "CreateInstanceMetadata"
-    },
-    "CreateClusterMetadata": {
-      "description": "The metadata for the Operation returned by CreateCluster.",
-      "type": "object",
-      "properties": {
-        "originalRequest": {
-          "$ref": "CreateClusterRequest",
-          "description": "The request that prompted the initiation of this CreateCluster operation."
-        },
-        "requestTime": {
-          "type": "string",
-          "description": "The time at which the original request was received.",
-          "format": "google-datetime"
-        },
-        "tables": {
-          "additionalProperties": {
-            "$ref": "TableProgress"
-          },
-          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far.",
-          "type": "object"
-        },
-        "finishTime": {
-          "type": "string",
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime"
-        }
-      },
-      "id": "CreateClusterMetadata"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  }
+  },
+  "protocol": "rest",
+  "canonicalName": "Bigtable Admin",
+  "rootUrl": "https://bigtableadmin.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "bigtableadmin",
+  "batchPath": "batch"
 }

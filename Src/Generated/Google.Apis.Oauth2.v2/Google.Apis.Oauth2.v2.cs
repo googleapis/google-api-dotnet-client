@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>Google OAuth2 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190129 (1489)
+ *      <tr><th>API Rev<td>20190313 (1532)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>
  *              https://developers.google.com/accounts/docs/OAuth2</a>
@@ -108,9 +108,6 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Google OAuth2 API.</summary>
         public class Scope
         {
-            /// <summary>View your basic profile info, including your age range and language</summary>
-            public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
-
             /// <summary>Know who you are on Google</summary>
             public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
@@ -125,9 +122,6 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Google OAuth2 API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View your basic profile info, including your age range and language</summary>
-            public const string PlusLogin = "https://www.googleapis.com/auth/plus.login";
-
             /// <summary>Know who you are on Google</summary>
             public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 

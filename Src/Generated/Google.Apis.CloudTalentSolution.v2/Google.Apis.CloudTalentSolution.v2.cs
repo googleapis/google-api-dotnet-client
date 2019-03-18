@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190306 (1525)
+ *      <tr><th>API Rev<td>20190315 (1534)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -750,17 +750,6 @@ namespace Google.Apis.CloudTalentSolution.v2
 
             /// <summary>Optional.
             ///
-            /// Set to true if the companies request must have open jobs.
-            ///
-            /// Defaults to false.
-            ///
-            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
-
-            /// <summary>Optional.
-            ///
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -771,6 +760,17 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// Set to true if the companies request must have open jobs.
+            ///
+            /// Defaults to false.
+            ///
+            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -797,15 +797,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -818,6 +809,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mustHaveOpenJobs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

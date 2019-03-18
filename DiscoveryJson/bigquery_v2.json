@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/TOaauesIbrP2CllN8u56dQTSTrM\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/LicXjUeldZL9N8oEn8q9o_hrZ48\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20190303",
+ "revision": "20190308",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -187,6 +187,98 @@
     "readRowkeyAsString": {
      "type": "boolean",
      "description": "[Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false."
+    }
+   }
+  },
+  "BqmlIterationResult": {
+   "id": "BqmlIterationResult",
+   "type": "object",
+   "properties": {
+    "durationMs": {
+     "type": "string",
+     "description": "[Output-only, Beta] Time taken to run the training iteration in milliseconds.",
+     "format": "int64"
+    },
+    "evalLoss": {
+     "type": "number",
+     "description": "[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split or auto_split with input data size less than 500 rows.",
+     "format": "double"
+    },
+    "index": {
+     "type": "integer",
+     "description": "[Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.",
+     "format": "int32"
+    },
+    "learnRate": {
+     "type": "number",
+     "description": "[Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.",
+     "format": "double"
+    },
+    "trainingLoss": {
+     "type": "number",
+     "description": "[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.",
+     "format": "double"
+    }
+   }
+  },
+  "BqmlTrainingRun": {
+   "id": "BqmlTrainingRun",
+   "type": "object",
+   "properties": {
+    "iterationResults": {
+     "type": "array",
+     "description": "[Output-only, Beta] List of each iteration results.",
+     "items": {
+      "$ref": "BqmlIterationResult"
+     }
+    },
+    "startTime": {
+     "type": "string",
+     "description": "[Output-only, Beta] Training run start time in milliseconds since the epoch.",
+     "format": "date-time"
+    },
+    "state": {
+     "type": "string",
+     "description": "[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user."
+    },
+    "trainingOptions": {
+     "type": "object",
+     "description": "[Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.",
+     "properties": {
+      "earlyStop": {
+       "type": "boolean"
+      },
+      "l1Reg": {
+       "type": "number",
+       "format": "double"
+      },
+      "l2Reg": {
+       "type": "number",
+       "format": "double"
+      },
+      "learnRate": {
+       "type": "number",
+       "format": "double"
+      },
+      "learnRateStrategy": {
+       "type": "string"
+      },
+      "lineSearchInitLearnRate": {
+       "type": "number",
+       "format": "double"
+      },
+      "maxIteration": {
+       "type": "string",
+       "format": "int64"
+      },
+      "minRelProgress": {
+       "type": "number",
+       "format": "double"
+      },
+      "warmStart": {
+       "type": "boolean"
+      }
+     }
     }
    }
   },
@@ -788,37 +880,6 @@
      "type": "string",
      "description": "[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N \u003e 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.",
      "format": "int64"
-    }
-   }
-  },
-  "IterationResult": {
-   "id": "IterationResult",
-   "type": "object",
-   "properties": {
-    "durationMs": {
-     "type": "string",
-     "description": "[Output-only, Beta] Time taken to run the training iteration in milliseconds.",
-     "format": "int64"
-    },
-    "evalLoss": {
-     "type": "number",
-     "description": "[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split or auto_split with input data size less than 500 rows.",
-     "format": "double"
-    },
-    "index": {
-     "type": "integer",
-     "description": "[Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.",
-     "format": "int32"
-    },
-    "learnRate": {
-     "type": "number",
-     "description": "[Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.",
-     "format": "double"
-    },
-    "trainingLoss": {
-     "type": "number",
-     "description": "[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.",
-     "format": "double"
     }
    }
   },
@@ -1425,6 +1486,10 @@
      "type": "string",
      "description": "The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): \"CREATE\": The query created the DDL target. \"SKIP\": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. \"REPLACE\": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. \"DROP\": The query deleted the DDL target."
     },
+    "ddlTargetRoutine": {
+     "$ref": "RoutineReference",
+     "description": "The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries."
+    },
     "ddlTargetTable": {
      "$ref": "TableReference",
      "description": "The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries."
@@ -1491,7 +1556,7 @@
     },
     "statementType": {
      "type": "string",
-     "description": "The type of query statement, if valid. Possible values (new values might be added in the future): \"SELECT\": SELECT query. \"INSERT\": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"UPDATE\": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"DELETE\": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"MERGE\": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"CREATE_TABLE\": CREATE [OR REPLACE] TABLE without AS SELECT. \"CREATE_TABLE_AS_SELECT\": CREATE [OR REPLACE] TABLE ... AS SELECT ... . \"DROP_TABLE\": DROP TABLE query. \"CREATE_VIEW\": CREATE [OR REPLACE] VIEW ... AS SELECT ... . \"DROP_VIEW\": DROP VIEW query. \"ALTER_TABLE\": ALTER TABLE query. \"ALTER_VIEW\": ALTER VIEW query."
+     "description": "The type of query statement, if valid. Possible values (new values might be added in the future): \"SELECT\": SELECT query. \"INSERT\": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"UPDATE\": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"DELETE\": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"MERGE\": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. \"CREATE_TABLE\": CREATE [OR REPLACE] TABLE without AS SELECT. \"CREATE_TABLE_AS_SELECT\": CREATE [OR REPLACE] TABLE ... AS SELECT ... . \"DROP_TABLE\": DROP TABLE query. \"CREATE_VIEW\": CREATE [OR REPLACE] VIEW ... AS SELECT ... . \"DROP_VIEW\": DROP VIEW query. \"CREATE_FUNCTION\": CREATE FUNCTION query. \"DROP_FUNCTION\" : DROP FUNCTION query. \"ALTER_TABLE\": ALTER TABLE query. \"ALTER_VIEW\": ALTER VIEW query."
     },
     "timeline": {
      "type": "array",
@@ -1657,7 +1722,7 @@
      "type": "array",
      "description": "[Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.",
      "items": {
-      "$ref": "TrainingRun"
+      "$ref": "BqmlTrainingRun"
      }
     }
    }
@@ -1990,6 +2055,24 @@
        "format": "int64"
       }
      }
+    }
+   }
+  },
+  "RoutineReference": {
+   "id": "RoutineReference",
+   "type": "object",
+   "properties": {
+    "datasetId": {
+     "type": "string",
+     "description": "[Required] The ID of the dataset containing this routine."
+    },
+    "projectId": {
+     "type": "string",
+     "description": "[Required] The ID of the project containing this routine."
+    },
+    "routineId": {
+     "type": "string",
+     "description": "[Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters."
     }
    }
   },
@@ -2468,67 +2551,6 @@
     }
    }
   },
-  "TrainingRun": {
-   "id": "TrainingRun",
-   "type": "object",
-   "properties": {
-    "iterationResults": {
-     "type": "array",
-     "description": "[Output-only, Beta] List of each iteration results.",
-     "items": {
-      "$ref": "IterationResult"
-     }
-    },
-    "startTime": {
-     "type": "string",
-     "description": "[Output-only, Beta] Training run start time in milliseconds since the epoch.",
-     "format": "date-time"
-    },
-    "state": {
-     "type": "string",
-     "description": "[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user."
-    },
-    "trainingOptions": {
-     "type": "object",
-     "description": "[Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.",
-     "properties": {
-      "earlyStop": {
-       "type": "boolean"
-      },
-      "l1Reg": {
-       "type": "number",
-       "format": "double"
-      },
-      "l2Reg": {
-       "type": "number",
-       "format": "double"
-      },
-      "learnRate": {
-       "type": "number",
-       "format": "double"
-      },
-      "learnRateStrategy": {
-       "type": "string"
-      },
-      "lineSearchInitLearnRate": {
-       "type": "number",
-       "format": "double"
-      },
-      "maxIteration": {
-       "type": "string",
-       "format": "int64"
-      },
-      "minRelProgress": {
-       "type": "number",
-       "format": "double"
-      },
-      "warmStart": {
-       "type": "boolean"
-      }
-     }
-    }
-   }
-  },
   "UserDefinedFunctionResource": {
    "id": "UserDefinedFunctionResource",
    "type": "object",
@@ -2989,11 +3011,6 @@
       "pageToken": {
        "type": "string",
        "description": "Page token, returned by a previous call, to request the next page of results",
-       "location": "query"
-      },
-      "parentJobId": {
-       "type": "string",
-       "description": "If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have no parent.",
        "location": "query"
       },
       "projectId": {

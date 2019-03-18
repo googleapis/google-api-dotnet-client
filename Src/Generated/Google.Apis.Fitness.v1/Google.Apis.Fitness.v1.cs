@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190311 (1530)
+ *      <tr><th>API Rev<td>20190312 (1531)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1603,7 +1603,7 @@ namespace Google.Apis.Fitness.v1
                 /// changes, set this parameter to the value of nextPageToken from the previous response. This token is
                 /// treated as a timestamp (in millis since epoch). If specified, the API returns sessions modified
                 /// since this time. The page token is ignored if either start or end time is specified. If none of
-                /// start time, end time, and the page token is specified, sessions modified in the last 7 days are
+                /// start time, end time, and the page token is specified, sessions modified in the last 30 days are
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }

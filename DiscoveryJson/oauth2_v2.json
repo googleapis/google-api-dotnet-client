@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/6QczsO--rzxmz6GMdr2EY6-AXwc\"",
+ "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/gf4xWjHRVWIcG8iOeZ4jry4ji54\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v2",
  "name": "oauth2",
  "version": "v2",
- "revision": "20190129",
+ "revision": "20190313",
  "title": "Google OAuth2 API",
  "description": "Obtains end-user authorization grants for use with other Google APIs.",
  "ownerDomain": "google.com",
@@ -69,9 +69,6 @@
  "auth": {
   "oauth2": {
    "scopes": {
-    "https://www.googleapis.com/auth/plus.login": {
-     "description": "View your basic profile info, including your age range and language"
-    },
     "https://www.googleapis.com/auth/plus.me": {
      "description": "Know who you are on Google"
     },
@@ -258,7 +255,6 @@
       "$ref": "Userinfoplus"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/plus.login",
       "https://www.googleapis.com/auth/plus.me",
       "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/userinfo.profile"
@@ -278,7 +274,6 @@
           "$ref": "Userinfoplus"
          },
          "scopes": [
-          "https://www.googleapis.com/auth/plus.login",
           "https://www.googleapis.com/auth/plus.me",
           "https://www.googleapis.com/auth/userinfo.email",
           "https://www.googleapis.com/auth/userinfo.profile"
