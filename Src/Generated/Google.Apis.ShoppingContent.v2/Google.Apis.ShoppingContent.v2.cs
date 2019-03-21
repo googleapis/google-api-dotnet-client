@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190308 (1527)
+ *      <tr><th>API Rev<td>20190315 (1534)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1987,14 +1987,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-
+        /// <summary>Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.DatafeedsCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-
+        /// <summary>Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -2702,14 +2702,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-
+        /// <summary>Gets multiple Merchant Center datafeed statuses in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.DatafeedstatusesCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-
+        /// <summary>Gets multiple Merchant Center datafeed statuses in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -6128,7 +6128,11 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store).</summary>
+        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
+        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
+        /// differences arising between merchant and Google transaction records. We also recommend having the point of
+        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
+        /// refunding via Google then via an in-store return.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -6139,7 +6143,11 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store).</summary>
+        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
+        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
+        /// differences arising between merchant and Google transaction records. We also recommend having the point of
+        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
+        /// refunding via Google then via an in-store return.</summary>
         public class InstorerefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersInStoreRefundLineItemResponse>
         {
             /// <summary>Constructs a new Instorerefundlineitem request.</summary>
@@ -12305,7 +12313,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>[required] ID of the shipment group.</summary>
+        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and
+        /// is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
         public virtual string ShipmentGroupId { get; set; } 
 
@@ -13168,8 +13177,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is
-        /// updated.</summary>
+        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.
+        ///
+        /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
         public virtual string DeliverByDate { get; set; } 
 
@@ -13182,8 +13192,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is
-        /// updated.</summary>
+        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.
+        ///
+        /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
         public virtual string ShipByDate { get; set; } 
 
@@ -13648,8 +13659,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersUpdateLineItemShippingDetailsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is
-        /// updated.</summary>
+        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.
+        ///
+        /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
         public virtual string DeliverByDate { get; set; } 
 
@@ -13666,8 +13678,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is
-        /// updated.</summary>
+        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.
+        ///
+        /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
         public virtual string ShipByDate { get; set; } 
 
@@ -15237,7 +15250,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
         public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
 
-        /// <summary>[required] ID of the shipment group.</summary>
+        /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and
+        /// is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
         public virtual string ShipmentGroupId { get; set; } 
 
@@ -15256,7 +15270,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>[required] Unit IDs to define specific units within the line item.</summary>
+        /// <summary>[required] The shipment unit ID is assigned by the merchant and defines individual quantities
+        /// within a line item. The same ID can be assigned to units that are the same while units that differ must be
+        /// assigned a different ID (for example: free or promotional units).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentUnitIds")]
         public virtual System.Collections.Generic.IList<string> ShipmentUnitIds { get; set; } 
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/JLTtElhO_yZgirWM-iDsLteIwa0\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/VdJEXF4l3JpPigxTo1hda5AxtbU\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190308",
+ "revision": "20190315",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -3063,7 +3063,7 @@
     },
     "shipmentGroupId": {
      "type": "string",
-     "description": "[required] ID of the shipment group."
+     "description": "[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and is used to group multiple line items that have the same kind of shipping charges."
     }
    }
   },
@@ -3747,7 +3747,7 @@
    "properties": {
     "deliverByDate": {
      "type": "string",
-     "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated."
+     "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."
     },
     "lineItemId": {
      "type": "string",
@@ -3763,7 +3763,7 @@
     },
     "shipByDate": {
      "type": "string",
-     "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated."
+     "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past."
     }
    }
   },
@@ -5664,7 +5664,7 @@
     },
     "shipmentGroupId": {
      "type": "string",
-     "description": "[required] ID of the shipment group."
+     "description": "[required] ID of the shipment group. It is assigned by the merchant in the shipLineItems method and is used to group multiple line items that have the same kind of shipping charges."
     }
    }
   },
@@ -5682,7 +5682,7 @@
     },
     "shipmentUnitIds": {
      "type": "array",
-     "description": "[required] Unit IDs to define specific units within the line item.",
+     "description": "[required] The shipment unit ID is assigned by the merchant and defines individual quantities within a line item. The same ID can be assigned to units that are the same while units that differ must be assigned a different ID (for example: free or promotional units).",
      "items": {
       "type": "string"
      }
@@ -6761,6 +6761,7 @@
      "id": "content.datafeeds.custombatch",
      "path": "datafeeds/batch",
      "httpMethod": "POST",
+     "description": "Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.",
      "request": {
       "$ref": "DatafeedsCustomBatchRequest"
      },
@@ -6969,6 +6970,7 @@
      "id": "content.datafeedstatuses.custombatch",
      "path": "datafeedstatuses/batch",
      "httpMethod": "POST",
+     "description": "Gets multiple Merchant Center datafeed statuses in a single request.",
      "request": {
       "$ref": "DatafeedstatusesCustomBatchRequest"
      },
@@ -8025,7 +8027,7 @@
      "id": "content.orders.instorerefundlineitem",
      "path": "{merchantId}/orders/{orderId}/inStoreRefundLineItem",
      "httpMethod": "POST",
-     "description": "Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).",
+     "description": "Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).\nNote: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.",
      "parameters": {
       "merchantId": {
        "type": "string",

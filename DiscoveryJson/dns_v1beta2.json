@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/9KEO0OpYBvyPyGTgov_sb45oeDE\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/zElGI12CF1UX0N5PSyfUvo8KEe8\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",

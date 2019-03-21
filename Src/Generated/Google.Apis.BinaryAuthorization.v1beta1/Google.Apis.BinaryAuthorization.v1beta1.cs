@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190308 (1527)
+ *      <tr><th>API Rev<td>20190320 (1539)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -658,16 +658,16 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
-                /// the server will pick an appropriate default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results the server should return. Typically, this is the
                 /// value of ListAttestorsResponse.next_page_token returned from the previous call to the
                 /// `ListAttestors` method.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -703,18 +703,18 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1415,6 +1415,14 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
+        /// <summary>A raw PKIX SubjectPublicKeyInfo format public key.
+        ///
+        /// NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a
+        /// valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER
+        /// encoding of the public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkixPublicKey")]
+        public virtual PkixPublicKey PkixPublicKey { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1422,8 +1430,8 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
-        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
@@ -1566,6 +1574,24 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for
+    /// details). Public keys of this type are typically textually encoded using the PEM format.</summary>
+    public class PkixPublicKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyPem")]
+        public virtual string PublicKeyPem { get; set; } 
+
+        /// <summary>The signature algorithm used to verify a message against a signature using this key. These
+        /// signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e.
+        /// this algorithm must match that of the public key).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureAlgorithm")]
+        public virtual string SignatureAlgorithm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A policy for container image binary authorization.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1590,6 +1616,12 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         /// <summary>Optional. A descriptive comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Optional. Controls the evaluation of a Google-maintained global admission policy for common system-
+        /// level images. Images not covered by the global policy will be subject to the project admission policy. This
+        /// setting has no effect when specified inside a global admission policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalPolicyEvaluationMode")]
+        public virtual string GlobalPolicyEvaluationMode { get; set; } 
 
         /// <summary>Output only. The resource name, in the format `projects/policy`. There is at most one policy per
         /// project.</summary>

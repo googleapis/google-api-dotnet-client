@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/9aALyZrcP1R2_wqnKth5nU7ULoU\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/6lcnxNsebL6KFpum0g-qiNemtCY\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20190306",
+ "revision": "20190313",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -1385,6 +1385,10 @@
     "autoInstallPolicy": {
      "$ref": "AutoInstallPolicy",
      "description": "The auto-install policy for the product."
+    },
+    "managedConfiguration": {
+     "$ref": "ManagedConfiguration",
+     "description": "The managed configuration for the product."
     },
     "productId": {
      "type": "string",

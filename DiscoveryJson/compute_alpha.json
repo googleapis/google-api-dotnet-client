@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/ZZ-Eg1PTnD0rSNeMVHt1aiFwgck\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/7N2pyB10gTCh6TczL1mTWwI9nmk\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",

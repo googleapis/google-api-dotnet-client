@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190302 (1521)
+ *      <tr><th>API Rev<td>20190319 (1538)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -481,16 +481,16 @@ namespace Google.Apis.AlertCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
 
+                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
+                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomerId { get; set; }
+
                 /// <summary>Optional. A query string for filtering alert feedback results. For more details, see [Query
                 /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
                 /// sdk/alertcenter/reference/filter-fields#alerts.feedback.list).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the
-                /// alert feedback are associated with. Inferred from the caller identity if not provided.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CustomerId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -526,18 +526,18 @@ namespace Google.Apis.AlertCenter.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
+                        "customerId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filter",
+                            Name = "customerId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "customerId", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "customerId",
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

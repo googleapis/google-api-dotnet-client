@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190313 (1532)
+ *      <tr><th>API Rev<td>20190318 (1537)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.AnalyticsReporting.v4
             : base(initializer)
         {
             reports = new ReportsResource(this);
+            userActivity = new UserActivityResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -135,6 +136,14 @@ namespace Google.Apis.AnalyticsReporting.v4
         public virtual ReportsResource Reports
         {
             get { return reports; }
+        }
+
+        private readonly UserActivityResource userActivity;
+
+        /// <summary>Gets the UserActivity resource.</summary>
+        public virtual UserActivityResource UserActivity
+        {
+            get { return userActivity; }
         }
     }
 
@@ -396,10 +405,167 @@ namespace Google.Apis.AnalyticsReporting.v4
 
         }
     }
+
+    /// <summary>The "userActivity" collection of methods.</summary>
+    public class UserActivityResource
+    {
+        private const string Resource = "userActivity";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UserActivityResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns User Activity data.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SearchRequest Search(Google.Apis.AnalyticsReporting.v4.Data.SearchUserActivityRequest body)
+        {
+            return new SearchRequest(service, body);
+        }
+
+        /// <summary>Returns User Activity data.</summary>
+        public class SearchRequest : AnalyticsReportingBaseServiceRequest<Google.Apis.AnalyticsReporting.v4.Data.SearchUserActivityResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsReporting.v4.Data.SearchUserActivityRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsReporting.v4.Data.SearchUserActivityRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "search"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v4/userActivity:search"; }
+            }
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.AnalyticsReporting.v4.Data
 {    
+
+    /// <summary>An Activity represents data for an activity of a user. Note that an Activity is different from a hit. A
+    /// hit might result in multiple Activity's. For example, if a hit includes a transaction and a goal completion,
+    /// there will be two Activity protos for this hit, one for ECOMMERCE and one for GOAL. Conversely, multiple hits
+    /// can also construct one Activity. In classic e-commerce, data for one transaction might be sent through multiple
+    /// hits. These hits will be merged into one ECOMMERCE Activity.</summary>
+    public class Activity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of the activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityTime")]
+        public virtual object ActivityTime { get; set; } 
+
+        /// <summary>Type of this activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityType")]
+        public virtual string ActivityType { get; set; } 
+
+        /// <summary>This will be set if `activity_type` equals `SCREEN_VIEW`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appview")]
+        public virtual ScreenviewData Appview { get; set; } 
+
+        /// <summary>For manual campaign tracking, it is the value of the utm_campaign campaign tracking parameter. For
+        /// AdWords autotagging, it is the name(s) of the online ad campaign(s) you use for the property. If you use
+        /// neither, its value is (not set).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; } 
+
+        /// <summary>The Channel Group associated with an end user's session for this View (defined by the View's
+        /// Channel Groupings).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelGrouping")]
+        public virtual string ChannelGrouping { get; set; } 
+
+        /// <summary>A list of all custom dimensions associated with this activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDimension")]
+        public virtual System.Collections.Generic.IList<CustomDimension> CustomDimension { get; set; } 
+
+        /// <summary>This will be set if `activity_type` equals `ECOMMERCE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecommerce")]
+        public virtual EcommerceData Ecommerce { get; set; } 
+
+        /// <summary>This field contains all the details pertaining to an event and will be set if `activity_type`
+        /// equals `EVENT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual EventData Event__ { get; set; } 
+
+        /// <summary>This field contains a list of all the goals that were reached in this activity when `activity_type`
+        /// equals `GOAL`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goals")]
+        public virtual GoalSetData Goals { get; set; } 
+
+        /// <summary>The hostname from which the tracking request was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; } 
+
+        /// <summary>For manual campaign tracking, it is the value of the utm_term campaign tracking parameter. For
+        /// AdWords traffic, it contains the best matching targeting criteria. For the display network, where multiple
+        /// targeting criteria could have caused the ad to show up, it returns the best matching targeting criteria as
+        /// selected by Ads. This could be display_keyword, site placement, boomuserlist, user_interest, age, or gender.
+        /// Otherwise its value is (not set).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
+        public virtual string Keyword { get; set; } 
+
+        /// <summary>The first page in users' sessions, or the landing page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landingPagePath")]
+        public virtual string LandingPagePath { get; set; } 
+
+        /// <summary>The type of referrals. For manual campaign tracking, it is the value of the utm_medium campaign
+        /// tracking parameter. For AdWords autotagging, it is cpc. If users came from a search engine detected by
+        /// Google Analytics, it is organic. If the referrer is not a search engine, it is referral. If users came
+        /// directly to the property and document.referrer is empty, its value is (none).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; } 
+
+        /// <summary>This will be set if `activity_type` equals `PAGEVIEW`. This field contains all the details about
+        /// the visitor and the page that was visited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageview")]
+        public virtual PageviewData Pageview { get; set; } 
+
+        /// <summary>The source of referrals. For manual campaign tracking, it is the value of the utm_source campaign
+        /// tracking parameter. For AdWords autotagging, it is google. If you use neither, it is the domain of the
+        /// source (e.g., document.referrer) referring the users. It may also contain a port address. If users arrived
+        /// without a referrer, its value is (direct).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Defines a cohort. A cohort is a group of users who share a common characteristic. For example, all
     /// users with the same acquisition date belong to the same cohort.</summary>
@@ -475,6 +641,22 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// <summary>Metric headers for the metrics in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricHeader")]
         public virtual MetricHeader MetricHeader { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom dimension.</summary>
+    public class CustomDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Slot number of custom dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; } 
+
+        /// <summary>Value of the custom dimension. Default value (i.e. empty string) indicates clearing sesion/visitor
+        /// scope custom dimension value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -617,6 +799,56 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>E-commerce details associated with the user activity.</summary>
+    public class EcommerceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Action associated with this e-commerce action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; } 
+
+        /// <summary>The type of this e-commerce activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ecommerceType")]
+        public virtual string EcommerceType { get; set; } 
+
+        /// <summary>Details of the products in this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<ProductData> Products { get; set; } 
+
+        /// <summary>Transaction details of this e-commerce action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual TransactionData Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents all the details pertaining to an event.</summary>
+    public class EventData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of interaction with the object. Eg: 'play'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventAction")]
+        public virtual string EventAction { get; set; } 
+
+        /// <summary>The object on the page that was interacted with. Eg: 'Video'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventCategory")]
+        public virtual string EventCategory { get; set; } 
+
+        /// <summary>Number of such events in this activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventCount")]
+        public virtual System.Nullable<long> EventCount { get; set; } 
+
+        /// <summary>Label attached with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLabel")]
+        public virtual string EventLabel { get; set; } 
+
+        /// <summary>Numeric value associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventValue")]
+        public virtual System.Nullable<long> EventValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The batch request containing multiple report request.</summary>
     public class GetReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -654,6 +886,56 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// <summary>The amount of resource quota remaining for the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceQuotasRemaining")]
         public virtual ResourceQuotasRemaining ResourceQuotasRemaining { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents all the details pertaining to a goal.</summary>
+    public class GoalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of the page where this goal was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalCompletionLocation")]
+        public virtual string GoalCompletionLocation { get; set; } 
+
+        /// <summary>Total number of goal completions in this activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalCompletions")]
+        public virtual System.Nullable<long> GoalCompletions { get; set; } 
+
+        /// <summary>This identifies the goal as configured for the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalIndex")]
+        public virtual System.Nullable<int> GoalIndex { get; set; } 
+
+        /// <summary>Name of the goal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalName")]
+        public virtual string GoalName { get; set; } 
+
+        /// <summary>URL of the page one step prior to the goal completion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalPreviousStep1")]
+        public virtual string GoalPreviousStep1 { get; set; } 
+
+        /// <summary>URL of the page two steps prior to the goal completion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalPreviousStep2")]
+        public virtual string GoalPreviousStep2 { get; set; } 
+
+        /// <summary>URL of the page three steps prior to the goal completion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalPreviousStep3")]
+        public virtual string GoalPreviousStep3 { get; set; } 
+
+        /// <summary>Value in this goal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalValue")]
+        public virtual System.Nullable<double> GoalValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a set of goals that were reached in an activity.</summary>
+    public class GoalSetData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the goals that were reached in the current activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goals")]
+        public virtual System.Collections.Generic.IList<GoalData> Goals { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -792,6 +1074,21 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents details collected when the visitor views a page.</summary>
+    public class PageviewData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the page that the visitor viewed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pagePath")]
+        public virtual string PagePath { get; set; } 
+
+        /// <summary>The title of the page that the visitor viewed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageTitle")]
+        public virtual string PageTitle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The Pivot describes the pivot section in the request. The Pivot helps rearrange the information in the
     /// table for certain reports by pivoting your data on a second dimension.</summary>
     public class Pivot : Google.Apis.Requests.IDirectResponseSchema
@@ -876,6 +1173,30 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// <summary>The values of the metrics in each of the pivot regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details of the products in an e-commerce transaction.</summary>
+    public class ProductData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total revenue from purchased product items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemRevenue")]
+        public virtual System.Nullable<double> ItemRevenue { get; set; } 
+
+        /// <summary>The product name, supplied by the e-commerce tracking application, for the purchased
+        /// items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productName")]
+        public virtual string ProductName { get; set; } 
+
+        /// <summary>Total number of this product units in the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productQuantity")]
+        public virtual System.Nullable<long> ProductQuantity { get; set; } 
+
+        /// <summary>Unique code that represents the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSku")]
+        public virtual string ProductSku { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1098,6 +1419,94 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ScreenviewData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The application name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; } 
+
+        /// <summary>Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceBranding")]
+        public virtual string MobileDeviceBranding { get; set; } 
+
+        /// <summary>Mobile device model. Eg: "Pixel", "iPhone" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceModel")]
+        public virtual string MobileDeviceModel { get; set; } 
+
+        /// <summary>The name of the screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
+        public virtual string ScreenName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request to fetch User Report from Reporting API `userActivity:get` call.</summary>
+    public class SearchUserActivityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set of all activity types being requested. Only acvities matching these types will be returned in
+        /// the response. If empty, all activies will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activityTypes")]
+        public virtual System.Collections.Generic.IList<string> ActivityTypes { get; set; } 
+
+        /// <summary>Date range for which to retrieve the user activity. If a date range is not provided, the default
+        /// date range is (startDate: current date - 7 days, endDate: current date - 1 day).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; } 
+
+        /// <summary>Page size is for paging and specifies the maximum number of returned rows. Page size should be > 0.
+        /// If the value is 0 or if the field isn't specified, the request returns the default of 1000 rows per
+        /// page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>A continuation token to get the next page of the results. Adding this to the request will return
+        /// the rows after the pageToken. The pageToken should be the value returned in the nextPageToken parameter in
+        /// the response to the [SearchUserActivityRequest](#SearchUserActivityRequest) request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; } 
+
+        /// <summary>Required. Unique user Id to query for. Every
+        /// [SearchUserActivityRequest](#SearchUserActivityRequest) must contain this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; } 
+
+        /// <summary>Required. The Analytics [view ID](https://support.google.com/analytics/answer/1009618) from which
+        /// to retrieve data. Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the
+        /// `viewId`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewId")]
+        public virtual string ViewId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from `userActivity:get` call.</summary>
+    public class SearchUserActivityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This token should be passed to [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve
+        /// the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>This field represents the [sampling rate](https://support.google.com/analytics/answer/2637192) for
+        /// the given request and is a number between 0.0 to 1.0. See [developer
+        /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<double> SampleRate { get; set; } 
+
+        /// <summary>Each record represents a session (device details, duration, etc).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
+        public virtual System.Collections.Generic.IList<UserActivitySession> Sessions { get; set; } 
+
+        /// <summary>Total rows returned by this query (across different pages).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
+        public virtual System.Nullable<int> TotalRows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The segment definition, if the report needs to be segmented. A Segment is a subset of the Analytics
     /// data. For example, of the entire set of users, one Segment might be users from a particular country or
     /// city.</summary>
@@ -1276,6 +1685,79 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// <summary>A list of segment filters groups which are combined with logical `AND` operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orFiltersForSegment")]
         public virtual System.Collections.Generic.IList<OrFiltersForSegment> OrFiltersForSegment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents details collected when the visitor performs a transaction on the page.</summary>
+    public class TransactionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction ID, supplied by the e-commerce tracking method, for the purchase in the shopping
+        /// cart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
+        public virtual string TransactionId { get; set; } 
+
+        /// <summary>The total sale revenue (excluding shipping and tax) of the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionRevenue")]
+        public virtual System.Nullable<double> TransactionRevenue { get; set; } 
+
+        /// <summary>Total cost of shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionShipping")]
+        public virtual System.Nullable<double> TransactionShipping { get; set; } 
+
+        /// <summary>Total tax for the transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTax")]
+        public virtual System.Nullable<double> TransactionTax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information to identify a particular user uniquely.</summary>
+    public class User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the user in the request. The field `userId` is associated with this type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Unique Id of the user for which the data is being requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This represents a user session performed on a specific device at a certain time over a period of
+    /// time.</summary>
+    public class UserActivitySession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a detailed view into each of the activity in this session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activities")]
+        public virtual System.Collections.Generic.IList<Activity> Activities { get; set; } 
+
+        /// <summary>The data source of a hit. By default, hits sent from analytics.js are reported as "web" and hits
+        /// sent from the mobile SDKs are reported as "app". These values can be overridden in the Measurement
+        /// Protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; } 
+
+        /// <summary>The type of device used: "mobile", "tablet" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCategory")]
+        public virtual string DeviceCategory { get; set; } 
+
+        /// <summary>Platform on which the activity happened: "android", "ios" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; } 
+
+        /// <summary>Date of this session in ISO-8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionDate")]
+        public virtual string SessionDate { get; set; } 
+
+        /// <summary>Unique ID of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

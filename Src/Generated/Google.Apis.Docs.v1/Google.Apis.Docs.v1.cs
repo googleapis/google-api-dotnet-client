@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190305 (1524)
+ *      <tr><th>API Rev<td>20190312 (1531)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -1798,6 +1798,66 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Inserts a page break followed by a newline at the specified location.</summary>
+    public class InsertPageBreakRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inserts the page break at the end of the document body.
+        ///
+        /// Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted
+        /// inside the body, the segment ID field must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
+
+        /// <summary>Inserts the page break at a specific index in the document.
+        ///
+        /// The page break must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be
+        /// inserted at a table's start index (i.e. between the table and its preceding paragraph).
+        ///
+        /// Page breaks cannot be inserted inside a table, equation, footnote, header or footer. Since page breaks can
+        /// only be inserted inside the body, the segment ID field must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Inserts a table at the specified location.
+    ///
+    /// A newline character will be inserted before the inserted table.</summary>
+    public class InsertTableRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of columns in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Nullable<int> Columns { get; set; } 
+
+        /// <summary>Inserts the table at the end of the given header, footer or document body. A newline character will
+        /// be inserted before the inserted table.
+        ///
+        /// Tables cannot be inserted inside a footnote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
+
+        /// <summary>Inserts the table at a specific model index.
+        ///
+        /// A newline character will be inserted before the inserted table, therefore the table start index will be at
+        /// the specified location index + 1.
+        ///
+        /// The table must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted
+        /// at a table's start index (i.e. between an existing table and its preceding paragraph).
+        ///
+        /// Tables cannot be inserted inside a footnote or equation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; } 
+
+        /// <summary>The number of rows in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Nullable<int> Rows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Inserts an empty row into a table.</summary>
     public class InsertTableRowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2784,6 +2844,14 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Inserts an inline image at the specified location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertInlineImage")]
         public virtual InsertInlineImageRequest InsertInlineImage { get; set; } 
+
+        /// <summary>Inserts a page break at the specified location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertPageBreak")]
+        public virtual InsertPageBreakRequest InsertPageBreak { get; set; } 
+
+        /// <summary>Inserts a table at the specified location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTable")]
+        public virtual InsertTableRequest InsertTable { get; set; } 
 
         /// <summary>Inserts an empty row into a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTableRow")]
@@ -3847,14 +3915,29 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>Provides control over how write requests are executed.</summary>
     public class WriteControl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the revision of the document that the write request will be applied to. If this is not
-        /// the latest revision of the document, the request will not be processed and will return a 400 bad request
-        /// error.
+        /// <summary>The revision ID of the document that the write request will be applied to. If this is not the
+        /// latest revision of the document, the request will not be processed and will return a 400 bad request error.
         ///
         /// When a required revision ID is returned in a response, it indicates the revision ID of the document after
         /// the request was applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredRevisionId")]
         public virtual string RequiredRevisionId { get; set; } 
+
+        /// <summary>The target revision ID of the document that the write request will be applied to.
+        ///
+        /// If collaborator changes have occurred after the document was read using the API, the changes produced by
+        /// this write request will be transformed against the collaborator changes. This results in a new revision of
+        /// the document which incorporates both the changes in the request and the collaborator changes, and the Docs
+        /// server will resolve conflicting changes. When using `target_revision_id`, the API client can be thought of
+        /// as another collaborator of the document.
+        ///
+        /// The target revision ID may only be used to write to recent versions of a document. If the target revision is
+        /// too far behind the latest revision, the request will not be processed and will return a 400 bad request
+        /// error and the request should be retried after reading the latest version of the document. In most cases a
+        /// `revision_id` will remain valid for use as a target revision for several minutes after it is read, but for
+        /// frequently-edited documents this window may be shorter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRevisionId")]
+        public virtual string TargetRevisionId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

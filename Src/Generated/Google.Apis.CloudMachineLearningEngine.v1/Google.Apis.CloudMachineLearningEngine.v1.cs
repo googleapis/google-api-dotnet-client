@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190313 (1532)
+ *      <tr><th>API Rev<td>20190316 (1535)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -743,14 +743,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
-                /// more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
-                /// 'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
-                /// start with 'rnn': gcloud ml-engine jobs list --filter='jobId:rnn* AND state:FAILED' For more
-                /// examples, see the guide to monitoring jobs.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -764,6 +756,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
+                /// more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
+                /// 'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
+                /// start with 'rnn': gcloud ml-engine jobs list --filter='jobId:rnn* AND state:FAILED' For more
+                /// examples, see the guide to monitoring jobs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -799,15 +799,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -820,6 +811,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3135,7 +3135,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a training or prediction job.</summary>
+    /// <summary>Represents a training, prediction or explanation job.</summary>
     public class GoogleCloudMlV1Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. When the job was created.</summary>
@@ -3317,7 +3317,21 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
+        /// <summary>Optional. If true, enables logging of stderr and stdout streams for online prediction in
+        /// Stackdriver Logging. These can be more verbose than the standard access logs (see
+        /// `online_prediction_logging`) and thus can incur higher cost. However, they are helpful for debugging. Note
+        /// that since Stackdriver logs may incur a cost, particularly if the total QPS in your project is high, be sure
+        /// to estimate your costs before enabling this flag.
+        ///
+        /// Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionConsoleLogging")]
+        public virtual System.Nullable<bool> OnlinePredictionConsoleLogging { get; set; } 
+
+        /// <summary>Optional. If true, online prediction access logs are sent to StackDriver Logging. These logs are
+        /// like standard server access logs, containing information like timestamp and latency for each request. Note
+        /// that Stackdriver logs may incur a cost, particular if the total QPS in your project is high.
+        ///
+        /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
         public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
 
@@ -3440,8 +3454,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
         public virtual string DataFormat { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage location of the input data files. May contain
-        /// wildcards.</summary>
+        /// <summary>Required. The Google Cloud Storage location of the input data files. May contain wildcards. See
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputPaths")]
         public virtual System.Collections.Generic.IList<string> InputPaths { get; set; } 
 
@@ -3806,7 +3820,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
     /// multiple versions. You can get information about all of the versions of a given model by calling
     /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list). Next ID:
-    /// 29</summary>
+    /// 30</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and

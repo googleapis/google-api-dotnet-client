@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190306 (1525)
+ *      <tr><th>API Rev<td>20190313 (1532)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -9404,6 +9404,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The auto-install policy for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
         public virtual AutoInstallPolicy AutoInstallPolicy { get; set; } 
+
+        /// <summary>The managed configuration for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
+        public virtual ManagedConfiguration ManagedConfiguration { get; set; } 
 
         /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]

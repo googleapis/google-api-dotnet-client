@@ -1,16 +1,10 @@
 {
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Bigtable Admin API",
-  "ownerName": "Google",
   "resources": {
     "projects": {
       "resources": {
         "locations": {
           "methods": {
             "list": {
-              "path": "v1/{+name}/locations",
-              "id": "bigtableadmin.projects.locations.list",
-              "description": "Lists information about the supported locations for this service.",
               "response": {
                 "$ref": "ListLocationsResponse"
               },
@@ -19,33 +13,39 @@
               ],
               "httpMethod": "GET",
               "parameters": {
+                "pageSize": {
+                  "location": "query",
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "The standard list filter.",
+                  "type": "string"
+                },
                 "name": {
-                  "location": "path",
                   "description": "The resource that owns the locations collection, if applicable.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+$"
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
                 },
                 "pageToken": {
+                  "location": "query",
                   "description": "The standard list page token.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The standard list page size.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "filter": {
-                  "description": "The standard list filter.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/locations"
+              "flatPath": "v1/projects/{projectsId}/locations",
+              "path": "v1/{+name}/locations",
+              "id": "bigtableadmin.projects.locations.list",
+              "description": "Lists information about the supported locations for this service."
             },
             "get": {
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "path": "v1/{+name}",
+              "id": "bigtableadmin.projects.locations.get",
               "description": "Gets information about a location.",
               "response": {
                 "$ref": "Location"
@@ -62,10 +62,7 @@
                   "required": true,
                   "type": "string"
                 }
-              },
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "path": "v1/{+name}",
-              "id": "bigtableadmin.projects.locations.get"
+              }
             }
           }
         }
@@ -73,32 +70,6 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
     "$.xgafv": {
       "enumDescriptions": [
         "v1 error format",
@@ -113,16 +84,22 @@
       "type": "string"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
     "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -130,13 +107,7 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
+      "default": "json"
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
@@ -144,7 +115,33 @@
       "location": "query"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     }
@@ -161,9 +158,23 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
+    "PartialUpdateInstanceRequest": {
+      "description": "Request message for BigtableInstanceAdmin.PartialUpdateInstance.",
       "type": "object",
+      "properties": {
+        "updateMask": {
+          "description": "The subset of Instance fields which should be replaced.\nMust be explicitly set.",
+          "format": "google-fieldmask",
+          "type": "string"
+        },
+        "instance": {
+          "$ref": "Instance",
+          "description": "The Instance which will (partially) replace the current value."
+        }
+      },
+      "id": "PartialUpdateInstanceRequest"
+    },
+    "ListLocationsResponse": {
       "properties": {
         "locations": {
           "description": "A list of locations that matches the specified filter in the request.",
@@ -177,7 +188,9 @@
           "type": "string"
         }
       },
-      "id": "ListLocationsResponse"
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations.",
+      "type": "object"
     },
     "UpdateAppProfileMetadata": {
       "description": "The metadata for the Operation returned by UpdateAppProfile.",
@@ -186,25 +199,25 @@
       "id": "UpdateAppProfileMetadata"
     },
     "CreateInstanceMetadata": {
+      "description": "The metadata for the Operation returned by CreateInstance.",
+      "type": "object",
       "properties": {
-        "finishTime": {
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "originalRequest": {
-          "$ref": "CreateInstanceRequest",
-          "description": "The request that prompted the initiation of this CreateInstance operation."
+          "description": "The request that prompted the initiation of this CreateInstance operation.",
+          "$ref": "CreateInstanceRequest"
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
-      "id": "CreateInstanceMetadata",
-      "description": "The metadata for the Operation returned by CreateInstance.",
-      "type": "object"
+      "id": "CreateInstanceMetadata"
     },
     "CreateClusterMetadata": {
       "properties": {
@@ -223,11 +236,11 @@
           "type": "string"
         },
         "tables": {
+          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "TableProgress"
-          },
-          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far.",
-          "type": "object"
+          }
         }
       },
       "id": "CreateClusterMetadata",
@@ -239,17 +252,17 @@
       "type": "object",
       "properties": {
         "state": {
+          "enum": [
+            "STATE_NOT_KNOWN",
+            "READY",
+            "CREATING"
+          ],
           "description": "(`OutputOnly`)\nThe current state of the instance.",
           "type": "string",
           "enumDescriptions": [
             "The state of the instance could not be determined.",
             "The instance has been successfully created and can serve requests\nto its tables.",
             "The instance is currently being created, and may be destroyed\nif the creation process encounters an error."
-          ],
-          "enum": [
-            "STATE_NOT_KNOWN",
-            "READY",
-            "CREATING"
           ]
         },
         "name": {
@@ -285,6 +298,8 @@
       "id": "Instance"
     },
     "UpdateClusterMetadata": {
+      "description": "The metadata for the Operation returned by UpdateCluster.",
+      "type": "object",
       "properties": {
         "finishTime": {
           "description": "The time at which the operation failed or was completed successfully.",
@@ -292,8 +307,8 @@
           "type": "string"
         },
         "originalRequest": {
-          "$ref": "Cluster",
-          "description": "The request that prompted the initiation of this UpdateCluster operation."
+          "description": "The request that prompted the initiation of this UpdateCluster operation.",
+          "$ref": "Cluster"
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
@@ -301,17 +316,13 @@
           "type": "string"
         }
       },
-      "id": "UpdateClusterMetadata",
-      "description": "The metadata for the Operation returned by UpdateCluster.",
-      "type": "object"
+      "id": "UpdateClusterMetadata"
     },
     "CreateClusterRequest": {
-      "description": "Request message for BigtableInstanceAdmin.CreateCluster.",
-      "type": "object",
       "properties": {
         "cluster": {
-          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank.",
-          "$ref": "Cluster"
+          "$ref": "Cluster",
+          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank."
         },
         "parent": {
           "description": "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e`.",
@@ -322,19 +333,12 @@
           "type": "string"
         }
       },
-      "id": "CreateClusterRequest"
+      "id": "CreateClusterRequest",
+      "description": "Request message for BigtableInstanceAdmin.CreateCluster.",
+      "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object",
       "properties": {
-        "labels": {
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
         "name": {
           "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
           "type": "string"
@@ -354,14 +358,40 @@
           },
           "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
           "type": "object"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object"
         }
       },
-      "id": "Location"
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location.",
+      "type": "object"
     },
     "TableProgress": {
       "description": "Progress info for copying a table's data to the new cluster.",
       "type": "object",
       "properties": {
+        "state": {
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "PENDING",
+            "COPYING",
+            "COMPLETED",
+            "CANCELLED"
+          ],
+          "type": "string",
+          "enumDescriptions": [
+            "",
+            "The table has not yet begun copying to the new cluster.",
+            "The table is actively being copied to the new cluster.",
+            "The table has been fully copied to the new cluster.",
+            "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."
+          ]
+        },
         "estimatedCopiedBytes": {
           "description": "Estimate of the number of bytes copied so far for this table.\nThis will eventually reach 'estimated_size_bytes' unless the table copy\nis CANCELLED.",
           "format": "int64",
@@ -370,23 +400,6 @@
         "estimatedSizeBytes": {
           "description": "Estimate of the size of the table to be copied.",
           "format": "int64",
-          "type": "string"
-        },
-        "state": {
-          "enumDescriptions": [
-            "",
-            "The table has not yet begun copying to the new cluster.",
-            "The table is actively being copied to the new cluster.",
-            "The table has been fully copied to the new cluster.",
-            "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "PENDING",
-            "COPYING",
-            "COMPLETED",
-            "CANCELLED"
-          ],
           "type": "string"
         }
       },
@@ -408,8 +421,8 @@
           "type": "object"
         },
         "instance": {
-          "$ref": "Instance",
-          "description": "The instance to create.\nFields marked `OutputOnly` must be left blank."
+          "description": "The instance to create.\nFields marked `OutputOnly` must be left blank.",
+          "$ref": "Instance"
         },
         "parent": {
           "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/\u003cproject\u003e`.",
@@ -422,6 +435,10 @@
       "description": "A resizable group of nodes in a particular cloud location, capable\nof serving all Tables in the parent\nInstance.",
       "type": "object",
       "properties": {
+        "location": {
+          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
+          "type": "string"
+        },
         "state": {
           "enumDescriptions": [
             "The state of the cluster could not be determined.",
@@ -450,6 +467,8 @@
           "type": "integer"
         },
         "defaultStorageType": {
+          "description": "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden.",
+          "type": "string",
           "enumDescriptions": [
             "The user did not specify a storage type.",
             "Flash (SSD) storage should be used.",
@@ -459,13 +478,7 @@
             "STORAGE_TYPE_UNSPECIFIED",
             "SSD",
             "HDD"
-          ],
-          "description": "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden.",
-          "type": "string"
-        },
-        "location": {
-          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
-          "type": "string"
+          ]
         }
       },
       "id": "Cluster"
@@ -490,22 +503,6 @@
         }
       },
       "id": "UpdateInstanceMetadata"
-    },
-    "PartialUpdateInstanceRequest": {
-      "properties": {
-        "updateMask": {
-          "description": "The subset of Instance fields which should be replaced.\nMust be explicitly set.",
-          "format": "google-fieldmask",
-          "type": "string"
-        },
-        "instance": {
-          "$ref": "Instance",
-          "description": "The Instance which will (partially) replace the current value."
-        }
-      },
-      "id": "PartialUpdateInstanceRequest",
-      "description": "Request message for BigtableInstanceAdmin.PartialUpdateInstance.",
-      "type": "object"
     }
   },
   "icons": {
@@ -517,5 +514,8 @@
   "rootUrl": "https://bigtableadmin.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "bigtableadmin",
-  "batchPath": "batch"
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Bigtable Admin API",
+  "ownerName": "Google"
 }
