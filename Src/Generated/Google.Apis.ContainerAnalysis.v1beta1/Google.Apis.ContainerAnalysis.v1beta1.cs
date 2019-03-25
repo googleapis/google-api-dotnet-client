@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190308 (1527)
+ *      <tr><th>API Rev<td>20190315 (1534)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -414,10 +414,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The filter expression.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -425,6 +421,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     /// <summary>Number of occurrences to return in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The filter expression.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -460,15 +460,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                                 Pattern = @"^projects/[^/]+/notes/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -481,6 +472,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -867,6 +867,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If
                 /// not specified, page size defaults to 20.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -875,10 +879,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -914,6 +914,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -926,15 +935,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1717,10 +1717,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1729,6 +1725,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 /// 1000. If not specified, page size defaults to 20.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1764,15 +1764,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1785,6 +1776,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2146,10 +2146,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The number of scan configs to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2157,6 +2153,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The number of scan configs to return in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2192,15 +2192,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2213,6 +2204,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2343,6 +2343,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// verified) and intent (which authority was this attestation intended to sign for).</summary>
     public class Attestation : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("genericSignedAttestation")]
+        public virtual GenericSignedAttestation GenericSignedAttestation { get; set; } 
+
         /// <summary>A PGP signed attestation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pgpSignedAttestation")]
         public virtual PgpSignedAttestation PgpSignedAttestation { get; set; } 
@@ -2486,8 +2489,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
-        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
@@ -2984,6 +2987,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The total number of vulnerabilities associated with this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<long> TotalCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the
+    /// `plaintext` that the `signatures` verify and any metadata necessary to interpret that plaintext.  The signatures
+    /// should always be over the `plaintext` bytestring.</summary>
+    public class GenericSignedAttestation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type (for example schema) of the attestation payload that was signed. The verifier must ensure that
+        /// the provided type is one that the verifier supports, and that the attestation payload is a valid
+        /// instantiation of that type (for example by validating a JSON schema).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
+        /// <summary>The serialized payload that is verified by one or more `signatures`. The encoding and semantic
+        /// meaning of this payload must match what is set in `content_type`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializedPayload")]
+        public virtual string SerializedPayload { get; set; } 
+
+        /// <summary>One or more signatures over `serialized_payload`.  Verifier implementations should consider this
+        /// attestation message verified if at least one `signature` verifies `serialized_payload`.  See `Signature` in
+        /// common.proto for more details on signature structure and verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<Signature> Signatures { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3691,6 +3720,49 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// field is only used by Cloud IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors
+    /// defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map
+    /// from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm).
+    ///
+    /// In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a
+    /// key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a
+    /// mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel.
+    /// Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id`
+    /// is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature
+    /// with respect to the payload.
+    ///
+    /// The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature`
+    /// bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly
+    /// provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical
+    /// serialization of the proto message that holds this signature).</summary>
+    public class Signature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier for the public key that verifies this signature. * The `public_key_id` is required.
+        /// * The `public_key_id` MUST be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
+        /// immutable reference, such as a cryptographic digest.
+        ///
+        /// Examples of valid `public_key_id`s:
+        ///
+        /// OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
+        /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme.
+        ///
+        /// RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): *
+        /// "ni:sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
+        /// "nih:sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyId")]
+        public virtual string PublicKeyId { get; set; } 
+
+        /// <summary>The content of the signature, an opaque bytestring. The payload that this signature verifies MUST
+        /// be unambiguously provided with the Signature during verification. A wrapper message might provide the
+        /// payload explicitly. Alternatively, a message might have a canonical serialization that can always be
+        /// unambiguously computed to derive the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string SignatureValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/amp/cache/'>Accelerated Mobile Pages (AMP) URL API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190313 (1532)
+ *      <tr><th>API Rev<td>20190318 (1537)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/amp/cache/'>
  *              https://developers.google.com/amp/cache/</a>

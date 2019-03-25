@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/chqDZs4mMDeswA9Ayyy6-QMUFM8\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/kDvhnG4ywuwBGa5wCoBQ_7JiNQI\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20190221",
+ "revision": "20190308",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -6091,6 +6091,12 @@
      "items": {
       "$ref": "ServiceAccount"
      }
+    },
+    "shieldedInstanceConfig": {
+     "$ref": "ShieldedInstanceConfig"
+    },
+    "shieldedInstanceIntegrityPolicy": {
+     "$ref": "ShieldedInstanceIntegrityPolicy"
     },
     "startRestricted": {
      "type": "boolean",
@@ -12825,6 +12831,7 @@
       "CPUS",
       "CPUS_ALL_REGIONS",
       "DISKS_TOTAL_GB",
+      "EXTERNAL_VPN_GATEWAYS",
       "FIREWALLS",
       "FORWARDING_RULES",
       "GLOBAL_INTERNAL_ADDRESSES",
@@ -12886,6 +12893,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -15510,6 +15518,71 @@
      "items": {
       "type": "string"
      }
+    }
+   }
+  },
+  "ShieldedInstanceConfig": {
+   "id": "ShieldedInstanceConfig",
+   "type": "object",
+   "description": "A set of Shielded Instance options.",
+   "properties": {
+    "enableIntegrityMonitoring": {
+     "type": "boolean",
+     "description": "Defines whether the instance has integrity monitoring enabled."
+    },
+    "enableSecureBoot": {
+     "type": "boolean",
+     "description": "Defines whether the instance has Secure Boot enabled."
+    },
+    "enableVtpm": {
+     "type": "boolean",
+     "description": "Defines whether the instance has the vTPM enabled."
+    }
+   }
+  },
+  "ShieldedInstanceIdentity": {
+   "id": "ShieldedInstanceIdentity",
+   "type": "object",
+   "description": "A shielded Instance identity entry.",
+   "properties": {
+    "encryptionKey": {
+     "$ref": "ShieldedInstanceIdentityEntry",
+     "description": "An Endorsement Key (EK) issued to the Shielded Instance's vTPM."
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of the resource. Always compute#shieldedInstanceIdentity for shielded Instance identity entry.",
+     "default": "compute#shieldedInstanceIdentity"
+    },
+    "signingKey": {
+     "$ref": "ShieldedInstanceIdentityEntry",
+     "description": "An Attestation Key (AK) issued to the Shielded Instance's vTPM."
+    }
+   }
+  },
+  "ShieldedInstanceIdentityEntry": {
+   "id": "ShieldedInstanceIdentityEntry",
+   "type": "object",
+   "description": "A Shielded Instance Identity Entry.",
+   "properties": {
+    "ekCert": {
+     "type": "string",
+     "description": "A PEM-encoded X.509 certificate. This field can be empty."
+    },
+    "ekPub": {
+     "type": "string",
+     "description": "A PEM-encoded public key."
+    }
+   }
+  },
+  "ShieldedInstanceIntegrityPolicy": {
+   "id": "ShieldedInstanceIntegrityPolicy",
+   "type": "object",
+   "description": "The policy describes the baseline against which Instance boot integrity is measured.",
+   "properties": {
+    "updateAutoLearnPolicy": {
+     "type": "boolean",
+     "description": "Updates the integrity policy baseline using the measurements from the VM instance's most recent boot."
     }
    }
   },
@@ -26239,6 +26312,48 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getShieldedInstanceIdentity": {
+     "id": "compute.instances.getShieldedInstanceIdentity",
+     "path": "{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity",
+     "httpMethod": "GET",
+     "description": "Returns the Shielded Instance Identity of an instance",
+     "parameters": {
+      "instance": {
+       "type": "string",
+       "description": "Name or id of the instance scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instance"
+     ],
+     "response": {
+      "$ref": "ShieldedInstanceIdentity"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "insert": {
      "id": "compute.instances.insert",
      "path": "{project}/zones/{zone}/instances",
@@ -26953,6 +27068,55 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
+    "setShieldedInstanceIntegrityPolicy": {
+     "id": "compute.instances.setShieldedInstanceIntegrityPolicy",
+     "path": "{project}/zones/{zone}/instances/{instance}/setShieldedInstanceIntegrityPolicy",
+     "httpMethod": "PATCH",
+     "description": "Sets the Shielded Instance integrity policy for an instance. You can only use this method on a running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+     "parameters": {
+      "instance": {
+       "type": "string",
+       "description": "Name or id of the instance scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instance"
+     ],
+     "request": {
+      "$ref": "ShieldedInstanceIntegrityPolicy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setTags": {
      "id": "compute.instances.setTags",
      "path": "{project}/zones/{zone}/instances/{instance}/setTags",
@@ -27332,6 +27496,55 @@
      ],
      "request": {
       "$ref": "NetworkInterface"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "updateShieldedInstanceConfig": {
+     "id": "compute.instances.updateShieldedInstanceConfig",
+     "path": "{project}/zones/{zone}/instances/{instance}/updateShieldedInstanceConfig",
+     "httpMethod": "PATCH",
+     "description": "Updates the Shielded Instance config for an instance. You can only use this method on a stopped instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
+     "parameters": {
+      "instance": {
+       "type": "string",
+       "description": "Name or id of the instance scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instance"
+     ],
+     "request": {
+      "$ref": "ShieldedInstanceConfig"
      },
      "response": {
       "$ref": "Operation"

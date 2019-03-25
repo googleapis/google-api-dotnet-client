@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>Groups Settings API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180615 (1261)
+ *      <tr><th>API Rev<td>20190315 (1534)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>
  *              https://developers.google.com/google-apps/groups-settings/get_started</a>
@@ -499,6 +499,11 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customReplyTo")]
         public virtual string CustomReplyTo { get; set; } 
 
+        /// <summary>If any of the settings that will be merged have custom roles which is anything other than owners,
+        /// managers, or group scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRolesEnabledForSettingsToBeMerged")]
+        public virtual string CustomRolesEnabledForSettingsToBeMerged { get; set; } 
+
         /// <summary>Default message deny notification message</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMessageDenyNotificationText")]
         public virtual string DefaultMessageDenyNotificationText { get; set; } 
@@ -510,6 +515,10 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// <summary>Email id of the group</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>If a primary Collab Inbox feature is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCollaborativeInbox")]
+        public virtual string EnableCollaborativeInbox { get; set; } 
 
         /// <summary>If favorite replies should be displayed above other replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("favoriteRepliesOnTop")]
@@ -584,20 +593,60 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAddReferences")]
         public virtual string WhoCanAddReferences { get; set; } 
 
+        /// <summary>Permission to approve members. Possible values are: ALL_OWNERS_CAN_APPROVE ALL_MANAGERS_CAN_APPROVE
+        /// ALL_MEMBERS_CAN_APPROVE NONE_CAN_APPROVE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanApproveMembers")]
+        public virtual string WhoCanApproveMembers { get; set; } 
+
+        /// <summary>Permission to approve pending messages in the moderation queue. Possible values are: NONE
+        /// OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanApproveMessages")]
+        public virtual string WhoCanApproveMessages { get; set; } 
+
         /// <summary>Permission to assign topics in a forum to another user. Possible values are: NONE OWNERS_ONLY
         /// MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanAssignTopics")]
         public virtual string WhoCanAssignTopics { get; set; } 
+
+        /// <summary>Permission for content assistants. Possible values are: Possible values are: NONE OWNERS_ONLY
+        /// MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanAssistContent")]
+        public virtual string WhoCanAssistContent { get; set; } 
+
+        /// <summary>Permission to ban users. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanBanUsers")]
+        public virtual string WhoCanBanUsers { get; set; } 
 
         /// <summary>Permission to contact owner of the group via web UI. Possible values are: ANYONE_CAN_CONTACT
         /// ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanContactOwner")]
         public virtual string WhoCanContactOwner { get; set; } 
 
+        /// <summary>Permission to delete replies to topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanDeleteAnyPost")]
+        public virtual string WhoCanDeleteAnyPost { get; set; } 
+
+        /// <summary>Permission to delete topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanDeleteTopics")]
+        public virtual string WhoCanDeleteTopics { get; set; } 
+
+        /// <summary>Permission for who can discover the group. Possible values are: ALL_MEMBERS_CAN_DISCOVER
+        /// ALL_IN_DOMAIN_CAN_DISCOVER ANYONE_CAN_DISCOVER</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanDiscoverGroup")]
+        public virtual string WhoCanDiscoverGroup { get; set; } 
+
         /// <summary>Permission to enter free form tags for topics in a forum. Possible values are: NONE OWNERS_ONLY
         /// MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanEnterFreeFormTags")]
         public virtual string WhoCanEnterFreeFormTags { get; set; } 
+
+        /// <summary>Permission to hide posts by reporting them as abuse. Possible values are: NONE OWNERS_ONLY
+        /// MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanHideAbuse")]
+        public virtual string WhoCanHideAbuse { get; set; } 
 
         /// <summary>Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE
         /// ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE</summary>
@@ -613,6 +662,16 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanLeaveGroup")]
         public virtual string WhoCanLeaveGroup { get; set; } 
+
+        /// <summary>Permission to lock topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanLockTopics")]
+        public virtual string WhoCanLockTopics { get; set; } 
+
+        /// <summary>Permission to make topics appear at the top of the topic list. Possible values are: NONE
+        /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanMakeTopicsSticky")]
+        public virtual string WhoCanMakeTopicsSticky { get; set; } 
 
         /// <summary>Permission to mark a topic as a duplicate of another topic. Possible values are: NONE OWNERS_ONLY
         /// MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
@@ -634,10 +693,40 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanMarkNoResponseNeeded")]
         public virtual string WhoCanMarkNoResponseNeeded { get; set; } 
 
+        /// <summary>Permission for content moderation. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanModerateContent")]
+        public virtual string WhoCanModerateContent { get; set; } 
+
+        /// <summary>Permission for membership moderation. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS
+        /// ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanModerateMembers")]
+        public virtual string WhoCanModerateMembers { get; set; } 
+
+        /// <summary>Permission to modify members (change member roles). Possible values are: NONE OWNERS_ONLY
+        /// OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanModifyMembers")]
+        public virtual string WhoCanModifyMembers { get; set; } 
+
         /// <summary>Permission to change tags and categories. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY
         /// OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanModifyTagsAndCategories")]
         public virtual string WhoCanModifyTagsAndCategories { get; set; } 
+
+        /// <summary>Permission to move topics into the group or forum. Possible values are: NONE OWNERS_ONLY
+        /// OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanMoveTopicsIn")]
+        public virtual string WhoCanMoveTopicsIn { get; set; } 
+
+        /// <summary>Permission to move topics out of the group or forum. Possible values are: NONE OWNERS_ONLY
+        /// OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanMoveTopicsOut")]
+        public virtual string WhoCanMoveTopicsOut { get; set; } 
+
+        /// <summary>Permission to post announcements, a special topic type. Possible values are: NONE OWNERS_ONLY
+        /// OWNERS_AND_MANAGERS ALL_MEMBERS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanPostAnnouncements")]
+        public virtual string WhoCanPostAnnouncements { get; set; } 
 
         /// <summary>Permissions to post messages to the group. Possible values are: NONE_CAN_POST ALL_MANAGERS_CAN_POST
         /// ALL_MEMBERS_CAN_POST ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST</summary>
@@ -665,7 +754,7 @@ namespace Google.Apis.Groupssettings.v1.Data
         public virtual string WhoCanViewGroup { get; set; } 
 
         /// <summary>Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW
-        /// ALL_MANAGERS_CAN_VIEW</summary>
+        /// ALL_MANAGERS_CAN_VIEW ALL_OWNERS_CAN_VIEW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanViewMembership")]
         public virtual string WhoCanViewMembership { get; set; } 
 

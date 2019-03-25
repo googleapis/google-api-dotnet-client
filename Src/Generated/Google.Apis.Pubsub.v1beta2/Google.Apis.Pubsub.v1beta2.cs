@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190227 (1518)
+ *      <tr><th>API Rev<td>20190314 (1533)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -2079,6 +2079,28 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains information needed for generating an [OpenID Connect
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect).</summary>
+    public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audience to be used when generating OIDC token. The audience claim identifies the recipients that
+        /// the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values
+        /// (array) for the audience field is not supported. More info about the OIDC JWT token audience here:
+        /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; } 
+
+        /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
+        /// generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig
+        /// RPCs) must have the iam.serviceAccounts.actAs permission for the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
@@ -2229,6 +2251,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// format defined in the v1 Pub/Sub API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+
+        /// <summary>If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in
+        /// the HTTP request for every pushed message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; } 
 
         /// <summary>A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint
         /// might use "https://example.com/push".</summary>

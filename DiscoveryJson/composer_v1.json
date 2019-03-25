@@ -1,9 +1,127 @@
 {
+  "baseUrl": "https://composer.googleapis.com/",
+  "servicePath": "",
+  "description": "Manages Apache Airflow environments on Google Cloud Platform.",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "id": "composer:v1",
+  "documentationLink": "https://cloud.google.com/composer/",
+  "revision": "20190311",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "NodeConfig": {
+    "OperationMetadata": {
+      "description": "Metadata describing an operation.",
+      "type": "object",
       "properties": {
+        "endTime": {
+          "description": "Output only.\nThe time when the operation terminated, regardless of its success.\nThis field is unset if the operation is still ongoing.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "operationType": {
+          "enumDescriptions": [
+            "Unused.",
+            "A resource creation operation.",
+            "A resource deletion operation.",
+            "A resource update operation."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "CREATE",
+            "DELETE",
+            "UPDATE"
+          ],
+          "description": "Output only.\nThe type of operation being performed.",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Output only.\nThe time the operation was submitted to the server.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "resource": {
+          "description": "Output only.\nThe resource being operated on, as a [relative resource name](\n/apis/design/resource_names#relative_resource_name).",
+          "type": "string"
+        },
+        "state": {
+          "enumDescriptions": [
+            "Unused.",
+            "The operation has been created but is not yet started.",
+            "The operation is underway.",
+            "The operation completed successfully.",
+            "",
+            "The operation is no longer running but did not succeed."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "PENDING",
+            "RUNNING",
+            "SUCCEEDED",
+            "SUCCESSFUL",
+            "FAILED"
+          ],
+          "description": "Output only.\nThe current operation state.",
+          "type": "string"
+        },
+        "resourceUuid": {
+          "description": "Output only.\nThe UUID of the resource being operated on.",
+          "type": "string"
+        }
+      },
+      "id": "OperationMetadata"
+    },
+    "SoftwareConfig": {
+      "description": "Specifies the selection and configuration of software inside the environment.",
+      "type": "object",
+      "properties": {
+        "airflowConfigOverrides": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional. Apache Airflow configuration properties to override.\n\nProperty keys contain the section and property names, separated by a hyphen,\nfor example \"core-dags_are_paused_at_creation\". Section names must not\ncontain hyphens (\"-\"), opening square brackets (\"[\"),  or closing square\nbrackets (\"]\"). The property name must not be empty and must not contain\nan equals sign (\"=\") or semicolon (\";\"). Section and property names must\nnot contain a period (\".\"). Apache Airflow configuration property names\nmust be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).\nProperty values can contain any character, and can be written in any\nlower/upper case format.\n\nCertain Apache Airflow configuration property values are\n[blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),\nand cannot be overridden.",
+          "type": "object"
+        },
+        "envVariables": {
+          "description": "Optional. Additional environment variables to provide to the Apache Airflow\nscheduler, worker, and webserver processes.\n\nEnvironment variable names must match the regular expression\n`a-zA-Z_*`. They cannot specify Apache Airflow\nsoftware configuration overrides (they cannot match the regular expression\n`AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the\nfollowing reserved names:\n\n* `AIRFLOW_HOME`\n* `C_FORCE_ROOT`\n* `CONTAINER_NAME`\n* `DAGS_FOLDER`\n* `GCP_PROJECT`\n* `GCS_BUCKET`\n* `GKE_CLUSTER_NAME`\n* `SQL_DATABASE`\n* `SQL_INSTANCE`\n* `SQL_PASSWORD`\n* `SQL_PROJECT`\n* `SQL_REGION`\n* `SQL_USER`",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "pythonVersion": {
+          "description": "Optional. The major version of Python used to run the Apache Airflow\nscheduler, worker, and webserver processes.\n\nCan be set to '2' or '3'. If not specified, the default is '2'. Cannot be\nupdated.",
+          "type": "string"
+        },
+        "pypiPackages": {
+          "description": "Optional. Custom Python Package Index (PyPI) packages to be installed in\nthe environment.\n\nKeys refer to the lowercase package name such as \"numpy\"\nand values are the lowercase extras and version specifier such as\n\"==1.12.0\", \"[devel,gcp_api]\", or \"[devel]\u003e=1.8.2, \u003c1.9.2\". To specify a\npackage without pinning it to a version specifier, use the empty string as\nthe value.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "imageVersion": {
+          "description": "The version of the software running in the environment.\nThis encapsulates both the version of Cloud Composer functionality and the\nversion of Apache Airflow. It must match the regular expression\n`composer-([0-9]+\\.[0-9]+\\.[0-9]+|latest)-airflow-[0-9]+\\.[0-9]+(\\.[0-9]+.*)?`.\nWhen used as input, the server also checks if the provided version is\nsupported and denies the request for an unsupported version.\n\nThe Cloud Composer portion of the version is a\n[semantic version](https://semver.org) or `latest`. When the patch version\nis omitted, the current Cloud Composer patch version is selected.\nWhen `latest` is provided instead of an explicit version number,\nthe server replaces `latest` with the current Cloud Composer version\nand stores that version number in the same field.\n\nThe portion of the image version that follows \u003cem\u003eairflow-\u003c/em\u003e is an\nofficial Apache Airflow repository\n[release name](https://github.com/apache/incubator-airflow/releases).\n\nSee also [Version List](/composer/docs/concepts/versioning/composer-versions).",
+          "type": "string"
+        }
+      },
+      "id": "SoftwareConfig"
+    },
+    "NodeConfig": {
+      "description": "The configuration information for the Kubernetes Engine nodes running\nthe Apache Airflow software.",
+      "type": "object",
+      "properties": {
+        "oauthScopes": {
+          "description": "Optional. The set of Google API scopes to be made available on all\nnode VMs. If `oauth_scopes` is empty, defaults to\n[\"https://www.googleapis.com/auth/cloud-platform\"]. Cannot be updated.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subnetwork": {
+          "description": "Optional. The Compute Engine subnetwork to be used for machine\ncommunications, specified as a\n[relative resource name](/apis/design/resource_names#relative_resource_name).\nFor example:\n\"projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}\"\n\nIf a subnetwork is provided, `nodeConfig.network` must also be provided,\nand the subnetwork must belong to the enclosing environment's project and\nlocation.",
+          "type": "string"
+        },
         "diskSizeGb": {
           "description": "Optional. The disk size in GB used for node VMs. Minimum size is 20GB.\nIf unspecified, defaults to 100GB. Cannot be updated.",
           "format": "int32",
@@ -31,27 +149,18 @@
         "network": {
           "description": "Optional. The Compute Engine network to be used for machine\ncommunications, specified as a\n[relative resource name](/apis/design/resource_names#relative_resource_name).\nFor example: \"projects/{projectId}/global/networks/{networkId}\".\n\n[Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The\nnetwork must belong to the environment's project. If unspecified, the\n\"default\" network ID in the environment's project is used.  If a\n[Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets)\nis provided, `nodeConfig.subnetwork` must also be provided.",
           "type": "string"
-        },
-        "oauthScopes": {
-          "description": "Optional. The set of Google API scopes to be made available on all\nnode VMs. If `oauth_scopes` is empty, defaults to\n[\"https://www.googleapis.com/auth/cloud-platform\"]. Cannot be updated.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "subnetwork": {
-          "description": "Optional. The Compute Engine subnetwork to be used for machine\ncommunications, specified as a\n[relative resource name](/apis/design/resource_names#relative_resource_name).\nFor example:\n\"projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}\"\n\nIf a subnetwork is provided, `nodeConfig.network` must also be provided,\nand the subnetwork must belong to the enclosing environment's project and\nlocation.",
-          "type": "string"
         }
       },
-      "id": "NodeConfig",
-      "description": "The configuration information for the Kubernetes Engine nodes running\nthe Apache Airflow software.",
-      "type": "object"
+      "id": "NodeConfig"
     },
     "ImageVersion": {
       "description": "ImageVersion information",
       "type": "object",
       "properties": {
+        "imageVersionId": {
+          "description": "The string identifier of the ImageVersion, in the form:\n\"composer-x.y.z-airflow-a.b(.c)\"",
+          "type": "string"
+        },
         "supportedPythonVersions": {
           "description": "supported python versions",
           "type": "array",
@@ -62,62 +171,80 @@
         "isDefault": {
           "description": "Whether this is the default ImageVersion used by Composer during\nenvironment creation if no input ImageVersion is specified.",
           "type": "boolean"
-        },
-        "imageVersionId": {
-          "description": "The string identifier of the ImageVersion, in the form:\n\"composer-x.y.z-airflow-a.b(.c)\"",
-          "type": "string"
         }
       },
       "id": "ImageVersion"
     },
     "Operation": {
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object",
       "properties": {
         "done": {
           "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
           "type": "boolean"
         },
         "response": {
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
+          }
         },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
           "type": "string"
         },
         "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
         },
         "metadata": {
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
+          }
         }
       },
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object"
+      "id": "Operation"
     },
     "Environment": {
+      "description": "An environment for running orchestration tasks.",
+      "type": "object",
       "properties": {
-        "createTime": {
-          "description": "Output only.\nThe time at which this environment was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "labels": {
           "additionalProperties": {
             "type": "string"
           },
           "description": "Optional. User-defined labels for this environment.\nThe labels map can contain no more than 64 entries. Entries of the labels\nmap are UTF8 strings that comply with the following restrictions:\n\n* Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62}\n* Values must conform to regexp:  [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n* Both keys and values are additionally constrained to be \u003c= 128 bytes in\nsize.",
           "type": "object"
+        },
+        "createTime": {
+          "description": "Output only.\nThe time at which this environment was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "state": {
+          "description": "The current state of the environment.",
+          "type": "string",
+          "enumDescriptions": [
+            "The state of the environment is unknown.",
+            "The environment is in the process of being created.",
+            "The environment is currently running and healthy. It is ready for use.",
+            "The environment is being updated. It remains usable but cannot receive\nadditional update requests or be deleted at this time.",
+            "The environment is undergoing deletion. It cannot be used.",
+            "The environment has encountered an error and cannot be used."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CREATING",
+            "RUNNING",
+            "UPDATING",
+            "DELETING",
+            "ERROR"
+          ]
         },
         "updateTime": {
           "description": "Output only.\nThe time at which this environment was last modified.",
@@ -128,26 +255,6 @@
           "description": "Configuration parameters for this environment.",
           "$ref": "EnvironmentConfig"
         },
-        "state": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "RUNNING",
-            "UPDATING",
-            "DELETING",
-            "ERROR"
-          ],
-          "description": "The current state of the environment.",
-          "type": "string",
-          "enumDescriptions": [
-            "The state of the environment is unknown.",
-            "The environment is in the process of being created.",
-            "The environment is currently running and healthy. It is ready for use.",
-            "The environment is being updated. It remains usable but cannot receive\nadditional update requests or be deleted at this time.",
-            "The environment is undergoing deletion. It cannot be used.",
-            "The environment has encountered an error and cannot be used."
-          ]
-        },
         "name": {
           "description": "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
           "type": "string"
@@ -157,30 +264,35 @@
           "type": "string"
         }
       },
-      "id": "Environment",
-      "description": "An environment for running orchestration tasks.",
-      "type": "object"
+      "id": "Environment"
     },
     "ListImageVersionsResponse": {
+      "description": "The ImageVersions in a project and location.",
+      "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "The page token used to query for the next page if one exists.",
-          "type": "string"
-        },
         "imageVersions": {
           "description": "The list of supported ImageVersions in a location.",
           "type": "array",
           "items": {
             "$ref": "ImageVersion"
           }
+        },
+        "nextPageToken": {
+          "description": "The page token used to query for the next page if one exists.",
+          "type": "string"
         }
       },
-      "id": "ListImageVersionsResponse",
-      "description": "The ImageVersions in a project and location.",
-      "type": "object"
+      "id": "ListImageVersionsResponse"
     },
     "Status": {
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+      "type": "object",
       "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        },
         "message": {
           "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
           "type": "string"
@@ -195,16 +307,9 @@
             },
             "type": "object"
           }
-        },
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
         }
       },
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
-      "type": "object"
+      "id": "Status"
     },
     "EnvironmentConfig": {
       "description": "Configuration information for an environment.",
@@ -263,6 +368,8 @@
       "id": "ListEnvironmentsResponse"
     },
     "ListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
       "properties": {
         "nextPageToken": {
           "description": "The standard List next-page token.",
@@ -276,106 +383,7 @@
           }
         }
       },
-      "id": "ListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object"
-    },
-    "OperationMetadata": {
-      "description": "Metadata describing an operation.",
-      "type": "object",
-      "properties": {
-        "operationType": {
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "CREATE",
-            "DELETE",
-            "UPDATE"
-          ],
-          "description": "Output only.\nThe type of operation being performed.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unused.",
-            "A resource creation operation.",
-            "A resource deletion operation.",
-            "A resource update operation."
-          ]
-        },
-        "createTime": {
-          "description": "Output only.\nThe time the operation was submitted to the server.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "resource": {
-          "description": "Output only.\nThe resource being operated on, as a [relative resource name](\n/apis/design/resource_names#relative_resource_name).",
-          "type": "string"
-        },
-        "state": {
-          "enumDescriptions": [
-            "Unused.",
-            "The operation has been created but is not yet started.",
-            "The operation is underway.",
-            "The operation completed successfully.",
-            "",
-            "The operation is no longer running but did not succeed."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "PENDING",
-            "RUNNING",
-            "SUCCEEDED",
-            "SUCCESSFUL",
-            "FAILED"
-          ],
-          "description": "Output only.\nThe current operation state.",
-          "type": "string"
-        },
-        "resourceUuid": {
-          "description": "Output only.\nThe UUID of the resource being operated on.",
-          "type": "string"
-        },
-        "endTime": {
-          "description": "Output only.\nThe time when the operation terminated, regardless of its success.\nThis field is unset if the operation is still ongoing.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "OperationMetadata"
-    },
-    "SoftwareConfig": {
-      "description": "Specifies the selection and configuration of software inside the environment.",
-      "type": "object",
-      "properties": {
-        "pypiPackages": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional. Custom Python Package Index (PyPI) packages to be installed in\nthe environment.\n\nKeys refer to the lowercase package name such as \"numpy\"\nand values are the lowercase extras and version specifier such as\n\"==1.12.0\", \"[devel,gcp_api]\", or \"[devel]\u003e=1.8.2, \u003c1.9.2\". To specify a\npackage without pinning it to a version specifier, use the empty string as\nthe value.",
-          "type": "object"
-        },
-        "imageVersion": {
-          "description": "The version of the software running in the environment.\nThis encapsulates both the version of Cloud Composer functionality and the\nversion of Apache Airflow. It must match the regular expression\n`composer-([0-9]+\\.[0-9]+\\.[0-9]+|latest)-airflow-[0-9]+\\.[0-9]+(\\.[0-9]+.*)?`.\nWhen used as input, the server also checks if the provided version is\nsupported and denies the request for an unsupported version.\n\nThe Cloud Composer portion of the version is a\n[semantic version](https://semver.org) or `latest`. When the patch version\nis omitted, the current Cloud Composer patch version is selected.\nWhen `latest` is provided instead of an explicit version number,\nthe server replaces `latest` with the current Cloud Composer version\nand stores that version number in the same field.\n\nThe portion of the image version that follows \u003cem\u003eairflow-\u003c/em\u003e is an\nofficial Apache Airflow repository\n[release name](https://github.com/apache/incubator-airflow/releases).\n\nSee also [Version List](/composer/docs/concepts/versioning/composer-versions).",
-          "type": "string"
-        },
-        "airflowConfigOverrides": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional. Apache Airflow configuration properties to override.\n\nProperty keys contain the section and property names, separated by a hyphen,\nfor example \"core-dags_are_paused_at_creation\". Section names must not\ncontain hyphens (\"-\"), opening square brackets (\"[\"),  or closing square\nbrackets (\"]\"). The property name must not be empty and must not contain\nan equals sign (\"=\") or semicolon (\";\"). Section and property names must\nnot contain a period (\".\"). Apache Airflow configuration property names\nmust be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).\nProperty values can contain any character, and can be written in any\nlower/upper case format.\n\nCertain Apache Airflow configuration property values are\n[blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),\nand cannot be overridden.",
-          "type": "object"
-        },
-        "envVariables": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional. Additional environment variables to provide to the Apache Airflow\nscheduler, worker, and webserver processes.\n\nEnvironment variable names must match the regular expression\n`a-zA-Z_*`. They cannot specify Apache Airflow\nsoftware configuration overrides (they cannot match the regular expression\n`AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the\nfollowing reserved names:\n\n* `AIRFLOW_HOME`\n* `C_FORCE_ROOT`\n* `CONTAINER_NAME`\n* `DAGS_FOLDER`\n* `GCP_PROJECT`\n* `GCS_BUCKET`\n* `GKE_CLUSTER_NAME`\n* `SQL_DATABASE`\n* `SQL_INSTANCE`\n* `SQL_PASSWORD`\n* `SQL_PROJECT`\n* `SQL_REGION`\n* `SQL_USER`",
-          "type": "object"
-        },
-        "pythonVersion": {
-          "description": "Optional. The major version of Python used to run the Apache Airflow\nscheduler, worker, and webserver processes.\n\nCan be set to '2' or '3'. If not specified, the default is '2'. Cannot be\nupdated.",
-          "type": "string"
-        }
-      },
-      "id": "SoftwareConfig"
+      "id": "ListOperationsResponse"
     }
   },
   "protocol": "rest",
@@ -405,75 +413,144 @@
       "resources": {
         "locations": {
           "resources": {
-            "imageVersions": {
+            "operations": {
               "methods": {
                 "list": {
-                  "description": "List ImageVersions for provided location.",
                   "response": {
-                    "$ref": "ListImageVersionsResponse"
+                    "$ref": "ListOperationsResponse"
                   },
                   "parameterOrder": [
-                    "parent"
+                    "name"
                   ],
                   "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "List ImageVersions in the given project and location, in the form:\n\"projects/{projectId}/locations/{locationId}\"",
-                      "required": true,
+                    "pageSize": {
+                      "description": "The standard list page size.",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "The standard list filter.",
                       "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
                     },
                     "pageToken": {
                       "location": "query",
-                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "description": "The standard list page token.",
                       "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "The maximum number of image_versions to return.",
-                      "format": "int32",
-                      "type": "integer"
                     }
                   },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/imageVersions",
-                  "path": "v1/{+parent}/imageVersions",
-                  "id": "composer.projects.locations.imageVersions.list"
-                }
-              }
-            },
-            "environments": {
-              "methods": {
-                "delete": {
-                  "description": "Delete an environment.",
-                  "httpMethod": "DELETE",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "path": "v1/{+name}/operations",
+                  "id": "composer.projects.locations.operations.list",
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
+                },
+                "get": {
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
                   "response": {
                     "$ref": "Operation"
                   },
                   "parameterOrder": [
                     "name"
                   ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
                       "location": "path",
-                      "description": "The environment to delete, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
+                      "description": "The name of the operation resource.",
                       "required": true,
-                      "type": "string"
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1/{+name}",
+                  "id": "composer.projects.locations.operations.get"
+                },
+                "delete": {
+                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
-                  "id": "composer.projects.locations.environments.delete",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "id": "composer.projects.locations.operations.delete",
                   "path": "v1/{+name}"
-                },
+                }
+              }
+            },
+            "imageVersions": {
+              "methods": {
+                "list": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/imageVersions",
+                  "id": "composer.projects.locations.imageVersions.list",
+                  "path": "v1/{+parent}/imageVersions",
+                  "description": "List ImageVersions for provided location.",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "response": {
+                    "$ref": "ListImageVersionsResponse"
+                  },
+                  "parameters": {
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of image_versions to return.",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "location": "path",
+                      "description": "List ImageVersions in the given project and location, in the form:\n\"projects/{projectId}/locations/{locationId}\"",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                }
+              }
+            },
+            "environments": {
+              "methods": {
                 "get": {
-                  "description": "Get an existing environment.",
                   "response": {
                     "$ref": "Environment"
                   },
@@ -481,24 +558,24 @@
                     "name"
                   ],
                   "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "parameters": {
                     "name": {
+                      "location": "path",
                       "description": "The resource name of the environment to get, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/locations/[^/]+/environments/[^/]+$"
                     }
                   },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
                   "path": "v1/{+name}",
-                  "id": "composer.projects.locations.environments.get"
+                  "id": "composer.projects.locations.environments.get",
+                  "description": "Get an existing environment."
                 },
                 "list": {
-                  "description": "List environments.",
                   "response": {
                     "$ref": "ListEnvironmentsResponse"
                   },
@@ -510,37 +587,42 @@
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "List environments in the given project and location, in the form:\n\"projects/{projectId}/locations/{locationId}\"",
-                      "required": true,
-                      "type": "string"
-                    },
                     "pageToken": {
-                      "location": "query",
                       "description": "The next_page_token value returned from a previous List request, if any.",
-                      "type": "string"
+                      "type": "string",
+                      "location": "query"
                     },
                     "pageSize": {
                       "description": "The maximum number of environments to return.",
                       "format": "int32",
                       "type": "integer",
                       "location": "query"
+                    },
+                    "parent": {
+                      "description": "List environments in the given project and location, in the form:\n\"projects/{projectId}/locations/{locationId}\"",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
                     }
                   },
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
                   "path": "v1/{+parent}/environments",
-                  "id": "composer.projects.locations.environments.list"
+                  "id": "composer.projects.locations.environments.list",
+                  "description": "List environments."
                 },
                 "patch": {
-                  "response": {
-                    "$ref": "Operation"
+                  "request": {
+                    "$ref": "Environment"
                   },
+                  "description": "Update an environment.",
+                  "httpMethod": "PATCH",
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "PATCH",
+                  "response": {
+                    "$ref": "Operation"
+                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
@@ -560,135 +642,61 @@
                     }
                   },
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
-                  "path": "v1/{+name}",
                   "id": "composer.projects.locations.environments.patch",
+                  "path": "v1/{+name}"
+                },
+                "create": {
+                  "description": "Create a new environment.",
                   "request": {
                     "$ref": "Environment"
                   },
-                  "description": "Update an environment."
-                },
-                "create": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
+                  "httpMethod": "POST",
                   "parameterOrder": [
                     "parent"
                   ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
                   "parameters": {
                     "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
                       "description": "The parent must be of the form \"projects/{projectId}/locations/{locationId}\".",
                       "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
-                  "path": "v1/{+parent}/environments",
-                  "id": "composer.projects.locations.environments.create",
-                  "request": {
-                    "$ref": "Environment"
-                  },
-                  "description": "Create a new environment."
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "delete": {
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be deleted.",
-                      "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "location": "path"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "id": "composer.projects.locations.operations.delete",
-                  "path": "v1/{+name}",
-                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
+                  "id": "composer.projects.locations.environments.create",
+                  "path": "v1/{+parent}/environments"
                 },
-                "list": {
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The standard list page size.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "id": "composer.projects.locations.operations.list",
-                  "path": "v1/{+name}/operations",
-                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
-                },
-                "get": {
+                "delete": {
                   "response": {
                     "$ref": "Operation"
                   },
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
+                  "httpMethod": "DELETE",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The environment to delete, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/environments/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
                   "path": "v1/{+name}",
-                  "id": "composer.projects.locations.operations.get",
-                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+                  "id": "composer.projects.locations.environments.delete",
+                  "description": "Delete an environment."
                 }
               }
             }
@@ -699,14 +707,14 @@
   },
   "parameters": {
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "upload_protocol": {
       "location": "query",
@@ -714,9 +722,9 @@
       "type": "string"
     },
     "quotaUser": {
+      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
       "location": "query",
@@ -725,19 +733,19 @@
       "default": "true"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
@@ -758,11 +766,6 @@
       "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -771,16 +774,13 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     }
   },
-  "version": "v1",
-  "baseUrl": "https://composer.googleapis.com/",
-  "servicePath": "",
-  "description": "Manages Apache Airflow environments on Google Cloud Platform.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "revision": "20190311",
-  "documentationLink": "https://cloud.google.com/composer/",
-  "id": "composer:v1"
+  "version": "v1"
 }

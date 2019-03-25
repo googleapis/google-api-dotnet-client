@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190309 (1528)
+ *      <tr><th>API Rev<td>20190318 (1537)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1413,7 +1413,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// specific consumer.
         ///
         /// - This can be in one of the following formats: - project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
-        /// projects/RPOJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, - organizations/ORGANIZATION_NUMBER, -
+        /// projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, - organizations/ORGANIZATION_NUMBER, -
         /// api`_`key:API_KEY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190221 (1512)
+ *      <tr><th>API Rev<td>20190308 (1527)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -16980,6 +16980,97 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual GetShieldedInstanceIdentityRequest GetShieldedInstanceIdentity(string project, string zone, string instance)
+        {
+            return new GetShieldedInstanceIdentityRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        public class GetShieldedInstanceIdentityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ShieldedInstanceIdentity>
+        {
+            /// <summary>Constructs a new GetShieldedInstanceIdentity request.</summary>
+            public GetShieldedInstanceIdentityRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getShieldedInstanceIdentity"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getShieldedInstanceIdentity"; }
+            }
+
+            /// <summary>Initializes GetShieldedInstanceIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates an instance resource in the specified project using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -18785,6 +18876,131 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
+        /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual SetShieldedInstanceIntegrityPolicyRequest SetShieldedInstanceIntegrityPolicy(Google.Apis.Compute.v1.Data.ShieldedInstanceIntegrityPolicy body, string project, string zone, string instance)
+        {
+            return new SetShieldedInstanceIntegrityPolicyRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
+        /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class SetShieldedInstanceIntegrityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetShieldedInstanceIntegrityPolicy request.</summary>
+            public SetShieldedInstanceIntegrityPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ShieldedInstanceIntegrityPolicy body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ShieldedInstanceIntegrityPolicy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setShieldedInstanceIntegrityPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setShieldedInstanceIntegrityPolicy"; }
+            }
+
+            /// <summary>Initializes SetShieldedInstanceIntegrityPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -19717,6 +19933,131 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name or id of the instance scoping this request.</param>
+        public virtual UpdateShieldedInstanceConfigRequest UpdateShieldedInstanceConfig(Google.Apis.Compute.v1.Data.ShieldedInstanceConfig body, string project, string zone, string instance)
+        {
+            return new UpdateShieldedInstanceConfigRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class UpdateShieldedInstanceConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateShieldedInstanceConfig request.</summary>
+            public UpdateShieldedInstanceConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ShieldedInstanceConfig body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ShieldedInstanceConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateShieldedInstanceConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateShieldedInstanceConfig"; }
+            }
+
+            /// <summary>Initializes UpdateShieldedInstanceConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -51643,6 +51984,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceIntegrityPolicy")]
+        public virtual ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicy { get; set; } 
+
         /// <summary>[Output Only] Whether a VM has been restricted for start because Compute Engine has detected
         /// suspicious activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRestricted")]
@@ -58539,6 +58886,72 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The list of scopes to be made available for this service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of Shielded Instance options.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines whether the instance has integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
+
+        /// <summary>Defines whether the instance has Secure Boot enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
+
+        /// <summary>Defines whether the instance has the vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A shielded Instance identity entry.</summary>
+    public class ShieldedInstanceIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An Endorsement Key (EK) issued to the Shielded Instance's vTPM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
+        public virtual ShieldedInstanceIdentityEntry EncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#shieldedInstanceIdentity for shielded Instance
+        /// identity entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>An Attestation Key (AK) issued to the Shielded Instance's vTPM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKey")]
+        public virtual ShieldedInstanceIdentityEntry SigningKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Shielded Instance Identity Entry.</summary>
+    public class ShieldedInstanceIdentityEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A PEM-encoded X.509 certificate. This field can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekCert")]
+        public virtual string EkCert { get; set; } 
+
+        /// <summary>A PEM-encoded public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekPub")]
+        public virtual string EkPub { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The policy describes the baseline against which Instance boot integrity is measured.</summary>
+    public class ShieldedInstanceIntegrityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Updates the integrity policy baseline using the measurements from the VM instance's most recent
+        /// boot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAutoLearnPolicy")]
+        public virtual System.Nullable<bool> UpdateAutoLearnPolicy { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

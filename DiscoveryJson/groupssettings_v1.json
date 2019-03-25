@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/BlaW0omoOIffyRU2a_A_bKeNe7k\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/O9huEvNfRwSHRIf9WwGPIyLtR7c\"",
  "discoveryVersion": "v1",
  "id": "groupssettings:v1",
  "name": "groupssettings",
  "version": "v1",
- "revision": "20180615",
+ "revision": "20190315",
  "title": "Groups Settings API",
- "description": "Lets you manage permission levels and related settings of a group.",
+ "description": "Manages permission levels and related settings of a group.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -107,6 +107,10 @@
      "type": "string",
      "description": "Default email to which reply to any message should go."
     },
+    "customRolesEnabledForSettingsToBeMerged": {
+     "type": "string",
+     "description": "If any of the settings that will be merged have custom roles which is anything other than owners, managers, or group scopes."
+    },
     "defaultMessageDenyNotificationText": {
      "type": "string",
      "description": "Default message deny notification message"
@@ -118,6 +122,10 @@
     "email": {
      "type": "string",
      "description": "Email id of the group"
+    },
+    "enableCollaborativeInbox": {
+     "type": "string",
+     "description": "If a primary Collab Inbox feature is enabled."
     },
     "favoriteRepliesOnTop": {
      "type": "string",
@@ -189,17 +197,49 @@
      "type": "string",
      "description": "Permission to add references to a topic. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
+    "whoCanApproveMembers": {
+     "type": "string",
+     "description": "Permission to approve members. Possible values are: ALL_OWNERS_CAN_APPROVE ALL_MANAGERS_CAN_APPROVE ALL_MEMBERS_CAN_APPROVE NONE_CAN_APPROVE"
+    },
+    "whoCanApproveMessages": {
+     "type": "string",
+     "description": "Permission to approve pending messages in the moderation queue. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
     "whoCanAssignTopics": {
      "type": "string",
      "description": "Permission to assign topics in a forum to another user. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanAssistContent": {
+     "type": "string",
+     "description": "Permission for content assistants. Possible values are: Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanBanUsers": {
+     "type": "string",
+     "description": "Permission to ban users. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanContactOwner": {
      "type": "string",
      "description": "Permission to contact owner of the group via web UI. Possible values are: ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT"
     },
+    "whoCanDeleteAnyPost": {
+     "type": "string",
+     "description": "Permission to delete replies to topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanDeleteTopics": {
+     "type": "string",
+     "description": "Permission to delete topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanDiscoverGroup": {
+     "type": "string",
+     "description": "Permission for who can discover the group. Possible values are: ALL_MEMBERS_CAN_DISCOVER ALL_IN_DOMAIN_CAN_DISCOVER ANYONE_CAN_DISCOVER"
+    },
     "whoCanEnterFreeFormTags": {
      "type": "string",
      "description": "Permission to enter free form tags for topics in a forum. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanHideAbuse": {
+     "type": "string",
+     "description": "Permission to hide posts by reporting them as abuse. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanInvite": {
      "type": "string",
@@ -212,6 +252,14 @@
     "whoCanLeaveGroup": {
      "type": "string",
      "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE"
+    },
+    "whoCanLockTopics": {
+     "type": "string",
+     "description": "Permission to lock topics. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMakeTopicsSticky": {
+     "type": "string",
+     "description": "Permission to make topics appear at the top of the topic list. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanMarkDuplicate": {
      "type": "string",
@@ -229,9 +277,33 @@
      "type": "string",
      "description": "Permission to mark a topic as not needing a response. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
+    "whoCanModerateContent": {
+     "type": "string",
+     "description": "Permission for content moderation. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanModerateMembers": {
+     "type": "string",
+     "description": "Permission for membership moderation. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanModifyMembers": {
+     "type": "string",
+     "description": "Permission to modify members (change member roles). Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
     "whoCanModifyTagsAndCategories": {
      "type": "string",
      "description": "Permission to change tags and categories. Possible values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMoveTopicsIn": {
+     "type": "string",
+     "description": "Permission to move topics into the group or forum. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanMoveTopicsOut": {
+     "type": "string",
+     "description": "Permission to move topics out of the group or forum. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
+    },
+    "whoCanPostAnnouncements": {
+     "type": "string",
+     "description": "Permission to post announcements, a special topic type. Possible values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS"
     },
     "whoCanPostMessage": {
      "type": "string",
@@ -255,7 +327,7 @@
     },
     "whoCanViewMembership": {
      "type": "string",
-     "description": "Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW"
+     "description": "Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW ALL_OWNERS_CAN_VIEW"
     }
    }
   }

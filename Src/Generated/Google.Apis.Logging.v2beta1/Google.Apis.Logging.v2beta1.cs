@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190311 (1530)
+ *      <tr><th>API Rev<td>20190316 (1535)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -527,17 +527,17 @@ namespace Google.Apis.Logging.v2beta1
             }
 
 
-            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
-            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
-            /// method parameters should be identical to those in the previous call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
             /// ignored. The presence of nextPageToken in the response indicates that more results might be
             /// available.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
+            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
+            /// method parameters should be identical to those in the previous call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -564,18 +564,18 @@ namespace Google.Apis.Logging.v2beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -845,17 +845,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -891,18 +891,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1799,8 +1799,12 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
-        /// <summary>Output only. Additional metadata about the monitored resource.Only k8s_container, k8s_pod, and
-        /// k8s_node MonitoredResources have this field populated.</summary>
+        /// <summary>Deprecated. Output only. Additional metadata about the monitored resource.Only k8s_container,
+        /// k8s_pod, and k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For
+        /// GKE versions 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used
+        /// to be in metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The
+        /// Stackdriver system labels that were present in the metadata.systemLabels field will no longer be available
+        /// in the LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MonitoredResourceMetadata Metadata { get; set; } 
 

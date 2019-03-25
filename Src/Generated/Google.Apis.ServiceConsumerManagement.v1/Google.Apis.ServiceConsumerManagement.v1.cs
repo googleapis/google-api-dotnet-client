@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190319 (1538)
+ *      <tr><th>API Rev<td>20190320 (1539)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -587,10 +587,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -598,6 +594,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -633,15 +633,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -654,6 +645,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -704,10 +704,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             }
 
 
-            /// <summary>Add a new tenant project to the tenancy unit. There can be at most 512 tenant projects in a
-            /// tenancy unit. If there are previously failed `AddTenantProject` calls, you might need to call
-            /// `RemoveTenantProject` first to clean them before you can make another `AddTenantProject` with the same
-            /// tag. Operation.</summary>
+            /// <summary>Add a new tenant project to the tenancy unit. There can be a maximum of 512 tenant projects in
+            /// a tenancy unit. If there are previously failed `AddTenantProject` calls, you might need to call
+            /// `RemoveTenantProject` first to resolve them before you can make another call to `AddTenantProject` with
+            /// the same tag. Operation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Name of the tenancy unit.</param>
             public virtual AddProjectRequest AddProject(Google.Apis.ServiceConsumerManagement.v1.Data.AddTenantProjectRequest body, string parent)
@@ -715,10 +715,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 return new AddProjectRequest(service, body, parent);
             }
 
-            /// <summary>Add a new tenant project to the tenancy unit. There can be at most 512 tenant projects in a
-            /// tenancy unit. If there are previously failed `AddTenantProject` calls, you might need to call
-            /// `RemoveTenantProject` first to clean them before you can make another `AddTenantProject` with the same
-            /// tag. Operation.</summary>
+            /// <summary>Add a new tenant project to the tenancy unit. There can be a maximum of 512 tenant projects in
+            /// a tenancy unit. If there are previously failed `AddTenantProject` calls, you might need to call
+            /// `RemoveTenantProject` first to resolve them before you can make another call to `AddTenantProject` with
+            /// the same tag. Operation.</summary>
             public class AddProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new AddProject request.</summary>
@@ -778,15 +778,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Apply configuration to an existing tenant project. This project must exist in active state and
-            /// have the original owner account. Caller must have the permission to add a project to the given tenancy
-            /// unit. Configuration will be applied, but any existing settings on the project will not be modified.
-            /// Specified policy bindings will be applied. Existing binding will not be modified. Specified services
-            /// will be activated.   No service will be deactivated. New billing configuration will be applied if
-            /// specified. Omit billing configuration to keep the existing one. Service account in the project will be
-            /// created if previously non existing. Specified folder will be ignored, moving tenant project to a
-            /// different folder is not supported. Operation fails if any of the steps fail, but no rollback of already
-            /// applied configuration changes is attempted. Operation.</summary>
+            /// <summary>Apply a configuration to an existing tenant project. This project must exist in an active state
+            /// and have the original owner account. The caller must have permission to add a project to the given
+            /// tenancy unit. The configuration is applied, but any existing settings on the project aren't modified.
+            /// Specified policy bindings are applied. Existing bindings aren't modified. Specified services are
+            /// activated. No service is deactivated. If specified, new billing configuration is applied. Omit a billing
+            /// configuration to keep the existing one. A service account in the project is created if previously non
+            /// existed. The specified folder is ignored, as moving a tenant project to a different folder isn't
+            /// supported. The operation fails if any of the steps fail, but no rollback of already applied
+            /// configuration changes is attempted. Operation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the tenancy unit.</param>
             public virtual ApplyProjectConfigRequest ApplyProjectConfig(Google.Apis.ServiceConsumerManagement.v1.Data.ApplyTenantProjectConfigRequest body, string name)
@@ -794,15 +794,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 return new ApplyProjectConfigRequest(service, body, name);
             }
 
-            /// <summary>Apply configuration to an existing tenant project. This project must exist in active state and
-            /// have the original owner account. Caller must have the permission to add a project to the given tenancy
-            /// unit. Configuration will be applied, but any existing settings on the project will not be modified.
-            /// Specified policy bindings will be applied. Existing binding will not be modified. Specified services
-            /// will be activated.   No service will be deactivated. New billing configuration will be applied if
-            /// specified. Omit billing configuration to keep the existing one. Service account in the project will be
-            /// created if previously non existing. Specified folder will be ignored, moving tenant project to a
-            /// different folder is not supported. Operation fails if any of the steps fail, but no rollback of already
-            /// applied configuration changes is attempted. Operation.</summary>
+            /// <summary>Apply a configuration to an existing tenant project. This project must exist in an active state
+            /// and have the original owner account. The caller must have permission to add a project to the given
+            /// tenancy unit. The configuration is applied, but any existing settings on the project aren't modified.
+            /// Specified policy bindings are applied. Existing bindings aren't modified. Specified services are
+            /// activated. No service is deactivated. If specified, new billing configuration is applied. Omit a billing
+            /// configuration to keep the existing one. A service account in the project is created if previously non
+            /// existed. The specified folder is ignored, as moving a tenant project to a different folder isn't
+            /// supported. The operation fails if any of the steps fail, but no rollback of already applied
+            /// configuration changes is attempted. Operation.</summary>
             public class ApplyProjectConfigRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new ApplyProjectConfig request.</summary>
@@ -862,27 +862,27 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could be
-            /// either the tenant project reserved by calling AddTenantProject under tenancy unit for the producer
-            /// project of service, or from outside. Caller will be checked against the permission as if calling
-            /// AddTenantProject on the same consumer. To trigger the attachement, the targeted tenant project must be
-            /// in a folder. Please also make sure ServiceConsumerManagement service account is the owner of that
-            /// project. Note that these two requirements are already met if the project is reserved through
-            /// AddTenantProject. Operation.</summary>
+            /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could
+            /// either be the tenant project reserved by calling `AddTenantProject` under a tenancy unit of a service
+            /// producer's project of a managed service, or from a separate project. The caller is checked against a set
+            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the
+            /// attachement, the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement
+            /// service account is the owner of that project. These two requirements are already met if the project is
+            /// reserved by calling `AddTenantProject`. Operation.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the tenancy unit that project will be attached to.</param>
+            /// <param name="name">Name of the tenancy unit that the project will be attached to.</param>
             public virtual AttachProjectRequest AttachProject(Google.Apis.ServiceConsumerManagement.v1.Data.AttachTenantProjectRequest body, string name)
             {
                 return new AttachProjectRequest(service, body, name);
             }
 
-            /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could be
-            /// either the tenant project reserved by calling AddTenantProject under tenancy unit for the producer
-            /// project of service, or from outside. Caller will be checked against the permission as if calling
-            /// AddTenantProject on the same consumer. To trigger the attachement, the targeted tenant project must be
-            /// in a folder. Please also make sure ServiceConsumerManagement service account is the owner of that
-            /// project. Note that these two requirements are already met if the project is reserved through
-            /// AddTenantProject. Operation.</summary>
+            /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could
+            /// either be the tenant project reserved by calling `AddTenantProject` under a tenancy unit of a service
+            /// producer's project of a managed service, or from a separate project. The caller is checked against a set
+            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the
+            /// attachement, the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement
+            /// service account is the owner of that project. These two requirements are already met if the project is
+            /// reserved by calling `AddTenantProject`. Operation.</summary>
             public class AttachProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new AttachProject request.</summary>
@@ -895,7 +895,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 }
 
 
-                /// <summary>Name of the tenancy unit that project will be attached to.</summary>
+                /// <summary>Name of the tenancy unit that the project will be attached to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -946,8 +946,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">services/{service}/{collection id}/{resource id} {collection id} is the cloud resource
             /// collection type representing the service consumer, for example 'projects', or 'organizations'. {resource id} is the
-            /// consumer numeric id, such as project number: '123456'. {service} the name of a service, for example
-            /// 'service.googleapis.com'. Enabled service binding using the new tenancy unit.</param>
+            /// consumer numeric id, such as project number: '123456'. {service} the name of a managed service, such as
+            /// 'service.googleapis.com'. Enables service binding using the new tenancy unit.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceConsumerManagement.v1.Data.CreateTenancyUnitRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -969,7 +969,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>services/{service}/{collection id}/{resource id} {collection id} is the cloud resource
                 /// collection type representing the service consumer, for example 'projects', or 'organizations'.
                 /// {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name of a
-                /// service, for example 'service.googleapis.com'. Enabled service binding using the new tenancy
+                /// managed service, such as 'service.googleapis.com'. Enables service binding using the new tenancy
                 /// unit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1017,16 +1017,16 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resources
-            /// in it not in DELETED state. Operation.</summary>
+            /// <summary>Delete a tenancy unit. Before you delete the tenancy unit, there should be no tenant resources
+            /// in it that aren't in a DELETED state. Operation.</summary>
             /// <param name="name">Name of the tenancy unit to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resources
-            /// in it not in DELETED state. Operation.</summary>
+            /// <summary>Delete a tenancy unit. Before you delete the tenancy unit, there should be no tenant resources
+            /// in it that aren't in a DELETED state. Operation.</summary>
             public class DeleteRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1079,21 +1079,21 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Find the tenancy unit for a service and consumer. This method should not be used in producers'
-            /// runtime path, for example finding the tenant project number when creating VMs. Producers should persist
-            /// the tenant project information after the project is created.</summary>
-            /// <param name="parent">Service and consumer. Required. services/{service}/{collection id}/{resource id} {collection
-            /// id} is the cloud resource collection type representing the service consumer, for example 'projects', or
-            /// 'organizations'. {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name of a
-            /// service, for example 'service.googleapis.com'.</param>
+            /// <summary>Find the tenancy unit for a managed service and service consumer. This method shouldn't be used
+            /// in a service producer's runtime path, for example to find the tenant project number when creating VMs.
+            /// Service producers must persist the tenant project's information after the project is created.</summary>
+            /// <param name="parent">Managed service and service consumer. Required. services/{service}/{collection id}/{resource
+            /// id} {collection id} is the cloud resource collection type representing the service consumer, for example 'projects',
+            /// or 'organizations'. {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name
+            /// of a service, such as 'service.googleapis.com'.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Find the tenancy unit for a service and consumer. This method should not be used in producers'
-            /// runtime path, for example finding the tenant project number when creating VMs. Producers should persist
-            /// the tenant project information after the project is created.</summary>
+            /// <summary>Find the tenancy unit for a managed service and service consumer. This method shouldn't be used
+            /// in a service producer's runtime path, for example to find the tenant project number when creating VMs.
+            /// Service producers must persist the tenant project's information after the project is created.</summary>
             public class ListRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.ListTenancyUnitsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1105,10 +1105,11 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 }
 
 
-                /// <summary>Service and consumer. Required. services/{service}/{collection id}/{resource id}
-                /// {collection id} is the cloud resource collection type representing the service consumer, for example
-                /// 'projects', or 'organizations'. {resource id} is the consumer numeric id, such as project number:
-                /// '123456'. {service} the name of a service, for example 'service.googleapis.com'.</summary>
+                /// <summary>Managed service and service consumer. Required. services/{service}/{collection
+                /// id}/{resource id} {collection id} is the cloud resource collection type representing the service
+                /// consumer, for example 'projects', or 'organizations'. {resource id} is the consumer numeric id, such
+                /// as project number: '123456'. {service} the name of a service, such as
+                /// 'service.googleapis.com'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1190,11 +1191,11 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Removes specified project resource identified by tenant resource tag. It will remove project
-            /// lien with 'TenantManager' origin if that was added. It will then attempt to delete the project. If that
-            /// operation fails, this method fails. Calls to remove already removed or non-existent tenant project will
-            /// succeed. After the project has been deleted, or if was already in DELETED state, resource metadata is
-            /// permanently removed from the tenancy unit. Operation.</summary>
+            /// <summary>Removes the specified project resource identified by a tenant resource tag. The method removes
+            /// the project lien with 'TenantManager' origin if that was added. It then attempts to delete the project.
+            /// If that operation fails, this method also fails. Calls to remove already removed or non-existent tenant
+            /// project succeed. After the project has been deleted, or if was already in a DELETED state, resource
+            /// metadata is permanently removed from the tenancy unit. Operation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the tenancy unit. Such as
             /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.</param>
@@ -1203,11 +1204,11 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 return new RemoveProjectRequest(service, body, name);
             }
 
-            /// <summary>Removes specified project resource identified by tenant resource tag. It will remove project
-            /// lien with 'TenantManager' origin if that was added. It will then attempt to delete the project. If that
-            /// operation fails, this method fails. Calls to remove already removed or non-existent tenant project will
-            /// succeed. After the project has been deleted, or if was already in DELETED state, resource metadata is
-            /// permanently removed from the tenancy unit. Operation.</summary>
+            /// <summary>Removes the specified project resource identified by a tenant resource tag. The method removes
+            /// the project lien with 'TenantManager' origin if that was added. It then attempts to delete the project.
+            /// If that operation fails, this method also fails. Calls to remove already removed or non-existent tenant
+            /// project succeed. After the project has been deleted, or if was already in a DELETED state, resource
+            /// metadata is permanently removed from the tenancy unit. Operation.</summary>
             public class RemoveProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new RemoveProject request.</summary>
@@ -1269,7 +1270,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             }
         }
 
-        /// <summary>Search tenancy units for a service.</summary>
+        /// <summary>Search tenancy units for a managed service.</summary>
         /// <param name="parent">Service for which search is performed. services/{service} {service} the name of a service, for
         /// example 'service.googleapis.com'.</param>
         public virtual SearchRequest Search(string parent)
@@ -1277,7 +1278,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             return new SearchRequest(service, parent);
         }
 
-        /// <summary>Search tenancy units for a service.</summary>
+        /// <summary>Search tenancy units for a managed service.</summary>
         public class SearchRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.SearchTenancyUnitsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -1294,8 +1295,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
+            /// of results, set this parameter to the value of `nextPageToken` from the previous response.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of results returned by this request. Currently, the default maximum is set
-            /// to 1000. If page_size is not provided or the size provided is a number larger than 1000, it will be
+            /// to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's
             /// automatically set to 1000.
             ///
             /// Optional.</summary>
@@ -1306,9 +1314,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
             /// Supported fields are `tenant_resources.tag` and `tenant_resources.resource`.
             ///
-            /// For example, to search tenancy units that contain at least one tenant resource with given tag 'xyz', use
-            /// query `tenant_resources.tag=xyz`. To search tenancy units that contain at least one tenant resource with
-            /// given resource name 'projects/123456', use query `tenant_resources.resource=projects/123456`.
+            /// For example, to search tenancy units that contain at least one tenant resource with a given tag 'xyz',
+            /// use the query `tenant_resources.tag=xyz`. To search tenancy units that contain at least one tenant
+            /// resource with a given resource name 'projects/123456', use the query
+            /// `tenant_resources.resource=projects/123456`.
             ///
             /// Multiple expressions can be joined with `AND`s. Tenancy units must match all expressions to be included
             /// in the result set. For example, `tenant_resources.tag=xyz AND tenant_resources.resource=projects/123456`
@@ -1316,13 +1325,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
-
-            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
-            /// of results, set this parameter to the value of `nextPageToken` from the previous response.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1358,6 +1360,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^services/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1375,15 +1386,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -1396,7 +1398,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Request to add a newly created and configured tenant project to a tenancy unit.</summary>
     public class AddTenantProjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configuration of the new tenant project that will be added to tenancy unit resources.</summary>
+        /// <summary>Configuration of the new tenant project to be added to tenancy unit resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectConfig")]
         public virtual TenantProjectConfig ProjectConfig { get; set; } 
 
@@ -1483,9 +1485,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalResource")]
         public virtual string ExternalResource { get; set; } 
 
-        /// <summary>When attaching a reserved project already in Tenancy Units, this is the tag of tenant resource
-        /// under the tenancy unit for the service's producer project. The reserved tenant resource must be in active
-        /// state.</summary>
+        /// <summary>When attaching a reserved project already in tenancy units, this is the tag of a tenant resource
+        /// under the tenancy unit for the managed service's service producer project. The reserved tenant resource must
+        /// be in an active state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedResource")]
         public virtual string ReservedResource { get; set; } 
 
@@ -1720,7 +1722,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes billing configuration for a new tenant project.</summary>
+    /// <summary>Describes the billing configuration for a new tenant project.</summary>
     public class BillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the billing account. For example `billingAccounts/012345-567890-ABCDEF`.</summary>
@@ -1834,14 +1836,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request to create a tenancy unit for a consumer of a service.</summary>
+    /// <summary>Request to create a tenancy unit for a service consumer of a managed service.</summary>
     public class CreateTenancyUnitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional producer provided identifier of the tenancy unit. Must be no longer than 40 characters and
-        /// preferably URI friendly. If it is not provided, a UID for the tenancy unit will be auto generated. It must
-        /// be unique across a service. If the tenancy unit already exists for the service and consumer pair,
-        /// `CreateTenancyUnit` will return the existing tenancy unit if the provided identifier is identical or empty,
-        /// otherwise the call will fail.</summary>
+        /// <summary>Optional service producer-provided identifier of the tenancy unit. Must be no longer than 40
+        /// characters and preferably URI friendly. If it isn't provided, a UID for the tenancy unit is automatically
+        /// generated. The identifier must be unique across a managed service. If the tenancy unit already exists for
+        /// the managed service and service consumer pair, calling `CreateTenancyUnit` returns the existing tenancy unit
+        /// if the provided identifier is identical or empty, otherwise the call fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenancyUnitId")]
         public virtual string TenancyUnitId { get; set; } 
 
@@ -2962,7 +2964,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Translates to IAM Policy bindings (without auditing at this level)</summary>
     public class PolicyBinding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uses the same format as in IAM policy. `member` must include both prefix and ID. For example,
+        /// <summary>Uses the same format as in IAM policy. `member` must include both a prefix and ID. For example,
         /// `user:{emailId}`, `serviceAccount:{emailId}`, `group:{emailId}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
@@ -3078,7 +3080,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message to remove tenant project resource from the tenancy unit.</summary>
+    /// <summary>Request message to remove a tenant project resource from the tenancy unit.</summary>
     public class RemoveTenantProjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Tag of the resource within the tenancy unit.</summary>
@@ -3255,13 +3257,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes service account configuration for the tenant project.</summary>
+    /// <summary>Describes the service account configuration for the tenant project.</summary>
     public class ServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ID of the IAM service account to be created in tenant project. The email format of the service
-        /// account will be "@.iam.gserviceaccount.com". This account id has to be unique within tenant project and
-        /// producers have to guarantee it. And it must be 6-30 characters long, and matches the regular expression
-        /// `[a-z]([-a-z0-9]*[a-z0-9])`.</summary>
+        /// account is "@.iam.gserviceaccount.com". This account ID must be unique within tenant project and service
+        /// producers have to guarantee it. The ID must be 6-30 characters long, and match the following regular
+        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
@@ -3446,7 +3448,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>@OutputOnly Google Cloud API name of the service owning this tenancy unit. For example
+        /// <summary>Output only. Google Cloud API name of the managed service owning this tenancy unit. For example
         /// 'serviceconsumermanagement.googleapis.com'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
@@ -3461,30 +3463,30 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     }    
 
     /// <summary>This structure defines a tenant project to be added to the specified tenancy unit and its initial
-    /// configuration and properties. A project lien will be created for the tenant project to prevent the tenant
-    /// project from being deleted accidentally. The lien will be deleted as part of tenant project removal.</summary>
+    /// configuration and properties. A project lien is created for the tenant project to prevent the tenant project
+    /// from being deleted accidentally. The lien is deleted as part of tenant project removal.</summary>
     public class TenantProjectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Billing account properties.  Billing account must be specified.</summary>
+        /// <summary>Billing account properties. The billing account must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual BillingConfig BillingConfig { get; set; } 
 
         /// <summary>Folder where project in this tenancy unit must be located This folder must have been previously
-        /// created with proper permissions for the caller to create and configure a project in it. Valid folder
+        /// created with the required permissions for the caller to create and configure a project in it. Valid folder
         /// resource names have the format `folders/{folder_number}` (for example, `folders/123456`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual string Folder { get; set; } 
 
-        /// <summary>Labels that will be applied to this project.</summary>
+        /// <summary>Labels that are applied to this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Configuration for IAM service account on tenant project.</summary>
+        /// <summary>Configuration for the IAM service account on the tenant project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountConfig")]
         public virtual ServiceAccountConfig ServiceAccountConfig { get; set; } 
 
-        /// <summary>Google Cloud API names of services that will be activated on this project during provisioning.  If
-        /// any of these services can not be activated, request will fail. For example:
+        /// <summary>Google Cloud API names of services that are activated on this project during provisioning.  If any
+        /// of these services can't be activated, the request fails. For example:
         /// 'compute.googleapis.com','cloudfunctions.googleapis.com'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; } 
@@ -3502,7 +3504,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     {
         /// <summary>Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted
         /// to the Service Consumer Management service account. At least one binding must have the role `roles/owner`.
-        /// Among the list of members for `roles/owner`, at least one of them must be either `user` or `group`
+        /// Among the list of members for `roles/owner`, at least one of them must be either the `user` or `group`
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBindings")]
         public virtual System.Collections.Generic.IList<PolicyBinding> PolicyBindings { get; set; } 

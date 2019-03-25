@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190227 (1518)
+ *      <tr><th>API Rev<td>20190314 (1533)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -371,15 +371,12 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in Seek operations,
             /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state
-            /// of messages in an existing subscription to the state captured by a snapshot.
-            ///
-            /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways
-            /// and is not recommended for production use. It is not subject to any SLA or deprecation policy. If the
-            /// snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns
-            /// `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in
-            /// less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
-            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
-            /// the same project as the subscription, conforming to the [resource name
+            /// of messages in an existing subscription to the state captured by a snapshot. If the snapshot already
+            /// exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If
+            /// the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1
+            /// hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name
+            /// is not provided in the request, the server will assign a random name for this snapshot on the same
+            /// project as the subscription, conforming to the [resource name
             /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
             /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
@@ -396,15 +393,12 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Creates a snapshot from the requested subscription. Snapshots are used in Seek operations,
             /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state
-            /// of messages in an existing subscription to the state captured by a snapshot.
-            ///
-            /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways
-            /// and is not recommended for production use. It is not subject to any SLA or deprecation policy. If the
-            /// snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns
-            /// `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in
-            /// less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
-            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
-            /// the same project as the subscription, conforming to the [resource name
+            /// of messages in an existing subscription to the state captured by a snapshot. If the snapshot already
+            /// exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If
+            /// the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1
+            /// hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name
+            /// is not provided in the request, the server will assign a random name for this snapshot on the same
+            /// project as the subscription, conforming to the [resource name
             /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in
             /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
@@ -473,12 +467,10 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Removes an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy. When the snapshot is deleted, all messages retained in the
-            /// snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the same
-            /// name, but the new one has no association with the old snapshot or its subscription, unless the same
-            /// subscription is specified.</summary>
+            /// existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages
+            /// retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created
+            /// with the same name, but the new one has no association with the old snapshot or its subscription, unless
+            /// the same subscription is specified.</summary>
             /// <param name="snapshot">The name of the snapshot to delete. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual DeleteRequest Delete(string snapshot)
@@ -488,12 +480,10 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Removes an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy. When the snapshot is deleted, all messages retained in the
-            /// snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the same
-            /// name, but the new one has no association with the old snapshot or its subscription, unless the same
-            /// subscription is specified.</summary>
+            /// existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages
+            /// retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created
+            /// with the same name, but the new one has no association with the old snapshot or its subscription, unless
+            /// the same subscription is specified.</summary>
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -549,9 +539,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which
             /// allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of
-            /// messages in an existing subscription to the state captured by a snapshot. BETA: This feature is part of
-            /// a beta release. This API might be changed in backward-incompatible ways and is not recommended for
-            /// production use. It is not subject to any SLA or deprecation policy.</summary>
+            /// messages in an existing subscription to the state captured by a snapshot.</summary>
             /// <param name="snapshot">The name of the snapshot to get. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual GetRequest Get(string snapshot)
@@ -561,9 +549,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which
             /// allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of
-            /// messages in an existing subscription to the state captured by a snapshot. BETA: This feature is part of
-            /// a beta release. This API might be changed in backward-incompatible ways and is not recommended for
-            /// production use. It is not subject to any SLA or deprecation policy.</summary>
+            /// messages in an existing subscription to the state captured by a snapshot.</summary>
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -682,9 +668,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Lists the existing snapshots. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy.</summary>
+            /// existing subscription to the state captured by a snapshot.</summary>
             /// <param name="project">The name of the project in which to list snapshots. Format is `projects/{project-
             /// id}`.</param>
             public virtual ListRequest List(string project)
@@ -694,9 +678,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Lists the existing snapshots. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy.</summary>
+            /// existing subscription to the state captured by a snapshot.</summary>
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSnapshotsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -780,10 +762,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Updates an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy. Note that certain properties of a snapshot are not
-            /// modifiable.</summary>
+            /// existing subscription to the state captured by a snapshot.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the snapshot.</param>
             public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest body, string name)
@@ -793,10 +772,7 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Updates an existing snapshot. Snapshots are used in Seek operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
-            /// existing subscription to the state captured by a snapshot. BETA: This feature is part of a beta release.
-            /// This API might be changed in backward-incompatible ways and is not recommended for production use. It is
-            /// not subject to any SLA or deprecation policy. Note that certain properties of a snapshot are not
-            /// modifiable.</summary>
+            /// existing subscription to the state captured by a snapshot.</summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1793,9 +1769,7 @@ namespace Google.Apis.Pubsub.v1
             /// in the request. Snapshots are used in Seek operations, which allow you to manage message acknowledgments
             /// in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the
             /// state captured by a snapshot. Note that both the subscription and the snapshot must be on the same
-            /// topic. BETA: This feature is part of a beta release. This API might be changed in backward-incompatible
-            /// ways and is not recommended for production use. It is not subject to any SLA or deprecation
-            /// policy.</summary>
+            /// topic.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The subscription to affect.</param>
             public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
@@ -1807,9 +1781,7 @@ namespace Google.Apis.Pubsub.v1
             /// in the request. Snapshots are used in Seek operations, which allow you to manage message acknowledgments
             /// in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the
             /// state captured by a snapshot. Note that both the subscription and the snapshot must be on the same
-            /// topic. BETA: This feature is part of a beta release. This API might be changed in backward-incompatible
-            /// ways and is not recommended for production use. It is not subject to any SLA or deprecation
-            /// policy.</summary>
+            /// topic.</summary>
             public class SeekRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.SeekResponse>
             {
                 /// <summary>Constructs a new Seek request.</summary>
@@ -2070,9 +2042,7 @@ namespace Google.Apis.Pubsub.v1
 
                 /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in Seek operations,
                 /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment
-                /// state of messages in an existing subscription to the state captured by a snapshot. BETA: This
-                /// feature is part of a beta release. This API might be changed in backward-incompatible ways and is
-                /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
+                /// state of messages in an existing subscription to the state captured by a snapshot.</summary>
                 /// <param name="topic">The name of the topic that snapshots are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -2082,9 +2052,7 @@ namespace Google.Apis.Pubsub.v1
 
                 /// <summary>Lists the names of the snapshots on this topic. Snapshots are used in Seek operations,
                 /// which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment
-                /// state of messages in an existing subscription to the state captured by a snapshot. BETA: This
-                /// feature is part of a beta release. This API might be changed in backward-incompatible ways and is
-                /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
+                /// state of messages in an existing subscription to the state captured by a snapshot.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSnapshotsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2101,15 +2069,15 @@ namespace Google.Apis.Pubsub.v1
                     [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Topic { get; private set; }
 
-                    /// <summary>Maximum number of snapshot names to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The value returned by the last `ListTopicSnapshotsResponse`; indicates that this is a
                     /// continuation of a prior `ListTopicSnapshots` call, and that the system should return the next
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum number of snapshot names to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2145,18 +2113,18 @@ namespace Google.Apis.Pubsub.v1
                                 Pattern = @"^projects/[^/]+/topics/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2996,9 +2964,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the `CreateSnapshot` method. BETA: This feature is part of a beta release. This API might
-    /// be changed in backward-incompatible ways and is not recommended for production use. It is not subject to any SLA
-    /// or deprecation policy.</summary>
+    /// <summary>Request for the `CreateSnapshot` method.</summary>
     public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>See  Creating and managing labels.</summary>
@@ -3077,9 +3043,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for the `ListSnapshots` method. BETA: This feature is part of a beta release. This API might
-    /// be changed in backward-incompatible ways and is not recommended for production use. It is not subject to any SLA
-    /// or deprecation policy.</summary>
+    /// <summary>Response for the `ListSnapshots` method.</summary>
     public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more snapshot that match the request; this value should
@@ -3111,9 +3075,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for the `ListTopicSnapshots` method. BETA: This feature is part of a beta release. This API
-    /// might be changed in backward-incompatible ways and is not recommended for production use. It is not subject to
-    /// any SLA or deprecation policy.</summary>
+    /// <summary>Response for the `ListTopicSnapshots` method.</summary>
     public class ListTopicSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more snapshots that match the request; this value should
@@ -3191,6 +3153,28 @@ namespace Google.Apis.Pubsub.v1.Data
         /// `Pull` or `StreamingPull` is not called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information needed for generating an [OpenID Connect
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect).</summary>
+    public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audience to be used when generating OIDC token. The audience claim identifies the recipients that
+        /// the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values
+        /// (array) for the audience field is not supported. More info about the OIDC JWT token audience here:
+        /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; } 
+
+        /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
+        /// generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig
+        /// RPCs) must have the iam.serviceAccounts.actAs permission for the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3348,6 +3332,11 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 
+        /// <summary>If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in
+        /// the HTTP request for every pushed message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; } 
+
         /// <summary>A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint
         /// might use "https://example.com/push".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushEndpoint")]
@@ -3372,9 +3361,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the `Seek` method. BETA: This feature is part of a beta release. This API might be changed
-    /// in backward-incompatible ways and is not recommended for production use. It is not subject to any SLA or
-    /// deprecation policy.</summary>
+    /// <summary>Request for the `Seek` method.</summary>
     public class SeekRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot to seek to. The snapshot's topic must be the same as that of the provided
@@ -3418,9 +3405,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
     /// <summary>A snapshot resource. Snapshots are used in Seek operations, which allow you to manage message
     /// acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription
-    /// to the state captured by a snapshot. BETA: This feature is part of a beta release. This API might be changed in
-    /// backward-incompatible ways and is not recommended for production use. It is not subject to any SLA or
-    /// deprecation policy.</summary>
+    /// to the state captured by a snapshot.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later
@@ -3486,9 +3471,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>How long to retain unacknowledged messages in the subscription's backlog, from the moment a message
         /// is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged
         /// messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more
-        /// than 7 days or less than 10 minutes. BETA: This feature is part of a beta release. This API might be changed
-        /// in backward-incompatible ways and is not recommended for production use. It is not subject to any SLA or
-        /// deprecation policy.</summary>
+        /// than 7 days or less than 10 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetentionDuration")]
         public virtual object MessageRetentionDuration { get; set; } 
 
@@ -3509,10 +3492,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
         /// `message_retention_duration` window. This must be true if you would like to
         ///
-        /// Seek to a timestamp.
-        ///
-        /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways and is
-        /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
+        /// Seek to a timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 
@@ -3568,9 +3548,7 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for the UpdateSnapshot method. BETA: This feature is part of a beta release. This API might be
-    /// changed in backward-incompatible ways and is not recommended for production use. It is not subject to any SLA or
-    /// deprecation policy.</summary>
+    /// <summary>Request for the UpdateSnapshot method.</summary>
     public class UpdateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The updated snapshot object.</summary>
