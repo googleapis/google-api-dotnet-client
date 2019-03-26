@@ -19,6 +19,7 @@ using Google.Apis.Storage.v1;
 using Google.Apis.Translate.v2;
 using Google.Apis.Translate.v2.Data;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -31,13 +32,22 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
 {
     public class HomeController : Controller
     {
-        // Authentication required, but no specific scopes
-        [Authorize]
+        // No authorization required. User doesn't need to login to see this.
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            // Must not redirect after sign-out; otherwise user is not signed-out.
+            // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio#scaffold-register-login-and-logout
+            return View();
+        }
+
+        // Authentication required, but no specific scopes
         [Authorize]
         public async Task<IActionResult> ScopeListing([FromServices] IGoogleAuthProvider auth)
         {
