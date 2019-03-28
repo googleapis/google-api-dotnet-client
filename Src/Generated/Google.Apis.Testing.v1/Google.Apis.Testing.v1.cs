@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190321 (1540)
+ *      <tr><th>API Rev<td>20190327 (1546)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2075,14 +2075,6 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>An Android Application with a Test Loop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidTestLoop")]
         public virtual AndroidTestLoop AndroidTestLoop { get; set; } 
-
-        /// <summary>Enables automatic Google account login. If set, the service will automatically generate a Google
-        /// test account and add it to the device, before executing the test. Note that test accounts might be reused.
-        /// Many applications show their full set of functionalities when an account is present on the device. Logging
-        /// into the device with these generated accounts allows testing more functionalities. Default is
-        /// false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoGoogleLogin")]
-        public virtual System.Nullable<bool> AutoGoogleLogin { get; set; } 
 
         /// <summary>Disables performance metrics recording; may reduce test latency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePerformanceMetrics")]

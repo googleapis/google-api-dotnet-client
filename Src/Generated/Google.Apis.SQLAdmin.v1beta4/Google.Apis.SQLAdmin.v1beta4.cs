@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190225 (1516)
+ *      <tr><th>API Rev<td>20190326 (1545)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4569,6 +4569,16 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; } 
 
+        /// <summary>Disk encryption configuration specific to an instance. Applies only to Second Generation
+        /// instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
+        public virtual DiskEncryptionConfiguration DiskEncryptionConfiguration { get; set; } 
+
+        /// <summary>Disk encryption status specific to an instance. Applies only to Second Generation
+        /// instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
+        public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; } 
+
         /// <summary>This field is deprecated and will be removed from a future version of the API. Use the
         /// settings.settingsVersion field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -4777,6 +4787,36 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The username for the replication connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Disk encryption configuration.</summary>
+    public class DiskEncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#diskEncryptionConfiguration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>KMS key resource name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Disk encryption status.</summary>
+    public class DiskEncryptionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#diskEncryptionStatus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>KMS key version used to encrypt the Cloud SQL instance disk</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

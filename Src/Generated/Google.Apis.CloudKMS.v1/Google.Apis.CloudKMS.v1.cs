@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190311 (1530)
+ *      <tr><th>API Rev<td>20190321 (1540)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -888,18 +888,6 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional pagination token, returned earlier via
-                            /// ListCryptoKeyVersionsResponse.next_page_token.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Optional limit on the number of CryptoKeyVersions to include in the response.
-                            /// Further CryptoKeyVersions can subsequently be obtained by including the
-                            /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If unspecified,
-                            /// the server will pick an appropriate default.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
                             /// <summary>The fields to include in the response.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -912,6 +900,18 @@ namespace Google.Apis.CloudKMS.v1
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
                             }
+
+                            /// <summary>Optional pagination token, returned earlier via
+                            /// ListCryptoKeyVersionsResponse.next_page_token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Optional limit on the number of CryptoKeyVersions to include in the response.
+                            /// Further CryptoKeyVersions can subsequently be obtained by including the
+                            /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If unspecified,
+                            /// the server will pick an appropriate default.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -947,6 +947,15 @@ namespace Google.Apis.CloudKMS.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
                                     });
                                 RequestParameters.Add(
+                                    "view", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "view",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
@@ -959,15 +968,6 @@ namespace Google.Apis.CloudKMS.v1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1525,18 +1525,6 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional pagination token, returned earlier via
-                        /// ListCryptoKeysResponse.next_page_token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Optional limit on the number of CryptoKeys to include in the response.  Further
-                        /// CryptoKeys can subsequently be obtained by including the
-                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
-                        /// will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The fields of the primary version to include in the response.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("versionView", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<VersionViewEnum> VersionView { get; set; }
@@ -1549,6 +1537,18 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
+
+                        /// <summary>Optional pagination token, returned earlier via
+                        /// ListCryptoKeysResponse.next_page_token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional limit on the number of CryptoKeys to include in the response.  Further
+                        /// CryptoKeys can subsequently be obtained by including the
+                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
+                        /// will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1584,6 +1584,15 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "versionView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1596,15 +1605,6 @@ namespace Google.Apis.CloudKMS.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2875,8 +2875,8 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
-        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 

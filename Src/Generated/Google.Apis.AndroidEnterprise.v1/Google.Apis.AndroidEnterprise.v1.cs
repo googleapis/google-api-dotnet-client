@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190313 (1532)
+ *      <tr><th>API Rev<td>20190320 (1539)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -9905,10 +9905,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>WebApp resource info.</summary>
+    /// <summary>A WebApps resource represents a web app created for an enterprise. Web apps are published to managed
+    /// Google Play and can be distributed like other Android apps. On a user's device, a web app opens its specified
+    /// URL.</summary>
     public class WebApp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display mode of the web app.</summary>
+        /// <summary>The display mode of the web app.
+        ///
+        /// Possible values include: - "minimalUi", the device's status bar, navigation bar, the app's URL, and a
+        /// refresh button are visible when the app is open. For HTTP URLs, you can only select this option. -
+        /// "standalone", the device's status bar and navigation bar are visible when the app is open. - "fullScreen",
+        /// the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements,
+        /// page URL, system status bar and back button are not visible, and the web app takes up the entirety of the
+        /// available display area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMode")]
         public virtual string DisplayMode { get; set; } 
 
@@ -9925,8 +9934,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startUrl")]
         public virtual string StartUrl { get; set; } 
 
-        /// <summary>The title of the web application as displayed to the user (e.g., amongst a list of other
-        /// applications, or as a label for an icon).</summary>
+        /// <summary>The title of the web app as displayed to the user (e.g., amongst a list of other applications, or
+        /// as a label for an icon).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -9937,7 +9946,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<long> VersionCode { get; set; } 
 
-        /// <summary>The ID of the application.</summary>
+        /// <summary>The ID of the application. A string of the form "app:" where the package name always starts with
+        /// the prefix "com.google.enterprise.webapp." followed by a random id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAppId")]
         public virtual string WebAppId { get; set; } 
 

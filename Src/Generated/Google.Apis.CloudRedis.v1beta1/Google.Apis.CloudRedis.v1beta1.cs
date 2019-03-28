@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190320 (1539)
+ *      <tr><th>API Rev<td>20190327 (1546)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -1091,10 +1091,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1102,6 +1098,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1137,15 +1137,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1158,6 +1149,15 @@ namespace Google.Apis.CloudRedis.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1472,13 +1472,21 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently,
         /// the only supported parameters are:
         ///
-        /// *   maxmemory-policy *   notify-keyspace-events</summary>
+        /// Redis 3.2 and above:
+        ///
+        /// *   maxmemory-policy *   notify-keyspace-events
+        ///
+        /// Redis 4.0 and above:
+        ///
+        /// *   activedefrag *   lfu-log-factor *   lfu-decay-time</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
         public virtual System.Collections.Generic.IDictionary<string,string> RedisConfigs { get; set; } 
 
         /// <summary>Optional. The version of Redis software. If not provided, latest supported version will be used.
         /// Updating the version will perform an upgrade/downgrade to the new version. Currently, the supported values
-        /// are `REDIS_3_2` for Redis 3.2.</summary>
+        /// are:
+        ///
+        /// *   `REDIS_4_0` for Redis 4.0 compatibility *   `REDIS_3_2` for Redis 3.2 compatibility</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; } 
 

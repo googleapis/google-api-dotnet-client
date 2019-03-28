@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20190312 (1531)
+ *      <tr><th>API Rev<td>20190326 (1545)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -650,6 +650,14 @@ namespace Google.Apis.Genomics.v2alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return. The maximum value is 256.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
                 ///
                 /// * createTime The time this job was created * events The set of event (names) that have occurred
@@ -673,14 +681,6 @@ namespace Google.Apis.Genomics.v2alpha1
                 /// labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return. The maximum value is 256.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -716,15 +716,6 @@ namespace Google.Apis.Genomics.v2alpha1
                             Pattern = @"^projects/[^/]+/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -737,6 +728,15 @@ namespace Google.Apis.Genomics.v2alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1197,28 +1197,6 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The read group set import response.</summary>
-    public class ImportReadGroupSetsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>IDs of the read group sets that were created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readGroupSetIds")]
-        public virtual System.Collections.Generic.IList<string> ReadGroupSetIds { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The variant data import response.</summary>
-    public class ImportVariantsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>IDs of the call sets created during the import.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callSetIds")]
-        public virtual System.Collections.Generic.IList<string> CallSetIds { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1339,8 +1317,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If importing Variants, an
-        /// ImportVariantsResponse is returned. For pipelines and exports, an Empty response is returned.</summary>
+        /// <summary>An Empty object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 

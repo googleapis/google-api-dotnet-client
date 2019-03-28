@@ -1045,13 +1045,13 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results returned by the server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1087,18 +1087,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1777,10 +1777,6 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The enterprise token appended to the callback URL.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string EnterpriseToken { get; set; }
-
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
@@ -1788,6 +1784,10 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
+
+            /// <summary>The enterprise token appended to the callback URL.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string EnterpriseToken { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1820,15 +1820,6 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "enterpriseToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
@@ -1841,6 +1832,15 @@ namespace Google.Apis.AndroidManagement.v1
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "enterpriseToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2026,6 +2026,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The callback URL that the admin will be redirected to after successfully creating an
             /// enterprise. Before redirecting there the system will add a query parameter to this URL named
             /// enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL
@@ -2033,10 +2037,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// minor formatting changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callbackUrl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CallbackUrl { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2063,18 +2063,18 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "callbackUrl", new Google.Apis.Discovery.Parameter
+                    "projectId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "callbackUrl",
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
+                    "callbackUrl", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectId",
+                        Name = "callbackUrl",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

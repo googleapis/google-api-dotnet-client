@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190318 (1537)
+ *      <tr><th>API Rev<td>20190323 (1542)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -522,20 +522,20 @@ namespace Google.Apis.CloudShell.v1alpha1
                 }
             }
 
-            /// <summary>Sends an access token to a running environment on behalf of a user. When this completes, the
-            /// environment will be authorized to run gcloud commands without requiring the user to manually
-            /// authenticate.</summary>
+            /// <summary>Sends OAuth credentials to a running environment on behalf of a user. When this completes, the
+            /// environment will be authorized to run various Google Cloud command line tools without requiring the user
+            /// to manually authenticate.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the resource that should receive the token, for example `users/me/environments/default`
-            /// or `users/someone@example.com/environments/default`.</param>
+            /// <param name="name">Name of the resource that should receive the credentials, for example
+            /// `users/me/environments/default` or `users/someone@example.com/environments/default`.</param>
             public virtual AuthorizeRequest Authorize(Google.Apis.CloudShell.v1alpha1.Data.AuthorizeEnvironmentRequest body, string name)
             {
                 return new AuthorizeRequest(service, body, name);
             }
 
-            /// <summary>Sends an access token to a running environment on behalf of a user. When this completes, the
-            /// environment will be authorized to run gcloud commands without requiring the user to manually
-            /// authenticate.</summary>
+            /// <summary>Sends OAuth credentials to a running environment on behalf of a user. When this completes, the
+            /// environment will be authorized to run various Google Cloud command line tools without requiring the user
+            /// to manually authenticate.</summary>
             public class AuthorizeRequest : CloudShellBaseServiceRequest<Google.Apis.CloudShell.v1alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Authorize request.</summary>
@@ -548,7 +548,7 @@ namespace Google.Apis.CloudShell.v1alpha1
                 }
 
 
-                /// <summary>Name of the resource that should receive the token, for example
+                /// <summary>Name of the resource that should receive the credentials, for example
                 /// `users/me/environments/default` or `users/someone@example.com/environments/default`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -832,10 +832,14 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; } 
 
-        /// <summary>The time when the token expires. If not set, defaults to one hour from when the server received the
-        /// request.</summary>
+        /// <summary>The time when the credentials expire. If not set, defaults to one hour from when the server
+        /// received the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; } 
+
+        /// <summary>The OAuth ID token that should be sent to the environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
+        public virtual string IdToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

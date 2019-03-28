@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190320 (1539)
+ *      <tr><th>API Rev<td>20190326 (1545)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -587,10 +587,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -598,6 +594,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -633,15 +633,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -654,6 +645,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -865,10 +865,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could
             /// either be the tenant project reserved by calling `AddTenantProject` under a tenancy unit of a service
             /// producer's project of a managed service, or from a separate project. The caller is checked against a set
-            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the
-            /// attachement, the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement
-            /// service account is the owner of that project. These two requirements are already met if the project is
-            /// reserved by calling `AddTenantProject`. Operation.</summary>
+            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the attachment,
+            /// the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement service account
+            /// is the owner of that project. These two requirements are already met if the project is reserved by
+            /// calling `AddTenantProject`. Operation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the tenancy unit that the project will be attached to.</param>
             public virtual AttachProjectRequest AttachProject(Google.Apis.ServiceConsumerManagement.v1.Data.AttachTenantProjectRequest body, string name)
@@ -879,10 +879,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>Attach an existing project to the tenancy unit as a new tenant resource. The project could
             /// either be the tenant project reserved by calling `AddTenantProject` under a tenancy unit of a service
             /// producer's project of a managed service, or from a separate project. The caller is checked against a set
-            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the
-            /// attachement, the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement
-            /// service account is the owner of that project. These two requirements are already met if the project is
-            /// reserved by calling `AddTenantProject`. Operation.</summary>
+            /// of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the attachment,
+            /// the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement service account
+            /// is the owner of that project. These two requirements are already met if the project is reserved by
+            /// calling `AddTenantProject`. Operation.</summary>
             public class AttachProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new AttachProject request.</summary>
@@ -1113,10 +1113,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of results returned by this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Filter expression over tenancy resources field. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1126,6 +1122,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results returned by this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1161,15 +1161,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1182,6 +1173,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1481,7 +1481,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Request to attach an existing project to the tenancy unit as a new tenant resource.</summary>
     public class AttachTenantProjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When attaching an external project, this is in the format of `projects/{project_number}’.</summary>
+        /// <summary>When attaching an external project, this is in the format of `projects/{project_number}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalResource")]
         public virtual string ExternalResource { get; set; } 
 

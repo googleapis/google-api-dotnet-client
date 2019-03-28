@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/V794JSPMbhzX_2fANnMyyFW1PDk\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/2_7rfkcxGEyURAjUJ8X0jf46KhQ\"",
  "discoveryVersion": "v1",
  "id": "plusDomains:v1",
  "name": "plusDomains",
  "version": "v1",
- "revision": "20190319",
+ "revision": "20190322",
  "title": "Google+ Domains API",
  "description": "Builds on top of the Google+ platform for Google Apps Domains.",
  "ownerDomain": "google.com",
@@ -72,9 +72,6 @@
     "https://www.googleapis.com/auth/plus.circles.read": {
      "description": "View your circles and the people and pages in them"
     },
-    "https://www.googleapis.com/auth/plus.circles.write": {
-     "description": "Manage your circles and add people and pages. People and pages you add to your circles will be notified. Others may see this information publicly. People you add to circles can use Hangouts with you."
-    },
     "https://www.googleapis.com/auth/plus.login": {
      "description": "View your basic profile info, including your age range and language"
     },
@@ -97,7 +94,7 @@
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "See your personal info, including any personal info you've made publically available"
+     "description": "See your personal info, including any personal info you've made publicly available"
     }
    }
   }
@@ -1511,39 +1508,6 @@
       "https://www.googleapis.com/auth/plus.stream.read"
      ]
     },
-    "insert": {
-     "id": "plusDomains.activities.insert",
-     "path": "people/{userId}/activities",
-     "httpMethod": "POST",
-     "description": "Create a new activity for the authenticated user.",
-     "parameters": {
-      "preview": {
-       "type": "boolean",
-       "description": "If \"true\", extract the potential media attachments for a URL. The response will include all possible attachments for a URL, including video, photos, and articles based on the content of the page.",
-       "location": "query"
-      },
-      "userId": {
-       "type": "string",
-       "description": "The ID of the user to create the activity on behalf of. Its value should be \"me\", to indicate the authenticated user.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "userId"
-     ],
-     "request": {
-      "$ref": "Activity"
-     },
-     "response": {
-      "$ref": "Activity"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.login",
-      "https://www.googleapis.com/auth/plus.me",
-      "https://www.googleapis.com/auth/plus.stream.write"
-     ]
-    },
     "list": {
      "id": "plusDomains.activities.list",
      "path": "people/{userId}/activities/{collection}",
@@ -1643,94 +1607,6 @@
   },
   "circles": {
    "methods": {
-    "addPeople": {
-     "id": "plusDomains.circles.addPeople",
-     "path": "circles/{circleId}/people",
-     "httpMethod": "PUT",
-     "description": "Add a person to a circle. Google+ limits certain circle operations, including the number of circle adds. Learn More.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to add the person to.",
-       "required": true,
-       "location": "path"
-      },
-      "email": {
-       "type": "string",
-       "description": "Email of the people to add to the circle. Optional, can be repeated.",
-       "repeated": true,
-       "location": "query"
-      },
-      "userId": {
-       "type": "string",
-       "description": "IDs of the people to add to the circle. Optional, can be repeated.",
-       "repeated": true,
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "response": {
-      "$ref": "Circle"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login"
-     ]
-    },
-    "get": {
-     "id": "plusDomains.circles.get",
-     "path": "circles/{circleId}",
-     "httpMethod": "GET",
-     "description": "Get a circle.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to get.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "response": {
-      "$ref": "Circle"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.read",
-      "https://www.googleapis.com/auth/plus.login"
-     ]
-    },
-    "insert": {
-     "id": "plusDomains.circles.insert",
-     "path": "people/{userId}/circles",
-     "httpMethod": "POST",
-     "description": "Create a new circle for the authenticated user.",
-     "parameters": {
-      "userId": {
-       "type": "string",
-       "description": "The ID of the user to create the circle on behalf of. The value \"me\" can be used to indicate the authenticated user.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "userId"
-     ],
-     "request": {
-      "$ref": "Circle"
-     },
-     "response": {
-      "$ref": "Circle"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login",
-      "https://www.googleapis.com/auth/plus.me"
-     ]
-    },
     "list": {
      "id": "plusDomains.circles.list",
      "path": "people/{userId}/circles",
@@ -1768,114 +1644,6 @@
       "https://www.googleapis.com/auth/plus.circles.read",
       "https://www.googleapis.com/auth/plus.login",
       "https://www.googleapis.com/auth/plus.me"
-     ]
-    },
-    "patch": {
-     "id": "plusDomains.circles.patch",
-     "path": "circles/{circleId}",
-     "httpMethod": "PATCH",
-     "description": "Update a circle's description. This method supports patch semantics.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to update.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "request": {
-      "$ref": "Circle"
-     },
-     "response": {
-      "$ref": "Circle"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login"
-     ]
-    },
-    "remove": {
-     "id": "plusDomains.circles.remove",
-     "path": "circles/{circleId}",
-     "httpMethod": "DELETE",
-     "description": "Delete a circle.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to delete.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login"
-     ]
-    },
-    "removePeople": {
-     "id": "plusDomains.circles.removePeople",
-     "path": "circles/{circleId}/people",
-     "httpMethod": "DELETE",
-     "description": "Remove a person from a circle.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to remove the person from.",
-       "required": true,
-       "location": "path"
-      },
-      "email": {
-       "type": "string",
-       "description": "Email of the people to add to the circle. Optional, can be repeated.",
-       "repeated": true,
-       "location": "query"
-      },
-      "userId": {
-       "type": "string",
-       "description": "IDs of the people to remove from the circle. Optional, can be repeated.",
-       "repeated": true,
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login"
-     ]
-    },
-    "update": {
-     "id": "plusDomains.circles.update",
-     "path": "circles/{circleId}",
-     "httpMethod": "PUT",
-     "description": "Update a circle's description.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to update.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "request": {
-      "$ref": "Circle"
-     },
-     "response": {
-      "$ref": "Circle"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.write",
-      "https://www.googleapis.com/auth/plus.login"
      ]
     }
    }
