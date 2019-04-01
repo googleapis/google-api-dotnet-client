@@ -100,7 +100,7 @@ namespace Google.Apis.Auth.AspNetCore
                     }
                     if (int.TryParse(refreshedExpiresIn, out int expiresInSeconds))
                     {
-                        var refreshedExpiresAt = now + TimeSpan.FromSeconds(expiresInSeconds);
+                        var refreshedExpiresAt = now.AddSeconds(expiresInSeconds);
                         auth.Properties.UpdateTokenValue("expires_at", refreshedExpiresAt.ToString("o"));
                     }
                     if (!string.IsNullOrEmpty(refreshedIdToken))

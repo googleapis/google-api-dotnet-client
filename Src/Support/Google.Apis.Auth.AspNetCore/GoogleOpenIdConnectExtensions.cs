@@ -90,7 +90,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.Authority = "https://accounts.google.com";
                 // Response-type of "code" gets just an authorization-code from the authorization endpoint,
                 // then both an access-token and an id-token (JWT) from the token endpoint.
-                // For the id-token to be returned requires the "openid" scope to be set.
+                // An id-token is returned from the token endpoint because Google is an openid-connect
+                // provider (not just an oauth2 provider), and the "openid" scope is set below.
                 // Useful reference for openid-connect flows:
                 // https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660
                 options.ResponseType = "code";
