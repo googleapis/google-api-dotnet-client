@@ -10,6 +10,7 @@
   "clouds": {
     "Google.Apis.Bigquery.v2": "Google.Cloud.BigQuery.V2",
     "Google.Apis.Datastore.v1": "Google.Cloud.Datastore.V1",
+    "Google.Apis.CloudKMS.v1": "Google.Cloud.Kms.V1",
     "Google.Apis.CloudNaturalLanguage.v1": "Google.Cloud.Language.V1",
     "Google.Apis.Logging.v2": "Google.Cloud.Logging.V2",
     "Google.Apis.Monitoring.v3": "Google.Cloud.Monitoring.V3",
