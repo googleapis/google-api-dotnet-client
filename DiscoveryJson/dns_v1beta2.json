@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/zElGI12CF1UX0N5PSyfUvo8KEe8\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/aNGUvbrklgu_TPFr0cWVV-vnyRs\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",
  "version": "v1beta2",
- "revision": "20190312",
+ "revision": "20190328",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -353,6 +353,9 @@
       "type": "string"
      }
     },
+    "peeringConfig": {
+     "$ref": "ManagedZonePeeringConfig"
+    },
     "privateVisibilityConfig": {
      "$ref": "ManagedZonePrivateVisibilityConfig"
     },
@@ -461,6 +464,37 @@
      "items": {
       "$ref": "Operation"
      }
+    }
+   }
+  },
+  "ManagedZonePeeringConfig": {
+   "id": "ManagedZonePeeringConfig",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfig\".",
+     "default": "dns#managedZonePeeringConfig"
+    },
+    "targetNetwork": {
+     "$ref": "ManagedZonePeeringConfigTargetNetwork"
+    }
+   }
+  },
+  "ManagedZonePeeringConfigTargetNetwork": {
+   "id": "ManagedZonePeeringConfigTargetNetwork",
+   "type": "object",
+   "properties": {
+    "deactivateTime": {
+     "type": "string"
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfigTargetNetwork\".",
+     "default": "dns#managedZonePeeringConfigTargetNetwork"
+    },
+    "networkUrl": {
+     "type": "string"
     }
    }
   },
@@ -640,6 +674,9 @@
      "type": "string"
     },
     "enableInboundForwarding": {
+     "type": "boolean"
+    },
+    "enableLogging": {
      "type": "boolean"
     },
     "id": {

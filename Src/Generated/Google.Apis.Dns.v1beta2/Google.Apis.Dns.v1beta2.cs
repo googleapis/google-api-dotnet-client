@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190312 (1531)
+ *      <tr><th>API Rev<td>20190328 (1547)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2697,6 +2697,9 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringConfig")]
+        public virtual ManagedZonePeeringConfig PeeringConfig { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
         public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; } 
 
@@ -2769,6 +2772,37 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePeeringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePeeringConfig".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
+        public virtual ManagedZonePeeringConfigTargetNetwork TargetNetwork { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZonePeeringConfigTargetNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deactivateTime")]
+        public virtual string DeactivateTime { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZonePeeringConfigTargetNetwork".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2929,6 +2963,9 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
         public virtual System.Nullable<bool> EnableInboundForwarding { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
+        public virtual System.Nullable<bool> EnableLogging { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 

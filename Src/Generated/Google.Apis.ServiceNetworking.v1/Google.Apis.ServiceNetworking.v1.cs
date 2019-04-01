@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190326 (1545)
+ *      <tr><th>API Rev<td>20190328 (1547)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -593,6 +593,10 @@ namespace Google.Apis.ServiceNetworking.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -600,10 +604,6 @@ namespace Google.Apis.ServiceNetworking.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -639,6 +639,15 @@ namespace Google.Apis.ServiceNetworking.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -651,15 +660,6 @@ namespace Google.Apis.ServiceNetworking.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1744,8 +1744,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
 
         /// <summary>The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element
         /// which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component
-        /// of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". To specify a default for all
-        /// applicable elements, the whole pattern "*" is used.</summary>
+        /// of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or
+        /// more components. To specify a default for all applicable elements, the whole pattern "*" is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -2745,6 +2745,34 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage.
+    ///
+    /// The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For
+    /// API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines
+    /// limits on the metrics, which will be used for quota checks at runtime.
+    ///
+    /// An example quota configuration in yaml format:
+    ///
+    /// quota: limits:
+    ///
+    /// - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}"  # rate limit
+    /// for consumer projects values: STANDARD: 10000
+    ///
+    /// # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook
+    /// methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at
+    /// twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs:
+    /// library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook
+    /// metric_costs: library.googleapis.com/write_calls: 2 - selector:
+    /// google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1
+    ///
+    /// Corresponding Metric definition:
+    ///
+    /// metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type:
+    /// INT64
+    ///
+    /// - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
+    ///
+    /// </summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of `QuotaLimit` definitions for the service.</summary>

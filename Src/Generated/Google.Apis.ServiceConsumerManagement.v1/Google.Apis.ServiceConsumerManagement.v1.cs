@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190326 (1545)
+ *      <tr><th>API Rev<td>20190328 (1547)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -587,6 +587,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -594,10 +598,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -633,6 +633,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -645,15 +654,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1079,6 +1079,86 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
+            /// <summary>Deletes the specified project resource identified by a tenant resource tag. The mothod removes
+            /// a project lien with a 'TenantManager' origin if that was added. It will then attempt to delete the
+            /// project. If that operation fails, this method also fails. After the project has been deleted, the tenant
+            /// resource state is set to DELETED.  To permanently remove resource metadata, call the
+            /// `RemoveTenantProject` method. New resources with the same tag can't be added if there are existing
+            /// resources in a DELETED state. Operation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name of the tenancy unit. Such as
+            /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.</param>
+            public virtual DeleteProjectRequest DeleteProject(Google.Apis.ServiceConsumerManagement.v1.Data.DeleteTenantProjectRequest body, string name)
+            {
+                return new DeleteProjectRequest(service, body, name);
+            }
+
+            /// <summary>Deletes the specified project resource identified by a tenant resource tag. The mothod removes
+            /// a project lien with a 'TenantManager' origin if that was added. It will then attempt to delete the
+            /// project. If that operation fails, this method also fails. After the project has been deleted, the tenant
+            /// resource state is set to DELETED.  To permanently remove resource metadata, call the
+            /// `RemoveTenantProject` method. New resources with the same tag can't be added if there are existing
+            /// resources in a DELETED state. Operation.</summary>
+            public class DeleteProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new DeleteProject request.</summary>
+                public DeleteProjectRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1.Data.DeleteTenantProjectRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Name of the tenancy unit. Such as
+                /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceConsumerManagement.v1.Data.DeleteTenantProjectRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "deleteProject"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:deleteProject"; }
+                }
+
+                /// <summary>Initializes DeleteProject parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Find the tenancy unit for a managed service and service consumer. This method shouldn't be used
             /// in a service producer's runtime path, for example to find the tenant project number when creating VMs.
             /// Service producers must persist the tenant project's information after the project is created.</summary>
@@ -1113,10 +1193,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -1126,6 +1202,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1161,15 +1241,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1182,6 +1253,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1252,6 +1332,82 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 }
 
                 /// <summary>Initializes RemoveProject parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Attempts to undelete a previously deleted tenant project. The project must be in a DELETED
+            /// state. There are no guarantees that an undeleted project will be in a fully restored and functional
+            /// state. Call the `ApplyTenantProjectConfig` method to update its configuration and then validate all
+            /// managed service resources. Operation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name of the tenancy unit. Such as
+            /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.</param>
+            public virtual UndeleteProjectRequest UndeleteProject(Google.Apis.ServiceConsumerManagement.v1.Data.UndeleteTenantProjectRequest body, string name)
+            {
+                return new UndeleteProjectRequest(service, body, name);
+            }
+
+            /// <summary>Attempts to undelete a previously deleted tenant project. The project must be in a DELETED
+            /// state. There are no guarantees that an undeleted project will be in a fully restored and functional
+            /// state. Call the `ApplyTenantProjectConfig` method to update its configuration and then validate all
+            /// managed service resources. Operation.</summary>
+            public class UndeleteProjectRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UndeleteProject request.</summary>
+                public UndeleteProjectRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1.Data.UndeleteTenantProjectRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Name of the tenancy unit. Such as
+                /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceConsumerManagement.v1.Data.UndeleteTenantProjectRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "undeleteProject"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:undeleteProject"; }
+                }
+
+                /// <summary>Initializes UndeleteProject parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1906,6 +2062,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message to delete tenant project resource from the tenancy unit.</summary>
+    public class DeleteTenantProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tag of the resource within the tenancy unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Documentation` provides the information for describing a service.
     ///
     /// Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: -
@@ -1981,8 +2148,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
 
         /// <summary>The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element
         /// which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component
-        /// of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". To specify a default for all
-        /// applicable elements, the whole pattern "*" is used.</summary>
+        /// of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or
+        /// more components. To specify a default for all applicable elements, the whole pattern "*" is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
 
@@ -2978,6 +3145,34 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage.
+    ///
+    /// The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For
+    /// API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines
+    /// limits on the metrics, which will be used for quota checks at runtime.
+    ///
+    /// An example quota configuration in yaml format:
+    ///
+    /// quota: limits:
+    ///
+    /// - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}"  # rate limit
+    /// for consumer projects values: STANDARD: 10000
+    ///
+    /// # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook
+    /// methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at
+    /// twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs:
+    /// library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook
+    /// metric_costs: library.googleapis.com/write_calls: 2 - selector:
+    /// google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1
+    ///
+    /// Corresponding Metric definition:
+    ///
+    /// metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type:
+    /// INT64
+    ///
+    /// - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
+    ///
+    /// </summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of `QuotaLimit` definitions for the service.</summary>
@@ -3559,6 +3754,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message to undelete tenant project resource previously deleted from the tenancy unit.</summary>
+    public class UndeleteTenantProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tag of the resource within the tenancy unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

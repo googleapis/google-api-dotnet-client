@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190311 (1530)
+ *      <tr><th>API Rev<td>20190323 (1542)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -604,13 +604,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of environments to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -646,18 +646,18 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -880,13 +880,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The maximum number of image_versions to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -922,18 +922,18 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1130,6 +1130,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1137,10 +1141,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1176,6 +1176,15 @@ namespace Google.Apis.CloudComposer.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1188,15 +1197,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1295,7 +1295,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; } 
 
-        /// <summary>The configuration used for the private Composer environment.</summary>
+        /// <summary>The configuration used for the Private IP Cloud Composer environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEnvironmentConfig")]
         public virtual PrivateEnvironmentConfig PrivateEnvironmentConfig { get; set; } 
 
@@ -1325,7 +1325,9 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ClusterIpv4CidrBlock { get; set; } 
 
         /// <summary>Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify
-        /// either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.</summary>
+        /// either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+        ///
+        /// This field is applicable only when `use_ip_aliases` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
         public virtual string ClusterSecondaryRangeName { get; set; } 
 
@@ -1344,12 +1346,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ServicesIpv4CidrBlock { get; set; } 
 
         /// <summary>Optional. The name of the services' secondary range used to allocate IP addresses to the cluster.
-        /// Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.</summary>
+        /// Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+        ///
+        /// This field is applicable only when `use_ip_aliases` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; } 
 
-        /// <summary>Optional. Whether or not to enable Alias IPs in the GKE cluster. If true or if left blank, a VPC-
-        /// native cluster is created.</summary>
+        /// <summary>Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is
+        /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
         public virtual System.Nullable<bool> UseIpAliases { get; set; } 
 
@@ -1474,9 +1478,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Optional. The set of Google API scopes to be made available on all node VMs. Defaults to
-        /// ["https://www.googleapis.com/auth/cloud-platform"] and must be included in the list of specified scopes.
-        /// Cannot be updated.</summary>
+        /// <summary>Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is
+        /// empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
@@ -1490,10 +1493,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}"
         ///
         /// If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to
-        /// the same project as the network.
-        ///
-        /// For Shared VPC, you must configure the subnetwork with secondary ranges named composer-pods and composer-
-        /// services to support Alias IPs.</summary>
+        /// the enclosing environment's project and location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -1576,19 +1576,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration options for private cluster of Composer environment.</summary>
+    /// <summary>Configuration options for the private GKE cluster in a Cloud Composer environment.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If true, access to public endpoint of gke cluster will be denied.
-        /// `IPAllocationPolicy.use_ip_aliases` must be true if this field is set to true. Default value is
-        /// false.</summary>
+        /// <summary>Optional. If `true`, access to the public endpoint of the GKE cluster is denied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; } 
 
-        /// <summary>The IP range in CIDR notation to use for the hosted master network. This range will be used for
-        /// assigning internal IP addresses to the cluster master or set of masters, as well as the ILB VIP (Internal
-        /// Load Balance Virtual IP).This range must not overlap with any other ranges in use within the cluster's
-        /// network. If left blank, default value of '172.16.0.0/28' will be used.</summary>
+        /// <summary>The IP range in CIDR notation to use for the hosted master network. This range is used for
+        /// assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer
+        /// virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left
+        /// blank, the default value of '172.16.0.0/28' is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; } 
 
@@ -1596,14 +1594,16 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The configuration information for configuring a private Composer environment.</summary>
+    /// <summary>The configuration information for configuring a Private IP Cloud Composer environment.</summary>
     public class PrivateEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If `true`, a private Composer environment is created.</summary>
+        /// <summary>Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is true,
+        /// `use_ip_aliases` must be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; } 
 
-        /// <summary>Optional. Configuration for private cluster for a private Composer environment.</summary>
+        /// <summary>Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer
+        /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
         public virtual PrivateClusterConfig PrivateClusterConfig { get; set; } 
 

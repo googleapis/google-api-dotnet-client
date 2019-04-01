@@ -1,22 +1,20 @@
 {
-  "documentationLink": "https://cloud.google.com/iap",
-  "id": "iap:v1",
-  "revision": "20190323",
-  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
       "properties": {
         "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "$ref": "Policy"
         }
       },
-      "id": "SetIamPolicyRequest",
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object"
+      "id": "SetIamPolicyRequest"
     },
     "TestIamPermissionsRequest": {
+      "description": "Request message for `TestIamPermissions` method.",
+      "type": "object",
       "properties": {
         "permissions": {
           "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
@@ -26,9 +24,7 @@
           }
         }
       },
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method.",
-      "type": "object"
+      "id": "TestIamPermissionsRequest"
     },
     "Binding": {
       "description": "Associates `members` with a `role`.",
@@ -54,6 +50,13 @@
     },
     "Policy": {
       "properties": {
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+          "type": "array",
+          "items": {
+            "$ref": "Binding"
+          }
+        },
         "etag": {
           "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
           "format": "byte",
@@ -63,13 +66,6 @@
           "description": "Deprecated.",
           "format": "int32",
           "type": "integer"
-        },
-        "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          }
         }
       },
       "id": "Policy",
@@ -80,20 +76,20 @@
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
-        "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        },
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
-        },
         "title": {
           "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
           "type": "string"
         },
         "location": {
           "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string"
+        },
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        },
+        "expression": {
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
           "type": "string"
         }
       },
@@ -145,11 +141,13 @@
   "resources": {
     "v1": {
       "methods": {
-        "getIamPolicy": {
+        "setIamPolicy": {
+          "path": "v1/{+resource}:setIamPolicy",
+          "id": "iap.setIamPolicy",
           "request": {
-            "$ref": "GetIamPolicyRequest"
+            "$ref": "SetIamPolicyRequest"
           },
-          "description": "Gets the access control policy for an Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+          "description": "Sets the access control policy for an Identity-Aware Proxy protected\nresource. Replaces any existing policy.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
           "response": {
             "$ref": "Policy"
           },
@@ -160,6 +158,57 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "resource": {
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$"
+            }
+          },
+          "flatPath": "v1/{v1Id}:setIamPolicy"
+        },
+        "testIamPermissions": {
+          "flatPath": "v1/{v1Id}:testIamPermissions",
+          "path": "v1/{+resource}:testIamPermissions",
+          "id": "iap.testIamPermissions",
+          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+          "request": {
+            "$ref": "TestIamPermissionsRequest"
+          },
+          "response": {
+            "$ref": "TestIamPermissionsResponse"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
+          "parameters": {
+            "resource": {
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
+        "getIamPolicy": {
+          "description": "Gets the access control policy for an Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+          "request": {
+            "$ref": "GetIamPolicyRequest"
+          },
+          "response": {
+            "$ref": "Policy"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
           "parameters": {
             "resource": {
               "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
@@ -169,100 +218,21 @@
               "location": "path"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "flatPath": "v1/{v1Id}:getIamPolicy",
           "path": "v1/{+resource}:getIamPolicy",
           "id": "iap.getIamPolicy"
-        },
-        "setIamPolicy": {
-          "description": "Sets the access control policy for an Identity-Aware Proxy protected\nresource. Replaces any existing policy.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
-          "request": {
-            "$ref": "SetIamPolicyRequest"
-          },
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "resource"
-          ],
-          "response": {
-            "$ref": "Policy"
-          },
-          "parameters": {
-            "resource": {
-              "pattern": "^.+$",
-              "location": "path",
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/{v1Id}:setIamPolicy",
-          "id": "iap.setIamPolicy",
-          "path": "v1/{+resource}:setIamPolicy"
-        },
-        "testIamPermissions": {
-          "response": {
-            "$ref": "TestIamPermissionsResponse"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/{v1Id}:testIamPermissions",
-          "path": "v1/{+resource}:testIamPermissions",
-          "id": "iap.testIamPermissions",
-          "request": {
-            "$ref": "TestIamPermissionsRequest"
-          },
-          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api"
         }
       }
     }
   },
   "parameters": {
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
       "location": "query",
@@ -271,18 +241,18 @@
       "default": "true"
     },
     "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
     "$.xgafv": {
@@ -299,13 +269,39 @@
       "location": "query"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     },
-    "callback": {
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
       "location": "query",
-      "description": "JSONP",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
       "type": "string"
     }
   },
@@ -314,5 +310,9 @@
   "servicePath": "",
   "description": "Controls access to cloud applications running on Google Cloud Platform.",
   "kind": "discovery#restDescription",
-  "basePath": ""
+  "basePath": "",
+  "id": "iap:v1",
+  "documentationLink": "https://cloud.google.com/iap",
+  "revision": "20190323",
+  "discoveryVersion": "v1"
 }

@@ -993,10 +993,6 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
-            /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1020,6 +1016,10 @@ namespace Google.Apis.CloudIdentity.v1
             /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1046,15 +1046,6 @@ namespace Google.Apis.CloudIdentity.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1076,6 +1067,15 @@ namespace Google.Apis.CloudIdentity.v1
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

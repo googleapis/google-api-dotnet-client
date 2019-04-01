@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190307 (1526)
+ *      <tr><th>API Rev<td>20190316 (1535)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -1469,11 +1469,6 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1485,6 +1480,11 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1520,15 +1520,6 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1541,6 +1532,15 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2777,11 +2777,6 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OperationId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -2793,6 +2788,11 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+                    /// and replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OperationId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2828,15 +2828,6 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2849,6 +2840,15 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6686,6 +6686,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableKubernetesAlpha")]
         public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; } 
 
+        /// <summary>Enable the ability to use Cloud TPUs in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTpu")]
+        public virtual System.Nullable<bool> EnableTpu { get; set; } 
+
         /// <summary>[Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from
         /// the internet at `https://username:password@endpoint/`.
         ///
@@ -6847,6 +6851,11 @@ namespace Google.Apis.Container.v1.Data
         /// is connected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
+
+        /// <summary>[Output only] The IP address range of the Cloud TPUs in this cluster, in
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
+        public virtual string TpuIpv4CidrBlock { get; set; } 
 
         /// <summary>[Output only] The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
         /// the cluster resides. This field is deprecated, use location instead.</summary>
@@ -7202,6 +7211,21 @@ namespace Google.Apis.Container.v1.Data
         /// an automatic name will be chosen for the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
         public virtual string SubnetworkName { get; set; } 
+
+        /// <summary>The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be
+        /// automatically chosen with the default size.
+        ///
+        /// This field is only applicable when `use_ip_aliases` is true.
+        ///
+        /// If unspecified, the range will use the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
+        public virtual string TpuIpv4CidrBlock { get; set; } 
 
         /// <summary>Whether alias IPs will be used for pod IPs in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
