@@ -24,6 +24,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
@@ -60,12 +61,17 @@ namespace Google.Apis.Auth.AspNetCore
             }
             var accessToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
             var refreshToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
-            var expiresUtc = auth.Properties.ExpiresUtc;
-            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken) || expiresUtc == null)
+            // Get expiration of Google auth-token. The "expires_at" name and "o" format are hard-coded into:
+            // https://github.com/aspnet/AspNetCore/blob/562d119ca4a4275359f6fae359120a2459cd39e9/src/Security/Authentication/OpenIdConnect/src/OpenIdConnectHandler.cs#L940
+            // Do not use `auth.Properties.ExpiresUtc`, as this is the cookie expiration time, not the Google IdToken expiration time.
+            var expiresUtcStr = auth.Properties.GetTokenValue("expires_at");
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken) || expiresUtcStr == null ||
+                !DateTime.TryParseExact(expiresUtcStr, "o", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out var expiresUtc))
             {
-                throw new InvalidOperationException("Invalid auth. access_token, refresh_token, and expires_utc must all be present.");
+                throw new InvalidOperationException("Invalid auth. access_token, refresh_token, and expires_at must all be present.");
             }
-            if (expiresUtc.Value - (accessTokenRefreshWindow ?? s_accessTokenRefreshWindow) < _clock.UtcNow)
+            var now = _clock.UtcNow;
+            if (expiresUtc - (accessTokenRefreshWindow ?? s_accessTokenRefreshWindow) < now)
             {
                 // Refresh required. This has to be done inline here (it can't be done in the background)
                 // because the request auth properties need to be updated with the result.
@@ -81,19 +87,25 @@ namespace Google.Apis.Auth.AspNetCore
                 try
                 {
                     var refreshResponse = await options.Backchannel.PostAsync(oidcConfig.TokenEndpoint, refreshContent, cancellationToken);
+                    refreshResponse.EnsureSuccessStatusCode();
                     var payload = JObject.Parse(await refreshResponse.Content.ReadAsStringAsync());
                     var refreshedAccessToken = payload.Value<string>("access_token");
                     var refreshedRefreshToken = payload.Value<string>("refresh_token");
                     var refreshedExpiresIn = payload.Value<string>("expires_in");
+                    var refreshedIdToken = payload.Value<string>("id_token");
                     auth.Properties.UpdateTokenValue(OpenIdConnectParameterNames.AccessToken, refreshedAccessToken);
                     if (!string.IsNullOrEmpty(refreshedRefreshToken))
                     {
                         auth.Properties.UpdateTokenValue(OpenIdConnectParameterNames.RefreshToken, refreshedRefreshToken);
                     }
-                    auth.Properties.IssuedUtc = _clock.UtcNow;
                     if (int.TryParse(refreshedExpiresIn, out int expiresInSeconds))
                     {
-                        auth.Properties.ExpiresUtc = _clock.UtcNow + TimeSpan.FromSeconds(expiresInSeconds);
+                        var refreshedExpiresAt = now.AddSeconds(expiresInSeconds);
+                        auth.Properties.UpdateTokenValue("expires_at", refreshedExpiresAt.ToString("o"));
+                    }
+                    if (!string.IsNullOrEmpty(refreshedIdToken))
+                    {
+                        auth.Properties.UpdateTokenValue(OpenIdConnectParameterNames.IdToken, refreshedIdToken);
                     }
                     accessToken = refreshedAccessToken;
                 }

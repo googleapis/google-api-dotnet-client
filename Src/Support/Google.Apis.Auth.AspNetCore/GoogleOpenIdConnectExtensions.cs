@@ -16,6 +16,7 @@ limitations under the License.
 
 using Google.Apis.Auth.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -87,16 +88,21 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 // Google's OpenID authority URL.
                 options.Authority = "https://accounts.google.com";
-                // Response-code to get an id-token with profile information,
-                // and a code to use to get an access-token and refresh-token.
-                options.ResponseType = "id_token code";
+                // Response-type of "code" gets just an authorization-code from the authorization endpoint,
+                // then both an access-token and an id-token (JWT) from the token endpoint.
+                // An id-token is returned from the token endpoint because Google is an openid-connect
+                // provider (not just an oauth2 provider), and the "openid" scope is set below.
+                // Useful reference for openid-connect flows:
+                // https://medium.com/@darutk/diagrams-of-all-the-openid-connect-flows-6968e3990660
+                options.ResponseType = "code";
                 // Scopes to announce this is an OpenID auth, and get simple profile information.
                 options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("email");
                 options.Scope.Add("profile");
-                // Save the id-token, access-token and refresh-token in the auth properties.
+                // Save the id-token, access-token, refresh-token, and expiry in the auth properties.
                 options.SaveTokens = true;
+                options.GetClaimsFromUserInfoEndpoint = false;
                 // Call user configuration.
                 configureOptions(options);
                 // Add event handlers.

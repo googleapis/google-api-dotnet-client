@@ -19,7 +19,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Linq;
 
 namespace Google.Apis.Auth.AspNetCore.IntegrationTests
@@ -29,7 +28,7 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => options.ExpireTimeSpan = TimeSpan.FromMinutes(2))
+                .AddCookie()
                 .AddGoogleOpenIdConnect(options =>
                 {
                     var clientInfo = (ClientInfo)services.First(x => x.ServiceType == typeof(ClientInfo)).ImplementationInstance;

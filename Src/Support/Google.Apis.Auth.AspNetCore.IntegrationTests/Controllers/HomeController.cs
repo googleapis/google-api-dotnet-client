@@ -102,17 +102,38 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
         public async Task<IActionResult> ShowTokens()
         {
             var auth = await HttpContext.AuthenticateAsync();
+            var idToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.IdToken);
+            string idTokenValid, idTokenIssued, idTokenExpires;
+            try
+            {
+                var payload = await GoogleJsonWebSignature.ValidateAsync(idToken);
+                idTokenValid = "true";
+                idTokenIssued = new DateTime(1970, 1, 1).AddSeconds(payload.IssuedAtTimeSeconds.Value).ToString();
+                idTokenExpires = new DateTime(1970, 1, 1).AddSeconds(payload.ExpirationTimeSeconds.Value).ToString();
+            }
+            catch (Exception e)
+            {
+                idTokenValid = $"false: {e.Message}";
+                idTokenIssued = "invalid";
+                idTokenExpires = "invalid";
+            }
             var accessToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.AccessToken);
             var refreshToken = auth.Properties.GetTokenValue(OpenIdConnectParameterNames.RefreshToken);
-            var issuedUtc = auth.Properties.IssuedUtc?.ToString() ?? "<missing>";
-            var expiresUtc = auth.Properties.ExpiresUtc?.ToString() ?? "<missing>";
+            var accessTokenExpiresAt = auth.Properties.GetTokenValue("expires_at");
+            var cookieIssuedUtc = auth.Properties.IssuedUtc?.ToString() ?? "<missing>";
+            var cookieExpiresUtc = auth.Properties.ExpiresUtc?.ToString() ?? "<missing>";
 
             return View(new []
             {
+                $"Id Token: '{idToken}'",
+                $"Id Token valid: {idTokenValid}",
+                $"Id Token Issued UTC: '{idTokenIssued}'",
+                $"Id Token Expires UTC: '{idTokenExpires}'",
                 $"Access Token: '{accessToken}'",
                 $"Refresh Token: '{refreshToken}'",
-                $"Issued UTC: '{issuedUtc}'",
-                $"Expires UTC: '{expiresUtc}'",
+                $"Access token expires at: '{accessTokenExpiresAt}'",
+                $"Cookie Issued UTC: '{cookieIssuedUtc}'",
+                $"Cookie Expires UTC: '{cookieExpiresUtc}'",
             });
         }
 
