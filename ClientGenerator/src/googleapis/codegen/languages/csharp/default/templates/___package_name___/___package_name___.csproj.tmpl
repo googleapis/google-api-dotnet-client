@@ -8,7 +8,7 @@
     <Copyright>Copyright 2017 {% if api.ownerName == 'Google' %}Google Inc.{% else %}{{ api.ownerName }}{% endif %}</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
@@ -48,6 +48,10 @@
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
     </Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <!-- build properties -->
   <PropertyGroup>
