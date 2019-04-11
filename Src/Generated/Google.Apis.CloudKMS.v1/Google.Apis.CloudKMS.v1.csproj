@@ -3,17 +3,18 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudKMS.v1 Client Library</Title>
-    <Version>1.38.0.1547</Version>
+    <Version>1.38.2.1547</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Cloudkms v1.
+      This is not the recommended package for working with Cloudkms, please use the Google.Cloud.Kms.V1 package.
+      This Google APIs Client Library for working with Cloudkms v1 uses older code generation, and is harder to use.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -39,6 +40,10 @@
     </Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
   <!-- build properties -->
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard1.3;netstandard1.0;net45;net40</TargetFrameworks>
@@ -57,13 +62,13 @@
   
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <PackageReference Include="Google.Apis" Version="1.38.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.38.0" />
+    <PackageReference Include="Google.Apis" Version="1.38.2" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.38.2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Google.Apis" Version="1.38.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.38.0" />
+    <PackageReference Include="Google.Apis" Version="1.38.2" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.38.2" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -77,8 +82,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <PackageReference Include="Google.Apis" Version="1.38.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.38.0" />
+    <PackageReference Include="Google.Apis" Version="1.38.2" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.38.2" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">

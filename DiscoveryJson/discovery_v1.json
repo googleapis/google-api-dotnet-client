@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/MuKNTHPi6T8zB1eWHfOovTgCHfQ\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/jIpdkeF1oG7LZYhVFIxkyCnVjRQ\"",
  "discoveryVersion": "v1",
  "id": "discovery:v1",
  "name": "discovery",
  "version": "v1",
- "revision": "20190320",
+ "revision": "20190326",
  "title": "API Discovery Service",
  "description": "Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.",
  "ownerDomain": "google.com",

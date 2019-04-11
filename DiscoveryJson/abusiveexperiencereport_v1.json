@@ -1,14 +1,4 @@
 {
-  "canonicalName": "Abusive Experience Report",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/xapi.zoo": {
-          "description": "Test scope for access to the Zoo service"
-        }
-      }
-    }
-  },
   "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "abusiveexperiencereport",
@@ -20,6 +10,8 @@
     "sites": {
       "methods": {
         "get": {
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get",
           "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
@@ -40,9 +32,7 @@
               "location": "path"
             }
           },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get"
+          "flatPath": "v1/sites/{sitesId}"
         }
       }
     },
@@ -50,69 +40,30 @@
       "methods": {
         "list": {
           "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
-          "httpMethod": "GET",
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
           "parameterOrder": [],
+          "httpMethod": "GET",
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
           "flatPath": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list",
-          "path": "v1/violatingSites"
+          "path": "v1/violatingSites",
+          "id": "abusiveexperiencereport.violatingSites.list"
         }
       }
     }
   },
   "parameters": {
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "type": "string",
+    "key": {
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
     },
@@ -132,29 +83,82 @@
       "type": "boolean",
       "default": "true"
     },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
       "type": "string",
-      "location": "query"
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     }
   },
   "version": "v1",
   "baseUrl": "https://abusiveexperiencereport.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "servicePath": "",
+  "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20190318",
   "documentationLink": "https://developers.google.com/abusive-experience-report/",
   "id": "abusiveexperiencereport:v1",
+  "revision": "20190408",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "ViolatingSitesResponse": {
+      "description": "Response message for ListViolatingSites.",
+      "type": "object",
+      "properties": {
+        "violatingSites": {
+          "type": "array",
+          "items": {
+            "$ref": "SiteSummaryResponse"
+          },
+          "description": "A list of summaries of violating sites."
+        }
+      },
+      "id": "ViolatingSitesResponse"
+    },
     "SiteSummaryResponse": {
       "description": "Response message for GetSiteSummary.",
       "type": "object",
@@ -174,13 +178,11 @@
           ]
         },
         "enforcementTime": {
+          "type": "string",
           "description": "The date on which enforcement begins.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "filterStatus": {
-          "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
           "enumDescriptions": [
             "N/A.",
             "Ad filtering is on.",
@@ -194,7 +196,9 @@
             "OFF",
             "PAUSED",
             "PENDING"
-          ]
+          ],
+          "description": "The abusive experience enforcement status of the site.",
+          "type": "string"
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -204,36 +208,32 @@
           "description": "A link that leads to a full abusive experience report.",
           "type": "string"
         },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
         "lastChangeTime": {
           "description": "The last time that the site changed status.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
         }
       },
       "id": "SiteSummaryResponse"
-    },
-    "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
-      "type": "object",
-      "properties": {
-        "violatingSites": {
-          "description": "A list of summaries of violating sites.",
-          "type": "array",
-          "items": {
-            "$ref": "SiteSummaryResponse"
-          }
-        }
-      },
-      "id": "ViolatingSitesResponse"
     }
   },
   "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "canonicalName": "Abusive Experience Report",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/xapi.zoo": {
+          "description": "Test scope for access to the Zoo service"
+        }
+      }
+    }
   }
 }

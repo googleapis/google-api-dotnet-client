@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/z9eQfOxzxzKiNgNJr21slVQrHcg\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/0oTiRxFg5a8IRGYou40wPCps2h4\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20190226",
+ "revision": "20190326",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -643,6 +643,97 @@
     "title": {
      "type": "string",
      "description": "An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."
+    }
+   }
+  },
+  "HmacKey": {
+   "id": "HmacKey",
+   "type": "object",
+   "description": "JSON template to produce a JSON-style HMAC Key resource for Create responses.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "The kind of item this is. For HMAC keys, this is always storage#hmacKey.",
+     "default": "storage#hmacKey"
+    },
+    "metadata": {
+     "type": "any",
+     "description": "Key metadata."
+    },
+    "secret": {
+     "type": "string",
+     "description": "HMAC secret key material."
+    }
+   }
+  },
+  "HmacKeyMetadata": {
+   "id": "HmacKeyMetadata",
+   "type": "object",
+   "description": "JSON template to produce a JSON-style HMAC Key metadata resource.",
+   "properties": {
+    "accessId": {
+     "type": "string",
+     "description": "The ID of the HMAC Key."
+    },
+    "etag": {
+     "type": "string",
+     "description": "HTTP 1.1 Entity tag for the access-control entry."
+    },
+    "id": {
+     "type": "string",
+     "description": "The ID of the HMAC key, including the Project ID and the Access ID."
+    },
+    "kind": {
+     "type": "string",
+     "description": "The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.",
+     "default": "storage#hmacKeyMetadata"
+    },
+    "projectId": {
+     "type": "string",
+     "description": "Project ID owning the service account to which the key authenticates."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "The link to this resource."
+    },
+    "serviceAccountEmail": {
+     "type": "string",
+     "description": "The email address of the key's associated service account."
+    },
+    "state": {
+     "type": "string",
+     "description": "The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED."
+    },
+    "timeCreated": {
+     "type": "string",
+     "description": "The creation time of the HMAC key in RFC 3339 format."
+    },
+    "updated": {
+     "type": "string",
+     "description": "The last modification time of the HMAC key metadata in RFC 3339 format."
+    }
+   }
+  },
+  "HmacKeysMetadata": {
+   "id": "HmacKeysMetadata",
+   "type": "object",
+   "description": "A list of hmacKeys.",
+   "properties": {
+    "items": {
+     "type": "array",
+     "description": "The list of items.",
+     "items": {
+      "$ref": "HmacKeyMetadata"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "The kind of item this is. For lists of hmacKeys, this is always storage#hmacKeysMetadata.",
+     "default": "storage#hmacKeysMetadata"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."
     }
    }
   },
@@ -3806,6 +3897,185 @@
   },
   "projects": {
    "resources": {
+    "hmacKeys": {
+     "methods": {
+      "create": {
+       "id": "storage.projects.hmacKeys.create",
+       "path": "projects/{projectId}/hmacKeys",
+       "httpMethod": "POST",
+       "description": "Creates a new HMAC key for the specified service account.",
+       "parameters": {
+        "projectId": {
+         "type": "string",
+         "description": "Project ID owning the service account.",
+         "required": true,
+         "location": "path"
+        },
+        "serviceAccountEmail": {
+         "type": "string",
+         "description": "Email address of the service account.",
+         "required": true,
+         "location": "query"
+        }
+       },
+       "parameterOrder": [
+        "projectId",
+        "serviceAccountEmail"
+       ],
+       "response": {
+        "$ref": "HmacKey"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/devstorage.full_control"
+       ]
+      },
+      "delete": {
+       "id": "storage.projects.hmacKeys.delete",
+       "path": "projects/{projectId}/hmacKeys/{accessId}",
+       "httpMethod": "DELETE",
+       "description": "Deletes an HMAC key.",
+       "parameters": {
+        "accessId": {
+         "type": "string",
+         "description": "Name of the HMAC key to be deleted.",
+         "required": true,
+         "location": "path"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "Project ID owning the requested key",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "projectId",
+        "accessId"
+       ],
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/devstorage.full_control",
+        "https://www.googleapis.com/auth/devstorage.read_write"
+       ]
+      },
+      "get": {
+       "id": "storage.projects.hmacKeys.get",
+       "path": "projects/{projectId}/hmacKeys/{accessId}",
+       "httpMethod": "GET",
+       "description": "Retrieves an HMAC key's metadata",
+       "parameters": {
+        "accessId": {
+         "type": "string",
+         "description": "Name of the HMAC key.",
+         "required": true,
+         "location": "path"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "Project ID owning the service account of the requested key.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "projectId",
+        "accessId"
+       ],
+       "response": {
+        "$ref": "HmacKeyMetadata"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/cloud-platform.read-only",
+        "https://www.googleapis.com/auth/devstorage.read_only"
+       ]
+      },
+      "list": {
+       "id": "storage.projects.hmacKeys.list",
+       "path": "projects/{projectId}/hmacKeys",
+       "httpMethod": "GET",
+       "description": "Retrieves a list of HMAC keys matching the criteria.",
+       "parameters": {
+        "maxResults": {
+         "type": "integer",
+         "description": "Maximum number of items plus prefixes to return in a single page of responses. Because duplicate prefixes are omitted, fewer total results may be returned than requested. The service uses this parameter or 1,000 items, whichever is smaller.",
+         "default": "1000",
+         "format": "uint32",
+         "minimum": "0",
+         "location": "query"
+        },
+        "pageToken": {
+         "type": "string",
+         "description": "A previously-returned page token representing part of the larger set of results to view.",
+         "location": "query"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "Name of the project in which to look for HMAC keys.",
+         "required": true,
+         "location": "path"
+        },
+        "serviceAccountEmail": {
+         "type": "string",
+         "description": "If present, only keys for the given service account are returned.",
+         "location": "query"
+        },
+        "showDeletedKeys": {
+         "type": "boolean",
+         "description": "Whether or not to show keys in the DELETED state.",
+         "location": "query"
+        }
+       },
+       "parameterOrder": [
+        "projectId"
+       ],
+       "response": {
+        "$ref": "HmacKeysMetadata"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/cloud-platform.read-only",
+        "https://www.googleapis.com/auth/devstorage.full_control",
+        "https://www.googleapis.com/auth/devstorage.read_only"
+       ]
+      },
+      "update": {
+       "id": "storage.projects.hmacKeys.update",
+       "path": "projects/{projectId}/hmacKeys/{accessId}",
+       "httpMethod": "PUT",
+       "description": "Updates the state of an HMAC key. See the HMAC Key resource descriptor for valid states.",
+       "parameters": {
+        "accessId": {
+         "type": "string",
+         "description": "Name of the HMAC key being updated.",
+         "required": true,
+         "location": "path"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "Project ID owning the service account of the updated key.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "projectId",
+        "accessId"
+       ],
+       "request": {
+        "$ref": "HmacKeyMetadata"
+       },
+       "response": {
+        "$ref": "HmacKeyMetadata"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/devstorage.full_control"
+       ]
+      }
+     }
+    },
     "serviceAccount": {
      "methods": {
       "get": {

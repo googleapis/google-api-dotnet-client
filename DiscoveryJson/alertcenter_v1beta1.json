@@ -1,5 +1,4 @@
 {
-  "ownerName": "Google",
   "resources": {
     "v1beta1": {
       "methods": {
@@ -10,6 +9,26 @@
           },
           "parameterOrder": [],
           "httpMethod": "GET",
+          "parameters": {
+            "customerId": {
+              "location": "query",
+              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert settings are associated with.\nInferred from the caller identity if not provided.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/apps.alerts"
+          ],
+          "flatPath": "v1beta1/settings",
+          "path": "v1beta1/settings",
+          "id": "alertcenter.getSettings"
+        },
+        "updateSettings": {
+          "response": {
+            "$ref": "Settings"
+          },
+          "parameterOrder": [],
+          "httpMethod": "PATCH",
           "scopes": [
             "https://www.googleapis.com/auth/apps.alerts"
           ],
@@ -22,75 +41,94 @@
           },
           "flatPath": "v1beta1/settings",
           "path": "v1beta1/settings",
-          "id": "alertcenter.getSettings"
-        },
-        "updateSettings": {
-          "flatPath": "v1beta1/settings",
-          "path": "v1beta1/settings",
           "id": "alertcenter.updateSettings",
           "request": {
             "$ref": "Settings"
           },
-          "description": "Updates the customer-level settings.",
-          "response": {
-            "$ref": "Settings"
-          },
-          "parameterOrder": [],
-          "httpMethod": "PATCH",
-          "scopes": [
-            "https://www.googleapis.com/auth/apps.alerts"
-          ],
-          "parameters": {
-            "customerId": {
-              "location": "query",
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert settings are associated with.\nInferred from the caller identity if not provided.",
-              "type": "string"
-            }
-          }
+          "description": "Updates the customer-level settings."
         }
       }
     },
     "alerts": {
-      "methods": {
-        "delete": {
-          "description": "Marks the specified alert for deletion. An alert that has been marked for\ndeletion is removed from Alert Center after 30 days.\nMarking an alert for deletion has no effect on an alert which has\nalready been marked for deletion. Attempting to mark a nonexistent alert\nfor deletion results in a `NOT_FOUND` error.",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "alertId"
-          ],
-          "httpMethod": "DELETE",
-          "parameters": {
-            "customerId": {
-              "location": "query",
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
-              "type": "string"
+      "resources": {
+        "feedback": {
+          "methods": {
+            "list": {
+              "flatPath": "v1beta1/alerts/{alertId}/feedback",
+              "path": "v1beta1/alerts/{alertId}/feedback",
+              "id": "alertcenter.alerts.feedback.list",
+              "description": "Lists all the feedback for an alert. Attempting to list feedbacks for\na non-existent alert returns `NOT_FOUND` error.",
+              "response": {
+                "$ref": "ListAlertFeedbackResponse"
+              },
+              "parameterOrder": [
+                "alertId"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/apps.alerts"
+              ],
+              "parameters": {
+                "alertId": {
+                  "description": "Required. The alert identifier.\nThe \"-\" wildcard could be used to represent all alerts.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                },
+                "customerId": {
+                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert feedback are associated with.\nInferred from the caller identity if not provided.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "Optional. A query string for filtering alert feedback results.\nFor more details, see [Query\nfilters](/admin-sdk/alertcenter/guides/query-filters) and [Supported\nquery filter\nfields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
+                  "type": "string"
+                }
+              }
             },
-            "alertId": {
-              "location": "path",
-              "description": "Required. The identifier of the alert to delete.",
-              "required": true,
-              "type": "string"
+            "create": {
+              "response": {
+                "$ref": "AlertFeedback"
+              },
+              "parameterOrder": [
+                "alertId"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/apps.alerts"
+              ],
+              "parameters": {
+                "alertId": {
+                  "location": "path",
+                  "description": "Required. The identifier of the alert this feedback belongs to.",
+                  "required": true,
+                  "type": "string"
+                },
+                "customerId": {
+                  "location": "query",
+                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/alerts/{alertId}/feedback",
+              "path": "v1beta1/alerts/{alertId}/feedback",
+              "id": "alertcenter.alerts.feedback.create",
+              "request": {
+                "$ref": "AlertFeedback"
+              },
+              "description": "Creates new feedback for an alert. Attempting to create a feedback for\na non-existent alert returns `NOT_FOUND` error."
             }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/apps.alerts"
-          ],
-          "flatPath": "v1beta1/alerts/{alertId}",
-          "path": "v1beta1/alerts/{alertId}",
-          "id": "alertcenter.alerts.delete"
-        },
+          }
+        }
+      },
+      "methods": {
         "list": {
-          "description": "Lists the alerts.",
           "response": {
             "$ref": "ListAlertsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/apps.alerts"
-          ],
           "parameters": {
             "filter": {
               "location": "query",
@@ -103,14 +141,14 @@
               "type": "string"
             },
             "orderBy": {
-              "location": "query",
               "description": "Optional. The sort order of the list results.\nIf not specified results may be returned in arbitrary order.\nYou can sort the results in descending order based on the creation\ntimestamp using `order_by=\"create_time desc\"`.\nCurrently, only sorting by `create_time desc` is supported.",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             },
             "customerId": {
-              "location": "query",
               "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with.\nInferred from the caller identity if not provided.",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             },
             "pageSize": {
               "location": "query",
@@ -119,11 +157,16 @@
               "type": "integer"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/apps.alerts"
+          ],
           "flatPath": "v1beta1/alerts",
           "path": "v1beta1/alerts",
-          "id": "alertcenter.alerts.list"
+          "id": "alertcenter.alerts.list",
+          "description": "Lists the alerts."
         },
         "get": {
+          "description": "Gets the specified alert. Attempting to get a nonexistent alert returns\n`NOT_FOUND` error.",
           "response": {
             "$ref": "Alert"
           },
@@ -131,26 +174,25 @@
             "alertId"
           ],
           "httpMethod": "GET",
-          "parameters": {
-            "alertId": {
-              "description": "Required. The identifier of the alert to retrieve.",
-              "required": true,
-              "type": "string",
-              "location": "path"
-            },
-            "customerId": {
-              "location": "query",
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
-              "type": "string"
-            }
-          },
           "scopes": [
             "https://www.googleapis.com/auth/apps.alerts"
           ],
+          "parameters": {
+            "alertId": {
+              "location": "path",
+              "description": "Required. The identifier of the alert to retrieve.",
+              "required": true,
+              "type": "string"
+            },
+            "customerId": {
+              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+              "type": "string",
+              "location": "query"
+            }
+          },
           "flatPath": "v1beta1/alerts/{alertId}",
           "path": "v1beta1/alerts/{alertId}",
-          "id": "alertcenter.alerts.get",
-          "description": "Gets the specified alert. Attempting to get a nonexistent alert returns\n`NOT_FOUND` error."
+          "id": "alertcenter.alerts.get"
         },
         "undelete": {
           "description": "Restores, or \"undeletes\", an alert that was marked for deletion within the\npast 30 days. Attempting to undelete an alert which was marked for deletion\nover 30 days ago (which has been removed from the Alert Center database) or\na nonexistent alert returns a `NOT_FOUND` error. Attempting to\nundelete an alert which has not been marked for deletion has no effect.",
@@ -178,87 +220,44 @@
           "flatPath": "v1beta1/alerts/{alertId}:undelete",
           "path": "v1beta1/alerts/{alertId}:undelete",
           "id": "alertcenter.alerts.undelete"
-        }
-      },
-      "resources": {
-        "feedback": {
-          "methods": {
-            "create": {
-              "response": {
-                "$ref": "AlertFeedback"
-              },
-              "parameterOrder": [
-                "alertId"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "alertId": {
-                  "location": "path",
-                  "description": "Required. The identifier of the alert this feedback belongs to.",
-                  "required": true,
-                  "type": "string"
-                },
-                "customerId": {
-                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/apps.alerts"
-              ],
-              "flatPath": "v1beta1/alerts/{alertId}/feedback",
-              "path": "v1beta1/alerts/{alertId}/feedback",
-              "id": "alertcenter.alerts.feedback.create",
-              "description": "Creates new feedback for an alert. Attempting to create a feedback for\na non-existent alert returns `NOT_FOUND` error.",
-              "request": {
-                "$ref": "AlertFeedback"
-              }
+        },
+        "delete": {
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "alertId"
+          ],
+          "httpMethod": "DELETE",
+          "scopes": [
+            "https://www.googleapis.com/auth/apps.alerts"
+          ],
+          "parameters": {
+            "alertId": {
+              "description": "Required. The identifier of the alert to delete.",
+              "required": true,
+              "type": "string",
+              "location": "path"
             },
-            "list": {
-              "response": {
-                "$ref": "ListAlertFeedbackResponse"
-              },
-              "parameterOrder": [
-                "alertId"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/apps.alerts"
-              ],
-              "parameters": {
-                "filter": {
-                  "location": "query",
-                  "description": "Optional. A query string for filtering alert feedback results.\nFor more details, see [Query\nfilters](/admin-sdk/alertcenter/guides/query-filters) and [Supported\nquery filter\nfields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
-                  "type": "string"
-                },
-                "alertId": {
-                  "location": "path",
-                  "description": "Required. The alert identifier.\nThe \"-\" wildcard could be used to represent all alerts.",
-                  "required": true,
-                  "type": "string"
-                },
-                "customerId": {
-                  "location": "query",
-                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert feedback are associated with.\nInferred from the caller identity if not provided.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/alerts/{alertId}/feedback",
-              "path": "v1beta1/alerts/{alertId}/feedback",
-              "id": "alertcenter.alerts.feedback.list",
-              "description": "Lists all the feedback for an alert. Attempting to list feedbacks for\na non-existent alert returns `NOT_FOUND` error."
+            "customerId": {
+              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+              "type": "string",
+              "location": "query"
             }
-          }
+          },
+          "flatPath": "v1beta1/alerts/{alertId}",
+          "path": "v1beta1/alerts/{alertId}",
+          "id": "alertcenter.alerts.delete",
+          "description": "Marks the specified alert for deletion. An alert that has been marked for\ndeletion is removed from Alert Center after 30 days.\nMarking an alert for deletion has no effect on an alert which has\nalready been marked for deletion. Attempting to mark a nonexistent alert\nfor deletion results in a `NOT_FOUND` error."
         }
       }
     }
   },
   "parameters": {
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
       "description": "Returns response with indentations and line breaks.",
@@ -271,31 +270,13 @@
       "type": "string",
       "location": "query"
     },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
     "fields": {
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -304,13 +285,25 @@
       "description": "JSONP",
       "type": "string"
     },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -318,15 +311,21 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
       "type": "string",
       "location": "query"
     }
@@ -337,26 +336,93 @@
   "description": "Manages alerts on issues affecting your domain.",
   "servicePath": "",
   "basePath": "",
-  "id": "alertcenter:v1beta1",
+  "revision": "20190403",
   "documentationLink": "https://developers.google.com/admin-sdk/alertcenter/",
-  "revision": "20190325",
+  "id": "alertcenter:v1beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "GmailMessageInfo": {
+      "description": "Details of a message in phishing spike alert.",
+      "type": "object",
+      "properties": {
+        "attachmentsSha256Hash": {
+          "description": "The `SHA256` hash of email's attachment and all MIME parts.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "messageBodySnippet": {
+          "description": "The snippet of the message body text (only available for reported emails).",
+          "type": "string"
+        },
+        "date": {
+          "description": "The date the malicious email was sent.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "recipient": {
+          "description": "The recipient of this email.",
+          "type": "string"
+        },
+        "md5HashSubject": {
+          "description": "The MD5 Hash of email's subject (only available for reported emails).",
+          "type": "string"
+        },
+        "md5HashMessageBody": {
+          "description": "The hash of the message body text.",
+          "type": "string"
+        },
+        "subjectText": {
+          "description": "The email subject text (only available for reported emails).",
+          "type": "string"
+        },
+        "messageId": {
+          "description": "The message ID.",
+          "type": "string"
+        }
+      },
+      "id": "GmailMessageInfo"
+    },
+    "DomainWideTakeoutInitiated": {
+      "description": "A takeout operation for the entire domain was initiated by an admin. Derived\nfrom audit logs.",
+      "type": "object",
+      "properties": {
+        "takeoutRequestId": {
+          "description": "The takeout request ID.",
+          "type": "string"
+        },
+        "email": {
+          "description": "The email of the admin who initiated the takeout.",
+          "type": "string"
+        }
+      },
+      "id": "DomainWideTakeoutInitiated"
+    },
+    "DomainId": {
+      "description": "Domain ID of Gmail phishing alerts.",
+      "type": "object",
+      "properties": {
+        "customerPrimaryDomain": {
+          "description": "The primary domain for the customer.",
+          "type": "string"
+        }
+      },
+      "id": "DomainId"
+    },
     "UndeleteAlertRequest": {
+      "description": "A request to undelete a specific alert that was marked for deletion.",
+      "type": "object",
       "properties": {
         "customerId": {
           "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
           "type": "string"
         }
       },
-      "id": "UndeleteAlertRequest",
-      "description": "A request to undelete a specific alert that was marked for deletion.",
-      "type": "object"
+      "id": "UndeleteAlertRequest"
     },
     "Settings": {
-      "description": "Customer-level settings.",
-      "type": "object",
       "properties": {
         "notifications": {
           "description": "The list of notifications.",
@@ -366,11 +432,11 @@
           }
         }
       },
-      "id": "Settings"
+      "id": "Settings",
+      "description": "Customer-level settings.",
+      "type": "object"
     },
     "Csv": {
-      "description": "A representation of a CSV file attachment, as a list of column headers and\na list of data rows.",
-      "type": "object",
       "properties": {
         "headers": {
           "description": "The list of headers for data columns in a CSV file.",
@@ -387,15 +453,24 @@
           }
         }
       },
-      "id": "Csv"
+      "id": "Csv",
+      "description": "A representation of a CSV file attachment, as a list of column headers and\na list of data rows.",
+      "type": "object"
     },
     "PhishingSpike": {
       "description": "Alert for a spike in user reported phishing.\n\u003caside class=\"warning\"\u003e\u003cb\u003eWarning\u003c/b\u003e: This type has been deprecated. Use\n[MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)\ninstead.\u003c/aside\u003e",
       "type": "object",
       "properties": {
+        "messages": {
+          "description": "The list of messages contained by this alert.",
+          "type": "array",
+          "items": {
+            "$ref": "GmailMessageInfo"
+          }
+        },
         "domainId": {
-          "description": "The domain ID.",
-          "$ref": "DomainId"
+          "$ref": "DomainId",
+          "description": "The domain ID."
         },
         "maliciousEntity": {
           "$ref": "MaliciousEntity",
@@ -404,34 +479,27 @@
         "isInternal": {
           "description": "If `true`, the email originated from within the organization.",
           "type": "boolean"
-        },
-        "messages": {
-          "description": "The list of messages contained by this alert.",
-          "type": "array",
-          "items": {
-            "$ref": "GmailMessageInfo"
-          }
         }
       },
       "id": "PhishingSpike"
     },
     "DeviceCompromised": {
+      "description": "A mobile device compromised alert. Derived from audit logs.",
+      "type": "object",
       "properties": {
-        "email": {
-          "description": "The email of the user this alert was created for.",
-          "type": "string"
-        },
         "events": {
           "description": "Required. The list of security events.",
           "type": "array",
           "items": {
             "$ref": "DeviceCompromisedSecurityDetail"
           }
+        },
+        "email": {
+          "description": "The email of the user this alert was created for.",
+          "type": "string"
         }
       },
-      "id": "DeviceCompromised",
-      "description": "A mobile device compromised alert. Derived from audit logs.",
-      "type": "object"
+      "id": "DeviceCompromised"
     },
     "MaliciousEntity": {
       "description": "Entity whose actions triggered a Gmail phishing alert.",
@@ -459,35 +527,35 @@
       "id": "ListAlertFeedbackResponse"
     },
     "CloudPubsubTopic": {
+      "description": "A reference to a Cloud Pubsub topic.\n\nTo register for notifications, the owner of the topic must grant\n`alerts-api-push-notifications@system.gserviceaccount.com` the\n `projects.topics.publish` permission.",
+      "type": "object",
       "properties": {
         "topicName": {
           "description": "The `name` field of a Cloud Pubsub [Topic]\n(https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).",
           "type": "string"
         },
         "payloadFormat": {
+          "enumDescriptions": [
+            "Payload format is not specified (will use JSON as default).",
+            "Use JSON."
+          ],
           "enum": [
             "PAYLOAD_FORMAT_UNSPECIFIED",
             "JSON"
           ],
           "description": "Optional. The format of the payload that would be sent.\nIf not specified the format will be JSON.",
-          "type": "string",
-          "enumDescriptions": [
-            "Payload format is not specified (will use JSON as default).",
-            "Use JSON."
-          ]
+          "type": "string"
         }
       },
-      "id": "CloudPubsubTopic",
-      "description": "A reference to a Cloud Pubsub topic.\n\nTo register for notifications, the owner of the topic must grant\n`alerts-api-push-notifications@system.gserviceaccount.com` the\n `projects.topics.publish` permission.",
-      "type": "object"
+      "id": "CloudPubsubTopic"
     },
     "Attachment": {
       "description": "Attachment with application-specific information about an alert.",
       "type": "object",
       "properties": {
         "csv": {
-          "description": "A CSV file attachment.",
-          "$ref": "Csv"
+          "$ref": "Csv",
+          "description": "A CSV file attachment."
         }
       },
       "id": "Attachment"
@@ -496,60 +564,44 @@
       "description": "Alert for setting the domain or IP that malicious email comes from as\nwhitelisted domain or IP in Gmail advanced settings.",
       "type": "object",
       "properties": {
-        "sourceIp": {
-          "description": "The source IP address of the malicious email, for example,\n`127.0.0.1`.",
-          "type": "string"
-        },
-        "domainId": {
-          "description": "The domain ID.",
-          "$ref": "DomainId"
-        },
-        "maliciousEntity": {
-          "$ref": "MaliciousEntity",
-          "description": "The entity whose actions triggered a Gmail phishing alert."
-        },
         "messages": {
           "description": "The list of messages contained by this alert.",
           "type": "array",
           "items": {
             "$ref": "GmailMessageInfo"
           }
+        },
+        "sourceIp": {
+          "description": "The source IP address of the malicious email, for example,\n`127.0.0.1`.",
+          "type": "string"
+        },
+        "domainId": {
+          "$ref": "DomainId",
+          "description": "The domain ID."
+        },
+        "maliciousEntity": {
+          "$ref": "MaliciousEntity",
+          "description": "The entity whose actions triggered a Gmail phishing alert."
         }
       },
       "id": "BadWhitelist"
     },
     "AlertFeedback": {
-      "description": "A customer feedback about an alert.",
-      "type": "object",
       "properties": {
-        "feedbackId": {
-          "description": "Output only. The unique identifier for the feedback.",
-          "type": "string"
-        },
-        "customerId": {
-          "description": "Output only. The unique identifier of the Google account of the customer.",
-          "type": "string"
-        },
         "createTime": {
           "description": "Output only. The time this feedback was created.",
           "format": "google-datetime",
-          "type": "string"
-        },
-        "email": {
-          "description": "Output only. The email of the user that provided the feedback.",
           "type": "string"
         },
         "alertId": {
           "description": "Output only. The alert identifier.",
           "type": "string"
         },
+        "email": {
+          "description": "Output only. The email of the user that provided the feedback.",
+          "type": "string"
+        },
         "type": {
-          "enumDescriptions": [
-            "The feedback type is not specified.",
-            "The alert report is not useful.",
-            "The alert report is somewhat useful.",
-            "The alert report is very useful."
-          ],
           "enum": [
             "ALERT_FEEDBACK_TYPE_UNSPECIFIED",
             "NOT_USEFUL",
@@ -557,34 +609,50 @@
             "VERY_USEFUL"
           ],
           "description": "Required. The type of the feedback.",
+          "type": "string",
+          "enumDescriptions": [
+            "The feedback type is not specified.",
+            "The alert report is not useful.",
+            "The alert report is somewhat useful.",
+            "The alert report is very useful."
+          ]
+        },
+        "feedbackId": {
+          "description": "Output only. The unique identifier for the feedback.",
+          "type": "string"
+        },
+        "customerId": {
+          "description": "Output only. The unique identifier of the Google account of the customer.",
           "type": "string"
         }
       },
-      "id": "AlertFeedback"
+      "id": "AlertFeedback",
+      "description": "A customer feedback about an alert.",
+      "type": "object"
     },
     "ListAlertsResponse": {
+      "description": "Response message for an alert listing request.",
+      "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The token for the next page. If not empty, indicates that there may be more\nalerts that match the listing request; this value can be used in a\nsubsequent ListAlertsRequest to get alerts continuing from last result\nof the current list call.",
+          "type": "string"
+        },
         "alerts": {
           "description": "The list of alerts.",
           "type": "array",
           "items": {
             "$ref": "Alert"
           }
-        },
-        "nextPageToken": {
-          "description": "The token for the next page. If not empty, indicates that there may be more\nalerts that match the listing request; this value can be used in a\nsubsequent ListAlertsRequest to get alerts continuing from last result\nof the current list call.",
-          "type": "string"
         }
       },
-      "id": "ListAlertsResponse",
-      "description": "Response message for an alert listing request.",
-      "type": "object"
+      "id": "ListAlertsResponse"
     },
     "Notification": {
       "properties": {
         "cloudPubsubTopic": {
-          "description": "A Google Cloud Pub/sub topic destination.",
-          "$ref": "CloudPubsubTopic"
+          "$ref": "CloudPubsubTopic",
+          "description": "A Google Cloud Pub/sub topic destination."
         }
       },
       "id": "Notification",
@@ -592,6 +660,8 @@
       "type": "object"
     },
     "CsvRow": {
+      "description": "A representation of a single data row in a CSV file.",
+      "type": "object",
       "properties": {
         "entries": {
           "description": "The data entries in a CSV file row, as a string array rather than a\nsingle comma-separated string.",
@@ -601,24 +671,22 @@
           }
         }
       },
-      "id": "CsvRow",
-      "description": "A representation of a single data row in a CSV file.",
-      "type": "object"
+      "id": "CsvRow"
     },
     "AccountWarning": {
+      "description": "Alerts for user account warning events.",
+      "type": "object",
       "properties": {
         "email": {
           "description": "Required. The email of the user that this event belongs to.",
           "type": "string"
         },
         "loginDetails": {
-          "$ref": "LoginDetails",
-          "description": "Optional. Details of the login action associated with the warning event.\nThis is only available for:\n\n* Suspicious login\n* Suspicious login (less secure app)\n* Suspicious programmatic login\n* User suspended (suspicious activity)"
+          "description": "Optional. Details of the login action associated with the warning event.\nThis is only available for:\n\n* Suspicious login\n* Suspicious login (less secure app)\n* Suspicious programmatic login\n* User suspended (suspicious activity)",
+          "$ref": "LoginDetails"
         }
       },
-      "id": "AccountWarning",
-      "description": "Alerts for user account warning events.",
-      "type": "object"
+      "id": "AccountWarning"
     },
     "StateSponsoredAttack": {
       "description": "A state-sponsored attack alert. Derived from audit logs.",
@@ -635,6 +703,10 @@
       "description": "Proto for all phishing alerts with common payload.\nSupported types are any of the following:\n\n* User reported phishing\n* User reported spam spike\n* Suspicious message reported\n* Phishing reclassification\n* Malware reclassification",
       "type": "object",
       "properties": {
+        "isInternal": {
+          "description": "If `true`, the email originated from within the organization.",
+          "type": "boolean"
+        },
         "messages": {
           "description": "The list of messages contained by this alert.",
           "type": "array",
@@ -649,21 +721,12 @@
         "maliciousEntity": {
           "$ref": "MaliciousEntity",
           "description": "The entity whose actions triggered a Gmail phishing alert."
-        },
-        "isInternal": {
-          "description": "If `true`, the email originated from within the organization.",
-          "type": "boolean"
         }
       },
       "id": "MailPhishing"
     },
     "Alert": {
       "properties": {
-        "createTime": {
-          "description": "Output only. The time this alert was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "alertId": {
           "description": "Output only. The unique identifier for the alert.",
           "type": "string"
@@ -705,6 +768,11 @@
         "source": {
           "description": "Required. A unique identifier for the system that reported the alert.\nThis is output only after alert is created.\n\nSupported sources are any of the following:\n\n* Google Operations\n* Mobile device management\n* Gmail phishing\n* Domain wide takeout\n* Government attack warning\n* Google identity",
           "type": "string"
+        },
+        "createTime": {
+          "description": "Output only. The time this alert was created.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
       "id": "Alert",
@@ -715,32 +783,22 @@
       "description": "The details of the login action.",
       "type": "object",
       "properties": {
-        "ipAddress": {
-          "description": "Optional. The human-readable IP address (for example,\n`11.22.33.44`) that is associated with the warning event.",
-          "type": "string"
-        },
         "loginTime": {
           "description": "Optional. The successful login time that is associated with the warning\nevent. This will not be present for blocked login attempts.",
           "format": "google-datetime",
+          "type": "string"
+        },
+        "ipAddress": {
+          "description": "Optional. The human-readable IP address (for example,\n`11.22.33.44`) that is associated with the warning event.",
           "type": "string"
         }
       },
       "id": "LoginDetails"
     },
     "DeviceCompromisedSecurityDetail": {
+      "description": "Detailed information of a single MDM device compromised event.",
+      "type": "object",
       "properties": {
-        "deviceId": {
-          "description": "Required. The device ID.",
-          "type": "string"
-        },
-        "resourceId": {
-          "description": "The device resource ID.",
-          "type": "string"
-        },
-        "serialNumber": {
-          "description": "The serial number of the device.",
-          "type": "string"
-        },
         "deviceCompromisedState": {
           "description": "The device compromised state. Possible values are \"`Compromised`\" or\n\"`Not Compromised`\".",
           "type": "string"
@@ -756,11 +814,21 @@
         "deviceType": {
           "description": "The type of the device.",
           "type": "string"
+        },
+        "deviceId": {
+          "description": "Required. The device ID.",
+          "type": "string"
+        },
+        "resourceId": {
+          "description": "The device resource ID.",
+          "type": "string"
+        },
+        "serialNumber": {
+          "description": "The serial number of the device.",
+          "type": "string"
         }
       },
-      "id": "DeviceCompromisedSecurityDetail",
-      "description": "Detailed information of a single MDM device compromised event.",
-      "type": "object"
+      "id": "DeviceCompromisedSecurityDetail"
     },
     "Empty": {
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
@@ -770,10 +838,6 @@
     },
     "GoogleOperations": {
       "properties": {
-        "title": {
-          "description": "A one-line incident description.",
-          "type": "string"
-        },
         "description": {
           "description": "A detailed, freeform incident description.",
           "type": "string"
@@ -788,6 +852,10 @@
         "attachmentData": {
           "description": "Optional. Application-specific data for an incident, provided when the\nG Suite application which reported the incident cannot be completely\nrestored to a valid state.",
           "$ref": "Attachment"
+        },
+        "title": {
+          "description": "A one-line incident description.",
+          "type": "string"
         }
       },
       "id": "GoogleOperations",
@@ -798,6 +866,22 @@
       "description": "Detailed information of a single MDM suspicious activity event.",
       "type": "object",
       "properties": {
+        "deviceId": {
+          "description": "Required. The device ID.",
+          "type": "string"
+        },
+        "resourceId": {
+          "description": "The device resource ID.",
+          "type": "string"
+        },
+        "oldValue": {
+          "description": "The old value of the device property before the change.",
+          "type": "string"
+        },
+        "serialNumber": {
+          "description": "The serial number of the device.",
+          "type": "string"
+        },
         "newValue": {
           "description": "The new value of the device property after the change.",
           "type": "string"
@@ -817,22 +901,6 @@
         "deviceType": {
           "description": "The type of the device.",
           "type": "string"
-        },
-        "deviceId": {
-          "description": "Required. The device ID.",
-          "type": "string"
-        },
-        "resourceId": {
-          "description": "The device resource ID.",
-          "type": "string"
-        },
-        "oldValue": {
-          "description": "The old value of the device property before the change.",
-          "type": "string"
-        },
-        "serialNumber": {
-          "description": "The serial number of the device.",
-          "type": "string"
         }
       },
       "id": "SuspiciousActivitySecurityDetail"
@@ -841,95 +909,26 @@
       "description": "A mobile suspicious activity alert. Derived from audit logs.",
       "type": "object",
       "properties": {
-        "email": {
-          "description": "The email of the user this alert was created for.",
-          "type": "string"
-        },
         "events": {
           "description": "Required. The list of security events.",
           "type": "array",
           "items": {
             "$ref": "SuspiciousActivitySecurityDetail"
           }
+        },
+        "email": {
+          "description": "The email of the user this alert was created for.",
+          "type": "string"
         }
       },
       "id": "SuspiciousActivity"
-    },
-    "GmailMessageInfo": {
-      "properties": {
-        "md5HashMessageBody": {
-          "description": "The hash of the message body text.",
-          "type": "string"
-        },
-        "subjectText": {
-          "description": "The email subject text (only available for reported emails).",
-          "type": "string"
-        },
-        "messageId": {
-          "description": "The message ID.",
-          "type": "string"
-        },
-        "messageBodySnippet": {
-          "description": "The snippet of the message body text (only available for reported emails).",
-          "type": "string"
-        },
-        "attachmentsSha256Hash": {
-          "description": "The `SHA256` hash of email's attachment and all MIME parts.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "date": {
-          "description": "The date the malicious email was sent.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "recipient": {
-          "description": "The recipient of this email.",
-          "type": "string"
-        },
-        "md5HashSubject": {
-          "description": "The MD5 Hash of email's subject (only available for reported emails).",
-          "type": "string"
-        }
-      },
-      "id": "GmailMessageInfo",
-      "description": "Details of a message in phishing spike alert.",
-      "type": "object"
-    },
-    "DomainWideTakeoutInitiated": {
-      "description": "A takeout operation for the entire domain was initiated by an admin. Derived\nfrom audit logs.",
-      "type": "object",
-      "properties": {
-        "email": {
-          "description": "The email of the admin who initiated the takeout.",
-          "type": "string"
-        },
-        "takeoutRequestId": {
-          "description": "The takeout request ID.",
-          "type": "string"
-        }
-      },
-      "id": "DomainWideTakeoutInitiated"
-    },
-    "DomainId": {
-      "properties": {
-        "customerPrimaryDomain": {
-          "description": "The primary domain for the customer.",
-          "type": "string"
-        }
-      },
-      "id": "DomainId",
-      "description": "Domain ID of Gmail phishing alerts.",
-      "type": "object"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
   "canonicalName": "AlertCenter",
   "auth": {
     "oauth2": {
@@ -945,5 +944,6 @@
   "name": "alertcenter",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "G Suite Alert Center API"
+  "title": "G Suite Alert Center API",
+  "ownerName": "Google"
 }

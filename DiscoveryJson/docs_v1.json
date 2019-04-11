@@ -1,4 +1,27 @@
 {
+  "canonicalName": "Docs",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/documents.readonly": {
+          "description": "View your Google Docs documents"
+        },
+        "https://www.googleapis.com/auth/drive.file": {
+          "description": "View and manage Google Drive files and folders that you have opened or created with this app"
+        },
+        "https://www.googleapis.com/auth/documents": {
+          "description": "View and manage your Google Docs documents"
+        },
+        "https://www.googleapis.com/auth/drive": {
+          "description": "See, edit, create, and delete all of your Google Drive files"
+        },
+        "https://www.googleapis.com/auth/drive.readonly": {
+          "description": "See and download all your Google Drive files"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://docs.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "docs",
   "batchPath": "batch",
@@ -9,32 +32,14 @@
     "documents": {
       "methods": {
         "get": {
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "documentId"
-          ],
+          "description": "Gets the latest version of the specified document.",
           "response": {
             "$ref": "Document"
           },
-          "parameters": {
-            "suggestionsViewMode": {
-              "enum": [
-                "DEFAULT_FOR_CURRENT_ACCESS",
-                "SUGGESTIONS_INLINE",
-                "PREVIEW_SUGGESTIONS_ACCEPTED",
-                "PREVIEW_WITHOUT_SUGGESTIONS"
-              ],
-              "description": "The suggestions view mode to apply to the document. This allows viewing the\ndocument with all suggestions inline, accepted or rejected. If one is not\nspecified, DEFAULT_FOR_CURRENT_ACCESS is\nused.",
-              "type": "string",
-              "location": "query"
-            },
-            "documentId": {
-              "location": "path",
-              "description": "The ID of the document to retrieve.",
-              "required": true,
-              "type": "string"
-            }
-          },
+          "parameterOrder": [
+            "documentId"
+          ],
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/documents",
             "https://www.googleapis.com/auth/documents.readonly",
@@ -42,30 +47,48 @@
             "https://www.googleapis.com/auth/drive.file",
             "https://www.googleapis.com/auth/drive.readonly"
           ],
+          "parameters": {
+            "documentId": {
+              "location": "path",
+              "description": "The ID of the document to retrieve.",
+              "required": true,
+              "type": "string"
+            },
+            "suggestionsViewMode": {
+              "location": "query",
+              "enum": [
+                "DEFAULT_FOR_CURRENT_ACCESS",
+                "SUGGESTIONS_INLINE",
+                "PREVIEW_SUGGESTIONS_ACCEPTED",
+                "PREVIEW_WITHOUT_SUGGESTIONS"
+              ],
+              "description": "The suggestions view mode to apply to the document. This allows viewing the\ndocument with all suggestions inline, accepted or rejected. If one is not\nspecified, DEFAULT_FOR_CURRENT_ACCESS is\nused.",
+              "type": "string"
+            }
+          },
           "flatPath": "v1/documents/{documentId}",
-          "id": "docs.documents.get",
           "path": "v1/documents/{documentId}",
-          "description": "Gets the latest version of the specified document."
+          "id": "docs.documents.get"
         },
         "create": {
+          "flatPath": "v1/documents",
+          "id": "docs.documents.create",
+          "path": "v1/documents",
+          "description": "Creates a blank document using the title given in the request. Other fields\nin the request, including any provided content, are ignored.\n\nReturns the created document.",
+          "request": {
+            "$ref": "Document"
+          },
           "httpMethod": "POST",
           "parameterOrder": [],
           "response": {
             "$ref": "Document"
           },
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/documents",
             "https://www.googleapis.com/auth/drive",
             "https://www.googleapis.com/auth/drive.file"
-          ],
-          "parameters": {},
-          "flatPath": "v1/documents",
-          "id": "docs.documents.create",
-          "path": "v1/documents",
-          "request": {
-            "$ref": "Document"
-          },
-          "description": "Creates a blank document using the title given in the request. Other fields\nin the request, including any provided content, are ignored.\n\nReturns the created document."
+          ]
         },
         "batchUpdate": {
           "path": "v1/documents/{documentId}:batchUpdate",
@@ -100,52 +123,10 @@
     }
   },
   "parameters": {
-    "alt": {
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
     },
     "uploadType": {
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
@@ -153,9 +134,9 @@
       "location": "query"
     },
     "callback": {
+      "type": "string",
       "location": "query",
-      "description": "JSONP",
-      "type": "string"
+      "description": "JSONP"
     },
     "oauth_token": {
       "location": "query",
@@ -174,6 +155,48 @@
         "v1 error format",
         "v2 error format"
       ]
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
     }
   },
   "version": "v1",
@@ -184,115 +207,10 @@
   "basePath": "",
   "id": "docs:v1",
   "documentationLink": "https://developers.google.com/docs/",
-  "revision": "20190326",
+  "revision": "20190408",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "PositionedObjectPositioningSuggestionState": {
-      "properties": {
-        "leftOffsetSuggested": {
-          "description": "Indicates if there was a suggested change to left_offset.",
-          "type": "boolean"
-        },
-        "layoutSuggested": {
-          "description": "Indicates if there was a suggested change to layout.",
-          "type": "boolean"
-        },
-        "topOffsetSuggested": {
-          "description": "Indicates if there was a suggested change to top_offset.",
-          "type": "boolean"
-        }
-      },
-      "id": "PositionedObjectPositioningSuggestionState",
-      "description": "A mask that indicates which of the fields on the base\nPositionedObjectPositioning have been changed in this\nsuggestion. For any field set to true, there is a new suggested value.",
-      "type": "object"
-    },
-    "InsertInlineImageRequest": {
-      "description": "Inserts an InlineObject containing an\nimage at the given location.",
-      "type": "object",
-      "properties": {
-        "location": {
-          "$ref": "Location",
-          "description": "Inserts the image at a specific index in the document.\n\nThe image must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nInline images cannot be inserted inside a footnote or equation."
-        },
-        "uri": {
-          "description": "The image URI.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the document. Images must be less than 50MB in size, cannot\nexceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.\n\nThe provided URI can be at most 2 kB in length. The URI itself is saved\nwith the image, and exposed via the ImageProperties.content_uri field.",
-          "type": "string"
-        },
-        "objectSize": {
-          "description": "The size that the image should appear as in the document. This property is\noptional and the final size of the image in the document is determined by\nthe following rules:\n * If neither width nor height is specified, then a default size of the\n image is calculated based on its resolution.\n * If one dimension is specified then the other dimension is calculated to\n preserve the aspect ratio of the image.\n * If both width and height are specified, the image is scaled to fit\n within the provided dimensions while maintaining its aspect ratio.",
-          "$ref": "Size"
-        },
-        "endOfSegmentLocation": {
-          "$ref": "EndOfSegmentLocation",
-          "description": "Inserts the text at the end of a header, footer or the document body.\n\nInline images cannot be inserted inside a footnote."
-        }
-      },
-      "id": "InsertInlineImageRequest"
-    },
-    "SectionColumnProperties": {
-      "type": "object",
-      "properties": {
-        "width": {
-          "$ref": "Dimension",
-          "description": "The width of the column."
-        },
-        "paddingEnd": {
-          "$ref": "Dimension",
-          "description": "The padding at the end of the column."
-        }
-      },
-      "id": "SectionColumnProperties",
-      "description": "Properties that apply to a section's column."
-    },
-    "CreateNamedRangeResponse": {
-      "description": "The result of creating a named range.",
-      "type": "object",
-      "properties": {
-        "namedRangeId": {
-          "description": "The ID of the created named range.",
-          "type": "string"
-        }
-      },
-      "id": "CreateNamedRangeResponse"
-    },
-    "BatchUpdateDocumentResponse": {
-      "id": "BatchUpdateDocumentResponse",
-      "description": "Response message from a BatchUpdateDocument request.",
-      "type": "object",
-      "properties": {
-        "replies": {
-          "description": "The reply of the updates. This maps 1:1 with the updates, although replies\nto some requests may be empty.",
-          "type": "array",
-          "items": {
-            "$ref": "Response"
-          }
-        },
-        "documentId": {
-          "description": "The ID of the document to which the updates were applied to.",
-          "type": "string"
-        },
-        "writeControl": {
-          "description": "The updated write control after applying the request.",
-          "$ref": "WriteControl"
-        }
-      }
-    },
-    "SuggestedPositionedObjectProperties": {
-      "type": "object",
-      "properties": {
-        "positionedObjectProperties": {
-          "description": "A PositionedObjectProperties that only includes the\nchanges made in this suggestion. This can be used along with the\npositioned_object_properties_suggestion_state\nto see which fields have changed and their new values.",
-          "$ref": "PositionedObjectProperties"
-        },
-        "positionedObjectPropertiesSuggestionState": {
-          "$ref": "PositionedObjectPropertiesSuggestionState",
-          "description": "A mask that indicates which of the fields on the base\nPositionedObjectProperties have been changed in this\nsuggestion."
-        }
-      },
-      "id": "SuggestedPositionedObjectProperties",
-      "description": "A suggested change to PositionedObjectProperties."
-    },
     "DeleteTableRowRequest": {
       "description": "Deletes a row from a table.",
       "type": "object",
@@ -305,6 +223,7 @@
       "id": "DeleteTableRowRequest"
     },
     "Bullet": {
+      "id": "Bullet",
       "description": "Describes the bullet of a paragraph.",
       "type": "object",
       "properties": {
@@ -317,20 +236,19 @@
           "description": "The paragraph specific text style applied to this bullet."
         },
         "nestingLevel": {
-          "type": "integer",
           "description": "The nesting level of this paragraph in the list.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         }
-      },
-      "id": "Bullet"
+      }
     },
     "InsertPageBreakRequest": {
       "description": "Inserts a page break followed by a newline at the specified location.",
       "type": "object",
       "properties": {
         "endOfSegmentLocation": {
-          "$ref": "EndOfSegmentLocation",
-          "description": "Inserts the page break at the end of the document body.\n\nPage breaks cannot be inserted inside a footnote, header or footer.\nSince page breaks can only be inserted inside the body, the segment ID field must be\nempty."
+          "description": "Inserts the page break at the end of the document body.\n\nPage breaks cannot be inserted inside a footnote, header or footer.\nSince page breaks can only be inserted inside the body, the segment ID field must be\nempty.",
+          "$ref": "EndOfSegmentLocation"
         },
         "location": {
           "$ref": "Location",
@@ -344,8 +262,8 @@
       "type": "object",
       "properties": {
         "tableStartLocation": {
-          "description": "The location where the table starts in the document.",
-          "$ref": "Location"
+          "$ref": "Location",
+          "description": "The location where the table starts in the document."
         },
         "rowIndex": {
           "description": "The zero-based row index. For example, the second row in the table has a\nrow index of 1.",
@@ -361,10 +279,23 @@
       "id": "TableCellLocation"
     },
     "SectionStyle": {
-      "id": "SectionStyle",
       "description": "The styling that applies to a section.",
       "type": "object",
       "properties": {
+        "contentDirection": {
+          "enum": [
+            "CONTENT_DIRECTION_UNSPECIFIED",
+            "LEFT_TO_RIGHT",
+            "RIGHT_TO_LEFT"
+          ],
+          "description": "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT.",
+          "type": "string",
+          "enumDescriptions": [
+            "The content direction is unspecified.",
+            "The content goes from left to right.",
+            "The content goes from right to left."
+          ]
+        },
         "columnProperties": {
           "description": "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor.",
           "type": "array",
@@ -385,63 +316,49 @@
           ],
           "description": "The style of column separators.\n\nThis style can be set even when there is one column in the section.",
           "type": "string"
-        },
-        "contentDirection": {
-          "enumDescriptions": [
-            "The content direction is unspecified.",
-            "The content goes from left to right.",
-            "The content goes from right to left."
-          ],
-          "enum": [
-            "CONTENT_DIRECTION_UNSPECIFIED",
-            "LEFT_TO_RIGHT",
-            "RIGHT_TO_LEFT"
-          ],
-          "description": "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT.",
-          "type": "string"
         }
-      }
+      },
+      "id": "SectionStyle"
     },
     "ReplaceAllTextResponse": {
       "description": "The result of replacing text.",
       "type": "object",
       "properties": {
         "occurrencesChanged": {
-          "type": "integer",
           "description": "The number of occurrences changed by replacing all text.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         }
       },
       "id": "ReplaceAllTextResponse"
     },
     "EndOfSegmentLocation": {
+      "description": "Location at the end of a body, header, footer or footnote. The location is\nimmediately before the last newline in the document segment.",
       "type": "object",
       "properties": {
         "segmentId": {
-          "description": "The ID of the header, footer or footnote the location is in. An empty\nsegment ID signifies the document's body.",
-          "type": "string"
+          "type": "string",
+          "description": "The ID of the header, footer or footnote the location is in. An empty\nsegment ID signifies the document's body."
         }
       },
-      "id": "EndOfSegmentLocation",
-      "description": "Location at the end of a body, header, footer or footnote. The location is\nimmediately before the last newline in the document segment."
+      "id": "EndOfSegmentLocation"
     },
     "SuggestedTableCellStyle": {
       "description": "A suggested change to a TableCellStyle.",
       "type": "object",
       "properties": {
+        "tableCellStyle": {
+          "description": "A TableCellStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ntable_cell_style_suggestion_state\nto see which fields have changed and their new values.",
+          "$ref": "TableCellStyle"
+        },
         "tableCellStyleSuggestionState": {
           "$ref": "TableCellStyleSuggestionState",
           "description": "A mask that indicates which of the fields on the base TableCellStyle have been changed in this suggestion."
-        },
-        "tableCellStyle": {
-          "$ref": "TableCellStyle",
-          "description": "A TableCellStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ntable_cell_style_suggestion_state\nto see which fields have changed and their new values."
         }
       },
       "id": "SuggestedTableCellStyle"
     },
     "SheetsChartReference": {
-      "description": "A reference to a linked chart embedded from Google Sheets.",
       "type": "object",
       "properties": {
         "spreadsheetId": {
@@ -454,15 +371,17 @@
           "type": "integer"
         }
       },
-      "id": "SheetsChartReference"
+      "id": "SheetsChartReference",
+      "description": "A reference to a linked chart embedded from Google Sheets."
     },
     "EmbeddedDrawingPropertiesSuggestionState": {
-      "properties": {},
-      "id": "EmbeddedDrawingPropertiesSuggestionState",
       "description": "A mask that indicates which of the fields on the base\nEmbeddedDrawingProperties\nhave been changed in this suggestion. For any field set to true, there is a\nnew suggested value.",
-      "type": "object"
+      "type": "object",
+      "properties": {},
+      "id": "EmbeddedDrawingPropertiesSuggestionState"
     },
     "UpdateParagraphStyleRequest": {
+      "id": "UpdateParagraphStyleRequest",
       "description": "Update the styling of all paragraphs that overlap with the given range.",
       "type": "object",
       "properties": {
@@ -475,60 +394,59 @@
           "description": "The styles to set on the paragraphs.\n\nCertain paragraph style changes may cause other changes in order to mirror\nthe behavior of the Docs editor. See the documentation of ParagraphStyle for more information."
         },
         "fields": {
-          "type": "string",
           "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `paragraph_style` is implied\nand should not be specified.\n\nFor example, to update the paragraph style's alignment property, set\n`fields` to `\"alignment\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
-          "format": "google-fieldmask"
+          "format": "google-fieldmask",
+          "type": "string"
         }
-      },
-      "id": "UpdateParagraphStyleRequest"
+      }
     },
     "SuggestedInlineObjectProperties": {
       "id": "SuggestedInlineObjectProperties",
       "description": "A suggested change to InlineObjectProperties.",
       "type": "object",
       "properties": {
-        "inlineObjectPropertiesSuggestionState": {
-          "description": "A mask that indicates which of the fields on the base\nInlineObjectProperties have\nbeen changed in this suggestion.",
-          "$ref": "InlineObjectPropertiesSuggestionState"
-        },
         "inlineObjectProperties": {
           "$ref": "InlineObjectProperties",
           "description": "An InlineObjectProperties\nthat only includes the changes made in this suggestion. This can be used\nalong with the inline_object_properties_suggestion_state\nto see which fields have changed and their new values."
+        },
+        "inlineObjectPropertiesSuggestionState": {
+          "description": "A mask that indicates which of the fields on the base\nInlineObjectProperties have\nbeen changed in this suggestion.",
+          "$ref": "InlineObjectPropertiesSuggestionState"
         }
       }
     },
     "NamedRange": {
-      "description": "A collection of Ranges with the same named range\nID.\n\nNamed ranges allow developers to associate parts of a document with an\narbitrary user-defined label so their contents can be programmatically read\nor edited at a later time. A document can contain multiple named ranges with\nthe same name, but every named range has a unique ID.\n\nA named range is created with a single Range,\nand content inserted inside a named range generally expands that range.\nHowever, certain document changes can cause the range to be split into\nmultiple ranges.\n\nNamed ranges are not private. All applications and collaborators that have\naccess to the document can see its named ranges.",
       "type": "object",
       "properties": {
-        "namedRangeId": {
-          "description": "The ID of the named range.",
-          "type": "string"
-        },
         "name": {
           "description": "The name of the named range.",
           "type": "string"
         },
         "ranges": {
+          "description": "The ranges that belong to this named range.",
           "type": "array",
           "items": {
             "$ref": "Range"
-          },
-          "description": "The ranges that belong to this named range."
+          }
+        },
+        "namedRangeId": {
+          "description": "The ID of the named range.",
+          "type": "string"
         }
       },
-      "id": "NamedRange"
+      "id": "NamedRange",
+      "description": "A collection of Ranges with the same named range\nID.\n\nNamed ranges allow developers to associate parts of a document with an\narbitrary user-defined label so their contents can be programmatically read\nor edited at a later time. A document can contain multiple named ranges with\nthe same name, but every named range has a unique ID.\n\nA named range is created with a single Range,\nand content inserted inside a named range generally expands that range.\nHowever, certain document changes can cause the range to be split into\nmultiple ranges.\n\nNamed ranges are not private. All applications and collaborators that have\naccess to the document can see its named ranges."
     },
     "Paragraph": {
       "description": "A StructuralElement representing a\nparagraph. A paragraph is a range of content that is terminated with a\nnewline character.",
       "type": "object",
       "properties": {
         "suggestedBulletChanges": {
+          "description": "The suggested changes to this paragraph's bullet.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedBullet"
-          },
-          "description": "The suggested changes to this paragraph's bullet.",
-          "type": "object"
+          }
         },
         "elements": {
           "description": "The content of the paragraph broken down into its component parts.",
@@ -538,8 +456,8 @@
           }
         },
         "paragraphStyle": {
-          "description": "The style of this paragraph.",
-          "$ref": "ParagraphStyle"
+          "$ref": "ParagraphStyle",
+          "description": "The style of this paragraph."
         },
         "bullet": {
           "description": "The bullet for this paragraph. If not present, the paragraph does not\nbelong to a list.",
@@ -553,11 +471,11 @@
           "type": "object"
         },
         "suggestedPositionedObjectIds": {
+          "description": "The IDs of the positioned objects that are suggested to be attached to this\nparagraph, keyed by suggestion ID.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "ObjectReferences"
-          },
-          "description": "The IDs of the positioned objects that are suggested to be attached to this\nparagraph, keyed by suggestion ID.",
-          "type": "object"
+          }
         },
         "positionedObjectIds": {
           "description": "The IDs of the positioned objects tethered to this paragraph.",
@@ -570,26 +488,12 @@
       "id": "Paragraph"
     },
     "NamedStyle": {
-      "description": "A named style. Paragraphs in the document can inherit their\nTextStyle and\nParagraphStyle from this named style\nwhen they have the same named style type.",
-      "type": "object",
       "properties": {
         "paragraphStyle": {
-          "$ref": "ParagraphStyle",
-          "description": "The paragraph style of this named style."
+          "description": "The paragraph style of this named style.",
+          "$ref": "ParagraphStyle"
         },
         "namedStyleType": {
-          "enumDescriptions": [
-            "The type of named style is unspecified.",
-            "Normal text.",
-            "Title.",
-            "Subtitle.",
-            "Heading 1.",
-            "Heading 2.",
-            "Heading 3.",
-            "Heading 4.",
-            "Heading 5.",
-            "Heading 6."
-          ],
           "enum": [
             "NAMED_STYLE_TYPE_UNSPECIFIED",
             "NORMAL_TEXT",
@@ -603,39 +507,56 @@
             "HEADING_6"
           ],
           "description": "The type of this named style.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "The type of named style is unspecified.",
+            "Normal text.",
+            "Title.",
+            "Subtitle.",
+            "Heading 1.",
+            "Heading 2.",
+            "Heading 3.",
+            "Heading 4.",
+            "Heading 5.",
+            "Heading 6."
+          ]
         },
         "textStyle": {
-          "description": "The text style of this named style.",
-          "$ref": "TextStyle"
+          "$ref": "TextStyle",
+          "description": "The text style of this named style."
         }
       },
-      "id": "NamedStyle"
+      "id": "NamedStyle",
+      "description": "A named style. Paragraphs in the document can inherit their\nTextStyle and\nParagraphStyle from this named style\nwhen they have the same named style type.",
+      "type": "object"
     },
     "InsertTextRequest": {
       "description": "Inserts text at the specified location.",
       "type": "object",
       "properties": {
+        "text": {
+          "description": "The text to be inserted.\n\nInserting a newline character will implicitly create a new\nParagraph at that index.\nThe paragraph style of the new paragraph will be copied from the paragraph\nat the current insertion index, including lists and bullets.\n\nText styles for inserted text will be determined automatically, generally\npreserving the styling of neighboring text. In most cases, the text style\nfor the inserted text will match the text immediately before the insertion\nindex.\n\nSome control characters (U+0000-U+0008, U+000C-U+001F) and characters\nfrom the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)\nwill be stripped out of the inserted text.",
+          "type": "string"
+        },
         "endOfSegmentLocation": {
-          "description": "Inserts the text at the end of a header, footer, footnote or\nthe document body.",
-          "$ref": "EndOfSegmentLocation"
+          "$ref": "EndOfSegmentLocation",
+          "description": "Inserts the text at the end of a header, footer, footnote or\nthe document body."
         },
         "location": {
-          "$ref": "Location",
-          "description": "Inserts the text at a specific index in the document.\n\nText must be inserted inside the bounds of an existing\nParagraph. For instance, text cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph). The text must be inserted in the preceding\nparagraph."
-        },
-        "text": {
-          "type": "string",
-          "description": "The text to be inserted.\n\nInserting a newline character will implicitly create a new\nParagraph at that index.\nThe paragraph style of the new paragraph will be copied from the paragraph\nat the current insertion index, including lists and bullets.\n\nText styles for inserted text will be determined automatically, generally\npreserving the styling of neighboring text. In most cases, the text style\nfor the inserted text will match the text immediately before the insertion\nindex.\n\nSome control characters (U+0000-U+0008, U+000C-U+001F) and characters\nfrom the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)\nwill be stripped out of the inserted text."
+          "description": "Inserts the text at a specific index in the document.\n\nText must be inserted inside the bounds of an existing\nParagraph. For instance, text cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph). The text must be inserted in the preceding\nparagraph.",
+          "$ref": "Location"
         }
       },
       "id": "InsertTextRequest"
     },
     "AutoText": {
+      "id": "AutoText",
       "description": "A ParagraphElement representing a\nspot in the text that is dynamically replaced with content that can change\nover time, like a page number.",
       "type": "object",
       "properties": {
         "type": {
+          "description": "The type of this auto text.",
+          "type": "string",
           "enumDescriptions": [
             "An unspecified auto text type.",
             "Type for auto text that represents the current page number.",
@@ -645,9 +566,7 @@
             "TYPE_UNSPECIFIED",
             "PAGE_NUMBER",
             "PAGE_COUNT"
-          ],
-          "description": "The type of this auto text.",
-          "type": "string"
+          ]
         },
         "suggestedInsertionIds": {
           "description": "The suggested insertion IDs. An AutoText\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion.",
@@ -671,29 +590,27 @@
           }
         },
         "textStyle": {
-          "description": "The text style of this AutoText.",
-          "$ref": "TextStyle"
+          "$ref": "TextStyle",
+          "description": "The text style of this AutoText."
         }
-      },
-      "id": "AutoText"
+      }
     },
     "PositionedObjectPropertiesSuggestionState": {
       "description": "A mask that indicates which of the fields on the base\nPositionedObjectProperties\nhave been changed in this suggestion. For any field set to true, there is a\nnew suggested value.",
       "type": "object",
       "properties": {
         "positioningSuggestionState": {
-          "description": "A mask that indicates which of the fields in positioning have been\nchanged in this suggestion.",
-          "$ref": "PositionedObjectPositioningSuggestionState"
+          "$ref": "PositionedObjectPositioningSuggestionState",
+          "description": "A mask that indicates which of the fields in positioning have been\nchanged in this suggestion."
         },
         "embeddedObjectSuggestionState": {
-          "$ref": "EmbeddedObjectSuggestionState",
-          "description": "A mask that indicates which of the fields in embedded_object have been\nchanged in this suggestion."
+          "description": "A mask that indicates which of the fields in embedded_object have been\nchanged in this suggestion.",
+          "$ref": "EmbeddedObjectSuggestionState"
         }
       },
       "id": "PositionedObjectPropertiesSuggestionState"
     },
     "BulletSuggestionState": {
-      "id": "BulletSuggestionState",
       "description": "A mask that indicates which of the fields on the base\nBullet have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
       "type": "object",
       "properties": {
@@ -702,16 +619,18 @@
           "type": "boolean"
         },
         "textStyleSuggestionState": {
-          "$ref": "TextStyleSuggestionState",
-          "description": "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."
+          "description": "A mask that indicates which of the fields in text style have been changed in this\nsuggestion.",
+          "$ref": "TextStyleSuggestionState"
         },
         "listIdSuggested": {
           "description": "Indicates if there was a suggested change to the\nlist_id.",
           "type": "boolean"
         }
-      }
+      },
+      "id": "BulletSuggestionState"
     },
     "Dimension": {
+      "type": "object",
       "properties": {
         "magnitude": {
           "description": "The magnitude.",
@@ -719,6 +638,8 @@
           "type": "number"
         },
         "unit": {
+          "description": "The units for magnitude.",
+          "type": "string",
           "enumDescriptions": [
             "The units are unknown.",
             "A point, 1/72 of an inch."
@@ -726,18 +647,13 @@
           "enum": [
             "UNIT_UNSPECIFIED",
             "PT"
-          ],
-          "description": "The units for magnitude.",
-          "type": "string"
+          ]
         }
       },
       "id": "Dimension",
-      "description": "A magnitude in a single direction in the specified units.",
-      "type": "object"
+      "description": "A magnitude in a single direction in the specified units."
     },
     "DeleteNamedRangeRequest": {
-      "description": "Deletes a NamedRange.",
-      "type": "object",
       "properties": {
         "namedRangeId": {
           "description": "The ID of the named range to delete.",
@@ -748,15 +664,28 @@
           "type": "string"
         }
       },
-      "id": "DeleteNamedRangeRequest"
+      "id": "DeleteNamedRangeRequest",
+      "description": "Deletes a NamedRange.",
+      "type": "object"
     },
     "PositionedObject": {
       "description": "An object that is tethered to a Paragraph\nand positioned relative to the beginning of the paragraph. A PositionedObject\ncontains an EmbeddedObject such as an\nimage.",
       "type": "object",
       "properties": {
-        "suggestedInsertionId": {
-          "description": "The suggested insertion ID. If empty, then this is not a suggested\ninsertion.",
+        "objectId": {
+          "description": "The ID of this positioned object.",
           "type": "string"
+        },
+        "suggestedPositionedObjectPropertiesChanges": {
+          "additionalProperties": {
+            "$ref": "SuggestedPositionedObjectProperties"
+          },
+          "description": "The suggested changes to the positioned object properties, keyed by\nsuggestion ID.",
+          "type": "object"
+        },
+        "suggestedInsertionId": {
+          "type": "string",
+          "description": "The suggested insertion ID. If empty, then this is not a suggested\ninsertion."
         },
         "suggestedDeletionIds": {
           "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
@@ -766,25 +695,13 @@
           }
         },
         "positionedObjectProperties": {
-          "$ref": "PositionedObjectProperties",
-          "description": "The properties of this positioned object."
-        },
-        "objectId": {
-          "description": "The ID of this positioned object.",
-          "type": "string"
-        },
-        "suggestedPositionedObjectPropertiesChanges": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "SuggestedPositionedObjectProperties"
-          },
-          "description": "The suggested changes to the positioned object properties, keyed by\nsuggestion ID."
+          "description": "The properties of this positioned object.",
+          "$ref": "PositionedObjectProperties"
         }
       },
       "id": "PositionedObject"
     },
     "TableStyle": {
-      "type": "object",
       "properties": {
         "tableColumnProperties": {
           "description": "The properties of each column.\n\nNote that in Docs, tables contain rows and rows contain cells, similar to\nHTML. So the properties for a row can be found on the row's\ntable_row_style.",
@@ -795,7 +712,8 @@
         }
       },
       "id": "TableStyle",
-      "description": "Styles that apply to a table."
+      "description": "Styles that apply to a table.",
+      "type": "object"
     },
     "Color": {
       "description": "A solid color.",
@@ -809,8 +727,15 @@
       "id": "Color"
     },
     "ImageProperties": {
+      "id": "ImageProperties",
+      "description": "The properties of an image.",
       "type": "object",
       "properties": {
+        "transparency": {
+          "description": "The transparency effect of the image. The value should be in the interval\n[0.0, 1.0], where 0 means no effect and 1 means completely transparent.",
+          "format": "float",
+          "type": "number"
+        },
         "angle": {
           "description": "The clockwise rotation angle of the image, in radians.",
           "format": "float",
@@ -820,14 +745,14 @@
           "description": "A URI to the image with a default lifetime of 30 minutes.\nThis URI is tagged with the account of the requester. Anyone with the URI\neffectively accesses the image as the original requester. Access to the\nimage may be lost if the document's sharing settings change.",
           "type": "string"
         },
+        "contrast": {
+          "description": "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect.",
+          "format": "float",
+          "type": "number"
+        },
         "sourceUri": {
           "description": "The source URI is the URI used to insert the image. The source URI can be\nempty.",
           "type": "string"
-        },
-        "contrast": {
-          "type": "number",
-          "description": "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect.",
-          "format": "float"
         },
         "cropProperties": {
           "$ref": "CropProperties",
@@ -837,25 +762,20 @@
           "description": "The brightness effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect.",
           "format": "float",
           "type": "number"
-        },
-        "transparency": {
-          "type": "number",
-          "description": "The transparency effect of the image. The value should be in the interval\n[0.0, 1.0], where 0 means no effect and 1 means completely transparent.",
-          "format": "float"
         }
-      },
-      "id": "ImageProperties",
-      "description": "The properties of an image."
+      }
     },
     "TabStop": {
       "description": "A tab stop within a paragraph.",
       "type": "object",
       "properties": {
-        "offset": {
-          "$ref": "Dimension",
-          "description": "The offset between this tab stop and the start margin."
-        },
         "alignment": {
+          "enum": [
+            "TAB_STOP_ALIGNMENT_UNSPECIFIED",
+            "START",
+            "CENTER",
+            "END"
+          ],
           "description": "The alignment of this tab stop. If unset, the value defaults to START.",
           "type": "string",
           "enumDescriptions": [
@@ -863,13 +783,11 @@
             "The tab stop is aligned to the start of the line. This is the default.",
             "The tab stop is aligned to the center of the line.",
             "The tab stop is aligned to the end of the line."
-          ],
-          "enum": [
-            "TAB_STOP_ALIGNMENT_UNSPECIFIED",
-            "START",
-            "CENTER",
-            "END"
           ]
+        },
+        "offset": {
+          "$ref": "Dimension",
+          "description": "The offset between this tab stop and the start margin."
         }
       },
       "id": "TabStop"
@@ -879,8 +797,8 @@
       "type": "object",
       "properties": {
         "namedStylesSuggestionState": {
-          "description": "A mask that indicates which of the fields on the base NamedStyles have been changed in this suggestion.",
-          "$ref": "NamedStylesSuggestionState"
+          "$ref": "NamedStylesSuggestionState",
+          "description": "A mask that indicates which of the fields on the base NamedStyles have been changed in this suggestion."
         },
         "namedStyles": {
           "$ref": "NamedStyles",
@@ -890,31 +808,44 @@
       "id": "SuggestedNamedStyles"
     },
     "Response": {
-      "description": "A single response from an update.",
-      "type": "object",
       "properties": {
         "insertInlineImage": {
           "$ref": "InsertInlineImageResponse",
           "description": "The result of inserting an inline image."
         },
         "createNamedRange": {
-          "$ref": "CreateNamedRangeResponse",
-          "description": "The result of creating a named range."
+          "description": "The result of creating a named range.",
+          "$ref": "CreateNamedRangeResponse"
         },
         "insertInlineSheetsChart": {
-          "$ref": "InsertInlineSheetsChartResponse",
-          "description": "The result of inserting an inline Google Sheets chart."
+          "description": "The result of inserting an inline Google Sheets chart.",
+          "$ref": "InsertInlineSheetsChartResponse"
         },
         "replaceAllText": {
           "description": "The result of replacing text.",
           "$ref": "ReplaceAllTextResponse"
         }
       },
-      "id": "Response"
+      "id": "Response",
+      "description": "A single response from an update.",
+      "type": "object"
+    },
+    "SubstringMatchCriteria": {
+      "description": "A criteria that matches a specific string of text in the document.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "The text to search for in the document.",
+          "type": "string"
+        },
+        "matchCase": {
+          "type": "boolean",
+          "description": "Indicates whether the search should respect case:\n\n- `True`: the search is case sensitive.\n- `False`: the search is case insensitive."
+        }
+      },
+      "id": "SubstringMatchCriteria"
     },
     "TextRun": {
-      "description": "A ParagraphElement that represents a\nrun of text that all has the same styling.",
-      "type": "object",
       "properties": {
         "suggestedDeletionIds": {
           "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
@@ -924,8 +855,8 @@
           }
         },
         "textStyle": {
-          "$ref": "TextStyle",
-          "description": "The text style of this run."
+          "description": "The text style of this run.",
+          "$ref": "TextStyle"
         },
         "content": {
           "description": "The text of this run.\n\nAny non-text elements in the run are replaced with the Unicode character\nU+E907.",
@@ -946,39 +877,13 @@
           }
         }
       },
-      "id": "TextRun"
-    },
-    "SubstringMatchCriteria": {
-      "description": "A criteria that matches a specific string of text in the document.",
-      "type": "object",
-      "properties": {
-        "text": {
-          "description": "The text to search for in the document.",
-          "type": "string"
-        },
-        "matchCase": {
-          "description": "Indicates whether the search should respect case:\n\n- `True`: the search is case sensitive.\n- `False`: the search is case insensitive.",
-          "type": "boolean"
-        }
-      },
-      "id": "SubstringMatchCriteria"
+      "id": "TextRun",
+      "description": "A ParagraphElement that represents a\nrun of text that all has the same styling.",
+      "type": "object"
     },
     "StructuralElement": {
-      "description": "A StructuralElement describes content that provides structure to the\ndocument.",
       "type": "object",
       "properties": {
-        "table": {
-          "$ref": "Table",
-          "description": "A table type of structural element."
-        },
-        "paragraph": {
-          "description": "A paragraph type of structural element.",
-          "$ref": "Paragraph"
-        },
-        "sectionBreak": {
-          "description": "A section break type of structural element.",
-          "$ref": "SectionBreak"
-        },
         "endIndex": {
           "description": "The zero-based end index of this structural element, exclusive, in UTF-16\ncode units.",
           "format": "int32",
@@ -989,12 +894,36 @@
           "description": "A table of contents type of structural element."
         },
         "startIndex": {
-          "type": "integer",
           "description": "The zero-based start index of this structural element, in UTF-16 code\nunits.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
+        },
+        "table": {
+          "description": "A table type of structural element.",
+          "$ref": "Table"
+        },
+        "paragraph": {
+          "$ref": "Paragraph",
+          "description": "A paragraph type of structural element."
+        },
+        "sectionBreak": {
+          "description": "A section break type of structural element.",
+          "$ref": "SectionBreak"
         }
       },
-      "id": "StructuralElement"
+      "id": "StructuralElement",
+      "description": "A StructuralElement describes content that provides structure to the\ndocument."
+    },
+    "TableRowStyle": {
+      "description": "Styles that apply to a table row.",
+      "type": "object",
+      "properties": {
+        "minRowHeight": {
+          "$ref": "Dimension",
+          "description": "The minimum height of the row. The row will be rendered in the Docs editor\nat a height equal to or greater than this value in order to show all the\ncontent in the row's cells."
+        }
+      },
+      "id": "TableRowStyle"
     },
     "InlineObjectElement": {
       "description": "A ParagraphElement that contains\nan InlineObject.",
@@ -1032,18 +961,8 @@
       },
       "id": "InlineObjectElement"
     },
-    "TableRowStyle": {
-      "description": "Styles that apply to a table row.",
-      "type": "object",
-      "properties": {
-        "minRowHeight": {
-          "$ref": "Dimension",
-          "description": "The minimum height of the row. The row will be rendered in the Docs editor\nat a height equal to or greater than this value in order to show all the\ncontent in the row's cells."
-        }
-      },
-      "id": "TableRowStyle"
-    },
     "InsertInlineImageResponse": {
+      "id": "InsertInlineImageResponse",
       "description": "The result of inserting an inline image.",
       "type": "object",
       "properties": {
@@ -1051,15 +970,13 @@
           "description": "The ID of the created InlineObject.",
           "type": "string"
         }
-      },
-      "id": "InsertInlineImageResponse"
+      }
     },
     "Table": {
-      "description": "A StructuralElement representing a\ntable.",
       "type": "object",
       "properties": {
-        "suggestedInsertionIds": {
-          "description": "The suggested insertion IDs. A Table may have\nmultiple insertion IDs if it is a nested suggested change. If empty, then\nthis is not a suggested insertion.",
+        "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1069,13 +986,6 @@
           "description": "Number of rows in the table.",
           "format": "int32",
           "type": "integer"
-        },
-        "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         },
         "columns": {
           "description": "Number of columns in the table.\n\nIt is possible for a table to be non-rectangular, so some rows may have a\ndifferent number of cells.",
@@ -1092,13 +1002,19 @@
         "tableStyle": {
           "description": "The style of the table.",
           "$ref": "TableStyle"
+        },
+        "suggestedInsertionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The suggested insertion IDs. A Table may have\nmultiple insertion IDs if it is a nested suggested change. If empty, then\nthis is not a suggested insertion."
         }
       },
-      "id": "Table"
+      "id": "Table",
+      "description": "A StructuralElement representing a\ntable."
     },
     "PositionedObjectPositioning": {
-      "description": "The positioning of a PositionedObject. The positioned object is positioned\nrelative to the beginning of the Paragraph\nit is tethered to.",
-      "type": "object",
       "properties": {
         "layout": {
           "type": "string",
@@ -1121,40 +1037,39 @@
           "description": "The layout of this positioned object."
         },
         "topOffset": {
-          "description": "The offset of the top edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling.",
-          "$ref": "Dimension"
+          "$ref": "Dimension",
+          "description": "The offset of the top edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."
         },
         "leftOffset": {
           "$ref": "Dimension",
           "description": "The offset of the left edge of the positioned object relative to the\nbeginning of the Paragraph it is tethered\nto. The exact positioning of the object can depend on other content in the\ndocument and the document's styling."
         }
       },
-      "id": "PositionedObjectPositioning"
+      "id": "PositionedObjectPositioning",
+      "description": "The positioning of a PositionedObject. The positioned object is positioned\nrelative to the beginning of the Paragraph\nit is tethered to.",
+      "type": "object"
     },
     "LinkedContentReference": {
-      "id": "LinkedContentReference",
-      "description": "A reference to the external linked source content.",
-      "type": "object",
       "properties": {
         "sheetsChartReference": {
-          "description": "A reference to the linked chart.",
-          "$ref": "SheetsChartReference"
+          "$ref": "SheetsChartReference",
+          "description": "A reference to the linked chart."
         }
-      }
+      },
+      "id": "LinkedContentReference",
+      "description": "A reference to the external linked source content.",
+      "type": "object"
     },
     "ParagraphStyleSuggestionState": {
+      "description": "A mask that indicates which of the fields on the base ParagraphStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
       "type": "object",
       "properties": {
-        "borderLeftSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to border_left."
-        },
-        "borderBottomSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to border_bottom."
-        },
         "directionSuggested": {
           "description": "Indicates if there was a suggested change to direction.",
+          "type": "boolean"
+        },
+        "borderBottomSuggested": {
+          "description": "Indicates if there was a suggested change to border_bottom.",
           "type": "boolean"
         },
         "indentFirstLineSuggested": {
@@ -1198,40 +1113,41 @@
           "type": "boolean"
         },
         "keepWithNextSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to keep_with_next."
+          "description": "Indicates if there was a suggested change to keep_with_next.",
+          "type": "boolean"
         },
         "spacingModeSuggested": {
           "description": "Indicates if there was a suggested change to spacing_mode.",
           "type": "boolean"
         },
         "borderBetweenSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to border_between."
+          "description": "Indicates if there was a suggested change to border_between.",
+          "type": "boolean"
         },
         "avoidWidowAndOrphanSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to avoid_widow_and_orphan."
+          "description": "Indicates if there was a suggested change to avoid_widow_and_orphan.",
+          "type": "boolean"
         },
         "shadingSuggestionState": {
           "$ref": "ShadingSuggestionState",
           "description": "A mask that indicates which of the fields in shading have been changed in\nthis suggestion."
         },
         "alignmentSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to alignment."
+          "description": "Indicates if there was a suggested change to alignment.",
+          "type": "boolean"
         },
         "spaceBelowSuggested": {
           "description": "Indicates if there was a suggested change to space_below.",
           "type": "boolean"
+        },
+        "borderLeftSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to border_left."
         }
       },
-      "id": "ParagraphStyleSuggestionState",
-      "description": "A mask that indicates which of the fields on the base ParagraphStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value."
+      "id": "ParagraphStyleSuggestionState"
     },
     "ListPropertiesSuggestionState": {
-      "description": "A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object",
       "properties": {
         "nestingLevelsSuggestionStates": {
           "description": "A mask that indicates which of the fields on the corresponding\nNestingLevel in nesting_levels have been changed in\nthis suggestion.\n\nThe nesting level suggestion states are returned in ascending order of the\nnesting level with the least nested returned first.",
@@ -1241,24 +1157,25 @@
           }
         }
       },
-      "id": "ListPropertiesSuggestionState"
+      "id": "ListPropertiesSuggestionState",
+      "description": "A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
+      "type": "object"
     },
     "Body": {
-      "description": "The document body.\n\nThe body typically contains the full document contents except for\nheaders, footers\nand footnotes.",
       "type": "object",
       "properties": {
         "content": {
+          "description": "The contents of the body.\n\nThe indexes for the body's content begin at zero.",
           "type": "array",
           "items": {
             "$ref": "StructuralElement"
-          },
-          "description": "The contents of the body.\n\nThe indexes for the body's content begin at zero."
+          }
         }
       },
-      "id": "Body"
+      "id": "Body",
+      "description": "The document body.\n\nThe body typically contains the full document contents except for\nheaders, footers\nand footnotes."
     },
     "PositionedObjectProperties": {
-      "description": "Properties of a PositionedObject.",
       "type": "object",
       "properties": {
         "positioning": {
@@ -1270,48 +1187,63 @@
           "description": "The embedded object of this positioned object."
         }
       },
-      "id": "PositionedObjectProperties"
+      "id": "PositionedObjectProperties",
+      "description": "Properties of a PositionedObject."
     },
     "OptionalColor": {
+      "description": "A color that can either be fully opaque or fully transparent.",
       "type": "object",
       "properties": {
         "color": {
-          "description": "If set, this will be used as an opaque color. If unset, this represents\na transparent color.",
-          "$ref": "Color"
+          "$ref": "Color",
+          "description": "If set, this will be used as an opaque color. If unset, this represents\na transparent color."
         }
       },
-      "id": "OptionalColor",
-      "description": "A color that can either be fully opaque or fully transparent."
+      "id": "OptionalColor"
     },
     "TableCellStyle": {
+      "description": "The style of a TableCell.\n\nInherited table cell styles are represented as unset fields in this message.\nA table cell style can inherit from the table's style.",
+      "type": "object",
       "properties": {
+        "paddingTop": {
+          "description": "The top padding of the cell.",
+          "$ref": "Dimension"
+        },
+        "rowSpan": {
+          "description": "The row span of the cell. This property is read-only.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "columnSpan": {
+          "type": "integer",
+          "description": "The column span of the cell. This property is read-only.",
+          "format": "int32"
+        },
         "borderBottom": {
-          "$ref": "TableCellBorder",
-          "description": "The bottom border of the cell."
+          "description": "The bottom border of the cell.",
+          "$ref": "TableCellBorder"
+        },
+        "paddingLeft": {
+          "description": "The left padding of the cell.",
+          "$ref": "Dimension"
         },
         "borderLeft": {
           "$ref": "TableCellBorder",
           "description": "The left border of the cell."
         },
-        "paddingLeft": {
-          "$ref": "Dimension",
-          "description": "The left padding of the cell."
-        },
         "paddingBottom": {
-          "$ref": "Dimension",
-          "description": "The bottom padding of the cell."
+          "description": "The bottom padding of the cell.",
+          "$ref": "Dimension"
         },
         "borderRight": {
           "description": "The right border of the cell.",
           "$ref": "TableCellBorder"
         },
         "paddingRight": {
-          "description": "The right padding of the cell.",
-          "$ref": "Dimension"
+          "$ref": "Dimension",
+          "description": "The right padding of the cell."
         },
         "contentAlignment": {
-          "description": "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Docs editor.",
-          "type": "string",
           "enumDescriptions": [
             "An unspecified content alignment. The content alignment is inherited from\nthe parent if one exists.",
             "An unsupported content alignment.",
@@ -1325,7 +1257,9 @@
             "TOP",
             "MIDDLE",
             "BOTTOM"
-          ]
+          ],
+          "description": "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Docs editor.",
+          "type": "string"
         },
         "borderTop": {
           "$ref": "TableCellBorder",
@@ -1334,28 +1268,11 @@
         "backgroundColor": {
           "$ref": "OptionalColor",
           "description": "The background color of the cell."
-        },
-        "paddingTop": {
-          "$ref": "Dimension",
-          "description": "The top padding of the cell."
-        },
-        "rowSpan": {
-          "description": "The row span of the cell. This property is read-only.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "columnSpan": {
-          "description": "The column span of the cell. This property is read-only.",
-          "format": "int32",
-          "type": "integer"
         }
       },
-      "id": "TableCellStyle",
-      "description": "The style of a TableCell.\n\nInherited table cell styles are represented as unset fields in this message.\nA table cell style can inherit from the table's style.",
-      "type": "object"
+      "id": "TableCellStyle"
     },
     "UpdateTextStyleRequest": {
-      "id": "UpdateTextStyleRequest",
       "description": "Update the styling of text.",
       "type": "object",
       "properties": {
@@ -1364,35 +1281,49 @@
           "description": "The range of text to style.\n\nThe range may be extended to include adjacent newlines.\n\nIf the range fully contains a paragraph belonging to a list, the\nparagraph's bullet is also updated with the matching text style."
         },
         "textStyle": {
-          "$ref": "TextStyle",
-          "description": "The styles to set on the text.\n\nIf the value for a particular style matches that of the parent, that style\nwill be set to inherit.\n\nCertain text style changes may cause other changes in order to to mirror\nthe behavior of the Docs editor. See the documentation of\nTextStyle for more information."
+          "description": "The styles to set on the text.\n\nIf the value for a particular style matches that of the parent, that style\nwill be set to inherit.\n\nCertain text style changes may cause other changes in order to to mirror\nthe behavior of the Docs editor. See the documentation of\nTextStyle for more information.",
+          "$ref": "TextStyle"
         },
         "fields": {
           "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `text_style` is implied and\nshould not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example, to update the text style to bold, set `fields` to `\"bold\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
           "format": "google-fieldmask",
           "type": "string"
         }
-      }
+      },
+      "id": "UpdateTextStyleRequest"
     },
     "DeleteTableColumnRequest": {
-      "id": "DeleteTableColumnRequest",
-      "description": "Deletes a column from a table.",
-      "type": "object",
       "properties": {
         "tableCellLocation": {
-          "description": "The reference table cell location from which the column will be deleted.\n\nThe column this cell spans will be deleted. If this is a merged cell that\nspans multiple columns, all columns that the cell spans will be deleted. If\nno columns remain in the table after this deletion, the whole table is\ndeleted.",
-          "$ref": "TableCellLocation"
+          "$ref": "TableCellLocation",
+          "description": "The reference table cell location from which the column will be deleted.\n\nThe column this cell spans will be deleted. If this is a merged cell that\nspans multiple columns, all columns that the cell spans will be deleted. If\nno columns remain in the table after this deletion, the whole table is\ndeleted."
         }
-      }
+      },
+      "id": "DeleteTableColumnRequest",
+      "description": "Deletes a column from a table.",
+      "type": "object"
     },
     "NestingLevelSuggestionState": {
+      "type": "object",
       "properties": {
-        "glyphTypeSuggested": {
-          "description": "Indicates if there was a suggested change to\nglyph_type.",
+        "indentFirstLineSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to\nindent_first_line."
+        },
+        "textStyleSuggestionState": {
+          "$ref": "TextStyleSuggestionState",
+          "description": "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."
+        },
+        "startNumberSuggested": {
+          "description": "Indicates if there was a suggested change to\nstart_number.",
           "type": "boolean"
         },
         "glyphSymbolSuggested": {
           "description": "Indicates if there was a suggested change to\nglyph_symbol.",
+          "type": "boolean"
+        },
+        "glyphTypeSuggested": {
+          "description": "Indicates if there was a suggested change to\nglyph_type.",
           "type": "boolean"
         },
         "indentStartSuggested": {
@@ -1406,33 +1337,21 @@
         "bulletAlignmentSuggested": {
           "description": "Indicates if there was a suggested change to\nbullet_alignment.",
           "type": "boolean"
-        },
-        "indentFirstLineSuggested": {
-          "description": "Indicates if there was a suggested change to\nindent_first_line.",
-          "type": "boolean"
-        },
-        "textStyleSuggestionState": {
-          "$ref": "TextStyleSuggestionState",
-          "description": "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."
-        },
-        "startNumberSuggested": {
-          "description": "Indicates if there was a suggested change to\nstart_number.",
-          "type": "boolean"
         }
       },
       "id": "NestingLevelSuggestionState",
-      "description": "A mask that indicates which of the fields on the base NestingLevel have been changed in this suggestion. For\nany field set to true, there is a new suggested value.",
-      "type": "object"
+      "description": "A mask that indicates which of the fields on the base NestingLevel have been changed in this suggestion. For\nany field set to true, there is a new suggested value."
     },
     "List": {
+      "description": "A List represents the list attributes for a group of paragraphs that all\nbelong to the same list. A paragraph that is part of a list has a reference\nto the list's ID in its bullet.",
       "type": "object",
       "properties": {
         "suggestedListPropertiesChanges": {
+          "description": "The suggested changes to the list properties, keyed by suggestion\nID.",
           "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedListProperties"
-          },
-          "description": "The suggested changes to the list properties, keyed by suggestion\nID."
+          }
         },
         "listProperties": {
           "description": "The properties of the list.",
@@ -1443,70 +1362,43 @@
           "type": "string"
         },
         "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this list.",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this list."
+          }
         }
       },
-      "id": "List",
-      "description": "A List represents the list attributes for a group of paragraphs that all\nbelong to the same list. A paragraph that is part of a list has a reference\nto the list's ID in its bullet."
+      "id": "List"
     },
     "SuggestedTextStyle": {
-      "description": "A suggested change to a TextStyle.",
-      "type": "object",
       "properties": {
-        "textStyleSuggestionState": {
-          "description": "A mask that indicates which of the fields on the base TextStyle have been changed in this suggestion.",
-          "$ref": "TextStyleSuggestionState"
-        },
         "textStyle": {
           "$ref": "TextStyle",
           "description": "A TextStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ntext_style_suggestion_state\nto see which fields have changed and their new values."
+        },
+        "textStyleSuggestionState": {
+          "$ref": "TextStyleSuggestionState",
+          "description": "A mask that indicates which of the fields on the base TextStyle have been changed in this suggestion."
         }
       },
-      "id": "SuggestedTextStyle"
+      "id": "SuggestedTextStyle",
+      "description": "A suggested change to a TextStyle.",
+      "type": "object"
     },
     "DocumentStyleSuggestionState": {
-      "description": "A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object",
       "properties": {
-        "pageNumberStartSuggested": {
-          "description": "Indicates if there was a suggested change to page_number_start.",
-          "type": "boolean"
-        },
-        "firstPageFooterIdSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to first_page_footer_id."
-        },
-        "evenPageFooterIdSuggested": {
-          "description": "Indicates if there was a suggested change to even_page_footer_id.",
-          "type": "boolean"
-        },
-        "backgroundSuggestionState": {
-          "$ref": "BackgroundSuggestionState",
-          "description": "A mask that indicates which of the fields in background have been changed in this\nsuggestion."
-        },
-        "firstPageHeaderIdSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to first_page_header_id."
-        },
-        "marginTopSuggested": {
-          "description": "Indicates if there was a suggested change to margin_top.",
-          "type": "boolean"
-        },
         "marginLeftSuggested": {
           "description": "Indicates if there was a suggested change to margin_left.",
           "type": "boolean"
         },
+        "pageSizeSuggestionState": {
+          "description": "A mask that indicates which of the fields in size have been changed in this\nsuggestion.",
+          "$ref": "SizeSuggestionState"
+        },
         "defaultHeaderIdSuggested": {
           "description": "Indicates if there was a suggested change to default_header_id.",
           "type": "boolean"
-        },
-        "pageSizeSuggestionState": {
-          "$ref": "SizeSuggestionState",
-          "description": "A mask that indicates which of the fields in size have been changed in this\nsuggestion."
         },
         "useEvenPageHeaderFooterSuggested": {
           "description": "Indicates if there was a suggested change to use_even_page_header_footer.",
@@ -1517,8 +1409,8 @@
           "type": "boolean"
         },
         "defaultFooterIdSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to default_footer_id."
+          "description": "Indicates if there was a suggested change to default_footer_id.",
+          "type": "boolean"
         },
         "useFirstPageHeaderFooterSuggested": {
           "description": "Indicates if there was a suggested change to use_first_page_header_footer.",
@@ -1531,19 +1423,68 @@
         "marginBottomSuggested": {
           "description": "Indicates if there was a suggested change to margin_bottom.",
           "type": "boolean"
+        },
+        "pageNumberStartSuggested": {
+          "description": "Indicates if there was a suggested change to page_number_start.",
+          "type": "boolean"
+        },
+        "firstPageFooterIdSuggested": {
+          "description": "Indicates if there was a suggested change to first_page_footer_id.",
+          "type": "boolean"
+        },
+        "evenPageFooterIdSuggested": {
+          "description": "Indicates if there was a suggested change to even_page_footer_id.",
+          "type": "boolean"
+        },
+        "firstPageHeaderIdSuggested": {
+          "description": "Indicates if there was a suggested change to first_page_header_id.",
+          "type": "boolean"
+        },
+        "backgroundSuggestionState": {
+          "$ref": "BackgroundSuggestionState",
+          "description": "A mask that indicates which of the fields in background have been changed in this\nsuggestion."
+        },
+        "marginTopSuggested": {
+          "description": "Indicates if there was a suggested change to margin_top.",
+          "type": "boolean"
         }
       },
-      "id": "DocumentStyleSuggestionState"
+      "id": "DocumentStyleSuggestionState",
+      "description": "A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
+      "type": "object"
     },
     "Document": {
       "description": "A Google Docs document.",
       "type": "object",
       "properties": {
+        "footnotes": {
+          "additionalProperties": {
+            "$ref": "Footnote"
+          },
+          "description": "The footnotes in the document, keyed by footnote ID.",
+          "type": "object"
+        },
+        "inlineObjects": {
+          "additionalProperties": {
+            "$ref": "InlineObject"
+          },
+          "description": "The inline objects in the document, keyed by object ID.",
+          "type": "object"
+        },
+        "suggestedNamedStylesChanges": {
+          "additionalProperties": {
+            "$ref": "SuggestedNamedStyles"
+          },
+          "description": "The suggested changes to the named styles of the document, keyed by\nsuggestion ID.",
+          "type": "object"
+        },
         "title": {
           "description": "The title of the document.",
           "type": "string"
         },
         "suggestionsViewMode": {
+          "description": "The suggestions view mode applied to the document.\n\nNote: When editing a document, changes must be based on a document with\nSUGGESTIONS_INLINE.",
+          "type": "string",
           "enumDescriptions": [
             "The SuggestionsViewMode applied to the returned document depends on the\nuser's current access level. If the user only has view access,\nPREVIEW_WITHOUT_SUGGESTIONS is\napplied. Otherwise, SUGGESTIONS_INLINE is applied.\nThis is the default suggestions view mode.",
             "The returned document has suggestions inline. Suggested changes will be\ndifferentiated from base content within the document.\n\nRequests to retrieve a document using this mode will return a 403 error if\nthe user does not have permission to view suggested changes.",
@@ -1555,30 +1496,28 @@
             "SUGGESTIONS_INLINE",
             "PREVIEW_SUGGESTIONS_ACCEPTED",
             "PREVIEW_WITHOUT_SUGGESTIONS"
-          ],
-          "description": "The suggestions view mode applied to the document.\n\nNote: When editing a document, changes must be based on a document with\nSUGGESTIONS_INLINE.",
-          "type": "string"
+          ]
         },
         "documentStyle": {
-          "$ref": "DocumentStyle",
-          "description": "The style of the document."
+          "description": "The style of the document.",
+          "$ref": "DocumentStyle"
         },
         "namedStyles": {
           "$ref": "NamedStyles",
           "description": "The named styles of the document."
-        },
-        "suggestedDocumentStyleChanges": {
-          "additionalProperties": {
-            "$ref": "SuggestedDocumentStyle"
-          },
-          "description": "The suggested changes to the style of the document, keyed by suggestion ID.",
-          "type": "object"
         },
         "positionedObjects": {
           "additionalProperties": {
             "$ref": "PositionedObject"
           },
           "description": "The positioned objects in the document, keyed by object ID.",
+          "type": "object"
+        },
+        "suggestedDocumentStyleChanges": {
+          "additionalProperties": {
+            "$ref": "SuggestedDocumentStyle"
+          },
+          "description": "The suggested changes to the style of the document, keyed by suggestion ID.",
           "type": "object"
         },
         "namedRanges": {
@@ -1596,11 +1535,11 @@
           "type": "object"
         },
         "lists": {
+          "description": "The lists in the document, keyed by list ID.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "List"
-          },
-          "description": "The lists in the document, keyed by list ID.",
-          "type": "object"
+          }
         },
         "body": {
           "$ref": "Body",
@@ -1610,42 +1549,22 @@
           "description": "The revision ID of the document. Can be used in update requests to specify\nwhich revision of a document to apply updates to and how the request should\nbehave if the document has been edited since that revision. Only populated\nif the user has edit access to the document.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the document has not changed.\nConversely, a changed ID (for the same document and user) usually means the\ndocument has been updated; however, a changed ID can also be due to\ninternal factors such as ID format changes.",
           "type": "string"
         },
+        "documentId": {
+          "description": "The ID of the document.",
+          "type": "string"
+        },
         "headers": {
           "additionalProperties": {
             "$ref": "Header"
           },
           "description": "The headers in the document, keyed by header ID.",
           "type": "object"
-        },
-        "documentId": {
-          "description": "The ID of the document.",
-          "type": "string"
-        },
-        "footnotes": {
-          "description": "The footnotes in the document, keyed by footnote ID.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "Footnote"
-          }
-        },
-        "inlineObjects": {
-          "additionalProperties": {
-            "$ref": "InlineObject"
-          },
-          "description": "The inline objects in the document, keyed by object ID.",
-          "type": "object"
-        },
-        "suggestedNamedStylesChanges": {
-          "additionalProperties": {
-            "$ref": "SuggestedNamedStyles"
-          },
-          "description": "The suggested changes to the named styles of the document, keyed by\nsuggestion ID.",
-          "type": "object"
         }
       },
       "id": "Document"
     },
     "WeightedFontFamily": {
+      "type": "object",
       "properties": {
         "fontFamily": {
           "description": "The font family of the text.\n\nThe font family can be any font from the Font menu in Docs or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`.",
@@ -1658,12 +1577,16 @@
         }
       },
       "id": "WeightedFontFamily",
-      "description": "Represents a font family and weight of text.",
-      "type": "object"
+      "description": "Represents a font family and weight of text."
     },
     "ParagraphBorder": {
+      "description": "A border around a paragraph.",
       "type": "object",
       "properties": {
+        "color": {
+          "description": "The color of the border.",
+          "$ref": "OptionalColor"
+        },
         "width": {
           "$ref": "Dimension",
           "description": "The width of the border."
@@ -1673,12 +1596,6 @@
           "description": "The padding of the border."
         },
         "dashStyle": {
-          "enum": [
-            "DASH_STYLE_UNSPECIFIED",
-            "SOLID",
-            "DOT",
-            "DASH"
-          ],
           "description": "The dash style of the border.",
           "type": "string",
           "enumDescriptions": [
@@ -1686,23 +1603,20 @@
             "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style.",
             "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'.",
             "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."
+          ],
+          "enum": [
+            "DASH_STYLE_UNSPECIFIED",
+            "SOLID",
+            "DOT",
+            "DASH"
           ]
-        },
-        "color": {
-          "description": "The color of the border.",
-          "$ref": "OptionalColor"
         }
       },
-      "id": "ParagraphBorder",
-      "description": "A border around a paragraph."
+      "id": "ParagraphBorder"
     },
     "CreateParagraphBulletsRequest": {
-      "description": "Creates bullets for all of the paragraphs that overlap with the given range.\n\nThe nesting level of each paragraph will be determined by counting leading\ntabs in front of each paragraph. To avoid excess space between the bullet and\nthe corresponding paragraph, these leading tabs are removed by this request.\nThis may change the indices of parts of the text.\n\nIf the paragraph immediately before paragraphs being updated is in a list\nwith a matching preset, the paragraphs being updated are added to that\npreceding list.",
-      "type": "object",
       "properties": {
         "bulletPreset": {
-          "description": "The kinds of bullet glyphs to be used.",
-          "type": "string",
           "enumDescriptions": [
             "The bullet glyph preset is unspecified.",
             "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels.",
@@ -1738,24 +1652,28 @@
             "NUMBERED_UPPERALPHA_ALPHA_ROMAN",
             "NUMBERED_UPPERROMAN_UPPERALPHA_DECIMAL",
             "NUMBERED_ZERODECIMAL_ALPHA_ROMAN"
-          ]
+          ],
+          "description": "The kinds of bullet glyphs to be used.",
+          "type": "string"
         },
         "range": {
-          "$ref": "Range",
-          "description": "The range to apply the bullet preset to."
+          "description": "The range to apply the bullet preset to.",
+          "$ref": "Range"
         }
       },
-      "id": "CreateParagraphBulletsRequest"
+      "id": "CreateParagraphBulletsRequest",
+      "description": "Creates bullets for all of the paragraphs that overlap with the given range.\n\nThe nesting level of each paragraph will be determined by counting leading\ntabs in front of each paragraph. To avoid excess space between the bullet and\nthe corresponding paragraph, these leading tabs are removed by this request.\nThis may change the indices of parts of the text.\n\nIf the paragraph immediately before paragraphs being updated is in a list\nwith a matching preset, the paragraphs being updated are added to that\npreceding list.",
+      "type": "object"
     },
     "Size": {
       "properties": {
-        "height": {
-          "$ref": "Dimension",
-          "description": "The height of the object."
-        },
         "width": {
           "$ref": "Dimension",
           "description": "The width of the object."
+        },
+        "height": {
+          "description": "The height of the object.",
+          "$ref": "Dimension"
         }
       },
       "id": "Size",
@@ -1766,9 +1684,17 @@
       "description": "Represents the styling that can be applied to text.\n\nInherited text styles are represented as unset fields in this message. A\ntext style's parent depends on where the text style is defined:\n\n  * The TextStyle of text in a Paragraph\n    inherits from the paragraph's corresponding named style type.\n  * The TextStyle on a named style\n    inherits from the normal text named style.\n  * The TextStyle of the normal text named style inherits\n    from the default text style in the Docs editor.\n  * The TextStyle on a Paragraph element\n    that is contained in a table may inherit its text style from the table\n    style.\n\nIf the text style does not inherit from a parent, unsetting fields will\nrevert the style to a value matching the defaults in the Docs editor.",
       "type": "object",
       "properties": {
-        "italic": {
-          "description": "Whether or not the text is italicized.",
+        "bold": {
+          "description": "Whether or not the text is rendered as bold.",
           "type": "boolean"
+        },
+        "foregroundColor": {
+          "$ref": "OptionalColor",
+          "description": "The foreground color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."
+        },
+        "italic": {
+          "type": "boolean",
+          "description": "Whether or not the text is italicized."
         },
         "strikethrough": {
           "description": "Whether or not the text is struck through.",
@@ -1811,45 +1737,37 @@
           "description": "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be updated to the\n  default link color and the text will be underlined. If these fields are\n  modified in the same request, those values will be used instead of the\n  link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."
         },
         "weightedFontFamily": {
-          "$ref": "WeightedFontFamily",
-          "description": "The font family and rendered weight of the text.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."
-        },
-        "foregroundColor": {
-          "$ref": "OptionalColor",
-          "description": "The foreground color of the text. If set, the color is either an RGB color\nor transparent, depending on the `color` field."
-        },
-        "bold": {
-          "description": "Whether or not the text is rendered as bold.",
-          "type": "boolean"
+          "description": "The font family and rendered weight of the text.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned.",
+          "$ref": "WeightedFontFamily"
         }
       },
       "id": "TextStyle"
     },
     "EmbeddedDrawingProperties": {
-      "type": "object",
       "properties": {},
       "id": "EmbeddedDrawingProperties",
-      "description": "The properties of an embedded drawing."
+      "description": "The properties of an embedded drawing.",
+      "type": "object"
     },
     "InsertTableRequest": {
       "description": "Inserts a table at the specified location.\n\nA newline character will be inserted before the inserted table.",
       "type": "object",
       "properties": {
+        "columns": {
+          "type": "integer",
+          "description": "The number of columns in the table.",
+          "format": "int32"
+        },
         "endOfSegmentLocation": {
           "$ref": "EndOfSegmentLocation",
           "description": "Inserts the table at the end of the given header, footer or document\nbody. A newline character will be inserted before the inserted table.\n\nTables cannot be inserted inside a footnote."
         },
         "location": {
-          "$ref": "Location",
-          "description": "Inserts the table at a specific model index.\n\nA newline character will be inserted before the inserted table, therefore\nthe table start index will be at the specified location index + 1.\n\nThe table must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between an existing table and its\npreceding paragraph).\n\nTables cannot be inserted inside a footnote or equation."
+          "description": "Inserts the table at a specific model index.\n\nA newline character will be inserted before the inserted table, therefore\nthe table start index will be at the specified location index + 1.\n\nThe table must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between an existing table and its\npreceding paragraph).\n\nTables cannot be inserted inside a footnote or equation.",
+          "$ref": "Location"
         },
         "rows": {
           "description": "The number of rows in the table.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "columns": {
-          "description": "The number of columns in the table.",
           "format": "int32",
           "type": "integer"
         }
@@ -1860,13 +1778,13 @@
       "description": "Inserts an empty row into a table.",
       "type": "object",
       "properties": {
-        "tableCellLocation": {
-          "$ref": "TableCellLocation",
-          "description": "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell."
-        },
         "insertBelow": {
           "description": "Whether to insert new row below the reference cell location.\n\n- `True`: insert below the cell.\n- `False`: insert above the cell.",
           "type": "boolean"
+        },
+        "tableCellLocation": {
+          "description": "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell.",
+          "$ref": "TableCellLocation"
         }
       },
       "id": "InsertTableRowRequest"
@@ -1875,17 +1793,7 @@
       "description": "A border around an EmbeddedObject.",
       "type": "object",
       "properties": {
-        "color": {
-          "$ref": "OptionalColor",
-          "description": "The color of the border."
-        },
-        "width": {
-          "description": "The width of the border.",
-          "$ref": "Dimension"
-        },
         "dashStyle": {
-          "description": "The dash style of the border.",
-          "type": "string",
           "enumDescriptions": [
             "Unspecified dash style.",
             "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style.",
@@ -1897,33 +1805,43 @@
             "SOLID",
             "DOT",
             "DASH"
-          ]
+          ],
+          "description": "The dash style of the border.",
+          "type": "string"
         },
         "propertyState": {
-          "enumDescriptions": [
-            "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered in the document. This is the default value.",
-            "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered in the document."
-          ],
           "enum": [
             "RENDERED",
             "NOT_RENDERED"
           ],
           "description": "The property state of the border property.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered in the document. This is the default value.",
+            "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered in the document."
+          ]
+        },
+        "color": {
+          "description": "The color of the border.",
+          "$ref": "OptionalColor"
+        },
+        "width": {
+          "$ref": "Dimension",
+          "description": "The width of the border."
         }
       },
       "id": "EmbeddedObjectBorder"
     },
     "BackgroundSuggestionState": {
-      "id": "BackgroundSuggestionState",
-      "description": "A mask that indicates which of the fields on the base Background have been changed in this suggestion.\nFor any field set to true, the Backgound has a new suggested value.",
-      "type": "object",
       "properties": {
         "backgroundColorSuggested": {
           "description": "Indicates whether the current background color has been modified in this\nsuggestion.",
           "type": "boolean"
         }
-      }
+      },
+      "id": "BackgroundSuggestionState",
+      "description": "A mask that indicates which of the fields on the base Background have been changed in this suggestion.\nFor any field set to true, the Backgound has a new suggested value.",
+      "type": "object"
     },
     "DeletePositionedObjectRequest": {
       "description": "Deletes a PositionedObject from the\ndocument.",
@@ -1937,32 +1855,19 @@
       "id": "DeletePositionedObjectRequest"
     },
     "Request": {
-      "description": "A single update to apply to a document.",
       "type": "object",
       "properties": {
-        "updateTextStyle": {
-          "description": "Updates the text style at the specified range.",
-          "$ref": "UpdateTextStyleRequest"
-        },
-        "deleteContentRange": {
-          "$ref": "DeleteContentRangeRequest",
-          "description": "Deletes content from the document."
-        },
-        "deleteParagraphBullets": {
-          "description": "Deletes bullets from paragraphs.",
-          "$ref": "DeleteParagraphBulletsRequest"
-        },
         "insertPageBreak": {
-          "description": "Inserts a page break at the specified location.",
-          "$ref": "InsertPageBreakRequest"
+          "$ref": "InsertPageBreakRequest",
+          "description": "Inserts a page break at the specified location."
         },
         "createNamedRange": {
-          "description": "Creates a named range.",
-          "$ref": "CreateNamedRangeRequest"
+          "$ref": "CreateNamedRangeRequest",
+          "description": "Creates a named range."
         },
         "replaceAllText": {
-          "description": "Replaces all instances of the specified text.",
-          "$ref": "ReplaceAllTextRequest"
+          "$ref": "ReplaceAllTextRequest",
+          "description": "Replaces all instances of the specified text."
         },
         "deleteNamedRange": {
           "$ref": "DeleteNamedRangeRequest",
@@ -1973,8 +1878,8 @@
           "description": "Updates the paragraph style at the specified range."
         },
         "insertTable": {
-          "description": "Inserts a table at the specified location.",
-          "$ref": "InsertTableRequest"
+          "$ref": "InsertTableRequest",
+          "description": "Inserts a table at the specified location."
         },
         "insertInlineImage": {
           "$ref": "InsertInlineImageRequest",
@@ -1989,8 +1894,8 @@
           "description": "Deletes a positioned object from the document."
         },
         "createParagraphBullets": {
-          "$ref": "CreateParagraphBulletsRequest",
-          "description": "Creates bullets for paragraphs."
+          "description": "Creates bullets for paragraphs.",
+          "$ref": "CreateParagraphBulletsRequest"
         },
         "deleteTableRow": {
           "$ref": "DeleteTableRowRequest",
@@ -2003,90 +1908,45 @@
         "insertText": {
           "$ref": "InsertTextRequest",
           "description": "Inserts text at the specified location."
+        },
+        "updateTextStyle": {
+          "$ref": "UpdateTextStyleRequest",
+          "description": "Updates the text style at the specified range."
+        },
+        "deleteContentRange": {
+          "description": "Deletes content from the document.",
+          "$ref": "DeleteContentRangeRequest"
+        },
+        "deleteParagraphBullets": {
+          "$ref": "DeleteParagraphBulletsRequest",
+          "description": "Deletes bullets from paragraphs."
         }
       },
-      "id": "Request"
+      "id": "Request",
+      "description": "A single update to apply to a document."
     },
     "InlineObjectProperties": {
-      "properties": {
-        "embeddedObject": {
-          "description": "The embedded object of this inline object.",
-          "$ref": "EmbeddedObject"
-        }
-      },
-      "id": "InlineObjectProperties",
       "description": "Properties of an InlineObject.",
-      "type": "object"
-    },
-    "ParagraphStyle": {
       "type": "object",
       "properties": {
-        "spacingMode": {
-          "description": "The spacing mode for the paragraph.",
-          "type": "string",
-          "enumDescriptions": [
-            "The spacing mode is inherited from the parent.",
-            "Paragraph spacing is always rendered.",
-            "Paragraph spacing is skipped between list elements."
-          ],
-          "enum": [
-            "SPACING_MODE_UNSPECIFIED",
-            "NEVER_COLLAPSE",
-            "COLLAPSE_LISTS"
-          ]
-        },
-        "keepLinesTogether": {
-          "description": "Whether all lines of the paragraph should be laid out on the same page or\ncolumn if possible. If unset, the value is inherited from the parent.",
-          "type": "boolean"
-        },
-        "indentStart": {
-          "description": "The amount of indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent.",
-          "$ref": "Dimension"
-        },
-        "spaceAbove": {
-          "$ref": "Dimension",
-          "description": "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."
-        },
-        "tabStops": {
-          "description": "A list of the tab stops for this paragraph. The list of tab stops is not\ninherited. This property is read-only.",
-          "type": "array",
-          "items": {
-            "$ref": "TabStop"
-          }
-        },
-        "indentFirstLine": {
-          "$ref": "Dimension",
-          "description": "The amount of indentation for the first line of the paragraph. If unset,\nthe value is inherited from the parent."
-        },
-        "alignment": {
-          "enum": [
-            "ALIGNMENT_UNSPECIFIED",
-            "START",
-            "CENTER",
-            "END",
-            "JUSTIFIED"
-          ],
-          "description": "The text alignment for this paragraph.",
-          "type": "string",
-          "enumDescriptions": [
-            "The paragraph alignment is inherited from the parent.",
-            "The paragraph is aligned to the start of the line. Left-aligned for LTR\ntext, right-aligned otherwise.",
-            "The paragraph is centered.",
-            "The paragraph is aligned to the end of the line. Right-aligned for LTR\ntext, left-aligned otherwise.",
-            "The paragraph is justified."
-          ]
-        },
-        "borderBetween": {
-          "description": "The border between this paragraph and the next and previous paragraphs.\nIf unset, the value is inherited from the parent.\n\nThe between border is rendered when the adjacent paragraph has the same\nborder and indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety.",
-          "$ref": "ParagraphBorder"
-        },
+        "embeddedObject": {
+          "$ref": "EmbeddedObject",
+          "description": "The embedded object of this inline object."
+        }
+      },
+      "id": "InlineObjectProperties"
+    },
+    "ParagraphStyle": {
+      "description": "Styles that apply to a whole paragraph.\n\nInherited paragraph styles are represented as unset fields in this message.\nA paragraph style's parent depends on where the paragraph style is defined:\n\n  * The ParagraphStyle on a Paragraph\n    inherits from the paragraph's corresponding named style type.\n  * The ParagraphStyle on a named style\n    inherits from the normal text named style.\n  * The ParagraphStyle of the normal text named style inherits\n    from the default paragraph style in the Docs editor.\n  * The ParagraphStyle on a Paragraph\n    element that is contained in a table may inherit its paragraph style from\n    the table style.\n\nIf the paragraph style does not inherit from a parent, unsetting fields will\nrevert the style to a value matching the defaults in the Docs editor.",
+      "type": "object",
+      "properties": {
         "headingId": {
           "description": "The heading ID of the paragraph. If empty, then this paragraph is not a\nheading. This property is read-only.",
           "type": "string"
         },
         "avoidWidowAndOrphan": {
-          "type": "boolean",
-          "description": "Whether to avoid widows and orphans for the paragraph. If unset, the value\nis inherited from the parent."
+          "description": "Whether to avoid widows and orphans for the paragraph. If unset, the value\nis inherited from the parent.",
+          "type": "boolean"
         },
         "spaceBelow": {
           "description": "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent.",
@@ -2101,6 +1961,8 @@
           "description": "The border at the bottom of this paragraph. If unset, the value is\ninherited from the parent.\n\nThe bottom border is rendered when the paragraph below has different border\nand indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."
         },
         "direction": {
+          "description": "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\nparagraph direction is not inherited.",
+          "type": "string",
           "enumDescriptions": [
             "The content direction is unspecified.",
             "The content goes from left to right.",
@@ -2110,19 +1972,29 @@
             "CONTENT_DIRECTION_UNSPECIFIED",
             "LEFT_TO_RIGHT",
             "RIGHT_TO_LEFT"
-          ],
-          "description": "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\nparagraph direction is not inherited.",
-          "type": "string"
+          ]
         },
         "borderLeft": {
-          "description": "The border to the left of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety.",
-          "$ref": "ParagraphBorder"
+          "$ref": "ParagraphBorder",
+          "description": "The border to the left of this paragraph. If unset, the value is inherited\nfrom the parent.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."
         },
         "indentEnd": {
           "description": "The amount of indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent.",
           "$ref": "Dimension"
         },
         "namedStyleType": {
+          "enum": [
+            "NAMED_STYLE_TYPE_UNSPECIFIED",
+            "NORMAL_TEXT",
+            "TITLE",
+            "SUBTITLE",
+            "HEADING_1",
+            "HEADING_2",
+            "HEADING_3",
+            "HEADING_4",
+            "HEADING_5",
+            "HEADING_6"
+          ],
           "description": "The named style type of the paragraph.\n\nSince updating the named style type affects other properties within\nParagraphStyle, the named style type is applied before the other properties\nare updated.",
           "type": "string",
           "enumDescriptions": [
@@ -2136,18 +2008,6 @@
             "Heading 4.",
             "Heading 5.",
             "Heading 6."
-          ],
-          "enum": [
-            "NAMED_STYLE_TYPE_UNSPECIFIED",
-            "NORMAL_TEXT",
-            "TITLE",
-            "SUBTITLE",
-            "HEADING_1",
-            "HEADING_2",
-            "HEADING_3",
-            "HEADING_4",
-            "HEADING_5",
-            "HEADING_6"
           ]
         },
         "borderRight": {
@@ -2166,19 +2026,77 @@
         "shading": {
           "$ref": "Shading",
           "description": "The shading of the paragraph. If unset, the value is inherited from the\nparent."
+        },
+        "spacingMode": {
+          "enum": [
+            "SPACING_MODE_UNSPECIFIED",
+            "NEVER_COLLAPSE",
+            "COLLAPSE_LISTS"
+          ],
+          "description": "The spacing mode for the paragraph.",
+          "type": "string",
+          "enumDescriptions": [
+            "The spacing mode is inherited from the parent.",
+            "Paragraph spacing is always rendered.",
+            "Paragraph spacing is skipped between list elements."
+          ]
+        },
+        "keepLinesTogether": {
+          "description": "Whether all lines of the paragraph should be laid out on the same page or\ncolumn if possible. If unset, the value is inherited from the parent.",
+          "type": "boolean"
+        },
+        "indentStart": {
+          "$ref": "Dimension",
+          "description": "The amount of indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current paragraph direction. If unset,\nthe value is inherited from the parent."
+        },
+        "spaceAbove": {
+          "$ref": "Dimension",
+          "description": "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."
+        },
+        "tabStops": {
+          "description": "A list of the tab stops for this paragraph. The list of tab stops is not\ninherited. This property is read-only.",
+          "type": "array",
+          "items": {
+            "$ref": "TabStop"
+          }
+        },
+        "indentFirstLine": {
+          "$ref": "Dimension",
+          "description": "The amount of indentation for the first line of the paragraph. If unset,\nthe value is inherited from the parent."
+        },
+        "alignment": {
+          "enumDescriptions": [
+            "The paragraph alignment is inherited from the parent.",
+            "The paragraph is aligned to the start of the line. Left-aligned for LTR\ntext, right-aligned otherwise.",
+            "The paragraph is centered.",
+            "The paragraph is aligned to the end of the line. Right-aligned for LTR\ntext, left-aligned otherwise.",
+            "The paragraph is justified."
+          ],
+          "enum": [
+            "ALIGNMENT_UNSPECIFIED",
+            "START",
+            "CENTER",
+            "END",
+            "JUSTIFIED"
+          ],
+          "description": "The text alignment for this paragraph.",
+          "type": "string"
+        },
+        "borderBetween": {
+          "$ref": "ParagraphBorder",
+          "description": "The border between this paragraph and the next and previous paragraphs.\nIf unset, the value is inherited from the parent.\n\nThe between border is rendered when the adjacent paragraph has the same\nborder and indent properties.\n\nParagraph borders cannot be partially updated. When making\nchanges to a paragraph border the new border must be specified in\nits entirety."
         }
       },
-      "id": "ParagraphStyle",
-      "description": "Styles that apply to a whole paragraph.\n\nInherited paragraph styles are represented as unset fields in this message.\nA paragraph style's parent depends on where the paragraph style is defined:\n\n  * The ParagraphStyle on a Paragraph\n    inherits from the paragraph's corresponding named style type.\n  * The ParagraphStyle on a named style\n    inherits from the normal text named style.\n  * The ParagraphStyle of the normal text named style inherits\n    from the default paragraph style in the Docs editor.\n  * The ParagraphStyle on a Paragraph\n    element that is contained in a table may inherit its paragraph style from\n    the table style.\n\nIf the paragraph style does not inherit from a parent, unsetting fields will\nrevert the style to a value matching the defaults in the Docs editor."
+      "id": "ParagraphStyle"
     },
     "Location": {
       "description": "A particular location in the document.",
       "type": "object",
       "properties": {
         "index": {
+          "type": "integer",
           "description": "The zero-based index, in UTF-16 code units.\n\nThe index is relative to the beginning of the segment specified by\nsegment_id.",
-          "format": "int32",
-          "type": "integer"
+          "format": "int32"
         },
         "segmentId": {
           "description": "The ID of the header, footer or footnote the location is in. An empty\nsegment ID signifies the document's body.",
@@ -2188,41 +2106,41 @@
       "id": "Location"
     },
     "SuggestedDocumentStyle": {
+      "type": "object",
       "properties": {
-        "documentStyleSuggestionState": {
-          "$ref": "DocumentStyleSuggestionState",
-          "description": "A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion."
-        },
         "documentStyle": {
-          "$ref": "DocumentStyle",
-          "description": "A DocumentStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ndocument_style_suggestion_state\nto see which fields have changed and their new values."
+          "description": "A DocumentStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ndocument_style_suggestion_state\nto see which fields have changed and their new values.",
+          "$ref": "DocumentStyle"
+        },
+        "documentStyleSuggestionState": {
+          "description": "A mask that indicates which of the fields on the base DocumentStyle have been changed in this suggestion.",
+          "$ref": "DocumentStyleSuggestionState"
         }
       },
       "id": "SuggestedDocumentStyle",
-      "description": "A suggested change to the DocumentStyle.",
-      "type": "object"
+      "description": "A suggested change to the DocumentStyle."
     },
     "TableOfContents": {
       "id": "TableOfContents",
       "description": "A StructuralElement representing\na table of contents.",
       "type": "object",
       "properties": {
-        "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "StructuralElement"
+          },
+          "description": "The content of the table of contents."
+        },
+        "suggestedInsertionIds": {
+          "description": "The suggested insertion IDs. A TableOfContents may have multiple insertion IDs if it\nis a nested suggested change. If empty, then this is not a suggested\ninsertion.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "content": {
-          "description": "The content of the table of contents.",
-          "type": "array",
-          "items": {
-            "$ref": "StructuralElement"
-          }
-        },
-        "suggestedInsertionIds": {
-          "description": "The suggested insertion IDs. A TableOfContents may have multiple insertion IDs if it\nis a nested suggested change. If empty, then this is not a suggested\ninsertion.",
+        "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
           "type": "array",
           "items": {
             "type": "string"
@@ -2231,44 +2149,48 @@
       }
     },
     "TableColumnProperties": {
+      "id": "TableColumnProperties",
       "description": "The properties of a column in a table.",
       "type": "object",
       "properties": {
+        "width": {
+          "$ref": "Dimension",
+          "description": "The width of the column. Set when the column's `width_type` is\nFIXED_WIDTH."
+        },
         "widthType": {
-          "enum": [
-            "WIDTH_TYPE_UNSPECIFIED",
-            "EVENLY_DISTRIBUTED",
-            "FIXED_WIDTH"
-          ],
           "description": "The width type of the column.",
           "type": "string",
           "enumDescriptions": [
             "The column width type is unspecified.",
             "The column width is evenly distributed among the other evenly distrubted\ncolumns.\n\nThe width of the column is automatically determined and will\nhave an equal portion of the width remaining for the table after\naccounting for all columns with specified widths.",
             "A fixed column width. The\nwidth property\ncontains the column's width."
+          ],
+          "enum": [
+            "WIDTH_TYPE_UNSPECIFIED",
+            "EVENLY_DISTRIBUTED",
+            "FIXED_WIDTH"
           ]
-        },
-        "width": {
-          "description": "The width of the column. Set when the column's `width_type` is\nFIXED_WIDTH.",
-          "$ref": "Dimension"
         }
-      },
-      "id": "TableColumnProperties"
+      }
     },
     "InlineObject": {
       "description": "An object that appears inline with text. An InlineObject contains\nan EmbeddedObject such as an image.",
       "type": "object",
       "properties": {
+        "inlineObjectProperties": {
+          "$ref": "InlineObjectProperties",
+          "description": "The properties of this inline object."
+        },
         "objectId": {
-          "type": "string",
-          "description": "The ID of this inline object."
+          "description": "The ID of this inline object.",
+          "type": "string"
         },
         "suggestedInlineObjectPropertiesChanges": {
+          "description": "The suggested changes to the inline object properties, keyed by suggestion\nID.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedInlineObjectProperties"
-          },
-          "description": "The suggested changes to the inline object properties, keyed by suggestion\nID.",
-          "type": "object"
+          }
         },
         "suggestedInsertionId": {
           "description": "The suggested insertion ID. If empty, then this is not a suggested\ninsertion.",
@@ -2280,10 +2202,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "inlineObjectProperties": {
-          "description": "The properties of this inline object.",
-          "$ref": "InlineObjectProperties"
         }
       },
       "id": "InlineObject"
@@ -2324,11 +2242,11 @@
           "type": "integer"
         },
         "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content."
+          }
         },
         "tableRowStyle": {
           "$ref": "TableRowStyle",
@@ -2336,20 +2254,6 @@
         }
       },
       "id": "TableRow"
-    },
-    "NamedStylesSuggestionState": {
-      "description": "The suggestion state of a NamedStyles\nmessage.",
-      "type": "object",
-      "properties": {
-        "stylesSuggestionStates": {
-          "type": "array",
-          "items": {
-            "$ref": "NamedStyleSuggestionState"
-          },
-          "description": "A mask that indicates which of the fields on the corresponding NamedStyle in styles have been changed in this\nsuggestion.\n\nThe order of these named style suggestion states match the order of the\ncorresponding named style within the named styles suggestion."
-        }
-      },
-      "id": "NamedStylesSuggestionState"
     },
     "CreateNamedRangeRequest": {
       "description": "Creates a NamedRange referencing the given\nrange.",
@@ -2366,19 +2270,30 @@
       },
       "id": "CreateNamedRangeRequest"
     },
-    "ImagePropertiesSuggestionState": {
+    "NamedStylesSuggestionState": {
+      "type": "object",
       "properties": {
-        "transparencySuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to transparency."
-        },
+        "stylesSuggestionStates": {
+          "description": "A mask that indicates which of the fields on the corresponding NamedStyle in styles have been changed in this\nsuggestion.\n\nThe order of these named style suggestion states match the order of the\ncorresponding named style within the named styles suggestion.",
+          "type": "array",
+          "items": {
+            "$ref": "NamedStyleSuggestionState"
+          }
+        }
+      },
+      "id": "NamedStylesSuggestionState",
+      "description": "The suggestion state of a NamedStyles\nmessage."
+    },
+    "ImagePropertiesSuggestionState": {
+      "type": "object",
+      "properties": {
         "contentUriSuggested": {
           "description": "Indicates if there was a suggested change to\ncontent_uri.",
           "type": "boolean"
         },
         "contrastSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to contrast."
+          "description": "Indicates if there was a suggested change to contrast.",
+          "type": "boolean"
         },
         "angleSuggested": {
           "description": "Indicates if there was a suggested change to angle.",
@@ -2395,11 +2310,14 @@
         "sourceUriSuggested": {
           "description": "Indicates if there was a suggested change to source_uri.",
           "type": "boolean"
+        },
+        "transparencySuggested": {
+          "description": "Indicates if there was a suggested change to transparency.",
+          "type": "boolean"
         }
       },
       "id": "ImagePropertiesSuggestionState",
-      "description": "A mask that indicates which of the fields on the base ImageProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object"
+      "description": "A mask that indicates which of the fields on the base ImageProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value."
     },
     "WriteControl": {
       "description": "Provides control over how write requests are executed.",
@@ -2417,55 +2335,65 @@
       "id": "WriteControl"
     },
     "SheetsChartReferenceSuggestionState": {
-      "id": "SheetsChartReferenceSuggestionState",
       "description": "A mask that indicates which of the fields on the base SheetsChartReference have been changed in this\nsuggestion. For any field set to true, there is a new suggested value.",
       "type": "object",
       "properties": {
-        "spreadsheetIdSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to spreadsheet_id."
-        },
         "chartIdSuggested": {
           "description": "Indicates if there was a suggested change to chart_id.",
           "type": "boolean"
+        },
+        "spreadsheetIdSuggested": {
+          "description": "Indicates if there was a suggested change to spreadsheet_id.",
+          "type": "boolean"
         }
-      }
+      },
+      "id": "SheetsChartReferenceSuggestionState"
     },
     "DeleteParagraphBulletsRequest": {
       "description": "Deletes bullets from all of the paragraphs that overlap with the given range.\n\nThe nesting level of each paragraph will be visually preserved by adding\nindent to the start of the corresponding paragraph.",
       "type": "object",
       "properties": {
         "range": {
-          "description": "The range to delete bullets from.",
-          "$ref": "Range"
+          "$ref": "Range",
+          "description": "The range to delete bullets from."
         }
       },
       "id": "DeleteParagraphBulletsRequest"
     },
     "Footnote": {
-      "id": "Footnote",
       "description": "A document footnote.",
       "type": "object",
       "properties": {
-        "footnoteId": {
-          "description": "The ID of the footnote.",
-          "type": "string"
-        },
         "content": {
           "description": "The contents of the footnote.\n\nThe indexes for a footnote's content begin at zero.",
           "type": "array",
           "items": {
             "$ref": "StructuralElement"
           }
+        },
+        "footnoteId": {
+          "description": "The ID of the footnote.",
+          "type": "string"
         }
-      }
+      },
+      "id": "Footnote"
     },
     "CropPropertiesSuggestionState": {
+      "id": "CropPropertiesSuggestionState",
+      "description": "A mask that indicates which of the fields on the base CropProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
       "type": "object",
       "properties": {
-        "offsetRightSuggested": {
-          "description": "Indicates if there was a suggested change to offset_right.",
+        "offsetTopSuggested": {
+          "description": "Indicates if there was a suggested change to offset_top.",
           "type": "boolean"
+        },
+        "angleSuggested": {
+          "description": "Indicates if there was a suggested change to angle.",
+          "type": "boolean"
+        },
+        "offsetRightSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to offset_right."
         },
         "offsetLeftSuggested": {
           "description": "Indicates if there was a suggested change to offset_left.",
@@ -2474,41 +2402,31 @@
         "offsetBottomSuggested": {
           "description": "Indicates if there was a suggested change to offset_bottom.",
           "type": "boolean"
-        },
-        "offsetTopSuggested": {
-          "description": "Indicates if there was a suggested change to offset_top.",
-          "type": "boolean"
-        },
-        "angleSuggested": {
-          "description": "Indicates if there was a suggested change to angle.",
-          "type": "boolean"
         }
-      },
-      "id": "CropPropertiesSuggestionState",
-      "description": "A mask that indicates which of the fields on the base CropProperties have been changed in this suggestion.\nFor any field set to true, there is a new suggested value."
+      }
     },
     "SuggestedListProperties": {
+      "description": "A suggested change to ListProperties.",
+      "type": "object",
       "properties": {
         "listPropertiesSuggestionState": {
-          "description": "A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion.",
-          "$ref": "ListPropertiesSuggestionState"
+          "$ref": "ListPropertiesSuggestionState",
+          "description": "A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion."
         },
         "listProperties": {
           "$ref": "ListProperties",
           "description": "A ListProperties that only includes\nthe changes made in this suggestion. This can be used along with the\nlist_properties_suggestion_state\nto see which fields have changed and their new values."
         }
       },
-      "id": "SuggestedListProperties",
-      "description": "A suggested change to ListProperties.",
-      "type": "object"
+      "id": "SuggestedListProperties"
     },
     "DeleteContentRangeRequest": {
       "description": "Deletes content from the document.",
       "type": "object",
       "properties": {
         "range": {
-          "description": "The range of content to delete.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles, lists, positioned objects and bookmarks as the two\nparagraphs are merged.\n\nAttempting to delete certain ranges can result in an invalid document\nstructure in which case a 400 bad request error is returned.\n\nSome examples of invalid delete requests include:\n\n* Deleting one code unit of a surrogate pair.\n* Deleting the last newline character of a Body, Header,\n  Footer, Footnote, TableCell or TableOfContents.\n* Deleting the start or end of a Table,\n  TableOfContents or Equation without deleting the entire element.\n* Deleting the newline character before a\n  Table,\n  TableOfContents or\n  SectionBreak without deleting the\n  element.\n* Deleting individual rows or cells of a table. Deleting the content within\n  a table cell is allowed.",
-          "$ref": "Range"
+          "$ref": "Range",
+          "description": "The range of content to delete.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles, lists, positioned objects and bookmarks as the two\nparagraphs are merged.\n\nAttempting to delete certain ranges can result in an invalid document\nstructure in which case a 400 bad request error is returned.\n\nSome examples of invalid delete requests include:\n\n* Deleting one code unit of a surrogate pair.\n* Deleting the last newline character of a Body, Header,\n  Footer, Footnote, TableCell or TableOfContents.\n* Deleting the start or end of a Table,\n  TableOfContents or Equation without deleting the entire element.\n* Deleting the newline character before a\n  Table,\n  TableOfContents or\n  SectionBreak without deleting the\n  element.\n* Deleting individual rows or cells of a table. Deleting the content within\n  a table cell is allowed."
         }
       },
       "id": "DeleteContentRangeRequest"
@@ -2524,18 +2442,8 @@
       },
       "id": "LinkedContentReferenceSuggestionState"
     },
-    "Background": {
-      "description": "Represents the background of a document.",
-      "type": "object",
-      "properties": {
-        "color": {
-          "description": "The background color.",
-          "$ref": "OptionalColor"
-        }
-      },
-      "id": "Background"
-    },
     "InsertInlineSheetsChartResponse": {
+      "id": "InsertInlineSheetsChartResponse",
       "description": "The result of inserting an embedded Google Sheets chart.",
       "type": "object",
       "properties": {
@@ -2543,10 +2451,52 @@
           "description": "The object ID of the inserted chart.",
           "type": "string"
         }
+      }
+    },
+    "Background": {
+      "properties": {
+        "color": {
+          "description": "The background color.",
+          "$ref": "OptionalColor"
+        }
       },
-      "id": "InsertInlineSheetsChartResponse"
+      "id": "Background",
+      "description": "Represents the background of a document.",
+      "type": "object"
+    },
+    "Shading": {
+      "description": "The shading of a paragraph.",
+      "type": "object",
+      "properties": {
+        "backgroundColor": {
+          "description": "The background color of this paragraph shading.",
+          "$ref": "OptionalColor"
+        }
+      },
+      "id": "Shading"
+    },
+    "Link": {
+      "properties": {
+        "headingId": {
+          "description": "The ID of a heading in this document.",
+          "type": "string"
+        },
+        "url": {
+          "description": "An external URL.",
+          "type": "string"
+        },
+        "bookmarkId": {
+          "description": "The ID of a bookmark in this document.",
+          "type": "string"
+        }
+      },
+      "id": "Link",
+      "description": "A reference to another portion of a document or an external URL resource.",
+      "type": "object"
     },
     "ColumnBreak": {
+      "description": "A ParagraphElement representing a\ncolumn break. A column break makes the subsequent text start at the top of\nthe next column.",
+      "type": "object",
       "properties": {
         "suggestedDeletionIds": {
           "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
@@ -2556,8 +2506,8 @@
           }
         },
         "textStyle": {
-          "$ref": "TextStyle",
-          "description": "The text style of this ColumnBreak.\n\nSimilar to text content, like text runs and footnote references, the text\nstyle of a column break can affect content layout as well as the styling of\ntext inserted adjacent to it."
+          "description": "The text style of this ColumnBreak.\n\nSimilar to text content, like text runs and footnote references, the text\nstyle of a column break can affect content layout as well as the styling of\ntext inserted adjacent to it.",
+          "$ref": "TextStyle"
         },
         "suggestedInsertionIds": {
           "description": "The suggested insertion IDs. A ColumnBreak may have multiple insertion IDs if it is\na nested suggested change. If empty, then this is not a suggested\ninsertion.",
@@ -2567,56 +2517,34 @@
           }
         },
         "suggestedTextStyleChanges": {
-          "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedTextStyle"
           },
-          "description": "The suggested text style changes to this ColumnBreak, keyed by suggestion\nID."
+          "description": "The suggested text style changes to this ColumnBreak, keyed by suggestion\nID.",
+          "type": "object"
         }
       },
-      "id": "ColumnBreak",
-      "description": "A ParagraphElement representing a\ncolumn break. A column break makes the subsequent text start at the top of\nthe next column.",
-      "type": "object"
+      "id": "ColumnBreak"
     },
-    "Link": {
-      "description": "A reference to another portion of a document or an external URL resource.",
+    "TableRowStyleSuggestionState": {
       "type": "object",
       "properties": {
-        "url": {
-          "description": "An external URL.",
-          "type": "string"
-        },
-        "bookmarkId": {
-          "type": "string",
-          "description": "The ID of a bookmark in this document."
-        },
-        "headingId": {
-          "description": "The ID of a heading in this document.",
-          "type": "string"
+        "minRowHeightSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to min_row_height."
         }
       },
-      "id": "Link"
-    },
-    "Shading": {
-      "type": "object",
-      "properties": {
-        "backgroundColor": {
-          "$ref": "OptionalColor",
-          "description": "The background color of this paragraph shading."
-        }
-      },
-      "id": "Shading",
-      "description": "The shading of a paragraph."
+      "id": "TableRowStyleSuggestionState",
+      "description": "A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value."
     },
     "RgbColor": {
-      "id": "RgbColor",
       "description": "An RGB color.",
       "type": "object",
       "properties": {
         "red": {
-          "type": "number",
           "description": "The red component of the color, from 0.0 to 1.0.",
-          "format": "float"
+          "format": "float",
+          "type": "number"
         },
         "green": {
           "description": "The green component of the color, from 0.0 to 1.0.",
@@ -2628,18 +2556,8 @@
           "format": "float",
           "type": "number"
         }
-      }
-    },
-    "TableRowStyleSuggestionState": {
-      "description": "A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object",
-      "properties": {
-        "minRowHeightSuggested": {
-          "description": "Indicates if there was a suggested change to min_row_height.",
-          "type": "boolean"
-        }
       },
-      "id": "TableRowStyleSuggestionState"
+      "id": "RgbColor"
     },
     "HorizontalRule": {
       "description": "A ParagraphElement representing a\nhorizontal line.",
@@ -2653,11 +2571,11 @@
           }
         },
         "suggestedTextStyleChanges": {
+          "description": "The suggested text style changes to this HorizontalRule, keyed by\nsuggestion ID.",
+          "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedTextStyle"
-          },
-          "description": "The suggested text style changes to this HorizontalRule, keyed by\nsuggestion ID.",
-          "type": "object"
+          }
         },
         "suggestedDeletionIds": {
           "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
@@ -2682,7 +2600,6 @@
           "description": "A mask that indicates which of the fields in text style have been changed in this\nsuggestion."
         },
         "namedStyleType": {
-          "description": "The named style type that this suggestion state corresponds to.\n\nThis field is provided as a convenience for matching the\nNamedStyleSuggestionState with its corresponding NamedStyle.",
           "type": "string",
           "enumDescriptions": [
             "The type of named style is unspecified.",
@@ -2707,7 +2624,8 @@
             "HEADING_4",
             "HEADING_5",
             "HEADING_6"
-          ]
+          ],
+          "description": "The named style type that this suggestion state corresponds to.\n\nThis field is provided as a convenience for matching the\nNamedStyleSuggestionState with its corresponding NamedStyle."
         },
         "paragraphStyleSuggestionState": {
           "$ref": "ParagraphStyleSuggestionState",
@@ -2728,18 +2646,17 @@
       "id": "ShadingSuggestionState"
     },
     "InlineObjectPropertiesSuggestionState": {
-      "description": "A mask that indicates which of the fields on the base\nInlineObjectProperties have\nbeen changed in this suggestion. For any field set to true, there is a new\nsuggested value.",
-      "type": "object",
       "properties": {
         "embeddedObjectSuggestionState": {
-          "$ref": "EmbeddedObjectSuggestionState",
-          "description": "A mask that indicates which of the fields in embedded_object have been\nchanged in this suggestion."
+          "description": "A mask that indicates which of the fields in embedded_object have been\nchanged in this suggestion.",
+          "$ref": "EmbeddedObjectSuggestionState"
         }
       },
-      "id": "InlineObjectPropertiesSuggestionState"
+      "id": "InlineObjectPropertiesSuggestionState",
+      "description": "A mask that indicates which of the fields on the base\nInlineObjectProperties have\nbeen changed in this suggestion. For any field set to true, there is a new\nsuggested value.",
+      "type": "object"
     },
     "SuggestedParagraphStyle": {
-      "id": "SuggestedParagraphStyle",
       "description": "A suggested change to a\nParagraphStyle.",
       "type": "object",
       "properties": {
@@ -2751,91 +2668,10 @@
           "$ref": "ParagraphStyleSuggestionState",
           "description": "A mask that indicates which of the fields on the base ParagraphStyle have been changed in this suggestion."
         }
-      }
-    },
-    "SuggestedBullet": {
-      "description": "A suggested change to a Bullet.",
-      "type": "object",
-      "properties": {
-        "bullet": {
-          "description": "A Bullet that only includes the changes made\nin this suggestion. This can be used along with the\nbullet_suggestion_state to see which\nfields have changed and their new values.",
-          "$ref": "Bullet"
-        },
-        "bulletSuggestionState": {
-          "$ref": "BulletSuggestionState",
-          "description": "A mask that indicates which of the fields on the base\nBullet have been changed in this suggestion."
-        }
       },
-      "id": "SuggestedBullet"
-    },
-    "SuggestedTableRowStyle": {
-      "properties": {
-        "tableRowStyle": {
-          "$ref": "TableRowStyle",
-          "description": "A TableRowStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ntable_row_style_suggestion_state\nto see which fields have changed and their new values."
-        },
-        "tableRowStyleSuggestionState": {
-          "$ref": "TableRowStyleSuggestionState",
-          "description": "A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion."
-        }
-      },
-      "id": "SuggestedTableRowStyle",
-      "description": "A suggested change to a\nTableRowStyle.",
-      "type": "object"
-    },
-    "TextStyleSuggestionState": {
-      "description": "A mask that indicates which of the fields on the base TextStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object",
-      "properties": {
-        "italicSuggested": {
-          "description": "Indicates if there was a suggested change to italic.",
-          "type": "boolean"
-        },
-        "foregroundColorSuggested": {
-          "description": "Indicates if there was a suggested change to foreground_color.",
-          "type": "boolean"
-        },
-        "boldSuggested": {
-          "description": "Indicates if there was a suggested change to bold.",
-          "type": "boolean"
-        },
-        "linkSuggested": {
-          "description": "Indicates if there was a suggested change to link.",
-          "type": "boolean"
-        },
-        "fontSizeSuggested": {
-          "description": "Indicates if there was a suggested change to font_size.",
-          "type": "boolean"
-        },
-        "strikethroughSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to strikethrough."
-        },
-        "underlineSuggested": {
-          "description": "Indicates if there was a suggested change to underline.",
-          "type": "boolean"
-        },
-        "baselineOffsetSuggested": {
-          "description": "Indicates if there was a suggested change to baseline_offset.",
-          "type": "boolean"
-        },
-        "weightedFontFamilySuggested": {
-          "description": "Indicates if there was a suggested change to weighted_font_family.",
-          "type": "boolean"
-        },
-        "backgroundColorSuggested": {
-          "description": "Indicates if there was a suggested change to background_color.",
-          "type": "boolean"
-        },
-        "smallCapsSuggested": {
-          "description": "Indicates if there was a suggested change to small_caps.",
-          "type": "boolean"
-        }
-      },
-      "id": "TextStyleSuggestionState"
+      "id": "SuggestedParagraphStyle"
     },
     "Header": {
-      "id": "Header",
       "description": "A document header.",
       "type": "object",
       "properties": {
@@ -2850,56 +2686,89 @@
             "$ref": "StructuralElement"
           }
         }
-      }
+      },
+      "id": "Header"
     },
-    "TableCell": {
+    "TextStyleSuggestionState": {
       "properties": {
-        "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "fontSizeSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to font_size."
         },
-        "suggestedTableCellStyleChanges": {
-          "additionalProperties": {
-            "$ref": "SuggestedTableCellStyle"
-          },
-          "description": "The suggested changes to the table cell style, keyed by suggestion ID.",
-          "type": "object"
+        "strikethroughSuggested": {
+          "description": "Indicates if there was a suggested change to strikethrough.",
+          "type": "boolean"
         },
-        "content": {
-          "description": "The content of the cell.",
-          "type": "array",
-          "items": {
-            "$ref": "StructuralElement"
-          }
+        "underlineSuggested": {
+          "description": "Indicates if there was a suggested change to underline.",
+          "type": "boolean"
         },
-        "suggestedInsertionIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The suggested insertion IDs. A TableCell\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion."
+        "backgroundColorSuggested": {
+          "description": "Indicates if there was a suggested change to background_color.",
+          "type": "boolean"
         },
-        "startIndex": {
-          "description": "The zero-based start index of this cell, in UTF-16 code units.",
-          "format": "int32",
-          "type": "integer"
+        "weightedFontFamilySuggested": {
+          "description": "Indicates if there was a suggested change to weighted_font_family.",
+          "type": "boolean"
         },
-        "endIndex": {
-          "description": "The zero-based end index of this cell, exclusive, in UTF-16 code units.",
-          "format": "int32",
-          "type": "integer"
+        "baselineOffsetSuggested": {
+          "description": "Indicates if there was a suggested change to baseline_offset.",
+          "type": "boolean"
         },
-        "tableCellStyle": {
-          "$ref": "TableCellStyle",
-          "description": "The style of the cell."
+        "smallCapsSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to small_caps."
+        },
+        "italicSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to italic."
+        },
+        "foregroundColorSuggested": {
+          "description": "Indicates if there was a suggested change to foreground_color.",
+          "type": "boolean"
+        },
+        "boldSuggested": {
+          "description": "Indicates if there was a suggested change to bold.",
+          "type": "boolean"
+        },
+        "linkSuggested": {
+          "description": "Indicates if there was a suggested change to link.",
+          "type": "boolean"
         }
       },
-      "id": "TableCell",
-      "description": "The contents and style of a cell in a Table.",
+      "id": "TextStyleSuggestionState",
+      "description": "A mask that indicates which of the fields on the base TextStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
       "type": "object"
+    },
+    "SuggestedBullet": {
+      "id": "SuggestedBullet",
+      "description": "A suggested change to a Bullet.",
+      "type": "object",
+      "properties": {
+        "bullet": {
+          "$ref": "Bullet",
+          "description": "A Bullet that only includes the changes made\nin this suggestion. This can be used along with the\nbullet_suggestion_state to see which\nfields have changed and their new values."
+        },
+        "bulletSuggestionState": {
+          "$ref": "BulletSuggestionState",
+          "description": "A mask that indicates which of the fields on the base\nBullet have been changed in this suggestion."
+        }
+      }
+    },
+    "SuggestedTableRowStyle": {
+      "description": "A suggested change to a\nTableRowStyle.",
+      "type": "object",
+      "properties": {
+        "tableRowStyleSuggestionState": {
+          "$ref": "TableRowStyleSuggestionState",
+          "description": "A mask that indicates which of the fields on the base TableRowStyle have been changed in this suggestion."
+        },
+        "tableRowStyle": {
+          "description": "A TableRowStyle that only includes\nthe changes made in this suggestion. This can be used along with the\ntable_row_style_suggestion_state\nto see which fields have changed and their new values.",
+          "$ref": "TableRowStyle"
+        }
+      },
+      "id": "SuggestedTableRowStyle"
     },
     "NestingLevel": {
       "description": "Contains properties describing the look and feel of a list bullet at a given\nlevel of nesting.",
@@ -2909,8 +2778,12 @@
           "$ref": "Dimension",
           "description": "The amount of indentation for the first line of paragraphs at this level of\nnesting."
         },
+        "startNumber": {
+          "description": "The number of the first list item at this nesting level.\n\nA value of 0 is treated as a value of 1 for lettered lists and roman\nnumeraled lists, i.e. for values of both 0 and 1, lettered and roman\nnumeraled lists will begin at `a` and `i` respectively.\n\nThis value is ignored for nesting levels with unordered glyphs.",
+          "format": "int32",
+          "type": "integer"
+        },
         "glyphType": {
-          "type": "string",
           "enumDescriptions": [
             "The glyph type is unspecified or unsupported.",
             "An empty string.",
@@ -2931,12 +2804,8 @@
             "UPPER_ROMAN",
             "ROMAN"
           ],
-          "description": "The type of glyph used by bullets when paragraphs at this level of\nnesting are ordered.\n\nThe glyph type determines the type of glyph used to replace placeholders\nwithin the glyph_format\nwhen paragraphs at this level of nesting are ordered. For example, if the\nnesting level is 0, the glyph_format is `%0.` and the glyph\ntype is DECIMAL,\nthen the rendered glyph would replace the placeholder `%0` in the glyph\nformat with a number corresponding to list item's order within the list."
-        },
-        "startNumber": {
-          "description": "The number of the first list item at this nesting level.\n\nA value of 0 is treated as a value of 1 for lettered lists and roman\nnumeraled lists, i.e. for values of both 0 and 1, lettered and roman\nnumeraled lists will begin at `a` and `i` respectively.\n\nThis value is ignored for nesting levels with unordered glyphs.",
-          "format": "int32",
-          "type": "integer"
+          "description": "The type of glyph used by bullets when paragraphs at this level of\nnesting are ordered.\n\nThe glyph type determines the type of glyph used to replace placeholders\nwithin the glyph_format\nwhen paragraphs at this level of nesting are ordered. For example, if the\nnesting level is 0, the glyph_format is `%0.` and the glyph\ntype is DECIMAL,\nthen the rendered glyph would replace the placeholder `%0` in the glyph\nformat with a number corresponding to list item's order within the list.",
+          "type": "string"
         },
         "textStyle": {
           "description": "The text style of bullets at this level of nesting.",
@@ -2973,78 +2842,82 @@
       },
       "id": "NestingLevel"
     },
-    "ParagraphElement": {
-      "description": "A ParagraphElement describes content within a\nParagraph.",
+    "TableCell": {
+      "description": "The contents and style of a cell in a Table.",
       "type": "object",
       "properties": {
-        "autoText": {
-          "description": "An auto text paragraph element.",
-          "$ref": "AutoText"
+        "suggestedTableCellStyleChanges": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "SuggestedTableCellStyle"
+          },
+          "description": "The suggested changes to the table cell style, keyed by suggestion ID."
         },
-        "footnoteReference": {
-          "description": "A footnote reference paragraph element.",
-          "$ref": "FootnoteReference"
+        "content": {
+          "description": "The content of the cell.",
+          "type": "array",
+          "items": {
+            "$ref": "StructuralElement"
+          }
         },
-        "equation": {
-          "description": "An equation paragraph element.",
-          "$ref": "Equation"
-        },
-        "horizontalRule": {
-          "description": "A horizontal rule paragraph element.",
-          "$ref": "HorizontalRule"
-        },
-        "textRun": {
-          "$ref": "TextRun",
-          "description": "A text run paragraph element."
-        },
-        "inlineObjectElement": {
-          "$ref": "InlineObjectElement",
-          "description": "An inline object paragraph element."
-        },
-        "columnBreak": {
-          "$ref": "ColumnBreak",
-          "description": "A column break paragraph element."
-        },
-        "endIndex": {
-          "description": "The zero-base end index of this paragraph element, exclusive, in UTF-16\ncode units.",
-          "format": "int32",
-          "type": "integer"
+        "suggestedInsertionIds": {
+          "description": "The suggested insertion IDs. A TableCell\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "startIndex": {
-          "description": "The zero-based start index of this paragraph element, in UTF-16 code units.",
+          "description": "The zero-based start index of this cell, in UTF-16 code units.",
           "format": "int32",
           "type": "integer"
         },
-        "pageBreak": {
-          "$ref": "PageBreak",
-          "description": "A page break paragraph element."
+        "endIndex": {
+          "description": "The zero-based end index of this cell, exclusive, in UTF-16 code units.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "tableCellStyle": {
+          "$ref": "TableCellStyle",
+          "description": "The style of the cell."
+        },
+        "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "id": "ParagraphElement"
+      "id": "TableCell"
     },
     "DocumentStyle": {
       "description": "The style of the document.",
       "type": "object",
       "properties": {
+        "marginTop": {
+          "description": "The top page margin.",
+          "$ref": "Dimension"
+        },
         "pageSize": {
-          "description": "The size of a page in the document.",
-          "$ref": "Size"
+          "$ref": "Size",
+          "description": "The size of a page in the document."
         },
         "marginBottom": {
           "$ref": "Dimension",
           "description": "The bottom page margin."
         },
         "firstPageHeaderId": {
-          "type": "string",
-          "description": "The ID of the header used only for the first page. If not set then\na unique header for the first page does not exist.\nThe value of use_first_page_header_footer determines\nwhether to use the default_header_id or this value for the\nheader on the first page. If not set, there is no first page header."
+          "description": "The ID of the header used only for the first page. If not set then\na unique header for the first page does not exist.\nThe value of use_first_page_header_footer determines\nwhether to use the default_header_id or this value for the\nheader on the first page. If not set, there is no first page header.",
+          "type": "string"
         },
         "background": {
-          "description": "The background of the document.",
-          "$ref": "Background"
+          "$ref": "Background",
+          "description": "The background of the document."
         },
         "marginRight": {
-          "$ref": "Dimension",
-          "description": "The right page margin."
+          "description": "The right page margin.",
+          "$ref": "Dimension"
         },
         "defaultHeaderId": {
           "description": "The ID of the default header. If not set, there is no default header.",
@@ -3064,8 +2937,8 @@
           "type": "integer"
         },
         "useEvenPageHeaderFooter": {
-          "type": "boolean",
-          "description": "Indicates whether to use the even page header / footer IDs for the even\npages."
+          "description": "Indicates whether to use the even page header / footer IDs for the even\npages.",
+          "type": "boolean"
         },
         "marginLeft": {
           "$ref": "Dimension",
@@ -3076,22 +2949,66 @@
           "type": "string"
         },
         "firstPageFooterId": {
-          "type": "string",
-          "description": "The ID of the footer used only for the first page. If not set then\na unique footer for the first page does not exist. The value of\nuse_first_page_header_footer determines\nwhether to use the default_footer_id or this value for the\nfooter on the first page. If not set, there is no first page footer."
+          "description": "The ID of the footer used only for the first page. If not set then\na unique footer for the first page does not exist. The value of\nuse_first_page_header_footer determines\nwhether to use the default_footer_id or this value for the\nfooter on the first page. If not set, there is no first page footer.",
+          "type": "string"
         },
         "defaultFooterId": {
           "description": "The ID of the default footer. If not set, there is no default footer.",
           "type": "string"
-        },
-        "marginTop": {
-          "$ref": "Dimension",
-          "description": "The top page margin."
         }
       },
       "id": "DocumentStyle"
     },
+    "ParagraphElement": {
+      "properties": {
+        "columnBreak": {
+          "$ref": "ColumnBreak",
+          "description": "A column break paragraph element."
+        },
+        "inlineObjectElement": {
+          "description": "An inline object paragraph element.",
+          "$ref": "InlineObjectElement"
+        },
+        "endIndex": {
+          "type": "integer",
+          "description": "The zero-base end index of this paragraph element, exclusive, in UTF-16\ncode units.",
+          "format": "int32"
+        },
+        "startIndex": {
+          "description": "The zero-based start index of this paragraph element, in UTF-16 code units.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageBreak": {
+          "$ref": "PageBreak",
+          "description": "A page break paragraph element."
+        },
+        "autoText": {
+          "description": "An auto text paragraph element.",
+          "$ref": "AutoText"
+        },
+        "footnoteReference": {
+          "description": "A footnote reference paragraph element.",
+          "$ref": "FootnoteReference"
+        },
+        "textRun": {
+          "$ref": "TextRun",
+          "description": "A text run paragraph element."
+        },
+        "equation": {
+          "$ref": "Equation",
+          "description": "An equation paragraph element."
+        },
+        "horizontalRule": {
+          "$ref": "HorizontalRule",
+          "description": "A horizontal rule paragraph element."
+        }
+      },
+      "id": "ParagraphElement",
+      "description": "A ParagraphElement describes content within a\nParagraph.",
+      "type": "object"
+    },
     "NamedRanges": {
-      "id": "NamedRanges",
       "description": "A collection of all the NamedRanges in the\ndocument that share a given name.",
       "type": "object",
       "properties": {
@@ -3106,19 +3023,13 @@
             "$ref": "NamedRange"
           }
         }
-      }
+      },
+      "id": "NamedRanges"
     },
     "FootnoteReference": {
       "description": "A ParagraphElement representing a\nfootnote reference. A footnote reference is the inline content rendered with\na number and is used to identify the footnote.",
       "type": "object",
       "properties": {
-        "suggestedTextStyleChanges": {
-          "description": "The suggested text style changes to this FootnoteReference, keyed by\nsuggestion ID.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "SuggestedTextStyle"
-          }
-        },
         "suggestedInsertionIds": {
           "description": "The suggested insertion IDs. A FootnoteReference may have multiple insertion IDs if\nit is a nested suggested change. If empty, then this is not a suggested\ninsertion.",
           "type": "array",
@@ -3144,29 +3055,20 @@
         "footnoteNumber": {
           "description": "The rendered number of this footnote.",
           "type": "string"
+        },
+        "suggestedTextStyleChanges": {
+          "description": "The suggested text style changes to this FootnoteReference, keyed by\nsuggestion ID.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "SuggestedTextStyle"
+          }
         }
       },
       "id": "FootnoteReference"
     },
-    "Footer": {
-      "properties": {
-        "footerId": {
-          "description": "The ID of the footer.",
-          "type": "string"
-        },
-        "content": {
-          "type": "array",
-          "items": {
-            "$ref": "StructuralElement"
-          },
-          "description": "The contents of the footer.\n\nThe indexes for a footer's content begin at zero."
-        }
-      },
-      "id": "Footer",
-      "description": "A document footer.",
-      "type": "object"
-    },
     "ListProperties": {
+      "description": "The properties of a list which describe the look\nand feel of bullets belonging to paragraphs associated with a list.",
+      "type": "object",
       "properties": {
         "nestingLevels": {
           "description": "Describes the properties of the bullets at the associated level.\n\nA list has at most nine levels of nesting with nesting level 0\ncorresponding to the top-most level and nesting level 8 corresponding to\nthe most nested level. The nesting levels are returned in ascending order\nwith the least nested returned first.",
@@ -3176,9 +3078,48 @@
           }
         }
       },
-      "id": "ListProperties",
-      "description": "The properties of a list which describe the look\nand feel of bullets belonging to paragraphs associated with a list.",
-      "type": "object"
+      "id": "ListProperties"
+    },
+    "Footer": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "The contents of the footer.\n\nThe indexes for a footer's content begin at zero.",
+          "type": "array",
+          "items": {
+            "$ref": "StructuralElement"
+          }
+        },
+        "footerId": {
+          "description": "The ID of the footer.",
+          "type": "string"
+        }
+      },
+      "id": "Footer",
+      "description": "A document footer."
+    },
+    "EmbeddedObjectBorderSuggestionState": {
+      "type": "object",
+      "properties": {
+        "colorSuggested": {
+          "description": "Indicates if there was a suggested change to color.",
+          "type": "boolean"
+        },
+        "propertyStateSuggested": {
+          "description": "Indicates if there was a suggested change to property_state.",
+          "type": "boolean"
+        },
+        "widthSuggested": {
+          "description": "Indicates if there was a suggested change to width.",
+          "type": "boolean"
+        },
+        "dashStyleSuggested": {
+          "description": "Indicates if there was a suggested change to dash_style.",
+          "type": "boolean"
+        }
+      },
+      "id": "EmbeddedObjectBorderSuggestionState",
+      "description": "A mask that indicates which of the fields on the base EmbeddedObjectBorder have been changed in this\nsuggestion. For any field set to true, there is a new suggested value."
     },
     "SizeSuggestionState": {
       "description": "A mask that indicates which of the fields on the base Size have been changed in this suggestion.\nFor any field set to true, the Size has\na new suggested value.",
@@ -3195,30 +3136,9 @@
       },
       "id": "SizeSuggestionState"
     },
-    "EmbeddedObjectBorderSuggestionState": {
-      "id": "EmbeddedObjectBorderSuggestionState",
-      "description": "A mask that indicates which of the fields on the base EmbeddedObjectBorder have been changed in this\nsuggestion. For any field set to true, there is a new suggested value.",
-      "type": "object",
-      "properties": {
-        "widthSuggested": {
-          "description": "Indicates if there was a suggested change to width.",
-          "type": "boolean"
-        },
-        "dashStyleSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to dash_style."
-        },
-        "colorSuggested": {
-          "description": "Indicates if there was a suggested change to color.",
-          "type": "boolean"
-        },
-        "propertyStateSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to property_state."
-        }
-      }
-    },
     "NamedStyles": {
+      "description": "The named styles. Paragraphs in the document can inherit their\nTextStyle and\nParagraphStyle from these named styles.",
+      "type": "object",
       "properties": {
         "styles": {
           "description": "The named styles.\n\nThere is an entry for each of the possible named style types.",
@@ -3228,27 +3148,50 @@
           }
         }
       },
-      "id": "NamedStyles",
-      "description": "The named styles. Paragraphs in the document can inherit their\nTextStyle and\nParagraphStyle from these named styles.",
-      "type": "object"
+      "id": "NamedStyles"
     },
     "ReplaceAllTextRequest": {
+      "id": "ReplaceAllTextRequest",
       "description": "Replaces all instances of text matching a criteria with replace text.",
       "type": "object",
       "properties": {
         "replaceText": {
-          "description": "The text that will replace the matched text.",
-          "type": "string"
+          "type": "string",
+          "description": "The text that will replace the matched text."
         },
         "containsText": {
           "$ref": "SubstringMatchCriteria",
           "description": "Finds text in the document matching this substring."
         }
+      }
+    },
+    "SectionBreak": {
+      "description": "A StructuralElement representing a\nsection break. A section is a range of content which has the same\nSectionStyle. A section break represents\nthe start of a new section, and the section style applies to the section\nafter the section break.\n\nThe document body always begins with a section break.",
+      "type": "object",
+      "properties": {
+        "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "suggestedInsertionIds": {
+          "description": "The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if it is\na nested suggested change. If empty, then this is not a suggested\ninsertion.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sectionStyle": {
+          "description": "The style of the section after this section break.",
+          "$ref": "SectionStyle"
+        }
       },
-      "id": "ReplaceAllTextRequest"
+      "id": "SectionBreak"
     },
     "TableCellBorder": {
-      "description": "A border around a table cell.",
+      "description": "A border around a table cell.\n\nTable cell borders cannot be transparent. To hide a table cell border, make\nits width 0.",
       "type": "object",
       "properties": {
         "width": {
@@ -3256,6 +3199,7 @@
           "$ref": "Dimension"
         },
         "dashStyle": {
+          "type": "string",
           "enumDescriptions": [
             "Unspecified dash style.",
             "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style.",
@@ -3268,43 +3212,16 @@
             "DOT",
             "DASH"
           ],
-          "description": "The dash style of the border.",
-          "type": "string"
+          "description": "The dash style of the border."
         },
         "color": {
-          "description": "The color of the border.",
-          "$ref": "OptionalColor"
+          "$ref": "OptionalColor",
+          "description": "The color of the border. This color cannot be transparent."
         }
       },
       "id": "TableCellBorder"
     },
-    "SectionBreak": {
-      "description": "A StructuralElement representing a\nsection break. A section is a range of content which has the same\nSectionStyle. A section break represents\nthe start of a new section, and the section style applies to the section\nafter the section break.\n\nThe document body always begins with a section break.",
-      "type": "object",
-      "properties": {
-        "suggestedInsertionIds": {
-          "description": "The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if it is\na nested suggested change. If empty, then this is not a suggested\ninsertion.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "sectionStyle": {
-          "$ref": "SectionStyle",
-          "description": "The style of the section after this section break."
-        },
-        "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "SectionBreak"
-    },
     "CropProperties": {
-      "id": "CropProperties",
       "description": "The crop properties of an image.\n\nThe crop rectangle is represented using fractional offsets from the original\ncontent's four edges.\n\n- If the offset is in the interval (0, 1), the corresponding edge of crop\nrectangle is positioned inside of the image's original bounding rectangle.\n- If the offset is negative or greater than 1, the corresponding edge of crop\nrectangle is positioned outside of the image's original bounding rectangle.\n- If all offsets and rotation angle are 0, the image is not cropped.",
       "type": "object",
       "properties": {
@@ -3319,9 +3236,9 @@
           "type": "number"
         },
         "offsetRight": {
-          "type": "number",
           "description": "The offset specifies how far inwards the right edge of the crop rectangle\nis from the right edge of the original content as a fraction of the\noriginal content's width.",
-          "format": "float"
+          "format": "float",
+          "type": "number"
         },
         "offsetBottom": {
           "description": "The offset specifies how far inwards the bottom edge of the crop rectangle\nis from the bottom edge of the original content as a fraction of the\noriginal content's height.",
@@ -3333,22 +3250,64 @@
           "format": "float",
           "type": "number"
         }
-      }
+      },
+      "id": "CropProperties"
+    },
+    "EmbeddedObject": {
+      "description": "An embedded object in the document.",
+      "type": "object",
+      "properties": {
+        "marginLeft": {
+          "$ref": "Dimension",
+          "description": "The left margin of the embedded object."
+        },
+        "embeddedObjectBorder": {
+          "$ref": "EmbeddedObjectBorder",
+          "description": "The border of the embedded object."
+        },
+        "linkedContentReference": {
+          "$ref": "LinkedContentReference",
+          "description": "A reference to the external linked source content. For example, it contains\na reference to the source Sheets chart when the embedded object is a linked\nchart.\n\nIf unset, then the embedded object is not linked."
+        },
+        "marginTop": {
+          "description": "The top margin of the embedded object.",
+          "$ref": "Dimension"
+        },
+        "marginRight": {
+          "description": "The right margin of the embedded object.",
+          "$ref": "Dimension"
+        },
+        "size": {
+          "$ref": "Size",
+          "description": "The size of the embedded object."
+        },
+        "title": {
+          "description": "The title of the embedded object. The `title` and `description` are both\ncombined to display alt text.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the embedded object. The `title` and `description` are\nboth combined to display alt text.",
+          "type": "string"
+        },
+        "imageProperties": {
+          "$ref": "ImageProperties",
+          "description": "The properties of an image."
+        },
+        "embeddedDrawingProperties": {
+          "$ref": "EmbeddedDrawingProperties",
+          "description": "The properties of an embedded drawing."
+        },
+        "marginBottom": {
+          "$ref": "Dimension",
+          "description": "The bottom margin of the embedded object."
+        }
+      },
+      "id": "EmbeddedObject"
     },
     "TableCellStyleSuggestionState": {
+      "description": "A mask that indicates which of the fields on the base TableCellStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
+      "type": "object",
       "properties": {
-        "borderTopSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to border_top."
-        },
-        "borderRightSuggested": {
-          "description": "Indicates if there was a suggested change to border_right.",
-          "type": "boolean"
-        },
-        "paddingLeftSuggested": {
-          "description": "Indicates if there was a suggested change to padding_left.",
-          "type": "boolean"
-        },
         "paddingTopSuggested": {
           "description": "Indicates if there was a suggested change to padding_top.",
           "type": "boolean"
@@ -3358,8 +3317,8 @@
           "type": "boolean"
         },
         "columnSpanSuggested": {
-          "description": "Indicates if there was a suggested change to column_span.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to column_span."
         },
         "backgroundColorSuggested": {
           "description": "Indicates if there was a suggested change to background_color.",
@@ -3384,113 +3343,51 @@
         "borderBottomSuggested": {
           "type": "boolean",
           "description": "Indicates if there was a suggested change to border_bottom."
+        },
+        "borderTopSuggested": {
+          "description": "Indicates if there was a suggested change to border_top.",
+          "type": "boolean"
+        },
+        "paddingLeftSuggested": {
+          "description": "Indicates if there was a suggested change to padding_left.",
+          "type": "boolean"
+        },
+        "borderRightSuggested": {
+          "description": "Indicates if there was a suggested change to border_right.",
+          "type": "boolean"
         }
       },
-      "id": "TableCellStyleSuggestionState",
-      "description": "A mask that indicates which of the fields on the base TableCellStyle have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
-      "type": "object"
-    },
-    "EmbeddedObject": {
-      "description": "An embedded object in the document.",
-      "type": "object",
-      "properties": {
-        "title": {
-          "description": "The title of the embedded object. The `title` and `description` are both\ncombined to display alt text.",
-          "type": "string"
-        },
-        "description": {
-          "description": "The description of the embedded object. The `title` and `description` are\nboth combined to display alt text.",
-          "type": "string"
-        },
-        "imageProperties": {
-          "$ref": "ImageProperties",
-          "description": "The properties of an image."
-        },
-        "embeddedDrawingProperties": {
-          "description": "The properties of an embedded drawing.",
-          "$ref": "EmbeddedDrawingProperties"
-        },
-        "marginBottom": {
-          "$ref": "Dimension",
-          "description": "The bottom margin of the embedded object."
-        },
-        "marginLeft": {
-          "description": "The left margin of the embedded object.",
-          "$ref": "Dimension"
-        },
-        "embeddedObjectBorder": {
-          "description": "The border of the embedded object.",
-          "$ref": "EmbeddedObjectBorder"
-        },
-        "linkedContentReference": {
-          "description": "A reference to the external linked source content. For example, it contains\na reference to the source Sheets chart when the embedded object is a linked\nchart.\n\nIf unset, then the embedded object is not linked.",
-          "$ref": "LinkedContentReference"
-        },
-        "marginTop": {
-          "description": "The top margin of the embedded object.",
-          "$ref": "Dimension"
-        },
-        "marginRight": {
-          "$ref": "Dimension",
-          "description": "The right margin of the embedded object."
-        },
-        "size": {
-          "description": "The size of the embedded object.",
-          "$ref": "Size"
-        }
-      },
-      "id": "EmbeddedObject"
+      "id": "TableCellStyleSuggestionState"
     },
     "BatchUpdateDocumentRequest": {
+      "description": "Request message for BatchUpdateDocument.",
       "type": "object",
       "properties": {
+        "writeControl": {
+          "description": "Provides control over how write requests are executed.",
+          "$ref": "WriteControl"
+        },
         "requests": {
           "description": "A list of updates to apply to the document.",
           "type": "array",
           "items": {
             "$ref": "Request"
           }
-        },
-        "writeControl": {
-          "$ref": "WriteControl",
-          "description": "Provides control over how write requests are executed."
         }
       },
-      "id": "BatchUpdateDocumentRequest",
-      "description": "Request message for BatchUpdateDocument."
+      "id": "BatchUpdateDocumentRequest"
     },
     "EmbeddedObjectSuggestionState": {
-      "id": "EmbeddedObjectSuggestionState",
       "description": "A mask that indicates which of the fields on the base EmbeddedObject have been changed in this suggestion.\nFor any field set to true, there is a new suggested value.",
       "type": "object",
       "properties": {
-        "marginTopSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to margin_top."
-        },
-        "marginRightSuggested": {
-          "type": "boolean",
-          "description": "Indicates if there was a suggested change to margin_right."
-        },
-        "titleSuggested": {
-          "description": "Indicates if there was a suggested change to title.",
-          "type": "boolean"
-        },
-        "marginBottomSuggested": {
-          "description": "Indicates if there was a suggested change to margin_bottom.",
-          "type": "boolean"
-        },
-        "marginLeftSuggested": {
-          "description": "Indicates if there was a suggested change to margin_left.",
-          "type": "boolean"
-        },
-        "embeddedObjectBorderSuggestionState": {
-          "$ref": "EmbeddedObjectBorderSuggestionState",
-          "description": "A mask that indicates which of the fields in embedded_object_border have been\nchanged in this suggestion."
-        },
         "embeddedDrawingPropertiesSuggestionState": {
           "$ref": "EmbeddedDrawingPropertiesSuggestionState",
           "description": "A mask that indicates which of the fields in embedded_drawing_properties have been\nchanged in this suggestion."
+        },
+        "embeddedObjectBorderSuggestionState": {
+          "description": "A mask that indicates which of the fields in embedded_object_border have been\nchanged in this suggestion.",
+          "$ref": "EmbeddedObjectBorderSuggestionState"
         },
         "imagePropertiesSuggestionState": {
           "$ref": "ImagePropertiesSuggestionState",
@@ -3507,22 +3404,43 @@
         "sizeSuggestionState": {
           "$ref": "SizeSuggestionState",
           "description": "A mask that indicates which of the fields in size have been changed in this\nsuggestion."
+        },
+        "marginRightSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to margin_right."
+        },
+        "marginTopSuggested": {
+          "description": "Indicates if there was a suggested change to margin_top.",
+          "type": "boolean"
+        },
+        "titleSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to title."
+        },
+        "marginBottomSuggested": {
+          "description": "Indicates if there was a suggested change to margin_bottom.",
+          "type": "boolean"
+        },
+        "marginLeftSuggested": {
+          "type": "boolean",
+          "description": "Indicates if there was a suggested change to margin_left."
         }
-      }
+      },
+      "id": "EmbeddedObjectSuggestionState"
     },
     "Equation": {
       "description": "A ParagraphElement representing an\nequation.",
       "type": "object",
       "properties": {
-        "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
+        "suggestedInsertionIds": {
+          "description": "The suggested insertion IDs. A Equation\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "suggestedInsertionIds": {
-          "description": "The suggested insertion IDs. A Equation\nmay have multiple insertion IDs if it is a nested suggested change. If\nempty, then this is not a suggested insertion.",
+        "suggestedDeletionIds": {
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
           "type": "array",
           "items": {
             "type": "string"
@@ -3543,18 +3461,18 @@
           }
         },
         "suggestedTextStyleChanges": {
-          "type": "object",
           "additionalProperties": {
             "$ref": "SuggestedTextStyle"
           },
-          "description": "The suggested text style changes to this PageBreak, keyed by suggestion ID."
+          "description": "The suggested text style changes to this PageBreak, keyed by suggestion ID.",
+          "type": "object"
         },
         "suggestedDeletionIds": {
-          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "The suggested deletion IDs. If empty, then there are no suggested deletions\nof this content."
         },
         "textStyle": {
           "$ref": "TextStyle",
@@ -3564,11 +3482,10 @@
       "id": "PageBreak"
     },
     "Range": {
+      "id": "Range",
+      "description": "Specifies a contiguous range of text.",
+      "type": "object",
       "properties": {
-        "segmentId": {
-          "description": "The ID of the header, footer or footnote that this range is contained in.\nAn empty segment ID signifies the document's body.",
-          "type": "string"
-        },
         "startIndex": {
           "description": "The zero-based start index of this range, in UTF-16 code units.\n\nIn all current uses, a start index must be provided. This field is an\nInt32Value in order to accommodate future use cases with open-ended ranges.",
           "format": "int32",
@@ -3578,11 +3495,12 @@
           "description": "The zero-based end index of this range, exclusive, in UTF-16 code units.\n\nIn all current uses, an end index must be provided. This field is an\nInt32Value in order to accommodate future use cases with open-ended ranges.",
           "format": "int32",
           "type": "integer"
+        },
+        "segmentId": {
+          "description": "The ID of the header, footer or footnote that this range is contained in.\nAn empty segment ID signifies the document's body.",
+          "type": "string"
         }
-      },
-      "id": "Range",
-      "description": "Specifies a contiguous range of text.",
-      "type": "object"
+      }
     },
     "ObjectReferences": {
       "description": "A collection of object IDs.",
@@ -3597,34 +3515,116 @@
         }
       },
       "id": "ObjectReferences"
-    }
-  },
-  "protocol": "rest",
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "canonicalName": "Docs",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/documents.readonly": {
-          "description": "View your Google Docs documents"
+    },
+    "PositionedObjectPositioningSuggestionState": {
+      "id": "PositionedObjectPositioningSuggestionState",
+      "description": "A mask that indicates which of the fields on the base\nPositionedObjectPositioning have been changed in this\nsuggestion. For any field set to true, there is a new suggested value.",
+      "type": "object",
+      "properties": {
+        "leftOffsetSuggested": {
+          "description": "Indicates if there was a suggested change to left_offset.",
+          "type": "boolean"
         },
-        "https://www.googleapis.com/auth/drive.file": {
-          "description": "View and manage Google Drive files and folders that you have opened or created with this app"
+        "layoutSuggested": {
+          "description": "Indicates if there was a suggested change to layout.",
+          "type": "boolean"
         },
-        "https://www.googleapis.com/auth/documents": {
-          "description": "View and manage your Google Docs documents"
-        },
-        "https://www.googleapis.com/auth/drive": {
-          "description": "See, edit, create, and delete all of your Google Drive files"
-        },
-        "https://www.googleapis.com/auth/drive.readonly": {
-          "description": "See and download all your Google Drive files"
+        "topOffsetSuggested": {
+          "description": "Indicates if there was a suggested change to top_offset.",
+          "type": "boolean"
         }
       }
+    },
+    "InsertInlineImageRequest": {
+      "description": "Inserts an InlineObject containing an\nimage at the given location.",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "The image URI.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the document. Images must be less than 50MB in size, cannot\nexceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.\n\nThe provided URI can be at most 2 kB in length. The URI itself is saved\nwith the image, and exposed via the ImageProperties.content_uri field."
+        },
+        "objectSize": {
+          "description": "The size that the image should appear as in the document. This property is\noptional and the final size of the image in the document is determined by\nthe following rules:\n * If neither width nor height is specified, then a default size of the\n image is calculated based on its resolution.\n * If one dimension is specified then the other dimension is calculated to\n preserve the aspect ratio of the image.\n * If both width and height are specified, the image is scaled to fit\n within the provided dimensions while maintaining its aspect ratio.",
+          "$ref": "Size"
+        },
+        "endOfSegmentLocation": {
+          "description": "Inserts the text at the end of a header, footer or the document body.\n\nInline images cannot be inserted inside a footnote.",
+          "$ref": "EndOfSegmentLocation"
+        },
+        "location": {
+          "description": "Inserts the image at a specific index in the document.\n\nThe image must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nInline images cannot be inserted inside a footnote or equation.",
+          "$ref": "Location"
+        }
+      },
+      "id": "InsertInlineImageRequest"
+    },
+    "SectionColumnProperties": {
+      "type": "object",
+      "properties": {
+        "paddingEnd": {
+          "description": "The padding at the end of the column.",
+          "$ref": "Dimension"
+        },
+        "width": {
+          "$ref": "Dimension",
+          "description": "The width of the column."
+        }
+      },
+      "id": "SectionColumnProperties",
+      "description": "Properties that apply to a section's column."
+    },
+    "CreateNamedRangeResponse": {
+      "properties": {
+        "namedRangeId": {
+          "description": "The ID of the created named range.",
+          "type": "string"
+        }
+      },
+      "id": "CreateNamedRangeResponse",
+      "description": "The result of creating a named range.",
+      "type": "object"
+    },
+    "BatchUpdateDocumentResponse": {
+      "properties": {
+        "replies": {
+          "description": "The reply of the updates. This maps 1:1 with the updates, although replies\nto some requests may be empty.",
+          "type": "array",
+          "items": {
+            "$ref": "Response"
+          }
+        },
+        "documentId": {
+          "description": "The ID of the document to which the updates were applied to.",
+          "type": "string"
+        },
+        "writeControl": {
+          "description": "The updated write control after applying the request.",
+          "$ref": "WriteControl"
+        }
+      },
+      "id": "BatchUpdateDocumentResponse",
+      "description": "Response message from a BatchUpdateDocument request.",
+      "type": "object"
+    },
+    "SuggestedPositionedObjectProperties": {
+      "description": "A suggested change to PositionedObjectProperties.",
+      "type": "object",
+      "properties": {
+        "positionedObjectProperties": {
+          "$ref": "PositionedObjectProperties",
+          "description": "A PositionedObjectProperties that only includes the\nchanges made in this suggestion. This can be used along with the\npositioned_object_properties_suggestion_state\nto see which fields have changed and their new values."
+        },
+        "positionedObjectPropertiesSuggestionState": {
+          "$ref": "PositionedObjectPropertiesSuggestionState",
+          "description": "A mask that indicates which of the fields on the base\nPositionedObjectProperties have been changed in this\nsuggestion."
+        }
+      },
+      "id": "SuggestedPositionedObjectProperties"
     }
   },
-  "rootUrl": "https://docs.googleapis.com/"
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "protocol": "rest"
 }

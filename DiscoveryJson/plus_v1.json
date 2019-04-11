@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/deUkZulCWoKF-dmV5ynoRY91kOI\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/va5ODMMhlw4R_F2_Dx86cJc2pz4\"",
  "discoveryVersion": "v1",
  "id": "plus:v1",
  "name": "plus",
  "version": "v1",
- "revision": "20190322",
+ "revision": "20190328",
  "title": "Google+ API",
  "description": "Builds on top of the Google+ platform.",
  "ownerDomain": "google.com",
@@ -1161,7 +1161,7 @@
      "id": "plus.activities.get",
      "path": "activities/{activityId}",
      "httpMethod": "GET",
-     "description": "Get an activity.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "activityId": {
        "type": "string",
@@ -1185,7 +1185,7 @@
      "id": "plus.activities.list",
      "path": "people/{userId}/activities/{collection}",
      "httpMethod": "GET",
-     "description": "List all of the activities in the specified collection for a particular user.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "collection": {
        "type": "string",
@@ -1236,7 +1236,7 @@
      "id": "plus.activities.search",
      "path": "activities",
      "httpMethod": "GET",
-     "description": "Search public activities.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "language": {
        "type": "string",
@@ -1298,7 +1298,7 @@
      "id": "plus.comments.get",
      "path": "comments/{commentId}",
      "httpMethod": "GET",
-     "description": "Get a comment.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "commentId": {
        "type": "string",
@@ -1322,7 +1322,7 @@
      "id": "plus.comments.list",
      "path": "activities/{activityId}/comments",
      "httpMethod": "GET",
-     "description": "List all of the comments for an activity.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "activityId": {
        "type": "string",
@@ -1470,7 +1470,7 @@
      "id": "plus.people.listByActivity",
      "path": "activities/{activityId}/people/{collection}",
      "httpMethod": "GET",
-     "description": "List all of the people in the specified collection for a particular activity.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "activityId": {
        "type": "string",
@@ -1523,7 +1523,7 @@
      "id": "plus.people.search",
      "path": "people",
      "httpMethod": "GET",
-     "description": "Search all public profiles.",
+     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
      "parameters": {
       "language": {
        "type": "string",

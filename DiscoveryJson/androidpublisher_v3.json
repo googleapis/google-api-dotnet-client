@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Xcpm8SZJm6ZnB5pwrsI-ZTtgy5I\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/c59_sg0fzrULYQkcdrHL15gQfTg\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190326",
+ "revision": "20190407",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -228,6 +228,21 @@
     "userComment": {
      "$ref": "UserComment",
      "description": "A comment from a user."
+    }
+   }
+  },
+  "CountryTargeting": {
+   "id": "CountryTargeting",
+   "type": "object",
+   "properties": {
+    "countries": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "includeRestOfWorld": {
+     "type": "boolean"
     }
    }
   },
@@ -1082,6 +1097,9 @@
    "id": "TrackRelease",
    "type": "object",
    "properties": {
+    "countryTargeting": {
+     "$ref": "CountryTargeting"
+    },
     "name": {
      "type": "string",
      "description": "The release name, used to identify this release in the Play Console UI. Not required to be unique. This is optional, if not set it will be generated from the version_name in the APKs."

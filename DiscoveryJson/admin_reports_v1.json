@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/qX7u4Zvr2RWXRloGibBuk5MudHs\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/9KOqS4zqNeHxjHku3mNs2ZYTZkM\"",
  "discoveryVersion": "v1",
  "id": "admin:reports_v1",
  "name": "admin",
  "canonicalName": "reports",
  "version": "reports_v1",
- "revision": "20190117",
+ "revision": "20190210",
  "title": "Admin Reports API",
  "description": "Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.",
  "ownerDomain": "google.com",
@@ -469,7 +469,7 @@
        "type": "string",
        "description": "Application name for which the events are to be retrieved.",
        "required": true,
-       "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)",
+       "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)",
        "location": "path"
       },
       "customerId": {
@@ -555,7 +555,7 @@
        "type": "string",
        "description": "Application name for which the events are to be retrieved.",
        "required": true,
-       "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)",
+       "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)",
        "location": "path"
       },
       "customerId": {
