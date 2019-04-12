@@ -51,8 +51,7 @@ namespace Google.Apis.Auth.OAuth2
             }
             request.AddExecuteInterceptor(httpExecuteInterceptor);
             // Add the optional unsuccessful interceptor to this request.
-            var httpUnsuccessfulResponseHandler = credential as IHttpUnsuccessfulResponseHandler;
-            if (httpUnsuccessfulResponseHandler != null)
+            if (credential is IHttpUnsuccessfulResponseHandler httpUnsuccessfulResponseHandler)
             {
                 request.AddUnsuccessfulResponseHandler(httpUnsuccessfulResponseHandler);
             }
