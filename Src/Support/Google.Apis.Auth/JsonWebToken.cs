@@ -98,7 +98,7 @@ namespace Google.Apis.Auth
             /// The nonce value specified by the client during the authorization request.
             /// Must be present if a nonce was specified in the authorization request, otherwise this will not be present.
             /// </summary>
-            [Newtonsoft.Json.JsonProperty("nonce")]
+            [Newtonsoft.Json.JsonPropertyAttribute("nonce")]
             public string Nonce { get; set; }
 
             /// <summary>
