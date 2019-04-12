@@ -51,10 +51,12 @@ namespace IntegrationTests
 
             // Do auth.
             var codeReceiver = new LocalServerCodeReceiver();
+            var nonce = "nonce_but_randomly_generate_in_real_code";
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
                 ClientSecretsStream = Helper.GetClientSecretStream(),
-                Scopes = new string[] { "openid email" },
+                Scopes = new string[] { "openid", "email" },
+                Nonce = nonce,
             };
             var flow = new GoogleAuthorizationCodeFlow(initializer);
             var redirectUri = codeReceiver.RedirectUri;
@@ -83,6 +85,8 @@ namespace IntegrationTests
             // Confirm JWT is valid
             var validPayload = await GoogleJsonWebSignature.ValidateAsync(jwt);
             Assert.NotNull(validPayload);
+            // Confirm nonce matches
+            Assert.Equal(nonce, validPayload.Nonce);
         }
     }
 }

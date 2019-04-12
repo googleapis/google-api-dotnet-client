@@ -41,11 +41,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
-        /// <summary>Gets or sets the include granted scopes indicator.
+        /// <summary>Gets the include granted scopes indicator.
         /// Do not use, use <see cref="IncludeGrantedScopes"/> instead.</summary>
         public readonly bool? includeGrantedScopes;
 
-        /// <summary>Gets or sets the include granted scopes indicator.</summary>
+        /// <summary>Gets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
 
         /// <summary>Gets the login_hint.</summary>
@@ -58,6 +58,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// for details.
         /// </summary>
         public string Prompt { get; private set; }
+
+        /// <summary>Gets the nonce.</summary>
+        public string Nonce { get; private set; }
 
         private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
 
@@ -76,6 +79,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             includeGrantedScopes = initializer.IncludeGrantedScopes;
             LoginHint = initializer.LoginHint;
             Prompt = initializer.Prompt;
+            Nonce = initializer.Nonce;
             userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
@@ -91,6 +95,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
                 LoginHint = LoginHint,
                 Prompt = Prompt,
+                Nonce = Nonce,
                 UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
@@ -148,6 +153,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// for details.
             /// </summary>
             public string Prompt { get; set; }
+
+            /// <summary>Gets or sets the nonce.</summary>
+            public string Nonce { get; set; }
 
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
             public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }

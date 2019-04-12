@@ -95,6 +95,13 @@ namespace Google.Apis.Auth
             public string JwtId { get; set; }
 
             /// <summary>
+            /// The nonce value specified by the client during the authorization request.
+            /// Must be present if a nonce was specified in the authorization request, otherwise this will not be present.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("nonce")]
+            public string Nonce { get; set; }
+
+            /// <summary>
             /// Gets or sets type claim that is used to declare a type for the contents of this JWT Claims Set or 
             /// <c>null</c>.
             /// </summary>
