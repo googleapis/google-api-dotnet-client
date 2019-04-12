@@ -35,11 +35,66 @@ using System.Runtime.ExceptionServices;
 namespace Google.Apis.Requests
 {
     /// <summary>
+    /// Represents an abstract request base class to make requests to a service.
+    /// </summary>
+    public abstract class ClientServiceRequest
+    {
+        /// <summary>Unsuccessful response handlers for this request only.</summary>
+        protected List<IHttpUnsuccessfulResponseHandler> _unsuccessfulResponseHandlers;
+        /// <summary>Exception handlers for this request only.</summary>
+        protected List<IHttpExceptionHandler> _exceptionHandlers;
+        /// <summary>Unsuccessful response handlers for this request only.</summary>
+        protected List<IHttpExecuteInterceptor> _executeInterceptors;
+
+        /// <summary>
+        /// Add an unsuccessful response handler for this request only.
+        /// </summary>
+        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
+        public void AddUnsuccessfulResponseHandler(IHttpUnsuccessfulResponseHandler handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_unsuccessfulResponseHandlers == null)
+            {
+                _unsuccessfulResponseHandlers = new List<IHttpUnsuccessfulResponseHandler>();
+            }
+            _unsuccessfulResponseHandlers.Add(handler);
+        }
+
+        /// <summary>
+        /// Add an exception handler for this request only.
+        /// </summary>
+        /// <param name="handler">The exception handler. Must not be <c>null</c>.</param>
+        public void AddExceptionHandler(IHttpExceptionHandler handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_exceptionHandlers == null)
+            {
+                _exceptionHandlers = new List<IHttpExceptionHandler>();
+            }
+            _exceptionHandlers.Add(handler);
+        }
+
+        /// <summary>
+        /// Add an unsuccessful response handler for this request only.
+        /// </summary>
+        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
+        public void AddExecuteInterceptor(IHttpExecuteInterceptor handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_executeInterceptors == null)
+            {
+                _executeInterceptors = new List<IHttpExecuteInterceptor>();
+            }
+            _executeInterceptors.Add(handler);
+        }
+    }
+
+    /// <summary>
     /// Represents an abstract, strongly typed request base class to make requests to a service.
     /// Supports a strongly typed response.
     /// </summary>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
-    public abstract class ClientServiceRequest<TResponse> : IClientServiceRequest<TResponse>
+    public abstract class ClientServiceRequest<TResponse> : ClientServiceRequest, IClientServiceRequest<TResponse>
     {
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
@@ -54,10 +109,6 @@ namespace Google.Apis.Requests
         /// Gets or sets the callback for modifying HTTP requests made by this service request.
         /// </summary>
         public Action<HttpRequestMessage> ModifyRequest { get; set; }
-
-        private List<IHttpUnsuccessfulResponseHandler> _unsuccessfulResponseHandlers;
-        private List<IHttpExceptionHandler> _exceptionHandlers;
-        private List<IHttpExecuteInterceptor> _executeInterceptors;
 
         #region IClientServiceRequest Properties
 
@@ -199,48 +250,6 @@ namespace Google.Apis.Requests
         #endregion
 
         #endregion
-
-        /// <summary>
-        /// Add an unsuccessful response handler for this request only.
-        /// </summary>
-        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
-        public void AddUnsuccessfulResponseHandler(IHttpUnsuccessfulResponseHandler handler)
-        {
-            handler.ThrowIfNull(nameof(handler));
-            if (_unsuccessfulResponseHandlers == null)
-            {
-                _unsuccessfulResponseHandlers = new List<IHttpUnsuccessfulResponseHandler>();
-            }
-            _unsuccessfulResponseHandlers.Add(handler);
-        }
-
-        /// <summary>
-        /// Add an exception handler for this request only.
-        /// </summary>
-        /// <param name="handler">The exception handler. Must not be <c>null</c>.</param>
-        public void AddExceptionHandler(IHttpExceptionHandler handler)
-        {
-            handler.ThrowIfNull(nameof(handler));
-            if (_exceptionHandlers == null)
-            {
-                _exceptionHandlers = new List<IHttpExceptionHandler>();
-            }
-            _exceptionHandlers.Add(handler);
-        }
-
-        /// <summary>
-        /// Add an unsuccessful response handler for this request only.
-        /// </summary>
-        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
-        public void AddExecuteInterceptor(IHttpExecuteInterceptor handler)
-        {
-            handler.ThrowIfNull(nameof(handler));
-            if (_executeInterceptors == null)
-            {
-                _executeInterceptors = new List<IHttpExecuteInterceptor>();
-            }
-            _executeInterceptors.Add(handler);
-        }
 
         /// <inheritdoc/>
         public HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null)
