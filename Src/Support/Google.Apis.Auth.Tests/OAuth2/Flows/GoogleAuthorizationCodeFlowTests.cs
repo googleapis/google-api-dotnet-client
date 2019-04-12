@@ -44,6 +44,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             bool? includeGrantedScopes = true;
             string loginHint = "user@dom.ain";
             string prompt = "select_account";
+            string nonce = "nonce";
             userDefinedParams = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string,string>("customParam1","customVal1"),
@@ -56,6 +57,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                 IncludeGrantedScopes = includeGrantedScopes,
                 LoginHint = loginHint,
                 Prompt = prompt,
+                Nonce = nonce,
                 UserDefinedQueryParams = userDefinedParams,
                 ClientSecrets = new ClientSecrets()
             };
@@ -70,6 +72,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal(initializer.IncludeGrantedScopes, flow.IncludeGrantedScopes);
             Assert.Equal(initializer.LoginHint, flow.LoginHint);
             Assert.Equal(initializer.Prompt, flow.Prompt);
+            Assert.Equal(initializer.Nonce, flow.Nonce);
             Assert.Equal(initializer.UserDefinedQueryParams, flow.UserDefinedQueryParams);
         }
         
@@ -84,6 +87,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal("true", request.IncludeGrantedScopes);
             Assert.Equal("user@dom.ain", request.LoginHint);
             Assert.Equal("select_account", request.Prompt);
+            Assert.Equal("nonce", request.Nonce);
             Assert.Equal(userDefinedParams, request.UserDefinedQueryParams);
             Assert.Equal("TestRedirectUri", request.RedirectUri);
         }
