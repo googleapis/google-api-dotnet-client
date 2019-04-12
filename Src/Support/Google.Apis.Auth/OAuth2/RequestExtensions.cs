@@ -29,6 +29,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Add a credential that is used for this request only.
         /// This will override a service-level credential (if there is one).
+        /// Do not call more than once per request instance, as each call incrementally adds the provided credential.
+        /// To perform identical requests but with distinct credentials, create a separate request instance for each credential.
         /// </summary>
         /// <typeparam name="T">The request type.</typeparam>
         /// <param name="request">The request which requires a credential. Must not be null.</param>
