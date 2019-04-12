@@ -51,12 +51,12 @@ namespace Google.Apis.Http
         public const string UnsuccessfulResponseHandlerKey = "__UnsuccessfulResponseHandlerKey";
 
         /// <summary>
-        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for exception handlers in an <see cref="HttpRequestMessage"/> properties.
         /// </summary>
         public const string ExceptionHandlerKey = "__ExceptionHandlerKey";
 
         /// <summary>
-        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for execute handlers in an <see cref="HttpRequestMessage"/> properties.
         /// </summary>
         public const string ExecuteInterceptorKey = "__ExecuteInterceptorKey";
 
