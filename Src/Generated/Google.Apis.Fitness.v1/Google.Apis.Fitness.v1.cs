@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190404 (1554)
+ *      <tr><th>API Rev<td>20190408 (1558)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -2082,7 +2082,7 @@ namespace Google.Apis.Fitness.v1.Data
         /// The exact format of the data stream ID created by a REST client is: type:dataType.name:developer project
         /// number:device.manufacturer:device.model:device.uid:dataStreamName
         ///
-        /// When any of the optional fields that comprise of the data stream ID are blank, they will be omitted from the
+        /// When any of the optional fields that make up the data stream ID are absent, they will be omitted from the
         /// data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number
         ///
         /// Finally, the developer project number is obfuscated when read by any REST or Android client that did not

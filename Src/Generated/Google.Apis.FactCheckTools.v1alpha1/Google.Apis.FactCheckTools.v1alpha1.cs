@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190409 (1559)
+ *      <tr><th>API Rev<td>20190411 (1561)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>
@@ -363,6 +363,11 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to restrict results by
+            /// language, though we do not currently consider the region.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
             /// <summary>The maximum age of the returned search results, in days. Age is determined by either claim date
             /// or review date, whichever is newer.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxAgeDays", Google.Apis.Util.RequestParameterType.Query)]
@@ -393,11 +398,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to restrict results by
-            /// language, though we do not currently consider the region.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -422,6 +422,15 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "maxAgeDays", new Google.Apis.Discovery.Parameter
                     {
@@ -471,15 +480,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

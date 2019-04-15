@@ -852,16 +852,6 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>Requested page size. Server may return fewer jobs than requested. If unspecified, server will
-            /// pick an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
-            /// acting for himself (his own channel).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OnBehalfOfContentOwner { get; set; }
-
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs`
             /// method.</summary>
@@ -872,6 +862,16 @@ namespace Google.Apis.YouTubeReporting.v1
             /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
+
+            /// <summary>Requested page size. Server may return fewer jobs than requested. If unspecified, server will
+            /// pick an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
+            /// acting for himself (his own channel).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -898,24 +898,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -928,6 +910,24 @@ namespace Google.Apis.YouTubeReporting.v1
                     "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeSystemManaged",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "onBehalfOfContentOwner",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

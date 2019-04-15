@@ -114,7 +114,7 @@ namespace Google.Apis.Oauth2.v2
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
+            /// <summary>See your personal info, including any personal info you've made publically available</summary>
             public static string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -128,7 +128,7 @@ namespace Google.Apis.Oauth2.v2
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
+            /// <summary>See your personal info, including any personal info you've made publically available</summary>
             public const string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }

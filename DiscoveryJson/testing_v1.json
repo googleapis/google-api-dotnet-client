@@ -1,12 +1,46 @@
 {
+  "rootUrl": "https://testing.googleapis.com/",
+  "basePath": "",
+  "ownerDomain": "google.com",
+  "name": "testing",
+  "batchPath": "batch",
+  "revision": "20190410",
+  "documentationLink": "https://developers.google.com/cloud-test-lab/",
+  "id": "testing:v1",
+  "title": "Cloud Testing API",
   "discoveryVersion": "v1",
   "ownerName": "Google",
   "resources": {
+    "applicationDetailService": {
+      "methods": {
+        "getApkDetails": {
+          "response": {
+            "$ref": "GetApkDetailsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {},
+          "flatPath": "v1/applicationDetailService/getApkDetails",
+          "path": "v1/applicationDetailService/getApkDetails",
+          "id": "testing.applicationDetailService.getApkDetails",
+          "request": {
+            "$ref": "FileReference"
+          },
+          "description": "Gets the details of an Android application APK."
+        }
+      }
+    },
     "projects": {
       "resources": {
         "testMatrices": {
           "methods": {
             "cancel": {
+              "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
+              "id": "testing.projects.testMatrices.cancel",
+              "description": "Cancels unfinished test executions in a test matrix.\nThis call returns immediately and cancellation proceeds asychronously.\nIf the matrix is already final, this operation will have no effect.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the Test Matrix does not exist",
               "response": {
                 "$ref": "CancelTestMatrixResponse"
               },
@@ -15,12 +49,15 @@
                 "testMatrixId"
               ],
               "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "projectId": {
-                  "location": "path",
                   "description": "Cloud project that owns the test.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "location": "path"
                 },
                 "testMatrixId": {
                   "location": "path",
@@ -29,16 +66,10 @@
                   "type": "string"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
-              "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
-              "id": "testing.projects.testMatrices.cancel",
-              "description": "Cancels unfinished test executions in a test matrix.\nThis call returns immediately and cancellation proceeds asychronously.\nIf the matrix is already final, this operation will have no effect.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the Test Matrix does not exist"
+              "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel"
             },
             "get": {
-              "httpMethod": "GET",
+              "description": "Checks the status of a test matrix.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the Test Matrix does not exist",
               "response": {
                 "$ref": "TestMatrix"
               },
@@ -46,34 +77,30 @@
                 "projectId",
                 "testMatrixId"
               ],
-              "parameters": {
-                "projectId": {
-                  "location": "path",
-                  "description": "Cloud project that owns the test matrix.",
-                  "required": true,
-                  "type": "string"
-                },
-                "testMatrixId": {
-                  "description": "Unique test matrix id which was assigned by the service.",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                }
-              },
+              "httpMethod": "GET",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/cloud-platform.read-only"
               ],
+              "parameters": {
+                "projectId": {
+                  "description": "Cloud project that owns the test matrix.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                },
+                "testMatrixId": {
+                  "location": "path",
+                  "description": "Unique test matrix id which was assigned by the service.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
               "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
-              "id": "testing.projects.testMatrices.get",
               "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
-              "description": "Checks the status of a test matrix.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the Test Matrix does not exist"
+              "id": "testing.projects.testMatrices.get"
             },
             "create": {
-              "description": "Creates and runs a matrix of tests according to the given specifications.\nUnsupported environments will be returned in the state UNSUPPORTED.\nMatrices are limited to at most 200 supported executions.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to write to project\n- INVALID_ARGUMENT - if the request is malformed or if the matrix expands\n                     to more than 200 supported executions",
-              "request": {
-                "$ref": "TestMatrix"
-              },
               "response": {
                 "$ref": "TestMatrix"
               },
@@ -81,25 +108,29 @@
                 "projectId"
               ],
               "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
-                "projectId": {
-                  "location": "path",
-                  "description": "The GCE project under which this job will run.",
-                  "required": true,
-                  "type": "string"
-                },
                 "requestId": {
                   "location": "query",
                   "description": "A string id used to detect duplicated requests.\nIds are automatically scoped to a project, so\nusers should ensure the ID is unique per-project.\nA UUID is recommended.\n\nOptional, but strongly recommended.",
                   "type": "string"
+                },
+                "projectId": {
+                  "description": "The GCE project under which this job will run.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectId}/testMatrices",
               "path": "v1/projects/{projectId}/testMatrices",
-              "id": "testing.projects.testMatrices.create"
+              "id": "testing.projects.testMatrices.create",
+              "request": {
+                "$ref": "TestMatrix"
+              },
+              "description": "Creates and runs a matrix of tests according to the given specifications.\nUnsupported environments will be returned in the state UNSUPPORTED.\nMatrices are limited to at most 200 supported executions.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to write to project\n- INVALID_ARGUMENT - if the request is malformed or if the matrix expands\n                     to more than 200 supported executions"
             }
           }
         }
@@ -108,13 +139,18 @@
     "testEnvironmentCatalog": {
       "methods": {
         "get": {
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "environmentType"
-          ],
+          "description": "Gets the catalog of supported test environments.\n\nMay return any of the following canonical error codes:\n\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the environment type does not exist\n- INTERNAL - if an internal error occurred",
           "response": {
             "$ref": "TestEnvironmentCatalog"
           },
+          "parameterOrder": [
+            "environmentType"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/cloud-platform.read-only"
+          ],
           "parameters": {
             "projectId": {
               "location": "query",
@@ -135,60 +171,28 @@
               "type": "string"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloud-platform.read-only"
-          ],
           "flatPath": "v1/testEnvironmentCatalog/{environmentType}",
-          "id": "testing.testEnvironmentCatalog.get",
           "path": "v1/testEnvironmentCatalog/{environmentType}",
-          "description": "Gets the catalog of supported test environments.\n\nMay return any of the following canonical error codes:\n\n- INVALID_ARGUMENT - if the request is malformed\n- NOT_FOUND - if the environment type does not exist\n- INTERNAL - if an internal error occurred"
-        }
-      }
-    },
-    "applicationDetailService": {
-      "methods": {
-        "getApkDetails": {
-          "description": "Gets the details of an Android application APK.",
-          "request": {
-            "$ref": "FileReference"
-          },
-          "response": {
-            "$ref": "GetApkDetailsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/applicationDetailService/getApkDetails",
-          "path": "v1/applicationDetailService/getApkDetails",
-          "id": "testing.applicationDetailService.getApkDetails"
+          "id": "testing.testEnvironmentCatalog.get"
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
     },
     "prettyPrint": {
       "description": "Returns response with indentations and line breaks.",
@@ -196,8 +200,8 @@
       "default": "true",
       "location": "query"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
@@ -206,15 +210,20 @@
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
+    "uploadType": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -230,6 +239,8 @@
       "type": "string"
     },
     "alt": {
+      "description": "Data format for response.",
+      "default": "json",
       "enum": [
         "json",
         "media",
@@ -241,452 +252,94 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
+      "location": "query"
     }
   },
   "schemas": {
-    "TestEnvironmentCatalog": {
-      "description": "A description of a test environment.",
-      "type": "object",
-      "properties": {
-        "iosDeviceCatalog": {
-          "description": "Supported iOS devices.",
-          "$ref": "IosDeviceCatalog"
-        },
-        "softwareCatalog": {
-          "description": "The software test environment provided by TestExecutionService.",
-          "$ref": "ProvidedSoftwareCatalog"
-        },
-        "androidDeviceCatalog": {
-          "description": "Supported Android devices.",
-          "$ref": "AndroidDeviceCatalog"
-        },
-        "networkConfigurationCatalog": {
-          "$ref": "NetworkConfigurationCatalog",
-          "description": "Supported network configurations."
-        }
-      },
-      "id": "TestEnvironmentCatalog"
-    },
-    "ObbFile": {
-      "description": "An opaque binary blob file to install on the device before the test starts.",
-      "type": "object",
-      "properties": {
-        "obb": {
-          "$ref": "FileReference",
-          "description": "Required. Opaque Binary Blob (OBB) file(s) to install on the device."
-        },
-        "obbFileName": {
-          "description": "Required. OBB file name which must conform to the format as specified by\nAndroid\ne.g. [main|patch].0300110.com.example.android.obb\nwhich will be installed into\n  \\\u003cshared-storage\\\u003e/Android/obb/\\\u003cpackage-name\\\u003e/\non the device.",
-          "type": "string"
-        }
-      },
-      "id": "ObbFile"
-    },
-    "AndroidRuntimeConfiguration": {
-      "properties": {
-        "orientations": {
-          "description": "The set of available orientations.",
-          "type": "array",
-          "items": {
-            "$ref": "Orientation"
-          }
-        },
-        "locales": {
-          "description": "The set of available locales.",
-          "type": "array",
-          "items": {
-            "$ref": "Locale"
-          }
-        }
-      },
-      "id": "AndroidRuntimeConfiguration",
-      "description": "Android configuration that can be selected at the time a test is run.",
-      "type": "object"
-    },
-    "IosDeviceCatalog": {
-      "description": "The currently supported iOS devices.",
-      "type": "object",
-      "properties": {
-        "models": {
-          "description": "The set of supported iOS device models.",
-          "type": "array",
-          "items": {
-            "$ref": "IosModel"
-          }
-        },
-        "versions": {
-          "description": "The set of supported iOS software versions.",
-          "type": "array",
-          "items": {
-            "$ref": "IosVersion"
-          }
-        },
-        "runtimeConfiguration": {
-          "$ref": "IosRuntimeConfiguration",
-          "description": "The set of supported runtime configurations."
-        },
-        "xcodeVersions": {
-          "description": "The set of supported Xcode versions.",
-          "type": "array",
-          "items": {
-            "$ref": "XcodeVersion"
-          }
-        }
-      },
-      "id": "IosDeviceCatalog"
-    },
-    "ToolResultsStep": {
-      "description": "Represents a tool results step resource.\n\nThis has the results of a TestExecution.",
-      "type": "object",
-      "properties": {
-        "executionId": {
-          "description": "Output only. A tool results execution ID.",
-          "type": "string"
-        },
-        "stepId": {
-          "description": "Output only. A tool results step ID.",
-          "type": "string"
-        },
-        "projectId": {
-          "description": "Output only. The cloud project that owns the tool results step.",
-          "type": "string"
-        },
-        "historyId": {
-          "description": "Output only. A tool results history ID.",
-          "type": "string"
-        }
-      },
-      "id": "ToolResultsStep"
-    },
-    "GetApkDetailsResponse": {
-      "properties": {
-        "apkDetail": {
-          "$ref": "ApkDetail",
-          "description": "Details of the Android APK."
-        }
-      },
-      "id": "GetApkDetailsResponse",
-      "description": "Response containing the details of the specified Android application APK.",
-      "type": "object"
-    },
-    "AndroidInstrumentationTest": {
-      "description": "A test of an Android application that can control an Android component\nindependently of its normal lifecycle.\nAndroid instrumentation tests run an application APK and test APK inside the\nsame process on a virtual or physical AndroidDevice.  They also specify\na test runner class, such as com.google.GoogleTestRunner, which can vary\non the specific instrumentation framework chosen.\n\nSee \u003chttp://developer.android.com/tools/testing/testing_android.html\u003e for\nmore information on types of Android tests.",
-      "type": "object",
-      "properties": {
-        "testApk": {
-          "$ref": "FileReference",
-          "description": "Required. The APK containing the test code to be executed."
-        },
-        "testRunnerClass": {
-          "description": "The InstrumentationTestRunner class.\nThe default value is determined by examining the application's manifest.",
-          "type": "string"
-        },
-        "testPackageId": {
-          "description": "The java package for the test to be executed.\nThe default value is determined by examining the application's manifest.",
-          "type": "string"
-        },
-        "appPackageId": {
-          "description": "The java package for the application under test.\nThe default value is determined by examining the application's manifest.",
-          "type": "string"
-        },
-        "appApk": {
-          "description": "The APK for the application under test.",
-          "$ref": "FileReference"
-        },
-        "orchestratorOption": {
-          "description": "The option of whether running each test within its own invocation of\ninstrumentation with Android Test Orchestrator or not.\n** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher! **\nOrchestrator offers the following benefits:\n - No shared state\n - Crashes are isolated\n - Logs are scoped per test\n\nSee\n\u003chttps://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator\u003e\nfor more information about Android Test Orchestrator.\n\nIf not set, the test will be run without the orchestrator.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default value: the server will choose the mode. Currently implies that\nthe test will run without the orchestrator. In the future,\nall instrumentation tests will be run with the orchestrator.\nUsing the orchestrator is highly encouraged because of all the benefits it\noffers.",
-            "Run test using orchestrator.\n** Only compatible with AndroidJUnitRunner version 1.0 or higher! **\nRecommended.",
-            "Run test without using orchestrator."
-          ],
-          "enum": [
-            "ORCHESTRATOR_OPTION_UNSPECIFIED",
-            "USE_ORCHESTRATOR",
-            "DO_NOT_USE_ORCHESTRATOR"
-          ]
-        },
-        "appBundle": {
-          "$ref": "AppBundle",
-          "description": "A multi-apk app bundle for the application under test."
-        },
-        "testTargets": {
-          "description": "Each target must be fully qualified with the package name or class name,\nin one of these formats:\n - \"package package_name\"\n - \"class package_name.class_name\"\n - \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "AndroidInstrumentationTest"
-    },
-    "IosModel": {
-      "properties": {
-        "name": {
-          "description": "The human-readable name for this device model.\nExamples: \"iPhone 4s\", \"iPad Mini 2\".",
-          "type": "string"
-        },
-        "id": {
-          "description": "The unique opaque id for this model.\nUse this for invoking the TestExecutionService.",
-          "type": "string"
-        },
-        "tags": {
-          "description": "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\".",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "supportedVersionIds": {
-          "description": "The set of iOS major software versions this device supports.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "deviceCapabilities": {
-          "description": "Device capabilities.\nCopied from\nhttps://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "formFactor": {
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "This device has the shape of a phone.",
-            "This device has the shape of a tablet.",
-            "This device has the shape of a watch or other wearable."
-          ],
-          "enum": [
-            "DEVICE_FORM_FACTOR_UNSPECIFIED",
-            "PHONE",
-            "TABLET",
-            "WEARABLE"
-          ],
-          "description": "Whether this device is a phone, tablet, wearable, etc.",
-          "type": "string"
-        }
-      },
-      "id": "IosModel",
-      "description": "A description of an iOS device tests may be run on.",
-      "type": "object"
-    },
-    "DeviceFile": {
-      "description": "A single device file description.",
-      "type": "object",
-      "properties": {
-        "obbFile": {
-          "$ref": "ObbFile",
-          "description": "A reference to an opaque binary blob file"
-        },
-        "regularFile": {
-          "$ref": "RegularFile",
-          "description": "A reference to a regular file"
-        }
-      },
-      "id": "DeviceFile"
-    },
-    "IosTestSetup": {
-      "description": "A description of how to set up an iOS device prior to a test.",
-      "type": "object",
-      "properties": {
-        "networkProfile": {
-          "description": "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.",
-          "type": "string"
-        }
-      },
-      "id": "IosTestSetup"
-    },
-    "ClientInfoDetail": {
-      "description": "Key-value pair of detailed information about the client which invoked the\ntest. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.",
-      "type": "object",
-      "properties": {
-        "key": {
-          "description": "Required. The key of detailed client information.",
-          "type": "string"
-        },
-        "value": {
-          "description": "Required. The value of detailed client information.",
-          "type": "string"
-        }
-      },
-      "id": "ClientInfoDetail"
-    },
-    "RegularFile": {
-      "description": "A file or directory to install on the device before the test starts.",
-      "type": "object",
-      "properties": {
-        "devicePath": {
-          "description": "Required. Where to put the content on the device. Must be an absolute,\nwhitelisted path. If the file exists, it will be replaced.\nThe following device-side directories and any of their subdirectories are\nwhitelisted:\n\u003cp\u003e${EXTERNAL_STORAGE}, or /sdcard\u003c/p\u003e\n\u003cp\u003e${ANDROID_DATA}/local/tmp, or /data/local/tmp\u003c/p\u003e\n\u003cp\u003eSpecifying a path outside of these directory trees is invalid.\n\n\u003cp\u003e The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device and copy the file there.\n\n\u003cp\u003e It is strongly advised to use the \u003ca href=\n\"http://developer.android.com/reference/android/os/Environment.html\"\u003e\nEnvironment API\u003c/a\u003e in app and test code to access files on the device in a\nportable way.",
-          "type": "string"
-        },
-        "content": {
-          "$ref": "FileReference",
-          "description": "Required. The source file."
-        }
-      },
-      "id": "RegularFile"
-    },
-    "EnvironmentVariable": {
-      "description": "A key-value pair passed as an environment variable to the test.",
-      "type": "object",
-      "properties": {
-        "value": {
-          "description": "Value for the environment variable.",
-          "type": "string"
-        },
-        "key": {
-          "description": "Key for the environment variable.",
-          "type": "string"
-        }
-      },
-      "id": "EnvironmentVariable"
-    },
-    "Environment": {
-      "description": "The environment in which the test is run.",
-      "type": "object",
-      "properties": {
-        "iosDevice": {
-          "description": "An iOS device which must be used with an iOS test.",
-          "$ref": "IosDevice"
-        },
-        "androidDevice": {
-          "$ref": "AndroidDevice",
-          "description": "An Android device which must be used with an Android test."
-        }
-      },
-      "id": "Environment"
-    },
-    "ProvidedSoftwareCatalog": {
-      "properties": {
-        "orchestratorVersion": {
-          "description": "A string representing the current version of Android Test\nOrchestrator that is provided by TestExecutionService.\nExample: \"1.0.2 beta\".",
-          "type": "string"
-        }
-      },
-      "id": "ProvidedSoftwareCatalog",
-      "description": "The currently provided software environment on the devices under test.",
-      "type": "object"
-    },
-    "RoboDirective": {
-      "description": "Directs Robo to interact with a specific UI element if it is encountered\nduring the crawl. Currently, Robo can perform text entry or element click.",
-      "type": "object",
-      "properties": {
-        "actionType": {
-          "enumDescriptions": [
-            "DO NOT USE. For proto versioning only.",
-            "Direct Robo to click on the specified element. No-op if specified element\nis not clickable.",
-            "Direct Robo to enter text on the specified element. No-op if specified\nelement is not enabled or does not allow text entry.",
-            "Direct Robo to ignore interactions with a specific element."
-          ],
-          "enum": [
-            "ACTION_TYPE_UNSPECIFIED",
-            "SINGLE_CLICK",
-            "ENTER_TEXT",
-            "IGNORE"
-          ],
-          "description": "Required. The type of action that Robo should perform on the specified\nelement.",
-          "type": "string"
-        },
-        "resourceName": {
-          "description": "Required. The android resource name of the target UI element.\nFor example,\n   in Java: R.string.foo\n   in xml: @string/foo\nOnly the \"foo\" part is needed.\nReference doc:\nhttps://developer.android.com/guide/topics/resources/accessing-resources.html",
-          "type": "string"
-        },
-        "inputText": {
-          "description": "The text that Robo is directed to set. If left empty, the directive will be\ntreated as a CLICK on the element matching the resource_name.",
-          "type": "string"
-        }
-      },
-      "id": "RoboDirective"
-    },
-    "AndroidMatrix": {
-      "description": "A set of Android device configuration permutations is defined by the\nthe cross-product of the given axes. Internally, the given AndroidMatrix\nwill be expanded into a set of AndroidDevices.\n\nOnly supported permutations will be instantiated.  Invalid permutations\n(e.g., incompatible models/versions) are ignored.",
-      "type": "object",
-      "properties": {
-        "androidModelIds": {
-          "description": "Required. The ids of the set of Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "orientations": {
-          "description": "Required. The set of orientations to test with.\nUse the TestEnvironmentDiscoveryService to get supported options.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "androidVersionIds": {
-          "description": "Required. The ids of the set of Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "locales": {
-          "description": "Required. The set of locales the test device will enable for testing.\nUse the TestEnvironmentDiscoveryService to get supported options.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "AndroidMatrix"
-    },
     "TestSpecification": {
       "description": "A description of how to run the test.",
       "type": "object",
       "properties": {
+        "disableVideoRecording": {
+          "description": "Disables video recording; may reduce test latency.",
+          "type": "boolean"
+        },
+        "iosXcTest": {
+          "$ref": "IosXcTest",
+          "description": "An iOS XCTest, via an .xctestrun file."
+        },
         "testTimeout": {
           "description": "Max time a test execution is allowed to run before it is\nautomatically cancelled.\nThe default value is 5 min.",
           "format": "google-duration",
           "type": "string"
         },
         "iosTestSetup": {
-          "$ref": "IosTestSetup",
-          "description": "Test setup requirements for iOS."
+          "description": "Test setup requirements for iOS.",
+          "$ref": "IosTestSetup"
         },
         "androidRoboTest": {
           "$ref": "AndroidRoboTest",
           "description": "An Android robo test."
         },
         "testSetup": {
-          "description": "Test setup requirements for Android e.g. files to install, bootstrap\nscripts.",
-          "$ref": "TestSetup"
+          "$ref": "TestSetup",
+          "description": "Test setup requirements for Android e.g. files to install, bootstrap\nscripts."
         },
         "androidTestLoop": {
-          "description": "An Android Application with a Test Loop.",
-          "$ref": "AndroidTestLoop"
+          "$ref": "AndroidTestLoop",
+          "description": "An Android Application with a Test Loop."
         },
         "androidInstrumentationTest": {
-          "$ref": "AndroidInstrumentationTest",
-          "description": "An Android instrumentation test."
+          "description": "An Android instrumentation test.",
+          "$ref": "AndroidInstrumentationTest"
         },
         "disablePerformanceMetrics": {
           "description": "Disables performance metrics recording; may reduce test latency.",
           "type": "boolean"
-        },
-        "disableVideoRecording": {
-          "description": "Disables video recording; may reduce test latency.",
-          "type": "boolean"
-        },
-        "iosXcTest": {
-          "description": "An iOS XCTest, via an .xctestrun file.",
-          "$ref": "IosXcTest"
         }
       },
       "id": "TestSpecification"
     },
     "TestMatrix": {
-      "description": "A group of one or more TestExecutions, built by taking a\nproduct of values over a pre-defined set of axes.",
-      "type": "object",
       "properties": {
+        "state": {
+          "enumDescriptions": [
+            "Do not use.  For proto versioning only.",
+            "The execution or matrix is being validated.",
+            "The execution or matrix is waiting for resources to become available.",
+            "The execution is currently being processed.\n\nCan only be set on an execution.",
+            "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state.",
+            "The execution or matrix has stopped because it encountered an\ninfrastructure failure.",
+            "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution.",
+            "The user cancelled the execution.\n\nCan only be set on an execution.",
+            "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"
+          ],
+          "enum": [
+            "TEST_STATE_UNSPECIFIED",
+            "VALIDATING",
+            "PENDING",
+            "RUNNING",
+            "FINISHED",
+            "ERROR",
+            "UNSUPPORTED_ENVIRONMENT",
+            "INCOMPATIBLE_ENVIRONMENT",
+            "INCOMPATIBLE_ARCHITECTURE",
+            "CANCELLED",
+            "INVALID"
+          ],
+          "description": "Output only. Indicates the current progress of the test matrix\n(e.g., FINISHED).",
+          "type": "string"
+        },
+        "testSpecification": {
+          "description": "Required. How to run the test.",
+          "$ref": "TestSpecification"
+        },
+        "projectId": {
+          "description": "The cloud project that owns the test matrix.",
+          "type": "string"
+        },
         "clientInfo": {
           "$ref": "ClientInfo",
           "description": "Information about the client which invoked the test."
@@ -704,16 +357,21 @@
           "type": "string"
         },
         "environmentMatrix": {
-          "$ref": "EnvironmentMatrix",
-          "description": "Required. How the host machine(s) are configured."
+          "description": "Required. How the host machine(s) are configured.",
+          "$ref": "EnvironmentMatrix"
+        },
+        "resultStorage": {
+          "description": "Required. Where the results for the matrix are written.",
+          "$ref": "ResultStorage"
         },
         "testMatrixId": {
           "description": "Output only. Unique id set by the service.",
           "type": "string"
         },
-        "resultStorage": {
-          "$ref": "ResultStorage",
-          "description": "Required. Where the results for the matrix are written."
+        "flakyTestAttempts": {
+          "description": "The number of times a TestExecution should be re-attempted if one or more\nof its test cases fail for any reason.\nThe maximum number of reruns allowed is 10.\n\nDefault is 0, which implies no reruns.",
+          "format": "int32",
+          "type": "integer"
         },
         "invalidMatrixDetails": {
           "enumDescriptions": [
@@ -788,63 +446,22 @@
           ],
           "description": "Output only. Describes why the matrix is considered invalid.\nOnly useful for matrices in the INVALID state.",
           "type": "string"
-        },
-        "flakyTestAttempts": {
-          "description": "The number of times a TestExecution should be re-attempted if one or more\nof its test cases fail for any reason.\nThe maximum number of reruns allowed is 10.\n\nDefault is 0, which implies no reruns.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "state": {
-          "enumDescriptions": [
-            "Do not use.  For proto versioning only.",
-            "The execution or matrix is being validated.",
-            "The execution or matrix is waiting for resources to become available.",
-            "The execution is currently being processed.\n\nCan only be set on an execution.",
-            "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state.",
-            "The execution or matrix has stopped because it encountered an\ninfrastructure failure.",
-            "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution.",
-            "The user cancelled the execution.\n\nCan only be set on an execution.",
-            "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"
-          ],
-          "enum": [
-            "TEST_STATE_UNSPECIFIED",
-            "VALIDATING",
-            "PENDING",
-            "RUNNING",
-            "FINISHED",
-            "ERROR",
-            "UNSUPPORTED_ENVIRONMENT",
-            "INCOMPATIBLE_ENVIRONMENT",
-            "INCOMPATIBLE_ARCHITECTURE",
-            "CANCELLED",
-            "INVALID"
-          ],
-          "description": "Output only. Indicates the current progress of the test matrix\n(e.g., FINISHED).",
-          "type": "string"
-        },
-        "projectId": {
-          "description": "The cloud project that owns the test matrix.",
-          "type": "string"
-        },
-        "testSpecification": {
-          "$ref": "TestSpecification",
-          "description": "Required. How to run the test."
         }
       },
-      "id": "TestMatrix"
+      "id": "TestMatrix",
+      "description": "A group of one or more TestExecutions, built by taking a\nproduct of values over a pre-defined set of axes.",
+      "type": "object"
     },
     "FileReference": {
+      "description": "A reference to a file, used for user inputs.",
+      "type": "object",
       "properties": {
         "gcsPath": {
           "description": "A path to a file in Google Cloud Storage.\nExample: gs://build-app-1414623860166/app-debug-unaligned.apk",
           "type": "string"
         }
       },
-      "id": "FileReference",
-      "description": "A reference to a file, used for user inputs.",
-      "type": "object"
+      "id": "FileReference"
     },
     "LauncherActivityIntent": {
       "description": "Specifies an intent that starts the main launcher activity.",
@@ -853,9 +470,11 @@
       "id": "LauncherActivityIntent"
     },
     "ToolResultsExecution": {
-      "description": "Represents a tool results execution resource.\n\nThis has the results of a TestMatrix.",
-      "type": "object",
       "properties": {
+        "executionId": {
+          "description": "Output only. A tool results execution ID.",
+          "type": "string"
+        },
         "projectId": {
           "description": "Output only. The cloud project that owns the tool results execution.",
           "type": "string"
@@ -863,26 +482,17 @@
         "historyId": {
           "description": "Output only. A tool results history ID.",
           "type": "string"
-        },
-        "executionId": {
-          "description": "Output only. A tool results execution ID.",
-          "type": "string"
         }
       },
-      "id": "ToolResultsExecution"
+      "id": "ToolResultsExecution",
+      "description": "Represents a tool results execution resource.\n\nThis has the results of a TestMatrix.",
+      "type": "object"
     },
     "AndroidRoboTest": {
-      "description": "A test of an android application that explores the application on a virtual\nor physical Android Device, finding culprits and crashes as it goes.",
-      "type": "object",
       "properties": {
-        "maxDepth": {
-          "description": "The max depth of the traversal stack Robo can explore. Needs to be at least\n2 to make Robo explore the app beyond the first activity.\nDefault is 50.",
-          "format": "int32",
-          "type": "integer"
-        },
         "appApk": {
-          "$ref": "FileReference",
-          "description": "The APK for the application under test."
+          "description": "The APK for the application under test.",
+          "$ref": "FileReference"
         },
         "appPackageId": {
           "description": "The java package for the application under test.\nThe default value is determined by examining the application's manifest.",
@@ -895,18 +505,18 @@
             "$ref": "RoboStartingIntent"
           }
         },
-        "appInitialActivity": {
-          "description": "The initial activity that should be used to start the app.",
-          "type": "string"
-        },
         "maxSteps": {
           "description": "The max number of steps Robo can execute.\nDefault is no limit.",
           "format": "int32",
           "type": "integer"
         },
+        "appInitialActivity": {
+          "description": "The initial activity that should be used to start the app.",
+          "type": "string"
+        },
         "appBundle": {
-          "$ref": "AppBundle",
-          "description": "A multi-apk app bundle for the application under test."
+          "description": "A multi-apk app bundle for the application under test.",
+          "$ref": "AppBundle"
         },
         "roboDirectives": {
           "description": "A set of directives Robo should apply during the crawl.\nThis allows users to customize the crawl. For example, the username and\npassword for a test account can be provided.",
@@ -916,11 +526,18 @@
           }
         },
         "roboScript": {
-          "$ref": "FileReference",
-          "description": "A JSON file with a sequence of actions Robo should perform as a prologue\nfor the crawl."
+          "description": "A JSON file with a sequence of actions Robo should perform as a prologue\nfor the crawl.",
+          "$ref": "FileReference"
+        },
+        "maxDepth": {
+          "description": "The max depth of the traversal stack Robo can explore. Needs to be at least\n2 to make Robo explore the app beyond the first activity.\nDefault is 50.",
+          "format": "int32",
+          "type": "integer"
         }
       },
-      "id": "AndroidRoboTest"
+      "id": "AndroidRoboTest",
+      "description": "A test of an android application that explores the application on a virtual\nor physical Android Device, finding culprits and crashes as it goes.",
+      "type": "object"
     },
     "ToolResultsHistory": {
       "description": "Represents a tool results history resource.",
@@ -941,6 +558,10 @@
       "description": "An Android app manifest. See\nhttp://developer.android.com/guide/topics/manifest/manifest-intro.html",
       "type": "object",
       "properties": {
+        "applicationLabel": {
+          "description": "User-readable name for the application.",
+          "type": "string"
+        },
         "minSdkVersion": {
           "description": "Minimum API level required for the application to run.",
           "format": "int32",
@@ -960,10 +581,6 @@
           "items": {
             "$ref": "IntentFilter"
           }
-        },
-        "applicationLabel": {
-          "description": "User-readable name for the application.",
-          "type": "string"
         }
       },
       "id": "ApkManifest"
@@ -984,6 +601,10 @@
       "description": "A test of an Android Application with a Test Loop.\nThe intent \\\u003cintent-name\\\u003e will be implicitly added, since Games is the only\nuser of this api, for the time being.",
       "type": "object",
       "properties": {
+        "appBundle": {
+          "description": "A multi-apk app bundle for the application under test.",
+          "$ref": "AppBundle"
+        },
         "scenarios": {
           "description": "The list of scenarios that should be run during the test.\nThe default is all test loops, derived from the application's\nmanifest.",
           "type": "array",
@@ -1006,15 +627,13 @@
         "appPackageId": {
           "description": "The java package for the application under test.\nThe default is determined by examining the application's manifest.",
           "type": "string"
-        },
-        "appBundle": {
-          "$ref": "AppBundle",
-          "description": "A multi-apk app bundle for the application under test."
         }
       },
       "id": "AndroidTestLoop"
     },
     "IosDeviceList": {
+      "description": "A list of iOS device configurations in which the test is to be executed.",
+      "type": "object",
       "properties": {
         "iosDevices": {
           "description": "Required. A list of iOS devices.",
@@ -1024,9 +643,7 @@
           }
         }
       },
-      "id": "IosDeviceList",
-      "description": "A list of iOS device configurations in which the test is to be executed.",
-      "type": "object"
+      "id": "IosDeviceList"
     },
     "AndroidDeviceCatalog": {
       "properties": {
@@ -1045,8 +662,8 @@
           }
         },
         "runtimeConfiguration": {
-          "$ref": "AndroidRuntimeConfiguration",
-          "description": "The set of supported runtime configurations."
+          "description": "The set of supported runtime configurations.",
+          "$ref": "AndroidRuntimeConfiguration"
         }
       },
       "id": "AndroidDeviceCatalog",
@@ -1054,32 +671,32 @@
       "type": "object"
     },
     "ApkDetail": {
-      "description": "Android application details based on application manifest and apk archive\ncontents.",
-      "type": "object",
       "properties": {
         "apkManifest": {
           "$ref": "ApkManifest"
         }
       },
-      "id": "ApkDetail"
+      "id": "ApkDetail",
+      "description": "Android application details based on application manifest and apk archive\ncontents.",
+      "type": "object"
     },
     "ClientInfo": {
-      "description": "Information about the client which invoked the test.",
-      "type": "object",
       "properties": {
-        "name": {
-          "description": "Required. Client name, such as gcloud.",
-          "type": "string"
-        },
         "clientInfoDetails": {
           "description": "The list of detailed information about client.",
           "type": "array",
           "items": {
             "$ref": "ClientInfoDetail"
           }
+        },
+        "name": {
+          "description": "Required. Client name, such as gcloud.",
+          "type": "string"
         }
       },
-      "id": "ClientInfo"
+      "id": "ClientInfo",
+      "description": "Information about the client which invoked the test.",
+      "type": "object"
     },
     "EnvironmentMatrix": {
       "description": "The matrix of environments in which the test is to be executed.",
@@ -1100,13 +717,31 @@
       },
       "id": "EnvironmentMatrix"
     },
+    "Date": {
+      "properties": {
+        "month": {
+          "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "year": {
+          "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "day": {
+          "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "Date",
+      "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day\nand time zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. This can represent:\n\n* A full date, with non-zero year, month and day values\n* A month and day value, with a zero year, e.g. an anniversary\n* A year on its own, with zero month and day values\n* A year and month value, with a zero day, e.g. a credit card expiration date\n\nRelated types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+      "type": "object"
+    },
     "CancelTestMatrixResponse": {
-      "description": "Response containing the current state of the specified test matrix.",
-      "type": "object",
       "properties": {
         "testState": {
-          "description": "The current rolled-up state of the test matrix.\nIf this state is already final, then the cancelation request will\nhave no effect.",
-          "type": "string",
           "enumDescriptions": [
             "Do not use.  For proto versioning only.",
             "The execution or matrix is being validated.",
@@ -1132,36 +767,16 @@
             "INCOMPATIBLE_ARCHITECTURE",
             "CANCELLED",
             "INVALID"
-          ]
+          ],
+          "description": "The current rolled-up state of the test matrix.\nIf this state is already final, then the cancelation request will\nhave no effect.",
+          "type": "string"
         }
       },
-      "id": "CancelTestMatrixResponse"
-    },
-    "Date": {
-      "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day\nand time zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. This can represent:\n\n* A full date, with non-zero year, month and day values\n* A month and day value, with a zero year, e.g. an anniversary\n* A year on its own, with zero month and day values\n* A year and month value, with a zero day, e.g. a credit card expiration date\n\nRelated types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
-      "type": "object",
-      "properties": {
-        "year": {
-          "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "day": {
-          "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "month": {
-          "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "Date"
+      "id": "CancelTestMatrixResponse",
+      "description": "Response containing the current state of the specified test matrix.",
+      "type": "object"
     },
     "RoboStartingIntent": {
-      "description": "Message for specifying the start activities to crawl.",
-      "type": "object",
       "properties": {
         "startActivity": {
           "$ref": "StartActivityIntent"
@@ -1175,7 +790,20 @@
           "type": "string"
         }
       },
-      "id": "RoboStartingIntent"
+      "id": "RoboStartingIntent",
+      "description": "Message for specifying the start activities to crawl.",
+      "type": "object"
+    },
+    "Account": {
+      "properties": {
+        "googleAuto": {
+          "description": "An automatic google login account.",
+          "$ref": "GoogleAuto"
+        }
+      },
+      "id": "Account",
+      "description": "Identifies an account and how to log into it.",
+      "type": "object"
     },
     "Locale": {
       "description": "A location/region designation for language.",
@@ -1203,31 +831,18 @@
       },
       "id": "Locale"
     },
-    "Account": {
-      "description": "Identifies an account and how to log into it.",
-      "type": "object",
-      "properties": {
-        "googleAuto": {
-          "$ref": "GoogleAuto",
-          "description": "An automatic google login account."
-        }
-      },
-      "id": "Account"
-    },
     "AppBundle": {
-      "description": "An Android App Bundle file format, containing a BundleConfig.pb file,\na base module directory, zero or more dynamic feature module directories.\n\u003cp\u003eSee https://developer.android.com/guide/app-bundle/build for guidance on\nbuilding App Bundles.",
-      "type": "object",
       "properties": {
         "bundleLocation": {
-          "$ref": "FileReference",
-          "description": ".aab file representing the app bundle under test."
+          "description": ".aab file representing the app bundle under test.",
+          "$ref": "FileReference"
         }
       },
-      "id": "AppBundle"
+      "id": "AppBundle",
+      "description": "An Android App Bundle file format, containing a BundleConfig.pb file,\na base module directory, zero or more dynamic feature module directories.\n\u003cp\u003eSee https://developer.android.com/guide/app-bundle/build for guidance on\nbuilding App Bundles.",
+      "type": "object"
     },
     "AndroidDevice": {
-      "description": "A single Android device.",
-      "type": "object",
       "properties": {
         "locale": {
           "description": "Required. The locale the test device used for testing.\nUse the TestEnvironmentDiscoveryService to get supported options.",
@@ -1246,9 +861,12 @@
           "type": "string"
         }
       },
-      "id": "AndroidDevice"
+      "id": "AndroidDevice",
+      "description": "A single Android device.",
+      "type": "object"
     },
     "NetworkConfiguration": {
+      "type": "object",
       "properties": {
         "id": {
           "description": "The unique opaque id for this network traffic configuration.",
@@ -1263,23 +881,10 @@
           "description": "The emulation rule applying to the download traffic."
         }
       },
-      "id": "NetworkConfiguration",
-      "type": "object"
+      "id": "NetworkConfiguration"
     },
     "TrafficRule": {
-      "description": "Network emulation parameters.",
-      "type": "object",
       "properties": {
-        "delay": {
-          "description": "Packet delay, must be \u003e= 0.",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "packetLossRatio": {
-          "description": "Packet loss ratio (0.0 - 1.0).",
-          "format": "float",
-          "type": "number"
-        },
         "burst": {
           "description": "Burst size in kbits.",
           "format": "float",
@@ -1294,12 +899,30 @@
           "description": "Packet duplication ratio (0.0 - 1.0).",
           "format": "float",
           "type": "number"
+        },
+        "delay": {
+          "description": "Packet delay, must be \u003e= 0.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "packetLossRatio": {
+          "description": "Packet loss ratio (0.0 - 1.0).",
+          "format": "float",
+          "type": "number"
         }
       },
-      "id": "TrafficRule"
+      "id": "TrafficRule",
+      "description": "Network emulation parameters.",
+      "type": "object"
     },
     "IosDevice": {
+      "description": "A single iOS device.",
+      "type": "object",
       "properties": {
+        "iosModelId": {
+          "description": "Required. The id of the iOS device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
+          "type": "string"
+        },
         "orientation": {
           "description": "Required. How the device is oriented during the test.\nUse the TestEnvironmentDiscoveryService to get supported options.",
           "type": "string"
@@ -1311,17 +934,13 @@
         "locale": {
           "description": "Required. The locale the test device used for testing.\nUse the TestEnvironmentDiscoveryService to get supported options.",
           "type": "string"
-        },
-        "iosModelId": {
-          "description": "Required. The id of the iOS device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
-          "type": "string"
         }
       },
-      "id": "IosDevice",
-      "description": "A single iOS device.",
-      "type": "object"
+      "id": "IosDevice"
     },
     "IntentFilter": {
+      "description": "The \u003cintent-filter\u003e section of an \u003cactivity\u003e tag.\nhttps://developer.android.com/guide/topics/manifest/intent-filter-element.html",
+      "type": "object",
       "properties": {
         "mimeType": {
           "description": "The android:mimeType value of the \u003cdata\u003e tag.",
@@ -1342,9 +961,7 @@
           }
         }
       },
-      "id": "IntentFilter",
-      "description": "The \u003cintent-filter\u003e section of an \u003cactivity\u003e tag.\nhttps://developer.android.com/guide/topics/manifest/intent-filter-element.html",
-      "type": "object"
+      "id": "IntentFilter"
     },
     "GoogleCloudStorage": {
       "properties": {
@@ -1359,7 +976,32 @@
     },
     "TestExecution": {
       "properties": {
+        "matrixId": {
+          "description": "Output only. Id of the containing TestMatrix.",
+          "type": "string"
+        },
+        "testDetails": {
+          "description": "Output only. Additional details about the running test.",
+          "$ref": "TestDetails"
+        },
+        "environment": {
+          "description": "Output only. How the host machine(s) are configured.",
+          "$ref": "Environment"
+        },
         "state": {
+          "enum": [
+            "TEST_STATE_UNSPECIFIED",
+            "VALIDATING",
+            "PENDING",
+            "RUNNING",
+            "FINISHED",
+            "ERROR",
+            "UNSUPPORTED_ENVIRONMENT",
+            "INCOMPATIBLE_ENVIRONMENT",
+            "INCOMPATIBLE_ARCHITECTURE",
+            "CANCELLED",
+            "INVALID"
+          ],
           "description": "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED).",
           "type": "string",
           "enumDescriptions": [
@@ -1374,32 +1016,19 @@
             "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution.",
             "The user cancelled the execution.\n\nCan only be set on an execution.",
             "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"
-          ],
-          "enum": [
-            "TEST_STATE_UNSPECIFIED",
-            "VALIDATING",
-            "PENDING",
-            "RUNNING",
-            "FINISHED",
-            "ERROR",
-            "UNSUPPORTED_ENVIRONMENT",
-            "INCOMPATIBLE_ENVIRONMENT",
-            "INCOMPATIBLE_ARCHITECTURE",
-            "CANCELLED",
-            "INVALID"
           ]
         },
         "toolResultsStep": {
-          "description": "Output only. Where the results for this execution are written.",
-          "$ref": "ToolResultsStep"
-        },
-        "testSpecification": {
-          "$ref": "TestSpecification",
-          "description": "Output only. How to run the test."
+          "$ref": "ToolResultsStep",
+          "description": "Output only. Where the results for this execution are written."
         },
         "projectId": {
           "description": "Output only. The cloud project that owns the test execution.",
           "type": "string"
+        },
+        "testSpecification": {
+          "description": "Output only. How to run the test.",
+          "$ref": "TestSpecification"
         },
         "id": {
           "description": "Output only. Unique id set by the backend.",
@@ -1409,18 +1038,6 @@
           "description": "Output only. The time this test execution was initially created.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "testDetails": {
-          "$ref": "TestDetails",
-          "description": "Output only. Additional details about the running test."
-        },
-        "matrixId": {
-          "description": "Output only. Id of the containing TestMatrix.",
-          "type": "string"
-        },
-        "environment": {
-          "$ref": "Environment",
-          "description": "Output only. How the host machine(s) are configured."
         }
       },
       "id": "TestExecution",
@@ -1428,8 +1045,6 @@
       "type": "object"
     },
     "IosRuntimeConfiguration": {
-      "description": "iOS configuration that can be selected at the time a test is run.",
-      "type": "object",
       "properties": {
         "orientations": {
           "description": "The set of available orientations.",
@@ -1446,26 +1061,20 @@
           }
         }
       },
-      "id": "IosRuntimeConfiguration"
+      "id": "IosRuntimeConfiguration",
+      "description": "iOS configuration that can be selected at the time a test is run.",
+      "type": "object"
     },
     "AndroidModel": {
+      "description": "A description of an Android device tests may be run on.",
+      "type": "object",
       "properties": {
-        "supportedVersionIds": {
-          "description": "The set of Android versions this device supports.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "supportedAbis": {
-          "description": "The list of supported ABIs for this device.\nThis corresponds to either android.os.Build.SUPPORTED_ABIS (for API level\n21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.\nThe most preferred ABI is the first element in the list.\n\nElements are optionally prefixed by \"version_id:\" (where version_id is\nthe id of an AndroidVersion), denoting an ABI that is supported only on\na particular version.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "name": {
           "description": "The human-readable marketing name for this device model.\nExamples: \"Nexus 5\", \"Galaxy S5\".",
+          "type": "string"
+        },
+        "id": {
+          "description": "The unique opaque id for this model.\nUse this for invoking the TestExecutionService.",
           "type": "string"
         },
         "tags": {
@@ -1474,10 +1083,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "id": {
-          "description": "The unique opaque id for this model.\nUse this for invoking the TestExecutionService.",
-          "type": "string"
         },
         "manufacturer": {
           "description": "The manufacturer of this device.",
@@ -1522,44 +1127,43 @@
           "type": "boolean"
         },
         "form": {
-          "enumDescriptions": [
-            "Do not use.  For proto versioning only.",
-            "A software stack that simulates the device.",
-            "Actual hardware."
-          ],
           "enum": [
             "DEVICE_FORM_UNSPECIFIED",
             "VIRTUAL",
             "PHYSICAL"
           ],
           "description": "Whether this device is virtual or physical.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Do not use.  For proto versioning only.",
+            "A software stack that simulates the device.",
+            "Actual hardware."
+          ]
         },
         "screenDensity": {
           "description": "Screen density in DPI.\nThis corresponds to ro.sf.lcd_density",
           "format": "int32",
           "type": "integer"
-        }
-      },
-      "id": "AndroidModel",
-      "description": "A description of an Android device tests may be run on.",
-      "type": "object"
-    },
-    "TestSetup": {
-      "description": "A description of how to set up the Android device prior to running the test.",
-      "type": "object",
-      "properties": {
-        "account": {
-          "description": "The device will be logged in on this account for the duration of the test.",
-          "$ref": "Account"
         },
-        "directoriesToPull": {
-          "description": "List of directories on the device to upload to GCS at the end of the test;\nthey must be absolute paths under /sdcard or /data/local/tmp.\nPath names are restricted to characters a-z A-Z 0-9 _ - . + and /\n\nNote: The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device.",
+        "supportedVersionIds": {
+          "description": "The set of Android versions this device supports.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
+        "supportedAbis": {
+          "description": "The list of supported ABIs for this device.\nThis corresponds to either android.os.Build.SUPPORTED_ABIS (for API level\n21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.\nThe most preferred ABI is the first element in the list.\n\nElements are optionally prefixed by \"version_id:\" (where version_id is\nthe id of an AndroidVersion), denoting an ABI that is supported only on\na particular version.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "AndroidModel"
+    },
+    "TestSetup": {
+      "properties": {
         "networkProfile": {
           "description": "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.",
           "type": "string"
@@ -1584,9 +1188,22 @@
           "items": {
             "$ref": "DeviceFile"
           }
+        },
+        "account": {
+          "description": "The device will be logged in on this account for the duration of the test.",
+          "$ref": "Account"
+        },
+        "directoriesToPull": {
+          "description": "List of directories on the device to upload to GCS at the end of the test;\nthey must be absolute paths under /sdcard or /data/local/tmp.\nPath names are restricted to characters a-z A-Z 0-9 _ - . + and /\n\nNote: The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "id": "TestSetup"
+      "id": "TestSetup",
+      "description": "A description of how to set up the Android device prior to running the test.",
+      "type": "object"
     },
     "ResultStorage": {
       "description": "Locations where the results of running the test are stored.",
@@ -1601,14 +1218,42 @@
           "$ref": "ToolResultsHistory"
         },
         "googleCloudStorage": {
-          "description": "Required.",
-          "$ref": "GoogleCloudStorage"
+          "$ref": "GoogleCloudStorage",
+          "description": "Required."
         }
       },
       "id": "ResultStorage"
     },
-    "AndroidVersion": {
+    "XcodeVersion": {
       "properties": {
+        "version": {
+          "description": "The id for this version.\nExample: \"9.2\".",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for this Xcode version.\nExample: \"default\".",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "XcodeVersion",
+      "description": "An Xcode version that an iOS version is compatible with.",
+      "type": "object"
+    },
+    "AndroidVersion": {
+      "description": "A version of the Android OS.",
+      "type": "object",
+      "properties": {
+        "versionString": {
+          "description": "A string representing this version of the Android OS.\nExamples: \"4.3\", \"4.4\".",
+          "type": "string"
+        },
+        "codeName": {
+          "description": "The code name for this Android version.\nExamples: \"JellyBean\", \"KitKat\".",
+          "type": "string"
+        },
         "apiLevel": {
           "description": "The API level for this Android version.\nExamples: 18, 19.",
           "format": "int32",
@@ -1632,52 +1277,24 @@
         "releaseDate": {
           "$ref": "Date",
           "description": "The date this Android version became available in the market."
-        },
-        "versionString": {
-          "description": "A string representing this version of the Android OS.\nExamples: \"4.3\", \"4.4\".",
-          "type": "string"
-        },
-        "codeName": {
-          "description": "The code name for this Android version.\nExamples: \"JellyBean\", \"KitKat\".",
-          "type": "string"
         }
       },
-      "id": "AndroidVersion",
-      "description": "A version of the Android OS.",
-      "type": "object"
-    },
-    "XcodeVersion": {
-      "description": "An Xcode version that an iOS version is compatible with.",
-      "type": "object",
-      "properties": {
-        "version": {
-          "description": "The id for this version.\nExample: \"9.2\".",
-          "type": "string"
-        },
-        "tags": {
-          "description": "Tags for this Xcode version.\nExample: \"default\".",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "XcodeVersion"
+      "id": "AndroidVersion"
     },
     "TestDetails": {
       "description": "Additional details about the progress of the running test.",
       "type": "object",
       "properties": {
+        "errorMessage": {
+          "description": "Output only. If the TestState is ERROR, then this string will contain\nhuman-readable details about the error.",
+          "type": "string"
+        },
         "progressMessages": {
           "description": "Output only. Human-readable, detailed descriptions of the test's progress.\nFor example: \"Provisioning a device\", \"Starting Test\".\n\nDuring the course of execution new data may be appended\nto the end of progress_messages.",
           "type": "array",
           "items": {
             "type": "string"
           }
-        },
-        "errorMessage": {
-          "description": "Output only. If the TestState is ERROR, then this string will contain\nhuman-readable details about the error.",
-          "type": "string"
         }
       },
       "id": "TestDetails"
@@ -1686,22 +1303,20 @@
       "description": "Data about the relative number of devices running a\ngiven configuration of the Android platform.",
       "type": "object",
       "properties": {
-        "marketShare": {
-          "description": "Output only. The estimated fraction (0-1) of the total market with this\nconfiguration.",
-          "format": "double",
-          "type": "number"
-        },
         "measurementTime": {
           "description": "Output only. The time this distribution was measured.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "marketShare": {
+          "description": "Output only. The estimated fraction (0-1) of the total market with this\nconfiguration.",
+          "format": "double",
+          "type": "number"
         }
       },
       "id": "Distribution"
     },
     "IosVersion": {
-      "description": "An iOS version.",
-      "type": "object",
       "properties": {
         "id": {
           "description": "An opaque id for this iOS version.\nUse this id to invoke the TestExecutionService.",
@@ -1732,7 +1347,9 @@
           }
         }
       },
-      "id": "IosVersion"
+      "id": "IosVersion",
+      "description": "An iOS version.",
+      "type": "object"
     },
     "Orientation": {
       "description": "Screen orientation of the device.",
@@ -1777,8 +1394,6 @@
       "type": "object"
     },
     "Apk": {
-      "description": "An Android package file to install.",
-      "type": "object",
       "properties": {
         "location": {
           "description": "The path to an APK to be installed on the device before the test begins.",
@@ -1789,11 +1404,11 @@
           "type": "string"
         }
       },
-      "id": "Apk"
+      "id": "Apk",
+      "description": "An Android package file to install.",
+      "type": "object"
     },
     "StartActivityIntent": {
-      "description": "A starting intent specified by an action, uri, and categories.",
-      "type": "object",
       "properties": {
         "action": {
           "description": "Action name.\nRequired for START_ACTIVITY.",
@@ -1811,15 +1426,17 @@
           }
         }
       },
-      "id": "StartActivityIntent"
+      "id": "StartActivityIntent",
+      "description": "A starting intent specified by an action, uri, and categories.",
+      "type": "object"
     },
     "IosXcTest": {
       "description": "A test of an iOS application that uses the XCTest framework.\nXcode supports the option to \"build for testing\", which generates an\n.xctestrun file that contains a test specification (arguments, test methods,\netc). This test type accepts a zip file containing the .xctestrun file and\nthe corresponding contents of the Build/Products directory that contains all\nthe binaries needed to run the tests.",
       "type": "object",
       "properties": {
         "testsZip": {
-          "$ref": "FileReference",
-          "description": "Required. The .zip containing the .xctestrun file and the contents of the\nDerivedData/Build/Products directory.\nThe .xctestrun file in this zip is ignored if the xctestrun field is\nspecified."
+          "description": "Required. The .zip containing the .xctestrun file and the contents of the\nDerivedData/Build/Products directory.\nThe .xctestrun file in this zip is ignored if the xctestrun field is\nspecified.",
+          "$ref": "FileReference"
         },
         "xcodeVersion": {
           "description": "The Xcode version that should be used for the test.\nUse the TestEnvironmentDiscoveryService to get supported options.\nDefaults to the latest Xcode version Firebase Test Lab supports.",
@@ -1835,37 +1452,420 @@
         }
       },
       "id": "IosXcTest"
+    },
+    "TestEnvironmentCatalog": {
+      "properties": {
+        "androidDeviceCatalog": {
+          "description": "Supported Android devices.",
+          "$ref": "AndroidDeviceCatalog"
+        },
+        "networkConfigurationCatalog": {
+          "description": "Supported network configurations.",
+          "$ref": "NetworkConfigurationCatalog"
+        },
+        "iosDeviceCatalog": {
+          "$ref": "IosDeviceCatalog",
+          "description": "Supported iOS devices."
+        },
+        "softwareCatalog": {
+          "$ref": "ProvidedSoftwareCatalog",
+          "description": "The software test environment provided by TestExecutionService."
+        }
+      },
+      "id": "TestEnvironmentCatalog",
+      "description": "A description of a test environment.",
+      "type": "object"
+    },
+    "ObbFile": {
+      "properties": {
+        "obbFileName": {
+          "description": "Required. OBB file name which must conform to the format as specified by\nAndroid\ne.g. [main|patch].0300110.com.example.android.obb\nwhich will be installed into\n  \\\u003cshared-storage\\\u003e/Android/obb/\\\u003cpackage-name\\\u003e/\non the device.",
+          "type": "string"
+        },
+        "obb": {
+          "description": "Required. Opaque Binary Blob (OBB) file(s) to install on the device.",
+          "$ref": "FileReference"
+        }
+      },
+      "id": "ObbFile",
+      "description": "An opaque binary blob file to install on the device before the test starts.",
+      "type": "object"
+    },
+    "AndroidRuntimeConfiguration": {
+      "properties": {
+        "orientations": {
+          "description": "The set of available orientations.",
+          "type": "array",
+          "items": {
+            "$ref": "Orientation"
+          }
+        },
+        "locales": {
+          "description": "The set of available locales.",
+          "type": "array",
+          "items": {
+            "$ref": "Locale"
+          }
+        }
+      },
+      "id": "AndroidRuntimeConfiguration",
+      "description": "Android configuration that can be selected at the time a test is run.",
+      "type": "object"
+    },
+    "IosDeviceCatalog": {
+      "description": "The currently supported iOS devices.",
+      "type": "object",
+      "properties": {
+        "models": {
+          "description": "The set of supported iOS device models.",
+          "type": "array",
+          "items": {
+            "$ref": "IosModel"
+          }
+        },
+        "versions": {
+          "description": "The set of supported iOS software versions.",
+          "type": "array",
+          "items": {
+            "$ref": "IosVersion"
+          }
+        },
+        "runtimeConfiguration": {
+          "$ref": "IosRuntimeConfiguration",
+          "description": "The set of supported runtime configurations."
+        },
+        "xcodeVersions": {
+          "description": "The set of supported Xcode versions.",
+          "type": "array",
+          "items": {
+            "$ref": "XcodeVersion"
+          }
+        }
+      },
+      "id": "IosDeviceCatalog"
+    },
+    "ToolResultsStep": {
+      "properties": {
+        "executionId": {
+          "description": "Output only. A tool results execution ID.",
+          "type": "string"
+        },
+        "stepId": {
+          "description": "Output only. A tool results step ID.",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "Output only. The cloud project that owns the tool results step.",
+          "type": "string"
+        },
+        "historyId": {
+          "description": "Output only. A tool results history ID.",
+          "type": "string"
+        }
+      },
+      "id": "ToolResultsStep",
+      "description": "Represents a tool results step resource.\n\nThis has the results of a TestExecution.",
+      "type": "object"
+    },
+    "GetApkDetailsResponse": {
+      "properties": {
+        "apkDetail": {
+          "description": "Details of the Android APK.",
+          "$ref": "ApkDetail"
+        }
+      },
+      "id": "GetApkDetailsResponse",
+      "description": "Response containing the details of the specified Android application APK.",
+      "type": "object"
+    },
+    "AndroidInstrumentationTest": {
+      "properties": {
+        "testApk": {
+          "description": "Required. The APK containing the test code to be executed.",
+          "$ref": "FileReference"
+        },
+        "testRunnerClass": {
+          "description": "The InstrumentationTestRunner class.\nThe default value is determined by examining the application's manifest.",
+          "type": "string"
+        },
+        "testPackageId": {
+          "description": "The java package for the test to be executed.\nThe default value is determined by examining the application's manifest.",
+          "type": "string"
+        },
+        "appApk": {
+          "description": "The APK for the application under test.",
+          "$ref": "FileReference"
+        },
+        "appPackageId": {
+          "description": "The java package for the application under test.\nThe default value is determined by examining the application's manifest.",
+          "type": "string"
+        },
+        "appBundle": {
+          "$ref": "AppBundle",
+          "description": "A multi-apk app bundle for the application under test."
+        },
+        "orchestratorOption": {
+          "enum": [
+            "ORCHESTRATOR_OPTION_UNSPECIFIED",
+            "USE_ORCHESTRATOR",
+            "DO_NOT_USE_ORCHESTRATOR"
+          ],
+          "description": "The option of whether running each test within its own invocation of\ninstrumentation with Android Test Orchestrator or not.\n** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher! **\nOrchestrator offers the following benefits:\n - No shared state\n - Crashes are isolated\n - Logs are scoped per test\n\nSee\n\u003chttps://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator\u003e\nfor more information about Android Test Orchestrator.\n\nIf not set, the test will be run without the orchestrator.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default value: the server will choose the mode. Currently implies that\nthe test will run without the orchestrator. In the future,\nall instrumentation tests will be run with the orchestrator.\nUsing the orchestrator is highly encouraged because of all the benefits it\noffers.",
+            "Run test using orchestrator.\n** Only compatible with AndroidJUnitRunner version 1.0 or higher! **\nRecommended.",
+            "Run test without using orchestrator."
+          ]
+        },
+        "testTargets": {
+          "description": "Each target must be fully qualified with the package name or class name,\nin one of these formats:\n - \"package package_name\"\n - \"class package_name.class_name\"\n - \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "AndroidInstrumentationTest",
+      "description": "A test of an Android application that can control an Android component\nindependently of its normal lifecycle.\nAndroid instrumentation tests run an application APK and test APK inside the\nsame process on a virtual or physical AndroidDevice.  They also specify\na test runner class, such as com.google.GoogleTestRunner, which can vary\non the specific instrumentation framework chosen.\n\nSee \u003chttp://developer.android.com/tools/testing/testing_android.html\u003e for\nmore information on types of Android tests.",
+      "type": "object"
+    },
+    "IosModel": {
+      "description": "A description of an iOS device tests may be run on.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The unique opaque id for this model.\nUse this for invoking the TestExecutionService.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\".",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supportedVersionIds": {
+          "description": "The set of iOS major software versions this device supports.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deviceCapabilities": {
+          "description": "Device capabilities.\nCopied from\nhttps://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "formFactor": {
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "This device has the shape of a phone.",
+            "This device has the shape of a tablet.",
+            "This device has the shape of a watch or other wearable."
+          ],
+          "enum": [
+            "DEVICE_FORM_FACTOR_UNSPECIFIED",
+            "PHONE",
+            "TABLET",
+            "WEARABLE"
+          ],
+          "description": "Whether this device is a phone, tablet, wearable, etc.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The human-readable name for this device model.\nExamples: \"iPhone 4s\", \"iPad Mini 2\".",
+          "type": "string"
+        }
+      },
+      "id": "IosModel"
+    },
+    "DeviceFile": {
+      "description": "A single device file description.",
+      "type": "object",
+      "properties": {
+        "obbFile": {
+          "description": "A reference to an opaque binary blob file",
+          "$ref": "ObbFile"
+        },
+        "regularFile": {
+          "$ref": "RegularFile",
+          "description": "A reference to a regular file"
+        }
+      },
+      "id": "DeviceFile"
+    },
+    "IosTestSetup": {
+      "properties": {
+        "networkProfile": {
+          "description": "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.",
+          "type": "string"
+        }
+      },
+      "id": "IosTestSetup",
+      "description": "A description of how to set up an iOS device prior to a test.",
+      "type": "object"
+    },
+    "ClientInfoDetail": {
+      "properties": {
+        "key": {
+          "description": "Required. The key of detailed client information.",
+          "type": "string"
+        },
+        "value": {
+          "description": "Required. The value of detailed client information.",
+          "type": "string"
+        }
+      },
+      "id": "ClientInfoDetail",
+      "description": "Key-value pair of detailed information about the client which invoked the\ntest. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.",
+      "type": "object"
+    },
+    "RegularFile": {
+      "properties": {
+        "devicePath": {
+          "description": "Required. Where to put the content on the device. Must be an absolute,\nwhitelisted path. If the file exists, it will be replaced.\nThe following device-side directories and any of their subdirectories are\nwhitelisted:\n\u003cp\u003e${EXTERNAL_STORAGE}, or /sdcard\u003c/p\u003e\n\u003cp\u003e${ANDROID_DATA}/local/tmp, or /data/local/tmp\u003c/p\u003e\n\u003cp\u003eSpecifying a path outside of these directory trees is invalid.\n\n\u003cp\u003e The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device and copy the file there.\n\n\u003cp\u003e It is strongly advised to use the \u003ca href=\n\"http://developer.android.com/reference/android/os/Environment.html\"\u003e\nEnvironment API\u003c/a\u003e in app and test code to access files on the device in a\nportable way.",
+          "type": "string"
+        },
+        "content": {
+          "description": "Required. The source file.",
+          "$ref": "FileReference"
+        }
+      },
+      "id": "RegularFile",
+      "description": "A file or directory to install on the device before the test starts.",
+      "type": "object"
+    },
+    "EnvironmentVariable": {
+      "properties": {
+        "value": {
+          "description": "Value for the environment variable.",
+          "type": "string"
+        },
+        "key": {
+          "description": "Key for the environment variable.",
+          "type": "string"
+        }
+      },
+      "id": "EnvironmentVariable",
+      "description": "A key-value pair passed as an environment variable to the test.",
+      "type": "object"
+    },
+    "ProvidedSoftwareCatalog": {
+      "description": "The currently provided software environment on the devices under test.",
+      "type": "object",
+      "properties": {
+        "orchestratorVersion": {
+          "description": "A string representing the current version of Android Test\nOrchestrator that is provided by TestExecutionService.\nExample: \"1.0.2 beta\".",
+          "type": "string"
+        }
+      },
+      "id": "ProvidedSoftwareCatalog"
+    },
+    "Environment": {
+      "description": "The environment in which the test is run.",
+      "type": "object",
+      "properties": {
+        "iosDevice": {
+          "description": "An iOS device which must be used with an iOS test.",
+          "$ref": "IosDevice"
+        },
+        "androidDevice": {
+          "description": "An Android device which must be used with an Android test.",
+          "$ref": "AndroidDevice"
+        }
+      },
+      "id": "Environment"
+    },
+    "RoboDirective": {
+      "properties": {
+        "actionType": {
+          "enumDescriptions": [
+            "DO NOT USE. For proto versioning only.",
+            "Direct Robo to click on the specified element. No-op if specified element\nis not clickable.",
+            "Direct Robo to enter text on the specified element. No-op if specified\nelement is not enabled or does not allow text entry.",
+            "Direct Robo to ignore interactions with a specific element."
+          ],
+          "enum": [
+            "ACTION_TYPE_UNSPECIFIED",
+            "SINGLE_CLICK",
+            "ENTER_TEXT",
+            "IGNORE"
+          ],
+          "description": "Required. The type of action that Robo should perform on the specified\nelement.",
+          "type": "string"
+        },
+        "resourceName": {
+          "description": "Required. The android resource name of the target UI element.\nFor example,\n   in Java: R.string.foo\n   in xml: @string/foo\nOnly the \"foo\" part is needed.\nReference doc:\nhttps://developer.android.com/guide/topics/resources/accessing-resources.html",
+          "type": "string"
+        },
+        "inputText": {
+          "description": "The text that Robo is directed to set. If left empty, the directive will be\ntreated as a CLICK on the element matching the resource_name.",
+          "type": "string"
+        }
+      },
+      "id": "RoboDirective",
+      "description": "Directs Robo to interact with a specific UI element if it is encountered\nduring the crawl. Currently, Robo can perform text entry or element click.",
+      "type": "object"
+    },
+    "AndroidMatrix": {
+      "properties": {
+        "orientations": {
+          "description": "Required. The set of orientations to test with.\nUse the TestEnvironmentDiscoveryService to get supported options.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "androidVersionIds": {
+          "description": "Required. The ids of the set of Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locales": {
+          "description": "Required. The set of locales the test device will enable for testing.\nUse the TestEnvironmentDiscoveryService to get supported options.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "androidModelIds": {
+          "description": "Required. The ids of the set of Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "AndroidMatrix",
+      "description": "A set of Android device configuration permutations is defined by the\nthe cross-product of the given axes. Internally, the given AndroidMatrix\nwill be expanded into a set of AndroidDevices.\n\nOnly supported permutations will be instantiated.  Invalid permutations\n(e.g., incompatible models/versions) are ignored.",
+      "type": "object"
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "version": "v1",
   "baseUrl": "https://testing.googleapis.com/",
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform.read-only": {
-          "description": "View your data across Google Cloud Platform services"
-        },
         "https://www.googleapis.com/auth/cloud-platform": {
           "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/cloud-platform.read-only": {
+          "description": "View your data across Google Cloud Platform services"
         }
       }
     }
   },
-  "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
-  "servicePath": "",
   "kind": "discovery#restDescription",
-  "rootUrl": "https://testing.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "testing",
-  "batchPath": "batch",
-  "revision": "20190409",
-  "documentationLink": "https://developers.google.com/cloud-test-lab/",
-  "id": "testing:v1",
-  "title": "Cloud Testing API"
+  "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
+  "servicePath": ""
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190328 (1547)
+ *      <tr><th>API Rev<td>20190404 (1554)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2910,7 +2910,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if they are an administrator of the domain to which the item belongs.</summary>
+            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
+            /// domain to which the Team Drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3039,7 +3040,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if they are an administrator of the domain to which the item belongs.</summary>
+            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
+            /// domain to which the Team Drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3144,7 +3146,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if they are an administrator of the domain to which the item belongs.</summary>
+            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
+            /// domain to which the Team Drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3255,7 +3258,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if they are an administrator of the domain to which the item belongs.</summary>
+            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
+            /// domain to which the Team Drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3382,7 +3386,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if they are an administrator of the domain to which the item belongs.</summary>
+            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
+            /// domain to which the Team Drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }

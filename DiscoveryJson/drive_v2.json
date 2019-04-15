@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/HMb5YB5Sq18q3yWpyIksFtt-GPA\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/lKOGBhFMu3-vffJ-yofbFGthirM\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20190328",
+ "revision": "20190404",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -4012,7 +4012,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
@@ -4052,7 +4052,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
@@ -4134,7 +4134,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
@@ -4186,7 +4186,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
@@ -4244,7 +4244,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
@@ -4302,7 +4302,7 @@
       },
       "useDomainAdminAccess": {
        "type": "boolean",
-       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+       "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a Team Drive and the requester is an administrator of the domain to which the Team Drive belongs.",
        "default": "false",
        "location": "query"
       }
