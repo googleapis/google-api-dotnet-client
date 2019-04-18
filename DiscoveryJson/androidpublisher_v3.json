@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/UcGjx6dDOwy026Go2vQutSWzLHI\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Mq29EGNAb3VEWghbbAUVD4KENqo\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190409",
+ "revision": "20190416",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -2521,9 +2521,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2558,9 +2557,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2598,9 +2596,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2694,7 +2691,7 @@
        "id": "androidpublisher.edits.tracks.patch",
        "path": "{packageName}/edits/{editId}/tracks/{track}",
        "httpMethod": "PATCH",
-       "description": "Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume. This method supports patch semantics.",
+       "description": "Updates the track configuration for the specified track type. This method supports patch semantics.",
        "parameters": {
         "editId": {
          "type": "string",
@@ -2734,7 +2731,7 @@
        "id": "androidpublisher.edits.tracks.update",
        "path": "{packageName}/edits/{editId}/tracks/{track}",
        "httpMethod": "PUT",
-       "description": "Updates the track configuration for the specified track type. When halted, the rollout track cannot be updated without adding new APKs, and adding new APKs will cause it to resume.",
+       "description": "Updates the track configuration for the specified track type.",
        "parameters": {
         "editId": {
          "type": "string",

@@ -108,13 +108,13 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Google OAuth2 API.</summary>
         public class Scope
         {
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public static string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -122,13 +122,13 @@ namespace Google.Apis.Oauth2.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Google OAuth2 API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public const string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20190314 (1533)
+ *      <tr><th>API Rev<td>20190412 (1562)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -981,14 +981,19 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -1381,14 +1386,19 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p1beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -1690,8 +1700,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p1beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -2522,14 +2532,19 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p2beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -2933,10 +2948,11 @@ namespace Google.Apis.Vision.v1p2beta1.Data
 
         /// <summary>The filtering expression. This can be used to restrict search results based on Product labels. We
         /// currently support an AND of OR of key-value expressions, where each expression within an OR must have the
-        /// same key.
+        /// same key. An '=' should be used to connect the key and value.
         ///
-        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but not "(color = red OR
-        /// brand = Google)" or "color: red".</summary>
+        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but "(color = red OR brand =
+        /// Google)" is not acceptable. "color: red" is not acceptable because it uses a ':' instead of an
+        /// '='.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2958,8 +2974,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p2beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -3712,14 +3728,19 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p3beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -4042,8 +4063,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p3beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -4847,14 +4868,19 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p4beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -5185,8 +5211,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p4beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -5953,8 +5979,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Results for a product search request.</summary>
     public class ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 

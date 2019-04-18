@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/api/'>Google+ API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190328 (1547)
+ *      <tr><th>API Rev<td>20190415 (1565)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/api/'>
  *              https://developers.google.com/+/api/</a>
@@ -113,13 +113,13 @@ namespace Google.Apis.Plus.v1
             /// <summary>View your basic profile info, including your age range and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public static string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -130,13 +130,13 @@ namespace Google.Apis.Plus.v1
             /// <summary>View your basic profile info, including your age range and language</summary>
             public const string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public const string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }

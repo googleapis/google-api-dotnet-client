@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190329 (1548)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -732,6 +732,10 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -739,10 +743,6 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -778,6 +778,15 @@ namespace Google.Apis.AndroidManagement.v1
                                 Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -790,15 +799,6 @@ namespace Google.Apis.AndroidManagement.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1902,13 +1902,13 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying a page of results returned by the server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results returned by the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1944,18 +1944,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2412,6 +2412,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The callback URL that the admin will be redirected to after successfully creating an
             /// enterprise. Before redirecting there the system will add a query parameter to this URL named
             /// enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL
@@ -2419,10 +2423,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// minor formatting changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callbackUrl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CallbackUrl { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2449,18 +2449,18 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "callbackUrl", new Google.Apis.Discovery.Parameter
+                    "projectId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "callbackUrl",
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
+                    "callbackUrl", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectId",
+                        Name = "callbackUrl",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2639,6 +2639,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installerPackageName")]
         public virtual string InstallerPackageName { get; set; } 
 
+        /// <summary>List of keyed app states reported by the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyedAppStates")]
+        public virtual System.Collections.Generic.IList<KeyedAppState> KeyedAppStates { get; set; } 
+
         /// <summary>Package name of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
@@ -2666,6 +2670,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The app version as displayed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
         public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Settings controlling the behavior of application reports.</summary>
+    public class ApplicationReportingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether removed apps are included in application reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRemovedApps")]
+        public virtual System.Nullable<bool> IncludeRemovedApps { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3223,6 +3238,42 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Current device skin temperatures in Celsius.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skinTemperatures")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> SkinTemperatures { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Keyed app state reported by the app.</summary>
+    public class KeyedAppState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the app state on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optionally, a machine-readable value to be read by the EMM. For example, setting values that the
+        /// admin can choose to query against in the EMM console (e.g. “notify me if the battery_warning data <
+        /// 10”).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>The key for the app state. Acts as a point of reference for what the app is providing state for.
+        /// For example, when providing managed configuration feedback, this key could be the managed configuration
+        /// key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The time the app state was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; } 
+
+        /// <summary>Optionally, a free-form message string to explain the app state. If the state was triggered by a
+        /// particular value (e.g. a managed configuration value), it should be included in the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>The severity of the app state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4193,6 +4244,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Settings controlling the behavior of status reports.</summary>
     public class StatusReportingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Application reporting settings. Only applicable if application_reports_enabled is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationReportingSettings")]
+        public virtual ApplicationReportingSettings ApplicationReportingSettings { get; set; } 
+
         /// <summary>Whether app reports are enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationReportsEnabled")]
         public virtual System.Nullable<bool> ApplicationReportsEnabled { get; set; } 

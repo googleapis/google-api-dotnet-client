@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190314 (1533)
+ *      <tr><th>API Rev<td>20190412 (1562)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -870,10 +870,6 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -881,6 +877,10 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -916,15 +916,6 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -937,6 +928,15 @@ namespace Google.Apis.Vision.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -960,6 +960,7 @@ namespace Google.Apis.Vision.v1
         {
             this.service = service;
             locations = new LocationsResource(service);
+            operations = new OperationsResource(service);
 
         }
 
@@ -983,11 +984,98 @@ namespace Google.Apis.Vision.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                operations = new OperationsResource(service);
                 productSets = new ProductSetsResource(service);
                 products = new ProductsResource(service);
 
             }
 
+            private readonly OperationsResource operations;
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations
+            {
+                get { return operations; }
+            }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             private readonly ProductSetsResource productSets;
 
             /// <summary>Gets the ProductSets resource.</summary>
@@ -1326,7 +1414,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                /// none</summary>
                 /// <param name="name">Resource name of the ProductSet to delete.
                 ///
                 /// Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`</param>
@@ -1342,7 +1430,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND if the ProductSet does not exist.</summary>
+                /// none</summary>
                 public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1759,7 +1847,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND If the Product is not found under the ProductSet.</summary>
+                /// none</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name for the ProductSet to modify.
                 ///
@@ -1773,7 +1861,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND If the Product is not found under the ProductSet.</summary>
+                /// none</summary>
                 public class RemoveProductRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new RemoveProduct request.</summary>
@@ -2010,7 +2098,7 @@ namespace Google.Apis.Vision.v1
                     ///
                     /// Possible errors:
                     ///
-                    /// * Returns NOT_FOUND if the reference image does not exist.</summary>
+                    /// none</summary>
                     /// <param name="name">The resource name of the reference image to delete.
                     ///
                     /// Format is:
@@ -2030,7 +2118,7 @@ namespace Google.Apis.Vision.v1
                     ///
                     /// Possible errors:
                     ///
-                    /// * Returns NOT_FOUND if the reference image does not exist.</summary>
+                    /// none</summary>
                     public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -2376,7 +2464,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND if the product does not exist.</summary>
+                /// none</summary>
                 /// <param name="name">Resource name of product to delete.
                 ///
                 /// Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`</param>
@@ -2392,7 +2480,7 @@ namespace Google.Apis.Vision.v1
                 ///
                 /// Possible errors:
                 ///
-                /// * Returns NOT_FOUND if the product does not exist.</summary>
+                /// none</summary>
                 public class DeleteRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2727,6 +2815,92 @@ namespace Google.Apis.Vision.v1
                     }
 
                 }
+            }
+        }
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                        });
+                }
+
             }
         }
     }
@@ -3374,14 +3548,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -3774,14 +3953,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p1beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -4083,8 +4267,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p1beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -4803,14 +4987,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p2beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -5112,8 +5301,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p2beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -5855,14 +6044,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p3beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -6185,8 +6379,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p3beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -6990,14 +7184,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
     public class GoogleCloudVisionV1p4beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
-        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
-        /// multiple outputs. Prefixes must end in a `/`.
+        /// <summary>Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format
+        /// and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs
+        /// directory. In either case, the uri should be unique because in order to get all of the output files, you
+        /// will need to do a wildcard gcs search on the uri prefix you provide.
         ///
         /// Examples:
         ///
-        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
-        /// name/prefix/here
+        /// *    File Prefix: gs://bucket-name/here/filenameprefix   The output files will be created in gs://bucket-
+        /// name/here/ and the names of the output files will begin with "filenameprefix".
+        ///
+        /// *    Directory Prefix: gs://bucket-name/some/location/   The output files will be created in gs://bucket-
+        /// name/some/location/ and the names of the output files could be anything because there was no filename prefix
+        /// specified.
         ///
         /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
         /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
@@ -7328,8 +7527,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Results for a product search request.</summary>
     public class GoogleCloudVisionV1p4beta1ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 
@@ -8359,10 +8558,11 @@ namespace Google.Apis.Vision.v1.Data
 
         /// <summary>The filtering expression. This can be used to restrict search results based on Product labels. We
         /// currently support an AND of OR of key-value expressions, where each expression within an OR must have the
-        /// same key.
+        /// same key. An '=' should be used to connect the key and value.
         ///
-        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but not "(color = red OR
-        /// brand = Google)" or "color: red".</summary>
+        /// For example, "(color = red OR color = blue) AND brand = Google" is acceptable, but "(color = red OR brand =
+        /// Google)" is not acceptable. "color: red" is not acceptable because it uses a ':' instead of an
+        /// '='.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -8384,8 +8584,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Results for a product search request.</summary>
     public class ProductSearchResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the index which provided these results. Changes made after this time are not reflected
-        /// in the current results.</summary>
+        /// <summary>Timestamp of the index which provided these results. Products added to the product set and products
+        /// removed from the product set after this time are not reflected in the current results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
         public virtual object IndexTime { get; set; } 
 

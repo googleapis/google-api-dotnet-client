@@ -1,306 +1,48 @@
 {
-  "ownerName": "Google",
-  "resources": {
-    "assets": {
-      "methods": {
-        "get": {
-          "response": {
-            "$ref": "Asset"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "description": "Required. An asset's name in the form `assets/{ASSET_ID}`.",
-              "required": true,
-              "type": "string",
-              "pattern": "^assets/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/assets/{assetsId}",
-          "path": "v1/{+name}",
-          "id": "poly.assets.get",
-          "description": "Returns detailed information about an asset given its name.\nPRIVATE assets are returned only if\n the currently authenticated user (via OAuth token) is the author of the\n asset."
-        },
-        "list": {
-          "path": "v1/assets",
-          "id": "poly.assets.list",
-          "description": "Lists all public, remixable assets. These are assets with an access level\nof PUBLIC and published under the\nCC-By license.",
-          "response": {
-            "$ref": "ListAssetsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {
-            "keywords": {
-              "location": "query",
-              "description": "One or more search terms to be matched against all text that Poly has\nindexed for assets, which includes display_name,\ndescription, and tags. Multiple keywords should be\nseparated by spaces.",
-              "type": "string"
-            },
-            "orderBy": {
-              "location": "query",
-              "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features.",
-              "type": "string"
-            },
-            "format": {
-              "location": "query",
-              "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.",
-              "type": "string"
-            },
-            "curated": {
-              "location": "query",
-              "description": "Return only assets that have been curated by the Poly team.",
-              "type": "boolean"
-            },
-            "category": {
-              "location": "query",
-              "description": "Filter assets based on the specified category. Supported values are:\n`animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,\n`scenes`, `technology`, and `transport`.",
-              "type": "string"
-            },
-            "maxComplexity": {
-              "enum": [
-                "COMPLEXITY_UNSPECIFIED",
-                "COMPLEX",
-                "MEDIUM",
-                "SIMPLE"
-              ],
-              "description": "Returns assets that are of the specified complexity or less. Defaults to\nCOMPLEX. For example, a request for\nMEDIUM assets also includes\nSIMPLE assets.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageToken": {
-              "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageSize": {
-              "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            }
-          },
-          "flatPath": "v1/assets"
-        }
-      }
-    },
-    "users": {
-      "resources": {
-        "assets": {
-          "methods": {
-            "list": {
-              "response": {
-                "$ref": "ListUserAssetsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "visibility": {
-                  "enum": [
-                    "VISIBILITY_UNSPECIFIED",
-                    "PUBLISHED",
-                    "PRIVATE"
-                  ],
-                  "description": "The visibility of the assets to be returned.\nDefaults to\nVISIBILITY_UNSPECIFIED\nwhich returns all assets.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "name": {
-                  "description": "A valid user id. Currently, only the special value 'me', representing the\ncurrently-authenticated user is supported. To use 'me', you must pass\nan OAuth token with the request.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^users/[^/]+$",
-                  "location": "path"
-                },
-                "orderBy": {
-                  "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "format": {
-                  "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "flatPath": "v1/users/{usersId}/assets",
-              "path": "v1/{+name}/assets",
-              "id": "poly.users.assets.list",
-              "description": "Lists assets authored by the given user. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of PRIVATE or\nUNLISTED and assets which are\nAll Rights Reserved for the\ncurrently-authenticated user."
-            }
-          }
-        },
-        "likedassets": {
-          "methods": {
-            "list": {
-              "response": {
-                "$ref": "ListLikedAssetsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "pattern": "^users/[^/]+$",
-                  "location": "path",
-                  "description": "A valid user id. Currently, only the special value 'me', representing the\ncurrently-authenticated user is supported. To use 'me', you must pass\nan OAuth token with the request.",
-                  "required": true,
-                  "type": "string"
-                },
-                "orderBy": {
-                  "location": "query",
-                  "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which\nranks assets based on how recently they were liked.",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "format": {
-                  "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "flatPath": "v1/users/{usersId}/likedassets",
-              "path": "v1/{+name}/likedassets",
-              "id": "poly.users.likedassets.list",
-              "description": "Lists assets that the user has liked. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of UNLISTED."
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://poly.googleapis.com/",
-  "servicePath": "",
-  "description": "The Poly API provides read access to assets hosted on \u003ca href=\"https://poly.google.com\"\u003epoly.google.com\u003c/a\u003e to all, and upload access to \u003ca href=\"https://poly.google.com\"\u003epoly.google.com\u003c/a\u003e for whitelisted accounts.\n",
-  "kind": "discovery#restDescription",
-  "basePath": "",
   "documentationLink": "https://developers.google.com/poly/",
-  "revision": "20190409",
+  "revision": "20190415",
   "id": "poly:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "ObjParseError": {
+      "description": "Details of an error resulting from parsing an OBJ file",
+      "type": "object",
       "properties": {
-        "line": {
-          "description": "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation.",
-          "type": "string"
-        },
-        "filePath": {
-          "description": "The file path in which the problem was found.",
-          "type": "string"
-        },
         "lineNumber": {
           "description": "Line number at which the problem was found.",
           "format": "int32",
           "type": "integer"
         },
         "code": {
+          "enumDescriptions": [
+            "Unknown error code.",
+            "Vertex references are specified in an inconsistent style for a face (e.g.\nsome vertices specify texture vertices but some don't).",
+            "The command is invalid.",
+            "A invalid number was specified.",
+            "An invalid vertex reference was specified.",
+            "A vertex reference does not specify a geometric vertex.",
+            "An expected token was not found.",
+            "The vertex specified too few dimensions for its usage.",
+            "The face specified too few vertices.",
+            "The vertex specified too many dimensions for its usage.",
+            "This command is a valid OBJ command but is not supported. This error is\nonly generated for the first instance of such a command.",
+            "This line ended with unparsed token characters.",
+            "The specified vertex was not found.",
+            "The specified number was too large or small for its usage.",
+            "The specified parameter value was not recognized.",
+            "The specified texture option is not valid.",
+            "The maximum number of problems to report was reached. Parsing continues,\nbut further problems will be ignored.",
+            "An expected file name was not specified.",
+            "The specified file was not found in the import.",
+            "The specified material was not found in any material definition in the\nimport.",
+            "Material parameters were specified before the first material definition.",
+            "The smoothing group is not valid.",
+            "Vertex colors were specified for only some vertices of a face.",
+            "A missing file was found at a different file path.",
+            "A line in an OBJ or MTL file exceeded the maximum line length.",
+            "The file path was invalid. Only relative paths are supported."
+          ],
           "enum": [
             "CODE_UNSPECIFIED",
             "INCONSISTENT_VERTEX_REFS",
@@ -330,35 +72,7 @@
             "INVALID_FILE_PATH"
           ],
           "description": "The type of problem found (required).",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown error code.",
-            "Vertex references are specified in an inconsistent style for a face (e.g.\nsome vertices specify texture vertices but some don't).",
-            "The command is invalid.",
-            "A invalid number was specified.",
-            "An invalid vertex reference was specified.",
-            "A vertex reference does not specify a geometric vertex.",
-            "An expected token was not found.",
-            "The vertex specified too few dimensions for its usage.",
-            "The face specified too few vertices.",
-            "The vertex specified too many dimensions for its usage.",
-            "This command is a valid OBJ command but is not supported. This error is\nonly generated for the first instance of such a command.",
-            "This line ended with unparsed token characters.",
-            "The specified vertex was not found.",
-            "The specified number was too large or small for its usage.",
-            "The specified parameter value was not recognized.",
-            "The specified texture option is not valid.",
-            "The maximum number of problems to report was reached. Parsing continues,\nbut further problems will be ignored.",
-            "An expected file name was not specified.",
-            "The specified file was not found in the import.",
-            "The specified material was not found in any material definition in the\nimport.",
-            "Material parameters were specified before the first material definition.",
-            "The smoothing group is not valid.",
-            "Vertex colors were specified for only some vertices of a face.",
-            "A missing file was found at a different file path.",
-            "A line in an OBJ or MTL file exceeded the maximum line length.",
-            "The file path was invalid. Only relative paths are supported."
-          ]
+          "type": "string"
         },
         "startIndex": {
           "description": "The starting character index at which the problem was found.",
@@ -369,19 +83,22 @@
           "description": "The ending character index at which the problem was found.",
           "format": "int32",
           "type": "integer"
+        },
+        "line": {
+          "description": "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation.",
+          "type": "string"
+        },
+        "filePath": {
+          "description": "The file path in which the problem was found.",
+          "type": "string"
         }
       },
-      "id": "ObjParseError",
-      "description": "Details of an error resulting from parsing an OBJ file",
-      "type": "object"
+      "id": "ObjParseError"
     },
     "Quaternion": {
+      "description": "A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the\nresponse you see \"w: 1\" and nothing else this is the default value of\n[0, 0, 0, 1] where x,y, and z are 0.",
+      "type": "object",
       "properties": {
-        "w": {
-          "description": "The scalar component.",
-          "format": "double",
-          "type": "number"
-        },
         "y": {
           "description": "The y component.",
           "format": "double",
@@ -396,13 +113,18 @@
           "description": "The z component.",
           "format": "double",
           "type": "number"
+        },
+        "w": {
+          "description": "The scalar component.",
+          "format": "double",
+          "type": "number"
         }
       },
-      "id": "Quaternion",
-      "description": "A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the\nresponse you see \"w: 1\" and nothing else this is the default value of\n[0, 0, 0, 1] where x,y, and z are 0.",
-      "type": "object"
+      "id": "Quaternion"
     },
     "ListUserAssetsResponse": {
+      "description": "A response message from a request to list.",
+      "type": "object",
       "properties": {
         "userAssets": {
           "description": "A list of UserAssets matching the request.",
@@ -421,31 +143,63 @@
           "type": "integer"
         }
       },
-      "id": "ListUserAssetsResponse",
-      "description": "A response message from a request to list.",
-      "type": "object"
+      "id": "ListUserAssetsResponse"
     },
     "FormatComplexity": {
       "description": "Information on the complexity of this Format.",
       "type": "object",
       "properties": {
-        "lodHint": {
-          "description": "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0).",
-          "format": "int32",
-          "type": "integer"
-        },
         "triangleCount": {
           "description": "The estimated number of triangles.",
           "format": "int64",
           "type": "string"
+        },
+        "lodHint": {
+          "description": "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "id": "FormatComplexity"
+    },
+    "ImageError": {
+      "description": "A message resulting from reading an image file.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The type of image error encountered. Optional for older image errors.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unknown error code.",
+            "We were unable to read the image file.",
+            "The image size is too large.",
+            "The image data does not match the expected MIME type of the image."
+          ],
+          "enum": [
+            "CODE_UNSPECIFIED",
+            "INVALID_IMAGE",
+            "IMAGE_TOO_BIG",
+            "WRONG_IMAGE_TYPE"
+          ]
+        },
+        "filePath": {
+          "description": "The file path in the import of the image that was rejected.",
+          "type": "string"
+        }
+      },
+      "id": "ImageError"
     },
     "StartAssetImportResponse": {
       "description": "A response message from a request to\nstartImport. This is returned in the response\nfield of the Operation.",
       "type": "object",
       "properties": {
+        "assetImportMessages": {
+          "description": "The message from the asset import. This will contain any warnings\n(or - in the case of failure - errors) that occurred during import.",
+          "type": "array",
+          "items": {
+            "$ref": "AssetImportMessage"
+          }
+        },
         "assetId": {
           "description": "The id of newly created asset. If this is empty when the operation is\ncomplete it means the import failed. Please refer to the\nassetImportMessages field to understand what went wrong.",
           "type": "string"
@@ -457,45 +211,13 @@
         "assetImportId": {
           "description": "The id of the asset import.",
           "type": "string"
-        },
-        "assetImportMessages": {
-          "description": "The message from the asset import. This will contain any warnings\n(or - in the case of failure - errors) that occurred during import.",
-          "type": "array",
-          "items": {
-            "$ref": "AssetImportMessage"
-          }
         }
       },
       "id": "StartAssetImportResponse"
     },
-    "ImageError": {
-      "properties": {
-        "filePath": {
-          "description": "The file path in the import of the image that was rejected.",
-          "type": "string"
-        },
-        "code": {
-          "enum": [
-            "CODE_UNSPECIFIED",
-            "INVALID_IMAGE",
-            "IMAGE_TOO_BIG",
-            "WRONG_IMAGE_TYPE"
-          ],
-          "description": "The type of image error encountered. Optional for older image errors.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown error code.",
-            "We were unable to read the image file.",
-            "The image size is too large.",
-            "The image data does not match the expected MIME type of the image."
-          ]
-        }
-      },
-      "id": "ImageError",
-      "description": "A message resulting from reading an image file.",
-      "type": "object"
-    },
     "RemixInfo": {
+      "description": "Info about the sources of this asset (i.e. assets that were remixed to\ncreate this asset).",
+      "type": "object",
       "properties": {
         "sourceAsset": {
           "description": "Resource ids for the sources of this remix, of the form:\n`assets/{ASSET_ID}`",
@@ -505,16 +227,12 @@
           }
         }
       },
-      "id": "RemixInfo",
-      "description": "Info about the sources of this asset (i.e. assets that were remixed to\ncreate this asset).",
-      "type": "object"
+      "id": "RemixInfo"
     },
     "File": {
+      "description": "Represents a file in Poly, which can be a root,\nresource, or thumbnail file.",
+      "type": "object",
       "properties": {
-        "contentType": {
-          "description": "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME\ntypes](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).",
-          "type": "string"
-        },
         "relativePath": {
           "description": "The path of the resource file relative to the\nroot file. For root or thumbnail files,\nthis is just the filename.",
           "type": "string"
@@ -522,41 +240,18 @@
         "url": {
           "description": "The URL where the file data can be retrieved.",
           "type": "string"
-        }
-      },
-      "id": "File",
-      "description": "Represents a file in Poly, which can be a root,\nresource, or thumbnail file.",
-      "type": "object"
-    },
-    "ListAssetsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
+        },
+        "contentType": {
+          "description": "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME\ntypes](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).",
           "type": "string"
-        },
-        "assets": {
-          "description": "A list of assets that match the criteria specified in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Asset"
-          }
-        },
-        "totalSize": {
-          "description": "The total number of assets in the list, without pagination.",
-          "format": "int32",
-          "type": "integer"
         }
       },
-      "id": "ListAssetsResponse",
-      "description": "A response message from a request to list.",
-      "type": "object"
+      "id": "File"
     },
     "AssetImportMessage": {
+      "description": "A message generated by the asset import process.",
+      "type": "object",
       "properties": {
-        "filePath": {
-          "description": "An optional file path. Only present for those error codes that specify it.",
-          "type": "string"
-        },
         "code": {
           "enumDescriptions": [
             "Unknown error code.",
@@ -590,13 +285,38 @@
           "$ref": "ImageError"
         },
         "objParseError": {
-          "description": "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR.",
-          "$ref": "ObjParseError"
+          "$ref": "ObjParseError",
+          "description": "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."
+        },
+        "filePath": {
+          "description": "An optional file path. Only present for those error codes that specify it.",
+          "type": "string"
         }
       },
-      "id": "AssetImportMessage",
-      "description": "A message generated by the asset import process.",
-      "type": "object"
+      "id": "AssetImportMessage"
+    },
+    "ListAssetsResponse": {
+      "description": "A response message from a request to list.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token.",
+          "type": "string"
+        },
+        "assets": {
+          "description": "A list of assets that match the criteria specified in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Asset"
+          }
+        },
+        "totalSize": {
+          "description": "The total number of assets in the list, without pagination.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "ListAssetsResponse"
     },
     "Format": {
       "description": "The same asset can be represented in different formats, for example,\na [WaveFront .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with its\ncorresponding .mtl file or a [Khronos glTF](//www.khronos.org/gltf) file\nwith its corresponding .glb binary data. A format refers to a specific\nrepresentation of an asset and contains all information needed to\nretrieve and describe this representation.",
@@ -610,8 +330,8 @@
           }
         },
         "formatComplexity": {
-          "description": "Complexity stats about this representation of the asset.",
-          "$ref": "FormatComplexity"
+          "$ref": "FormatComplexity",
+          "description": "Complexity stats about this representation of the asset."
         },
         "root": {
           "$ref": "File",
@@ -625,27 +345,16 @@
       "id": "Format"
     },
     "Asset": {
+      "description": "Represents and describes an asset in the Poly library. An asset is a 3D model\nor scene created using [Tilt Brush](//www.tiltbrush.com),\n[Blocks](//vr.google.com/blocks/), or any 3D program that produces a file\nthat can be upload to Poly.",
+      "type": "object",
       "properties": {
-        "formats": {
-          "description": "A list of Formats where each\nformat describes one representation of the asset.",
-          "type": "array",
-          "items": {
-            "$ref": "Format"
-          }
-        },
-        "presentationParams": {
-          "description": "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication.",
-          "$ref": "PresentationParams"
-        },
-        "thumbnail": {
-          "$ref": "File",
-          "description": "The thumbnail image for the asset."
-        },
-        "description": {
-          "description": "The human-readable description, set by the asset's author.",
-          "type": "string"
-        },
         "visibility": {
+          "enumDescriptions": [
+            "Unknown (and invalid) visibility.",
+            "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account.",
+            "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets.",
+            "Access to the asset and its underlying files and resources is available\nto anyone."
+          ],
           "enum": [
             "VISIBILITY_UNSPECIFIED",
             "PRIVATE",
@@ -653,13 +362,7 @@
             "PUBLIC"
           ],
           "description": "The visibility of the asset and who can access it.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown (and invalid) visibility.",
-            "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account.",
-            "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets.",
-            "Access to the asset and its underlying files and resources is available\nto anyone."
-          ]
+          "type": "string"
         },
         "authorName": {
           "description": "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing).",
@@ -687,6 +390,8 @@
           "description": "The remix info for the asset."
         },
         "license": {
+          "description": "The license under which the author has made the asset available\nfor use, if any.",
+          "type": "string",
           "enumDescriptions": [
             "Unknown license value.",
             "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/",
@@ -696,9 +401,7 @@
             "UNKNOWN",
             "CREATIVE_COMMONS_BY",
             "ALL_RIGHTS_RESERVED"
-          ],
-          "description": "The license under which the author has made the asset available\nfor use, if any.",
-          "type": "string"
+          ]
         },
         "updateTime": {
           "description": "The time when the asset was last modified. For published assets, whose\ncontents are immutable, the update time changes only when metadata\nproperties, such as visibility, are updated.",
@@ -708,11 +411,28 @@
         "isCurated": {
           "description": "Whether this asset has been curated by the Poly team.",
           "type": "boolean"
+        },
+        "formats": {
+          "description": "A list of Formats where each\nformat describes one representation of the asset.",
+          "type": "array",
+          "items": {
+            "$ref": "Format"
+          }
+        },
+        "presentationParams": {
+          "$ref": "PresentationParams",
+          "description": "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."
+        },
+        "thumbnail": {
+          "description": "The thumbnail image for the asset.",
+          "$ref": "File"
+        },
+        "description": {
+          "description": "The human-readable description, set by the asset's author.",
+          "type": "string"
         }
       },
-      "id": "Asset",
-      "description": "Represents and describes an asset in the Poly library. An asset is a 3D model\nor scene created using [Tilt Brush](//www.tiltbrush.com),\n[Blocks](//vr.google.com/blocks/), or any 3D program that produces a file\nthat can be upload to Poly.",
-      "type": "object"
+      "id": "Asset"
     },
     "PresentationParams": {
       "description": "Hints for displaying the asset, based on information available when the asset\nwas uploaded.",
@@ -779,8 +499,8 @@
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "protocol": "rest",
   "canonicalName": "Poly Service",
@@ -789,5 +509,285 @@
   "name": "poly",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "Poly API"
+  "title": "Poly API",
+  "ownerName": "Google",
+  "resources": {
+    "assets": {
+      "methods": {
+        "get": {
+          "flatPath": "v1/assets/{assetsId}",
+          "path": "v1/{+name}",
+          "id": "poly.assets.get",
+          "description": "Returns detailed information about an asset given its name.\nPRIVATE assets are returned only if\n the currently authenticated user (via OAuth token) is the author of the\n asset.",
+          "response": {
+            "$ref": "Asset"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "description": "Required. An asset's name in the form `assets/{ASSET_ID}`.",
+              "required": true,
+              "type": "string",
+              "pattern": "^assets/[^/]+$",
+              "location": "path"
+            }
+          }
+        },
+        "list": {
+          "response": {
+            "$ref": "ListAssetsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "pageSize": {
+              "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "keywords": {
+              "location": "query",
+              "description": "One or more search terms to be matched against all text that Poly has\nindexed for assets, which includes display_name,\ndescription, and tags. Multiple keywords should be\nseparated by spaces.",
+              "type": "string"
+            },
+            "orderBy": {
+              "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features.",
+              "type": "string",
+              "location": "query"
+            },
+            "format": {
+              "location": "query",
+              "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.",
+              "type": "string"
+            },
+            "curated": {
+              "description": "Return only assets that have been curated by the Poly team.",
+              "type": "boolean",
+              "location": "query"
+            },
+            "category": {
+              "location": "query",
+              "description": "Filter assets based on the specified category. Supported values are:\n`animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,\n`scenes`, `technology`, and `transport`.",
+              "type": "string"
+            },
+            "maxComplexity": {
+              "description": "Returns assets that are of the specified complexity or less. Defaults to\nCOMPLEX. For example, a request for\nMEDIUM assets also includes\nSIMPLE assets.",
+              "type": "string",
+              "location": "query",
+              "enum": [
+                "COMPLEXITY_UNSPECIFIED",
+                "COMPLEX",
+                "MEDIUM",
+                "SIMPLE"
+              ]
+            },
+            "pageToken": {
+              "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "flatPath": "v1/assets",
+          "path": "v1/assets",
+          "id": "poly.assets.list",
+          "description": "Lists all public, remixable assets. These are assets with an access level\nof PUBLIC and published under the\nCC-By license."
+        }
+      }
+    },
+    "users": {
+      "resources": {
+        "likedassets": {
+          "methods": {
+            "list": {
+              "response": {
+                "$ref": "ListLikedAssetsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "pageSize": {
+                  "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "format": {
+                  "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "name": {
+                  "description": "A valid user id. Currently, only the special value 'me', representing the\ncurrently-authenticated user is supported. To use 'me', you must pass\nan OAuth token with the request.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^users/[^/]+$",
+                  "location": "path"
+                },
+                "orderBy": {
+                  "location": "query",
+                  "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which\nranks assets based on how recently they were liked.",
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/users/{usersId}/likedassets",
+              "path": "v1/{+name}/likedassets",
+              "id": "poly.users.likedassets.list",
+              "description": "Lists assets that the user has liked. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of UNLISTED."
+            }
+          }
+        },
+        "assets": {
+          "methods": {
+            "list": {
+              "flatPath": "v1/users/{usersId}/assets",
+              "id": "poly.users.assets.list",
+              "path": "v1/{+name}/assets",
+              "description": "Lists assets authored by the given user. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of PRIVATE or\nUNLISTED and assets which are\nAll Rights Reserved for the\ncurrently-authenticated user.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ListUserAssetsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "format": {
+                  "location": "query",
+                  "description": "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.",
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "visibility": {
+                  "description": "The visibility of the assets to be returned.\nDefaults to\nVISIBILITY_UNSPECIFIED\nwhich returns all assets.",
+                  "type": "string",
+                  "location": "query",
+                  "enum": [
+                    "VISIBILITY_UNSPECIFIED",
+                    "PUBLISHED",
+                    "PRIVATE"
+                  ]
+                },
+                "name": {
+                  "description": "A valid user id. Currently, only the special value 'me', representing the\ncurrently-authenticated user is supported. To use 'me', you must pass\nan OAuth token with the request.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^users/[^/]+$",
+                  "location": "path"
+                },
+                "orderBy": {
+                  "description": "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features.",
+                  "type": "string",
+                  "location": "query"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://poly.googleapis.com/",
+  "servicePath": "",
+  "description": "The Poly API provides read access to assets hosted on \u003ca href=\"https://poly.google.com\"\u003epoly.google.com\u003c/a\u003e to all, and upload access to \u003ca href=\"https://poly.google.com\"\u003epoly.google.com\u003c/a\u003e for whitelisted accounts.\n",
+  "kind": "discovery#restDescription",
+  "basePath": ""
 }

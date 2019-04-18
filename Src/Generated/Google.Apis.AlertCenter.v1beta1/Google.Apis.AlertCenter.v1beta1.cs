@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190403 (1553)
+ *      <tr><th>API Rev<td>20190413 (1563)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -721,6 +721,12 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
+            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
+            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
+            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
             /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
             /// next_page_token field.</summary>
@@ -742,12 +748,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// unspecified, server picks an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
-            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
-            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -773,6 +773,15 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -804,15 +813,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1058,6 +1058,65 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// (suspicious activity)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginDetails")]
         public virtual LoginDetails LoginDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Alerts from G Suite Security Center rules service configured by admin.</summary>
+    public class ActivityRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of action names associated with the rule threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionNames")]
+        public virtual System.Collections.Generic.IList<string> ActionNames { get; set; } 
+
+        /// <summary>Rule create timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Description of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Alert display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Rule name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Query that is used to get the data from the associated source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; } 
+
+        /// <summary>List of alert ids superseded by this alert. It is used to indicate that this alert is essentially
+        /// extension of superseded alerts and we found the relationship after creating these alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supersededAlerts")]
+        public virtual System.Collections.Generic.IList<string> SupersededAlerts { get; set; } 
+
+        /// <summary>Alert id superseding this alert. It is used to indicate that superseding alert is essentially
+        /// extension of this alert and we found the relationship after creating both alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supersedingAlert")]
+        public virtual string SupersedingAlert { get; set; } 
+
+        /// <summary>Alert threshold is for example “COUNT > 5”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual string Threshold { get; set; } 
+
+        /// <summary>The trigger sources for this rule.
+        ///
+        /// * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerSource")]
+        public virtual string TriggerSource { get; set; } 
+
+        /// <summary>The timestamp of the last update to the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>Rule window size. Possible values are 1 hour or 24 hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowSize")]
+        public virtual object WindowSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

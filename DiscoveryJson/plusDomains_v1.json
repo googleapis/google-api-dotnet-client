@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/ddTR9wKVw1pTrCI-Y4Sgk1lUlj0\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/ANplrqN0lyV1CO8o5_Wvj5IFim0\"",
  "discoveryVersion": "v1",
  "id": "plusDomains:v1",
  "name": "plusDomains",
  "version": "v1",
- "revision": "20190328",
+ "revision": "20190415",
  "title": "Google+ Domains API",
  "description": "Builds on top of the Google+ platform for Google Apps Domains.",
  "ownerDomain": "google.com",
@@ -76,7 +76,7 @@
      "description": "View your basic profile info, including your age range and language"
     },
     "https://www.googleapis.com/auth/plus.me": {
-     "description": "Know who you are on Google"
+     "description": "Associate you with your personal info on Google"
     },
     "https://www.googleapis.com/auth/plus.media.upload": {
      "description": "Send your photos and videos to Google+"
@@ -91,7 +91,7 @@
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "See your personal info, including any personal info you've made publically available"
+     "description": "See your personal info, including any personal info you've made publicly available"
     }
    }
   }
@@ -1933,44 +1933,6 @@
      "scopes": [
       "https://www.googleapis.com/auth/plus.login",
       "https://www.googleapis.com/auth/plus.stream.read"
-     ]
-    },
-    "listByCircle": {
-     "id": "plusDomains.people.listByCircle",
-     "path": "circles/{circleId}/people",
-     "httpMethod": "GET",
-     "description": "Shut down. See https://developers.google.com/+/api-shutdown for more details.",
-     "parameters": {
-      "circleId": {
-       "type": "string",
-       "description": "The ID of the circle to get the members of.",
-       "required": true,
-       "location": "path"
-      },
-      "maxResults": {
-       "type": "integer",
-       "description": "The maximum number of people to include in the response, which is used for paging. For any response, the actual number returned might be less than the specified maxResults.",
-       "default": "20",
-       "format": "uint32",
-       "minimum": "1",
-       "maximum": "100",
-       "location": "query"
-      },
-      "pageToken": {
-       "type": "string",
-       "description": "The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of \"nextPageToken\" from the previous response.",
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "circleId"
-     ],
-     "response": {
-      "$ref": "PeopleFeed"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/plus.circles.read",
-      "https://www.googleapis.com/auth/plus.login"
      ]
     }
    }

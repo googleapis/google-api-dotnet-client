@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3p1beta1
- *      <tr><th>API Rev<td>20190406 (1556)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1242,31 +1242,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
 
                 /// <summary>Optional.
                 ///
-                /// The desired job attributes returned for jobs in the search response. Defaults to
-                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobView", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<JobViewEnum> JobView { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The desired job attributes returned for jobs in the search response. Defaults to
-                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
-                public enum JobViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNSPECIFIED")]
-                    JOBVIEWUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ID_ONLY")]
-                    JOBVIEWIDONLY,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_MINIMAL")]
-                    JOBVIEWMINIMAL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SMALL")]
-                    JOBVIEWSMALL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_FULL")]
-                    JOBVIEWFULL,
-                }
-
-                /// <summary>Optional.
-                ///
                 /// The starting point of a query result.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1298,6 +1273,31 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                 /// project/companies/123" AND requisitionId = "req-1"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The desired job attributes returned for jobs in the search response. Defaults to
+                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("jobView", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<JobViewEnum> JobView { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The desired job attributes returned for jobs in the search response. Defaults to
+                /// JobView.JOB_VIEW_FULL if no value is specified.</summary>
+                public enum JobViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNSPECIFIED")]
+                    JOBVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ID_ONLY")]
+                    JOBVIEWIDONLY,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_MINIMAL")]
+                    JOBVIEWMINIMAL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SMALL")]
+                    JOBVIEWSMALL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_FULL")]
+                    JOBVIEWFULL,
+                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1333,15 +1333,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "jobView", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobView",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1363,6 +1354,15 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "jobView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobView",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1793,6 +1793,15 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
 
             /// <summary>Optional.
             ///
+            /// If provided, restricts completion to specified company.
+            ///
+            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
+            /// project/companies/foo".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
@@ -1809,15 +1818,6 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
             }
-
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to specified company.
-            ///
-            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
-            /// project/companies/foo".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
 
             /// <summary>Required.
             ///
@@ -1906,18 +1906,18 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
+                    "companyName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "scope",
+                        Name = "companyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
+                    "scope", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "companyName",
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

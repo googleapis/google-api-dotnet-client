@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/2SPiELX-h-4hR8mUMh9TW7ZIzgg\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/QtjhOzVspxdYDcV-neBlaStEry0\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20190328",
+ "revision": "20190415",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -460,6 +460,10 @@
      "items": {
       "type": "string"
      }
+    },
+    "rootPassword": {
+     "type": "string",
+     "description": "Initial root password. Use only on creation."
     },
     "selfLink": {
      "type": "string",

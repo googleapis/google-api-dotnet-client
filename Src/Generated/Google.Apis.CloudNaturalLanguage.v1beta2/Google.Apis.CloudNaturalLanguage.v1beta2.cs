@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190405 (1555)
+ *      <tr><th>API Rev<td>20190412 (1562)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -962,8 +962,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>Metadata associated with the entity.
         ///
-        /// Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if available. The associated keys are
-        /// "wikipedia_url" and "mid", respectively.</summary>
+        /// For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if
+        /// they are available. For the metadata associated with other entity types, see the Type table below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190327 (1546)
+ *      <tr><th>API Rev<td>20190412 (1562)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -973,6 +973,14 @@ namespace Google.Apis.CloudAsset.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowEndTime { get; set; }
+
+            /// <summary>Start time of the time window (exclusive).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowStartTime { get; set; }
+
             /// <summary>A list of the full names of the assets. For example:
             /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
             /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
@@ -996,14 +1004,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                 [Google.Apis.Util.StringValueAttribute("IAM_POLICY")]
                 IAMPOLICY,
             }
-
-            /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowEndTime { get; set; }
-
-            /// <summary>Start time of the time window (exclusive).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1039,24 +1039,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "contentType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.endTime",
@@ -1069,6 +1051,24 @@ namespace Google.Apis.CloudAsset.v1beta1
                     "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "contentType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentType",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1255,7 +1255,7 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -1364,6 +1364,15 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
+
+        /// <summary>The uri prefix of all generated Cloud Storage objects. For example:
+        /// "gs://bucket_name/object_name_prefix". Each object uri is in format: "gs://bucket_name/object_name_prefix//
+        /// and only contains assets for that type.  starts from 0. For example:
+        /// "gs://bucket_name/object_name_prefix/google.compute.disk/0" is the first shard of output objects containing
+        /// all google.compute.disk assets. An INVALID_ARGUMENT error will be returned if file with the same name
+        /// "gs://bucket_name/object_name_prefix" already exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
+        public virtual string UriPrefix { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

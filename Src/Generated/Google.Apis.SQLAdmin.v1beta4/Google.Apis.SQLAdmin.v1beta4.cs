@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190328 (1547)
+ *      <tr><th>API Rev<td>20190415 (1565)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4650,6 +4650,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The replicas of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaNames")]
         public virtual System.Collections.Generic.IList<string> ReplicaNames { get; set; } 
+
+        /// <summary>Initial root password. Use only on creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
+        public virtual string RootPassword { get; set; } 
 
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

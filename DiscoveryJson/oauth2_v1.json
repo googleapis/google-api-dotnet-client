@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/6gy2tfxO0xiB1vqpE1CpGSSyBHg\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Ydp-Ynsm-doIo9JKOgNSlCRTJVQ\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v1",
  "name": "oauth2",
@@ -70,13 +70,13 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/plus.me": {
-     "description": "Know who you are on Google"
+     "description": "Associate you with your personal info on Google"
     },
     "https://www.googleapis.com/auth/userinfo.email": {
      "description": "View your email address"
     },
     "https://www.googleapis.com/auth/userinfo.profile": {
-     "description": "See your personal info, including any personal info you've made publically available"
+     "description": "See your personal info, including any personal info you've made publicly available"
     }
    }
   }

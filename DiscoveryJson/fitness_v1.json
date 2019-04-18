@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/5HkIXTuow4_42nhAZgQJ4gq5QE8\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/SV00vz-M_UnVQtIxbve2S9Uvw8Y\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",
  "version": "v1",
- "revision": "20190408",
+ "revision": "20190416",
  "title": "Fitness",
  "description": "Stores and accesses user data in the fitness store from apps on any platform.",
  "ownerDomain": "google.com",

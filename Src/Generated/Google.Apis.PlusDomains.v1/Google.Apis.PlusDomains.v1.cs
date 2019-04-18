@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/domains/'>Google+ Domains API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190328 (1547)
+ *      <tr><th>API Rev<td>20190415 (1565)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/domains/'>
  *              https://developers.google.com/+/domains/</a>
@@ -119,7 +119,7 @@ namespace Google.Apis.PlusDomains.v1
             /// <summary>View your basic profile info, including your age range and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>Send your photos and videos to Google+</summary>
@@ -134,7 +134,7 @@ namespace Google.Apis.PlusDomains.v1
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public static string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -148,7 +148,7 @@ namespace Google.Apis.PlusDomains.v1
             /// <summary>View your basic profile info, including your age range and language</summary>
             public const string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
             /// <summary>Send your photos and videos to Google+</summary>
@@ -163,7 +163,7 @@ namespace Google.Apis.PlusDomains.v1
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
 
-            /// <summary>See your personal info, including any personal info you've made publically available</summary>
+            /// <summary>See your personal info, including any personal info you've made publicly available</summary>
             public const string UserinfoProfile = "https://www.googleapis.com/auth/userinfo.profile";
 
         }
@@ -1452,97 +1452,6 @@ namespace Google.Apis.PlusDomains.v1
                     "collection", new Google.Apis.Discovery.Parameter
                     {
                         Name = "collection",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "20",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Shut down. See https://developers.google.com/+/api-shutdown for more details.</summary>
-        /// <param name="circleId">The ID of the circle to get the members of.</param>
-        public virtual ListByCircleRequest ListByCircle(string circleId)
-        {
-            return new ListByCircleRequest(service, circleId);
-        }
-
-        /// <summary>Shut down. See https://developers.google.com/+/api-shutdown for more details.</summary>
-        public class ListByCircleRequest : PlusDomainsBaseServiceRequest<Google.Apis.PlusDomains.v1.Data.PeopleFeed>
-        {
-            /// <summary>Constructs a new ListByCircle request.</summary>
-            public ListByCircleRequest(Google.Apis.Services.IClientService service, string circleId)
-                : base(service)
-            {
-                CircleId = circleId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the circle to get the members of.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("circleId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string CircleId { get; private set; }
-
-            /// <summary>The maximum number of people to include in the response, which is used for paging. For any
-            /// response, the actual number returned might be less than the specified maxResults.</summary>
-            /// [default: 20]
-            /// [minimum: 1]
-            /// [maximum: 100]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
-            /// of results, set this parameter to the value of "nextPageToken" from the previous response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "listByCircle"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "circles/{circleId}/people"; }
-            }
-
-            /// <summary>Initializes ListByCircle parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "circleId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "circleId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,

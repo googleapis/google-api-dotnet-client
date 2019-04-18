@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://sites.google.com/corp/google.com/cloudprivatecatalog'>Cloud Private Catalog API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190330 (1549)
+ *      <tr><th>API Rev<td>20190413 (1563)
  *      <tr><th>API Docs
  *          <td><a href='https://sites.google.com/corp/google.com/cloudprivatecatalog'>
  *              https://sites.google.com/corp/google.com/cloudprivatecatalog</a>
@@ -410,6 +410,11 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>A pagination token returned from a previous call to SearchCatalogs that indicates where
+                /// this listing should continue from. This field is optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of entries that are requested.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -419,11 +424,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 /// * Get a single catalog: `name=catalogs/{catalog_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
-
-                /// <summary>A pagination token returned from a previous call to SearchCatalogs that indicates where
-                /// this listing should continue from. This field is optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -459,6 +459,15 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -471,15 +480,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                         "query", new Google.Apis.Discovery.Parameter
                         {
                             Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -540,6 +540,11 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>A pagination token returned from a previous call to SearchProducts that indicates where
+                /// this listing should continue from. This field is optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of entries that are requested.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -551,11 +556,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 /// `name=catalogs/{catalog_id}/products/{product_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
-
-                /// <summary>A pagination token returned from a previous call to SearchProducts that indicates where
-                /// this listing should continue from. This field is optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -591,6 +591,15 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -603,15 +612,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                         "query", new Google.Apis.Discovery.Parameter
                         {
                             Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1088,10 +1088,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>The maximum number of entries that are requested.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The query to filter the versions. Required.
                 ///
                 /// The supported queries are: * List versions under a product:
@@ -1104,6 +1100,10 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 /// this listing should continue from. This field is optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of entries that are requested.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1139,15 +1139,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "query", new Google.Apis.Discovery.Parameter
                         {
                             Name = "query",
@@ -1160,6 +1151,15 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1372,6 +1372,11 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>A pagination token returned from a previous call to SearchProducts that indicates where
+                /// this listing should continue from. This field is optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of entries that are requested.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1383,11 +1388,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                 /// `name=catalogs/{catalog_id}/products/{product_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
-
-                /// <summary>A pagination token returned from a previous call to SearchProducts that indicates where
-                /// this listing should continue from. This field is optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1423,6 +1423,15 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1435,15 +1444,6 @@ namespace Google.Apis.CloudPrivateCatalog.v1beta1
                         "query", new Google.Apis.Discovery.Parameter
                         {
                             Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

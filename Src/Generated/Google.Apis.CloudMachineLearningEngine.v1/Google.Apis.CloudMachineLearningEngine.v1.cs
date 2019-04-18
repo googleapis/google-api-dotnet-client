@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190325 (1544)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1184,6 +1184,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of locations to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1191,12 +1197,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1232,18 +1232,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1559,6 +1559,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Optional. A page token to request the next page of results.
                     ///
                     /// You get the token from the `next_page_token` field of the response from the previous
@@ -1573,10 +1577,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1612,6 +1612,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1624,15 +1633,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2640,10 +2640,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2651,6 +2647,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2686,15 +2686,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2707,6 +2698,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2955,19 +2955,20 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Represents output related to a built-in algorithm Job.</summary>
     public class GoogleCloudMlV1BuiltInAlgorithmOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Framework on which the built-in algorithm was trained on.</summary>
+        /// <summary>Framework on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
         public virtual string Framework { get; set; } 
 
-        /// <summary>Built-in algorithm's saved model path. Only set for non-hptuning succeeded jobs.</summary>
+        /// <summary>The Cloud Storage path to the `model/` directory where the training job saves the trained model.
+        /// Only set for successful jobs that don't use hyperparameter tuning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelPath")]
         public virtual string ModelPath { get; set; } 
 
-        /// <summary>Python version on which the built-in algorithm was trained on.</summary>
+        /// <summary>Python version on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
-        /// <summary>CMLE runtime version on which the built-in algorithm was trained on.</summary>
+        /// <summary>Cloud ML Engine runtime version on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -3032,8 +3033,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allMetrics")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> AllMetrics { get; set; } 
 
-        /// <summary>Details related to built-in algorithms job. Only set this for built-in algorithms jobs and for
-        /// trials that succeeded.</summary>
+        /// <summary>Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that
+        /// have succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtInAlgorithmOutput")]
         public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; } 
 
@@ -3097,11 +3098,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameterMetricTag")]
         public virtual string HyperparameterMetricTag { get; set; } 
 
-        /// <summary>Optional. How many failed trials that need to be seen before failing the hyperparameter tuning job.
-        /// User can specify this field to override the default failing criteria for CloudML Engine hyperparameter
+        /// <summary>Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning
+        /// job. You can specify this field to override the default failing criteria for Cloud ML Engine hyperparameter
         /// tuning jobs.
         ///
-        /// Defaults to zero, which means to let the service decide when a hyperparameter job should fail.</summary>
+        /// Defaults to zero, which means the service decides when a hyperparameter job should fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailedTrials")]
         public virtual System.Nullable<int> MaxFailedTrials { get; set; } 
 
@@ -3135,7 +3136,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a training, prediction or explanation job.</summary>
+    /// <summary>Represents a training or prediction job.</summary>
     public class GoogleCloudMlV1Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. When the job was created.</summary>
@@ -3454,8 +3455,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
         public virtual string DataFormat { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage location of the input data files. May contain wildcards. See
-        /// </summary>
+        /// <summary>Required. The Cloud Storage location of the input data files. May contain wildcards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputPaths")]
         public virtual System.Collections.Generic.IList<string> InputPaths { get; set; } 
 
@@ -3786,7 +3786,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Represents results of a training job. Output only.</summary>
     public class GoogleCloudMlV1TrainingOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details related to built-in algorithms job. Only set for built-in algorithms jobs.</summary>
+        /// <summary>Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtInAlgorithmOutput")]
         public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; } 
 
@@ -3914,6 +3914,41 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Optional. The Google Cloud Storage location of the packages for custom prediction and any
+        /// additional dependencies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
+        public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
+
+        /// <summary>class PredictionClass(object): A Model performs predictions on a given list of instances.
+        ///
+        /// The input instances are the raw values sent by the user. It is the responsibility of a Model to translate
+        /// these instances into actual predictions.
+        ///
+        /// The input instances and the output use python data types. The input instances have been decoded prior to
+        /// being passed to the predict method. The output, which should use python data types is encoded after being
+        /// returned from the predict method.
+        ///
+        /// def predict(self, instances, **kwargs): Returns predictions for the provided instances.
+        ///
+        /// Instances are the decoded values from the request. Clients need not worry about decoding json nor base64
+        /// decoding.
+        ///
+        /// Args: instances: A list of instances, as described in the API. **kwargs: Additional keyword arguments, will
+        /// be passed into the client's predict method.
+        ///
+        /// Returns: A list of outputs containing the prediction results.
+        ///
+        /// @classmethod def from_path(cls, model_path): Creates a model using the given model path.
+        ///
+        /// Path is useful, e.g., to load files from the exported directory containing the model.
+        ///
+        /// Args: model_path: The local directory that contains the exported model file along with any additional files
+        /// uploaded when creating the version resource.
+        ///
+        /// Returns: An instance implementing this Model class. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictionClass")]
+        public virtual string PredictionClass { get; set; } 
+
         /// <summary>Optional. The version of Python used in prediction. If not set, the default version is '2.7'.
         /// Python '3.5' is available when `runtime_version` is set to '1.4' and above. Python '2.7' works with all
         /// supported runtime versions.</summary>
@@ -3990,7 +4025,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]

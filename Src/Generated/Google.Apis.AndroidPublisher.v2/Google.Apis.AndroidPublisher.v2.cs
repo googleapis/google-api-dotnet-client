@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190409 (1559)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -4053,8 +4053,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
                 return new GetRequest(service, packageName, editId, track);
@@ -4083,8 +4082,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4137,7 +4135,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -4149,8 +4147,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v2.Data.Testers body, string packageName, string editId, string track)
             {
                 return new PatchRequest(service, body, packageName, editId, track);
@@ -4180,8 +4177,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4240,7 +4236,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -4252,8 +4248,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v2.Data.Testers body, string packageName, string editId, string track)
             {
                 return new UpdateRequest(service, body, packageName, editId, track);
@@ -4283,8 +4278,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4343,7 +4337,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -4545,9 +4539,8 @@ namespace Google.Apis.AndroidPublisher.v2
 
             }
 
-            /// <summary>Updates the track configuration for the specified track type. When halted, the rollout track
-            /// cannot be updated without adding new APKs, and adding new APKs will cause it to resume. This method
-            /// supports patch semantics.</summary>
+            /// <summary>Updates the track configuration for the specified track type. This method supports patch
+            /// semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
@@ -4559,9 +4552,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 return new PatchRequest(service, body, packageName, editId, track);
             }
 
-            /// <summary>Updates the track configuration for the specified track type. When halted, the rollout track
-            /// cannot be updated without adding new APKs, and adding new APKs will cause it to resume. This method
-            /// supports patch semantics.</summary>
+            /// <summary>Updates the track configuration for the specified track type. This method supports patch
+            /// semantics.</summary>
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.Track>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -4650,8 +4642,7 @@ namespace Google.Apis.AndroidPublisher.v2
 
             }
 
-            /// <summary>Updates the track configuration for the specified track type. When halted, the rollout track
-            /// cannot be updated without adding new APKs, and adding new APKs will cause it to resume.</summary>
+            /// <summary>Updates the track configuration for the specified track type.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
@@ -4663,8 +4654,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 return new UpdateRequest(service, body, packageName, editId, track);
             }
 
-            /// <summary>Updates the track configuration for the specified track type. When halted, the rollout track
-            /// cannot be updated without adding new APKs, and adding new APKs will cause it to resume.</summary>
+            /// <summary>Updates the track configuration for the specified track type.</summary>
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.Track>
             {
                 /// <summary>Constructs a new Update request.</summary>

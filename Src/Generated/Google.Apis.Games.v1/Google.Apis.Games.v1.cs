@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190404 (1554)
+ *      <tr><th>API Rev<td>20190411 (1561)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -128,7 +128,7 @@ namespace Google.Apis.Games.v1
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public static string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
         }
@@ -142,7 +142,7 @@ namespace Google.Apis.Games.v1
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
 
-            /// <summary>Know who you are on Google</summary>
+            /// <summary>Associate you with your personal info on Google</summary>
             public const string PlusMe = "https://www.googleapis.com/auth/plus.me";
 
         }

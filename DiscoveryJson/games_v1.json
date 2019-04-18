@@ -1,12 +1,12 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/JREfvuODzhg6dpZtu749BK_5U5c\"",
+  "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/vTbNAEVJ2tKv5PC3HpcvhhjhlkI\"",
   "discoveryVersion": "v1",
   "id": "games:v1",
   "name": "games",
   "canonicalName": "Games",
   "version": "v1",
-  "revision": "20190404",
+  "revision": "20190411",
   "title": "Google Play Game Services API",
   "description": "The API for Google Play Game Services.",
   "ownerDomain": "google.com",
@@ -77,7 +77,7 @@
           "description": "Create, edit, and delete your Google Play Games activity"
         },
         "https://www.googleapis.com/auth/plus.me": {
-          "description": "Know who you are on Google"
+          "description": "Associate you with your personal info on Google"
         }
       }
     }

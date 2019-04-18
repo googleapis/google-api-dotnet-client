@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190404 (1554)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.Drive.v3
             changes = new ChangesResource(this);
             channels = new ChannelsResource(this);
             comments = new CommentsResource(this);
+            drives = new DrivesResource(this);
             files = new FilesResource(this);
             permissions = new PermissionsResource(this);
             replies = new RepliesResource(this);
@@ -205,6 +206,14 @@ namespace Google.Apis.Drive.v3
         public virtual CommentsResource Comments
         {
             get { return comments; }
+        }
+
+        private readonly DrivesResource drives;
+
+        /// <summary>Gets the Drives resource.</summary>
+        public virtual DrivesResource Drives
+        {
+            get { return drives; }
         }
 
         private readonly FilesResource files;
@@ -463,13 +472,22 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>The ID of the shared drive for which the starting pageToken for listing future changes from
+            /// that shared drive will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
-            /// <summary>The ID of the Team Drive for which the starting pageToken for listing future changes from that
-            /// Team Drive will be returned.</summary>
+            /// <summary>Deprecated use driveId instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeamDriveId { get; set; }
 
@@ -498,6 +516,24 @@ namespace Google.Apis.Drive.v3
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -519,7 +555,7 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Lists the changes for a user or Team Drive.</summary>
+        /// <summary>Lists the changes for a user or shared drive.</summary>
         /// <param name="pageToken">The token for continuing a previous list request on the next page. This should be set to the
         /// value of 'nextPageToken' from the previous response or to the response from the getStartPageToken
         /// method.</param>
@@ -528,7 +564,7 @@ namespace Google.Apis.Drive.v3
             return new ListRequest(service, pageToken);
         }
 
-        /// <summary>Lists the changes for a user or Team Drive.</summary>
+        /// <summary>Lists the changes for a user or shared drive.</summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ChangeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -546,6 +582,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; private set; }
 
+            /// <summary>The shared drive from which changes will be returned. If specified the change IDs will be
+            /// reflective of the shared drive; use the combined drive ID and change ID as an identifier.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
             /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
             /// the time of the request, even when a file was removed from the list of changes and there will be no
             /// further change entries for this file.</summary>
@@ -553,13 +594,18 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
+            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
+
             /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
             /// for example by deletion or loss of access.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
 
-            /// <summary>Whether Team Drive files or changes should be included in results.</summary>
+            /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
@@ -584,13 +630,17 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
-            /// <summary>The Team Drive from which changes will be returned. If specified the change IDs will be
-            /// reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.</summary>
+            /// <summary>Deprecated use driveId instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeamDriveId { get; set; }
 
@@ -628,9 +678,27 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeCorpusRemovals",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeItemsFromAllDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -679,6 +747,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "drive",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -732,6 +809,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; private set; }
 
+            /// <summary>The shared drive from which changes will be returned. If specified the change IDs will be
+            /// reflective of the shared drive; use the combined drive ID and change ID as an identifier.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
             /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
             /// the time of the request, even when a file was removed from the list of changes and there will be no
             /// further change entries for this file.</summary>
@@ -739,13 +821,18 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
+            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
+
             /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
             /// for example by deletion or loss of access.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
 
-            /// <summary>Whether Team Drive files or changes should be included in results.</summary>
+            /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
@@ -770,13 +857,17 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
-            /// <summary>The Team Drive from which changes will be returned. If specified the change IDs will be
-            /// reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.</summary>
+            /// <summary>Deprecated use driveId instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeamDriveId { get; set; }
 
@@ -820,9 +911,27 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeCorpusRemovals",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeItemsFromAllDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -871,6 +980,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "drive",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1417,6 +1535,539 @@ namespace Google.Apis.Drive.v3
         }
     }
 
+    /// <summary>The "drives" collection of methods.</summary>
+    public class DrivesResource
+    {
+        private const string Resource = "drives";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DrivesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a new shared drive.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="requestId">An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+        /// creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating
+        /// duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be
+        /// returned.</param>
+        public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Drive body, string requestId)
+        {
+            return new CreateRequest(service, body, requestId);
+        }
+
+        /// <summary>Creates a new shared drive.</summary>
+        public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string requestId)
+                : base(service)
+            {
+                RequestId = requestId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+            /// creation of a shared drive. A repeated request by the same user and with the same request ID will avoid
+            /// creating duplicates by attempting to create the same shared drive. If the shared drive already exists a
+            /// 409 error will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.Drive Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot
+        /// contain any untrashed items.</summary>
+        /// <param name="driveId">The ID of the shared drive.</param>
+        public virtual DeleteRequest Delete(string driveId)
+        {
+            return new DeleteRequest(service, driveId);
+        }
+
+        /// <summary>Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot
+        /// contain any untrashed items.</summary>
+        public class DeleteRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string driveId)
+                : base(service)
+            {
+                DriveId = driveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DriveId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives/{driveId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a shared drive's metadata by ID.</summary>
+        /// <param name="driveId">The ID of the shared drive.</param>
+        public virtual GetRequest Get(string driveId)
+        {
+            return new GetRequest(service, driveId);
+        }
+
+        /// <summary>Gets a shared drive's metadata by ID.</summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string driveId)
+                : base(service)
+            {
+                DriveId = driveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DriveId { get; private set; }
+
+            /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
+            /// access if they are an administrator of the domain to which the shared drive belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives/{driveId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Hides a shared drive from the default view.</summary>
+        /// <param name="driveId">The ID of the shared drive.</param>
+        public virtual HideRequest Hide(string driveId)
+        {
+            return new HideRequest(service, driveId);
+        }
+
+        /// <summary>Hides a shared drive from the default view.</summary>
+        public class HideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
+        {
+            /// <summary>Constructs a new Hide request.</summary>
+            public HideRequest(Google.Apis.Services.IClientService service, string driveId)
+                : base(service)
+            {
+                DriveId = driveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DriveId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "hide"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives/{driveId}/hide"; }
+            }
+
+            /// <summary>Initializes Hide parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the user's shared drives.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists the user's shared drives.</summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.DriveList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Maximum number of shared drives to return.</summary>
+            /// [default: 10]
+            /// [minimum: 1]
+            /// [maximum: 100]
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Page token for shared drives.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Query string for searching shared drives.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Q { get; set; }
+
+            /// <summary>Issue the request as a domain administrator; if set to true, then all shared drives of the
+            /// domain in which the requester is an administrator are returned.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "10",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Restores a shared drive to the default view.</summary>
+        /// <param name="driveId">The ID of the shared drive.</param>
+        public virtual UnhideRequest Unhide(string driveId)
+        {
+            return new UnhideRequest(service, driveId);
+        }
+
+        /// <summary>Restores a shared drive to the default view.</summary>
+        public class UnhideRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
+        {
+            /// <summary>Constructs a new Unhide request.</summary>
+            public UnhideRequest(Google.Apis.Services.IClientService service, string driveId)
+                : base(service)
+            {
+                DriveId = driveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DriveId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "unhide"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives/{driveId}/unhide"; }
+            }
+
+            /// <summary>Initializes Unhide parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the metadate for a shared drive.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="driveId">The ID of the shared drive.</param>
+        public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Drive body, string driveId)
+        {
+            return new UpdateRequest(service, body, driveId);
+        }
+
+        /// <summary>Updates the metadate for a shared drive.</summary>
+        public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.Drive body, string driveId)
+                : base(service)
+            {
+                DriveId = driveId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the shared drive.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DriveId { get; private set; }
+
+            /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
+            /// access if they are an administrator of the domain to which the shared drive belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.Drive Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "drives/{driveId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "files" collection of methods.</summary>
     public class FilesResource
     {
@@ -1466,7 +2117,7 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Drive.</summary>
+            /// files with binary content in Google Drive.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -1475,7 +2126,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -1547,6 +2203,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -1586,7 +2251,7 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Drive.</summary>
+            /// files with binary content in Google Drive.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -1595,7 +2260,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -1660,6 +2330,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1746,7 +2425,7 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Drive.</summary>
+            /// files with binary content in Google Drive.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -1755,7 +2434,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -1774,7 +2458,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to
-        /// a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
+        /// a shared drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
         /// by the user are also deleted.</summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual DeleteRequest Delete(string fileId)
@@ -1783,7 +2467,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to
-        /// a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
+        /// a shared drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
         /// by the user are also deleted.</summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -1800,7 +2484,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -1836,6 +2525,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2133,7 +2831,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -2175,6 +2878,15 @@ namespace Google.Apis.Drive.v3
                     "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
                     {
                         Name = "acknowledgeAbuse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -2262,10 +2974,8 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>Comma-separated list of bodies of items (files/documents) to which the query applies. Supported
-            /// bodies are 'user', 'domain', 'teamDrive' and 'allTeamDrives'. 'allTeamDrives' must be combined with
-            /// 'user'; all other values must be used in isolation. Prefer 'user' or 'teamDrive' to 'allTeamDrives' for
-            /// efficiency.</summary>
+            /// <summary>Bodies of items (files/documents) to which the query applies. Supported bodies are 'user',
+            /// 'domain', 'drive' and 'allDrives'. Prefer 'user' or 'drive' to 'allDrives' for efficiency.</summary>
             [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Corpora { get; set; }
 
@@ -2284,7 +2994,16 @@ namespace Google.Apis.Drive.v3
                 User,
             }
 
-            /// <summary>Whether Team Drive items should be included in results.</summary>
+            /// <summary>ID of the shared drive to search.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DriveId { get; set; }
+
+            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
+
+            /// <summary>Deprecated use includeItemsFromAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
@@ -2322,12 +3041,17 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
-            /// <summary>ID of Team Drive to search.</summary>
+            /// <summary>Deprecated use driveId instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeamDriveId { get; set; }
 
@@ -2371,6 +3095,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "driveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "driveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeItemsFromAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeItemsFromAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2428,6 +3170,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -2479,7 +3230,7 @@ namespace Google.Apis.Drive.v3
             public virtual string AddParents { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Drive.</summary>
+            /// files with binary content in Google Drive.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -2492,7 +3243,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -2575,6 +3331,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2663,7 +3428,7 @@ namespace Google.Apis.Drive.v3
             public virtual string AddParents { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Drive.</summary>
+            /// files with binary content in Google Drive.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -2676,7 +3441,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -2728,7 +3498,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -2776,6 +3551,15 @@ namespace Google.Apis.Drive.v3
                     "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
                     {
                         Name = "acknowledgeAbuse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -2863,15 +3647,15 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Creates a permission for a file or Team Drive.</summary>
+        /// <summary>Creates a permission for a file or shared drive.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="fileId">The ID of the file or Team Drive.</param>
+        /// <param name="fileId">The ID of the file or shared drive.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Permission body, string fileId)
         {
             return new CreateRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a permission for a file or Team Drive.</summary>
+        /// <summary>Creates a permission for a file or shared drive.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2884,7 +3668,7 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file or Team Drive.</summary>
+            /// <summary>The ID of the file or shared drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -2898,7 +3682,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("sendNotificationEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotificationEmail { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -2910,8 +3699,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
-            /// domain to which the Team Drive belongs.</summary>
+            /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
+            /// domain to which the shared drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -2974,6 +3763,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -3005,7 +3803,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Deletes a permission.</summary>
-        /// <param name="fileId">The ID of the file or Team Drive.</param>
+        /// <param name="fileId">The ID of the file or shared drive.</param>
         /// <param name="permissionId">The ID of the
         /// permission.</param>
         public virtual DeleteRequest Delete(string fileId, string permissionId)
@@ -3026,7 +3824,7 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file or Team Drive.</summary>
+            /// <summary>The ID of the file or shared drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -3034,14 +3832,19 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
-            /// domain to which the Team Drive belongs.</summary>
+            /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
+            /// domain to which the shared drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3086,6 +3889,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3140,14 +3952,19 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
-            /// domain to which the Team Drive belongs.</summary>
+            /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
+            /// domain to which the shared drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3195,6 +4012,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -3216,14 +4042,14 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Lists a file's or Team Drive's permissions.</summary>
-        /// <param name="fileId">The ID of the file or Team Drive.</param>
+        /// <summary>Lists a file's or shared drive's permissions.</summary>
+        /// <param name="fileId">The ID of the file or shared drive.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(service, fileId);
         }
 
-        /// <summary>Lists a file's or Team Drive's permissions.</summary>
+        /// <summary>Lists a file's or shared drive's permissions.</summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.PermissionList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3235,12 +4061,12 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file or Team Drive.</summary>
+            /// <summary>The ID of the file or shared drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>The maximum number of permissions to return per page. When not set for files in a Team Drive,
-            /// at most 100 results will be returned. When not set for files that are not in a Team Drive, the entire
+            /// <summary>The maximum number of permissions to return per page. When not set for files in a shared drive,
+            /// at most 100 results will be returned. When not set for files that are not in a shared drive, the entire
             /// list will be returned.</summary>
             /// [minimum: 1]
             /// [maximum: 100]
@@ -3252,14 +4078,19 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
-            /// domain to which the Team Drive belongs.</summary>
+            /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
+            /// domain to which the shared drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3316,6 +4147,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsTeamDrives", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsTeamDrives",
@@ -3339,7 +4179,7 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Updates a permission with patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="fileId">The ID of the file or Team Drive.</param>
+        /// <param name="fileId">The ID of the file or shared drive.</param>
         /// <param name="permissionId">The ID of the
         /// permission.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Permission body, string fileId, string permissionId)
@@ -3361,7 +4201,7 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file or Team Drive.</summary>
+            /// <summary>The ID of the file or shared drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -3374,7 +4214,12 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RemoveExpiration { get; set; }
 
-            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
+
+            /// <summary>Deprecated use supportsAllDrives instead.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
@@ -3386,8 +4231,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
             /// <summary>Issue the request as a domain administrator; if set to true, then the requester will be granted
-            /// access if the file ID parameter refers to a Team Drive and the requester is an administrator of the
-            /// domain to which the Team Drive belongs.</summary>
+            /// access if the file ID parameter refers to a shared drive and the requester is an administrator of the
+            /// domain to which the shared drive belongs.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
@@ -3444,6 +4289,15 @@ namespace Google.Apis.Drive.v3
                     "removeExpiration", new Google.Apis.Discovery.Parameter
                     {
                         Name = "removeExpiration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsAllDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsAllDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -4013,9 +4867,9 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content,
-        /// like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file
-        /// version can't be deleted.</summary>
+        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content in
+        /// Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last
+        /// remaining file version can't be deleted.</summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="revisionId">The ID of the
         /// revision.</param>
@@ -4024,9 +4878,9 @@ namespace Google.Apis.Drive.v3
             return new DeleteRequest(service, fileId, revisionId);
         }
 
-        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content,
-        /// like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file
-        /// version can't be deleted.</summary>
+        /// <summary>Permanently deletes a file version. You can only delete revisions for files with binary content in
+        /// Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last
+        /// remaining file version can't be deleted.</summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4428,7 +5282,7 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Creates a new Team Drive.</summary>
+        /// <summary>Deprecated use drives.create instead.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="requestId">An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
         /// creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating
@@ -4439,7 +5293,7 @@ namespace Google.Apis.Drive.v3
             return new CreateRequest(service, body, requestId);
         }
 
-        /// <summary>Creates a new Team Drive.</summary>
+        /// <summary>Deprecated use drives.create instead.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -4502,16 +5356,14 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain
-        /// any untrashed items.</summary>
+        /// <summary>Deprecated use drives.delete instead.</summary>
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual DeleteRequest Delete(string teamDriveId)
         {
             return new DeleteRequest(service, teamDriveId);
         }
 
-        /// <summary>Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain
-        /// any untrashed items.</summary>
+        /// <summary>Deprecated use drives.delete instead.</summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4564,14 +5416,14 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Gets a Team Drive's metadata by ID.</summary>
+        /// <summary>Deprecated use drives.get instead.</summary>
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual GetRequest Get(string teamDriveId)
         {
             return new GetRequest(service, teamDriveId);
         }
 
-        /// <summary>Gets a Team Drive's metadata by ID.</summary>
+        /// <summary>Deprecated use drives.get instead.</summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4639,13 +5491,13 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Lists the user's Team Drives.</summary>
+        /// <summary>Deprecated use drives.list instead.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists the user's Team Drives.</summary>
+        /// <summary>Deprecated use drives.list instead.</summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDriveList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4741,7 +5593,7 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Updates a Team Drive's metadata</summary>
+        /// <summary>Deprecated use drives.update instead</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="teamDriveId">The ID of the Team Drive</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.TeamDrive body, string teamDriveId)
@@ -4749,7 +5601,7 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(service, body, teamDriveId);
         }
 
-        /// <summary>Updates a Team Drive's metadata</summary>
+        /// <summary>Deprecated use drives.update instead</summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -4836,9 +5688,17 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appInstalled")]
         public virtual System.Nullable<bool> AppInstalled { get; set; } 
 
-        /// <summary>Whether the user can create Team Drives.</summary>
+        /// <summary>Whether the user can create shared drives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canCreateDrives")]
+        public virtual System.Nullable<bool> CanCreateDrives { get; set; } 
+
+        /// <summary>Deprecated - use canCreateDrives instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canCreateTeamDrives")]
         public virtual System.Nullable<bool> CanCreateTeamDrives { get; set; } 
+
+        /// <summary>A list of themes that are supported for shared drives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveThemes")]
+        public virtual System.Collections.Generic.IList<About.DriveThemesData> DriveThemes { get; set; } 
 
         /// <summary>A map of source MIME type to possible targets for all supported exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormats")]
@@ -4868,7 +5728,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageQuota")]
         public virtual About.StorageQuotaData StorageQuota { get; set; } 
 
-        /// <summary>A list of themes that are supported for Team Drives.</summary>
+        /// <summary>Deprecated - use driveThemes instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveThemes")]
         public virtual System.Collections.Generic.IList<About.TeamDriveThemesData> TeamDriveThemes { get; set; } 
 
@@ -4879,6 +5739,22 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        public class DriveThemesData
+        {
+            /// <summary>A link to this theme's background image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
+            public virtual string BackgroundImageLink { get; set; } 
+
+            /// <summary>The color of this theme as an RGB hex string.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
+            public virtual string ColorRgb { get; set; } 
+
+            /// <summary>The ID of the theme.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id { get; set; } 
+
+        }    
 
         /// <summary>The user's storage quota limits and usage. All fields are measured in bytes.</summary>
         public class StorageQuotaData
@@ -4919,9 +5795,22 @@ namespace Google.Apis.Drive.v3.Data
         }
     }    
 
-    /// <summary>A change to a file or Team Drive.</summary>
+    /// <summary>A change to a file or shared drive.</summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The type of the change. Possible values are file and drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; } 
+
+        /// <summary>The updated state of the shared drive. Present if the changeType is drive, the user is still a
+        /// member of the shared drive, and the shared drive has not been deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drive")]
+        public virtual Drive Drive { get; set; } 
+
+        /// <summary>The ID of the shared drive associated with this change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
+        public virtual string DriveId { get; set; } 
+
         /// <summary>The updated state of the file. Present if the type is file and the file has not been removed from
         /// this list of changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
@@ -4935,17 +5824,16 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether the file or Team Drive has been removed from this list of changes, for example by deletion
-        /// or loss of access.</summary>
+        /// <summary>Whether the file or shared drive has been removed from this list of changes, for example by
+        /// deletion or loss of access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removed")]
         public virtual System.Nullable<bool> Removed { get; set; } 
 
-        /// <summary>The updated state of the Team Drive. Present if the type is teamDrive, the user is still a member
-        /// of the Team Drive, and the Team Drive has not been removed.</summary>
+        /// <summary>Deprecated - use drive instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
         public virtual TeamDrive TeamDrive { get; set; } 
 
-        /// <summary>The ID of the Team Drive associated with this change.</summary>
+        /// <summary>Deprecated - use driveId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
         public virtual string TeamDriveId { get; set; } 
 
@@ -4967,7 +5855,7 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
-        /// <summary>The type of the change. Possible values are file and teamDrive.</summary>
+        /// <summary>Deprecated - use changeType instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -5176,6 +6064,242 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Representation of a shared drive.</summary>
+    public class Drive : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An image file and cropping parameters from which a background image for this shared drive is set.
+        /// This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When
+        /// specified, all fields of the backgroundImageFile must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
+        public virtual Drive.BackgroundImageFileData BackgroundImageFile { get; set; } 
+
+        /// <summary>A short-lived link to this shared drive's background image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
+        public virtual string BackgroundImageLink { get; set; } 
+
+        /// <summary>Capabilities the current user has on this shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual Drive.CapabilitiesData Capabilities { get; set; } 
+
+        /// <summary>The color of this shared drive as an RGB hex string. It can only be set on a drive.drives.update
+        /// request that does not set themeId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
+        public virtual string ColorRgb { get; set; } 
+
+        /// <summary>The time at which the shared drive was created (RFC 3339 date-time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
+        public virtual string CreatedTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> CreatedTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedTimeRaw);
+            }
+            set
+            {
+                CreatedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>Whether the shared drive is hidden from default view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
+        public virtual System.Nullable<bool> Hidden { get; set; } 
+
+        /// <summary>The ID of this shared drive which is also the ID of the top level folder of this shared
+        /// drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#drive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of this shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
+        public virtual Drive.RestrictionsData Restrictions { get; set; } 
+
+        /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
+        /// driveThemes can be retrieved from a drive.about.get response. When not specified on a drive.drives.create
+        /// request, a random theme is chosen from which the background image and color are set. This is a write-only
+        /// field; it can only be set on requests that don't set colorRgb or backgroundImageFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
+        public virtual string ThemeId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>An image file and cropping parameters from which a background image for this shared drive is set.
+        /// This is a write only field; it can only be set on drive.drives.update requests that don't set themeId. When
+        /// specified, all fields of the backgroundImageFile must be set.</summary>
+        public class BackgroundImageFileData
+        {
+            /// <summary>The ID of an image file in Google Drive to use for the background image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id { get; set; } 
+
+            /// <summary>The width of the cropped image in the closed range of 0 to 1. This value represents the width
+            /// of the cropped image divided by the width of the entire image. The height is computed by applying a
+            /// width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144
+            /// pixels high.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("width")]
+            public virtual System.Nullable<float> Width { get; set; } 
+
+            /// <summary>The X coordinate of the upper left corner of the cropping area in the background image. This is
+            /// a value in the closed range of 0 to 1. This value represents the horizontal distance from the left side
+            /// of the entire image to the left side of the cropping area divided by the width of the entire
+            /// image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
+            public virtual System.Nullable<float> XCoordinate { get; set; } 
+
+            /// <summary>The Y coordinate of the upper left corner of the cropping area in the background image. This is
+            /// a value in the closed range of 0 to 1. This value represents the vertical distance from the top side of
+            /// the entire image to the top side of the cropping area divided by the height of the entire
+            /// image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
+            public virtual System.Nullable<float> YCoordinate { get; set; } 
+
+        }    
+
+        /// <summary>Capabilities the current user has on this shared drive.</summary>
+        public class CapabilitiesData
+        {
+            /// <summary>Whether the current user can add children to folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
+            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+
+            /// <summary>Whether the current user can change the copyRequiresWriterPermission restriction of this shared
+            /// drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermissionRestriction")]
+            public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermissionRestriction { get; set; } 
+
+            /// <summary>Whether the current user can change the domainUsersOnly restriction of this shared
+            /// drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeDomainUsersOnlyRestriction")]
+            public virtual System.Nullable<bool> CanChangeDomainUsersOnlyRestriction { get; set; } 
+
+            /// <summary>Whether the current user can change the background of this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveBackground")]
+            public virtual System.Nullable<bool> CanChangeDriveBackground { get; set; } 
+
+            /// <summary>Whether the current user can change the driveMembersOnly restriction of this shared
+            /// drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeDriveMembersOnlyRestriction")]
+            public virtual System.Nullable<bool> CanChangeDriveMembersOnlyRestriction { get; set; } 
+
+            /// <summary>Whether the current user can comment on files in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
+            public virtual System.Nullable<bool> CanComment { get; set; } 
+
+            /// <summary>Whether the current user can copy files in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
+            public virtual System.Nullable<bool> CanCopy { get; set; } 
+
+            /// <summary>Whether the current user can delete children from folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
+            public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
+
+            /// <summary>Whether the current user can delete this shared drive. Attempting to delete the shared drive
+            /// may still fail if there are untrashed items inside the shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDeleteDrive")]
+            public virtual System.Nullable<bool> CanDeleteDrive { get; set; } 
+
+            /// <summary>Whether the current user can download files in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
+            public virtual System.Nullable<bool> CanDownload { get; set; } 
+
+            /// <summary>Whether the current user can edit files in this shared drive</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
+            public virtual System.Nullable<bool> CanEdit { get; set; } 
+
+            /// <summary>Whether the current user can list the children of folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
+            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+
+            /// <summary>Whether the current user can add members to this shared drive or remove them or change their
+            /// role.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canManageMembers")]
+            public virtual System.Nullable<bool> CanManageMembers { get; set; } 
+
+            /// <summary>Whether the current user can read the revisions resource of files in this shared
+            /// drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
+            public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+
+            /// <summary>Whether the current user can rename files or folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
+            public virtual System.Nullable<bool> CanRename { get; set; } 
+
+            /// <summary>Whether the current user can rename this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRenameDrive")]
+            public virtual System.Nullable<bool> CanRenameDrive { get; set; } 
+
+            /// <summary>Whether the current user can share files or folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
+            public virtual System.Nullable<bool> CanShare { get; set; } 
+
+            /// <summary>Whether the current user can trash children from folders in this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
+            public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
+
+        }    
+
+        /// <summary>A set of restrictions that apply to this shared drive or items inside this shared drive.</summary>
+        public class RestrictionsData
+        {
+            /// <summary>Whether administrative privileges on this shared drive are required to modify
+            /// restrictions.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("adminManagedRestrictions")]
+            public virtual System.Nullable<bool> AdminManagedRestrictions { get; set; } 
+
+            /// <summary>Whether the options to copy, print, or download files inside this shared drive, should be
+            /// disabled for readers and commenters. When this restriction is set to true, it will override the
+            /// similarly named field to true for any file inside this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("copyRequiresWriterPermission")]
+            public virtual System.Nullable<bool> CopyRequiresWriterPermission { get; set; } 
+
+            /// <summary>Whether access to this shared drive and items inside this shared drive is restricted to users
+            /// of the domain to which this shared drive belongs. This restriction may be overridden by other sharing
+            /// policies controlled outside of this shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("domainUsersOnly")]
+            public virtual System.Nullable<bool> DomainUsersOnly { get; set; } 
+
+            /// <summary>Whether access to items inside this shared drive is restricted to its members.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("driveMembersOnly")]
+            public virtual System.Nullable<bool> DriveMembersOnly { get; set; } 
+
+        }
+    }    
+
+    /// <summary>A list of shared drives.</summary>
+    public class DriveList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of shared drives. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drives")]
+        public virtual System.Collections.Generic.IList<Drive> Drives { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#driveList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The page token for the next page of shared drives. This will be absent if the end of the list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The metadata for a file.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5221,6 +6345,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>ID of the shared drive the file resides in. Only populated for items in shared drives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
+        public virtual string DriveId { get; set; } 
+
         /// <summary>Whether the file has been explicitly trashed, as opposed to recursively trashed from a parent
         /// folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitlyTrashed")]
@@ -5231,7 +6359,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IDictionary<string,string> ExportLinks { get; set; } 
 
         /// <summary>The final component of fullFileExtension. This is only available for files with binary content in
-        /// Drive.</summary>
+        /// Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
         public virtual string FileExtension { get; set; } 
 
@@ -5242,14 +6370,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string FolderColorRgb { get; set; } 
 
         /// <summary>The full file extension extracted from the name field. May contain multiple concatenated
-        /// extensions, such as "tar.gz". This is only available for files with binary content in Drive. This is
+        /// extensions, such as "tar.gz". This is only available for files with binary content in Google Drive. This is
         /// automatically updated when the name field changes, however it is not cleared if the new name does not
         /// contain a valid extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; } 
 
         /// <summary>Whether any users are granted file access directly on this file. This field is only populated for
-        /// Team Drive files.</summary>
+        /// shared drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAugmentedPermissions")]
         public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; } 
 
@@ -5259,7 +6387,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> HasThumbnail { get; set; } 
 
         /// <summary>The ID of the file's head revision. This is currently only available for files with binary content
-        /// in Drive.</summary>
+        /// in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
         public virtual string HeadRevisionId { get; set; } 
 
@@ -5288,14 +6416,14 @@ namespace Google.Apis.Drive.v3.Data
         public virtual User LastModifyingUser { get; set; } 
 
         /// <summary>The MD5 checksum for the content of the file. This is only applicable to files with binary content
-        /// in Drive.</summary>
+        /// in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Checksum")]
         public virtual string Md5Checksum { get; set; } 
 
-        /// <summary>The MIME type of the file. Drive will attempt to automatically detect an appropriate value from
-        /// uploaded content if no value is provided. The value cannot be changed unless a new revision is uploaded. If
-        /// a file is created with a Google Doc MIME type, the uploaded content will be imported if possible. The
-        /// supported import formats are published in the About resource.</summary>
+        /// <summary>The MIME type of the file. Google Drive will attempt to automatically detect an appropriate value
+        /// from uploaded content if no value is provided. The value cannot be changed unless a new revision is
+        /// uploaded. If a file is created with a Google Doc MIME type, the uploaded content will be imported if
+        /// possible. The supported import formats are published in the About resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -5341,22 +6469,22 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>The name of the file. This is not necessarily unique within a folder. Note that for immutable items
-        /// such as the top level folders of Team Drives, My Drive root folder, and Application Data folder the name is
-        /// constant.</summary>
+        /// such as the top level folders of shared drives, My Drive root folder, and Application Data folder the name
+        /// is constant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The original filename of the uploaded content if available, or else the original value of the name
-        /// field. This is only available for files with binary content in Drive.</summary>
+        /// field. This is only available for files with binary content in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFilename")]
         public virtual string OriginalFilename { get; set; } 
 
-        /// <summary>Whether the user owns the file. Not populated for Team Drive files.</summary>
+        /// <summary>Whether the user owns the file. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownedByMe")]
         public virtual System.Nullable<bool> OwnedByMe { get; set; } 
 
         /// <summary>The owners of the file. Currently, only certain legacy files may have more than one owner. Not
-        /// populated for Team Drive files.</summary>
+        /// populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; } 
 
@@ -5372,7 +6500,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<string> PermissionIds { get; set; } 
 
         /// <summary>The full list of permissions for the file. This is only available if the requesting user can share
-        /// the file. Not populated for Team Drive files.</summary>
+        /// the file. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
 
@@ -5386,7 +6514,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quotaBytesUsed")]
         public virtual System.Nullable<long> QuotaBytesUsed { get; set; } 
 
-        /// <summary>Whether the file has been shared. Not populated for Team Drive files.</summary>
+        /// <summary>Whether the file has been shared. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shared")]
         public virtual System.Nullable<bool> Shared { get; set; } 
 
@@ -5413,7 +6541,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual User SharingUser { get; set; } 
 
         /// <summary>The size of the file's content in bytes. This is only applicable to files with binary content in
-        /// Drive.</summary>
+        /// Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; } 
 
@@ -5426,7 +6554,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
         public virtual System.Nullable<bool> Starred { get; set; } 
 
-        /// <summary>ID of the Team Drive the file resides in.</summary>
+        /// <summary>Deprecated - use driveId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
         public virtual string TeamDriveId { get; set; } 
 
@@ -5444,8 +6572,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
         public virtual System.Nullable<bool> Trashed { get; set; } 
 
-        /// <summary>The time that the item was trashed (RFC 3339 date-time). Only populated for Team Drive
-        /// files.</summary>
+        /// <summary>The time that the item was trashed (RFC 3339 date-time). Only populated for items in shared
+        /// drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashedTime")]
         public virtual string TrashedTimeRaw { get; set; }
 
@@ -5463,8 +6591,8 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
-        /// <summary>If the file has been explicitly trashed, the user who trashed it. Only populated for Team Drive
-        /// files.</summary>
+        /// <summary>If the file has been explicitly trashed, the user who trashed it. Only populated for items in
+        /// shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashingUser")]
         public virtual User TrashingUser { get; set; } 
 
@@ -5504,7 +6632,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> ViewersCanCopyContent { get; set; } 
 
         /// <summary>A link for downloading the content of the file in a browser. This is only available for files with
-        /// binary content in Drive.</summary>
+        /// binary content in Google Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webContentLink")]
         public virtual string WebContentLink { get; set; } 
 
@@ -5512,8 +6640,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webViewLink")]
         public virtual string WebViewLink { get; set; } 
 
-        /// <summary>Whether users with only writer permission can modify the file's permissions. Not populated for Team
-        /// Drive files.</summary>
+        /// <summary>Whether users with only writer permission can modify the file's permissions. Not populated for
+        /// items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writersCanShare")]
         public virtual System.Nullable<bool> WritersCanShare { get; set; } 
 
@@ -5543,8 +6671,8 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
             public virtual System.Nullable<bool> CanComment { get; set; } 
 
-            /// <summary>Whether the current user can copy this file. For a Team Drive item, whether the current user
-            /// can copy non-folder descendants of this item, or this item itself if it is not a folder.</summary>
+            /// <summary>Whether the current user can copy this file. For an item in a shared drive, whether the current
+            /// user can copy non-folder descendants of this item, or this item itself if it is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; } 
 
@@ -5553,7 +6681,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanDelete { get; set; } 
 
             /// <summary>Whether the current user can delete children of this folder. This is false when the item is not
-            /// a folder. Only populated for Team Drive items.</summary>
+            /// a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteChildren")]
             public virtual System.Nullable<bool> CanDeleteChildren { get; set; } 
 
@@ -5570,50 +6698,70 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
             public virtual System.Nullable<bool> CanListChildren { get; set; } 
 
-            /// <summary>Whether the current user can move children of this folder outside of the Team Drive. This is
-            /// false when the item is not a folder. Only populated for Team Drive items.</summary>
+            /// <summary>Whether the current user can move children of this folder outside of the shared drive. This is
+            /// false when the item is not a folder. Only populated for items in shared drives.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfDrive")]
+            public virtual System.Nullable<bool> CanMoveChildrenOutOfDrive { get; set; } 
+
+            /// <summary>Deprecated - use canMoveChildrenOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenOutOfTeamDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenOutOfTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move children of this folder within the Team Drive. This is false
-            /// when the item is not a folder. Only populated for Team Drive items.</summary>
+            /// <summary>Whether the current user can move children of this folder within the shared drive. This is
+            /// false when the item is not a folder. Only populated for items in shared drives.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinDrive")]
+            public virtual System.Nullable<bool> CanMoveChildrenWithinDrive { get; set; } 
+
+            /// <summary>Deprecated - use canMoveChildrenWithinDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveChildrenWithinTeamDrive")]
             public virtual System.Nullable<bool> CanMoveChildrenWithinTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move this item into a Team Drive. If the item is in a Team Drive,
-            /// this field is equivalent to canMoveTeamDriveItem.</summary>
+            /// <summary>Deprecated - use canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemIntoTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move this Team Drive item outside of this Team Drive by changing
-            /// its parent. Note that a request to change the parent of the item may still fail depending on the new
-            /// parent that is being added. Only populated for Team Drive items.</summary>
+            /// <summary>Whether the current user can move this item outside of this drive by changing its parent. Note
+            /// that a request to change the parent of the item may still fail depending on the new parent that is being
+            /// added.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfDrive")]
+            public virtual System.Nullable<bool> CanMoveItemOutOfDrive { get; set; } 
+
+            /// <summary>Deprecated - use canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemOutOfTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemOutOfTeamDrive { get; set; } 
 
-            /// <summary>Whether the current user can move this Team Drive item within this Team Drive. Note that a
-            /// request to change the parent of the item may still fail depending on the new parent that is being added.
-            /// Only populated for Team Drive items.</summary>
+            /// <summary>Whether the current user can move this item within this shared drive. Note that a request to
+            /// change the parent of the item may still fail depending on the new parent that is being added. Only
+            /// populated for items in shared drives.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinDrive")]
+            public virtual System.Nullable<bool> CanMoveItemWithinDrive { get; set; } 
+
+            /// <summary>Deprecated - use canMoveItemWithinDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemWithinTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemWithinTeamDrive { get; set; } 
 
-            /// <summary>Deprecated - use canMoveItemWithinTeamDrive or canMoveItemOutOfTeamDrive instead.</summary>
+            /// <summary>Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveTeamDriveItem")]
             public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; } 
 
-            /// <summary>Whether the current user can read the revisions resource of this file. For a Team Drive item,
+            /// <summary>Whether the current user can read the shared drive to which this file belongs. Only populated
+            /// for items in shared drives.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canReadDrive")]
+            public virtual System.Nullable<bool> CanReadDrive { get; set; } 
+
+            /// <summary>Whether the current user can read the revisions resource of this file. For a shared drive item,
             /// whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can
             /// be read.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
 
-            /// <summary>Whether the current user can read the Team Drive to which this file belongs. Only populated for
-            /// Team Drive files.</summary>
+            /// <summary>Deprecated - use canReadDrive instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadTeamDrive")]
             public virtual System.Nullable<bool> CanReadTeamDrive { get; set; } 
 
             /// <summary>Whether the current user can remove children from this folder. This is always false when the
-            /// item is not a folder. For Team Drive items, use canDeleteChildren or canTrashChildren instead.</summary>
+            /// item is not a folder. For a folder in a shared drive, use canDeleteChildren or canTrashChildren
+            /// instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
 
@@ -5630,7 +6778,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual System.Nullable<bool> CanTrash { get; set; } 
 
             /// <summary>Whether the current user can trash children of this folder. This is false when the item is not
-            /// a folder. Only populated for Team Drive items.</summary>
+            /// a folder. Only populated for items in shared drives.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrashChildren")]
             public virtual System.Nullable<bool> CanTrashChildren { get; set; } 
 
@@ -5649,14 +6797,14 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
             public virtual string IndexableText { get; set; } 
 
-            /// <summary>A thumbnail for the file. This will only be used if Drive cannot generate a standard
+            /// <summary>A thumbnail for the file. This will only be used if Google Drive cannot generate a standard
             /// thumbnail.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
             public virtual ContentHintsData.ThumbnailData Thumbnail { get; set; } 
 
             
 
-            /// <summary>A thumbnail for the file. This will only be used if Drive cannot generate a standard
+            /// <summary>A thumbnail for the file. This will only be used if Google Drive cannot generate a standard
             /// thumbnail.</summary>
             public class ThumbnailData
             {
@@ -5806,9 +6954,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<File> Files { get; set; } 
 
         /// <summary>Whether the search process was incomplete. If true, then some search results may be missing, since
-        /// all documents were not searched. This may occur when searching multiple Team Drives with the
-        /// "user,allTeamDrives" corpora, but all corpora could not be searched. When this happens, it is suggested that
-        /// clients narrow their query by choosing a different corpus such as "user" or "teamDrive".</summary>
+        /// all documents were not searched. This may occur when searching multiple drives with the "allDrives" corpora,
+        /// but all corpora could not be searched. When this happens, it is suggested that clients narrow their query by
+        /// choosing a different corpus such as "user" or "drive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompleteSearch")]
         public virtual System.Nullable<bool> IncompleteSearch { get; set; } 
 
@@ -5900,6 +7048,11 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Details of whether the permissions on this shared drive item are inherited or directly on this
+        /// item. This is an output-only field which is present only for shared drive items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionDetails")]
+        public virtual System.Collections.Generic.IList<Permission.PermissionDetailsData> PermissionDetails { get; set; } 
+
         /// <summary>A link to the user's profile photo, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoLink")]
         public virtual string PhotoLink { get; set; } 
@@ -5909,8 +7062,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
-        /// <summary>Details of whether the permissions on this Team Drive item are inherited or directly on this item.
-        /// This is an output-only field which is present only for Team Drive items.</summary>
+        /// <summary>Deprecated - use permissionDetails instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
         public virtual System.Collections.Generic.IList<Permission.TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
 
@@ -5921,6 +7073,30 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        public class PermissionDetailsData
+        {
+            /// <summary>Whether this permission is inherited. This field is always populated. This is an output-only
+            /// field.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
+            public virtual System.Nullable<bool> Inherited { get; set; } 
+
+            /// <summary>The ID of the item from which this permission is inherited. This is an output-only field and is
+            /// only populated for members of the shared drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
+            public virtual string InheritedFrom { get; set; } 
+
+            /// <summary>The permission type for this user. While new values may be added in future, the following are
+            /// currently possible: - file - member</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+            public virtual string PermissionType { get; set; } 
+
+            /// <summary>The primary role for this user. While new values may be added in the future, the following are
+            /// currently possible: - organizer - fileOrganizer - writer - commenter - reader</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("role")]
+            public virtual string Role { get; set; } 
+
+        }    
 
         public class TeamDrivePermissionDetailsData
         {
