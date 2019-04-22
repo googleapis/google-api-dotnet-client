@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190312 (1531)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -625,14 +625,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>List filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The next_page_token value to use if there are additional results to retrieve for this
                     /// list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -641,6 +633,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -676,24 +676,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -706,6 +688,24 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "orderBy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1066,10 +1066,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1077,6 +1073,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1112,15 +1112,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1133,6 +1124,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1226,6 +1226,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1233,10 +1237,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1272,6 +1272,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1284,15 +1293,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1337,6 +1337,210 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>The name of the file share (must be 16 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instance represents the interface for SLM services to actuate the state of control plane resources.
+    ///
+    /// Example Instance in JSON, where consumer-project=snapchat, producer-project=cloud-sql:
+    ///
+    /// ```json Instance: { "name": "projects/snapchat/locations/us-east1/instances/prod-instance", "create_time": {
+    /// "seconds": 1526406431, }, "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_version": "cloud-
+    /// sql-09-28-2018", "maintenance_policy_names": { "UpdatePolicy": "projects/snapchat/locations/us-
+    /// east1/maintenancePolicies/prod-update-policy", } "rollout_metadata": { "projects/cloud-
+    /// sql/locations/global/rolloutTypes/software_update": { "release": "projects/cloud-sql/locations/global/releases
+    /// /cloud-sql-09-28-2018", "rollout": "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-canary",
+    /// } "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": { "release": "projects/cloud-
+    /// sql/locations/global/releases/cloud-sql-09-20-repair", "rollout": "projects/cloud-sql/locations/us-
+    /// east1/rollouts/cloud-sql-09-20-repair-100-percent", } } "tenant_project_id": "cloud-sql-test-tenant",
+    /// "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", }, "provisioned_resources": [
+    /// { "resource-type": "compute-instance", "resource-url": "https://www.googleapis.com/compute/v1/projects/cloud-
+    /// sql/zones/us-east1-b/instances/vm-1", } ], } ```</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Optional. Resource labels to represent user provided metadata. Each label is a key-value pair,
+        /// where both the key and the value are arbitrary strings provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
+        /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
+        /// type. For complete details of MaintenancePolicy, please refer to //depot/google3/google/cloud/saasaccelerato
+        /// r/maintenancepolicy/api/v1/maintenance_policy_resources.proto</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
+        public virtual System.Collections.Generic.IDictionary<string,string> MaintenancePolicyNames { get; set; } 
+
+        /// <summary>Unique name of the resource. It uses the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Custom string attributes used primarily to expose producer-specific information in
+        /// monitoring dashboards. See go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ProducerMetadata { get; set; } 
+
+        /// <summary>Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See
+        /// go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; } 
+
+        /// <summary>The map between RolloutType and the corresponding RolloutMetadata. This is only mutated by rollout
+        /// service. For actuation implementation, this information is pass-through for Rollout management. Producer
+        /// shall not modify by itself. For update of a single entry in this map, the update field mask shall follow
+        /// this sementics: go/advanced-field-masks</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata> RolloutMetadata { get; set; } 
+
+        /// <summary>Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform.
+        /// See go/cloud-ssa-standard-slo for feature description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sloMetadata")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; } 
+
+        /// <summary>Software versions that are used to deploy this instance. This can be mutated by rollout
+        /// services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareVersions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> SoftwareVersions { get; set; } 
+
+        /// <summary>Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to
+        /// use).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
+        public virtual string TenantProjectId { get; set; } 
+
+        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>NotificationMetadata is the notification state for an instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the instance update has been rescheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rescheduled")]
+        public virtual System.Nullable<bool> Rescheduled { get; set; } 
+
+        /// <summary>The scheduled end time for the maintenance window during which update can be performed on the
+        /// instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
+        public virtual object ScheduledEndTime { get; set; } 
+
+        /// <summary>The scheduled start time for the maintenance window during which update can be performed on the
+        /// instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
+        public virtual object ScheduledStartTime { get; set; } 
+
+        /// <summary>The target release to be applied to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRelease")]
+        public virtual string TargetRelease { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes provisioned dataplane resources.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud
+        /// provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API
+        /// documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for
+        /// example: 'compute-instance', 'compute-disk', 'compute-autoscaler'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
+
+        /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>RolloutMetadata for an actuation instance. It maps to a single RolloutType.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instance level notification metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notification")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata Notification { get; set; } 
+
+        /// <summary>The last Release that has been applied to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseName")]
+        public virtual string ReleaseName { get; set; } 
+
+        /// <summary>The last rollout that has been applied to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutName")]
+        public virtual string RolloutName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A temporal SLO exclusion specification.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exclusion duration. No restrictions on the possible values.
+        ///
+        /// When an ongoing operation is taking longer than initially expected, an existing entry in the exclusion list
+        /// can be updated by extending the duration. This is supported by the subsystem exporting eligibility data as
+        /// long as such extension is committed at least 10 minutes before the original exclusion expiration - otherwise
+        /// it is possible that there will be "gaps" in the exclusion application in the exported timeseries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionDuration")]
+        public virtual object ExclusionDuration { get; set; } 
+
+        /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStartTime")]
+        public virtual object ExclusionStartTime { get; set; } 
+
+        /// <summary>Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
+        /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>Name of an SLI/SLO that this exclusion applies to. Can be left empty, signaling that the instance
+        /// should be excluded from all SLI/SLOs defined in the service SLO configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sloName")]
+        public virtual string SloName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
+        /// time-window against current time point) the exclusion reason used in the first matching entry will be
+        /// published.
+        ///
+        /// It is not needed to include expired exclusion in this list, as only the currently applicable exclusions are
+        /// taken into account by the eligibility exporting subsystem (the historical state of exclusions will be
+        /// reflected in the historically produced timeseries regardless of the current state).
+        ///
+        /// This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For
+        /// permanent instance SLO exclusion, a dedicated tier name can be used that does not have targets specified in
+        /// the service SLO configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+
+        /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
+        /// specified in the service SLO configuration.
+        ///
+        /// Field is mandatory and must not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

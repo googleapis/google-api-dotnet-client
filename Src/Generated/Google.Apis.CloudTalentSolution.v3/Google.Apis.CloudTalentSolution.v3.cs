@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190419 (1569)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1666,25 +1666,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Deprecated. Use language_codes instead.
-            ///
-            /// Optional.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with the same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with the same language_code or companies having open
-            /// jobs with the same language_code are returned.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
             /// <summary>Optional.
             ///
             /// The completion topic. The default is CompletionType.COMBINED.</summary>
@@ -1767,6 +1748,25 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
+            /// <summary>Deprecated. Use language_codes instead.
+            ///
+            /// Optional.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with the same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with the same language_code or companies having open
+            /// jobs with the same language_code are returned.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1799,15 +1799,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
@@ -1858,6 +1849,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

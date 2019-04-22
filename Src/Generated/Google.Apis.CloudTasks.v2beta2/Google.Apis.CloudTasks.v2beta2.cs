@@ -1618,6 +1618,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>A token identifying the page of results to return.
+                    ///
+                    /// To request the first page results, page_token must be empty. To request the next page of
+                    /// results, page_token must be the value of next_page_token returned from the previous call to
+                    /// ListQueues method. It is an error to switch the value of the filter while iterating through
+                    /// pages.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Requested page size.
                     ///
                     /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
@@ -1637,15 +1646,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>A token identifying the page of results to return.
-                    ///
-                    /// To request the first page results, page_token must be empty. To request the next page of
-                    /// results, page_token must be the value of next_page_token returned from the previous call to
-                    /// ListQueues method. It is an error to switch the value of the filter while iterating through
-                    /// pages.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1681,6 +1681,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1693,15 +1702,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

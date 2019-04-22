@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190328 (1547)
+ *      <tr><th>API Rev<td>20190406 (1556)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -439,6 +439,10 @@ namespace Google.Apis.CloudFunctions.v1
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. A filter for matching the requested operations. The supported formats of filter are:
             /// To query for specific function: project:*,location:*,function:* To query for all of the latest
             /// operations for a project: project:*,latest:true</summary>
@@ -452,10 +456,6 @@ namespace Google.Apis.CloudFunctions.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -482,6 +482,15 @@ namespace Google.Apis.CloudFunctions.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -503,15 +512,6 @@ namespace Google.Apis.CloudFunctions.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1440,10 +1440,6 @@ namespace Google.Apis.CloudFunctions.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1451,6 +1447,10 @@ namespace Google.Apis.CloudFunctions.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1486,15 +1486,6 @@ namespace Google.Apis.CloudFunctions.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1507,6 +1498,15 @@ namespace Google.Apis.CloudFunctions.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1579,7 +1579,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -1684,8 +1684,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The limit on the maximum number of function instances that may coexist at a given time. This
-        /// feature is currently in alpha, available only for whitelisted users.</summary>
+        /// <summary>The limit on the maximum number of function instances that may coexist at a given time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
         public virtual System.Nullable<int> MaxInstances { get; set; } 
 
@@ -1709,11 +1708,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>The runtime in which the function is going to run. Example values include: `go111`: for Go 1.11
-        /// `nodejs6`: for Node.js 6 `nodejs8`: for Node.js 8 `nodejs10`: for Node.js 10 `python37`: for Python 3.7
-        /// `ruby25`: for Ruby 2.5
+        /// <summary>Required. The runtime in which the function is going to run. Choices:
         ///
-        /// If empty, defaults to `nodejs6`.</summary>
+        /// * `nodejs6`: Node.js 6 * `nodejs8`: Node.js 8 * `nodejs10`: Node.js 10 * `python37`: Python 3.7 * `go111`:
+        /// Go 1.11</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; } 
 

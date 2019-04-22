@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190320 (1539)
+ *      <tr><th>API Rev<td>20190403 (1553)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -59405,6 +59405,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>Resource policies applied to this disk for automatic snapshot creations. Specified using the full
+        /// or partial URL. For instance template, specify only the resource policy name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
         /// <summary>The source image to create this disk. When creating a new instance, one of
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
@@ -59432,6 +59437,20 @@ namespace Google.Apis.Compute.beta.Data
         /// in a managed instance group if the source images are encrypted with your own keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
+
+        /// <summary>The source snapshot to create this disk. When creating a new instance, one of
+        /// initializeParams.sourceSnapshot or disks.source is required except for local SSD.
+        ///
+        /// To create a disk with a snapshot that you created, specify the snapshot name in the following format:
+        /// global/snapshots/my-backup
+        ///
+        /// If the source snapshot is deleted later, this field will not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceSnapshotEncryptionKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60646,7 +60665,7 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -62431,7 +62450,7 @@ namespace Google.Apis.Compute.beta.Data
     {
         /// <summary>[Output Only] Absolute value of VM instances calculated based on the specific mode.
         ///
-        /// - If the value is fixed, then the caculated value is equal to the fixed value. - If the value is a percent,
+        /// - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent,
         /// then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a
         /// managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a
         /// remainder, the number is rounded up.</summary>
@@ -63188,7 +63207,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the
+        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the
         /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
         /// type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -64425,8 +64444,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
 
-        /// <summary>[Output Only] The list of instance actions and the number of instances in this managed instance
-        /// group that are pending for each of those actions.</summary>
+        /// <summary>[Deprecated] This field is deprecated and will be removed. Prefer using the status field instead.
+        /// Please contact cloud-updater-feedback@google.com to leave feedback if your workload relies on this field.
+        /// [Output Only] The list of instance actions and the number of instances in this managed instance group that
+        /// are pending for each of those actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingActions")]
         public virtual InstanceGroupManagerPendingActionsSummary PendingActions { get; set; } 
 
@@ -64465,10 +64486,10 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Specifies the instance templates used by this managed instance group to create instances.
         ///
-        /// Each version is defined by an instanceTemplate. Every template can appear at most once per instance group.
-        /// This field overrides the top-level instanceTemplate field. Read more about the relationships between these
-        /// fields. Exactly one version must leave the targetSize field unset. That version will be applied to all
-        /// remaining instances. For more information, read about canary updates.</summary>
+        /// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per
+        /// instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships
+        /// between these fields. Exactly one version must leave the targetSize field unset. That version will be
+        /// applied to all remaining instances. For more information, read about canary updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<InstanceGroupManagerVersion> Versions { get; set; } 
 
@@ -64704,22 +64725,30 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerPendingActionsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// <summary>[Deprecated] This field is deprecated and will be removed. Prefer using the status field instead.
+        /// Please contact cloud-updater-feedback@google.com to leave feedback if your workload relies on this field.
+        /// [Output Only] The number of instances in the managed instance group that are pending to be
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creating")]
         public virtual System.Nullable<int> Creating { get; set; } 
 
-        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// <summary>[Deprecated] This field is deprecated and will be removed. Prefer using the status field instead.
+        /// Please contact cloud-updater-feedback@google.com to leave feedback if your workload relies on this field.
+        /// [Output Only] The number of instances in the managed instance group that are pending to be
         /// deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleting")]
         public virtual System.Nullable<int> Deleting { get; set; } 
 
-        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// <summary>[Deprecated] This field is deprecated and will be removed. Prefer using the status field instead.
+        /// Please contact cloud-updater-feedback@google.com to leave feedback if your workload relies on this field.
+        /// [Output Only] The number of instances in the managed instance group that are pending to be
         /// recreated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recreating")]
         public virtual System.Nullable<int> Recreating { get; set; } 
 
-        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// <summary>[Deprecated] This field is deprecated and will be removed. Prefer using the status field instead.
+        /// Please contact cloud-updater-feedback@google.com to leave feedback if your workload relies on this field.
+        /// [Output Only] The number of instances in the managed instance group that are pending to be
         /// restarted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
         public virtual System.Nullable<int> Restarting { get; set; } 
@@ -64760,6 +64789,9 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceRedistributionType")]
+        public virtual string InstanceRedistributionType { get; set; } 
+
         /// <summary>The maximum number of instances that can be created above the specified targetSize during the
         /// update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a
         /// percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances
@@ -64805,6 +64837,9 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The URL of the instance template that is specified for this managed instance group. The group uses
+        /// this template to create new instances in the managed instance group until the `targetSize` for this version
+        /// is reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
         public virtual string InstanceTemplate { get; set; } 
 
@@ -68141,7 +68176,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A NodeGroup resource. (== resource_for beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
+    /// <summary>A NodeGroup resource. To create a node group, you must first create a node templates. To learn more
+    /// about node groups and sole-tenant nodes, read the Sole-tenant nodes documentation. (== resource_for
+    /// beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -68515,7 +68552,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Node Template resource.</summary>
+    /// <summary>A Node Template resource. To learn more about node templates and sole-tenant nodes, read the Sole-
+    /// tenant nodes documentation. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates
+    /// ==)</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -70846,6 +70885,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotSchedulePolicy")]
         public virtual ResourcePolicySnapshotSchedulePolicy SnapshotSchedulePolicy { get; set; } 
 
+        /// <summary>[Output Only] The status of resource policy creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -71211,6 +71254,12 @@ namespace Google.Apis.Compute.beta.Data
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopInstance")]
         public virtual string NextHopInstance { get; set; } 
+
+        /// <summary>[Output Only] The URL to an InterconnectAttachment which is the next hop for the route. This field
+        /// will only be populated for the dynamic routes generated by Cloud Router with a linked
+        /// interconnectAttachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopInterconnectAttachment")]
+        public virtual string NextHopInterconnectAttachment { get; set; } 
 
         /// <summary>The network IP address of an instance that should handle matching packets. Only IPv4 is
         /// supported.</summary>
@@ -76342,7 +76391,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)</summary>
+    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==) Next ID: 17</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>

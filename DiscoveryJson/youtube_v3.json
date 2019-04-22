@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/yNEBLgYt8QSwGhO0wZtfTAWOMEQ\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/vE_46pOxDHWLqzSanMM8GY5Yd3c\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190128",
+ "revision": "20190415",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -745,7 +745,7 @@
      "description": "The method or protocol used to transmit the video stream.",
      "enum": [
       "dash",
-      "http",
+      "hls",
       "rtmp",
       "webrtc"
      ],

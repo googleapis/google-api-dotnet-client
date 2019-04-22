@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190320 (1539)
+ *      <tr><th>API Rev<td>20190403 (1553)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -50293,7 +50293,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -51766,7 +51766,7 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>[Output Only] Absolute value of VM instances calculated based on the specific mode.
         ///
-        /// - If the value is fixed, then the caculated value is equal to the fixed value. - If the value is a percent,
+        /// - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent,
         /// then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a
         /// managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a
         /// remainder, the number is rounded up.</summary>
@@ -52432,7 +52432,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the
+        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the
         /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
         /// type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -53679,10 +53679,10 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Specifies the instance templates used by this managed instance group to create instances.
         ///
-        /// Each version is defined by an instanceTemplate. Every template can appear at most once per instance group.
-        /// This field overrides the top-level instanceTemplate field. Read more about the relationships between these
-        /// fields. Exactly one version must leave the targetSize field unset. That version will be applied to all
-        /// remaining instances. For more information, read about canary updates.</summary>
+        /// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per
+        /// instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships
+        /// between these fields. Exactly one version must leave the targetSize field unset. That version will be
+        /// applied to all remaining instances. For more information, read about canary updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<InstanceGroupManagerVersion> Versions { get; set; } 
 
@@ -53971,6 +53971,9 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstanceGroupManagerVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The URL of the instance template that is specified for this managed instance group. The group uses
+        /// this template to create new instances in the managed instance group until the `targetSize` for this version
+        /// is reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
         public virtual string InstanceTemplate { get; set; } 
 
@@ -57142,7 +57145,9 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A NodeGroup resource. (== resource_for beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
+    /// <summary>A NodeGroup resource. To create a node group, you must first create a node templates. To learn more
+    /// about node groups and sole-tenant nodes, read the Sole-tenant nodes documentation. (== resource_for
+    /// beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -57512,7 +57517,9 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Node Template resource.</summary>
+    /// <summary>A Node Template resource. To learn more about node templates and sole-tenant nodes, read the Sole-
+    /// tenant nodes documentation. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates
+    /// ==)</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -63887,7 +63894,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)</summary>
+    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==) Next ID: 17</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>
