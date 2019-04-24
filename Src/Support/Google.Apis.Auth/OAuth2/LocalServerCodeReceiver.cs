@@ -49,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2
         internal static readonly string CallbackUriTemplate127001 = $"http://127.0.0.1:{{0}}{LoopbackCallbackPath}";
 
         /// <summary>Close HTML tag to return the browser so it will close itself.</summary>
-        internal const string ClosePageResponse =
+        internal const string DefaultClosePageResponse =
 @"<html>
   <head><title>OAuth 2.0 Authentication Token Received</title></head>
   <body>
@@ -72,12 +72,20 @@ namespace Google.Apis.Auth.OAuth2
         private static string s_callbackUriTemplate;
         // Has a successful callback been received?
         private static bool s_receivedCallback;
+        
+        /// <summary>
+        /// Create an instance of <see cref="LocalServerCodeReceiver"/>.
+        /// </summary>
+        public LocalServerCodeReceiver() : this(DefaultClosePageResponse) { }
 
         /// <summary>
         /// Create an instance of <see cref="LocalServerCodeReceiver"/>.
         /// </summary>
-        public LocalServerCodeReceiver()
+        /// <param name="closePageResponse">Custom close page response for this instance</param>
+        public LocalServerCodeReceiver(string closePageResponse)
         {
+            _closePageResponse = closePageResponse;
+            
             lock (s_lock)
             {
                 // Listening on 127.0.0.1 is recommended, but can't be done in non-admin Windows 7 & 8.
@@ -131,6 +139,9 @@ namespace Google.Apis.Auth.OAuth2
 
         // Callback URI used for this instance.
         private string _callbackUriTemplate;
+        
+        // Close page response for this instance.
+        private readonly string _closePageResponse;
 
         // Not required in NET45, but present for testing.
         /// <summary>
@@ -154,7 +165,7 @@ namespace Google.Apis.Auth.OAuth2
                 public ServerException(string msg) : base(msg) { }
             }
 
-            public static LimitedLocalhostHttpServer Start(string url)
+            public static LimitedLocalhostHttpServer Start(string url, string closePageResponse)
             {
                 var uri = new Uri(url);
                 if (!uri.IsLoopback)
@@ -162,12 +173,13 @@ namespace Google.Apis.Auth.OAuth2
                     throw new ArgumentException($"Url must be loopback, but given: '{url}'", nameof(url));
                 }
                 var listener = new TcpListener(IPAddress.Loopback, uri.Port);
-                return new LimitedLocalhostHttpServer(listener);
+                return new LimitedLocalhostHttpServer(listener, closePageResponse);
             }
 
-            private LimitedLocalhostHttpServer(TcpListener listener)
+            private LimitedLocalhostHttpServer(TcpListener listener, string closePageResponse)
             {
                 _listener = listener;
+                _closePageResponse = closePageResponse;
                 _cts = new CancellationTokenSource();
                 _listener.Start();
                 Port = ((IPEndPoint)_listener.LocalEndpoint).Port;
@@ -175,6 +187,9 @@ namespace Google.Apis.Auth.OAuth2
 
             private readonly TcpListener _listener;
             private readonly CancellationTokenSource _cts;
+            
+            // Close page response for this instance.
+            private readonly string _closePageResponse;
 
             public int Port { get; }
 
@@ -340,7 +355,7 @@ namespace Google.Apis.Auth.OAuth2
 
             private async Task WriteResponse(NetworkStream stream, CancellationToken cancellationToken)
             {
-                string fullResponse = $"HTTP/1.1 200 OK\r\n\r\n{ClosePageResponse}";
+                string fullResponse = $"HTTP/1.1 200 OK\r\n\r\n{_closePageResponse}";
                 var response = Encoding.ASCII.GetBytes(fullResponse);
                 await stream.WriteAsync(response, 0, response.Length, cancellationToken).ConfigureAwait(false);
                 await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
@@ -425,7 +440,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0
-        private LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri);
+        private LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri, _closePageResponse);
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
         {
@@ -491,7 +506,7 @@ namespace Google.Apis.Auth.OAuth2
             NameValueCollection coll = context.Request.QueryString;
 
             // Write a "close" response.
-            var bytes = Encoding.UTF8.GetBytes(ClosePageResponse);
+            var bytes = Encoding.UTF8.GetBytes(_closePageResponse);
             context.Response.ContentLength64 = bytes.Length;
             context.Response.SendChunked = false;
             context.Response.KeepAlive = false;
