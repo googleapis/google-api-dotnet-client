@@ -141,7 +141,7 @@ namespace Google.Apis.Auth.OAuth2
         private string _callbackUriTemplate;
         
         // Close page response for this instance.
-        private string _closePageResponse;
+        private readonly string _closePageResponse;
 
         // Not required in NET45, but present for testing.
         /// <summary>
@@ -165,7 +165,7 @@ namespace Google.Apis.Auth.OAuth2
                 public ServerException(string msg) : base(msg) { }
             }
 
-            public static LimitedLocalhostHttpServer Start(string url, string _closePageResponse)
+            public static LimitedLocalhostHttpServer Start(string url, string closePageResponse)
             {
                 var uri = new Uri(url);
                 if (!uri.IsLoopback)
@@ -173,7 +173,7 @@ namespace Google.Apis.Auth.OAuth2
                     throw new ArgumentException($"Url must be loopback, but given: '{url}'", nameof(url));
                 }
                 var listener = new TcpListener(IPAddress.Loopback, uri.Port);
-                return new LimitedLocalhostHttpServer(listener, _closePageResponse);
+                return new LimitedLocalhostHttpServer(listener, closePageResponse);
             }
 
             private LimitedLocalhostHttpServer(TcpListener listener, string closePageResponse)
@@ -189,7 +189,7 @@ namespace Google.Apis.Auth.OAuth2
             private readonly CancellationTokenSource _cts;
             
             // Close page response for this instance.
-            private string _closePageResponse;
+            private readonly string _closePageResponse;
 
             public int Port { get; }
 
