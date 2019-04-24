@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private LocalServerCodeReceiver.LimitedLocalhostHttpServer StartServer()
         {
             var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, 0);
-            return LocalServerCodeReceiver.LimitedLocalhostHttpServer.Start(url);
+            return LocalServerCodeReceiver.LimitedLocalhostHttpServer.Start(url, LocalServerCodeReceiver.DefaultClosePageResponse);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 var responseMsg = await responseMsgTask;
                 var responseBody = await responseMsg.Content.ReadAsStringAsync();
 
-                Assert.Equal(LocalServerCodeReceiver.ClosePageResponse, responseBody);
+                Assert.Equal(LocalServerCodeReceiver.DefaultClosePageResponse, responseBody);
                 Assert.Equal(new Dictionary<string, string> { { "a", "b" }, { "c", "d" } }, queryParams);
             }
         }
@@ -79,7 +79,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 var responseMsg = await responseMsgTask;
                 var responseBody = await responseMsg.Content.ReadAsStringAsync();
 
-                Assert.Equal(LocalServerCodeReceiver.ClosePageResponse, responseBody);
+                Assert.Equal(LocalServerCodeReceiver.DefaultClosePageResponse, responseBody);
                 Assert.Empty(queryParams);
             }
         }
