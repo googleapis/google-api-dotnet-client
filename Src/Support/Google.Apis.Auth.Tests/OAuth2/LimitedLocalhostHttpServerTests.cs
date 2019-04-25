@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// LimitedLocalhostHttpServer only used in .NET Core.
+#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0
+
 using Google.Apis.Auth.OAuth2;
 using System;
 using System.Collections.Generic;
@@ -33,19 +36,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private LocalServerCodeReceiver.LimitedLocalhostHttpServer StartServer(bool useCustomResponseHtml = false)
         {
-            // On .NET Core test via LocalServerCodeReceiver, as that will use LimitedLocalhostHttpServer,
-            // and both classes need testing.
-            // On full framework test LimitedLocalhostHttpServer directly, as LocalServerCodeReceiver does not use it.
-#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0
             var codeRecv = useCustomResponseHtml ? new LocalServerCodeReceiver(CustomResponseHtml) : new LocalServerCodeReceiver();
             return codeRecv.StartListener();
-#elif NET452 || NET46
-            var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, 0);
-            var responseHtml = useCustomResponseHtml ? CustomResponseHtml : LocalServerCodeReceiver.DefaultClosePageResponse;
-            return LocalServerCodeReceiver.LimitedLocalhostHttpServer.Start(url, responseHtml);
-#else
-#error Unsupported target
-#endif
         }
 
         [Fact]
@@ -182,3 +174,5 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
     }
 }
+
+#endif
