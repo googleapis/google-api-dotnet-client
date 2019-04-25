@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// LimitedLocalhostHttpServer only used in .NET Core.
+#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0
+
 using Google.Apis.Auth.OAuth2;
 using System;
 using System.Collections.Generic;
@@ -29,10 +32,12 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class LimitedLocalhostHttpServerTests
     {
-        private LocalServerCodeReceiver.LimitedLocalhostHttpServer StartServer()
+        private const string CustomResponseHtml = "<html><body>Custom response!</body></html>";
+
+        private LocalServerCodeReceiver.LimitedLocalhostHttpServer StartServer(bool useCustomResponseHtml = false)
         {
-            var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, 0);
-            return LocalServerCodeReceiver.LimitedLocalhostHttpServer.Start(url, LocalServerCodeReceiver.DefaultClosePageResponse);
+            var codeRecv = useCustomResponseHtml ? new LocalServerCodeReceiver(CustomResponseHtml) : new LocalServerCodeReceiver();
+            return codeRecv.StartListener();
         }
 
         [Fact]
@@ -44,10 +49,12 @@ namespace Google.Apis.Auth.Tests.OAuth2
             }
         }
 
-        [Fact]
-        public async Task ValidRequest()
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public async Task ValidRequest(bool useCustomResponseHtml)
         {
-            using (var server = StartServer())
+            using (var server = StartServer(useCustomResponseHtml))
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
@@ -59,7 +66,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 var responseMsg = await responseMsgTask;
                 var responseBody = await responseMsg.Content.ReadAsStringAsync();
 
-                Assert.Equal(LocalServerCodeReceiver.DefaultClosePageResponse, responseBody);
+                var expectedResponseBody = useCustomResponseHtml ? CustomResponseHtml : LocalServerCodeReceiver.DefaultClosePageResponse;
+                Assert.Equal(expectedResponseBody, responseBody);
                 Assert.Equal(new Dictionary<string, string> { { "a", "b" }, { "c", "d" } }, queryParams);
             }
         }
@@ -166,3 +174,5 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
     }
 }
+
+#endif
