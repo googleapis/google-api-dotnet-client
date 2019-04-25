@@ -440,7 +440,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0
-        private LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri, _closePageResponse);
+        internal LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri, _closePageResponse);
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
         {
