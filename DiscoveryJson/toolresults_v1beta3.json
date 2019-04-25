@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/cENhxxnVJdc-9rbvjdHRyo0AIAs\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/2jUvEoh5Mp_slZYFxQLqttVrmWs\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20190418",
+ "revision": "20190424",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -577,6 +577,11 @@
    "type": "object",
    "description": "Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.",
    "properties": {
+    "multistepNumber": {
+     "type": "integer",
+     "description": "Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.",
+     "format": "int32"
+    },
     "outcomeSummary": {
      "type": "string",
      "enum": [
@@ -595,6 +600,10 @@
       "",
       ""
      ]
+    },
+    "runDuration": {
+     "$ref": "Duration",
+     "description": "How long it took for this step to run."
     },
     "stepId": {
      "type": "string"

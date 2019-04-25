@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190418 (1568)
+ *      <tr><th>API Rev<td>20190424 (1574)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4448,8 +4448,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// configuration.</summary>
     public class IndividualOutcome : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The
+        /// primary step is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multistepNumber")]
+        public virtual System.Nullable<int> MultistepNumber { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("outcomeSummary")]
         public virtual string OutcomeSummary { get; set; } 
+
+        /// <summary>How long it took for this step to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runDuration")]
+        public virtual Duration RunDuration { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 

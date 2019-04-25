@@ -946,11 +946,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>This field is deprecated. The following fields are always stripped out of the result:
-                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> StripResults { get; set; }
-
                     /// <summary>A wait token that, if specified, blocks the call until the breakpoints list has
                     /// changed, or a server selected timeout has expired.  The value should be set from the last
                     /// response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
@@ -986,6 +981,11 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
+                    /// <summary>This field is deprecated. The following fields are always stripped out of the result:
+                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> StripResults { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1016,15 +1016,6 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "stripResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "stripResults",
-                                IsRequired = false,
-                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1068,6 +1059,15 @@ namespace Google.Apis.CloudDebugger.v2
                             "includeAllUsers", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "includeAllUsers",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "stripResults", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stripResults",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

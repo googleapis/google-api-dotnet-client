@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/DU4ePxRjLvPmGp1x77gtfS_UcxQ\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/ZNI6Av8P0l2j-PsYHy6hLrQxEjY\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20190324",
+ "revision": "20190422",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",
@@ -592,6 +592,17 @@
     "textColor": {
      "type": "string",
      "description": "The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed:\n#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, #fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, #f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, #efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, #e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c"
+    }
+   }
+  },
+  "LanguageSettings": {
+   "id": "LanguageSettings",
+   "type": "object",
+   "description": "Language settings for an account. These settings correspond to the \"Language settings\" feature in the web interface.",
+   "properties": {
+    "displayLanguage": {
+     "type": "string",
+     "description": "The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example en-GB, fr or ja for British English, French, or Japanese respectively).\n\nThe set of languages supported by Gmail evolves over time, so please refer to the \"Language\" dropdown in the Gmail settings  for all available options, as described in the language settings help article. A table of sample values is also provided in the Managing Language Settings guide \n\nNot all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default)."
     }
    }
   },
@@ -2473,6 +2484,33 @@
         "https://www.googleapis.com/auth/gmail.settings.basic"
        ]
       },
+      "getLanguage": {
+       "id": "gmail.users.settings.getLanguage",
+       "path": "{userId}/settings/language",
+       "httpMethod": "GET",
+       "description": "Gets language settings.",
+       "parameters": {
+        "userId": {
+         "type": "string",
+         "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+         "default": "me",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "userId"
+       ],
+       "response": {
+        "$ref": "LanguageSettings"
+       },
+       "scopes": [
+        "https://mail.google.com/",
+        "https://www.googleapis.com/auth/gmail.modify",
+        "https://www.googleapis.com/auth/gmail.readonly",
+        "https://www.googleapis.com/auth/gmail.settings.basic"
+       ]
+      },
       "getPop": {
        "id": "gmail.users.settings.getPop",
        "path": "{userId}/settings/pop",
@@ -2576,6 +2614,33 @@
        },
        "response": {
         "$ref": "ImapSettings"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/gmail.settings.basic"
+       ]
+      },
+      "updateLanguage": {
+       "id": "gmail.users.settings.updateLanguage",
+       "path": "{userId}/settings/language",
+       "httpMethod": "PUT",
+       "description": "Updates language settings.\n\nIf successful, the return object contains the displayLanguage that was saved for the user, which may differ from the value passed into the request. This is because the requested displayLanguage may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.",
+       "parameters": {
+        "userId": {
+         "type": "string",
+         "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+         "default": "me",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "userId"
+       ],
+       "request": {
+        "$ref": "LanguageSettings"
+       },
+       "response": {
+        "$ref": "LanguageSettings"
        },
        "scopes": [
         "https://www.googleapis.com/auth/gmail.settings.basic"

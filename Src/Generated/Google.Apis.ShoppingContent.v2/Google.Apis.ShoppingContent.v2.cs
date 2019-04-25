@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190327 (1546)
+ *      <tr><th>API Rev<td>20190423 (1573)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -876,7 +876,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Performs an action on a link between a Merchant Center account and another account.</summary>
+        /// <summary>Performs an action on a link between two Merchant Center accounts, namely accountId and
+        /// linkedAccountId.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
@@ -887,7 +888,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new LinkRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Performs an action on a link between a Merchant Center account and another account.</summary>
+        /// <summary>Performs an action on a link between two Merchant Center accounts, namely accountId and
+        /// linkedAccountId.</summary>
         public class LinkRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsLinkResponse>
         {
             /// <summary>Constructs a new Link request.</summary>
@@ -4207,8 +4209,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated
-        /// payment orders.</summary>
+        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for orderinvoice
+        /// enabled orders.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -4218,8 +4220,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new CreatechargeinvoiceRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated
-        /// payment orders.</summary>
+        /// <summary>Creates a charge invoice for a shipment group, and triggers a charge capture for orderinvoice
+        /// enabled orders.</summary>
         public class CreatechargeinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateChargeInvoiceResponse>
         {
             /// <summary>Constructs a new Createchargeinvoice request.</summary>
@@ -4293,8 +4295,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders. This can only be used for line items that have previously been charged using
+        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice
+        /// enabled orders. This can only be used for line items that have previously been charged using
         /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
         /// invoice.</summary>
         /// <param name="body">The body of the request.</param>
@@ -4306,8 +4308,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new CreaterefundinvoiceRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated
-        /// payment orders. This can only be used for line items that have previously been charged using
+        /// <summary>Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice
+        /// enabled orders. This can only be used for line items that have previously been charged using
         /// createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous
         /// invoice.</summary>
         public class CreaterefundinvoiceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrderinvoicesCreateRefundInvoiceResponse>
@@ -14262,7 +14264,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImageLinks")]
         public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; } 
 
-        /// <summary>Additional categories of the item (formatted as in products feed specification).</summary>
+        /// <summary>Additional categories of the item (formatted as in products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProductTypes")]
         public virtual System.Collections.Generic.IList<string> AdditionalProductTypes { get; set; } 
 
@@ -14495,7 +14497,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>Your category of the item (formatted as in products feed specification).</summary>
+        /// <summary>Your category of the item (formatted as in products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual string ProductType { get; set; } 
 
@@ -14507,7 +14509,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; } 
 
-        /// <summary>Date range during which the item is on sale (see products feed specification).</summary>
+        /// <summary>Date range during which the item is on sale (see products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual string SalePriceEffectiveDate { get; set; } 
 

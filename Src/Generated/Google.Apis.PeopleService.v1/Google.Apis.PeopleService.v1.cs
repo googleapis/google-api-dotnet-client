@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190423 (1573)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -784,6 +784,11 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
             /// <summary>The next_page_token value returned from a previous call to
             /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
             /// resources.</summary>
@@ -793,11 +798,6 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>The maximum number of resources to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
-            /// the sync token was created will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -824,6 +824,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -836,15 +845,6 @@ namespace Google.Apis.PeopleService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1787,7 +1787,7 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form of
         /// `contactGroups/`contact_group_id. Only contact_group_resource_name can be used for modifying memberships.
         /// Any contact group membership can be removed, but only user group or "myContacts" or "starred" system groups
-        /// memberships can be added.</summary>
+        /// memberships can be added. A contact must always have at least one contact group membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupResourceName")]
         public virtual string ContactGroupResourceName { get; set; } 
 

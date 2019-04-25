@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190324 (1543)
+ *      <tr><th>API Rev<td>20190422 (1572)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -5494,6 +5494,69 @@ namespace Google.Apis.Gmail.v1
 
             }
 
+            /// <summary>Gets language settings.</summary>
+            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// user.</param>
+            public virtual GetLanguageRequest GetLanguage(string userId)
+            {
+                return new GetLanguageRequest(service, userId);
+            }
+
+            /// <summary>Gets language settings.</summary>
+            public class GetLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
+            {
+                /// <summary>Constructs a new GetLanguage request.</summary>
+                public GetLanguageRequest(Google.Apis.Services.IClientService service, string userId)
+                    : base(service)
+                {
+                    UserId = userId;
+                    InitParameters();
+                }
+
+
+                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// user.</summary>
+                /// [default: me]
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string UserId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getLanguage"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{userId}/settings/language"; }
+                }
+
+                /// <summary>Initializes GetLanguage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Gets POP settings.</summary>
             /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
             /// user.</param>
@@ -5753,6 +5816,87 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Initializes UpdateImap parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates language settings.
+            ///
+            /// If successful, the return object contains the displayLanguage that was saved for the user, which may
+            /// differ from the value passed into the request. This is because the requested displayLanguage may not be
+            /// directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved
+            /// instead.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
+            /// user.</param>
+            public virtual UpdateLanguageRequest UpdateLanguage(Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId)
+            {
+                return new UpdateLanguageRequest(service, body, userId);
+            }
+
+            /// <summary>Updates language settings.
+            ///
+            /// If successful, the return object contains the displayLanguage that was saved for the user, which may
+            /// differ from the value passed into the request. This is because the requested displayLanguage may not be
+            /// directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved
+            /// instead.</summary>
+            public class UpdateLanguageRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.LanguageSettings>
+            {
+                /// <summary>Constructs a new UpdateLanguage request.</summary>
+                public UpdateLanguageRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.LanguageSettings body, string userId)
+                    : base(service)
+                {
+                    UserId = userId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>User's email address. The special value "me" can be used to indicate the authenticated
+                /// user.</summary>
+                /// [default: me]
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string UserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Gmail.v1.Data.LanguageSettings Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "updateLanguage"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{userId}/settings/language"; }
+                }
+
+                /// <summary>Initializes UpdateLanguage parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -7075,6 +7219,27 @@ namespace Google.Apis.Gmail.v1.Data
         /// #83334c</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
         public virtual string TextColor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Language settings for an account. These settings correspond to the "Language settings" feature in the
+    /// web interface.</summary>
+    public class LanguageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example en-GB, fr or
+        /// ja for British English, French, or Japanese respectively).
+        ///
+        /// The set of languages supported by Gmail evolves over time, so please refer to the "Language" dropdown in the
+        /// Gmail settings  for all available options, as described in the language settings help article. A table of
+        /// sample values is also provided in the Managing Language Settings guide
+        ///
+        /// Not all Gmail clients can display the same set of languages. In the case that a user's display language is
+        /// not available for use on a particular client, said client automatically chooses to display in the closest
+        /// supported variant (or a reasonable default).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayLanguage")]
+        public virtual string DisplayLanguage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/uh6pImLtAzfcW3qnOu2tIOip1lc\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/HbPpd0EFfBYGp2v8ZbudbN_BrJo\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190327",
+ "revision": "20190423",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -4826,7 +4826,7 @@
     },
     "productTypes": {
      "type": "array",
-     "description": "Categories of the item (formatted as in products feed specification).",
+     "description": "Categories of the item (formatted as in products data specification).",
      "items": {
       "type": "string"
      }
@@ -4844,7 +4844,7 @@
     },
     "salePriceEffectiveDate": {
      "type": "string",
-     "description": "Date range during which the item is on sale (see products feed specification)."
+     "description": "Date range during which the item is on sale (see products data specification)."
     },
     "sellOnGoogleQuantity": {
      "type": "string",
@@ -4906,6 +4906,10 @@
       ]
      }
     },
+    "taxCategory": {
+     "type": "string",
+     "description": "The tax category of the product, used to configure detailed tax nexus in account-level tax settings."
+    },
     "taxes": {
      "type": "array",
      "description": "Tax information.",
@@ -4916,6 +4920,10 @@
     "title": {
      "type": "string",
      "description": "Title of the item."
+    },
+    "transitTimeLabel": {
+     "type": "string",
+     "description": "The transit time label of the product, used to group product in account-level transit time tables."
     },
     "unitPricingBaseMeasure": {
      "$ref": "ProductUnitPricingBaseMeasure",
@@ -6433,7 +6441,7 @@
      "id": "content.accounts.link",
      "path": "{merchantId}/accounts/{accountId}/link",
      "httpMethod": "POST",
-     "description": "Performs an action on a link between a Merchant Center account and another account.",
+     "description": "Performs an action on a link between two Merchant Center accounts, namely accountId and linkedAccountId.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -7419,7 +7427,7 @@
      "id": "content.orderinvoices.createchargeinvoice",
      "path": "{merchantId}/orderinvoices/{orderId}/createChargeInvoice",
      "httpMethod": "POST",
-     "description": "Creates a charge invoice for a shipment group, and triggers a charge capture for non-facilitated payment orders.",
+     "description": "Creates a charge invoice for a shipment group, and triggers a charge capture for orderinvoice enabled orders.",
      "parameters": {
       "merchantId": {
        "type": "string",
@@ -7453,7 +7461,7 @@
      "id": "content.orderinvoices.createrefundinvoice",
      "path": "{merchantId}/orderinvoices/{orderId}/createRefundInvoice",
      "httpMethod": "POST",
-     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for non-facilitated payment orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.",
+     "description": "Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.",
      "parameters": {
       "merchantId": {
        "type": "string",

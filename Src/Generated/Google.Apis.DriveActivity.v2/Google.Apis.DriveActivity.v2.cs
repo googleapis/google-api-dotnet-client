@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190418 (1568)
+ *      <tr><th>API Rev<td>20190423 (1573)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/activity/'>
  *              https://developers.google.com/drive/activity/</a>
@@ -667,6 +667,26 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information about a shared drive.</summary>
+    public class Drive : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
+        /// assume a specific collection ID for this resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The root of this shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("root")]
+        public virtual DriveItem Root { get; set; } 
+
+        /// <summary>The title of the shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single Drive activity comprising one or more Actions by one or more Actors on one or more Targets.
     /// Some Action groupings occur spontaneously, such as moving an item into a shared folder triggering a permission
     /// change. Other groupings of related Actions, such as multiple Actors editing one item or moving multiple files
@@ -688,8 +708,8 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryActionDetail")]
         public virtual ActionDetail PrimaryActionDetail { get; set; } 
 
-        /// <summary>All Drive objects this activity is about (e.g. file, folder, Team Drive). This represents the state
-        /// of the target immediately after the actions occurred.</summary>
+        /// <summary>All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the
+        /// state of the target immediately after the actions occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
         public virtual System.Collections.Generic.IList<Target> Targets { get; set; } 
 
@@ -705,14 +725,40 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Drive item which is a file.</summary>
+    public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Drive item which is a folder.</summary>
+    public class DriveFolder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of Drive folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Drive item, such as a file or folder.</summary>
     public class DriveItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Drive item is a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual DriveFile DriveFile { get; set; } 
+
+        /// <summary>The Drive item is a folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFolder")]
+        public virtual DriveFolder DriveFolder { get; set; } 
+
+        /// <summary>This field is deprecated; please use the `driveFile` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual File File { get; set; } 
 
-        /// <summary>The Drive item is a folder.</summary>
+        /// <summary>This field is deprecated; please use the `driveFolder` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; } 
 
@@ -741,10 +787,18 @@ namespace Google.Apis.DriveActivity.v2.Data
     public class DriveItemReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Drive item is a file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual DriveFile DriveFile { get; set; } 
+
+        /// <summary>The Drive item is a folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFolder")]
+        public virtual DriveFolder DriveFolder { get; set; } 
+
+        /// <summary>This field is deprecated; please use the `driveFile` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual File File { get; set; } 
 
-        /// <summary>The Drive item is a folder.</summary>
+        /// <summary>This field is deprecated; please use the `driveFolder` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; } 
 
@@ -760,6 +814,22 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A lightweight reference to a shared drive.</summary>
+    public class DriveReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
+        /// assume a specific collection ID for this resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The title of the shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An empty message indicating an object was edited.</summary>
     public class Edit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -767,7 +837,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Drive item which is a file.</summary>
+    /// <summary>This item is deprecated; please see `DriveFile` instead.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -801,10 +871,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Drive item which is a folder.</summary>
+    /// <summary>This item is deprecated; please see `DriveFolder` instead.</summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of Drive folder.</summary>
+        /// <summary>This field is deprecated; please see `DriveFolder.type` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -901,7 +971,11 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual Domain Domain { get; set; } 
 
-        /// <summary>The Team Drive that owns the Drive item.</summary>
+        /// <summary>The drive that owns the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drive")]
+        public virtual DriveReference Drive { get; set; } 
+
+        /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
         public virtual TeamDriveReference TeamDrive { get; set; } 
 
@@ -1110,6 +1184,10 @@ namespace Google.Apis.DriveActivity.v2.Data
     /// <summary>Information about the target of activity.</summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The target is a shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drive")]
+        public virtual Drive Drive { get; set; } 
+
         /// <summary>The target is a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveItem")]
         public virtual DriveItem DriveItem { get; set; } 
@@ -1118,7 +1196,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileComment")]
         public virtual FileComment FileComment { get; set; } 
 
-        /// <summary>The target is a Team Drive.</summary>
+        /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
         public virtual TeamDrive TeamDrive { get; set; } 
 
@@ -1129,11 +1207,15 @@ namespace Google.Apis.DriveActivity.v2.Data
     /// <summary>A lightweight reference to the target of activity.</summary>
     public class TargetReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The target is a shared drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drive")]
+        public virtual DriveReference Drive { get; set; } 
+
         /// <summary>The target is a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveItem")]
         public virtual DriveItemReference DriveItem { get; set; } 
 
-        /// <summary>The target is a Team Drive.</summary>
+        /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
         public virtual TeamDriveReference TeamDrive { get; set; } 
 
@@ -1141,18 +1223,18 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information about a Team Drive.</summary>
+    /// <summary>This item is deprecated; please see `Drive` instead.</summary>
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the Team Drive. The format is "teamDrives/TEAM_DRIVE_ID".</summary>
+        /// <summary>This field is deprecated; please see `Drive.name` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The root of this Team Drive.</summary>
+        /// <summary>This field is deprecated; please see `Drive.root` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
         public virtual DriveItem Root { get; set; } 
 
-        /// <summary>The title of the Team Drive.</summary>
+        /// <summary>This field is deprecated; please see `Drive.title` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -1160,14 +1242,14 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A lightweight reference to a Team Drive.</summary>
+    /// <summary>This item is deprecated; please see `DriveReference` instead.</summary>
     public class TeamDriveReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the Team Drive. The format is "teamDrives/TEAM_DRIVE_ID".</summary>
+        /// <summary>This field is deprecated; please see `DriveReference.name` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The title of the Team Drive.</summary>
+        /// <summary>This field is deprecated; please see `DriveReference.title` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
