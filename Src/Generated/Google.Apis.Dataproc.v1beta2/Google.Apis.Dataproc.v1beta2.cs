@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190313 (1532)
+ *      <tr><th>API Rev<td>20190417 (1567)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -2139,14 +2139,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2182,18 +2182,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2592,11 +2592,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
-
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -2606,6 +2601,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
+
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2659,18 +2659,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2972,14 +2972,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -2991,6 +2983,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3035,6 +3035,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3047,15 +3056,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3798,20 +3798,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -3837,6 +3823,20 @@ namespace Google.Apis.Dataproc.v1beta2
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3881,6 +3881,24 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStateMatcher",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3902,24 +3920,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobStateMatcher",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5262,10 +5262,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. Please use request_id field instead.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string InstanceId { get; set; }
-
                     /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
                     /// from running. This mitigates risk of concurrent instances started due to retries.It is
                     /// recommended to always set this value to a UUID
@@ -5274,6 +5270,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
+
+                    /// <summary>Deprecated. Please use request_id field instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5315,18 +5315,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "instanceId", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "instanceId",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "instanceId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "instanceId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5781,8 +5781,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
-        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
@@ -6221,8 +6221,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
 
         /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified
         /// with network_uri.A full URL, partial URI, or short name are valid. Examples:
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
-        /// projects/[project_id]/regions/us-east1/sub0 sub0</summary>
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
+        /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; } 
 
@@ -6352,6 +6352,16 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
         public virtual System.Nullable<int> MinInstances { get; set; } 
 
+        /// <summary>Optional. Weight for the instance group, which is used to determine the fraction of total workers
+        /// in the cluster from this instance group. For example, if primary workers have weight 2, and secondary
+        /// workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The
+        /// cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings.
+        /// For example, if max_instances for secondary workers is 0, then only primary workers will be added. The
+        /// cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will
+        /// default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in
+        /// each group within the configured size bounds for each group. If weight is set for one group only, the
+        /// cluster will default to zero weight on the unset group. For example if weight is set only on primary
+        /// workers, the cluster will use primary workers only and no secondary workers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; } 
 
@@ -6625,8 +6635,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustRealm")]
         public virtual string CrossRealmTrustRealm { get; set; } 
 
-        /// <summary>Optional. The GCS uri of a KMS encrypted file containing the shared password between the on-cluster
-        /// Kerberos realm and the remote trusted realm, in a cross realm trust relationship.</summary>
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the
+        /// on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustSharedPasswordUri")]
         public virtual string CrossRealmTrustSharedPasswordUri { get; set; } 
 
@@ -6634,23 +6644,23 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableKerberos")]
         public virtual System.Nullable<bool> EnableKerberos { get; set; } 
 
-        /// <summary>Optional. The GCS uri of a KMS encrypted file containing the master key of the KDC
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC
         /// database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kdcDbKeyUri")]
         public virtual string KdcDbKeyUri { get; set; } 
 
-        /// <summary>Optional. The GCS uri of a KMS encrypted file containing the password to the user provided key. For
-        /// the self-signed certificate, this password is generated by Dataproc.</summary>
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided key. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyPasswordUri")]
         public virtual string KeyPasswordUri { get; set; } 
 
-        /// <summary>Optional. The GCS uri of a KMS encrypted file containing the password to the user provided
-        /// keystore. For the self-signed certificate, this password is generated by Dataproc.</summary>
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided keystore. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystorePasswordUri")]
         public virtual string KeystorePasswordUri { get; set; } 
 
-        /// <summary>Optional. The GCS uri of the keystore file used for SSL encryption. If not provided, Dataproc will
-        /// provide a self-signed certificate.</summary>
+        /// <summary>Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided,
+        /// Dataproc will provide a self-signed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
         public virtual string KeystoreUri { get; set; } 
 
@@ -6658,7 +6668,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyUri")]
         public virtual string KmsKeyUri { get; set; } 
 
-        /// <summary>Required. The GCS uri of a KMS encrypted file containing the root principal password.</summary>
+        /// <summary>Required. The Cloud Storage URI of a KMS encrypted file containing the root principal
+        /// password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPrincipalPasswordUri")]
         public virtual string RootPrincipalPasswordUri { get; set; } 
 
@@ -6667,13 +6678,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tgtLifetimeHours")]
         public virtual System.Nullable<int> TgtLifetimeHours { get; set; } 
 
-        /// <summary>Optional. The GCS uri of a KMS encrypted file containing the password to the user provided
-        /// truststore. For the self-signed certificate, this password is generated by Dataproc.</summary>
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided truststore. For the self-signed certificate, this password is generated by Dataproc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststorePasswordUri")]
         public virtual string TruststorePasswordUri { get; set; } 
 
-        /// <summary>Optional. The GCS uri of the truststore file used for SSL encryption. If not provided, Dataproc
-        /// will provide a self-signed certificate.</summary>
+        /// <summary>Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided,
+        /// Dataproc will provide a self-signed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truststoreUri")]
         public virtual string TruststoreUri { get; set; } 
 
@@ -7186,7 +7197,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     {
         /// <summary>Optional. The version of software inside the cluster. It must be one of the supported Cloud
         /// Dataproc Versions, such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version.
-        /// If unspecified, it defaults to the latest version.</summary>
+        /// If unspecified, it defaults to the latest Debian version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 
 

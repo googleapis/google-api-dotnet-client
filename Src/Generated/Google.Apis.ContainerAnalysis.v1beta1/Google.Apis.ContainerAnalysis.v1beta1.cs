@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190401 (1551)
+ *      <tr><th>API Rev<td>20190419 (1569)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -1717,11 +1717,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Number of occurrences to return in the list. Must be positive. Max allowed page size is
-                /// 1000. If not specified, page size defaults to 20.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1729,6 +1724,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Number of occurrences to return in the list. Must be positive. Max allowed page size is
+                /// 1000. If not specified, page size defaults to 20.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1764,15 +1764,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1785,6 +1776,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2489,7 +2489,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -2637,6 +2637,50 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss
+    /// /specification-document</summary>
+    public class CVSSv3 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; } 
+
+        /// <summary>Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over
+        /// time and across user environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; } 
+
+        /// <summary>The base score is a function of the base metric scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<float> BaseScore { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
+        public virtual System.Nullable<float> ExploitabilityScore { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
+        public virtual System.Nullable<float> ImpactScore { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3940,6 +3984,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The CVSS score for this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; } 
+
+        /// <summary>The full description of the CVSSv3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
+        public virtual CVSSv3 CvssV3 { get; set; } 
 
         /// <summary>All information about the package to specifically identify this vulnerability. One entry per
         /// (version range and cpe_uri) the package vulnerability has manifested in.</summary>

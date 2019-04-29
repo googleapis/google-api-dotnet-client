@@ -1014,6 +1014,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
+        /// <summary>The type of the consumer which should have been defined in [Google Resource
+        /// Manager](https://cloud.google.com/resource-manager/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

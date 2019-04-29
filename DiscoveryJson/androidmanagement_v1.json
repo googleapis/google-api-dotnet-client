@@ -1,194 +1,919 @@
 {
+  "rootUrl": "https://androidmanagement.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "androidmanagement",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Android Management API",
+  "ownerName": "Google",
+  "resources": {
+    "enterprises": {
+      "methods": {
+        "get": {
+          "description": "Gets an enterprise.",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Enterprise"
+          },
+          "parameters": {
+            "name": {
+              "pattern": "^enterprises/[^/]+$",
+              "location": "path",
+              "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ],
+          "flatPath": "v1/enterprises/{enterprisesId}",
+          "id": "androidmanagement.enterprises.get",
+          "path": "v1/{+name}"
+        },
+        "patch": {
+          "httpMethod": "PATCH",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Enterprise"
+          },
+          "parameters": {
+            "name": {
+              "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+              "required": true,
+              "type": "string",
+              "pattern": "^enterprises/[^/]+$",
+              "location": "path"
+            },
+            "updateMask": {
+              "location": "query",
+              "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
+              "format": "google-fieldmask",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ],
+          "flatPath": "v1/enterprises/{enterprisesId}",
+          "id": "androidmanagement.enterprises.patch",
+          "path": "v1/{+name}",
+          "description": "Updates an enterprise.",
+          "request": {
+            "$ref": "Enterprise"
+          }
+        },
+        "create": {
+          "description": "Creates an enterprise. This is the last step in the enterprise signup flow.",
+          "request": {
+            "$ref": "Enterprise"
+          },
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "Enterprise"
+          },
+          "parameters": {
+            "enterpriseToken": {
+              "description": "The enterprise token appended to the callback URL.",
+              "type": "string",
+              "location": "query"
+            },
+            "signupUrlName": {
+              "description": "The name of the SignupUrl used to sign up for the enterprise.",
+              "type": "string",
+              "location": "query"
+            },
+            "projectId": {
+              "location": "query",
+              "description": "The ID of the Google Cloud Platform project which will own the enterprise.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ],
+          "flatPath": "v1/enterprises",
+          "id": "androidmanagement.enterprises.create",
+          "path": "v1/enterprises"
+        }
+      },
+      "resources": {
+        "applications": {
+          "methods": {
+            "get": {
+              "description": "Gets info about an application.",
+              "response": {
+                "$ref": "Application"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "languageCode": {
+                  "location": "query",
+                  "description": "The preferred language for localized application info, as a BCP47 tag (e.g. \"en-US\", \"de\"). If not specified the default language of the application will be used.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "The name of the application in the form enterprises/{enterpriseId}/applications/{package_name}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/applications/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/applications/{applicationsId}",
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.applications.get"
+            }
+          }
+        },
+        "devices": {
+          "methods": {
+            "delete": {
+              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.devices.delete",
+              "description": "Deletes a device. This operation wipes the device.",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
+                  "required": true,
+                  "type": "string"
+                },
+                "wipeDataFlags": {
+                  "enum": [
+                    "WIPE_DATA_FLAG_UNSPECIFIED",
+                    "PRESERVE_RESET_PROTECTION_DATA",
+                    "WIPE_EXTERNAL_STORAGE"
+                  ],
+                  "description": "Optional flags that control the device wiping behavior.",
+                  "type": "string",
+                  "repeated": true,
+                  "location": "query"
+                }
+              }
+            },
+            "get": {
+              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
+              "id": "androidmanagement.enterprises.devices.get",
+              "path": "v1/{+name}",
+              "description": "Gets a device.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Device"
+              },
+              "parameters": {
+                "name": {
+                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
+            },
+            "list": {
+              "description": "Lists devices for a given enterprise.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ListDevicesResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "pageSize": {
+                  "location": "query",
+                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+$"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A token identifying a page of results returned by the server.",
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/devices",
+              "id": "androidmanagement.enterprises.devices.list",
+              "path": "v1/{+parent}/devices"
+            },
+            "patch": {
+              "description": "Updates a device.",
+              "request": {
+                "$ref": "Device"
+              },
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Device"
+              },
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/devices/[^/]+$"
+                },
+                "updateMask": {
+                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
+                  "format": "google-fieldmask",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
+              "id": "androidmanagement.enterprises.devices.patch",
+              "path": "v1/{+name}"
+            },
+            "issueCommand": {
+              "request": {
+                "$ref": "Command"
+              },
+              "description": "Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command.",
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}:issueCommand",
+              "path": "v1/{+name}:issueCommand",
+              "id": "androidmanagement.enterprises.devices.issueCommand"
+            }
+          },
+          "resources": {
+            "operations": {
+              "methods": {
+                "list": {
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "parameters": {
+                    "filter": {
+                      "location": "query",
+                      "description": "The standard list filter.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations$",
+                      "location": "path"
+                    },
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "The standard list page size.",
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ],
+                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations",
+                  "id": "androidmanagement.enterprises.devices.operations.list",
+                  "path": "v1/{+name}"
+                },
+                "get": {
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
+                  "path": "v1/{+name}",
+                  "id": "androidmanagement.enterprises.devices.operations.get"
+                },
+                "cancel": {
+                  "path": "v1/{+name}:cancel",
+                  "id": "androidmanagement.enterprises.devices.operations.cancel",
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be cancelled.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}:cancel"
+                },
+                "delete": {
+                  "id": "androidmanagement.enterprises.devices.operations.delete",
+                  "path": "v1/{+name}",
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
+                  "httpMethod": "DELETE",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ],
+                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}"
+                }
+              }
+            }
+          }
+        },
+        "webTokens": {
+          "methods": {
+            "create": {
+              "path": "v1/{+parent}/webTokens",
+              "id": "androidmanagement.enterprises.webTokens.create",
+              "request": {
+                "$ref": "WebToken"
+              },
+              "description": "Creates a web token to access an embeddable managed Google Play web UI for a given enterprise.",
+              "response": {
+                "$ref": "WebToken"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+$"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/webTokens"
+            }
+          }
+        },
+        "policies": {
+          "methods": {
+            "delete": {
+              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
+              "id": "androidmanagement.enterprises.policies.delete",
+              "path": "v1/{+name}",
+              "description": "Deletes a policy. This operation is only permitted if no devices are currently referencing the policy.",
+              "httpMethod": "DELETE",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/policies/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
+            },
+            "get": {
+              "response": {
+                "$ref": "Policy"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/policies/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.policies.get",
+              "description": "Gets a policy."
+            },
+            "list": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "ListPoliciesResponse"
+              },
+              "parameters": {
+                "pageSize": {
+                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+$"
+                },
+                "pageToken": {
+                  "description": "A token identifying a page of results returned by the server.",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/policies",
+              "id": "androidmanagement.enterprises.policies.list",
+              "path": "v1/{+parent}/policies",
+              "description": "Lists policies for a given enterprise."
+            },
+            "patch": {
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Policy"
+              },
+              "parameters": {
+                "updateMask": {
+                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
+                  "format": "google-fieldmask",
+                  "type": "string",
+                  "location": "query"
+                },
+                "name": {
+                  "location": "path",
+                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/policies/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
+              "id": "androidmanagement.enterprises.policies.patch",
+              "path": "v1/{+name}",
+              "description": "Updates or creates a policy.",
+              "request": {
+                "$ref": "Policy"
+              }
+            }
+          }
+        },
+        "webApps": {
+          "methods": {
+            "create": {
+              "flatPath": "v1/enterprises/{enterprisesId}/webApps",
+              "path": "v1/{+parent}/webApps",
+              "id": "androidmanagement.enterprises.webApps.create",
+              "request": {
+                "$ref": "WebApp"
+              },
+              "description": "Creates a web app.",
+              "response": {
+                "$ref": "WebApp"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "parent": {
+                  "pattern": "^enterprises/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string"
+                }
+              }
+            },
+            "delete": {
+              "description": "Deletes a web app.",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.webApps.delete"
+            },
+            "get": {
+              "description": "Gets a web app.",
+              "response": {
+                "$ref": "WebApp"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApp/{packageName}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.webApps.get"
+            },
+            "list": {
+              "response": {
+                "$ref": "ListWebAppsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "A token identifying a page of results returned by the server.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+$"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/webApps",
+              "path": "v1/{+parent}/webApps",
+              "id": "androidmanagement.enterprises.webApps.list",
+              "description": "Lists web apps for a given enterprise."
+            },
+            "patch": {
+              "id": "androidmanagement.enterprises.webApps.patch",
+              "path": "v1/{+name}",
+              "description": "Updates a web app.",
+              "request": {
+                "$ref": "WebApp"
+              },
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "WebApp"
+              },
+              "parameters": {
+                "updateMask": {
+                  "location": "query",
+                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}"
+            }
+          }
+        },
+        "enrollmentTokens": {
+          "methods": {
+            "create": {
+              "response": {
+                "$ref": "EnrollmentToken"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "parent": {
+                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens",
+              "path": "v1/{+parent}/enrollmentTokens",
+              "id": "androidmanagement.enterprises.enrollmentTokens.create",
+              "request": {
+                "$ref": "EnrollmentToken"
+              },
+              "description": "Creates an enrollment token for a given enterprise."
+            },
+            "delete": {
+              "path": "v1/{+name}",
+              "id": "androidmanagement.enterprises.enrollmentTokens.delete",
+              "description": "Deletes an enrollment token. This operation invalidates the token, preventing its future use.",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the enrollment token in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^enterprises/[^/]+/enrollmentTokens/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens/{enrollmentTokensId}"
+            }
+          }
+        }
+      }
+    },
+    "signupUrls": {
+      "methods": {
+        "create": {
+          "flatPath": "v1/signupUrls",
+          "id": "androidmanagement.signupUrls.create",
+          "path": "v1/signupUrls",
+          "description": "Creates an enterprise signup URL.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "SignupUrl"
+          },
+          "parameters": {
+            "projectId": {
+              "description": "The ID of the Google Cloud Platform project which will own the enterprise.",
+              "type": "string",
+              "location": "query"
+            },
+            "callbackUrl": {
+              "location": "query",
+              "description": "The callback URL that the admin will be redirected to after successfully creating an enterprise. Before redirecting there the system will add a query parameter to this URL named enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL will be parsed then reformatted in order to add the enterpriseToken parameter, so there may be some minor formatting changes.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://androidmanagement.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "The Android Management API provides remote enterprise management of Android devices and apps.",
+  "servicePath": "",
+  "basePath": "",
+  "id": "androidmanagement:v1",
+  "documentationLink": "https://developers.google.com/android/management",
+  "revision": "20190416",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "PermissionGrant": {
-      "description": "Configuration for an Android permission and its grant state.",
-      "type": "object",
-      "properties": {
-        "permission": {
-          "description": "The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR.",
-          "type": "string"
-        },
-        "policy": {
-          "enumDescriptions": [
-            "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
-            "Prompt the user to grant a permission.",
-            "Automatically grant a permission.",
-            "Automatically deny a permission."
-          ],
-          "enum": [
-            "PERMISSION_POLICY_UNSPECIFIED",
-            "PROMPT",
-            "GRANT",
-            "DENY"
-          ],
-          "description": "The policy for granting the permission.",
-          "type": "string"
-        }
-      },
-      "id": "PermissionGrant"
-    },
-    "ApplicationReport": {
-      "properties": {
-        "applicationSource": {
-          "enumDescriptions": [
-            "The app was sideloaded from an unspecified source.",
-            "This is a system app from the device's factory image.",
-            "This is an updated system app.",
-            "The app was installed from the Google Play Store."
-          ],
-          "enum": [
-            "APPLICATION_SOURCE_UNSPECIFIED",
-            "SYSTEM_APP_FACTORY_VERSION",
-            "SYSTEM_APP_UPDATED_VERSION",
-            "INSTALLED_FROM_PLAY_STORE"
-          ],
-          "description": "The source of the package.",
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "INSTALLED",
-            "REMOVED"
-          ],
-          "description": "Application state.",
-          "type": "string",
-          "enumDescriptions": [
-            "App is installed on the device",
-            "App was removed from the device"
-          ]
-        },
-        "versionName": {
-          "description": "The app version as displayed to the user.",
-          "type": "string"
-        },
-        "packageName": {
-          "description": "Package name of the app.",
-          "type": "string"
-        },
-        "keyedAppStates": {
-          "description": "List of keyed app states reported by the app.",
-          "type": "array",
-          "items": {
-            "$ref": "KeyedAppState"
-          }
-        },
-        "versionCode": {
-          "description": "The app version code, which can be used to determine whether one version is more recent than another.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "packageSha256Hash": {
-          "description": "The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified. Each byte of the hash value is represented as a two-digit hexadecimal number.",
-          "type": "string"
-        },
-        "events": {
-          "description": "List of app events. The most recent 20 events are stored in the list.",
-          "type": "array",
-          "items": {
-            "$ref": "ApplicationEvent"
-          }
-        },
-        "displayName": {
-          "description": "The display name of the app.",
-          "type": "string"
-        },
-        "installerPackageName": {
-          "description": "The package name of the app that installed this app.",
-          "type": "string"
-        },
-        "signingKeyCertFingerprints": {
-          "description": "The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "ApplicationReport",
-      "description": "Information reported about an installed app.",
-      "type": "object"
-    },
-    "WebToken": {
-      "description": "A web token used to access the managed Google Play iframe.",
-      "type": "object",
-      "properties": {
-        "parentFrameUrl": {
-          "description": "The URL of the parent frame hosting the iframe with the embedded UI. To prevent XSS, the iframe may not be hosted at other URLs. The URL must use the https scheme.",
-          "type": "string"
-        },
-        "permissions": {
-          "enumDescriptions": [
-            "This value is ignored.",
-            "The permission to approve apps for the enterprise."
-          ],
-          "description": "Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "WEB_TOKEN_PERMISSION_UNSPECIFIED",
-              "APPROVE_APPS"
-            ]
-          }
-        },
-        "name": {
-          "description": "The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.",
-          "type": "string"
-        },
-        "value": {
-          "description": "The token value which is used in the hosting page to generate the iframe with the embedded UI. This is a read-only field generated by the server.",
-          "type": "string"
-        }
-      },
-      "id": "WebToken"
-    },
-    "SystemUpdate": {
-      "description": "Configuration for managing system updates",
-      "type": "object",
-      "properties": {
-        "endMinutes": {
-          "description": "If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "type": {
-          "enumDescriptions": [
-            "Follow the default update behavior for the device, which typically requires the user to accept system updates.",
-            "Install automatically as soon as an update is available.",
-            "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play.",
-            "Postpone automatic install up to a maximum of 30 days."
-          ],
-          "enum": [
-            "SYSTEM_UPDATE_TYPE_UNSPECIFIED",
-            "AUTOMATIC",
-            "WINDOWED",
-            "POSTPONE"
-          ],
-          "description": "The type of system update to configure.",
-          "type": "string"
-        },
-        "startMinutes": {
-          "description": "If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes after midnight in the device's local time. This value must be between 0 and 1439, inclusive.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "SystemUpdate"
-    },
     "NonComplianceDetailCondition": {
       "description": "A compliance rule condition which is satisfied if there exists any matching NonComplianceDetail for the device. A NonComplianceDetail matches a NonComplianceDetailCondition if all the fields which are set within the NonComplianceDetailCondition match the corresponding NonComplianceDetail fields.",
       "type": "object",
       "properties": {
-        "packageName": {
-          "description": "The package name of the app that's out of compliance. If not set, then this condition matches any package name.",
-          "type": "string"
-        },
-        "settingName": {
-          "description": "The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name.",
-          "type": "string"
-        },
         "nonComplianceReason": {
           "description": "The reason the device is not in compliance with the setting. If not set, then this condition matches any reason.",
           "type": "string",
@@ -218,6 +943,14 @@
             "APP_INCOMPATIBLE",
             "APP_NOT_UPDATED"
           ]
+        },
+        "packageName": {
+          "description": "The package name of the app that's out of compliance. If not set, then this condition matches any package name.",
+          "type": "string"
+        },
+        "settingName": {
+          "description": "The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name.",
+          "type": "string"
         }
       },
       "id": "NonComplianceDetailCondition"
@@ -226,31 +959,29 @@
       "description": "An entry of a managed property.",
       "type": "object",
       "properties": {
-        "value": {
-          "description": "The machine-readable value of the entry, which should be used in the configuration. Not localized.",
-          "type": "string"
-        },
         "name": {
           "description": "The human-readable name of the value. Localized.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The machine-readable value of the entry, which should be used in the configuration. Not localized.",
           "type": "string"
         }
       },
       "id": "ManagedPropertyEntry"
     },
     "ApplicationReportingSettings": {
-      "description": "Settings controlling the behavior of application reports.",
-      "type": "object",
       "properties": {
         "includeRemovedApps": {
           "description": "Whether removed apps are included in application reports.",
           "type": "boolean"
         }
       },
-      "id": "ApplicationReportingSettings"
+      "id": "ApplicationReportingSettings",
+      "description": "Settings controlling the behavior of application reports.",
+      "type": "object"
     },
     "ApplicationPolicy": {
-      "description": "Policy for an individual app.",
-      "type": "object",
       "properties": {
         "defaultPermissionPolicy": {
           "enumDescriptions": [
@@ -302,6 +1033,14 @@
           "type": "string"
         },
         "installType": {
+          "enumDescriptions": [
+            "Unspecified. Defaults to AVAILABLE.",
+            "The app is automatically installed and can be removed by the user.",
+            "The app is automatically installed and can't be removed by the user.",
+            "The app is blocked and can't be installed. If the app was installed under a previous policy, it will be uninstalled.",
+            "The app is available to install.",
+            "The app is automatically installed and can't be removed by the user and will prevent setup from completion until installation is complete."
+          ],
           "enum": [
             "INSTALL_TYPE_UNSPECIFIED",
             "PREINSTALLED",
@@ -311,15 +1050,7 @@
             "REQUIRED_FOR_SETUP"
           ],
           "description": "The type of installation to perform.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Defaults to AVAILABLE.",
-            "The app is automatically installed and can be removed by the user.",
-            "The app is automatically installed and can't be removed by the user.",
-            "The app is blocked and can't be installed. If the app was installed under a previous policy, it will be uninstalled.",
-            "The app is available to install.",
-            "The app is automatically installed and can't be removed by the user and will prevent setup from completion until installation is complete."
-          ]
+          "type": "string"
         },
         "minimumVersionCode": {
           "description": "The minimum version of the app that runs on the device. If set, the device attempts to update the app to at least this version code. If the app is not up-to-date, the device will contain a NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum version code per policy.",
@@ -346,25 +1077,24 @@
           "type": "object"
         },
         "managedConfigurationTemplate": {
-          "description": "The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set.",
-          "$ref": "ManagedConfigurationTemplate"
+          "$ref": "ManagedConfigurationTemplate",
+          "description": "The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set."
         }
       },
-      "id": "ApplicationPolicy"
+      "id": "ApplicationPolicy",
+      "description": "Policy for an individual app.",
+      "type": "object"
     },
     "MemoryEvent": {
       "description": "An event related to memory and storage measurements.",
       "type": "object",
       "properties": {
+        "byteCount": {
+          "description": "The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in bytes of the storage medium.",
+          "format": "int64",
+          "type": "string"
+        },
         "eventType": {
-          "enum": [
-            "MEMORY_EVENT_TYPE_UNSPECIFIED",
-            "RAM_MEASURED",
-            "INTERNAL_STORAGE_MEASURED",
-            "EXTERNAL_STORAGE_DETECTED",
-            "EXTERNAL_STORAGE_REMOVED",
-            "EXTERNAL_STORAGE_MEASURED"
-          ],
           "description": "Event type.",
           "type": "string",
           "enumDescriptions": [
@@ -374,31 +1104,38 @@
             "A new external storage medium was detected. The reported byte count is the total capacity of the storage medium.",
             "An external storage medium was removed. The reported byte count is zero.",
             "Free space in an external storage medium was measured."
+          ],
+          "enum": [
+            "MEMORY_EVENT_TYPE_UNSPECIFIED",
+            "RAM_MEASURED",
+            "INTERNAL_STORAGE_MEASURED",
+            "EXTERNAL_STORAGE_DETECTED",
+            "EXTERNAL_STORAGE_REMOVED",
+            "EXTERNAL_STORAGE_MEASURED"
           ]
         },
         "createTime": {
           "description": "The creation time of the event.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "byteCount": {
-          "description": "The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in bytes of the storage medium.",
-          "format": "int64",
-          "type": "string"
         }
       },
       "id": "MemoryEvent"
     },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
-      "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
+      "type": "object"
     },
     "NetworkInfo": {
       "description": "Device network info.",
       "type": "object",
       "properties": {
+        "imei": {
+          "description": "IMEI number of the GSM device. For example, A1000031212.",
+          "type": "string"
+        },
         "meid": {
           "description": "MEID number of the CDMA device. For example, A00000292788E1.",
           "type": "string"
@@ -410,17 +1147,11 @@
         "networkOperatorName": {
           "description": "Alphabetic name of current registered operator. For example, Vodafone.",
           "type": "string"
-        },
-        "imei": {
-          "description": "IMEI number of the GSM device. For example, A1000031212.",
-          "type": "string"
         }
       },
       "id": "NetworkInfo"
     },
     "ListWebAppsResponse": {
-      "description": "Response to a request to list web apps for a given enterprise.",
-      "type": "object",
       "properties": {
         "webApps": {
           "description": "The list of web apps.",
@@ -434,16 +1165,12 @@
           "type": "string"
         }
       },
-      "id": "ListWebAppsResponse"
+      "id": "ListWebAppsResponse",
+      "description": "Response to a request to list web apps for a given enterprise.",
+      "type": "object"
     },
     "SetupAction": {
-      "description": "An action executed during setup.",
-      "type": "object",
       "properties": {
-        "title": {
-          "description": "Title of this action.",
-          "$ref": "UserFacingMessage"
-        },
         "launchApp": {
           "description": "An action to launch an app.",
           "$ref": "LaunchAppAction"
@@ -451,20 +1178,34 @@
         "description": {
           "$ref": "UserFacingMessage",
           "description": "Description of this action."
+        },
+        "title": {
+          "description": "Title of this action.",
+          "$ref": "UserFacingMessage"
         }
       },
-      "id": "SetupAction"
+      "id": "SetupAction",
+      "description": "An action executed during setup.",
+      "type": "object"
     },
     "DeviceSettings": {
       "description": "Information about security related device settings on device.",
       "type": "object",
       "properties": {
-        "adbEnabled": {
-          "description": "Whether ADB (https://developer.android.com/studio/command-line/adb.html) is enabled on the device.",
+        "unknownSourcesEnabled": {
+          "description": "Whether installing apps from unknown sources is enabled.",
+          "type": "boolean"
+        },
+        "verifyAppsEnabled": {
+          "description": "Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is enabled on the device.",
           "type": "boolean"
         },
         "developmentSettingsEnabled": {
           "description": "Whether developer mode is enabled on the device.",
+          "type": "boolean"
+        },
+        "adbEnabled": {
+          "description": "Whether ADB (https://developer.android.com/studio/command-line/adb.html) is enabled on the device.",
           "type": "boolean"
         },
         "isEncrypted": {
@@ -472,15 +1213,6 @@
           "type": "boolean"
         },
         "encryptionStatus": {
-          "enumDescriptions": [
-            "Unspecified. No device should have this type.",
-            "Encryption is not supported by the device.",
-            "Encryption is supported by the device, but is not currently active.",
-            "Encryption is not currently active, but is currently being activated.",
-            "Encryption is active.",
-            "Encryption is active, but an encryption key is not set by the user.",
-            "Encryption is active, and the encryption key is tied to the user profile."
-          ],
           "enum": [
             "ENCRYPTION_STATUS_UNSPECIFIED",
             "UNSUPPORTED",
@@ -491,43 +1223,26 @@
             "ACTIVE_PER_USER"
           ],
           "description": "Encryption status from DevicePolicyManager.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. No device should have this type.",
+            "Encryption is not supported by the device.",
+            "Encryption is supported by the device, but is not currently active.",
+            "Encryption is not currently active, but is currently being activated.",
+            "Encryption is active.",
+            "Encryption is active, but an encryption key is not set by the user.",
+            "Encryption is active, and the encryption key is tied to the user profile."
+          ]
         },
         "isDeviceSecure": {
           "description": "Whether the device is secured with PIN/password.",
-          "type": "boolean"
-        },
-        "unknownSourcesEnabled": {
-          "description": "Whether installing apps from unknown sources is enabled.",
-          "type": "boolean"
-        },
-        "verifyAppsEnabled": {
-          "description": "Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is enabled on the device.",
           "type": "boolean"
         }
       },
       "id": "DeviceSettings"
     },
     "WebApp": {
-      "description": "A web app.",
-      "type": "object",
       "properties": {
-        "name": {
-          "description": "The name of the web app, which is generated by the server during creation in the form enterprises/{enterpriseId}/webApps/{packageName}.",
-          "type": "string"
-        },
-        "versionCode": {
-          "description": "The current version of the app.\u003cp\u003eNote that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date.",
-          "format": "int64",
-          "type": "string"
-        },
-        "icons": {
-          "description": "A list of icons for the web app. Must have at least one element.",
-          "type": "array",
-          "items": {
-            "$ref": "WebAppIcon"
-          }
-        },
         "startUrl": {
           "description": "The start URL, i.e. the URL that should load when the user opens the application.",
           "type": "string"
@@ -551,9 +1266,27 @@
         "title": {
           "description": "The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon).",
           "type": "string"
+        },
+        "name": {
+          "description": "The name of the web app, which is generated by the server during creation in the form enterprises/{enterpriseId}/webApps/{packageName}.",
+          "type": "string"
+        },
+        "icons": {
+          "description": "A list of icons for the web app. Must have at least one element.",
+          "type": "array",
+          "items": {
+            "$ref": "WebAppIcon"
+          }
+        },
+        "versionCode": {
+          "description": "The current version of the app.\u003cp\u003eNote that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date.",
+          "format": "int64",
+          "type": "string"
         }
       },
-      "id": "WebApp"
+      "id": "WebApp",
+      "description": "A web app.",
+      "type": "object"
     },
     "StatusReportingSettings": {
       "description": "Settings controlling the behavior of status reports.",
@@ -599,6 +1332,8 @@
       "id": "StatusReportingSettings"
     },
     "ExternalData": {
+      "description": "Data hosted at an external location. The data is to be downloaded by Android Device Policy and verified against the hash.",
+      "type": "object",
       "properties": {
         "url": {
           "description": "The absolute URL to the data, which must use either the http or https scheme. Android Device Policy doesn't provide any credentials in the GET request, so the URL must be publicly accessible. Including a long, random component in the URL may be used to prevent attackers from discovering the URL.",
@@ -609,35 +1344,12 @@
           "type": "string"
         }
       },
-      "id": "ExternalData",
-      "description": "Data hosted at an external location. The data is to be downloaded by Android Device Policy and verified against the hash.",
-      "type": "object"
+      "id": "ExternalData"
     },
     "Policy": {
       "description": "A policy resources represents a group settings that govern the behavior of a managed device and the apps installed on it.",
       "type": "object",
       "properties": {
-        "androidDevicePolicyTracks": {
-          "enumDescriptions": [
-            "This value is ignored.",
-            "The production track, which provides the latest stable release.",
-            "The beta track, which provides the latest beta release."
-          ],
-          "description": "The app tracks for Android Device Policy the device can access. The device receives the latest version among all accessible tracks. If no tracks are specified, then the device only uses the production track.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "APP_TRACK_UNSPECIFIED",
-              "PRODUCTION",
-              "BETA"
-            ]
-          }
-        },
-        "modifyAccountsDisabled": {
-          "description": "Whether adding or removing accounts is disabled.",
-          "type": "boolean"
-        },
         "frpAdminEmails": {
           "description": "Email addresses of device administrators for factory reset protection. When the device is factory reset, it will require one of these admins to log in with the Google account email and password to unlock the device. If no admins are specified, the device won't provide factory reset protection.",
           "type": "array",
@@ -678,6 +1390,10 @@
           "description": "Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable.",
           "type": "boolean"
         },
+        "createWindowsDisabled": {
+          "description": "Whether creating windows besides app windows is disabled.",
+          "type": "boolean"
+        },
         "bluetoothContactSharingDisabled": {
           "description": "Whether bluetooth contact sharing is disabled.",
           "type": "boolean"
@@ -689,16 +1405,12 @@
             "$ref": "SetupAction"
           }
         },
-        "createWindowsDisabled": {
-          "description": "Whether creating windows besides app windows is disabled.",
+        "removeUserDisabled": {
+          "description": "Whether removing other users is disabled.",
           "type": "boolean"
         },
         "autoTimeRequired": {
           "description": "Whether auto time is required, which prevents the user from manually setting the date and time.",
-          "type": "boolean"
-        },
-        "removeUserDisabled": {
-          "description": "Whether removing other users is disabled.",
           "type": "boolean"
         },
         "complianceRules": {
@@ -712,15 +1424,17 @@
           "description": "Whether sending and receiving SMS messages is disabled.",
           "type": "boolean"
         },
-        "installAppsDisabled": {
-          "description": "Whether user installation of apps is disabled.",
-          "type": "boolean"
-        },
         "systemUpdate": {
           "description": "The system update policy, which controls how OS updates are applied. If the update type is WINDOWED, the update window will automatically apply to Play app updates as well.",
           "$ref": "SystemUpdate"
         },
+        "installAppsDisabled": {
+          "description": "Whether user installation of apps is disabled.",
+          "type": "boolean"
+        },
         "appAutoUpdatePolicy": {
+          "description": "The app auto update policy, which controls when automatic app updates can be applied.",
+          "type": "string",
           "enumDescriptions": [
             "The auto-update policy is not set. Equivalent to CHOICE_TO_THE_USER.",
             "The user can control auto-updates.",
@@ -734,9 +1448,7 @@
             "NEVER",
             "WIFI_ONLY",
             "ALWAYS"
-          ],
-          "description": "The app auto update policy, which controls when automatic app updates can be applied.",
-          "type": "string"
+          ]
         },
         "uninstallAppsDisabled": {
           "description": "Whether user uninstallation of applications is disabled.",
@@ -780,12 +1492,9 @@
           "description": "Whether USB storage is enabled. Deprecated.",
           "type": "boolean"
         },
-        "permissionGrants": {
-          "description": "Explicit permission or group grants or denials for all apps. These values override the default_permission_policy.",
-          "type": "array",
-          "items": {
-            "$ref": "PermissionGrant"
-          }
+        "keyguardDisabled": {
+          "description": "Whether the keyguard is disabled.",
+          "type": "boolean"
         },
         "choosePrivateKeyRules": {
           "description": "Rules for automatically choosing a private key and certificate to authenticate the device to a server. The rules are ordered by increasing precedence, so if an outgoing request matches more than one rule, the last rule defines which private key to use.",
@@ -794,9 +1503,12 @@
             "$ref": "ChoosePrivateKeyRule"
           }
         },
-        "keyguardDisabled": {
-          "description": "Whether the keyguard is disabled.",
-          "type": "boolean"
+        "permissionGrants": {
+          "description": "Explicit permission or group grants or denials for all apps. These values override the default_permission_policy.",
+          "type": "array",
+          "items": {
+            "$ref": "PermissionGrant"
+          }
         },
         "permittedInputMethods": {
           "$ref": "PackageNameList",
@@ -844,8 +1556,6 @@
           "type": "string"
         },
         "encryptionPolicy": {
-          "description": "Whether encryption is enabled",
-          "type": "string",
           "enumDescriptions": [
             "This value is ignored, i.e. no encryption required",
             "Encryption required but no password required to boot",
@@ -855,15 +1565,17 @@
             "ENCRYPTION_POLICY_UNSPECIFIED",
             "ENABLED_WITHOUT_PASSWORD",
             "ENABLED_WITH_PASSWORD"
-          ]
+          ],
+          "description": "Whether encryption is enabled",
+          "type": "string"
         },
         "unmuteMicrophoneDisabled": {
           "description": "Whether the microphone is muted and adjusting microphone volume is disabled.",
           "type": "boolean"
         },
         "recommendedGlobalProxy": {
-          "description": "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it.",
-          "$ref": "ProxyInfo"
+          "$ref": "ProxyInfo",
+          "description": "The network-independent global HTTP proxy. Typically proxies should be configured per-network in open_network_configuration. However for unusual configurations like general internal filtering a global HTTP proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a recommendation and some apps may ignore it."
         },
         "skipFirstUseHintsEnabled": {
           "description": "Flag to skip hints on the first use. Enterprise admin can enable the system recommendation for apps to skip their user tutorial and other introductory hints on first start-up.",
@@ -873,21 +1585,15 @@
           "description": "Whether transferring files over USB is disabled.",
           "type": "boolean"
         },
-        "adjustVolumeDisabled": {
-          "description": "Whether adjusting the master volume is disabled.",
-          "type": "boolean"
-        },
         "outgoingCallsDisabled": {
           "description": "Whether outgoing calls are disabled.",
           "type": "boolean"
         },
+        "adjustVolumeDisabled": {
+          "description": "Whether adjusting the master volume is disabled.",
+          "type": "boolean"
+        },
         "defaultPermissionPolicy": {
-          "enumDescriptions": [
-            "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
-            "Prompt the user to grant a permission.",
-            "Automatically grant a permission.",
-            "Automatically deny a permission."
-          ],
           "enum": [
             "PERMISSION_POLICY_UNSPECIFIED",
             "PROMPT",
@@ -895,23 +1601,25 @@
             "DENY"
           ],
           "description": "The default permission policy for runtime permission requests.",
-          "type": "string"
-        },
-        "bluetoothConfigDisabled": {
-          "description": "Whether configuring bluetooth is disabled.",
-          "type": "boolean"
+          "type": "string",
+          "enumDescriptions": [
+            "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
+            "Prompt the user to grant a permission.",
+            "Automatically grant a permission.",
+            "Automatically deny a permission."
+          ]
         },
         "stayOnPluggedModes": {
           "description": "The battery plugged in modes for which the device stays on. When using this setting, it is recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays on.",
           "type": "array",
           "items": {
-            "type": "string",
             "enum": [
               "BATTERY_PLUGGED_MODE_UNSPECIFIED",
               "AC",
               "USB",
               "WIRELESS"
-            ]
+            ],
+            "type": "string"
           },
           "enumDescriptions": [
             "This value is ignored.",
@@ -920,16 +1628,20 @@
             "Power source is wireless."
           ]
         },
+        "bluetoothConfigDisabled": {
+          "description": "Whether configuring bluetooth is disabled.",
+          "type": "boolean"
+        },
         "outgoingBeamDisabled": {
           "description": "Whether using NFC to beam data from apps is disabled.",
           "type": "boolean"
         },
-        "dataRoamingDisabled": {
-          "description": "Whether roaming data services are disabled.",
-          "type": "boolean"
-        },
         "wifiConfigsLockdownEnabled": {
           "description": "DEPRECATED - Use wifi_config_disabled.",
+          "type": "boolean"
+        },
+        "dataRoamingDisabled": {
+          "description": "Whether roaming data services are disabled.",
           "type": "boolean"
         },
         "bluetoothDisabled": {
@@ -937,8 +1649,8 @@
           "type": "boolean"
         },
         "alwaysOnVpnPackage": {
-          "description": "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting.",
-          "$ref": "AlwaysOnVpnPackage"
+          "$ref": "AlwaysOnVpnPackage",
+          "description": "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting."
         },
         "version": {
           "description": "The version of the policy. This is a read-only field. The version is incremented each time the policy is updated.",
@@ -953,36 +1665,31 @@
           "description": "Password requirements. DEPRECATED - Use password_policies",
           "$ref": "PasswordRequirements"
         },
+        "statusReportingSettings": {
+          "$ref": "StatusReportingSettings",
+          "description": "Status reporting settings"
+        },
         "tetheringConfigDisabled": {
           "description": "Whether configuring tethering and portable hotspots is disabled.",
           "type": "boolean"
         },
-        "statusReportingSettings": {
-          "description": "Status reporting settings",
-          "$ref": "StatusReportingSettings"
+        "funDisabled": {
+          "description": "Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is disabled.",
+          "type": "boolean"
         },
         "maximumTimeToLock": {
           "description": "Maximum time in milliseconds for user activity until the device locks. A value of 0 means there is no restriction.",
           "format": "int64",
           "type": "string"
         },
-        "funDisabled": {
-          "description": "Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is disabled.",
-          "type": "boolean"
-        },
         "kioskCustomLauncherEnabled": {
           "description": "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. The apps appear on a single page in alphabetical order. It is recommended to also use status_bar_disabled to block access to device settings.",
           "type": "boolean"
-        },
-        "longSupportMessage": {
-          "description": "A message displayed to the user in the device administators settings screen.",
-          "$ref": "UserFacingMessage"
         },
         "keyguardDisabledFeatures": {
           "description": "Disabled keyguard customizations, such as widgets.",
           "type": "array",
           "items": {
-            "type": "string",
             "enum": [
               "KEYGUARD_DISABLED_FEATURE_UNSPECIFIED",
               "CAMERA",
@@ -992,7 +1699,8 @@
               "DISABLE_FINGERPRINT",
               "DISABLE_REMOTE_INPUT",
               "ALL_FEATURES"
-            ]
+            ],
+            "type": "string"
           },
           "enumDescriptions": [
             "This value is ignored.",
@@ -1005,6 +1713,10 @@
             "Disable all current and future keyguard customizations."
           ]
         },
+        "longSupportMessage": {
+          "$ref": "UserFacingMessage",
+          "description": "A message displayed to the user in the device administators settings screen."
+        },
         "vpnConfigDisabled": {
           "description": "Whether configuring VPN is disabled.",
           "type": "boolean"
@@ -1013,12 +1725,12 @@
           "description": "Whether all cameras on the device are disabled.",
           "type": "boolean"
         },
-        "wifiConfigDisabled": {
-          "description": "Whether configuring Wi-Fi access points is disabled.",
-          "type": "boolean"
-        },
         "factoryResetDisabled": {
           "description": "Whether factory resetting from settings is disabled.",
+          "type": "boolean"
+        },
+        "wifiConfigDisabled": {
+          "description": "Whether configuring Wi-Fi access points is disabled.",
           "type": "boolean"
         },
         "addUserDisabled": {
@@ -1029,13 +1741,13 @@
           "description": "Whether changing the user icon is disabled.",
           "type": "boolean"
         },
-        "shortSupportMessage": {
-          "$ref": "UserFacingMessage",
-          "description": "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin."
-        },
         "setWallpaperDisabled": {
           "description": "Whether changing the wallpaper is disabled.",
           "type": "boolean"
+        },
+        "shortSupportMessage": {
+          "$ref": "UserFacingMessage",
+          "description": "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin."
         },
         "ensureVerifyAppsEnabled": {
           "description": "Whether app verification is force-enabled.",
@@ -1053,12 +1765,33 @@
           "description": "Network configuration for the device. See configure networks for more information.",
           "type": "object"
         },
+        "cellBroadcastsConfigDisabled": {
+          "description": "Whether configuring cell broadcast is disabled.",
+          "type": "boolean"
+        },
         "shareLocationDisabled": {
           "description": "Whether location sharing is disabled.",
           "type": "boolean"
         },
-        "cellBroadcastsConfigDisabled": {
-          "description": "Whether configuring cell broadcast is disabled.",
+        "androidDevicePolicyTracks": {
+          "enumDescriptions": [
+            "This value is ignored.",
+            "The production track, which provides the latest stable release.",
+            "The beta track, which provides the latest beta release."
+          ],
+          "description": "The app tracks for Android Device Policy the device can access. The device receives the latest version among all accessible tracks. If no tracks are specified, then the device only uses the production track.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "APP_TRACK_UNSPECIFIED",
+              "PRODUCTION",
+              "BETA"
+            ],
+            "type": "string"
+          }
+        },
+        "modifyAccountsDisabled": {
+          "description": "Whether adding or removing accounts is disabled.",
           "type": "boolean"
         }
       },
@@ -1069,6 +1802,16 @@
       "type": "object",
       "properties": {
         "eventType": {
+          "enumDescriptions": [
+            "Unspecified. No events have this type.",
+            "Battery level was measured.",
+            "The device started charging.",
+            "The device stopped charging.",
+            "The device entered low-power mode.",
+            "The device exited low-power mode.",
+            "The device booted.",
+            "The device shut down."
+          ],
           "enum": [
             "POWER_MANAGEMENT_EVENT_TYPE_UNSPECIFIED",
             "BATTERY_LEVEL_COLLECTED",
@@ -1080,17 +1823,7 @@
             "SHUTDOWN"
           ],
           "description": "Event type.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. No events have this type.",
-            "Battery level was measured.",
-            "The device started charging.",
-            "The device stopped charging.",
-            "The device entered low-power mode.",
-            "The device exited low-power mode.",
-            "The device booted.",
-            "The device shut down."
-          ]
+          "type": "string"
         },
         "createTime": {
           "description": "The creation time of the event.",
@@ -1106,6 +1839,8 @@
       "id": "PowerManagementEvent"
     },
     "Operation": {
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
       "properties": {
         "done": {
           "description": "If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available.",
@@ -1136,54 +1871,28 @@
           "type": "object"
         }
       },
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a network API call.",
-      "type": "object"
+      "id": "Operation"
     },
     "ManagedConfigurationTemplate": {
-      "description": "The managed configurations template for the app, saved from the managed configurations iframe.",
-      "type": "object",
       "properties": {
+        "configurationVariables": {
+          "description": "Optional, a map containing \u003ckey, value\u003e configuration variables defined for the configuration.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "templateId": {
           "description": "The ID of the managed configurations template.",
           "type": "string"
-        },
-        "configurationVariables": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional, a map containing \u003ckey, value\u003e configuration variables defined for the configuration.",
-          "type": "object"
         }
       },
-      "id": "ManagedConfigurationTemplate"
+      "id": "ManagedConfigurationTemplate",
+      "description": "The managed configurations template for the app, saved from the managed configurations iframe.",
+      "type": "object"
     },
     "EnrollmentToken": {
-      "description": "An enrollment token.",
-      "type": "object",
       "properties": {
-        "name": {
-          "description": "The name of the enrollment token, which is generated by the server during creation, in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.",
-          "type": "string"
-        },
-        "user": {
-          "$ref": "User",
-          "description": "The user associated with this enrollment token. If it's specified when the enrollment token is created and the user does not exist, the user will be created. This field must not contain personally identifiable information. Only the account_identifier field needs to be set."
-        },
-        "value": {
-          "description": "The token value that's passed to the device and authorizes the device to enroll. This is a read-only field generated by the server.",
-          "type": "string"
-        },
-        "duration": {
-          "description": "The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not specified, the default duration is 1 hour.",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "expirationTimestamp": {
-          "description": "The expiration time of the token. This is a read-only field generated by the server.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "additionalData": {
           "description": "Optional, arbitrary data associated with the enrollment token. This could contain, for example, the ID of an org unit the device is assigned to after enrollment. After a device enrolls with the token, this data will be exposed in the enrollment_token_data field of the Device resource. The data must be 1024 characters or less; otherwise, the creation request will fail.",
           "type": "string"
@@ -1199,18 +1908,38 @@
         "oneTimeOnly": {
           "description": "Whether the enrollment token is for one time use only. If the flag is set to true, only one device can use it for registration.",
           "type": "boolean"
+        },
+        "name": {
+          "description": "The name of the enrollment token, which is generated by the server during creation, in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.",
+          "type": "string"
+        },
+        "user": {
+          "description": "The user associated with this enrollment token. If it's specified when the enrollment token is created and the user does not exist, the user will be created. This field must not contain personally identifiable information. Only the account_identifier field needs to be set.",
+          "$ref": "User"
+        },
+        "value": {
+          "description": "The token value that's passed to the device and authorizes the device to enroll. This is a read-only field generated by the server.",
+          "type": "string"
+        },
+        "duration": {
+          "description": "The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not specified, the default duration is 1 hour.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "expirationTimestamp": {
+          "description": "The expiration time of the token. This is a read-only field generated by the server.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
-      "id": "EnrollmentToken"
+      "id": "EnrollmentToken",
+      "description": "An enrollment token.",
+      "type": "object"
     },
     "Status": {
       "description": "The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:\nSimple to use and understand for most users\nFlexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:\nPartial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.\nWorkflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.\nBatch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.\nAsynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.\nLogging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.",
       "type": "object",
       "properties": {
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
         "details": {
           "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "type": "array",
@@ -1226,6 +1955,10 @@
           "description": "The status code, which should be an enum value of google.rpc.Code.",
           "format": "int32",
           "type": "integer"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
         }
       },
       "id": "Status"
@@ -1234,6 +1967,33 @@
       "description": "Device display information.",
       "type": "object",
       "properties": {
+        "state": {
+          "enumDescriptions": [
+            "This value is disallowed.",
+            "Display is off.",
+            "Display is on.",
+            "Display is dozing in a low power state",
+            "Display is dozing in a suspended low power state."
+          ],
+          "enum": [
+            "DISPLAY_STATE_UNSPECIFIED",
+            "OFF",
+            "ON",
+            "DOZE",
+            "SUSPENDED"
+          ],
+          "description": "State of the display.",
+          "type": "string"
+        },
+        "displayId": {
+          "description": "Unique display id.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Name of the display.",
+          "type": "string"
+        },
         "density": {
           "description": "Display density expressed as dots-per-inch.",
           "format": "int32",
@@ -1253,49 +2013,22 @@
           "description": "Refresh rate of the display in frames per second.",
           "format": "int32",
           "type": "integer"
-        },
-        "displayId": {
-          "description": "Unique display id.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "state": {
-          "enumDescriptions": [
-            "This value is disallowed.",
-            "Display is off.",
-            "Display is on.",
-            "Display is dozing in a low power state",
-            "Display is dozing in a suspended low power state."
-          ],
-          "enum": [
-            "DISPLAY_STATE_UNSPECIFIED",
-            "OFF",
-            "ON",
-            "DOZE",
-            "SUSPENDED"
-          ],
-          "description": "State of the display.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Name of the display.",
-          "type": "string"
         }
       },
       "id": "Display"
     },
     "ApplicationPermission": {
       "properties": {
+        "description": {
+          "description": "A longer description of the permission, providing more detail on what it affects. Localized.",
+          "type": "string"
+        },
         "permissionId": {
           "description": "An opaque string uniquely identifying the permission. Not localized.",
           "type": "string"
         },
         "name": {
           "description": "The name of the permission. Localized.",
-          "type": "string"
-        },
-        "description": {
-          "description": "A longer description of the permission, providing more detail on what it affects. Localized.",
           "type": "string"
         }
       },
@@ -1304,54 +2037,56 @@
       "type": "object"
     },
     "TermsAndConditions": {
-      "description": "A terms and conditions page to be accepted during provisioning.",
-      "type": "object",
       "properties": {
         "content": {
           "description": "A well-formatted HTML string. It will be parsed on the client with android.text.Html#fromHtml.",
           "$ref": "UserFacingMessage"
         },
         "header": {
-          "description": "A short header which appears above the HTML content.",
-          "$ref": "UserFacingMessage"
+          "$ref": "UserFacingMessage",
+          "description": "A short header which appears above the HTML content."
         }
       },
-      "id": "TermsAndConditions"
+      "id": "TermsAndConditions",
+      "description": "A terms and conditions page to be accepted during provisioning.",
+      "type": "object"
     },
     "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
         "operations": {
           "description": "A list of operations that matches the specified filter in the request.",
           "type": "array",
           "items": {
             "$ref": "Operation"
           }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
         }
       },
-      "id": "ListOperationsResponse"
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object"
     },
     "AlwaysOnVpnPackage": {
       "description": "Configuration for an always-on VPN connection.",
       "type": "object",
       "properties": {
-        "packageName": {
-          "description": "The package name of the VPN app.",
-          "type": "string"
-        },
         "lockdownEnabled": {
           "description": "Disallows networking when the VPN is not connected.",
           "type": "boolean"
+        },
+        "packageName": {
+          "description": "The package name of the VPN app.",
+          "type": "string"
         }
       },
       "id": "AlwaysOnVpnPackage"
     },
     "MemoryInfo": {
+      "description": "Information about device memory and storage.",
+      "type": "object",
       "properties": {
         "totalRam": {
           "description": "Total RAM on device in bytes.",
@@ -1364,13 +2099,9 @@
           "type": "string"
         }
       },
-      "id": "MemoryInfo",
-      "description": "Information about device memory and storage.",
-      "type": "object"
+      "id": "MemoryInfo"
     },
     "Enterprise": {
-      "description": "The configuration applied to an enterprise.",
-      "type": "object",
       "properties": {
         "signinDetails": {
           "description": "Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.",
@@ -1395,45 +2126,47 @@
           "format": "int32",
           "type": "integer"
         },
-        "appAutoApprovalEnabled": {
-          "description": "Deprecated and unused.",
-          "type": "boolean"
-        },
-        "enterpriseDisplayName": {
-          "description": "The name of the enterprise displayed to users.",
-          "type": "string"
-        },
         "enabledNotificationTypes": {
-          "description": "The types of Google Pub/Sub notifications enabled for the enterprise.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "NOTIFICATION_TYPE_UNSPECIFIED",
-              "ENROLLMENT",
-              "COMPLIANCE_REPORT",
-              "STATUS_REPORT",
-              "COMMAND"
-            ]
-          },
           "enumDescriptions": [
             "This value is ignored.",
             "A notification sent when a device enrolls.",
             "Deprecated.",
             "A notification sent when a device issues a status report.",
             "A notification sent when a device command has completed."
-          ]
+          ],
+          "description": "The types of Google Pub/Sub notifications enabled for the enterprise.",
+          "type": "array",
+          "items": {
+            "enum": [
+              "NOTIFICATION_TYPE_UNSPECIFIED",
+              "ENROLLMENT",
+              "COMPLIANCE_REPORT",
+              "STATUS_REPORT",
+              "COMMAND"
+            ],
+            "type": "string"
+          }
+        },
+        "enterpriseDisplayName": {
+          "description": "The name of the enterprise displayed to users.",
+          "type": "string"
+        },
+        "appAutoApprovalEnabled": {
+          "description": "Deprecated and unused.",
+          "type": "boolean"
         },
         "pubsubTopic": {
           "description": "The topic that Cloud Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This field is only required if Pub/Sub notifications are enabled.",
           "type": "string"
         },
         "logo": {
-          "description": "An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng.",
-          "$ref": "ExternalData"
+          "$ref": "ExternalData",
+          "description": "An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng."
         }
       },
-      "id": "Enterprise"
+      "id": "Enterprise",
+      "description": "The configuration applied to an enterprise.",
+      "type": "object"
     },
     "User": {
       "description": "A user belonging to an enterprise.",
@@ -1450,6 +2183,10 @@
       "description": "A device owned by an enterprise. Unless otherwise noted, all fields are read-only and can't be modified by enterprises.devices.patch.",
       "type": "object",
       "properties": {
+        "policyName": {
+          "description": "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn’t contain any slashes. The rest of the policy name is inferred.",
+          "type": "string"
+        },
         "name": {
           "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
           "type": "string"
@@ -1475,6 +2212,8 @@
           "type": "string"
         },
         "managementMode": {
+          "description": "The type of management mode Android Device Policy takes on the device. This influences which policy settings are supported.",
+          "type": "string",
           "enumDescriptions": [
             "This value is disallowed.",
             "Device owner. Android Device Policy has full control over the device.",
@@ -1484,9 +2223,7 @@
             "MANAGEMENT_MODE_UNSPECIFIED",
             "DEVICE_OWNER",
             "PROFILE_OWNER"
-          ],
-          "description": "The type of management mode Android Device Policy takes on the device. This influences which policy settings are supported.",
-          "type": "string"
+          ]
         },
         "nonComplianceDetails": {
           "description": "Details about policy settings that the device is not compliant with.",
@@ -1496,8 +2233,8 @@
           }
         },
         "user": {
-          "description": "The user who owns the device.",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "The user who owns the device."
         },
         "previousDeviceNames": {
           "description": "If the same physical device has been enrolled multiple times, this field contains its previous device names. The serial number is used as the unique identifier to determine if the same physical device has enrolled previously. The names are in chronological order.",
@@ -1520,13 +2257,6 @@
           "$ref": "DeviceSettings"
         },
         "state": {
-          "enumDescriptions": [
-            "This value is disallowed.",
-            "The device is active.",
-            "The device is disabled.",
-            "The device was deleted. This state will never be returned by an API call, but is used in the final status report published to Cloud Pub/Sub when the device acknowledges the deletion.",
-            "The device is being provisioned. Newly enrolled devices are in this state until they have a policy applied."
-          ],
           "enum": [
             "DEVICE_STATE_UNSPECIFIED",
             "ACTIVE",
@@ -1535,24 +2265,31 @@
             "PROVISIONING"
           ],
           "description": "The state to be applied to the device. This field can be modified by a patch request. Note that when calling enterprises.devices.patch, ACTIVE and DISABLED are the only allowable values. To enter the device into a DELETED state, call enterprises.devices.delete.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "This value is disallowed.",
+            "The device is active.",
+            "The device is disabled.",
+            "The device was deleted. This state will never be returned by an API call, but is used in the final status report published to Cloud Pub/Sub when the device acknowledges the deletion.",
+            "The device is being provisioned. Newly enrolled devices are in this state until they have a policy applied."
+          ]
         },
         "enrollmentTime": {
           "description": "The time of device enrollment.",
           "format": "google-datetime",
           "type": "string"
         },
-        "disabledReason": {
-          "$ref": "UserFacingMessage",
-          "description": "If the device state is DISABLED, an optional message that is displayed on the device indicating the reason the device is disabled. This field can be modified by a patch request."
-        },
-        "softwareInfo": {
-          "description": "Detailed information about the device software. This information is only available if softwareInfoEnabled is true in the device's policy.",
-          "$ref": "SoftwareInfo"
-        },
         "hardwareInfo": {
           "description": "Detailed information about the device hardware.",
           "$ref": "HardwareInfo"
+        },
+        "softwareInfo": {
+          "$ref": "SoftwareInfo",
+          "description": "Detailed information about the device software. This information is only available if softwareInfoEnabled is true in the device's policy."
+        },
+        "disabledReason": {
+          "$ref": "UserFacingMessage",
+          "description": "If the device state is DISABLED, an optional message that is displayed on the device indicating the reason the device is disabled. This field can be modified by a patch request."
         },
         "appliedPolicyVersion": {
           "description": "The version of the policy currently applied to the device.",
@@ -1583,8 +2320,8 @@
           "type": "string"
         },
         "networkInfo": {
-          "description": "Device network information. This information is only available if networkInfoEnabled is true in the device's policy.",
-          "$ref": "NetworkInfo"
+          "$ref": "NetworkInfo",
+          "description": "Device network information. This information is only available if networkInfoEnabled is true in the device's policy."
         },
         "memoryEvents": {
           "description": "Events related to memory and storage measurements in chronological order. This information is only available if memoryInfoEnabled is true in the device's policy.",
@@ -1597,10 +2334,6 @@
           "$ref": "MemoryInfo",
           "description": "Memory information. This information is only available if memoryInfoEnabled is true in the device's policy."
         },
-        "appliedPolicyName": {
-          "description": "The name of the policy currently applied to the device.",
-          "type": "string"
-        },
         "hardwareStatusSamples": {
           "description": "Hardware status samples in chronological order. This information is only available if hardwareStatusEnabled is true in the device's policy.",
           "type": "array",
@@ -1609,6 +2342,8 @@
           }
         },
         "appliedState": {
+          "description": "The state currently applied to the device.",
+          "type": "string",
           "enumDescriptions": [
             "This value is disallowed.",
             "The device is active.",
@@ -1622,43 +2357,22 @@
             "DISABLED",
             "DELETED",
             "PROVISIONING"
-          ],
-          "description": "The state currently applied to the device.",
+          ]
+        },
+        "appliedPolicyName": {
+          "description": "The name of the policy currently applied to the device.",
           "type": "string"
         },
         "lastPolicySyncTime": {
           "description": "The last time the device fetched its policy.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "policyName": {
-          "description": "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn’t contain any slashes. The rest of the policy name is inferred.",
-          "type": "string"
         }
       },
       "id": "Device"
     },
     "KeyedAppState": {
-      "description": "Keyed app state reported by the app.",
-      "type": "object",
       "properties": {
-        "data": {
-          "description": "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. “notify me if the battery_warning data \u003c 10”).",
-          "type": "string"
-        },
-        "key": {
-          "description": "The key for the app state. Acts as a point of reference for what the app is providing state for. For example, when providing managed configuration feedback, this key could be the managed configuration key.",
-          "type": "string"
-        },
-        "message": {
-          "description": "Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message.",
-          "type": "string"
-        },
-        "createTime": {
-          "description": "The creation time of the app state on the device.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "severity": {
           "description": "The severity of the app state.",
           "type": "string",
@@ -1677,24 +2391,43 @@
           "description": "The time the app state was most recently updated.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "data": {
+          "description": "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. “notify me if the battery_warning data \u003c 10”).",
+          "type": "string"
+        },
+        "key": {
+          "description": "The key for the app state. Acts as a point of reference for what the app is providing state for. For example, when providing managed configuration feedback, this key could be the managed configuration key.",
+          "type": "string"
+        },
+        "message": {
+          "description": "Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message.",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "The creation time of the app state on the device.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
-      "id": "KeyedAppState"
+      "id": "KeyedAppState",
+      "description": "Keyed app state reported by the app.",
+      "type": "object"
     },
     "ListPoliciesResponse": {
       "description": "Response to a request to list policies for a given enterprise.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "If there are more results, a token to retrieve next page of results.",
-          "type": "string"
-        },
         "policies": {
           "description": "The list of policies.",
           "type": "array",
           "items": {
             "$ref": "Policy"
           }
+        },
+        "nextPageToken": {
+          "description": "If there are more results, a token to retrieve next page of results.",
+          "type": "string"
         }
       },
       "id": "ListPoliciesResponse"
@@ -1726,8 +2459,6 @@
       "id": "ComplianceRule"
     },
     "PackageNameList": {
-      "description": "A list of package names.",
-      "type": "object",
       "properties": {
         "packageNames": {
           "description": "A list of package names.",
@@ -1737,7 +2468,9 @@
           }
         }
       },
-      "id": "PackageNameList"
+      "id": "PackageNameList",
+      "description": "A list of package names.",
+      "type": "object"
     },
     "ApplicationEvent": {
       "description": "An app-related event.",
@@ -1781,13 +2514,6 @@
       "description": "A default activity for handling intents that match a particular intent filter.",
       "type": "object",
       "properties": {
-        "actions": {
-          "description": "The intent actions to match in the filter. If any actions are included in the filter, then an intent's action must be one of those values for it to match. If no actions are included, the intent action is ignored.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "categories": {
           "description": "The intent categories to match in the filter. An intent includes the categories that it requires, all of which must be included in the filter in order to match. In other words, adding a category to the filter has no impact on matching unless that category is specified in the intent.",
           "type": "array",
@@ -1798,12 +2524,23 @@
         "receiverActivity": {
           "description": "The activity that should be the default intent handler. This should be an Android component name, e.g. com.android.enterprise.app/.MainActivity. Alternatively, the value may be the package name of an app, which causes Android Device Policy to choose an appropriate activity from the app to handle the intent.",
           "type": "string"
+        },
+        "actions": {
+          "description": "The intent actions to match in the filter. If any actions are included in the filter, then an intent's action must be one of those values for it to match. If no actions are included, the intent action is ignored.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "id": "PersistentPreferredActivity"
     },
     "Application": {
       "properties": {
+        "title": {
+          "description": "The title of the app. Localized.",
+          "type": "string"
+        },
         "permissions": {
           "description": "The permissions required by the app.",
           "type": "array",
@@ -1821,10 +2558,6 @@
           "items": {
             "$ref": "ManagedProperty"
           }
-        },
-        "title": {
-          "description": "The title of the app. Localized.",
-          "type": "string"
         }
       },
       "id": "Application",
@@ -1853,19 +2586,12 @@
       "description": "A command.",
       "type": "object",
       "properties": {
-        "duration": {
-          "description": "The duration for which the command is valid. The command will expire if not executed by the device during this time. The default duration if unspecified is ten minutes. There is no maximum duration.",
-          "format": "google-duration",
-          "type": "string"
-        },
         "createTime": {
           "description": "The timestamp at which the command was created. The timestamp is automatically generated by the server.",
           "format": "google-datetime",
           "type": "string"
         },
         "errorCode": {
-          "description": "If the command failed, an error code explaining the failure. This is not set when the command is cancelled by the caller.",
-          "type": "string",
           "enumDescriptions": [
             "There was no error.",
             "An unknown error occurred.",
@@ -1881,7 +2607,9 @@
             "MANAGEMENT_MODE",
             "INVALID_VALUE",
             "UNSUPPORTED"
-          ]
+          ],
+          "description": "If the command failed, an error code explaining the failure. This is not set when the command is cancelled by the caller.",
+          "type": "string"
         },
         "newPassword": {
           "description": "For commands of type RESET_PASSWORD, optionally specifies the new password.",
@@ -1911,6 +2639,8 @@
           "type": "string"
         },
         "type": {
+          "description": "The type of the command.",
+          "type": "string",
           "enumDescriptions": [
             "This value is disallowed.",
             "Lock the device, as if the lock screen timeout had expired.",
@@ -1922,14 +2652,19 @@
             "LOCK",
             "RESET_PASSWORD",
             "REBOOT"
-          ],
-          "description": "The type of the command.",
+          ]
+        },
+        "duration": {
+          "description": "The duration for which the command is valid. The command will expire if not executed by the device during this time. The default duration if unspecified is ten minutes. There is no maximum duration.",
+          "format": "google-duration",
           "type": "string"
         }
       },
       "id": "Command"
     },
     "HardwareStatus": {
+      "description": "Hardware status. Temperatures may be compared to the temperature thresholds available in hardwareInfo to determine hardware health.",
+      "type": "object",
       "properties": {
         "createTime": {
           "description": "The time the measurements were taken.",
@@ -1944,14 +2679,6 @@
             "type": "number"
           }
         },
-        "cpuUsages": {
-          "description": "CPU usages in percentage for each core available on the device. Usage is 0 for each unplugged core. Empty array implies that CPU usage is not supported in the system.",
-          "type": "array",
-          "items": {
-            "format": "float",
-            "type": "number"
-          }
-        },
         "skinTemperatures": {
           "description": "Current device skin temperatures in Celsius.",
           "type": "array",
@@ -1960,8 +2687,8 @@
             "type": "number"
           }
         },
-        "cpuTemperatures": {
-          "description": "Current CPU temperatures in Celsius for each CPU on the device.",
+        "cpuUsages": {
+          "description": "CPU usages in percentage for each core available on the device. Usage is 0 for each unplugged core. Empty array implies that CPU usage is not supported in the system.",
           "type": "array",
           "items": {
             "format": "float",
@@ -1970,6 +2697,14 @@
         },
         "batteryTemperatures": {
           "description": "Current battery temperatures in Celsius for each battery on the device.",
+          "type": "array",
+          "items": {
+            "format": "float",
+            "type": "number"
+          }
+        },
+        "cpuTemperatures": {
+          "description": "Current CPU temperatures in Celsius for each CPU on the device.",
           "type": "array",
           "items": {
             "format": "float",
@@ -1985,11 +2720,11 @@
           }
         }
       },
-      "id": "HardwareStatus",
-      "description": "Hardware status. Temperatures may be compared to the temperature thresholds available in hardwareInfo to determine hardware health.",
-      "type": "object"
+      "id": "HardwareStatus"
     },
     "SigninDetail": {
+      "description": "A resource containing sign in details for an enterprise.",
+      "type": "object",
       "properties": {
         "signinEnrollmentToken": {
           "description": "An enterprise wide enrollment token used to trigger custom sign-in flow. This is a read-only field generated by the server.",
@@ -2004,9 +2739,7 @@
           "type": "string"
         }
       },
-      "id": "SigninDetail",
-      "description": "A resource containing sign in details for an enterprise.",
-      "type": "object"
+      "id": "SigninDetail"
     },
     "WebAppIcon": {
       "properties": {
@@ -2039,14 +2772,14 @@
           "description": "The Android Device Policy app version as displayed to the user.",
           "type": "string"
         },
+        "bootloaderVersion": {
+          "description": "The system bootloader version number, e.g. 0.6.7.",
+          "type": "string"
+        },
         "androidDevicePolicyVersionCode": {
           "description": "The Android Device Policy app version code.",
           "format": "int32",
           "type": "integer"
-        },
-        "bootloaderVersion": {
-          "description": "The system bootloader version number, e.g. 0.6.7.",
-          "type": "string"
         },
         "deviceKernelVersion": {
           "description": "Kernel version, for example, 2.6.32.9-g103d848.",
@@ -2065,16 +2798,16 @@
           "description": "Android build ID string meant for displaying to the user. For example, shamu-userdebug 6.0.1 MOB30I 2756745 dev-keys.",
           "type": "string"
         },
-        "deviceBuildSignature": {
-          "description": "SHA-256 hash of android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the system package, which can be used to verify that the system build hasn't been modified.",
+        "androidVersion": {
+          "description": "The user-visible Android version string. For example, 6.0.1.",
           "type": "string"
         },
         "primaryLanguageCode": {
           "description": "An IETF BCP 47 language code for the primary locale on the device.",
           "type": "string"
         },
-        "androidVersion": {
-          "description": "The user-visible Android version string. For example, 6.0.1.",
+        "deviceBuildSignature": {
+          "description": "SHA-256 hash of android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the system package, which can be used to verify that the system build hasn't been modified.",
           "type": "string"
         }
       },
@@ -2084,10 +2817,6 @@
       "description": "A rule for automatically choosing a private key and certificate to authenticate the device to a server.",
       "type": "object",
       "properties": {
-        "privateKeyAlias": {
-          "description": "The alias of the private key to be used.",
-          "type": "string"
-        },
         "packageNames": {
           "description": "The package names for which outgoing requests are subject to this rule. If no package names are specified, then the rule applies to all packages. For each package name listed, the rule applies to that package and all other packages that shared the same Android UID. The SHA256 hash of the signing key signatures of each package_name will be verified against those provided by Play",
           "type": "array",
@@ -2098,6 +2827,10 @@
         "urlPattern": {
           "description": "The URL pattern to match against the URL of the outgoing request. The pattern may contain asterisk (*) wildcards. Any URL is matched if unspecified.",
           "type": "string"
+        },
+        "privateKeyAlias": {
+          "description": "The alias of the private key to be used.",
+          "type": "string"
         }
       },
       "id": "ChoosePrivateKeyRule"
@@ -2106,30 +2839,30 @@
       "description": "Response to a request to list devices for a given enterprise.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "If there are more results, a token to retrieve next page of results.",
+          "type": "string"
+        },
         "devices": {
           "description": "The list of devices.",
           "type": "array",
           "items": {
             "$ref": "Device"
           }
-        },
-        "nextPageToken": {
-          "description": "If there are more results, a token to retrieve next page of results.",
-          "type": "string"
         }
       },
       "id": "ListDevicesResponse"
     },
     "LaunchAppAction": {
+      "description": "An action to launch an app.",
+      "type": "object",
       "properties": {
         "packageName": {
           "description": "Package name of app to be launched",
           "type": "string"
         }
       },
-      "id": "LaunchAppAction",
-      "description": "An action to launch an app.",
-      "type": "object"
+      "id": "LaunchAppAction"
     },
     "ProxyInfo": {
       "description": "Configuration info for an HTTP proxy. For a direct proxy, set the host, port, and excluded_hosts fields. For a PAC script proxy, set the pac_uri field.",
@@ -2162,58 +2895,29 @@
       "description": "Requirements for the password used to unlock a device.",
       "type": "object",
       "properties": {
-        "passwordQuality": {
-          "enum": [
-            "PASSWORD_QUALITY_UNSPECIFIED",
-            "BIOMETRIC_WEAK",
-            "SOMETHING",
-            "NUMERIC",
-            "NUMERIC_COMPLEX",
-            "ALPHABETIC",
-            "ALPHANUMERIC",
-            "COMPLEX"
-          ],
-          "description": "The required password quality.",
-          "type": "string",
-          "enumDescriptions": [
-            "There are no password requirements.",
-            "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).",
-            "A password is required, but there are no restrictions on what the password must contain.",
-            "The password must contain numeric characters.",
-            "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences.",
-            "The password must contain alphabetic (or symbol) characters.",
-            "The password must contain both numeric and alphabetic (or symbol) characters.",
-            "The password must contain at least a letter, a numerical digit and a special symbol. Other password constraints, for example, password_minimum_letters are enforced."
-          ]
-        },
-        "maximumFailedPasswordsForWipe": {
-          "description": "Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means there is no restriction.",
+        "passwordMinimumSymbols": {
+          "description": "Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX.",
           "format": "int32",
           "type": "integer"
-        },
-        "passwordScope": {
-          "enum": [
-            "SCOPE_UNSPECIFIED",
-            "SCOPE_DEVICE",
-            "SCOPE_PROFILE"
-          ],
-          "description": "The scope that the password requirement applies to.",
-          "type": "string",
-          "enumDescriptions": [
-            "The scope is unspecified. The password requirements are applied to the work profile for work profile devices and the whole device for fully managed or dedicated devices.",
-            "The password requirements are only applied to the device.",
-            "The password requirements are only applied to the work profile."
-          ]
         },
         "passwordMinimumNumeric": {
           "description": "Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX.",
           "format": "int32",
           "type": "integer"
         },
-        "passwordMinimumSymbols": {
-          "description": "Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX.",
-          "format": "int32",
-          "type": "integer"
+        "passwordScope": {
+          "description": "The scope that the password requirement applies to.",
+          "type": "string",
+          "enumDescriptions": [
+            "The scope is unspecified. The password requirements are applied to the work profile for work profile devices and the whole device for fully managed or dedicated devices.",
+            "The password requirements are only applied to the device.",
+            "The password requirements are only applied to the work profile."
+          ],
+          "enum": [
+            "SCOPE_UNSPECIFIED",
+            "SCOPE_DEVICE",
+            "SCOPE_PROFILE"
+          ]
         },
         "passwordMinimumLetters": {
           "description": "Minimum number of letters required in the password. Only enforced when password_quality is COMPLEX.",
@@ -2230,15 +2934,15 @@
           "format": "int32",
           "type": "integer"
         },
-        "passwordExpirationTimeout": {
-          "description": "Password expiration timeout.",
-          "format": "google-duration",
-          "type": "string"
-        },
         "passwordMinimumUpperCase": {
           "description": "Minimum number of upper case letters required in the password. Only enforced when password_quality is COMPLEX.",
           "format": "int32",
           "type": "integer"
+        },
+        "passwordExpirationTimeout": {
+          "description": "Password expiration timeout.",
+          "format": "google-duration",
+          "type": "string"
         },
         "passwordMinimumNonLetter": {
           "description": "Minimum number of non-letter characters (numerical digits or symbols) required in the password. Only enforced when password_quality is COMPLEX.",
@@ -2249,42 +2953,88 @@
           "description": "The length of the password history. After setting this field, the user won't be able to enter a new password that is the same as any password in the history. A value of 0 means there is no restriction.",
           "format": "int32",
           "type": "integer"
+        },
+        "maximumFailedPasswordsForWipe": {
+          "description": "Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means there is no restriction.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "passwordQuality": {
+          "enumDescriptions": [
+            "There are no password requirements.",
+            "The device must be secured with a low-security biometric recognition technology, at minimum. This includes technologies that can recognize the identity of an individual that are roughly equivalent to a 3-digit PIN (false detection is less than 1 in 1,000).",
+            "A password is required, but there are no restrictions on what the password must contain.",
+            "The password must contain numeric characters.",
+            "The password must contain numeric characters with no repeating (4444) or ordered (1234, 4321, 2468) sequences.",
+            "The password must contain alphabetic (or symbol) characters.",
+            "The password must contain both numeric and alphabetic (or symbol) characters.",
+            "The password must contain at least a letter, a numerical digit and a special symbol. Other password constraints, for example, password_minimum_letters are enforced."
+          ],
+          "enum": [
+            "PASSWORD_QUALITY_UNSPECIFIED",
+            "BIOMETRIC_WEAK",
+            "SOMETHING",
+            "NUMERIC",
+            "NUMERIC_COMPLEX",
+            "ALPHABETIC",
+            "ALPHANUMERIC",
+            "COMPLEX"
+          ],
+          "description": "The required password quality.",
+          "type": "string"
         }
       },
       "id": "PasswordRequirements"
     },
     "SignupUrl": {
-      "description": "An enterprise signup URL.",
-      "type": "object",
       "properties": {
-        "url": {
-          "description": "A URL where an enterprise admin can register their enterprise. The page can't be rendered in an iframe.",
-          "type": "string"
-        },
         "name": {
           "description": "The name of the resource. Use this value in the signupUrl field when calling enterprises.create to complete the enterprise signup flow.",
           "type": "string"
+        },
+        "url": {
+          "description": "A URL where an enterprise admin can register their enterprise. The page can't be rendered in an iframe.",
+          "type": "string"
         }
       },
-      "id": "SignupUrl"
+      "id": "SignupUrl",
+      "description": "An enterprise signup URL.",
+      "type": "object"
     },
     "NonComplianceDetail": {
       "description": "Provides detail about non-compliance with a policy setting.",
       "type": "object",
       "properties": {
-        "fieldPath": {
-          "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
+        "packageName": {
+          "description": "The package name indicating which app is out of compliance, if applicable.",
           "type": "string"
         },
         "currentValue": {
           "description": "If the policy setting could not be applied, the current value of the setting on the device.",
           "type": "any"
         },
+        "fieldPath": {
+          "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
+          "type": "string"
+        },
         "settingName": {
           "description": "The name of the policy setting. This is the JSON field name of a top-level Policy  field.",
           "type": "string"
         },
         "nonComplianceReason": {
+          "enumDescriptions": [
+            "This value is disallowed.",
+            "The setting is not supported in the API level of the Android version running on the device.",
+            "The management mode (profile owner, device owner, etc.) doesn't support the setting.",
+            "The user has not taken required action to comply with the setting.",
+            "The setting has an invalid value.",
+            "The app required to implement the policy is not installed.",
+            "The policy is not supported by the version of Android Device Policy on the device.",
+            "A blocked app is installed.",
+            "The setting hasn't been applied at the time of the report, but is expected to be applied shortly.",
+            "The setting can't be applied to the app because the app doesn't support it, for example because its target SDK version is not high enough.",
+            "The app is installed, but it hasn't been updated to the minimum version code specified by policy."
+          ],
           "enum": [
             "NON_COMPLIANCE_REASON_UNSPECIFIED",
             "API_LEVEL",
@@ -2299,20 +3049,7 @@
             "APP_NOT_UPDATED"
           ],
           "description": "The reason the device is not in compliance with the setting.",
-          "type": "string",
-          "enumDescriptions": [
-            "This value is disallowed.",
-            "The setting is not supported in the API level of the Android version running on the device.",
-            "The management mode (profile owner, device owner, etc.) doesn't support the setting.",
-            "The user has not taken required action to comply with the setting.",
-            "The setting has an invalid value.",
-            "The app required to implement the policy is not installed.",
-            "The policy is not supported by the version of Android Device Policy on the device.",
-            "A blocked app is installed.",
-            "The setting hasn't been applied at the time of the report, but is expected to be applied shortly.",
-            "The setting can't be applied to the app because the app doesn't support it, for example because its target SDK version is not high enough.",
-            "The app is installed, but it hasn't been updated to the minimum version code specified by policy."
-          ]
+          "type": "string"
         },
         "installationFailureReason": {
           "enumDescriptions": [
@@ -2343,10 +3080,6 @@
           ],
           "description": "If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or APP_NOT_UPDATED, the detailed reason the app can't be installed or updated.",
           "type": "string"
-        },
-        "packageName": {
-          "description": "The package name indicating which app is out of compliance, if applicable.",
-          "type": "string"
         }
       },
       "id": "NonComplianceDetail"
@@ -2355,14 +3088,6 @@
       "description": "Information about device hardware. The fields related to temperature thresholds are only available if hardwareStatusEnabled is true in the device's policy.",
       "type": "object",
       "properties": {
-        "skinThrottlingTemperatures": {
-          "description": "Device skin throttling temperature thresholds in Celsius.",
-          "type": "array",
-          "items": {
-            "format": "float",
-            "type": "number"
-          }
-        },
         "hardware": {
           "description": "Name of the hardware. For example, Angler.",
           "type": "string"
@@ -2415,16 +3140,16 @@
           "description": "Baseband version. For example, MDM9625_104662.22.05.34p.",
           "type": "string"
         },
-        "skinShutdownTemperatures": {
-          "description": "Device skin shutdown temperature thresholds in Celsius.",
+        "batteryShutdownTemperatures": {
+          "description": "Battery shutdown temperature thresholds in Celsius for each battery on the device.",
           "type": "array",
           "items": {
             "format": "float",
             "type": "number"
           }
         },
-        "batteryShutdownTemperatures": {
-          "description": "Battery shutdown temperature thresholds in Celsius for each battery on the device.",
+        "skinShutdownTemperatures": {
+          "description": "Device skin shutdown temperature thresholds in Celsius.",
           "type": "array",
           "items": {
             "format": "float",
@@ -2442,6 +3167,14 @@
             "format": "float",
             "type": "number"
           }
+        },
+        "skinThrottlingTemperatures": {
+          "description": "Device skin throttling temperature thresholds in Celsius.",
+          "type": "array",
+          "items": {
+            "format": "float",
+            "type": "number"
+          }
         }
       },
       "id": "HardwareInfo"
@@ -2450,6 +3183,17 @@
       "description": "Managed property.",
       "type": "object",
       "properties": {
+        "defaultValue": {
+          "description": "The default value of the property. BUNDLE_ARRAY properties don't have a default value.",
+          "type": "any"
+        },
+        "nestedProperties": {
+          "description": "For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two levels deep.",
+          "type": "array",
+          "items": {
+            "$ref": "ManagedProperty"
+          }
+        },
         "type": {
           "enumDescriptions": [
             "Not used.",
@@ -2492,26 +3236,190 @@
           "items": {
             "$ref": "ManagedPropertyEntry"
           }
-        },
-        "defaultValue": {
-          "description": "The default value of the property. BUNDLE_ARRAY properties don't have a default value.",
-          "type": "any"
-        },
-        "nestedProperties": {
-          "description": "For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two levels deep.",
-          "type": "array",
-          "items": {
-            "$ref": "ManagedProperty"
-          }
         }
       },
       "id": "ManagedProperty"
+    },
+    "PermissionGrant": {
+      "description": "Configuration for an Android permission and its grant state.",
+      "type": "object",
+      "properties": {
+        "permission": {
+          "description": "The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR.",
+          "type": "string"
+        },
+        "policy": {
+          "enum": [
+            "PERMISSION_POLICY_UNSPECIFIED",
+            "PROMPT",
+            "GRANT",
+            "DENY"
+          ],
+          "description": "The policy for granting the permission.",
+          "type": "string",
+          "enumDescriptions": [
+            "Policy not specified. If no policy is specified for a permission at any level, then the PROMPT behavior is used by default.",
+            "Prompt the user to grant a permission.",
+            "Automatically grant a permission.",
+            "Automatically deny a permission."
+          ]
+        }
+      },
+      "id": "PermissionGrant"
+    },
+    "ApplicationReport": {
+      "description": "Information reported about an installed app.",
+      "type": "object",
+      "properties": {
+        "versionCode": {
+          "description": "The app version code, which can be used to determine whether one version is more recent than another.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "packageSha256Hash": {
+          "description": "The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified. Each byte of the hash value is represented as a two-digit hexadecimal number.",
+          "type": "string"
+        },
+        "events": {
+          "description": "List of app events. The most recent 20 events are stored in the list.",
+          "type": "array",
+          "items": {
+            "$ref": "ApplicationEvent"
+          }
+        },
+        "displayName": {
+          "description": "The display name of the app.",
+          "type": "string"
+        },
+        "installerPackageName": {
+          "description": "The package name of the app that installed this app.",
+          "type": "string"
+        },
+        "signingKeyCertFingerprints": {
+          "description": "The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "state": {
+          "enum": [
+            "INSTALLED",
+            "REMOVED"
+          ],
+          "description": "Application state.",
+          "type": "string",
+          "enumDescriptions": [
+            "App is installed on the device",
+            "App was removed from the device"
+          ]
+        },
+        "applicationSource": {
+          "enumDescriptions": [
+            "The app was sideloaded from an unspecified source.",
+            "This is a system app from the device's factory image.",
+            "This is an updated system app.",
+            "The app was installed from the Google Play Store."
+          ],
+          "enum": [
+            "APPLICATION_SOURCE_UNSPECIFIED",
+            "SYSTEM_APP_FACTORY_VERSION",
+            "SYSTEM_APP_UPDATED_VERSION",
+            "INSTALLED_FROM_PLAY_STORE"
+          ],
+          "description": "The source of the package.",
+          "type": "string"
+        },
+        "versionName": {
+          "description": "The app version as displayed to the user.",
+          "type": "string"
+        },
+        "keyedAppStates": {
+          "description": "List of keyed app states reported by the app.",
+          "type": "array",
+          "items": {
+            "$ref": "KeyedAppState"
+          }
+        },
+        "packageName": {
+          "description": "Package name of the app.",
+          "type": "string"
+        }
+      },
+      "id": "ApplicationReport"
+    },
+    "WebToken": {
+      "description": "A web token used to access the managed Google Play iframe.",
+      "type": "object",
+      "properties": {
+        "parentFrameUrl": {
+          "description": "The URL of the parent frame hosting the iframe with the embedded UI. To prevent XSS, the iframe may not be hosted at other URLs. The URL must use the https scheme.",
+          "type": "string"
+        },
+        "permissions": {
+          "description": "Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "WEB_TOKEN_PERMISSION_UNSPECIFIED",
+              "APPROVE_APPS"
+            ]
+          },
+          "enumDescriptions": [
+            "This value is ignored.",
+            "The permission to approve apps for the enterprise."
+          ]
+        },
+        "name": {
+          "description": "The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The token value which is used in the hosting page to generate the iframe with the embedded UI. This is a read-only field generated by the server.",
+          "type": "string"
+        }
+      },
+      "id": "WebToken"
+    },
+    "SystemUpdate": {
+      "description": "Configuration for managing system updates",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "SYSTEM_UPDATE_TYPE_UNSPECIFIED",
+            "AUTOMATIC",
+            "WINDOWED",
+            "POSTPONE"
+          ],
+          "description": "The type of system update to configure.",
+          "type": "string",
+          "enumDescriptions": [
+            "Follow the default update behavior for the device, which typically requires the user to accept system updates.",
+            "Install automatically as soon as an update is available.",
+            "Install automatically within a daily maintenance window. This also configures Play apps to be updated within the window. This is strongly recommended for kiosk devices because this is the only way apps persistently pinned to the foreground can be updated by Play.",
+            "Postpone automatic install up to a maximum of 30 days."
+          ]
+        },
+        "startMinutes": {
+          "description": "If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes after midnight in the device's local time. This value must be between 0 and 1439, inclusive.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "endMinutes": {
+          "description": "If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "SystemUpdate"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "canonicalName": "Android Management",
   "auth": {
@@ -2522,913 +3430,5 @@
         }
       }
     }
-  },
-  "rootUrl": "https://androidmanagement.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "androidmanagement",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Android Management API",
-  "ownerName": "Google",
-  "resources": {
-    "signupUrls": {
-      "methods": {
-        "create": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "SignupUrl"
-          },
-          "parameters": {
-            "projectId": {
-              "description": "The ID of the Google Cloud Platform project which will own the enterprise.",
-              "type": "string",
-              "location": "query"
-            },
-            "callbackUrl": {
-              "description": "The callback URL that the admin will be redirected to after successfully creating an enterprise. Before redirecting there the system will add a query parameter to this URL named enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL will be parsed then reformatted in order to add the enterpriseToken parameter, so there may be some minor formatting changes.",
-              "type": "string",
-              "location": "query"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidmanagement"
-          ],
-          "flatPath": "v1/signupUrls",
-          "id": "androidmanagement.signupUrls.create",
-          "path": "v1/signupUrls",
-          "description": "Creates an enterprise signup URL."
-        }
-      }
-    },
-    "enterprises": {
-      "methods": {
-        "create": {
-          "request": {
-            "$ref": "Enterprise"
-          },
-          "description": "Creates an enterprise. This is the last step in the enterprise signup flow.",
-          "response": {
-            "$ref": "Enterprise"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/androidmanagement"
-          ],
-          "parameters": {
-            "enterpriseToken": {
-              "description": "The enterprise token appended to the callback URL.",
-              "type": "string",
-              "location": "query"
-            },
-            "signupUrlName": {
-              "description": "The name of the SignupUrl used to sign up for the enterprise.",
-              "type": "string",
-              "location": "query"
-            },
-            "projectId": {
-              "description": "The ID of the Google Cloud Platform project which will own the enterprise.",
-              "type": "string",
-              "location": "query"
-            }
-          },
-          "flatPath": "v1/enterprises",
-          "path": "v1/enterprises",
-          "id": "androidmanagement.enterprises.create"
-        },
-        "get": {
-          "response": {
-            "$ref": "Enterprise"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "pattern": "^enterprises/[^/]+$",
-              "location": "path",
-              "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidmanagement"
-          ],
-          "flatPath": "v1/enterprises/{enterprisesId}",
-          "path": "v1/{+name}",
-          "id": "androidmanagement.enterprises.get",
-          "description": "Gets an enterprise."
-        },
-        "patch": {
-          "request": {
-            "$ref": "Enterprise"
-          },
-          "description": "Updates an enterprise.",
-          "response": {
-            "$ref": "Enterprise"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "PATCH",
-          "scopes": [
-            "https://www.googleapis.com/auth/androidmanagement"
-          ],
-          "parameters": {
-            "updateMask": {
-              "location": "query",
-              "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
-              "format": "google-fieldmask",
-              "type": "string"
-            },
-            "name": {
-              "location": "path",
-              "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-              "required": true,
-              "type": "string",
-              "pattern": "^enterprises/[^/]+$"
-            }
-          },
-          "flatPath": "v1/enterprises/{enterprisesId}",
-          "path": "v1/{+name}",
-          "id": "androidmanagement.enterprises.patch"
-        }
-      },
-      "resources": {
-        "devices": {
-          "resources": {
-            "operations": {
-              "methods": {
-                "cancel": {
-                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.",
-                  "httpMethod": "POST",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource to be cancelled.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/androidmanagement"
-                  ],
-                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}:cancel",
-                  "id": "androidmanagement.enterprises.devices.operations.cancel",
-                  "path": "v1/{+name}:cancel"
-                },
-                "delete": {
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/androidmanagement"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource to be deleted.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
-                  "path": "v1/{+name}",
-                  "id": "androidmanagement.enterprises.devices.operations.delete"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations$",
-                      "location": "path"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The standard list page size.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/androidmanagement"
-                  ],
-                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations",
-                  "path": "v1/{+name}",
-                  "id": "androidmanagement.enterprises.devices.operations.list",
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id."
-                },
-                "get": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/androidmanagement"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
-                  "path": "v1/{+name}",
-                  "id": "androidmanagement.enterprises.devices.operations.get",
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
-                }
-              }
-            }
-          },
-          "methods": {
-            "delete": {
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
-                  "location": "path"
-                },
-                "wipeDataFlags": {
-                  "location": "query",
-                  "enum": [
-                    "WIPE_DATA_FLAG_UNSPECIFIED",
-                    "PRESERVE_RESET_PROTECTION_DATA",
-                    "WIPE_EXTERNAL_STORAGE"
-                  ],
-                  "description": "Optional flags that control the device wiping behavior.",
-                  "type": "string",
-                  "repeated": true
-                }
-              },
-              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.devices.delete",
-              "description": "Deletes a device. This operation wipes the device."
-            },
-            "get": {
-              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.devices.get",
-              "description": "Gets a device.",
-              "response": {
-                "$ref": "Device"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ]
-            },
-            "list": {
-              "flatPath": "v1/enterprises/{enterprisesId}/devices",
-              "path": "v1/{+parent}/devices",
-              "id": "androidmanagement.enterprises.devices.list",
-              "description": "Lists devices for a given enterprise.",
-              "response": {
-                "$ref": "ListDevicesResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "parent": {
-                  "location": "path",
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$"
-                },
-                "pageToken": {
-                  "description": "A token identifying a page of results returned by the server.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                }
-              }
-            },
-            "patch": {
-              "id": "androidmanagement.enterprises.devices.patch",
-              "path": "v1/{+name}",
-              "description": "Updates a device.",
-              "request": {
-                "$ref": "Device"
-              },
-              "httpMethod": "PATCH",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "Device"
-              },
-              "parameters": {
-                "updateMask": {
-                  "location": "query",
-                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
-                  "format": "google-fieldmask",
-                  "type": "string"
-                },
-                "name": {
-                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}"
-            },
-            "issueCommand": {
-              "request": {
-                "$ref": "Command"
-              },
-              "description": "Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command.",
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/devices/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/enterprises/{enterprisesId}/devices/{devicesId}:issueCommand",
-              "path": "v1/{+name}:issueCommand",
-              "id": "androidmanagement.enterprises.devices.issueCommand"
-            }
-          }
-        },
-        "webTokens": {
-          "methods": {
-            "create": {
-              "response": {
-                "$ref": "WebToken"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/webTokens",
-              "path": "v1/{+parent}/webTokens",
-              "id": "androidmanagement.enterprises.webTokens.create",
-              "description": "Creates a web token to access an embeddable managed Google Play web UI for a given enterprise.",
-              "request": {
-                "$ref": "WebToken"
-              }
-            }
-          }
-        },
-        "policies": {
-          "methods": {
-            "get": {
-              "description": "Gets a policy.",
-              "response": {
-                "$ref": "Policy"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/policies/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.policies.get"
-            },
-            "list": {
-              "response": {
-                "$ref": "ListPoliciesResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "pageSize": {
-                  "location": "query",
-                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "parent": {
-                  "location": "path",
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A token identifying a page of results returned by the server.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/enterprises/{enterprisesId}/policies",
-              "path": "v1/{+parent}/policies",
-              "id": "androidmanagement.enterprises.policies.list",
-              "description": "Lists policies for a given enterprise."
-            },
-            "patch": {
-              "description": "Updates or creates a policy.",
-              "request": {
-                "$ref": "Policy"
-              },
-              "response": {
-                "$ref": "Policy"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "updateMask": {
-                  "location": "query",
-                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
-                  "format": "google-fieldmask",
-                  "type": "string"
-                },
-                "name": {
-                  "pattern": "^enterprises/[^/]+/policies/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.policies.patch"
-            },
-            "delete": {
-              "httpMethod": "DELETE",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/policies/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-              "id": "androidmanagement.enterprises.policies.delete",
-              "path": "v1/{+name}",
-              "description": "Deletes a policy. This operation is only permitted if no devices are currently referencing the policy."
-            }
-          }
-        },
-        "webApps": {
-          "methods": {
-            "delete": {
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.webApps.delete",
-              "description": "Deletes a web app.",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}"
-            },
-            "get": {
-              "description": "Gets a web app.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "WebApp"
-              },
-              "parameters": {
-                "name": {
-                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApp/{packageName}.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
-              "id": "androidmanagement.enterprises.webApps.get",
-              "path": "v1/{+name}"
-            },
-            "list": {
-              "description": "Lists web apps for a given enterprise.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "ListWebAppsResponse"
-              },
-              "parameters": {
-                "pageSize": {
-                  "description": "The requested page size. The actual page size may be fixed to a min or max value.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "parent": {
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$",
-                  "location": "path"
-                },
-                "pageToken": {
-                  "description": "A token identifying a page of results returned by the server.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/webApps",
-              "id": "androidmanagement.enterprises.webApps.list",
-              "path": "v1/{+parent}/webApps"
-            },
-            "patch": {
-              "response": {
-                "$ref": "WebApp"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "updateMask": {
-                  "location": "query",
-                  "description": "The field mask indicating the fields to update. If not set, all modifiable fields will be modified.",
-                  "format": "google-fieldmask",
-                  "type": "string"
-                },
-                "name": {
-                  "description": "The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/webApps/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.webApps.patch",
-              "request": {
-                "$ref": "WebApp"
-              },
-              "description": "Updates a web app."
-            },
-            "create": {
-              "flatPath": "v1/enterprises/{enterprisesId}/webApps",
-              "path": "v1/{+parent}/webApps",
-              "id": "androidmanagement.enterprises.webApps.create",
-              "request": {
-                "$ref": "WebApp"
-              },
-              "description": "Creates a web app.",
-              "response": {
-                "$ref": "WebApp"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "parameters": {
-                "parent": {
-                  "location": "path",
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$"
-                }
-              }
-            }
-          }
-        },
-        "enrollmentTokens": {
-          "methods": {
-            "create": {
-              "description": "Creates an enrollment token for a given enterprise.",
-              "request": {
-                "$ref": "EnrollmentToken"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "EnrollmentToken"
-              },
-              "parameters": {
-                "parent": {
-                  "description": "The name of the enterprise in the form enterprises/{enterpriseId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens",
-              "id": "androidmanagement.enterprises.enrollmentTokens.create",
-              "path": "v1/{+parent}/enrollmentTokens"
-            },
-            "delete": {
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The name of the enrollment token in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/enrollmentTokens/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/enrollmentTokens/{enrollmentTokensId}",
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.enrollmentTokens.delete",
-              "description": "Deletes an enrollment token. This operation invalidates the token, preventing its future use."
-            }
-          }
-        },
-        "applications": {
-          "methods": {
-            "get": {
-              "path": "v1/{+name}",
-              "id": "androidmanagement.enterprises.applications.get",
-              "description": "Gets info about an application.",
-              "response": {
-                "$ref": "Application"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "languageCode": {
-                  "location": "query",
-                  "description": "The preferred language for localized application info, as a BCP47 tag (e.g. \"en-US\", \"de\"). If not specified the default language of the application will be used.",
-                  "type": "string"
-                },
-                "name": {
-                  "description": "The name of the application in the form enterprises/{enterpriseId}/applications/{package_name}.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^enterprises/[^/]+/applications/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/androidmanagement"
-              ],
-              "flatPath": "v1/enterprises/{enterprisesId}/applications/{applicationsId}"
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://androidmanagement.googleapis.com/",
-  "servicePath": "",
-  "description": "The Android Management API provides remote enterprise management of Android devices and apps.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "id": "androidmanagement:v1",
-  "documentationLink": "https://developers.google.com/android/management",
-  "revision": "20190416"
+  }
 }

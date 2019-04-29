@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190417 (1567)
+ *      <tr><th>API Rev<td>20190424 (1574)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2622,19 +2622,35 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
-        /// that a newly created project may not appear in the results or recent updates to an existing project may not
-        /// be reflected in the results. To retrieve the latest state of a project, use the GetProject method.</summary>
+        /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified filter.
+        ///
+        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
+        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
+        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
+        /// GetProject method.
+        ///
+        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
+        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
+        /// which provides more consistent results. In future versions of this API, this List method will be split into
+        /// List and Search to properly capture the behavorial difference.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
-        /// that a newly created project may not appear in the results or recent updates to an existing project may not
-        /// be reflected in the results. To retrieve the latest state of a project, use the GetProject method.</summary>
+        /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified filter.
+        ///
+        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
+        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
+        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
+        /// GetProject method.
+        ///
+        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
+        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
+        /// which provides more consistent results. In future versions of this API, this List method will be split into
+        /// List and Search to properly capture the behavorial difference.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2648,22 +2664,26 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
-            /// + `name` + `id` + labels.key where *key* is the name of a label
+            /// + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id`
             ///
             /// Some examples of using labels as filters:
             ///
-            /// |Filter|Description| |------|-----------| |name:how*|The project's name starts with "how".|
-            /// |name:Howl|The project's name is `Howl` or `howl`.| |name:HOWL|Equivalent to above.|
-            /// |NAME:howl|Equivalent to above.| |labels.color:*|The project has the label `color`.|
-            /// |labels.color:red|The project's label `color` has the value `red`.| |labels.color:redlabels.size:big|The
-            /// project's label `color` has the value `red` and its label `size` has the value `big`.
+            /// | Filter           | Description                                         |
+            /// |------------------|-----------------------------------------------------| | name:how*        | The
+            /// project's name starts with "how".               | | name:Howl        | The project's name is `Howl` or
+            /// `howl`.             | | name:HOWL        | Equivalent to above.                                | |
+            /// NAME:howl        | Equivalent to above.                                | | labels.color:*   | The
+            /// project has the label `color`.                  | | labels.color:red | The project's label `color` has
+            /// the value `red`.    | | labels.color:redlabels.size:big |The project's label `color` has the value `red`
+            /// and its label `size` has the value `big`.              |
             ///
-            /// If you specify a filter that has both `parent.type` and `parent.id`, then the
-            /// `resourcemanager.projects.list` permission is checked on the parent. If the user has this permission,
-            /// all projects under the parent will be returned after remaining filters have been applied. If the user
-            /// lacks this permission, then all projects for which the user has the `resourcemanager.projects.get`
-            /// permission will be returned after remaining filters have been applied. If no filter is specified, the
-            /// call will return projects for which the user has `resourcemanager.projects.get` permissions.
+            /// If no filter is specified, the call will return projects for which the user has the
+            /// `resourcemanager.projects.get` permission.
+            ///
+            /// NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have
+            /// the `resourcemanager.projects.list` permission on the parent and the filter must contain both a
+            /// `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case
+            /// an alternate search index is used which provides more consistent results.
             ///
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -4254,9 +4274,11 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a G Suite
         /// domain, for example:
         ///
-        /// |Filter|Description| |------|-----------| |owner.directorycustomerid:123456789|Organizations with
-        /// `owner.directory_customer_id` equal to `123456789`.| |domain:google.com|Organizations corresponding to the
-        /// domain `google.com`.|
+        /// | Filter                              | Description                      |
+        /// |-------------------------------------|----------------------------------| |
+        /// owner.directorycustomerid:123456789 | Organizations with `owner.directory_customer_id` equal to
+        /// `123456789`.| | domain:google.com                   | Organizations corresponding to the domain
+        /// `google.com`.|
         ///
         /// This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]

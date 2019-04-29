@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190125 (1485)
+ *      <tr><th>API Rev<td>20190424 (1574)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -897,10 +897,11 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
     /// and ads.</summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File types that will be returned.
+        /// <summary>File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be
+        /// requested.
         ///
-        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "LINE_ITEM" -
-        /// "INVENTORY_SOURCE"</summary>
+        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE" -
+        /// "LINE_ITEM"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
 
@@ -909,7 +910,8 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
 
-        /// <summary>Filter type used to filter entities to fetch.</summary>
+        /// <summary>Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used
+        /// when downloading inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; } 
 
@@ -1010,7 +1012,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupBys")]
         public virtual System.Collections.Generic.IList<string> GroupBys { get; set; } 
 
-        /// <summary>Whether to include data from Invite Media.</summary>
+        /// <summary>Deprecated. This field is no longer in use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeInviteData")]
         public virtual System.Nullable<bool> IncludeInviteData { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190420 (1570)
+ *      <tr><th>API Rev<td>20190425 (1575)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -1122,6 +1122,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
         public virtual string UtmCampaign { get; set; } 
 
+        /// <summary>Scion content value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmContent")]
+        public virtual string UtmContent { get; set; } 
+
         /// <summary>Scion medium value to be propagated by iSDK to Scion at post-install.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
         public virtual string UtmMedium { get; set; } 
@@ -1129,6 +1133,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Scion source value to be propagated by iSDK to Scion at post-install.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
         public virtual string UtmSource { get; set; } 
+
+        /// <summary>Scion term value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
+        public virtual string UtmTerm { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1183,6 +1191,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
         public virtual string UtmCampaign { get; set; } 
 
+        /// <summary>Scion content value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmContent")]
+        public virtual string UtmContent { get; set; } 
+
         /// <summary>Scion medium value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
         public virtual string UtmMedium { get; set; } 
@@ -1190,6 +1202,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Scion source value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
         public virtual string UtmSource { get; set; } 
+
+        /// <summary>Scion term value to be propagated by iSDK to Scion at app-reopen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
+        public virtual string UtmTerm { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

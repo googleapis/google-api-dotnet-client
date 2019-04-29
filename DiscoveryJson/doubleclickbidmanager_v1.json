@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/vSggj-z-qW3M62EdSOFmciWBPcE\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/d9mCHR1VHs7ODb47MnFQ-Wyz-Y0\"",
  "discoveryVersion": "v1",
  "id": "doubleclickbidmanager:v1",
  "name": "doubleclickbidmanager",
  "canonicalName": "DoubleClick Bid Manager",
  "version": "v1",
- "revision": "20190125",
+ "revision": "20190424",
  "title": "DoubleClick Bid Manager API",
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
  "ownerDomain": "google.com",
@@ -147,7 +147,7 @@
    "properties": {
     "fileTypes": {
      "type": "array",
-     "description": "File types that will be returned.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"LINE_ITEM\" \n- \"INVENTORY_SOURCE\"",
+     "description": "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.\n\nAcceptable values are:  \n- \"AD\" \n- \"AD_GROUP\" \n- \"CAMPAIGN\" \n- \"INSERTION_ORDER\" \n- \"INVENTORY_SOURCE\" \n- \"LINE_ITEM\"",
      "items": {
       "type": "string",
       "enum": [
@@ -178,7 +178,7 @@
     },
     "filterType": {
      "type": "string",
-     "description": "Filter type used to filter entities to fetch.",
+     "description": "Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading inventory sources.",
      "enum": [
       "ADVERTISER_ID",
       "CAMPAIGN_ID",
@@ -826,7 +826,7 @@
     },
     "includeInviteData": {
      "type": "boolean",
-     "description": "Whether to include data from Invite Media."
+     "description": "Deprecated. This field is no longer in use."
     },
     "metrics": {
      "type": "array",

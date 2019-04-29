@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190424 (1574)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1257,6 +1257,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Full Java-style package name for this application, e.g. "com.example.foo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
+
+        /// <summary>Specifies the API Level on which the application is designed to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
+        public virtual System.Nullable<int> TargetSdkVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/domains/'>Google+ Domains API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190418 (1568)
+ *      <tr><th>API Rev<td>20190422 (1572)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/domains/'>
  *              https://developers.google.com/+/domains/</a>

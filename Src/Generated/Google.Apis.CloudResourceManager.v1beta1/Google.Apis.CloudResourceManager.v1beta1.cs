@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190417 (1567)
+ *      <tr><th>API Rev<td>20190424 (1574)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1231,19 +1231,35 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         }
 
-        /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
-        /// that a newly created project may not appear in the results or recent updates to an existing project may not
-        /// be reflected in the results. To retrieve the latest state of a project, use the GetProjectmethod.</summary>
+        /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified filter.
+        ///
+        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
+        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
+        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
+        /// GetProject method.
+        ///
+        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
+        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
+        /// which provides more consistent results. In future versions of this API, this List method will be split into
+        /// List and Search to properly capture the behavorial difference.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
-        /// that a newly created project may not appear in the results or recent updates to an existing project may not
-        /// be reflected in the results. To retrieve the latest state of a project, use the GetProjectmethod.</summary>
+        /// <summary>Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified filter.
+        ///
+        /// This method returns Projects in an unspecified order. This method is eventually consistent with project
+        /// mutations; this means that a newly created project may not appear in the results or recent updates to an
+        /// existing project may not be reflected in the results. To retrieve the latest state of a project, use the
+        /// GetProject method.
+        ///
+        /// NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the
+        /// `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index
+        /// which provides more consistent results. In future versions of this API, this List method will be split into
+        /// List and Search to properly capture the behavorial difference.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1253,30 +1269,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
-            /// fields eligible for filtering are:
-            ///
-            /// + `name` + `id` + labels.key where *key* is the name of a label
-            ///
-            /// Some examples of using labels as filters:
-            ///
-            /// |Filter|Description| |------|-----------| |name:how*|The project's name starts with "how".|
-            /// |name:Howl|The project's name is `Howl` or `howl`.| |name:HOWL|Equivalent to above.|
-            /// |NAME:howl|Equivalent to above.| |labels.color:*|The project has the label `color`.|
-            /// |labels.color:red|The project's label `color` has the value `red`.| |labels.color:redlabels.size:big|The
-            /// project's label `color` has the value `red` and its label `size` has the value `big`.
-            ///
-            /// If you specify a filter that has both `parent.type` and `parent.id`, then the
-            /// `resourcemanager.projects.list` permission is checked on the parent. If the user has this permission,
-            /// all projects under the parent will be returned after remaining filters have been applied. If the user
-            /// lacks this permission, then all projects for which the user has the `resourcemanager.projects.get`
-            /// permission will be returned after remaining filters have been applied. If no filter is specified, the
-            /// call will return projects for which the user has `resourcemanager.projects.get` permissions.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
             /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
             /// listing should continue.
@@ -1291,6 +1283,34 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
+            /// fields eligible for filtering are:
+            ///
+            /// + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id`
+            ///
+            /// Some examples of using labels as filters:
+            ///
+            /// | Filter           | Description                                         |
+            /// |------------------|-----------------------------------------------------| | name:how*        | The
+            /// project's name starts with "how".               | | name:Howl        | The project's name is `Howl` or
+            /// `howl`.             | | name:HOWL        | Equivalent to above.                                | |
+            /// NAME:howl        | Equivalent to above.                                | | labels.color:*   | The
+            /// project has the label `color`.                  | | labels.color:red | The project's label `color` has
+            /// the value `red`.    | | labels.color:redlabels.size:big |The project's label `color` has the value `red`
+            /// and its label `size` has the value `big`.              |
+            ///
+            /// If no filter is specified, the call will return projects for which the user has the
+            /// `resourcemanager.projects.get` permission.
+            ///
+            /// NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have
+            /// the `resourcemanager.projects.list` permission on the parent and the filter must contain both a
+            /// `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case
+            /// an alternate search index is used which provides more consistent results.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1317,15 +1337,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1338,6 +1349,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
