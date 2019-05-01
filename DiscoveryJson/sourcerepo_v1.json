@@ -1,11 +1,13 @@
 {
-  "servicePath": "",
-  "description": "Accesses source code repositories hosted by Google.",
+  "version": "v1",
+  "baseUrl": "https://sourcerepo.googleapis.com/",
   "kind": "discovery#restDescription",
+  "description": "Accesses source code repositories hosted by Google.",
+  "servicePath": "",
   "basePath": "",
-  "documentationLink": "https://cloud.google.com/source-repositories/docs/apis",
+  "revision": "20190422",
   "id": "sourcerepo:v1",
-  "revision": "20190419",
+  "documentationLink": "https://cloud.google.com/source-repositories/docs/apis",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -80,18 +82,6 @@
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
-        },
         "done": {
           "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
           "type": "boolean"
@@ -107,6 +97,18 @@
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
           "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
         }
       },
       "id": "Operation"
@@ -130,8 +132,6 @@
       "type": "object"
     },
     "PubsubConfig": {
-      "description": "Configuration to publish a Cloud Pub/Sub message.",
-      "type": "object",
       "properties": {
         "serviceAccountEmail": {
           "description": "Email address of the service account used for publishing Cloud Pub/Sub\nmessages. This service account needs to be in the same project as the\nPubsubConfig. When added, the caller needs to have\niam.serviceAccounts.actAs permission on this service account. If\nunspecified, it defaults to the compute engine default service account.",
@@ -156,11 +156,11 @@
           "type": "string"
         }
       },
-      "id": "PubsubConfig"
+      "id": "PubsubConfig",
+      "description": "Configuration to publish a Cloud Pub/Sub message.",
+      "type": "object"
     },
     "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
       "properties": {
         "policy": {
           "$ref": "Policy",
@@ -172,9 +172,13 @@
           "type": "string"
         }
       },
-      "id": "SetIamPolicyRequest"
+      "id": "SetIamPolicyRequest",
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object"
     },
     "UpdateProjectConfigRequest": {
+      "description": "Request for UpdateProjectConfig.",
+      "type": "object",
       "properties": {
         "updateMask": {
           "description": "A FieldMask specifying which fields of the project_config to modify. Only\nthe fields in the mask will be modified. If no mask is provided, this\nrequest is no-op.",
@@ -186,13 +190,9 @@
           "$ref": "ProjectConfig"
         }
       },
-      "id": "UpdateProjectConfigRequest",
-      "description": "Request for UpdateProjectConfig.",
-      "type": "object"
+      "id": "UpdateProjectConfigRequest"
     },
     "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
-      "type": "object",
       "properties": {
         "details": {
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
@@ -215,9 +215,13 @@
           "type": "string"
         }
       },
-      "id": "Status"
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+      "type": "object"
     },
     "Binding": {
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
       "properties": {
         "condition": {
           "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
@@ -235,28 +239,26 @@
           "type": "string"
         }
       },
-      "id": "Binding",
-      "description": "Associates `members` with a `role`.",
-      "type": "object"
+      "id": "Binding"
     },
     "Expr": {
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
-        "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
-        },
-        "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
-          "type": "string"
-        },
         "description": {
           "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
           "type": "string"
         },
         "expression": {
           "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "type": "string"
+        },
+        "title": {
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
+        },
+        "location": {
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
           "type": "string"
         }
       },
@@ -282,13 +284,31 @@
       "id": "MirrorConfig"
     },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object"
     },
     "Repo": {
+      "description": "A repository (or repo) is a Git repository storing versioned source content.",
+      "type": "object",
       "properties": {
+        "url": {
+          "description": "URL to clone the repository from Google Cloud Source Repositories.\nRead-only field.",
+          "type": "string"
+        },
+        "pubsubConfigs": {
+          "additionalProperties": {
+            "$ref": "PubsubConfig"
+          },
+          "description": "How this repository publishes a change in the repository through Cloud\nPub/Sub. Keyed by the topic names.",
+          "type": "object"
+        },
+        "size": {
+          "description": "The disk usage of the repo, in bytes. Read-only field. Size is only\nreturned by GetRepo.",
+          "format": "int64",
+          "type": "string"
+        },
         "name": {
           "description": "Resource name of the repository, of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.  The repo name may contain slashes.\neg, `projects/myproject/repos/name/with/slash`",
           "type": "string"
@@ -296,30 +316,21 @@
         "mirrorConfig": {
           "$ref": "MirrorConfig",
           "description": "How this repository mirrors a repository managed by another service.\nRead-only field."
-        },
-        "url": {
-          "description": "URL to clone the repository from Google Cloud Source Repositories.\nRead-only field.",
-          "type": "string"
-        },
-        "pubsubConfigs": {
-          "description": "How this repository publishes a change in the repository through Cloud\nPub/Sub. Keyed by the topic names.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "PubsubConfig"
-          }
-        },
-        "size": {
-          "description": "The disk usage of the repo, in bytes. Read-only field. Size is only\nreturned by GetRepo.",
-          "format": "int64",
-          "type": "string"
         }
       },
-      "id": "Repo",
-      "description": "A repository (or repo) is a Git repository storing versioned source content.",
-      "type": "object"
+      "id": "Repo"
     },
     "ProjectConfig": {
+      "description": "Cloud Source Repositories configuration of a project.",
+      "type": "object",
       "properties": {
+        "pubsubConfigs": {
+          "additionalProperties": {
+            "$ref": "PubsubConfig"
+          },
+          "description": "How this project publishes a change in the repositories through Cloud\nPub/Sub. Keyed by the topic names.",
+          "type": "object"
+        },
         "name": {
           "description": "The name of the project. Values are of the form `projects/\u003cproject\u003e`.",
           "type": "string"
@@ -327,20 +338,13 @@
         "enablePrivateKeyCheck": {
           "description": "Reject a Git push that contains a private key.",
           "type": "boolean"
-        },
-        "pubsubConfigs": {
-          "description": "How this project publishes a change in the repositories through Cloud\nPub/Sub. Keyed by the topic names.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "PubsubConfig"
-          }
         }
       },
-      "id": "ProjectConfig",
-      "description": "Cloud Source Repositories configuration of a project.",
-      "type": "object"
+      "id": "ProjectConfig"
     },
     "TestIamPermissionsResponse": {
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
       "properties": {
         "permissions": {
           "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
@@ -350,37 +354,28 @@
           }
         }
       },
-      "id": "TestIamPermissionsResponse",
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object"
+      "id": "TestIamPermissionsResponse"
     },
     "ListReposResponse": {
+      "description": "Response for ListRepos.  The size is not set in the returned repositories.",
+      "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "If non-empty, additional repositories exist within the project. These\ncan be retrieved by including this value in the next ListReposRequest's\npage_token field.",
+          "type": "string"
+        },
         "repos": {
           "description": "The listed repos.",
           "type": "array",
           "items": {
             "$ref": "Repo"
           }
-        },
-        "nextPageToken": {
-          "description": "If non-empty, additional repositories exist within the project. These\ncan be retrieved by including this value in the next ListReposRequest's\npage_token field.",
-          "type": "string"
         }
       },
-      "id": "ListReposResponse",
-      "description": "Response for ListRepos.  The size is not set in the returned repositories.",
-      "type": "object"
+      "id": "ListReposResponse"
     },
     "AuditLogConfig": {
       "properties": {
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "logType": {
           "enumDescriptions": [
             "Default case. Should never be this.",
@@ -396,6 +391,13 @@
           ],
           "description": "The log type that this config enables.",
           "type": "string"
+        },
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "id": "AuditLogConfig",
@@ -405,8 +407,8 @@
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Cloud Source Repositories",
   "auth": {
@@ -436,84 +438,79 @@
   "ownerName": "Google",
   "resources": {
     "projects": {
+      "methods": {
+        "getConfig": {
+          "path": "v1/{+name}/config",
+          "id": "sourcerepo.projects.getConfig",
+          "description": "Returns the Cloud Source Repositories configuration of the project.",
+          "response": {
+            "$ref": "ProjectConfig"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "description": "The name of the requested project. Values are of the form\n`projects/\u003cproject\u003e`.",
+              "required": true,
+              "type": "string",
+              "pattern": "^projects/[^/]+$",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/projects/{projectsId}/config"
+        },
+        "updateConfig": {
+          "response": {
+            "$ref": "ProjectConfig"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "parameters": {
+            "name": {
+              "description": "The name of the requested project. Values are of the form\n`projects/\u003cproject\u003e`.",
+              "required": true,
+              "type": "string",
+              "pattern": "^projects/[^/]+$",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/projects/{projectsId}/config",
+          "path": "v1/{+name}/config",
+          "id": "sourcerepo.projects.updateConfig",
+          "description": "Updates the Cloud Source Repositories configuration of the project.",
+          "request": {
+            "$ref": "UpdateProjectConfigRequest"
+          }
+        }
+      },
       "resources": {
         "repos": {
           "methods": {
-            "get": {
-              "description": "Returns information about a repo.",
-              "response": {
-                "$ref": "Repo"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/source.full_control",
-                "https://www.googleapis.com/auth/source.read_only",
-                "https://www.googleapis.com/auth/source.read_write"
-              ],
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
-              "path": "v1/{+name}",
-              "id": "sourcerepo.projects.repos.get"
-            },
-            "patch": {
-              "request": {
-                "$ref": "UpdateRepoRequest"
-              },
-              "description": "Updates information about a repo.",
-              "response": {
-                "$ref": "Repo"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
-              "path": "v1/{+name}",
-              "id": "sourcerepo.projects.repos.patch"
-            },
             "testIamPermissions": {
-              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
-              "request": {
-                "$ref": "TestIamPermissionsRequest"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "resource"
-              ],
               "response": {
                 "$ref": "TestIamPermissionsResponse"
               },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "POST",
               "parameters": {
                 "resource": {
+                  "pattern": "^projects/[^/]+/repos/.+$",
+                  "location": "path",
                   "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path"
+                  "type": "string"
                 }
               },
               "scopes": [
@@ -523,36 +520,41 @@
                 "https://www.googleapis.com/auth/source.read_write"
               ],
               "flatPath": "v1/projects/{projectsId}/repos/{reposId}:testIamPermissions",
+              "path": "v1/{+resource}:testIamPermissions",
               "id": "sourcerepo.projects.repos.testIamPermissions",
-              "path": "v1/{+resource}:testIamPermissions"
+              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+              "request": {
+                "$ref": "TestIamPermissionsRequest"
+              }
             },
             "delete": {
-              "path": "v1/{+name}",
-              "id": "sourcerepo.projects.repos.delete",
               "description": "Deletes a repo.",
+              "httpMethod": "DELETE",
               "response": {
                 "$ref": "Empty"
               },
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "DELETE",
               "parameters": {
                 "name": {
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path",
                   "description": "The name of the repo to delete. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/repos/.+$",
+                  "location": "path"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/source.full_control"
               ],
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}"
+              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
+              "id": "sourcerepo.projects.repos.delete",
+              "path": "v1/{+name}"
             },
             "list": {
+              "description": "Returns all repos belonging to a project. The sizes of the repos are\nnot set by ListRepos.  To get the size of a repo, use GetRepo.",
               "response": {
                 "$ref": "ListReposResponse"
               },
@@ -560,45 +562,37 @@
                 "name"
               ],
               "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The project ID whose repos should be listed. Values are of the form\n`projects/\u003cproject\u003e`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "Resume listing repositories where a prior ListReposResponse\nleft off. This is an opaque token that must be obtained from\na recent, prior ListReposResponse's next_page_token field.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "Maximum number of repositories to return; between 1 and 500.\nIf not set or zero, defaults to 100 at the server.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/source.full_control",
                 "https://www.googleapis.com/auth/source.read_only",
                 "https://www.googleapis.com/auth/source.read_write"
               ],
+              "parameters": {
+                "pageSize": {
+                  "description": "Maximum number of repositories to return; between 1 and 500.\nIf not set or zero, defaults to 100 at the server.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "name": {
+                  "description": "The project ID whose repos should be listed. Values are of the form\n`projects/\u003cproject\u003e`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "Resume listing repositories where a prior ListReposResponse\nleft off. This is an opaque token that must be obtained from\na recent, prior ListReposResponse's next_page_token field.",
+                  "type": "string"
+                }
+              },
               "flatPath": "v1/projects/{projectsId}/repos",
               "path": "v1/{+name}/repos",
-              "id": "sourcerepo.projects.repos.list",
-              "description": "Returns all repos belonging to a project. The sizes of the repos are\nnot set by ListRepos.  To get the size of a repo, use GetRepo."
+              "id": "sourcerepo.projects.repos.list"
             },
             "sync": {
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:sync",
-              "path": "v1/{+name}:sync",
-              "id": "sourcerepo.projects.repos.sync",
-              "request": {
-                "$ref": "SyncRepoRequest"
-              },
-              "description": "Synchronize a connected repo.\n\nThe response contains SyncRepoMetadata in the metadata field.",
               "response": {
                 "$ref": "Operation"
               },
@@ -606,9 +600,6 @@
                 "name"
               ],
               "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "name": {
                   "description": "The name of the repo to synchronize. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
@@ -617,9 +608,23 @@
                   "pattern": "^projects/[^/]+/repos/.+$",
                   "location": "path"
                 }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:sync",
+              "path": "v1/{+name}:sync",
+              "id": "sourcerepo.projects.repos.sync",
+              "description": "Synchronize a connected repo.\n\nThe response contains SyncRepoMetadata in the metadata field.",
+              "request": {
+                "$ref": "SyncRepoRequest"
               }
             },
             "create": {
+              "request": {
+                "$ref": "Repo"
+              },
+              "description": "Creates a repo in the given project with the given name.\n\nIf the named repository already exists, `CreateRepo` returns\n`ALREADY_EXISTS`.",
               "response": {
                 "$ref": "Repo"
               },
@@ -642,43 +647,38 @@
               },
               "flatPath": "v1/projects/{projectsId}/repos",
               "path": "v1/{+parent}/repos",
-              "id": "sourcerepo.projects.repos.create",
-              "request": {
-                "$ref": "Repo"
-              },
-              "description": "Creates a repo in the given project with the given name.\n\nIf the named repository already exists, `CreateRepo` returns\n`ALREADY_EXISTS`."
+              "id": "sourcerepo.projects.repos.create"
             },
             "setIamPolicy": {
-              "id": "sourcerepo.projects.repos.setIamPolicy",
               "path": "v1/{+resource}:setIamPolicy",
-              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+              "id": "sourcerepo.projects.repos.setIamPolicy",
               "request": {
                 "$ref": "SetIamPolicyRequest"
               },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "resource"
-              ],
+              "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
               "response": {
                 "$ref": "Policy"
               },
-              "parameters": {
-                "resource": {
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path",
-                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "POST",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/source.full_control"
               ],
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/repos/.+$",
+                  "location": "path"
+                }
+              },
               "flatPath": "v1/projects/{projectsId}/repos/{reposId}:setIamPolicy"
             },
             "getIamPolicy": {
-              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
               "response": {
                 "$ref": "Policy"
               },
@@ -703,73 +703,134 @@
               },
               "flatPath": "v1/projects/{projectsId}/repos/{reposId}:getIamPolicy",
               "path": "v1/{+resource}:getIamPolicy",
-              "id": "sourcerepo.projects.repos.getIamPolicy"
+              "id": "sourcerepo.projects.repos.getIamPolicy",
+              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
+            },
+            "get": {
+              "description": "Returns information about a repo.",
+              "response": {
+                "$ref": "Repo"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/source.full_control",
+                "https://www.googleapis.com/auth/source.read_only",
+                "https://www.googleapis.com/auth/source.read_write"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/repos/.+$",
+                  "location": "path",
+                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
+              "path": "v1/{+name}",
+              "id": "sourcerepo.projects.repos.get"
+            },
+            "patch": {
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Repo"
+              },
+              "parameters": {
+                "name": {
+                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/repos/.+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
+              "id": "sourcerepo.projects.repos.patch",
+              "path": "v1/{+name}",
+              "description": "Updates information about a repo.",
+              "request": {
+                "$ref": "UpdateRepoRequest"
+              }
             }
           }
-        }
-      },
-      "methods": {
-        "getConfig": {
-          "id": "sourcerepo.projects.getConfig",
-          "path": "v1/{+name}/config",
-          "description": "Returns the Cloud Source Repositories configuration of the project.",
-          "httpMethod": "GET",
-          "response": {
-            "$ref": "ProjectConfig"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "parameters": {
-            "name": {
-              "location": "path",
-              "description": "The name of the requested project. Values are of the form\n`projects/\u003cproject\u003e`.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/projects/{projectsId}/config"
-        },
-        "updateConfig": {
-          "request": {
-            "$ref": "UpdateProjectConfigRequest"
-          },
-          "description": "Updates the Cloud Source Repositories configuration of the project.",
-          "response": {
-            "$ref": "ProjectConfig"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "PATCH",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "description": "The name of the requested project. Values are of the form\n`projects/\u003cproject\u003e`.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/projects/{projectsId}/config",
-          "path": "v1/{+name}/config",
-          "id": "sourcerepo.projects.updateConfig"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -781,67 +842,6 @@
       "type": "boolean",
       "default": "true",
       "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
     }
-  },
-  "version": "v1",
-  "baseUrl": "https://sourcerepo.googleapis.com/"
+  }
 }
