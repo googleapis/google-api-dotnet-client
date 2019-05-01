@@ -161,7 +161,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public async Task Cancellation()
+        public async Task Cancellation_WithConnection()
         {
             using (var server = StartServer())
             using (var client = new TcpClient())
@@ -172,6 +172,15 @@ namespace Google.Apis.Auth.Tests.OAuth2
             }
         }
 
+        [Fact]
+        public async Task Cancellation_NoConnection()
+        {
+            using (var server = StartServer())
+            {
+                var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(100));
+                await Assert.ThrowsAsync<OperationCanceledException>(() => server.GetQueryParamsAsync(cts.Token));
+            }
+        }
     }
 }
 

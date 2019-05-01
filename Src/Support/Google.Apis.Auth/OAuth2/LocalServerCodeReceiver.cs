@@ -195,16 +195,30 @@ namespace Google.Apis.Auth.OAuth2
 
             public async Task<Dictionary<string, string>> GetQueryParamsAsync(CancellationToken cancellationToken = default(CancellationToken))
             {
-                var ct = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token, cancellationToken).Token;
-                using (TcpClient client = await _listener.AcceptTcpClientAsync().ConfigureAwait(false))
+                using (var cts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token, cancellationToken))
+                using (cts.Token.Register(_listener.Stop))
                 {
                     try
                     {
-                        return await GetQueryParamsFromClientAsync(client, ct).ConfigureAwait(false);
+                        using (TcpClient client = await _listener.AcceptTcpClientAsync().ConfigureAwait(false))
+                        {
+                            try
+                            {
+                                return await GetQueryParamsFromClientAsync(client, cts.Token).ConfigureAwait(false);
+                            }
+                            catch (ServerException e)
+                            {
+                                Logger.Warning("{0}", e.Message);
+                                throw;
+                            }
+                        }
                     }
-                    catch (ServerException e)
+                    // Cancellation during the `AcceptTcpClientAsync()` call results in an `ObjectDisposedException`.
+                    // Translate it to the expected cancellation exception.
+                    catch (ObjectDisposedException) when (cts.IsCancellationRequested)
                     {
-                        Logger.Warning("{0}", e.Message);
+                        cts.Token.ThrowIfCancellationRequested();
+                        // Will never get here, but required to satisfy compiler.
                         throw;
                     }
                 }
