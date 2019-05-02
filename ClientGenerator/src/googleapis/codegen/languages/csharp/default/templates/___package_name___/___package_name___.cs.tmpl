@@ -89,7 +89,7 @@ public override string Name
 /// <summary>Gets the service base URI.</summary>
 public override string BaseUri
 {
-    get { return "{{ api.rootUrl }}{{ api.servicePath }}"; }
+    get { return BaseUriOverride ?? "{{ api.rootUrl }}{{ api.servicePath }}"; }
 }
 
 /// <summary>Gets the service base path.</summary>
