@@ -107,6 +107,12 @@ namespace Google.Apis.Services
             /// </summary>
             public uint MaxUrlLength { get; set; }
 
+            /// <summary>
+            /// Gets or sets the base URI to use for the service. If the value is <c>null</c>,
+            /// the default base URI for the service is used.
+            /// </summary>
+            public string BaseUri { get; set; }
+
             /// <summary>Constructs a new initializer with default values.</summary>
             public Initializer()
             {
@@ -139,6 +145,7 @@ namespace Google.Apis.Services
             Serializer = initializer.Serializer;
             ApiKey = initializer.ApiKey;
             ApplicationName = initializer.ApplicationName;
+            BaseUriOverride = initializer.BaseUri;
             if (ApplicationName == null)
             {
                 Logger.Warning("Application name is not set. Please set Initializer.ApplicationName property");
@@ -148,6 +155,11 @@ namespace Google.Apis.Services
             // Create a HTTP client for this service.
             HttpClient = CreateHttpClient(initializer);
         }
+
+        /// <summary>
+        /// The BaseUri provided in the initializer, which may be null.
+        /// </summary>
+        protected string BaseUriOverride { get; }
 
         /// <summary>Returns <c>true</c> if this service contains the specified feature.</summary>
         private bool HasFeature(Features feature)

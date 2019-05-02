@@ -694,7 +694,7 @@ namespace Google.Apis.KitchSink.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://www.googleapis.com/sink/v1/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/sink/v1/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
