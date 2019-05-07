@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p3beta1
- *      <tr><th>API Rev<td>20190419 (1569)
+ *      <tr><th>API Rev<td>20190427 (1577)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>

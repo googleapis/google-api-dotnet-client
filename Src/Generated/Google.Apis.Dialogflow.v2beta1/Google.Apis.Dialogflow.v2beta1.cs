@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190420 (1570)
+ *      <tr><th>API Rev<td>20190429 (1579)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -2755,6 +2755,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
+                    /// not specified, the agent's default language is used. [Many languages](https://cloud.google.com
+                    /// /dialogflow-enterprise/docs/reference/language) are supported. Note: languages must be enabled
+                    /// in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2776,13 +2783,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
-                    /// not specified, the agent's default language is used. [Many languages](https://cloud.google.com
-                    /// /dialogflow-enterprise/docs/reference/language) are supported. Note: languages must be enabled
-                    /// in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2818,6 +2818,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2839,15 +2848,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7771,7 +7771,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Instructs the speech recognizer how to process the audio content.</summary>
+    /// <summary>Instructs the speech recognizer on how to process the audio content.</summary>
     public class GoogleCloudDialogflowV2beta1InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Audio encoding of the audio content to process.</summary>

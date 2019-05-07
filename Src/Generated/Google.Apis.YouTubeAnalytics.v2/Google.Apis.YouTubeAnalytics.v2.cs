@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190504 (1584)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -1001,20 +1001,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
-            /// <summary>The maximum number of rows to include in the response.", minValue: 1</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
-
-            /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
-            /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
-            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
-            /// dimensions. If a request uses multiple filters, join them together with a semicolon (`;`), and the
-            /// returned result table will satisfy both filters. For example, a filters parameter value of
-            /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data for the given video in
-            /// Italy.",</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filters { get; set; }
-
             /// <summary>A comma-separated list of dimensions or metrics that determine the sort order for YouTube
             /// Analytics data. By default the sort order is ascending. The '`-`' prefix causes descending sort order.",
             /// pattern: [-0-9a-zA-Z,]+</summary>
@@ -1073,6 +1059,20 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndDate { get; set; }
 
+            /// <summary>The maximum number of rows to include in the response.", minValue: 1</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
+
+            /// <summary>A list of filters that should be applied when retrieving YouTube Analytics data. The [Available
+            /// Reports](/youtube/analytics/v2/available_reports) document identifies the dimensions that can be used to
+            /// filter each report, and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines those
+            /// dimensions. If a request uses multiple filters, join them together with a semicolon (`;`), and the
+            /// returned result table will satisfy both filters. For example, a filters parameter value of
+            /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data for the given video in
+            /// Italy.",</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filters { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1097,24 +1097,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filters", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filters",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "sort", new Google.Apis.Discovery.Parameter
                     {
@@ -1191,6 +1173,24 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "endDate", new Google.Apis.Discovery.Parameter
                     {
                         Name = "endDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

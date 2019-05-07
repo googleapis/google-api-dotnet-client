@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190419 (1569)
+ *      <tr><th>API Rev<td>20190502 (1582)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -399,7 +399,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRedis.v1.Data.Instance body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -430,7 +430,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>Required. The resource name of the instance location using the form:
                     /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP
-                    /// region</summary>
+                    /// region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -498,7 +498,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <summary>Deletes a specific Redis instance.  Instance stops serving and data is deleted.</summary>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
-                /// region</param>
+                /// region.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -518,7 +518,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>Required. Redis instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
-                    /// refers to a GCP region</summary>
+                    /// refers to a GCP region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -559,19 +559,19 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Failover the master role to current replica node against a specific STANDARD tier redis
-                /// instance.</summary>
+                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// tier Cloud Memorystore for Redis instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
-                /// region</param>
+                /// region.</param>
                 public virtual FailoverRequest Failover(Google.Apis.CloudRedis.v1.Data.FailoverInstanceRequest body, string name)
                 {
                     return new FailoverRequest(service, body, name);
                 }
 
-                /// <summary>Failover the master role to current replica node against a specific STANDARD tier redis
-                /// instance.</summary>
+                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// tier Cloud Memorystore for Redis instance.</summary>
                 public class FailoverRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Failover request.</summary>
@@ -586,7 +586,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>Required. Redis instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
-                    /// refers to a GCP region</summary>
+                    /// refers to a GCP region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -636,7 +636,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <summary>Gets the details of a specific Redis instance.</summary>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
-                /// region</param>
+                /// region.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -656,7 +656,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>Required. Redis instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
-                    /// refers to a GCP region</summary>
+                    /// refers to a GCP region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -705,7 +705,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
                 /// queried, and the results are aggregated.</summary>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -731,7 +731,7 @@ namespace Google.Apis.CloudRedis.v1
 
                     /// <summary>Required. The resource name of the instance location using the form:
                     /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP
-                    /// region</summary>
+                    /// region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 

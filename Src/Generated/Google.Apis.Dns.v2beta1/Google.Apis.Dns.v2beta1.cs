@@ -87,7 +87,7 @@ namespace Google.Apis.Dns.v2beta1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://www.googleapis.com/dns/v2beta1/projects/"; }
+            get { return "https://dns.googleapis.com/dns/v2beta1/projects/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -100,7 +100,7 @@ namespace Google.Apis.Dns.v2beta1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/dns/v2beta1"; }
+            get { return "https://dns.googleapis.com/batch/dns/v2beta1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

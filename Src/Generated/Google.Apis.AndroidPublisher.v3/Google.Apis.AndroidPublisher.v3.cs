@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190428 (1578)
+ *      <tr><th>API Rev<td>20190506 (1586)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             edits = new EditsResource(this);
             inappproducts = new InappproductsResource(this);
+            internalappsharingartifacts = new InternalappsharingartifactsResource(this);
             orders = new OrdersResource(this);
             purchases = new PurchasesResource(this);
             reviews = new ReviewsResource(this);
@@ -141,6 +142,14 @@ namespace Google.Apis.AndroidPublisher.v3
         public virtual InappproductsResource Inappproducts
         {
             get { return inappproducts; }
+        }
+
+        private readonly InternalappsharingartifactsResource internalappsharingartifacts;
+
+        /// <summary>Gets the Internalappsharingartifacts resource.</summary>
+        public virtual InternalappsharingartifactsResource Internalappsharingartifacts
+        {
+            get { return internalappsharingartifacts; }
         }
 
         private readonly OrdersResource orders;
@@ -5006,6 +5015,297 @@ namespace Google.Apis.AndroidPublisher.v3
                     });
             }
 
+        }
+    }
+
+    /// <summary>The "internalappsharingartifacts" collection of methods.</summary>
+    public class InternalappsharingartifactsResource
+    {
+        private const string Resource = "internalappsharingartifacts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public InternalappsharingartifactsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+        /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+        public virtual UploadapkRequest Uploadapk(string packageName)
+        {
+            return new UploadapkRequest(service, packageName);
+        }
+
+        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+        public class UploadapkRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Uploadapk request.</summary>
+            public UploadapkRequest(Google.Apis.Services.IClientService service, string packageName)
+                : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+
+            /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "uploadapk"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "internalappsharing/{packageName}/artifacts/apk"; }
+            }
+
+            /// <summary>Initializes Uploadapk parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+
+        /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+        /// <param name="stream">The stream to upload.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadapkMediaUpload Uploadapk(string packageName, System.IO.Stream stream, string contentType)
+        {
+            return new UploadapkMediaUpload(service, packageName, stream, contentType);
+        }
+
+        /// <summary>Uploadapk media upload which supports resumable upload.</summary>
+        public class UploadapkMediaUpload : Google.Apis.Upload.ResumableUpload<string>
+        {
+
+            /// <summary>Data format for the response.</summary>
+            /// [default: json]
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for the response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json,
+            }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
+            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            /// [default: true]
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
+            /// characters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Deprecated. Please use quotaUser instead.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserIp { get; set; }
+
+
+            /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Constructs a new Uploadapk media upload instance.</summary>
+            public UploadapkMediaUpload(Google.Apis.Services.IClientService service, string
+             packageName, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "internalappsharing/{packageName}/artifacts/apk"), "POST", stream, contentType)
+            {
+                PackageName = packageName;
+            }
+        }
+
+        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
+        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+        /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+        public virtual UploadbundleRequest Uploadbundle(string packageName)
+        {
+            return new UploadbundleRequest(service, packageName);
+        }
+
+        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
+        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+        public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Uploadbundle request.</summary>
+            public UploadbundleRequest(Google.Apis.Services.IClientService service, string packageName)
+                : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+
+            /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "uploadbundle"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "internalappsharing/{packageName}/artifacts/bundle"; }
+            }
+
+            /// <summary>Initializes Uploadbundle parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
+        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
+        /// an example in java.</summary>
+
+        /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+        /// <param name="stream">The stream to upload.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadbundleMediaUpload Uploadbundle(string packageName, System.IO.Stream stream, string contentType)
+        {
+            return new UploadbundleMediaUpload(service, packageName, stream, contentType);
+        }
+
+        /// <summary>Uploadbundle media upload which supports resumable upload.</summary>
+        public class UploadbundleMediaUpload : Google.Apis.Upload.ResumableUpload<string>
+        {
+
+            /// <summary>Data format for the response.</summary>
+            /// [default: json]
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for the response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json,
+            }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
+            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            /// [default: true]
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
+            /// characters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Deprecated. Please use quotaUser instead.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserIp { get; set; }
+
+
+            /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Constructs a new Uploadbundle media upload instance.</summary>
+            public UploadbundleMediaUpload(Google.Apis.Services.IClientService service, string
+             packageName, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "internalappsharing/{packageName}/artifacts/bundle"), "POST", stream, contentType)
+            {
+                PackageName = packageName;
+            }
         }
     }
 

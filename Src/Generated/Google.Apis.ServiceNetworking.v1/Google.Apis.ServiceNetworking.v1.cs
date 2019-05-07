@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -593,10 +593,6 @@ namespace Google.Apis.ServiceNetworking.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -604,6 +600,10 @@ namespace Google.Apis.ServiceNetworking.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -639,15 +639,6 @@ namespace Google.Apis.ServiceNetworking.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -660,6 +651,15 @@ namespace Google.Apis.ServiceNetworking.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2560,6 +2560,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+
+        /// <summary>Optional. The launch stage of the monitored resource definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; } 
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
         /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field

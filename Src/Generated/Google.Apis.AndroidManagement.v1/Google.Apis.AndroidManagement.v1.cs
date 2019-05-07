@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190430 (1580)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -732,10 +732,6 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -743,6 +739,10 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -778,15 +778,6 @@ namespace Google.Apis.AndroidManagement.v1
                                 Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -799,6 +790,15 @@ namespace Google.Apis.AndroidManagement.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1518,13 +1518,13 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results returned by the server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1560,18 +1560,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2686,6 +2686,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An action to block access to apps and data on a fully managed device or in a work profile. This action
+    /// also triggers a device or work profile to displays a user-facing notification with information (where possible)
+    /// on how to correct the compliance issue. Note: wipeAction must also be specified.</summary>
+    public class BlockAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of days the policy is non-compliant before the device or work profile is blocked. To block
+        /// access immediately, set to 0. blockAfterDays must be less than wipeAfterDays.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockAfterDays")]
+        public virtual System.Nullable<int> BlockAfterDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A rule for automatically choosing a private key and certificate to authenticate the device to a
     /// server.</summary>
     public class ChoosePrivateKeyRule : Google.Apis.Requests.IDirectResponseSchema
@@ -2918,6 +2932,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// device into a DELETED state, call enterprises.devices.delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>Map of selected system properties name and value related to the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemProperties")]
+        public virtual System.Collections.Generic.IDictionary<string,string> SystemProperties { get; set; } 
 
         /// <summary>The user who owns the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
@@ -3858,6 +3876,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maximumTimeToLock")]
         public virtual System.Nullable<long> MaximumTimeToLock { get; set; } 
 
+        /// <summary>The minimum allowed Android API level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumApiLevel")]
+        public virtual System.Nullable<int> MinimumApiLevel { get; set; } 
+
         /// <summary>Whether configuring mobile networks is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileNetworksConfigDisabled")]
         public virtual System.Nullable<bool> MobileNetworksConfigDisabled { get; set; } 
@@ -3926,6 +3948,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// device when apps are removed from the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playStoreMode")]
         public virtual string PlayStoreMode { get; set; } 
+
+        /// <summary>Rules that define the behavior when a particular policy can not be applied on device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEnforcementRules")]
+        public virtual System.Collections.Generic.IList<PolicyEnforcementRule> PolicyEnforcementRules { get; set; } 
 
         /// <summary>Allows showing UI on a device for a user to choose a private key alias if there are no matching
         /// rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys
@@ -4038,6 +4064,29 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>DEPRECATED - Use wifi_config_disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigsLockdownEnabled")]
         public virtual System.Nullable<bool> WifiConfigsLockdownEnabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A rule that defines the actions to take if a device or work profile is not compliant with the policy
+    /// specified in settingName.</summary>
+    public class PolicyEnforcementRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An action to block access to apps and data on a fully managed device or in a work profile. This
+        /// action also triggers a user-facing notification with information (where possible) on how to correct the
+        /// compliance issue. Note: wipeAction must also be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockAction")]
+        public virtual BlockAction BlockAction { get; set; } 
+
+        /// <summary>The top-level policy to enforce. For example, applications or passwordRequirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settingName")]
+        public virtual string SettingName { get; set; } 
+
+        /// <summary>An action to reset a fully managed device or delete a work profile. Note: blockAction must also be
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeAction")]
+        public virtual WipeAction WipeAction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4425,6 +4474,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// is a read-only field generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An action to reset a fully managed device or delete a work profile. Note: blockAction must also be
+    /// specified.</summary>
+    public class WipeAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the factory-reset protection data is preserved on the device. This setting doesn’t apply to
+        /// work profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveFrp")]
+        public virtual System.Nullable<bool> PreserveFrp { get; set; } 
+
+        /// <summary>Number of days the policy is non-compliant before the device or work profile is wiped.
+        /// wipeAfterDays must be greater than blockAfterDays.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wipeAfterDays")]
+        public virtual System.Nullable<int> WipeAfterDays { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

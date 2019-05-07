@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/_Qdy6OG-aGWHmo7NAWa70KfLna0\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/4ABTsLSkbq4OHuGpz9x2CkaFpsw\"",
  "discoveryVersion": "v1",
  "id": "dns:v2beta1",
  "name": "dns",
@@ -16,9 +16,9 @@
  },
  "documentationLink": "https://developers.google.com/cloud-dns",
  "protocol": "rest",
- "baseUrl": "https://www.googleapis.com/dns/v2beta1/projects/",
+ "baseUrl": "https://dns.googleapis.com/dns/v2beta1/projects/",
  "basePath": "/dns/v2beta1/projects/",
- "rootUrl": "https://www.googleapis.com/",
+ "rootUrl": "https://dns.googleapis.com/",
  "servicePath": "dns/v2beta1/projects/",
  "batchPath": "batch/dns/v2beta1",
  "parameters": {

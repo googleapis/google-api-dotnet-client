@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Clouderrorreporting.v1beta1 Client Library</Title>
-    <Version>1.39.0.1568</Version>
+    <Version>1.39.0.1574</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

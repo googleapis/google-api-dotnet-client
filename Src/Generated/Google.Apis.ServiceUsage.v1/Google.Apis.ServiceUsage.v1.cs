@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1037,11 +1037,6 @@ namespace Google.Apis.ServiceUsage.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
-            /// `state:ENABLED` and `state:DISABLED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Token identifying which result to start with, which is returned by a previous list
             /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1051,6 +1046,11 @@ namespace Google.Apis.ServiceUsage.v1
             /// default page size is 50.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
+            /// `state:ENABLED` and `state:DISABLED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1086,15 +1086,6 @@ namespace Google.Apis.ServiceUsage.v1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1107,6 +1098,15 @@ namespace Google.Apis.ServiceUsage.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2777,6 +2777,10 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+
+        /// <summary>Optional. The launch stage of the monitored resource definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; } 
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
         /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field

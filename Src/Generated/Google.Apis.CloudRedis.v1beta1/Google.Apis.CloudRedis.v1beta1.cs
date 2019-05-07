@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190419 (1569)
+ *      <tr><th>API Rev<td>20190502 (1582)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -399,7 +399,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// DeleteOperation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRedis.v1beta1.Data.Instance body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -430,7 +430,7 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>Required. The resource name of the instance location using the form:
                     /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP
-                    /// region</summary>
+                    /// region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -498,7 +498,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <summary>Deletes a specific Redis instance.  Instance stops serving and data is deleted.</summary>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
-                /// region</param>
+                /// region.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -518,7 +518,7 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>Required. Redis instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
-                    /// refers to a GCP region</summary>
+                    /// refers to a GCP region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -562,7 +562,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <summary>Gets the details of a specific Redis instance.</summary>
                 /// <param name="name">Required. Redis instance resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
-                /// region</param>
+                /// region.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -582,7 +582,7 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>Required. Redis instance resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
-                    /// refers to a GCP region</summary>
+                    /// refers to a GCP region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -631,7 +631,7 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
                 /// queried, and the results are aggregated.</summary>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
-                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -657,7 +657,7 @@ namespace Google.Apis.CloudRedis.v1beta1
 
                     /// <summary>Required. The resource name of the instance location using the form:
                     /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP
-                    /// region</summary>
+                    /// region.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1091,10 +1091,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1102,6 +1098,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1137,15 +1137,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1158,6 +1149,15 @@ namespace Google.Apis.CloudRedis.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1251,6 +1251,10 @@ namespace Google.Apis.CloudRedis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1258,10 +1262,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1297,6 +1297,15 @@ namespace Google.Apis.CloudRedis.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1309,15 +1318,6 @@ namespace Google.Apis.CloudRedis.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1486,7 +1486,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// Updating the version will perform an upgrade/downgrade to the new version. Currently, the supported values
         /// are:
         ///
-        /// *   `REDIS_4_0` for Redis 4.0 compatibility *   `REDIS_3_2` for Redis 3.2 compatibility</summary>
+        /// *   `REDIS_4_0` for Redis 4.0 compatibility *   `REDIS_3_2` for Redis 3.2 compatibility (default)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; } 
 

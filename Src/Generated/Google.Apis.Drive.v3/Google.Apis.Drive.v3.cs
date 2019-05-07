@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -477,7 +477,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DriveId { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -594,7 +596,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
-            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// <summary>Deprecated - Whether both My Drive and shared drive items should be included in results. This
+            /// parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in
+            /// the results.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
@@ -630,7 +634,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -821,7 +827,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
 
-            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// <summary>Deprecated - Whether both My Drive and shared drive items should be included in results. This
+            /// parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in
+            /// the results.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
@@ -857,7 +865,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2126,7 +2136,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2260,7 +2272,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2434,7 +2448,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2484,7 +2500,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2831,7 +2849,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -2998,7 +3018,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("driveId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DriveId { get; set; }
 
-            /// <summary>Whether both My Drive and shared drive items should be included in results.</summary>
+            /// <summary>Deprecated - Whether both My Drive and shared drive items should be included in results. This
+            /// parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in
+            /// the results.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("includeItemsFromAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeItemsFromAllDrives { get; set; }
@@ -3041,7 +3063,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3243,7 +3267,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3441,7 +3467,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3498,7 +3526,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3682,7 +3712,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("sendNotificationEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotificationEmail { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3832,7 +3864,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -3952,7 +3986,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -4078,7 +4114,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -4214,7 +4252,9 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RemoveExpiration { get; set; }
 
-            /// <summary>Whether the requesting application supports both My Drives and shared drives.</summary>
+            /// <summary>Deprecated - Whether the requesting application supports both My Drives and shared drives. This
+            /// parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support
+            /// shared drives.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsAllDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsAllDrives { get; set; }
@@ -5780,15 +5820,15 @@ namespace Google.Apis.Drive.v3.Data
 
         public class TeamDriveThemesData
         {
-            /// <summary>A link to this Team Drive theme's background image.</summary>
+            /// <summary>Deprecated - use driveThemes/backgroundImageLink instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
             public virtual string BackgroundImageLink { get; set; } 
 
-            /// <summary>The color of this Team Drive theme as an RGB hex string.</summary>
+            /// <summary>Deprecated - use driveThemes/colorRgb instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
             public virtual string ColorRgb { get; set; } 
 
-            /// <summary>The ID of the theme.</summary>
+            /// <summary>Deprecated - use driveThemes/id instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; } 
 
@@ -7100,23 +7140,19 @@ namespace Google.Apis.Drive.v3.Data
 
         public class TeamDrivePermissionDetailsData
         {
-            /// <summary>Whether this permission is inherited. This field is always populated. This is an output-only
-            /// field.</summary>
+            /// <summary>Deprecated - use permissionDetails/inherited instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
             public virtual System.Nullable<bool> Inherited { get; set; } 
 
-            /// <summary>The ID of the item from which this permission is inherited. This is an output-only field and is
-            /// only populated for members of the Team Drive.</summary>
+            /// <summary>Deprecated - use permissionDetails/inheritedFrom instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
             public virtual string InheritedFrom { get; set; } 
 
-            /// <summary>The primary role for this user. While new values may be added in the future, the following are
-            /// currently possible: - organizer - fileOrganizer - writer - commenter - reader</summary>
+            /// <summary>Deprecated - use permissionDetails/role instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; } 
 
-            /// <summary>The Team Drive permission type for this user. While new values may be added in future, the
-            /// following are currently possible: - file - member</summary>
+            /// <summary>Deprecated - use permissionDetails/permissionType instead.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionType")]
             public virtual string TeamDrivePermissionType { get; set; } 
 
@@ -7356,7 +7392,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Representation of a Team Drive.</summary>
+    /// <summary>Deprecated: use the drive collection instead.</summary>
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An image file and cropping parameters from which a background image for this Team Drive is set.

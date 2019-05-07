@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/dRYyjHMRCbfrEbegx0ZMjE3su0A\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/yIlJvoKxhUuXyIrv0zIEEc2CRmM\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190428",
+ "revision": "20190506",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -2972,6 +2972,85 @@
      "scopes": [
       "https://www.googleapis.com/auth/androidpublisher"
      ]
+    }
+   }
+  },
+  "internalappsharingartifacts": {
+   "methods": {
+    "uploadapk": {
+     "id": "androidpublisher.internalappsharingartifacts.uploadapk",
+     "path": "internalappsharing/{packageName}/artifacts/apk",
+     "httpMethod": "POST",
+     "description": "Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
+     "parameters": {
+      "packageName": {
+       "type": "string",
+       "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "packageName"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/androidpublisher"
+     ],
+     "supportsMediaUpload": true,
+     "mediaUpload": {
+      "accept": [
+       "application/octet-stream",
+       "application/vnd.android.package-archive"
+      ],
+      "maxSize": "1GB",
+      "protocols": {
+       "simple": {
+        "multipart": true,
+        "path": "/upload/androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk"
+       },
+       "resumable": {
+        "multipart": true,
+        "path": "/resumable/upload/androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk"
+       }
+      }
+     }
+    },
+    "uploadbundle": {
+     "id": "androidpublisher.internalappsharingartifacts.uploadbundle",
+     "path": "internalappsharing/{packageName}/artifacts/bundle",
+     "httpMethod": "POST",
+     "description": "Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
+     "parameters": {
+      "packageName": {
+       "type": "string",
+       "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "packageName"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/androidpublisher"
+     ],
+     "supportsMediaUpload": true,
+     "mediaUpload": {
+      "accept": [
+       "application/octet-stream"
+      ],
+      "maxSize": "2GB",
+      "protocols": {
+       "simple": {
+        "multipart": true,
+        "path": "/upload/androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle"
+       },
+       "resumable": {
+        "multipart": true,
+        "path": "/resumable/upload/androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle"
+       }
+      }
+     }
     }
    }
   },

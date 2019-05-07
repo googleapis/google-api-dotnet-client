@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190403 (1553)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -837,10 +837,6 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The standard list filter.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>The standard list page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -848,6 +844,10 @@ namespace Google.Apis.Spanner.v1
                         /// <summary>The standard list page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -883,15 +883,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -904,6 +895,15 @@ namespace Google.Apis.Spanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2995,6 +2995,10 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3002,10 +3006,6 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3041,6 +3041,15 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -3053,15 +3062,6 @@ namespace Google.Apis.Spanner.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3431,6 +3431,11 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3451,11 +3456,6 @@ namespace Google.Apis.Spanner.v1
                 /// ListInstancesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3491,6 +3491,15 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -3503,15 +3512,6 @@ namespace Google.Apis.Spanner.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3821,8 +3821,8 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition
-        /// will not allow user access via current binding. Different bindings, including their conditions, are examined
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
@@ -4060,7 +4060,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// effects of statement i are visible to statement i+1. Each statement must be a DML statement. Execution will
         /// stop at the first failed statement; the remaining statements will not run.
         ///
-        /// REQUIRES: statements_size() > 0.</summary>
+        /// REQUIRES: `statements_size()` > 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
         public virtual System.Collections.Generic.IList<Statement> Statements { get; set; } 
 
@@ -4079,15 +4079,18 @@ namespace Google.Apis.Spanner.v1.Data
     /// determine whether all DML statements have run successfully, or if a statement failed, using one of the following
     /// approaches:
     ///
-    /// 1. Check if 'status' field is OkStatus. 2. Check if result_sets_size() equals the number of statements in
+    /// 1. Check if `'status'` field is `OkStatus`. 2. Check if `result_sets_size()` equals the number of statements in
     /// ExecuteBatchDmlRequest.
     ///
-    /// Example 1: A request with 5 DML statements, all executed successfully. Result: A response with 5 ResultSets, one
-    /// for each statement in the same order, and an OK status.
+    /// Example 1: A request with 5 DML statements, all executed successfully.
     ///
-    /// Example 2: A request with 5 DML statements. The 3rd statement has a syntax error. Result: A response with 2
-    /// ResultSets, for the first 2 statements that run successfully, and a syntax error (INVALID_ARGUMENT) status. From
-    /// result_set_size() client can determine that the 3rd statement has failed.</summary>
+    /// Result: A response with 5 ResultSets, one for each statement in the same order, and an `OkStatus`.
+    ///
+    /// Example 2: A request with 5 DML statements. The 3rd statement has a syntax error.
+    ///
+    /// Result: A response with 2 ResultSets, for the first 2 statements that run successfully, and a syntax error
+    /// (`INVALID_ARGUMENT`) status. From `result_set_size()` client can determine that the 3rd statement has
+    /// failed.</summary>
     public class ExecuteBatchDmlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ResultSets, one for each statement in the request that ran successfully, in the same order as the
@@ -4319,6 +4322,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// `projects//instanceConfigs/a-z*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The geographic placement of nodes in this instance configuration and their replication
+        /// properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
+        public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5028,6 +5036,26 @@ namespace Google.Apis.Spanner.v1.Data
     /// options.</summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReplicaInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, this location is designated as the default leader location where leader replicas are
+        /// placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types)
+        /// for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLeaderLocation")]
+        public virtual System.Nullable<bool> DefaultLeaderLocation { get; set; } 
+
+        /// <summary>The location of the serving resources, e.g. "us-central1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>The type of replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

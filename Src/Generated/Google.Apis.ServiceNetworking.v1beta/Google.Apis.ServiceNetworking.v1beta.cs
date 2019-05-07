@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -2264,6 +2264,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+
+        /// <summary>Optional. The launch stage of the monitored resource definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; } 
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
         /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field

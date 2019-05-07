@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190426 (1576)
+ *      <tr><th>API Rev<td>20190501 (1581)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -1822,6 +1822,27 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Inserts an empty column into a table.</summary>
+    public class InsertTableColumnRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to insert new column to the right of the reference cell location.
+        ///
+        /// - `True`: insert to the right. - `False`: insert to the left.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertRight")]
+        public virtual System.Nullable<bool> InsertRight { get; set; } 
+
+        /// <summary>The reference table cell location from which columns will be inserted.
+        ///
+        /// A new column will be inserted to the left (or right) of the column where the reference cell is. If the
+        /// reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged
+        /// cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
+        public virtual TableCellLocation TableCellLocation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Inserts a table at the specified location.
     ///
     /// A newline character will be inserted before the inserted table.</summary>
@@ -2853,6 +2874,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTable")]
         public virtual InsertTableRequest InsertTable { get; set; } 
 
+        /// <summary>Inserts an empty column into a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTableColumn")]
+        public virtual InsertTableColumnRequest InsertTableColumn { get; set; } 
+
         /// <summary>Inserts an empty row into a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTableRow")]
         public virtual InsertTableRowRequest InsertTableRow { get; set; } 
@@ -2868,6 +2893,14 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Updates the paragraph style at the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
         public virtual UpdateParagraphStyleRequest UpdateParagraphStyle { get; set; } 
+
+        /// <summary>Updates the properties of columns in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableColumnProperties")]
+        public virtual UpdateTableColumnPropertiesRequest UpdateTableColumnProperties { get; set; } 
+
+        /// <summary>Updates the row style in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableRowStyle")]
+        public virtual UpdateTableRowStyleRequest UpdateTableRowStyle { get; set; } 
 
         /// <summary>Updates the text style at the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTextStyle")]
@@ -3841,6 +3874,67 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The range overlapping the paragraphs to style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the TableColumnProperties of columns in a table.</summary>
+    public class UpdateTableColumnPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of zero-based column indices whose property should be updated. If no indices are
+        /// specified, all columns will be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ColumnIndices { get; set; } 
+
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableColumnProperties` is implied and should not be
+        /// specified. A single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the column width, set `fields` to `"width"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The table column properties to update.
+        ///
+        /// If the value of `table_column_properties#width` is less than 5 points (5/72 inch), a 400 bad request error
+        /// is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableColumnProperties")]
+        public virtual TableColumnProperties TableColumnProperties { get; set; } 
+
+        /// <summary>The location where the table starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableStartLocation")]
+        public virtual Location TableStartLocation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the TableRowStyle of rows in a table.</summary>
+    public class UpdateTableRowStyleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableRowStyle` is implied and should not be specified. A
+        /// single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the minimum row height, set `fields` to `"min_row_height"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The list of zero-based row indices whose style should be updated. If no indices are specified, all
+        /// rows will be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RowIndices { get; set; } 
+
+        /// <summary>The styles to be set on the rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRowStyle")]
+        public virtual TableRowStyle TableRowStyle { get; set; } 
+
+        /// <summary>The location where the table starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableStartLocation")]
+        public virtual Location TableStartLocation { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

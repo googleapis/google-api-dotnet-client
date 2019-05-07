@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/44jf_Jy6fJ0dQtd23H1h52MzqIM\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Ny-TVwqAdVT7qdK4m-UVr51SKyw\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20190416",
+ "revision": "20190501",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -214,15 +214,15 @@
       "properties": {
        "backgroundImageLink": {
         "type": "string",
-        "description": "A link to this Team Drive theme's background image."
+        "description": "Deprecated - use driveThemes/backgroundImageLink instead."
        },
        "colorRgb": {
         "type": "string",
-        "description": "The color of this Team Drive theme as an RGB hex string."
+        "description": "Deprecated - use driveThemes/colorRgb instead."
        },
        "id": {
         "type": "string",
-        "description": "The ID of the theme."
+        "description": "Deprecated - use driveThemes/id instead."
        }
       }
      }
@@ -1322,19 +1322,19 @@
       "properties": {
        "inherited": {
         "type": "boolean",
-        "description": "Whether this permission is inherited. This field is always populated. This is an output-only field."
+        "description": "Deprecated - use permissionDetails/inherited instead."
        },
        "inheritedFrom": {
         "type": "string",
-        "description": "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the Team Drive."
+        "description": "Deprecated - use permissionDetails/inheritedFrom instead."
        },
        "role": {
         "type": "string",
-        "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader"
+        "description": "Deprecated - use permissionDetails/role instead."
        },
        "teamDrivePermissionType": {
         "type": "string",
-        "description": "The Team Drive permission type for this user. While new values may be added in future, the following are currently possible:  \n- file \n- member"
+        "description": "Deprecated - use permissionDetails/permissionType instead."
        }
       }
      }
@@ -1554,7 +1554,7 @@
   "TeamDrive": {
    "id": "TeamDrive",
    "type": "object",
-   "description": "Representation of a Team Drive.",
+   "description": "Deprecated: use the drive collection instead.",
    "properties": {
     "backgroundImageFile": {
      "type": "object",
@@ -1811,7 +1811,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -1859,7 +1859,7 @@
       },
       "includeItemsFromAllDrives": {
        "type": "boolean",
-       "description": "Whether both My Drive and shared drive items should be included in results.",
+       "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
        "default": "false",
        "location": "query"
       },
@@ -1904,7 +1904,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -1956,7 +1956,7 @@
       },
       "includeItemsFromAllDrives": {
        "type": "boolean",
-       "description": "Whether both My Drive and shared drive items should be included in results.",
+       "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
        "default": "false",
        "location": "query"
       },
@@ -2001,7 +2001,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2475,7 +2475,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2527,7 +2527,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2588,7 +2588,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2698,7 +2698,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2759,7 +2759,7 @@
       },
       "includeItemsFromAllDrives": {
        "type": "boolean",
-       "description": "Whether both My Drive and shared drive items should be included in results.",
+       "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
        "default": "false",
        "location": "query"
       },
@@ -2801,7 +2801,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2865,7 +2865,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2936,7 +2936,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -2998,7 +2998,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -3055,7 +3055,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -3101,7 +3101,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -3161,7 +3161,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },
@@ -3219,7 +3219,7 @@
       },
       "supportsAllDrives": {
        "type": "boolean",
-       "description": "Whether the requesting application supports both My Drives and shared drives.",
+       "description": "Deprecated - Whether the requesting application supports both My Drives and shared drives. This parameter will only be effective until June 1, 2020. Afterwards all applications are assumed to support shared drives.",
        "default": "false",
        "location": "query"
       },

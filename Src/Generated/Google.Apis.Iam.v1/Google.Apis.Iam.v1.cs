@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190321 (1540)
+ *      <tr><th>API Rev<td>20190429 (1579)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -796,6 +796,10 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -820,10 +824,6 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
-
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -859,6 +859,15 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -880,15 +889,6 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2180,7 +2180,20 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Disables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <summary>DisableServiceAccount is currently in the alpha launch stage.
+            ///
+            /// Disables a ServiceAccount, which immediately prevents the service account from authenticating and
+            /// gaining access to APIs.
+            ///
+            /// Disabled service accounts can be safely restored by using EnableServiceAccount at any point. Deleted
+            /// service accounts cannot be restored using this method.
+            ///
+            /// Disabling a service account that is bound to VMs, Apps, Functions, or other jobs will cause those jobs
+            /// to lose access to resources if they are using the disabled service account.
+            ///
+            /// To improve reliability of your services and avoid unexpected outages, it is recommended to first disable
+            /// a service account rather than delete it. After disabling the service account, wait at least 24 hours to
+            /// verify there are no unintended consequences, and then delete the service account.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
@@ -2191,7 +2204,20 @@ namespace Google.Apis.Iam.v1
                 return new DisableRequest(service, body, name);
             }
 
-            /// <summary>Disables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <summary>DisableServiceAccount is currently in the alpha launch stage.
+            ///
+            /// Disables a ServiceAccount, which immediately prevents the service account from authenticating and
+            /// gaining access to APIs.
+            ///
+            /// Disabled service accounts can be safely restored by using EnableServiceAccount at any point. Deleted
+            /// service accounts cannot be restored using this method.
+            ///
+            /// Disabling a service account that is bound to VMs, Apps, Functions, or other jobs will cause those jobs
+            /// to lose access to resources if they are using the disabled service account.
+            ///
+            /// To improve reliability of your services and avoid unexpected outages, it is recommended to first disable
+            /// a service account rather than delete it. After disabling the service account, wait at least 24 hours to
+            /// verify there are no unintended consequences, and then delete the service account.</summary>
             public class DisableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Disable request.</summary>
@@ -2254,7 +2280,14 @@ namespace Google.Apis.Iam.v1
 
             }
 
-            /// <summary>Enables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <summary>EnableServiceAccount is currently in the alpha launch stage.
+            ///
+            /// Restores a disabled ServiceAccount that has been manually disabled by using DisableServiceAccount.
+            /// Service accounts that have been disabled by other means or for other reasons, such as abuse, cannot be
+            /// restored using this method.
+            ///
+            /// EnableServiceAccount will have no effect on a service account that is not disabled.  Enabling an already
+            /// enabled service account will have no effect.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
@@ -2264,7 +2297,14 @@ namespace Google.Apis.Iam.v1
                 return new EnableRequest(service, body, name);
             }
 
-            /// <summary>Enables a ServiceAccount. The API is currently in alpha phase.</summary>
+            /// <summary>EnableServiceAccount is currently in the alpha launch stage.
+            ///
+            /// Restores a disabled ServiceAccount that has been manually disabled by using DisableServiceAccount.
+            /// Service accounts that have been disabled by other means or for other reasons, such as abuse, cannot be
+            /// restored using this method.
+            ///
+            /// EnableServiceAccount will have no effect on a service account that is not disabled.  Enabling an already
+            /// enabled service account will have no effect.</summary>
             public class EnableRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Enable request.</summary>
@@ -3069,7 +3109,7 @@ namespace Google.Apis.Iam.v1
             ///
             /// Updates a ServiceAccount.
             ///
-            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
+            /// Currently, only the following fields are updatable: `display_name` and `description`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
             /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
@@ -3088,7 +3128,7 @@ namespace Google.Apis.Iam.v1
             ///
             /// Updates a ServiceAccount.
             ///
-            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
+            /// Currently, only the following fields are updatable: `display_name` and `description`.</summary>
             public class UpdateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccount>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3252,6 +3292,10 @@ namespace Google.Apis.Iam.v1
             }
 
 
+            /// <summary>Include Roles that have been deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
             /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -3282,10 +3326,6 @@ namespace Google.Apis.Iam.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
-            /// <summary>Include Roles that have been deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3310,6 +3350,15 @@ namespace Google.Apis.Iam.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -3341,15 +3390,6 @@ namespace Google.Apis.Iam.v1
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3418,6 +3458,18 @@ namespace Google.Apis.Iam.v1
 
 namespace Google.Apis.Iam.v1.Data
 {    
+
+    /// <summary>Audit log information specific to Cloud IAM admin APIs. This message is serialized as an `Any` type in
+    /// the `ServiceData` message of an `AuditLog` message.</summary>
+    public class AdminAuditData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The permission_delta when when creating or updating a Role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionDelta")]
+        public virtual PermissionDelta PermissionDelta { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
@@ -3500,7 +3552,7 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined
         /// independently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -3861,6 +3913,22 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>The title of this Permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A PermissionDelta message to record the added_permissions and removed_permissions inside a
+    /// role.</summary>
+    public class PermissionDelta : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Added permissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedPermissions")]
+        public virtual System.Collections.Generic.IList<string> AddedPermissions { get; set; } 
+
+        /// <summary>Removed permissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedPermissions")]
+        public virtual System.Collections.Generic.IList<string> RemovedPermissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190423 (1573)
+ *      <tr><th>API Rev<td>20190430 (1580)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -3137,15 +3137,15 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
 
-            /// <summary>Upper bound (exclusive) for an event's end time to filter by. Optional. The default is not to
-            /// filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
+            /// <summary>Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to
+            /// filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMin is set, timeMax must be greater than timeMin.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMax", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<System.DateTime> TimeMax { get; set; }
 
-            /// <summary>Lower bound (inclusive) for an event's start time to filter by. Optional. The default is not to
-            /// filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
+            /// <summary>Lower bound (exclusive) for an event's end time to filter by. Optional. The default is not to
+            /// filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMax is set, timeMin must be smaller than timeMax.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMin", Google.Apis.Util.RequestParameterType.Query)]
@@ -4123,15 +4123,15 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
 
-            /// <summary>Upper bound (exclusive) for an event's end time to filter by. Optional. The default is not to
-            /// filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
+            /// <summary>Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to
+            /// filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMin is set, timeMax must be greater than timeMin.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMax", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<System.DateTime> TimeMax { get; set; }
 
-            /// <summary>Lower bound (inclusive) for an event's start time to filter by. Optional. The default is not to
-            /// filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
+            /// <summary>Lower bound (exclusive) for an event's end time to filter by. Optional. The default is not to
+            /// filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, for example,
             /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If
             /// timeMax is set, timeMin must be smaller than timeMax.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeMin", Google.Apis.Util.RequestParameterType.Query)]
@@ -5090,8 +5090,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual ConferenceParameters Parameters { get; set; } 
 
-        /// <summary>The signature of the conference data. Genereated on server side. Must be preserved while copying
-        /// the conference data between events, otherwise the conference data will not be copied. Unset for a conference
+        /// <summary>The signature of the conference data. Generated on server side. Must be preserved while copying the
+        /// conference data between events, otherwise the conference data will not be copied. Unset for a conference
         /// with a failed create request. Optional for a conference with a pending create request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
