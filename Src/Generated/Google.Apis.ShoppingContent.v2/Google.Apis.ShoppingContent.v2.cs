@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190423 (1573)
+ *      <tr><th>API Rev<td>20190503 (1583)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -11727,7 +11727,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
 
-        /// <summary>Customer's marketing preferences.</summary>
+        /// <summary>Customer's marketing preferences. Contains the marketing opt-in information that is current at the
+        /// time that the merchant call. User preference selections can change from one order to the next so preferences
+        /// must be checked with every order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingRightsInfo")]
         public virtual OrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; } 
 
@@ -11737,8 +11739,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderCustomerMarketingRightsInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Last known user selection regarding marketing preferences. In certain cases this selection might
-        /// not be known, so this field would be empty.</summary>
+        /// <summary>Last known customer selection regarding marketing preferences. In certain cases this selection
+        /// might not be known, so this field would be empty. If a customer selected granted in their most recent order,
+        /// they can be subscribed to marketing emails. Customers who have chosen denied must not be subscribed, or must
+        /// be unsubscribed if already opted-in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual string ExplicitMarketingPreference { get; set; } 
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/yIlJvoKxhUuXyIrv0zIEEc2CRmM\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/HGjKDu7S9JU-NXqq9wKSoAbOKs4\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190506",
+ "revision": "20190508",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -606,6 +606,25 @@
     }
    }
   },
+  "InternalAppSharingArtifact": {
+   "id": "InternalAppSharingArtifact",
+   "type": "object",
+   "description": "An artifact resource which gets created when uploading an APK or Android App Bundle through internal app sharing.",
+   "properties": {
+    "certificateFingerprint": {
+     "type": "string",
+     "description": "The SHA256 fingerprint of the certificate used to signed the generated artifact."
+    },
+    "downloadUrl": {
+     "type": "string",
+     "description": "The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it."
+    },
+    "sha256": {
+     "type": "string",
+     "description": "The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command."
+    }
+   }
+  },
   "Listing": {
    "id": "Listing",
    "type": "object",
@@ -716,6 +735,11 @@
    "type": "object",
    "description": "A ProductPurchase resource indicates the status of a user's inapp product purchase.",
    "properties": {
+    "acknowledgementState": {
+     "type": "integer",
+     "description": "The acknowledgement state of the inapp product. Possible values are:  \n- Yet to be acknowledged \n- Acknowledged",
+     "format": "int32"
+    },
     "consumptionState": {
      "type": "integer",
      "description": "The consumption state of the inapp product. Possible values are:  \n- Yet to be consumed \n- Consumed",
@@ -748,6 +772,16 @@
      "type": "integer",
      "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code) \n- Rewarded (i.e. from watching a video ad instead of paying)",
      "format": "int32"
+    }
+   }
+  },
+  "ProductPurchasesAcknowledgeRequest": {
+   "id": "ProductPurchasesAcknowledgeRequest",
+   "type": "object",
+   "properties": {
+    "developerPayload": {
+     "type": "string",
+     "description": "Payload to attach to the purchase."
     }
    }
   },
@@ -1008,6 +1042,16 @@
      "type": "string",
      "description": "The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present if cancelReason is 0.",
      "format": "int64"
+    }
+   }
+  },
+  "SubscriptionPurchasesAcknowledgeRequest": {
+   "id": "SubscriptionPurchasesAcknowledgeRequest",
+   "type": "object",
+   "properties": {
+    "developerPayload": {
+     "type": "string",
+     "description": "Payload to attach to the purchase."
     }
    }
   },
@@ -2993,6 +3037,9 @@
      "parameterOrder": [
       "packageName"
      ],
+     "response": {
+      "$ref": "InternalAppSharingArtifact"
+     },
      "scopes": [
       "https://www.googleapis.com/auth/androidpublisher"
      ],
@@ -3031,6 +3078,9 @@
      "parameterOrder": [
       "packageName"
      ],
+     "response": {
+      "$ref": "InternalAppSharingArtifact"
+     },
      "scopes": [
       "https://www.googleapis.com/auth/androidpublisher"
      ],
@@ -3094,6 +3144,43 @@
    "resources": {
     "products": {
      "methods": {
+      "acknowledge": {
+       "id": "androidpublisher.purchases.products.acknowledge",
+       "path": "{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
+       "httpMethod": "POST",
+       "description": "Acknowledges a purchase of an inapp item.",
+       "parameters": {
+        "packageName": {
+         "type": "string",
+         "description": "The package name of the application the inapp product was sold in (for example, 'com.some.thing').",
+         "required": true,
+         "location": "path"
+        },
+        "productId": {
+         "type": "string",
+         "description": "The inapp product SKU (for example, 'com.some.thing.inapp1').",
+         "required": true,
+         "location": "path"
+        },
+        "token": {
+         "type": "string",
+         "description": "The token provided to the user's device when the subscription was purchased.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "packageName",
+        "productId",
+        "token"
+       ],
+       "request": {
+        "$ref": "ProductPurchasesAcknowledgeRequest"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/androidpublisher"
+       ]
+      },
       "get": {
        "id": "androidpublisher.purchases.products.get",
        "path": "{packageName}/purchases/products/{productId}/tokens/{token}",
@@ -3135,6 +3222,43 @@
     },
     "subscriptions": {
      "methods": {
+      "acknowledge": {
+       "id": "androidpublisher.purchases.subscriptions.acknowledge",
+       "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
+       "httpMethod": "POST",
+       "description": "Acknowledges a subscription purchase.",
+       "parameters": {
+        "packageName": {
+         "type": "string",
+         "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
+         "required": true,
+         "location": "path"
+        },
+        "subscriptionId": {
+         "type": "string",
+         "description": "The purchased subscription ID (for example, 'monthly001').",
+         "required": true,
+         "location": "path"
+        },
+        "token": {
+         "type": "string",
+         "description": "The token provided to the user's device when the subscription was purchased.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "packageName",
+        "subscriptionId",
+        "token"
+       ],
+       "request": {
+        "$ref": "SubscriptionPurchasesAcknowledgeRequest"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/androidpublisher"
+       ]
+      },
       "cancel": {
        "id": "androidpublisher.purchases.subscriptions.cancel",
        "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",

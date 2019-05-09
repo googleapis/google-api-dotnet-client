@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190506 (1586)
+ *      <tr><th>API Rev<td>20190508 (1588)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -5048,7 +5048,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
         /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
         /// an example in java.</summary>
-        public class UploadapkRequest : AndroidPublisherBaseServiceRequest<string>
+        public class UploadapkRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadapk request.</summary>
             public UploadapkRequest(Google.Apis.Services.IClientService service, string packageName)
@@ -5114,7 +5114,7 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>Uploadapk media upload which supports resumable upload.</summary>
-        public class UploadapkMediaUpload : Google.Apis.Upload.ResumableUpload<string>
+        public class UploadapkMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
 
             /// <summary>Data format for the response.</summary>
@@ -5185,7 +5185,7 @@ namespace Google.Apis.AndroidPublisher.v3
         /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
         /// recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for
         /// an example in java.</summary>
-        public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<string>
+        public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadbundle request.</summary>
             public UploadbundleRequest(Google.Apis.Services.IClientService service, string packageName)
@@ -5251,7 +5251,7 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>Uploadbundle media upload which supports resumable upload.</summary>
-        public class UploadbundleMediaUpload : Google.Apis.Upload.ResumableUpload<string>
+        public class UploadbundleMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
 
             /// <summary>Data format for the response.</summary>
@@ -5462,6 +5462,108 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
 
+            /// <summary>Acknowledges a purchase of an inapp item.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">The package name of the application the inapp product was sold in (for example,
+            /// 'com.some.thing').</param>
+            /// <param name="productId">The inapp product SKU (for example,
+            /// 'com.some.thing.inapp1').</param>
+            /// <param name="token">The token provided to the user's device when the
+            /// subscription was purchased.</param>
+            public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token)
+            {
+                return new AcknowledgeRequest(service, body, packageName, productId, token);
+            }
+
+            /// <summary>Acknowledges a purchase of an inapp item.</summary>
+            public class AcknowledgeRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Acknowledge request.</summary>
+                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    ProductId = productId;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The package name of the application the inapp product was sold in (for example,
+                /// 'com.some.thing').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The inapp product SKU (for example, 'com.some.thing.inapp1').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "acknowledge"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge"; }
+                }
+
+                /// <summary>Initializes Acknowledge parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "productId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "productId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "token", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "token",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
             /// <param name="packageName">The package name of the application the inapp product was sold in (for example,
             /// 'com.some.thing').</param>
@@ -5579,6 +5681,108 @@ namespace Google.Apis.AndroidPublisher.v3
 
             }
 
+
+            /// <summary>Acknowledges a subscription purchase.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
+            /// example, 'com.some.thing').</param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example,
+            /// 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was
+            /// purchased.</param>
+            public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
+            {
+                return new AcknowledgeRequest(service, body, packageName, subscriptionId, token);
+            }
+
+            /// <summary>Acknowledges a subscription purchase.</summary>
+            public class AcknowledgeRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Acknowledge request.</summary>
+                public AcknowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    SubscriptionId = subscriptionId;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SubscriptionId { get; private set; }
+
+                /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "acknowledge"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge"; }
+                }
+
+                /// <summary>Initializes Acknowledge parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "subscriptionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "subscriptionId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "token", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "token",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
 
             /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
             /// time.</summary>
@@ -7032,6 +7236,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An artifact resource which gets created when uploading an APK or Android App Bundle through internal
+    /// app sharing.</summary>
+    public class InternalAppSharingArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The SHA256 fingerprint of the certificate used to signed the generated artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateFingerprint")]
+        public virtual string CertificateFingerprint { get; set; } 
+
+        /// <summary>The download URL generated for the uploaded artifact. Users that are authorized to download can
+        /// follow the link to the Play Store app to install it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
+        public virtual string DownloadUrl { get; set; } 
+
+        /// <summary>The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output
+        /// of the sha256sum command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Listing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Full description of the app; this may be up to 4000 characters in length.</summary>
@@ -7133,6 +7359,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>A ProductPurchase resource indicates the status of a user's inapp product purchase.</summary>
     public class ProductPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The acknowledgement state of the inapp product. Possible values are: - Yet to be acknowledged -
+        /// Acknowledged</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
+        public virtual System.Nullable<int> AcknowledgementState { get; set; } 
+
         /// <summary>The consumption state of the inapp product. Possible values are: - Yet to be consumed -
         /// Consumed</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumptionState")]
@@ -7164,6 +7395,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// paying)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Payload to attach to the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
+        public virtual string DeveloperPayload { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7449,6 +7690,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// present if cancelReason is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCancellationTimeMillis")]
         public virtual System.Nullable<long> UserCancellationTimeMillis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SubscriptionPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Payload to attach to the purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
+        public virtual string DeveloperPayload { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190420 (1570)
+ *      <tr><th>API Rev<td>20190429 (1579)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3458,9 +3458,8 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>A policy that specifies the conditions for this subscription's expiration. A subscription is
         /// considered active as long as any connected subscriber is successfully consuming messages from the
         /// subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default
-        /// policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
-        /// BETA: This feature is part of a beta release. This API might be changed in backward-incompatible ways and is
-        /// not recommended for production use. It is not subject to any SLA or deprecation policy.</summary>
+        /// policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1
+        /// day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationPolicy")]
         public virtual ExpirationPolicy ExpirationPolicy { get; set; } 
 

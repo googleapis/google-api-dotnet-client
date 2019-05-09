@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190429 (1579)
+ *      <tr><th>API Rev<td>20190504 (1584)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -1624,14 +1624,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying the page of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
@@ -1639,6 +1631,14 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>A token identifying the page of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1674,6 +1674,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1686,15 +1695,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1945,6 +1945,10 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
         public virtual string RequestedResourceName { get; set; } 
 
+        /// <summary>Properties related to the resource represented by requested_resource_name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceProperties")]
+        public virtual ResourceProperties RequestedResourceProperties { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2003,6 +2007,17 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The properties associated with the resource of the request.</summary>
+    public class ResourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether an approval will exclude the descendants of the resource being requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludesDescendants")]
+        public virtual System.Nullable<bool> ExcludesDescendants { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/_Im-jSKSrPYcBDZBonxWuiQDYvw\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/L2NlhyPOGzwB1sm_TzrKH1MPv5M\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20190506",
+ "revision": "20190508",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -397,6 +397,7 @@
   "FailureDetail": {
    "id": "FailureDetail",
    "type": "object",
+   "description": "Details for an outcome with a FAILURE outcome summary.",
    "properties": {
     "crashed": {
      "type": "boolean",
@@ -561,6 +562,7 @@
   "InconclusiveDetail": {
    "id": "InconclusiveDetail",
    "type": "object",
+   "description": "Details for an outcome with an INCONCLUSIVE outcome summary.",
    "properties": {
     "abortedByUser": {
      "type": "boolean",
@@ -1049,6 +1051,7 @@
   "SkippedDetail": {
    "id": "SkippedDetail",
    "type": "object",
+   "description": "Details for an outcome with a SKIPPED outcome summary.",
    "properties": {
     "incompatibleAppVersion": {
      "type": "boolean",
@@ -1221,6 +1224,7 @@
   "SuccessDetail": {
    "id": "SuccessDetail",
    "type": "object",
+   "description": "Details for an outcome with a SUCCESS outcome summary.",
    "properties": {
     "otherNativeCrash": {
      "type": "boolean",

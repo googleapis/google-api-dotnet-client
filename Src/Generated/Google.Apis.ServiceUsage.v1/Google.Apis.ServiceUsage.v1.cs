@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190501 (1581)
+ *      <tr><th>API Rev<td>20190507 (1587)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1307,23 +1307,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration of authorization.
-    ///
-    /// This section determines the authorization provider, if unspecified, then no authorization check will be done.
-    ///
-    /// Example:
-    ///
-    /// experimental: authorization: provider: firebaserules.googleapis.com</summary>
-    public class AuthorizationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the authorization provider, such as firebaserules.googleapis.com.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
-        public virtual string Provider { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>`Backend` defines the backend configuration for a service.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1859,18 +1842,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Experimental service configuration. These configuration options can only be used by whitelisted
-    /// users.</summary>
-    public class Experimental : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Authorization configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
-        public virtual AuthorizationConfig Authorization { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A single field of a message type.</summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1986,10 +1957,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// enums: - name: google.someapi.v1.SomeEnum</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enums")]
         public virtual System.Collections.Generic.IList<Enum> Enums { get; set; } 
-
-        /// <summary>Experimental configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experimental")]
-        public virtual Experimental Experimental { get; set; } 
 
         /// <summary>HTTP configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("http")]
@@ -2578,6 +2545,10 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
+        /// <summary>Optional. The launch stage of the metric definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
+        public virtual string LaunchStage { get; set; } 
+
         /// <summary>Optional. Metadata which can be used to guide usage of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MetricDescriptorMetadata Metadata { get; set; } 
@@ -2658,7 +2629,8 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingestDelay")]
         public virtual object IngestDelay { get; set; } 
 
-        /// <summary>The launch stage of the metric definition.</summary>
+        /// <summary>Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric
+        /// definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; } 
 
@@ -2902,8 +2874,8 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

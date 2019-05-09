@@ -1,5 +1,399 @@
 {
+  "basePath": "",
+  "id": "iam:v1",
+  "documentationLink": "https://cloud.google.com/iam/",
+  "revision": "20190429",
+  "discoveryVersion": "v1",
+  "version_module": true,
   "schemas": {
+    "Role": {
+      "description": "A role in the Identity and Access Management API.",
+      "type": "object",
+      "properties": {
+        "includedPermissions": {
+          "description": "The names of the permissions this role grants when bound in an IAM policy.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "description": "Optional.  A human-readable description for the role.",
+          "type": "string"
+        },
+        "etag": {
+          "description": "Used to perform a consistent read-modify-write.",
+          "format": "byte",
+          "type": "string"
+        },
+        "stage": {
+          "enumDescriptions": [
+            "The user has indicated this role is currently in an Alpha phase. If this\nlaunch stage is selected, the `stage` field will not be included when\nrequesting the definition for a given role.",
+            "The user has indicated this role is currently in a Beta phase.",
+            "The user has indicated this role is generally available.",
+            "The user has indicated this role is being deprecated.",
+            "This role is disabled and will not contribute permissions to any members\nit is granted to in policies.",
+            "The user has indicated this role is currently in an EAP phase."
+          ],
+          "enum": [
+            "ALPHA",
+            "BETA",
+            "GA",
+            "DEPRECATED",
+            "DISABLED",
+            "EAP"
+          ],
+          "description": "The current launch stage of the role. If the `ALPHA` launch stage has been\nselected for a role, the `stage` field will not be included in the\nreturned definition for the role.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the role.\n\nWhen Role is used in CreateRole, the role name must not be set.\n\nWhen Role is used in output and other input such as UpdateRole, the role\nname is the complete path, e.g., roles/logging.viewer for curated roles\nand organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.",
+          "type": "string"
+        },
+        "deleted": {
+          "description": "The current deleted state of the role. This field is read only.\nIt will be ignored in calls to CreateRole and UpdateRole.",
+          "type": "boolean"
+        },
+        "title": {
+          "description": "Optional.  A human-readable title for the role.  Typically this\nis limited to 100 UTF-8 bytes.",
+          "type": "string"
+        }
+      },
+      "id": "Role"
+    },
+    "QueryAuditableServicesResponse": {
+      "description": "A response containing a list of auditable services for a resource.",
+      "type": "object",
+      "properties": {
+        "services": {
+          "description": "The auditable services for a resource.",
+          "type": "array",
+          "items": {
+            "$ref": "AuditableService"
+          }
+        }
+      },
+      "id": "QueryAuditableServicesResponse"
+    },
+    "UndeleteServiceAccountResponse": {
+      "type": "object",
+      "properties": {
+        "restoredAccount": {
+          "$ref": "ServiceAccount",
+          "description": "Metadata for the restored service account."
+        }
+      },
+      "id": "UndeleteServiceAccountResponse"
+    },
+    "Binding": {
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
+        "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        }
+      },
+      "id": "Binding"
+    },
+    "Expr": {
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
+        },
+        "location": {
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string"
+        },
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        },
+        "expression": {
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "type": "string"
+        }
+      },
+      "id": "Expr"
+    },
+    "ServiceAccount": {
+      "properties": {
+        "oauth2ClientId": {
+          "description": "@OutputOnly The OAuth2 client id for the service account.\nThis is used in conjunction with the OAuth2 clientconfig API to make\nthree legged OAuth2 (3LO) flows to access the data of Google users.",
+          "type": "string"
+        },
+        "uniqueId": {
+          "description": "@OutputOnly The unique and stable id of the service account.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Optional. A user-specified opaque description of the service account.\nMust be less than or equal to 256 UTF-8 bytes.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Optional. A user-specified name for the service account.\nMust be less than or equal to 100 UTF-8 bytes.",
+          "type": "string"
+        },
+        "etag": {
+          "description": "Optional. Note: `etag` is an inoperable legacy field that is only returned\nfor backwards compatibility.",
+          "format": "byte",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "@OutputOnly A bool indicate if the service account is disabled.\nThe field is currently in alpha phase.",
+          "type": "boolean"
+        },
+        "email": {
+          "description": "@OutputOnly The email address of the service account.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nRequests using `-` as a wildcard for the `PROJECT_ID` will infer the\nproject from the `account` and the `ACCOUNT` value can be the `email`\naddress or the `unique_id` of the service account.\n\nIn responses the resource name will always be in the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "@OutputOnly The id of the project that owns the service account.",
+          "type": "string"
+        }
+      },
+      "id": "ServiceAccount",
+      "description": "A service account in the Identity and Access Management API.\n\nTo create a service account, specify the `project_id` and the `account_id`\nfor the account.  The `account_id` is unique within the project, and is used\nto generate the service account email address and a stable\n`unique_id`.\n\nIf the account already exists, the account's resource name is returned\nin the format of projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller\ncan use the name in other methods to access the account.\n\nAll other methods can identify the service account using the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+      "type": "object"
+    },
+    "QueryGrantableRolesRequest": {
+      "description": "The grantable role query request.",
+      "type": "object",
+      "properties": {
+        "fullResourceName": {
+          "description": "Required. The full resource name to query from the list of grantable roles.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.",
+          "type": "string"
+        },
+        "pageToken": {
+          "description": "Optional pagination token returned in an earlier\nQueryGrantableRolesResponse.",
+          "type": "string"
+        },
+        "pageSize": {
+          "description": "Optional limit on the number of roles to include in the response.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "view": {
+          "enumDescriptions": [
+            "Omits the `included_permissions` field.\nThis is the default value.",
+            "Returns all fields."
+          ],
+          "enum": [
+            "BASIC",
+            "FULL"
+          ],
+          "type": "string"
+        }
+      },
+      "id": "QueryGrantableRolesRequest"
+    },
+    "EnableServiceAccountRequest": {
+      "description": "The service account enable request.",
+      "type": "object",
+      "properties": {},
+      "id": "EnableServiceAccountRequest"
+    },
+    "LintPolicyResponse": {
+      "properties": {
+        "lintResults": {
+          "description": "List of lint results sorted by a composite \u003cseverity, binding_ordinal\u003e key,\ndescending order of severity and ascending order of binding_ordinal.\nThere is no certain order among the same keys.\n\nFor cross-binding results (only if the input object to lint is\ninstance of google.iam.v1.Policy), there will be a\ngoogle.iam.admin.v1.LintResult for each of the involved bindings,\nand the associated debug_message may enumerate the other involved\nbinding ordinal number(s).",
+          "type": "array",
+          "items": {
+            "$ref": "LintResult"
+          }
+        }
+      },
+      "id": "LintPolicyResponse",
+      "description": "The response of a lint operation. An empty response indicates\nthe operation was able to fully execute and no lint issue was found.",
+      "type": "object"
+    },
+    "CreateRoleRequest": {
+      "description": "The request to create a new role.",
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "description": "The role id to use for this role.",
+          "type": "string"
+        },
+        "role": {
+          "$ref": "Role",
+          "description": "The Role resource to create."
+        }
+      },
+      "id": "CreateRoleRequest"
+    },
+    "ListServiceAccountKeysResponse": {
+      "description": "The service account keys list response.",
+      "type": "object",
+      "properties": {
+        "keys": {
+          "description": "The public keys for the service account.",
+          "type": "array",
+          "items": {
+            "$ref": "ServiceAccountKey"
+          }
+        }
+      },
+      "id": "ListServiceAccountKeysResponse"
+    },
+    "QueryTestablePermissionsRequest": {
+      "description": "A request to get permissions which can be tested on a resource.",
+      "type": "object",
+      "properties": {
+        "fullResourceName": {
+          "description": "Required. The full resource name to query from the list of testable\npermissions.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.",
+          "type": "string"
+        },
+        "pageToken": {
+          "description": "Optional pagination token returned in an earlier\nQueryTestablePermissionsRequest.",
+          "type": "string"
+        },
+        "pageSize": {
+          "description": "Optional limit on the number of permissions to include in the response.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "QueryTestablePermissionsRequest"
+    },
+    "TestIamPermissionsResponse": {
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "TestIamPermissionsResponse"
+    },
+    "ServiceAccountKey": {
+      "description": "Represents a service account key.\n\nA service account has two sets of key-pairs: user-managed, and\nsystem-managed.\n\nUser-managed key-pairs can be created and deleted by users.  Users are\nresponsible for rotating these keys periodically to ensure security of\ntheir service accounts.  Users retain the private key of these key-pairs,\nand Google retains ONLY the public key.\n\nSystem-managed keys are automatically rotated by Google, and are used for\nsigning for a maximum of two weeks. The rotation process is probabilistic,\nand usage of the new key will gradually ramp up and down over the key's\nlifetime. We recommend caching the public key set for a service account for\nno more than 24 hours to ensure you have access to the latest keys.\n\nPublic keys for all service accounts are also published at the OAuth2\nService Account API.",
+      "type": "object",
+      "properties": {
+        "privateKeyType": {
+          "description": "The output format for the private key.\nOnly provided in `CreateServiceAccountKey` responses, not\nin `GetServiceAccountKey` or `ListServiceAccountKey` responses.\n\nGoogle never exposes system-managed private keys, and never retains\nuser-managed private keys.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.",
+            "PKCS12 format.\nThe password for the PKCS12 file is `notasecret`.\nFor more information, see https://tools.ietf.org/html/rfc7292.",
+            "Google Credentials File format."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "TYPE_PKCS12_FILE",
+            "TYPE_GOOGLE_CREDENTIALS_FILE"
+          ]
+        },
+        "validAfterTime": {
+          "description": "The key can be used after this timestamp.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "privateKeyData": {
+          "description": "The private key data. Only provided in `CreateServiceAccountKey`\nresponses. Make sure to keep the private key data secure because it\nallows for the assertion of the service account identity.\nWhen base64 decoded, the private key data can be used to authenticate with\nGoogle API client libraries and with\n\u003ca href=\"/sdk/gcloud/reference/auth/activate-service-account\"\u003egcloud\nauth activate-service-account\u003c/a\u003e.",
+          "format": "byte",
+          "type": "string"
+        },
+        "publicKeyData": {
+          "description": "The public key data. Only provided in `GetServiceAccountKey` responses.",
+          "format": "byte",
+          "type": "string"
+        },
+        "name": {
+          "description": "The resource name of the service account key in the following format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.",
+          "type": "string"
+        },
+        "validBeforeTime": {
+          "description": "The key can be used before this timestamp.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "keyAlgorithm": {
+          "description": "Specifies the algorithm (and possibly key size) for the key.",
+          "type": "string",
+          "enumDescriptions": [
+            "An unspecified key algorithm.",
+            "1k RSA Key.",
+            "2k RSA Key."
+          ],
+          "enum": [
+            "KEY_ALG_UNSPECIFIED",
+            "KEY_ALG_RSA_1024",
+            "KEY_ALG_RSA_2048"
+          ]
+        }
+      },
+      "id": "ServiceAccountKey"
+    },
+    "SignBlobResponse": {
+      "description": "The service account sign blob response.",
+      "type": "object",
+      "properties": {
+        "keyId": {
+          "description": "The id of the key used to sign the blob.",
+          "type": "string"
+        },
+        "signature": {
+          "description": "The signed blob.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "id": "SignBlobResponse"
+    },
+    "LintPolicyRequest": {
+      "description": "The request to lint a Cloud IAM policy object. LintPolicy is currently\nfunctional only for `lint_object` of type `condition`.",
+      "type": "object",
+      "properties": {
+        "context": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "`context` contains additional *permission-controlled* data that any\nlint unit may depend on, in form of `{key: value}` pairs. Currently, this\nfield is non-operational and it will not be used during the lint operation.",
+          "type": "object"
+        },
+        "condition": {
+          "$ref": "Expr",
+          "description": "google.iam.v1.Binding.condition object to be linted."
+        },
+        "fullResourceName": {
+          "description": "The full resource name of the policy this lint request is about.\n\nThe name follows the Google Cloud Platform (GCP) resource format.\nFor example, a GCP project with ID `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.\n\nThe resource name is not used to read the policy instance from the Cloud\nIAM database. The candidate policy for lint has to be provided in the same\nrequest object.",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "Binding",
+          "description": "Binding object to be linted. The functionality of linting a binding is\nnot yet implemented and if this field is set, it returns NOT_IMPLEMENTED\nerror."
+        },
+        "policy": {
+          "description": "Policy object to be linted. The functionality of linting a policy is not\nyet implemented and if this field is set, it returns NOT_IMPLEMENTED\nerror.",
+          "$ref": "Policy"
+        }
+      },
+      "id": "LintPolicyRequest"
+    },
     "SignJwtRequest": {
       "description": "The service account sign JWT request.",
       "type": "object",
@@ -38,6 +432,12 @@
           "type": "boolean"
         },
         "stage": {
+          "enumDescriptions": [
+            "The permission is currently in an alpha phase.",
+            "The permission is currently in a beta phase.",
+            "The permission is generally available.",
+            "The permission is being deprecated."
+          ],
           "enum": [
             "ALPHA",
             "BETA",
@@ -45,13 +445,7 @@
             "DEPRECATED"
           ],
           "description": "The current launch stage of the permission.",
-          "type": "string",
-          "enumDescriptions": [
-            "The permission is currently in an alpha phase.",
-            "The permission is currently in a beta phase.",
-            "The permission is generally available.",
-            "The permission is being deprecated."
-          ]
+          "type": "string"
         },
         "name": {
           "description": "The name of this Permission.",
@@ -68,17 +462,6 @@
       },
       "id": "Permission"
     },
-    "AuditableService": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Public name of the service.\nFor example, the service name for Cloud IAM is 'iam.googleapis.com'.",
-          "type": "string"
-        }
-      },
-      "id": "AuditableService",
-      "description": "Contains information about an auditable service."
-    },
     "PolicyDelta": {
       "description": "The difference delta between two policies.",
       "type": "object",
@@ -93,25 +476,19 @@
       },
       "id": "PolicyDelta"
     },
-    "ListServiceAccountsResponse": {
-      "description": "The service account list response.",
+    "AuditableService": {
+      "description": "Contains information about an auditable service.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "To retrieve the next page of results, set\nListServiceAccountsRequest.page_token\nto this value.",
+        "name": {
+          "description": "Public name of the service.\nFor example, the service name for Cloud IAM is 'iam.googleapis.com'.",
           "type": "string"
-        },
-        "accounts": {
-          "description": "The list of matching service accounts.",
-          "type": "array",
-          "items": {
-            "$ref": "ServiceAccount"
-          }
         }
       },
-      "id": "ListServiceAccountsResponse"
+      "id": "AuditableService"
     },
     "PermissionDelta": {
+      "description": "A PermissionDelta message to record the added_permissions and\nremoved_permissions inside a role.",
       "type": "object",
       "properties": {
         "addedPermissions": {
@@ -129,8 +506,25 @@
           }
         }
       },
-      "id": "PermissionDelta",
-      "description": "A PermissionDelta message to record the added_permissions and\nremoved_permissions inside a role."
+      "id": "PermissionDelta"
+    },
+    "ListServiceAccountsResponse": {
+      "properties": {
+        "nextPageToken": {
+          "description": "To retrieve the next page of results, set\nListServiceAccountsRequest.page_token\nto this value.",
+          "type": "string"
+        },
+        "accounts": {
+          "description": "The list of matching service accounts.",
+          "type": "array",
+          "items": {
+            "$ref": "ServiceAccount"
+          }
+        }
+      },
+      "id": "ListServiceAccountsResponse",
+      "description": "The service account list response.",
+      "type": "object"
     },
     "LintResult": {
       "description": "Structured response of a single validation unit.",
@@ -153,6 +547,14 @@
           "type": "string"
         },
         "severity": {
+          "enumDescriptions": [
+            "Severity is unspecified.",
+            "A validation unit returns an error only for critical issues. If an\nattempt is made to set the problematic policy without rectifying the\ncritical issue, it causes the `setPolicy` operation to fail.",
+            "Any issue which is severe enough but does not cause an error.\nFor example, suspicious constructs in the input object will not\nnecessarily fail `setPolicy`, but there is a high likelihood that they\nwon't behave as expected during policy evaluation in `checkPolicy`.\nThis includes the following common scenarios:\n\n- Unsatisfiable condition: Expired timestamp in date/time condition.\n- Ineffective condition: Condition on a \u003cmember, role\u003e pair which is\n  granted unconditionally in another binding of the same policy.",
+            "Reserved for the issues that are not severe as `ERROR`/`WARNING`, but\nneed special handling. For instance, messages about skipped validation\nunits are issued as `NOTICE`.",
+            "Any informative statement which is not severe enough to raise\n`ERROR`/`WARNING`/`NOTICE`, like auto-correction recommendations on the\ninput content. Note that current version of the linter does not utilize\n`INFO`.",
+            "Deprecated severity level."
+          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "ERROR",
@@ -162,15 +564,7 @@
             "DEPRECATED"
           ],
           "description": "The validation unit severity.",
-          "type": "string",
-          "enumDescriptions": [
-            "Severity is unspecified.",
-            "A validation unit returns an error only for critical issues. If an\nattempt is made to set the problematic policy without rectifying the\ncritical issue, it causes the `setPolicy` operation to fail.",
-            "Any issue which is severe enough but does not cause an error.\nFor example, suspicious constructs in the input object will not\nnecessarily fail `setPolicy`, but there is a high likelihood that they\nwon't behave as expected during policy evaluation in `checkPolicy`.\nThis includes the following common scenarios:\n\n- Unsatisfiable condition: Expired timestamp in date/time condition.\n- Ineffective condition: Condition on a \u003cmember, role\u003e pair which is\n  granted unconditionally in another binding of the same policy.",
-            "Reserved for the issues that are not severe as `ERROR`/`WARNING`, but\nneed special handling. For instance, messages about skipped validation\nunits are issued as `NOTICE`.",
-            "Any informative statement which is not severe enough to raise\n`ERROR`/`WARNING`/`NOTICE`, like auto-correction recommendations on the\ninput content. Note that current version of the linter does not utilize\n`INFO`.",
-            "Deprecated severity level."
-          ]
+          "type": "string"
         },
         "bindingOrdinal": {
           "description": "0-based index ordinality of the binding in the input object associated\nwith this result.\nThis field is populated only if the input object to lint is of type\ngoogle.iam.v1.Policy, which can comprise more than one binding.\nIt is set to -1 if the result is not associated with any particular\nbinding and only targets the policy as a whole, such as results about\npolicy size violations.",
@@ -191,13 +585,15 @@
           "type": "string"
         },
         "fieldName": {
-          "type": "string",
-          "description": "The name of the field for which this lint result is about.\n\nFor nested messages, `field_name` consists of names of the embedded fields\nseparated by period character. The top-level qualifier is the input object\nto lint in the request. For instance, if the lint request is on a\ngoogle.iam.v1.Policy and this lint result is about a condition\nexpression of one of the input policy bindings, the field would be\npopulated as `policy.bindings.condition.expression`.\n\nThis field does not identify the ordinality of the repetitive fields (for\ninstance bindings in a policy)."
+          "description": "The name of the field for which this lint result is about.\n\nFor nested messages, `field_name` consists of names of the embedded fields\nseparated by period character. The top-level qualifier is the input object\nto lint in the request. For instance, if the lint request is on a\ngoogle.iam.v1.Policy and this lint result is about a condition\nexpression of one of the input policy bindings, the field would be\npopulated as `policy.bindings.condition.expression`.\n\nThis field does not identify the ordinality of the repetitive fields (for\ninstance bindings in a policy).",
+          "type": "string"
         }
       },
       "id": "LintResult"
     },
     "QueryGrantableRolesResponse": {
+      "description": "The grantable role query response.",
+      "type": "object",
       "properties": {
         "roles": {
           "description": "The list of matching roles.",
@@ -211,21 +607,19 @@
           "type": "string"
         }
       },
-      "id": "QueryGrantableRolesResponse",
-      "description": "The grantable role query response.",
-      "type": "object"
+      "id": "QueryGrantableRolesResponse"
     },
     "SignBlobRequest": {
-      "id": "SignBlobRequest",
-      "description": "The service account sign blob request.",
-      "type": "object",
       "properties": {
         "bytesToSign": {
           "description": "The bytes to sign.",
           "format": "byte",
           "type": "string"
         }
-      }
+      },
+      "id": "SignBlobRequest",
+      "description": "The service account sign blob request.",
+      "type": "object"
     },
     "SetIamPolicyRequest": {
       "description": "Request message for `SetIamPolicy` method.",
@@ -243,25 +637,16 @@
       },
       "id": "SetIamPolicyRequest"
     },
-    "PatchServiceAccountRequest": {
-      "description": "The patch service account request.",
-      "type": "object",
+    "AdminAuditData": {
       "properties": {
-        "serviceAccount": {
-          "$ref": "ServiceAccount"
-        },
-        "updateMask": {
-          "format": "google-fieldmask",
-          "type": "string"
+        "permissionDelta": {
+          "$ref": "PermissionDelta",
+          "description": "The permission_delta when when creating or updating a Role."
         }
       },
-      "id": "PatchServiceAccountRequest"
-    },
-    "DisableServiceAccountRequest": {
-      "description": "The service account disable request.",
-      "type": "object",
-      "properties": {},
-      "id": "DisableServiceAccountRequest"
+      "id": "AdminAuditData",
+      "description": "Audit log information specific to Cloud IAM admin APIs. This message is\nserialized as an `Any` type in the `ServiceData` message of an\n`AuditLog` message.",
+      "type": "object"
     },
     "QueryTestablePermissionsResponse": {
       "description": "The response containing permissions which can be tested on a resource.",
@@ -281,16 +666,25 @@
       },
       "id": "QueryTestablePermissionsResponse"
     },
-    "AdminAuditData": {
+    "DisableServiceAccountRequest": {
+      "description": "The service account disable request.",
+      "type": "object",
+      "properties": {},
+      "id": "DisableServiceAccountRequest"
+    },
+    "PatchServiceAccountRequest": {
+      "description": "The patch service account request.",
+      "type": "object",
       "properties": {
-        "permissionDelta": {
-          "$ref": "PermissionDelta",
-          "description": "The permission_delta when when creating or updating a Role."
+        "serviceAccount": {
+          "$ref": "ServiceAccount"
+        },
+        "updateMask": {
+          "format": "google-fieldmask",
+          "type": "string"
         }
       },
-      "id": "AdminAuditData",
-      "description": "Audit log information specific to Cloud IAM admin APIs. This message is\nserialized as an `Any` type in the `ServiceData` message of an\n`AuditLog` message.",
-      "type": "object"
+      "id": "PatchServiceAccountRequest"
     },
     "Empty": {
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
@@ -299,8 +693,6 @@
       "id": "Empty"
     },
     "AuditLogConfig": {
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
-      "type": "object",
       "properties": {
         "exemptedMembers": {
           "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
@@ -310,6 +702,12 @@
           }
         },
         "logType": {
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
@@ -317,20 +715,14 @@
             "DATA_READ"
           ],
           "description": "The log type that this config enables.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ]
+          "type": "string"
         }
       },
-      "id": "AuditLogConfig"
+      "id": "AuditLogConfig",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
+      "type": "object"
     },
     "CreateServiceAccountKeyRequest": {
-      "description": "The service account key create request.",
-      "type": "object",
       "properties": {
         "keyAlgorithm": {
           "enumDescriptions": [
@@ -347,7 +739,6 @@
           "type": "string"
         },
         "privateKeyType": {
-          "type": "string",
           "enumDescriptions": [
             "Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.",
             "PKCS12 format.\nThe password for the PKCS12 file is `notasecret`.\nFor more information, see https://tools.ietf.org/html/rfc7292.",
@@ -358,51 +749,47 @@
             "TYPE_PKCS12_FILE",
             "TYPE_GOOGLE_CREDENTIALS_FILE"
           ],
-          "description": "The output format of the private key. The default value is\n`TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File\nformat."
-        }
-      },
-      "id": "CreateServiceAccountKeyRequest"
-    },
-    "SignJwtResponse": {
-      "description": "The service account sign JWT response.",
-      "type": "object",
-      "properties": {
-        "keyId": {
-          "description": "The id of the key used to sign the JWT.",
+          "description": "The output format of the private key. The default value is\n`TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File\nformat.",
           "type": "string"
-        },
-        "signedJwt": {
-          "type": "string",
-          "description": "The signed JWT."
         }
       },
-      "id": "SignJwtResponse"
+      "id": "CreateServiceAccountKeyRequest",
+      "description": "The service account key create request.",
+      "type": "object"
     },
     "TestIamPermissionsRequest": {
       "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
+          }
         }
       },
       "id": "TestIamPermissionsRequest"
+    },
+    "SignJwtResponse": {
+      "properties": {
+        "keyId": {
+          "description": "The id of the key used to sign the JWT.",
+          "type": "string"
+        },
+        "signedJwt": {
+          "description": "The signed JWT.",
+          "type": "string"
+        }
+      },
+      "id": "SignJwtResponse",
+      "description": "The service account sign JWT response.",
+      "type": "object"
     },
     "Policy": {
       "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
       "type": "object",
       "properties": {
-        "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          }
-        },
         "etag": {
           "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
           "format": "byte",
@@ -418,6 +805,13 @@
           "type": "array",
           "items": {
             "$ref": "AuditConfig"
+          }
+        },
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+          "type": "array",
+          "items": {
+            "$ref": "Binding"
           }
         }
       },
@@ -442,26 +836,32 @@
       "id": "ListRolesResponse"
     },
     "UndeleteServiceAccountRequest": {
+      "properties": {},
       "id": "UndeleteServiceAccountRequest",
       "description": "The service account undelete request.",
-      "type": "object",
-      "properties": {}
+      "type": "object"
     },
     "AuditData": {
-      "description": "Audit log information specific to Cloud IAM. This message is serialized\nas an `Any` type in the `ServiceData` message of an\n`AuditLog` message.",
-      "type": "object",
       "properties": {
         "policyDelta": {
           "description": "Policy delta between the original policy and the newly set policy.",
           "$ref": "PolicyDelta"
         }
       },
-      "id": "AuditData"
+      "id": "AuditData",
+      "description": "Audit log information specific to Cloud IAM. This message is serialized\nas an `Any` type in the `ServiceData` message of an\n`AuditLog` message.",
+      "type": "object"
     },
     "BindingDelta": {
-      "description": "One delta entry for Binding. Each individual change (only one member in each\nentry) to a binding will be a separate entry.",
-      "type": "object",
       "properties": {
+        "member": {
+          "description": "A single identity requesting access for a Cloud Platform resource.\nFollows the same format of Binding.members.\nRequired",
+          "type": "string"
+        },
+        "condition": {
+          "description": "Unimplemented. The condition that is associated with this binding.\nThis field is logged only for Cloud Audit Logging.",
+          "$ref": "Expr"
+        },
         "role": {
           "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.\nRequired",
           "type": "string"
@@ -479,17 +879,11 @@
           ],
           "description": "The action that was performed on a Binding.\nRequired",
           "type": "string"
-        },
-        "member": {
-          "description": "A single identity requesting access for a Cloud Platform resource.\nFollows the same format of Binding.members.\nRequired",
-          "type": "string"
-        },
-        "condition": {
-          "$ref": "Expr",
-          "description": "Unimplemented. The condition that is associated with this binding.\nThis field is logged only for Cloud Audit Logging."
         }
       },
-      "id": "BindingDelta"
+      "id": "BindingDelta",
+      "description": "One delta entry for Binding. Each individual change (only one member in each\nentry) to a binding will be a separate entry.",
+      "type": "object"
     },
     "QueryAuditableServicesRequest": {
       "description": "A request to get the list of auditable services for a resource.",
@@ -514,6 +908,24 @@
       },
       "id": "UndeleteRoleRequest"
     },
+    "AuditConfig": {
+      "properties": {
+        "service": {
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
+          "type": "string"
+        },
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
+          "type": "array",
+          "items": {
+            "$ref": "AuditLogConfig"
+          }
+        }
+      },
+      "id": "AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
+      "type": "object"
+    },
     "CreateServiceAccountRequest": {
       "description": "The service account create request.",
       "type": "object",
@@ -528,419 +940,13 @@
         }
       },
       "id": "CreateServiceAccountRequest"
-    },
-    "AuditConfig": {
-      "type": "object",
-      "properties": {
-        "service": {
-          "type": "string",
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
-        },
-        "auditLogConfigs": {
-          "description": "The configuration for logging of each type of permission.",
-          "type": "array",
-          "items": {
-            "$ref": "AuditLogConfig"
-          }
-        }
-      },
-      "id": "AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging."
-    },
-    "Role": {
-      "description": "A role in the Identity and Access Management API.",
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "Optional.  A human-readable description for the role.",
-          "type": "string"
-        },
-        "etag": {
-          "description": "Used to perform a consistent read-modify-write.",
-          "format": "byte",
-          "type": "string"
-        },
-        "stage": {
-          "enumDescriptions": [
-            "The user has indicated this role is currently in an Alpha phase. If this\nlaunch stage is selected, the `stage` field will not be included when\nrequesting the definition for a given role.",
-            "The user has indicated this role is currently in a Beta phase.",
-            "The user has indicated this role is generally available.",
-            "The user has indicated this role is being deprecated.",
-            "This role is disabled and will not contribute permissions to any members\nit is granted to in policies.",
-            "The user has indicated this role is currently in an EAP phase."
-          ],
-          "enum": [
-            "ALPHA",
-            "BETA",
-            "GA",
-            "DEPRECATED",
-            "DISABLED",
-            "EAP"
-          ],
-          "description": "The current launch stage of the role. If the `ALPHA` launch stage has been\nselected for a role, the `stage` field will not be included in the\nreturned definition for the role.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The name of the role.\n\nWhen Role is used in CreateRole, the role name must not be set.\n\nWhen Role is used in output and other input such as UpdateRole, the role\nname is the complete path, e.g., roles/logging.viewer for curated roles\nand organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.",
-          "type": "string"
-        },
-        "deleted": {
-          "type": "boolean",
-          "description": "The current deleted state of the role. This field is read only.\nIt will be ignored in calls to CreateRole and UpdateRole."
-        },
-        "title": {
-          "description": "Optional.  A human-readable title for the role.  Typically this\nis limited to 100 UTF-8 bytes.",
-          "type": "string"
-        },
-        "includedPermissions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The names of the permissions this role grants when bound in an IAM policy."
-        }
-      },
-      "id": "Role"
-    },
-    "QueryAuditableServicesResponse": {
-      "description": "A response containing a list of auditable services for a resource.",
-      "type": "object",
-      "properties": {
-        "services": {
-          "description": "The auditable services for a resource.",
-          "type": "array",
-          "items": {
-            "$ref": "AuditableService"
-          }
-        }
-      },
-      "id": "QueryAuditableServicesResponse"
-    },
-    "UndeleteServiceAccountResponse": {
-      "type": "object",
-      "properties": {
-        "restoredAccount": {
-          "$ref": "ServiceAccount",
-          "description": "Metadata for the restored service account."
-        }
-      },
-      "id": "UndeleteServiceAccountResponse"
-    },
-    "Binding": {
-      "description": "Associates `members` with a `role`.",
-      "type": "object",
-      "properties": {
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        },
-        "condition": {
-          "$ref": "Expr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
-        },
-        "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "Binding"
-    },
-    "QueryGrantableRolesRequest": {
-      "id": "QueryGrantableRolesRequest",
-      "description": "The grantable role query request.",
-      "type": "object",
-      "properties": {
-        "view": {
-          "enum": [
-            "BASIC",
-            "FULL"
-          ],
-          "type": "string",
-          "enumDescriptions": [
-            "Omits the `included_permissions` field.\nThis is the default value.",
-            "Returns all fields."
-          ]
-        },
-        "fullResourceName": {
-          "description": "Required. The full resource name to query from the list of grantable roles.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.",
-          "type": "string"
-        },
-        "pageToken": {
-          "description": "Optional pagination token returned in an earlier\nQueryGrantableRolesResponse.",
-          "type": "string"
-        },
-        "pageSize": {
-          "description": "Optional limit on the number of roles to include in the response.",
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "ServiceAccount": {
-      "properties": {
-        "email": {
-          "description": "@OutputOnly The email address of the service account.",
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nRequests using `-` as a wildcard for the `PROJECT_ID` will infer the\nproject from the `account` and the `ACCOUNT` value can be the `email`\naddress or the `unique_id` of the service account.\n\nIn responses the resource name will always be in the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`."
-        },
-        "projectId": {
-          "description": "@OutputOnly The id of the project that owns the service account.",
-          "type": "string"
-        },
-        "oauth2ClientId": {
-          "description": "@OutputOnly The OAuth2 client id for the service account.\nThis is used in conjunction with the OAuth2 clientconfig API to make\nthree legged OAuth2 (3LO) flows to access the data of Google users.",
-          "type": "string"
-        },
-        "uniqueId": {
-          "description": "@OutputOnly The unique and stable id of the service account.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Optional. A user-specified opaque description of the service account.\nMust be less than or equal to 256 UTF-8 bytes.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Optional. A user-specified name for the service account.\nMust be less than or equal to 100 UTF-8 bytes.",
-          "type": "string"
-        },
-        "etag": {
-          "description": "Optional. Note: `etag` is an inoperable legacy field that is only returned\nfor backwards compatibility.",
-          "format": "byte",
-          "type": "string"
-        },
-        "disabled": {
-          "description": "@OutputOnly A bool indicate if the service account is disabled.\nThe field is currently in alpha phase.",
-          "type": "boolean"
-        }
-      },
-      "id": "ServiceAccount",
-      "description": "A service account in the Identity and Access Management API.\n\nTo create a service account, specify the `project_id` and the `account_id`\nfor the account.  The `account_id` is unique within the project, and is used\nto generate the service account email address and a stable\n`unique_id`.\n\nIf the account already exists, the account's resource name is returned\nin the format of projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller\ncan use the name in other methods to access the account.\n\nAll other methods can identify the service account using the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
-      "type": "object"
-    },
-    "Expr": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string",
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."
-        },
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
-        },
-        "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
-        },
-        "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
-          "type": "string"
-        }
-      },
-      "id": "Expr",
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
-    },
-    "EnableServiceAccountRequest": {
-      "description": "The service account enable request.",
-      "type": "object",
-      "properties": {},
-      "id": "EnableServiceAccountRequest"
-    },
-    "LintPolicyResponse": {
-      "description": "The response of a lint operation. An empty response indicates\nthe operation was able to fully execute and no lint issue was found.",
-      "type": "object",
-      "properties": {
-        "lintResults": {
-          "description": "List of lint results sorted by a composite \u003cseverity, binding_ordinal\u003e key,\ndescending order of severity and ascending order of binding_ordinal.\nThere is no certain order among the same keys.\n\nFor cross-binding results (only if the input object to lint is\ninstance of google.iam.v1.Policy), there will be a\ngoogle.iam.admin.v1.LintResult for each of the involved bindings,\nand the associated debug_message may enumerate the other involved\nbinding ordinal number(s).",
-          "type": "array",
-          "items": {
-            "$ref": "LintResult"
-          }
-        }
-      },
-      "id": "LintPolicyResponse"
-    },
-    "CreateRoleRequest": {
-      "description": "The request to create a new role.",
-      "type": "object",
-      "properties": {
-        "role": {
-          "$ref": "Role",
-          "description": "The Role resource to create."
-        },
-        "roleId": {
-          "description": "The role id to use for this role.",
-          "type": "string"
-        }
-      },
-      "id": "CreateRoleRequest"
-    },
-    "ListServiceAccountKeysResponse": {
-      "description": "The service account keys list response.",
-      "type": "object",
-      "properties": {
-        "keys": {
-          "type": "array",
-          "items": {
-            "$ref": "ServiceAccountKey"
-          },
-          "description": "The public keys for the service account."
-        }
-      },
-      "id": "ListServiceAccountKeysResponse"
-    },
-    "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "TestIamPermissionsResponse"
-    },
-    "QueryTestablePermissionsRequest": {
-      "description": "A request to get permissions which can be tested on a resource.",
-      "type": "object",
-      "properties": {
-        "fullResourceName": {
-          "description": "Required. The full resource name to query from the list of testable\npermissions.\n\nThe name follows the Google Cloud Platform resource format.\nFor example, a Cloud Platform project with id `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.",
-          "type": "string"
-        },
-        "pageToken": {
-          "type": "string",
-          "description": "Optional pagination token returned in an earlier\nQueryTestablePermissionsRequest."
-        },
-        "pageSize": {
-          "description": "Optional limit on the number of permissions to include in the response.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "QueryTestablePermissionsRequest"
-    },
-    "ServiceAccountKey": {
-      "id": "ServiceAccountKey",
-      "description": "Represents a service account key.\n\nA service account has two sets of key-pairs: user-managed, and\nsystem-managed.\n\nUser-managed key-pairs can be created and deleted by users.  Users are\nresponsible for rotating these keys periodically to ensure security of\ntheir service accounts.  Users retain the private key of these key-pairs,\nand Google retains ONLY the public key.\n\nSystem-managed keys are automatically rotated by Google, and are used for\nsigning for a maximum of two weeks. The rotation process is probabilistic,\nand usage of the new key will gradually ramp up and down over the key's\nlifetime. We recommend caching the public key set for a service account for\nno more than 24 hours to ensure you have access to the latest keys.\n\nPublic keys for all service accounts are also published at the OAuth2\nService Account API.",
-      "type": "object",
-      "properties": {
-        "validBeforeTime": {
-          "description": "The key can be used before this timestamp.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "keyAlgorithm": {
-          "enum": [
-            "KEY_ALG_UNSPECIFIED",
-            "KEY_ALG_RSA_1024",
-            "KEY_ALG_RSA_2048"
-          ],
-          "description": "Specifies the algorithm (and possibly key size) for the key.",
-          "type": "string",
-          "enumDescriptions": [
-            "An unspecified key algorithm.",
-            "1k RSA Key.",
-            "2k RSA Key."
-          ]
-        },
-        "privateKeyType": {
-          "description": "The output format for the private key.\nOnly provided in `CreateServiceAccountKey` responses, not\nin `GetServiceAccountKey` or `ListServiceAccountKey` responses.\n\nGoogle never exposes system-managed private keys, and never retains\nuser-managed private keys.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.",
-            "PKCS12 format.\nThe password for the PKCS12 file is `notasecret`.\nFor more information, see https://tools.ietf.org/html/rfc7292.",
-            "Google Credentials File format."
-          ],
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "TYPE_PKCS12_FILE",
-            "TYPE_GOOGLE_CREDENTIALS_FILE"
-          ]
-        },
-        "validAfterTime": {
-          "description": "The key can be used after this timestamp.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "privateKeyData": {
-          "description": "The private key data. Only provided in `CreateServiceAccountKey`\nresponses. Make sure to keep the private key data secure because it\nallows for the assertion of the service account identity.\nWhen base64 decoded, the private key data can be used to authenticate with\nGoogle API client libraries and with\n\u003ca href=\"/sdk/gcloud/reference/auth/activate-service-account\"\u003egcloud\nauth activate-service-account\u003c/a\u003e.",
-          "format": "byte",
-          "type": "string"
-        },
-        "publicKeyData": {
-          "description": "The public key data. Only provided in `GetServiceAccountKey` responses.",
-          "format": "byte",
-          "type": "string"
-        },
-        "name": {
-          "description": "The resource name of the service account key in the following format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.",
-          "type": "string"
-        }
-      }
-    },
-    "SignBlobResponse": {
-      "description": "The service account sign blob response.",
-      "type": "object",
-      "properties": {
-        "signature": {
-          "description": "The signed blob.",
-          "format": "byte",
-          "type": "string"
-        },
-        "keyId": {
-          "description": "The id of the key used to sign the blob.",
-          "type": "string"
-        }
-      },
-      "id": "SignBlobResponse"
-    },
-    "LintPolicyRequest": {
-      "description": "The request to lint a Cloud IAM policy object. LintPolicy is currently\nfunctional only for `lint_object` of type `condition`.",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "$ref": "Policy",
-          "description": "Policy object to be linted. The functionality of linting a policy is not\nyet implemented and if this field is set, it returns NOT_IMPLEMENTED\nerror."
-        },
-        "context": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "`context` contains additional *permission-controlled* data that any\nlint unit may depend on, in form of `{key: value}` pairs. Currently, this\nfield is non-operational and it will not be used during the lint operation.",
-          "type": "object"
-        },
-        "condition": {
-          "$ref": "Expr",
-          "description": "google.iam.v1.Binding.condition object to be linted."
-        },
-        "fullResourceName": {
-          "description": "The full resource name of the policy this lint request is about.\n\nThe name follows the Google Cloud Platform (GCP) resource format.\nFor example, a GCP project with ID `my-project` will be named\n`//cloudresourcemanager.googleapis.com/projects/my-project`.\n\nThe resource name is not used to read the policy instance from the Cloud\nIAM database. The candidate policy for lint has to be provided in the same\nrequest object.",
-          "type": "string"
-        },
-        "binding": {
-          "description": "Binding object to be linted. The functionality of linting a binding is\nnot yet implemented and if this field is set, it returns NOT_IMPLEMENTED\nerror.",
-          "$ref": "Binding"
-        }
-      },
-      "id": "LintPolicyRequest"
     }
   },
-  "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
+  "protocol": "rest",
   "canonicalName": "iam",
   "auth": {
     "oauth2": {
@@ -963,24 +969,108 @@
       "resources": {
         "roles": {
           "methods": {
-            "delete": {
-              "description": "Soft deletes a role. The role is suspended and cannot be used to create new\nIAM Policy Bindings.\nThe Role will not be included in `ListRoles()` unless `show_deleted` is set\nin the `ListRolesRequest`. The Role contains the deleted boolean set.\nExisting Bindings remains, but are inactive. The Role can be undeleted\nwithin 7 days. After 7 days the Role is deleted and all Bindings associated\nwith the role are removed.",
+            "undelete": {
+              "request": {
+                "$ref": "UndeleteRoleRequest"
+              },
+              "description": "Undelete a Role, bringing it back in its previous state.",
               "response": {
                 "$ref": "Role"
               },
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "DELETE",
+              "httpMethod": "POST",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
-                "etag": {
+                "name": {
+                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/roles/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}:undelete",
+              "path": "v1/{+name}:undelete",
+              "id": "iam.organizations.roles.undelete"
+            },
+            "get": {
+              "description": "Gets a Role definition.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "Role"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^organizations/[^/]+/roles/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}",
+              "id": "iam.organizations.roles.get",
+              "path": "v1/{+name}"
+            },
+            "patch": {
+              "response": {
+                "$ref": "Role"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PATCH",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "updateMask": {
                   "location": "query",
+                  "description": "A mask describing which fields in the Role have changed.",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                },
+                "name": {
+                  "pattern": "^organizations/[^/]+/roles/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}",
+              "path": "v1/{+name}",
+              "id": "iam.organizations.roles.patch",
+              "request": {
+                "$ref": "Role"
+              },
+              "description": "Updates a Role definition."
+            },
+            "delete": {
+              "description": "Soft deletes a role. The role is suspended and cannot be used to create new\nIAM Policy Bindings.\nThe Role will not be included in `ListRoles()` unless `show_deleted` is set\nin the `ListRolesRequest`. The Role contains the deleted boolean set.\nExisting Bindings remains, but are inactive. The Role can be undeleted\nwithin 7 days. After 7 days the Role is deleted and all Bindings associated\nwith the role are removed.",
+              "httpMethod": "DELETE",
+              "response": {
+                "$ref": "Role"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "etag": {
                   "description": "Used to perform a consistent read-modify-write.",
                   "format": "byte",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "name": {
                   "pattern": "^organizations/[^/]+/roles/[^/]+$",
@@ -990,11 +1080,15 @@
                   "type": "string"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}",
-              "path": "v1/{+name}",
-              "id": "iam.organizations.roles.delete"
+              "id": "iam.organizations.roles.delete",
+              "path": "v1/{+name}"
             },
             "list": {
+              "description": "Lists the Roles defined on a resource.",
               "response": {
                 "$ref": "ListRolesResponse"
               },
@@ -1002,19 +1096,16 @@
                 "parent"
               ],
               "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "showDeleted": {
+                  "location": "query",
                   "description": "Include Roles that have been deleted.",
-                  "type": "boolean",
-                  "location": "query"
+                  "type": "boolean"
                 },
                 "pageToken": {
-                  "location": "query",
                   "description": "Optional pagination token returned in an earlier ListRolesResponse.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "pageSize": {
                   "description": "Optional limit on the number of roles to include in the response.",
@@ -1032,132 +1123,47 @@
                   "type": "string"
                 },
                 "parent": {
-                  "location": "path",
-                  "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$"
-                }
-              },
-              "flatPath": "v1/organizations/{organizationsId}/roles",
-              "path": "v1/{+parent}/roles",
-              "id": "iam.organizations.roles.list",
-              "description": "Lists the Roles defined on a resource."
-            },
-            "create": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
                   "pattern": "^organizations/[^/]+$",
                   "location": "path",
-                  "description": "The resource name of the parent resource in one of the following formats:\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
+                  "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
                   "required": true,
                   "type": "string"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1/organizations/{organizationsId}/roles",
               "path": "v1/{+parent}/roles",
-              "id": "iam.organizations.roles.create",
-              "request": {
-                "$ref": "CreateRoleRequest"
-              },
-              "description": "Creates a new Role.",
+              "id": "iam.organizations.roles.list"
+            },
+            "create": {
               "response": {
                 "$ref": "Role"
               },
               "parameterOrder": [
                 "parent"
               ],
-              "httpMethod": "POST"
-            },
-            "patch": {
-              "response": {
-                "$ref": "Role"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "updateMask": {
-                  "location": "query",
-                  "description": "A mask describing which fields in the Role have changed.",
-                  "format": "google-fieldmask",
-                  "type": "string"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/roles/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}",
-              "path": "v1/{+name}",
-              "id": "iam.organizations.roles.patch",
-              "description": "Updates a Role definition.",
-              "request": {
-                "$ref": "Role"
-              }
-            },
-            "undelete": {
-              "description": "Undelete a Role, bringing it back in its previous state.",
-              "request": {
-                "$ref": "UndeleteRoleRequest"
-              },
-              "response": {
-                "$ref": "Role"
-              },
-              "parameterOrder": [
-                "name"
-              ],
               "httpMethod": "POST",
               "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                "parent": {
+                  "description": "The resource name of the parent resource in one of the following formats:\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
                   "required": true,
                   "type": "string",
-                  "pattern": "^organizations/[^/]+/roles/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}:undelete",
-              "path": "v1/{+name}:undelete",
-              "id": "iam.organizations.roles.undelete"
-            },
-            "get": {
-              "description": "Gets a Role definition.",
-              "response": {
-                "$ref": "Role"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/roles/[^/]+$",
+                  "pattern": "^organizations/[^/]+$",
                   "location": "path"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1/organizations/{organizationsId}/roles/{rolesId}",
-              "path": "v1/{+name}",
-              "id": "iam.organizations.roles.get"
+              "flatPath": "v1/organizations/{organizationsId}/roles",
+              "path": "v1/{+parent}/roles",
+              "id": "iam.organizations.roles.create",
+              "description": "Creates a new Role.",
+              "request": {
+                "$ref": "CreateRoleRequest"
+              }
             }
           }
         }
@@ -1171,26 +1177,19 @@
           },
           "parameterOrder": [],
           "httpMethod": "POST",
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {},
           "flatPath": "v1/iamPolicies:queryAuditableServices",
           "path": "v1/iamPolicies:queryAuditableServices",
           "id": "iam.iamPolicies.queryAuditableServices",
-          "description": "Returns a list of services that support service level audit logging\nconfiguration for the given resource.",
           "request": {
             "$ref": "QueryAuditableServicesRequest"
-          }
+          },
+          "description": "Returns a list of services that support service level audit logging\nconfiguration for the given resource."
         },
         "lintPolicy": {
-          "flatPath": "v1/iamPolicies:lintPolicy",
-          "path": "v1/iamPolicies:lintPolicy",
-          "id": "iam.iamPolicies.lintPolicy",
-          "description": "Lints a Cloud IAM policy object or its sub fields. Currently supports\ngoogle.iam.v1.Policy, google.iam.v1.Binding and\ngoogle.iam.v1.Binding.condition.\n\nEach lint operation consists of multiple lint validation units.\nValidation units have the following properties:\n\n- Each unit inspects the input object in regard to a particular\n  linting aspect and issues a google.iam.admin.v1.LintResult\n  disclosing the result.\n- Domain of discourse of each unit can be either\n  google.iam.v1.Policy, google.iam.v1.Binding, or\n  google.iam.v1.Binding.condition depending on the purpose of the\n  validation.\n- A unit may require additional data (like the list of all possible\n  enumerable values of a particular attribute used in the policy instance)\n  which shall be provided by the caller. Refer to the comments of\n  google.iam.admin.v1.LintPolicyRequest.context for more details.\n\nThe set of applicable validation units is determined by the Cloud IAM\nserver and is not configurable.\n\nRegardless of any lint issues or their severities, successful calls to\n`lintPolicy` return an HTTP 200 OK status code.",
-          "request": {
-            "$ref": "LintPolicyRequest"
-          },
           "response": {
             "$ref": "LintPolicyResponse"
           },
@@ -1199,7 +1198,14 @@
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
-          ]
+          ],
+          "flatPath": "v1/iamPolicies:lintPolicy",
+          "path": "v1/iamPolicies:lintPolicy",
+          "id": "iam.iamPolicies.lintPolicy",
+          "description": "Lints a Cloud IAM policy object or its sub fields. Currently supports\ngoogle.iam.v1.Policy, google.iam.v1.Binding and\ngoogle.iam.v1.Binding.condition.\n\nEach lint operation consists of multiple lint validation units.\nValidation units have the following properties:\n\n- Each unit inspects the input object in regard to a particular\n  linting aspect and issues a google.iam.admin.v1.LintResult\n  disclosing the result.\n- Domain of discourse of each unit can be either\n  google.iam.v1.Policy, google.iam.v1.Binding, or\n  google.iam.v1.Binding.condition depending on the purpose of the\n  validation.\n- A unit may require additional data (like the list of all possible\n  enumerable values of a particular attribute used in the policy instance)\n  which shall be provided by the caller. Refer to the comments of\n  google.iam.admin.v1.LintPolicyRequest.context for more details.\n\nThe set of applicable validation units is determined by the Cloud IAM\nserver and is not configurable.\n\nRegardless of any lint issues or their severities, successful calls to\n`lintPolicy` return an HTTP 200 OK status code.",
+          "request": {
+            "$ref": "LintPolicyRequest"
+          }
         }
       }
     },
@@ -1207,10 +1213,10 @@
       "resources": {
         "serviceAccounts": {
           "methods": {
-            "get": {
-              "description": "Gets a ServiceAccount.",
+            "list": {
+              "description": "Lists ServiceAccounts for a project.",
               "response": {
-                "$ref": "ServiceAccount"
+                "$ref": "ListServiceAccountsResponse"
               },
               "parameterOrder": [
                 "name"
@@ -1221,80 +1227,37 @@
               ],
               "parameters": {
                 "name": {
-                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                  "description": "Required. The resource name of the project associated with the service\naccounts, such as `projects/my-project-123`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "pattern": "^projects/[^/]+$",
                   "location": "path"
+                },
+                "pageToken": {
+                  "description": "Optional pagination token returned in an earlier\nListServiceAccountsResponse.next_page_token.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Optional limit on the number of service accounts to include in the\nresponse. Further accounts can subsequently be obtained by including the\nListServiceAccountsResponse.next_page_token\nin a subsequent request.",
+                  "format": "int32",
+                  "type": "integer"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
-              "path": "v1/{+name}",
-              "id": "iam.projects.serviceAccounts.get"
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts",
+              "path": "v1/{+name}/serviceAccounts",
+              "id": "iam.projects.serviceAccounts.list"
             },
-            "patch": {
+            "create": {
+              "path": "v1/{+name}/serviceAccounts",
+              "id": "iam.projects.serviceAccounts.create",
+              "request": {
+                "$ref": "CreateServiceAccountRequest"
+              },
+              "description": "Creates a ServiceAccount\nand returns it.",
               "response": {
                 "$ref": "ServiceAccount"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "name": {
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "location": "path",
-                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nRequests using `-` as a wildcard for the `PROJECT_ID` will infer the\nproject from the `account` and the `ACCOUNT` value can be the `email`\naddress or the `unique_id` of the service account.\n\nIn responses the resource name will always be in the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
-              "path": "v1/{+name}",
-              "id": "iam.projects.serviceAccounts.patch",
-              "description": "Patches a ServiceAccount.\n\nCurrently, only the following fields are updatable:\n`display_name` and `description`.\n\nOnly fields specified in the request are guaranteed to be returned in\nthe response. Other fields in the response may be empty.\n\nNote: The field mask is required.",
-              "request": {
-                "$ref": "PatchServiceAccountRequest"
-              }
-            },
-            "testIamPermissions": {
-              "parameters": {
-                "resource": {
-                  "location": "path",
-                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:testIamPermissions",
-              "path": "v1/{+resource}:testIamPermissions",
-              "id": "iam.projects.serviceAccounts.testIamPermissions",
-              "description": "Tests the specified permissions against the IAM access control policy\nfor a ServiceAccount.",
-              "request": {
-                "$ref": "TestIamPermissionsRequest"
-              },
-              "response": {
-                "$ref": "TestIamPermissionsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "POST"
-            },
-            "enable": {
-              "request": {
-                "$ref": "EnableServiceAccountRequest"
-              },
-              "description": "EnableServiceAccount is currently in the alpha launch stage.\n\n Restores a disabled ServiceAccount\n that has been manually disabled by using DisableServiceAccount. Service\n accounts that have been disabled by other means or for other reasons,\n such as abuse, cannot be restored using this method.\n\n EnableServiceAccount will have no effect on a service account that is\n not disabled.  Enabling an already enabled service account will have no\n effect.",
-              "response": {
-                "$ref": "Empty"
               },
               "parameterOrder": [
                 "name"
@@ -1305,6 +1268,140 @@
               ],
               "parameters": {
                 "name": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The resource name of the project associated with the service\naccounts, such as `projects/my-project-123`.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts"
+            },
+            "signJwt": {
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
+              "id": "iam.projects.serviceAccounts.signJwt",
+              "path": "v1/{+name}:signJwt",
+              "description": "**Note**: This method is in the process of being deprecated. Call the\n[`signJwt()`](/iam/credentials/reference/rest/v1/projects.serviceAccounts/signJwt)\nmethod of the Cloud IAM Service Account Credentials API instead.\n\nSigns a JWT using a service account's system-managed private key.\n\nIf no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an\nan expiry time of one hour by default. If you request an expiry time of\nmore than one hour, the request will fail.",
+              "request": {
+                "$ref": "SignJwtRequest"
+              },
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "SignJwtResponse"
+              },
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "patch": {
+              "description": "Patches a ServiceAccount.\n\nCurrently, only the following fields are updatable:\n`display_name` and `description`.\n\nOnly fields specified in the request are guaranteed to be returned in\nthe response. Other fields in the response may be empty.\n\nNote: The field mask is required.",
+              "request": {
+                "$ref": "PatchServiceAccountRequest"
+              },
+              "response": {
+                "$ref": "ServiceAccount"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PATCH",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nRequests using `-` as a wildcard for the `PROJECT_ID` will infer the\nproject from the `account` and the `ACCOUNT` value can be the `email`\naddress or the `unique_id` of the service account.\n\nIn responses the resource name will always be in the format\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
+              "path": "v1/{+name}",
+              "id": "iam.projects.serviceAccounts.patch"
+            },
+            "get": {
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
+              "path": "v1/{+name}",
+              "id": "iam.projects.serviceAccounts.get",
+              "description": "Gets a ServiceAccount.",
+              "response": {
+                "$ref": "ServiceAccount"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "testIamPermissions": {
+              "response": {
+                "$ref": "TestIamPermissionsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:testIamPermissions",
+              "path": "v1/{+resource}:testIamPermissions",
+              "id": "iam.projects.serviceAccounts.testIamPermissions",
+              "request": {
+                "$ref": "TestIamPermissionsRequest"
+              },
+              "description": "Tests the specified permissions against the IAM access control policy\nfor a ServiceAccount."
+            },
+            "enable": {
+              "path": "v1/{+name}:enable",
+              "id": "iam.projects.serviceAccounts.enable",
+              "description": "EnableServiceAccount is currently in the alpha launch stage.\n\n Restores a disabled ServiceAccount\n that has been manually disabled by using DisableServiceAccount. Service\n accounts that have been disabled by other means or for other reasons,\n such as abuse, cannot be restored using this method.\n\n EnableServiceAccount will have no effect on a service account that is\n not disabled.  Enabling an already enabled service account will have no\n effect.",
+              "request": {
+                "$ref": "EnableServiceAccountRequest"
+              },
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "POST",
+              "parameters": {
+                "name": {
                   "location": "path",
                   "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account.",
                   "required": true,
@@ -1312,17 +1409,22 @@
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:enable",
-              "path": "v1/{+name}:enable",
-              "id": "iam.projects.serviceAccounts.enable"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:enable"
             },
             "delete": {
-              "httpMethod": "DELETE",
+              "description": "Deletes a ServiceAccount.",
               "response": {
                 "$ref": "Empty"
               },
               "parameterOrder": [
                 "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
                 "name": {
@@ -1333,13 +1435,9 @@
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
-              "id": "iam.projects.serviceAccounts.delete",
               "path": "v1/{+name}",
-              "description": "Deletes a ServiceAccount."
+              "id": "iam.projects.serviceAccounts.delete"
             },
             "signBlob": {
               "response": {
@@ -1370,6 +1468,10 @@
               "description": "**Note**: This method is in the process of being deprecated. Call the\n[`signBlob()`](/iam/credentials/reference/rest/v1/projects.serviceAccounts/signBlob)\nmethod of the Cloud IAM Service Account Credentials API instead.\n\nSigns a blob using a service account's system-managed private key."
             },
             "setIamPolicy": {
+              "description": "Sets the Cloud IAM access control policy for a\nServiceAccount.\n\nNote: Service accounts are both\n[resources and\nidentities](/iam/docs/service-accounts#service_account_permissions). This\nmethod treats the service account as a resource. Use it to grant members\naccess to the service account, such as when they need to impersonate it.\n\nThis method does not grant the service account access to other resources,\nsuch as projects. To grant a service account access to resources, include\nthe service account in the Cloud IAM policy for the desired resource, then\ncall the appropriate `setIamPolicy` method on the target resource. For\nexample, to grant a service account access to a project, call the\n[projects.setIamPolicy](/resource-manager/reference/rest/v1/projects/setIamPolicy)\nmethod.",
+              "request": {
+                "$ref": "SetIamPolicyRequest"
+              },
               "response": {
                 "$ref": "Policy"
               },
@@ -1379,11 +1481,11 @@
               "httpMethod": "POST",
               "parameters": {
                 "resource": {
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
                   "location": "path",
                   "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
                 }
               },
               "scopes": [
@@ -1391,11 +1493,7 @@
               ],
               "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:setIamPolicy",
               "path": "v1/{+resource}:setIamPolicy",
-              "id": "iam.projects.serviceAccounts.setIamPolicy",
-              "description": "Sets the Cloud IAM access control policy for a\nServiceAccount.\n\nNote: Service accounts are both\n[resources and\nidentities](/iam/docs/service-accounts#service_account_permissions). This\nmethod treats the service account as a resource. Use it to grant members\naccess to the service account, such as when they need to impersonate it.\n\nThis method does not grant the service account access to other resources,\nsuch as projects. To grant a service account access to resources, include\nthe service account in the Cloud IAM policy for the desired resource, then\ncall the appropriate `setIamPolicy` method on the target resource. For\nexample, to grant a service account access to a project, call the\n[projects.setIamPolicy](/resource-manager/reference/rest/v1/projects/setIamPolicy)\nmethod.",
-              "request": {
-                "$ref": "SetIamPolicyRequest"
-              }
+              "id": "iam.projects.serviceAccounts.setIamPolicy"
             },
             "disable": {
               "httpMethod": "POST",
@@ -1436,11 +1534,11 @@
               },
               "parameters": {
                 "resource": {
-                  "location": "path",
                   "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
                 }
               },
               "scopes": [
@@ -1451,22 +1549,20 @@
               "path": "v1/{+resource}:getIamPolicy"
             },
             "undelete": {
-              "path": "v1/{+name}:undelete",
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:undelete",
               "id": "iam.projects.serviceAccounts.undelete",
+              "path": "v1/{+name}:undelete",
+              "description": "Restores a deleted ServiceAccount.\nThis is to be used as an action of last resort.  A service account may\nnot always be restorable.",
               "request": {
                 "$ref": "UndeleteServiceAccountRequest"
               },
-              "description": "Restores a deleted ServiceAccount.\nThis is to be used as an action of last resort.  A service account may\nnot always be restorable.",
-              "response": {
-                "$ref": "UndeleteServiceAccountResponse"
-              },
+              "httpMethod": "POST",
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
+              "response": {
+                "$ref": "UndeleteServiceAccountResponse"
+              },
               "parameters": {
                 "name": {
                   "location": "path",
@@ -1476,11 +1572,11 @@
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:undelete"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
             },
             "update": {
-              "path": "v1/{+name}",
-              "id": "iam.projects.serviceAccounts.update",
               "description": "Note: This method is in the process of being deprecated. Use\nPatchServiceAccount instead.\n\nUpdates a ServiceAccount.\n\nCurrently, only the following fields are updatable:\n`display_name` and `description`.",
               "request": {
                 "$ref": "ServiceAccount"
@@ -1504,104 +1600,85 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}"
-            },
-            "list": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Required. The resource name of the project associated with the service\naccounts, such as `projects/my-project-123`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "Optional pagination token returned in an earlier\nListServiceAccountsResponse.next_page_token.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "Optional limit on the number of service accounts to include in the\nresponse. Further accounts can subsequently be obtained by including the\nListServiceAccountsResponse.next_page_token\nin a subsequent request.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts",
-              "path": "v1/{+name}/serviceAccounts",
-              "id": "iam.projects.serviceAccounts.list",
-              "description": "Lists ServiceAccounts for a project.",
-              "response": {
-                "$ref": "ListServiceAccountsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            },
-            "create": {
-              "request": {
-                "$ref": "CreateServiceAccountRequest"
-              },
-              "description": "Creates a ServiceAccount\nand returns it.",
-              "response": {
-                "$ref": "ServiceAccount"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Required. The resource name of the project associated with the service\naccounts, such as `projects/my-project-123`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts",
-              "path": "v1/{+name}/serviceAccounts",
-              "id": "iam.projects.serviceAccounts.create"
-            },
-            "signJwt": {
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
-              "path": "v1/{+name}:signJwt",
-              "id": "iam.projects.serviceAccounts.signJwt",
-              "description": "**Note**: This method is in the process of being deprecated. Call the\n[`signJwt()`](/iam/credentials/reference/rest/v1/projects.serviceAccounts/signJwt)\nmethod of the Cloud IAM Service Account Credentials API instead.\n\nSigns a JWT using a service account's system-managed private key.\n\nIf no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an\nan expiry time of one hour by default. If you request an expiry time of\nmore than one hour, the request will fail.",
-              "request": {
-                "$ref": "SignJwtRequest"
-              },
-              "response": {
-                "$ref": "SignJwtResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "name": {
-                  "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}",
+              "path": "v1/{+name}",
+              "id": "iam.projects.serviceAccounts.update"
             }
           },
           "resources": {
             "keys": {
               "methods": {
+                "list": {
+                  "response": {
+                    "$ref": "ListServiceAccountKeysResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nUsing `-` as a wildcard for the `PROJECT_ID`, will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                      "location": "path"
+                    },
+                    "keyTypes": {
+                      "repeated": true,
+                      "location": "query",
+                      "enum": [
+                        "KEY_TYPE_UNSPECIFIED",
+                        "USER_MANAGED",
+                        "SYSTEM_MANAGED"
+                      ],
+                      "description": "Filters the types of keys the user wants to include in the list\nresponse. Duplicate key types are not allowed. If no key type\nis provided, all keys are returned.",
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/keys",
+                  "path": "v1/{+name}/keys",
+                  "id": "iam.projects.serviceAccounts.keys.list",
+                  "description": "Lists ServiceAccountKeys."
+                },
+                "get": {
+                  "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/keys/{keysId}",
+                  "path": "v1/{+name}",
+                  "id": "iam.projects.serviceAccounts.keys.get",
+                  "description": "Gets the ServiceAccountKey\nby key id.",
+                  "response": {
+                    "$ref": "ServiceAccountKey"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "publicKeyType": {
+                      "location": "query",
+                      "enum": [
+                        "TYPE_NONE",
+                        "TYPE_X509_PEM_FILE",
+                        "TYPE_RAW_PUBLIC_KEY"
+                      ],
+                      "description": "The output format of the public key requested.\nX509_PEM is the default output format.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The resource name of the service account key in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.\n\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
+                      "location": "path"
+                    }
+                  }
+                },
                 "create": {
                   "description": "Creates a ServiceAccountKey\nand returns it.",
                   "request": {
@@ -1643,88 +1720,17 @@
                   ],
                   "parameters": {
                     "name": {
-                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
-                      "location": "path",
                       "description": "The resource name of the service account key in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
                       "required": true,
-                      "type": "string"
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
+                      "location": "path"
                     }
                   },
                   "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/keys/{keysId}",
                   "path": "v1/{+name}",
                   "id": "iam.projects.serviceAccounts.keys.delete",
                   "description": "Deletes a ServiceAccountKey."
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListServiceAccountKeysResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                      "location": "path",
-                      "description": "The resource name of the service account in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.\n\nUsing `-` as a wildcard for the `PROJECT_ID`, will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account."
-                    },
-                    "keyTypes": {
-                      "location": "query",
-                      "enum": [
-                        "KEY_TYPE_UNSPECIFIED",
-                        "USER_MANAGED",
-                        "SYSTEM_MANAGED"
-                      ],
-                      "description": "Filters the types of keys the user wants to include in the list\nresponse. Duplicate key types are not allowed. If no key type\nis provided, all keys are returned.",
-                      "type": "string",
-                      "repeated": true
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/keys",
-                  "path": "v1/{+name}/keys",
-                  "id": "iam.projects.serviceAccounts.keys.list",
-                  "description": "Lists ServiceAccountKeys."
-                },
-                "get": {
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ServiceAccountKey"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The resource name of the service account key in the following format:\n`projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.\n\nUsing `-` as a wildcard for the `PROJECT_ID` will infer the project from\nthe account. The `ACCOUNT` value can be the `email` address or the\n`unique_id` of the service account.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
-                      "location": "path"
-                    },
-                    "publicKeyType": {
-                      "location": "query",
-                      "enum": [
-                        "TYPE_NONE",
-                        "TYPE_X509_PEM_FILE",
-                        "TYPE_RAW_PUBLIC_KEY"
-                      ],
-                      "description": "The output format of the public key requested.\nX509_PEM is the default output format.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}/keys/{keysId}",
-                  "id": "iam.projects.serviceAccounts.keys.get",
-                  "path": "v1/{+name}",
-                  "description": "Gets the ServiceAccountKey\nby key id."
                 }
               }
             }
@@ -1741,48 +1747,40 @@
                 "name"
               ],
               "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/roles/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
+                  "type": "string"
+                },
                 "etag": {
                   "description": "Used to perform a consistent read-modify-write.",
                   "format": "byte",
                   "type": "string",
                   "location": "query"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/roles/[^/]+$"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectsId}/roles/{rolesId}",
               "path": "v1/{+name}",
               "id": "iam.projects.roles.delete"
             },
             "list": {
+              "id": "iam.projects.roles.list",
+              "path": "v1/{+parent}/roles",
               "description": "Lists the Roles defined on a resource.",
+              "httpMethod": "GET",
               "response": {
                 "$ref": "ListRolesResponse"
               },
               "parameterOrder": [
                 "parent"
               ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
-                "parent": {
-                  "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                },
                 "showDeleted": {
                   "location": "query",
                   "description": "Include Roles that have been deleted.",
@@ -1794,28 +1792,34 @@
                   "type": "string"
                 },
                 "pageSize": {
-                  "location": "query",
                   "description": "Optional limit on the number of roles to include in the response.",
                   "format": "int32",
-                  "type": "integer"
+                  "type": "integer",
+                  "location": "query"
                 },
                 "view": {
+                  "description": "Optional view for the returned Role objects. When `FULL` is specified,\nthe `includedPermissions` field is returned, which includes a list of all\npermissions in the role. The default value is `BASIC`, which does not\nreturn the `includedPermissions` field.",
+                  "type": "string",
                   "location": "query",
                   "enum": [
                     "BASIC",
                     "FULL"
-                  ],
-                  "description": "Optional view for the returned Role objects. When `FULL` is specified,\nthe `includedPermissions` field is returned, which includes a list of all\npermissions in the role. The default value is `BASIC`, which does not\nreturn the `includedPermissions` field.",
+                  ]
+                },
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
+                  "required": true,
                   "type": "string"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/roles",
-              "path": "v1/{+parent}/roles",
-              "id": "iam.projects.roles.list"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/roles"
             },
             "create": {
-              "id": "iam.projects.roles.create",
-              "path": "v1/{+parent}/roles",
               "description": "Creates a new Role.",
               "request": {
                 "$ref": "CreateRoleRequest"
@@ -1829,72 +1833,24 @@
               },
               "parameters": {
                 "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
                   "description": "The resource name of the parent resource in one of the following formats:\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
                   "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/roles"
-            },
-            "undelete": {
-              "response": {
-                "$ref": "Role"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "pattern": "^projects/[^/]+/roles/[^/]+$",
-                  "location": "path",
-                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}:undelete",
-              "path": "v1/{+name}:undelete",
-              "id": "iam.projects.roles.undelete",
-              "request": {
-                "$ref": "UndeleteRoleRequest"
-              },
-              "description": "Undelete a Role, bringing it back in its previous state."
-            },
-            "get": {
-              "description": "Gets a Role definition.",
-              "response": {
-                "$ref": "Role"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-                  "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/roles/[^/]+$"
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}",
-              "path": "v1/{+name}",
-              "id": "iam.projects.roles.get"
+              "flatPath": "v1/projects/{projectsId}/roles",
+              "id": "iam.projects.roles.create",
+              "path": "v1/{+parent}/roles"
             },
             "patch": {
+              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}",
+              "path": "v1/{+name}",
+              "id": "iam.projects.roles.patch",
               "request": {
                 "$ref": "Role"
               },
@@ -1910,23 +1866,73 @@
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
+                "updateMask": {
+                  "description": "A mask describing which fields in the Role have changed.",
+                  "format": "google-fieldmask",
+                  "type": "string",
+                  "location": "query"
+                },
                 "name": {
+                  "location": "path",
                   "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
                   "required": true,
                   "type": "string",
+                  "pattern": "^projects/[^/]+/roles/[^/]+$"
+                }
+              }
+            },
+            "undelete": {
+              "description": "Undelete a Role, bringing it back in its previous state.",
+              "request": {
+                "$ref": "UndeleteRoleRequest"
+              },
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Role"
+              },
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The resource name of the role in one of the following formats:\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/roles/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}:undelete",
+              "id": "iam.projects.roles.undelete",
+              "path": "v1/{+name}:undelete"
+            },
+            "get": {
+              "path": "v1/{+name}",
+              "id": "iam.projects.roles.get",
+              "description": "Gets a Role definition.",
+              "response": {
+                "$ref": "Role"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
                   "pattern": "^projects/[^/]+/roles/[^/]+$",
-                  "location": "path"
-                },
-                "updateMask": {
-                  "location": "query",
-                  "description": "A mask describing which fields in the Role have changed.",
-                  "format": "google-fieldmask",
+                  "location": "path",
+                  "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+                  "required": true,
                   "type": "string"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}",
-              "path": "v1/{+name}",
-              "id": "iam.projects.roles.patch"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/roles/{rolesId}"
             }
           }
         }
@@ -1934,43 +1940,28 @@
     },
     "roles": {
       "methods": {
-        "queryGrantableRoles": {
-          "request": {
-            "$ref": "QueryGrantableRolesRequest"
-          },
-          "description": "Queries roles that can be granted on a particular resource.\nA role is grantable if it can be used as the role in a binding for a policy\nfor that resource.",
-          "response": {
-            "$ref": "QueryGrantableRolesResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {},
-          "flatPath": "v1/roles:queryGrantableRoles",
-          "path": "v1/roles:queryGrantableRoles",
-          "id": "iam.roles.queryGrantableRoles"
-        },
         "list": {
+          "description": "Lists the Roles defined on a resource.",
           "httpMethod": "GET",
           "parameterOrder": [],
           "response": {
             "$ref": "ListRolesResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "parameters": {
+            "parent": {
+              "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
+              "type": "string",
+              "location": "query"
+            },
             "showDeleted": {
               "location": "query",
               "description": "Include Roles that have been deleted.",
               "type": "boolean"
             },
             "pageToken": {
+              "description": "Optional pagination token returned in an earlier ListRolesResponse.",
               "type": "string",
-              "location": "query",
-              "description": "Optional pagination token returned in an earlier ListRolesResponse."
+              "location": "query"
             },
             "pageSize": {
               "description": "Optional limit on the number of roles to include in the response.",
@@ -1986,17 +1977,14 @@
               ],
               "description": "Optional view for the returned Role objects. When `FULL` is specified,\nthe `includedPermissions` field is returned, which includes a list of all\npermissions in the role. The default value is `BASIC`, which does not\nreturn the `includedPermissions` field.",
               "type": "string"
-            },
-            "parent": {
-              "description": "The resource name of the parent resource in one of the following formats:\n`` (empty string) -- this refers to curated roles.\n`organizations/{ORGANIZATION_ID}`\n`projects/{PROJECT_ID}`",
-              "type": "string",
-              "location": "query"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "flatPath": "v1/roles",
           "id": "iam.roles.list",
-          "path": "v1/roles",
-          "description": "Lists the Roles defined on a resource."
+          "path": "v1/roles"
         },
         "get": {
           "response": {
@@ -2006,98 +1994,67 @@
             "name"
           ],
           "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "location": "path",
-              "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
-              "required": true,
-              "type": "string",
-              "pattern": "^roles/[^/]+$"
-            }
-          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "name": {
+              "description": "The resource name of the role in one of the following formats:\n`roles/{ROLE_NAME}`\n`organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`\n`projects/{PROJECT_ID}/roles/{ROLE_NAME}`",
+              "required": true,
+              "type": "string",
+              "pattern": "^roles/[^/]+$",
+              "location": "path"
+            }
+          },
           "flatPath": "v1/roles/{rolesId}",
           "path": "v1/{+name}",
           "id": "iam.roles.get",
           "description": "Gets a Role definition."
+        },
+        "queryGrantableRoles": {
+          "description": "Queries roles that can be granted on a particular resource.\nA role is grantable if it can be used as the role in a binding for a policy\nfor that resource.",
+          "request": {
+            "$ref": "QueryGrantableRolesRequest"
+          },
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "QueryGrantableRolesResponse"
+          },
+          "parameters": {},
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/roles:queryGrantableRoles",
+          "id": "iam.roles.queryGrantableRoles",
+          "path": "v1/roles:queryGrantableRoles"
         }
       }
     },
     "permissions": {
       "methods": {
         "queryTestablePermissions": {
+          "path": "v1/permissions:queryTestablePermissions",
+          "id": "iam.permissions.queryTestablePermissions",
+          "description": "Lists the permissions testable on a resource.\nA permission is testable if it can be tested for an identity on a resource.",
+          "request": {
+            "$ref": "QueryTestablePermissionsRequest"
+          },
           "response": {
             "$ref": "QueryTestablePermissionsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {},
-          "flatPath": "v1/permissions:queryTestablePermissions",
-          "path": "v1/permissions:queryTestablePermissions",
-          "id": "iam.permissions.queryTestablePermissions",
-          "request": {
-            "$ref": "QueryTestablePermissionsRequest"
-          },
-          "description": "Lists the permissions testable on a resource.\nA permission is testable if it can be tested for an identity on a resource."
+          "flatPath": "v1/permissions:queryTestablePermissions"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
     "alt": {
       "enum": [
         "json",
@@ -2115,25 +2072,68 @@
       "default": "json"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
     }
   },
   "version": "v1",
   "baseUrl": "https://iam.googleapis.com/",
   "servicePath": "",
   "description": "Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "documentationLink": "https://cloud.google.com/iam/",
-  "id": "iam:v1",
-  "revision": "20190429",
-  "discoveryVersion": "v1",
-  "version_module": true
+  "kind": "discovery#restDescription"
 }

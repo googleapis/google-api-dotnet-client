@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190501 (1581)
+ *      <tr><th>API Rev<td>20190428 (1578)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.Bigquery.v2
         {
             datasets = new DatasetsResource(this);
             jobs = new JobsResource(this);
+            models = new ModelsResource(this);
             projects = new ProjectsResource(this);
             tabledata = new TabledataResource(this);
             tables = new TablesResource(this);
@@ -177,6 +178,14 @@ namespace Google.Apis.Bigquery.v2
         public virtual JobsResource Jobs
         {
             get { return jobs; }
+        }
+
+        private readonly ModelsResource models;
+
+        /// <summary>Gets the Models resource.</summary>
+        public virtual ModelsResource Models
+        {
+            get { return models; }
         }
 
         private readonly ProjectsResource projects;
@@ -603,6 +612,14 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
             /// <summary>Whether to list all datasets, including hidden ones</summary>
             [Google.Apis.Util.RequestParameterAttribute("all", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> All { get; set; }
@@ -612,14 +629,6 @@ namespace Google.Apis.Bigquery.v2
             /// labels.active". See Filtering datasets using labels for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -655,18 +664,9 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "all", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "all",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -682,9 +682,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "all", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "all",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1101,28 +1110,28 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Location { get; set; }
-
-            /// <summary>Maximum number of results to read</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Zero-based index of the starting row</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> StartIndex { get; set; }
 
             /// <summary>How long to wait for the query to complete, in milliseconds, before returning. Default is 10
             /// seconds. If the timeout passes before the job completes, the 'jobComplete' field in the response will be
             /// false</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeoutMs", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> TimeoutMs { get; set; }
+
+            /// <summary>Maximum number of results to read</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Zero-based index of the starting row</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> StartIndex { get; set; }
+
+            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1167,9 +1176,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "location",
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "timeoutMs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeoutMs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1185,15 +1203,6 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "startIndex", new Google.Apis.Discovery.Parameter
                     {
                         Name = "startIndex",
@@ -1203,9 +1212,9 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "timeoutMs", new Google.Apis.Discovery.Parameter
+                    "location", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "timeoutMs",
+                        Name = "location",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1379,43 +1388,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
-            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
-            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> AllUsers { get; set; }
-
-            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created before or at this timestamp are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
-
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created after or at this timestamp are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
-
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Restrict information returned to a set of selected fields</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
-
-            /// <summary>Restrict information returned to a set of selected fields</summary>
-            public enum ProjectionEnum
-            {
-                /// <summary>Includes all job data</summary>
-                [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
-                /// <summary>Does not include the job configuration</summary>
-                [Google.Apis.Util.StringValueAttribute("minimal")]
-                Minimal,
-            }
-
             /// <summary>Filter for job state</summary>
             [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateFilterEnum> StateFilter { get; set; }
@@ -1433,6 +1405,43 @@ namespace Google.Apis.Bigquery.v2
                 [Google.Apis.Util.StringValueAttribute("running")]
                 Running,
             }
+
+            /// <summary>Restrict information returned to a set of selected fields</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
+
+            /// <summary>Restrict information returned to a set of selected fields</summary>
+            public enum ProjectionEnum
+            {
+                /// <summary>Includes all job data</summary>
+                [Google.Apis.Util.StringValueAttribute("full")]
+                Full,
+                /// <summary>Does not include the job configuration</summary>
+                [Google.Apis.Util.StringValueAttribute("minimal")]
+                Minimal,
+            }
+
+            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created after or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
+
+            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
+            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllUsers { get; set; }
+
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created before or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1468,45 +1477,9 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "allUsers", new Google.Apis.Discovery.Parameter
+                    "stateFilter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "allUsers",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
+                        Name = "stateFilter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1522,9 +1495,45 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "stateFilter", new Google.Apis.Discovery.Parameter
+                    "minCreationTime", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "stateFilter",
+                        Name = "minCreationTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "allUsers", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allUsers",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxCreationTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxCreationTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1599,6 +1608,406 @@ namespace Google.Apis.Bigquery.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "models" collection of methods.</summary>
+    public class ModelsResource
+    {
+        private const string Resource = "models";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ModelsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the model specified by modelId from the dataset.</summary>
+        /// <param name="projectId">Project ID of the model to delete.</param>
+        /// <param name="datasetId">Dataset ID of the
+        /// model to delete.</param>
+        /// <param name="modelId">Model ID of the model to delete.</param>
+        public virtual DeleteRequest Delete(string projectId, string datasetId, string modelId)
+        {
+            return new DeleteRequest(service, projectId, datasetId, modelId);
+        }
+
+        /// <summary>Deletes the model specified by modelId from the dataset.</summary>
+        public class DeleteRequest : BigqueryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                ModelId = modelId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the model to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the model to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Model ID of the model to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ModelId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "modelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "modelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the specified model resource by model ID.</summary>
+        /// <param name="projectId">Project ID of the requested model.</param>
+        /// <param name="datasetId">Dataset ID of the
+        /// requested model.</param>
+        /// <param name="modelId">Model ID of the requested model.</param>
+        public virtual GetRequest Get(string projectId, string datasetId, string modelId)
+        {
+            return new GetRequest(service, projectId, datasetId, modelId);
+        }
+
+        /// <summary>Gets the specified model resource by model ID.</summary>
+        public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string modelId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                ModelId = modelId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the requested model.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the requested model.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Model ID of the requested model.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ModelId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "modelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "modelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all models in the specified dataset. Requires the READER dataset role.</summary>
+        /// <param name="projectId">Project ID of the models to list.</param>
+        /// <param name="datasetId">Dataset ID of the
+        /// models to list.</param>
+        public virtual ListRequest List(string projectId, string datasetId)
+        {
+            return new ListRequest(service, projectId, datasetId);
+        }
+
+        /// <summary>Lists all models in the specified dataset. Requires the READER dataset role.</summary>
+        public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListModelsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the models to list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the models to list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>The maximum number of results per page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Page token, returned by a previous call to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/models"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Patch specific fields in the specified model.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Project ID of the model to patch.</param>
+        /// <param name="datasetId">Dataset ID of the
+        /// model to patch.</param>
+        /// <param name="modelId">Model ID of the model to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId)
+        {
+            return new PatchRequest(service, body, projectId, datasetId, modelId);
+        }
+
+        /// <summary>Patch specific fields in the specified model.</summary>
+        public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Model>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                ModelId = modelId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the model to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the model to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Model ID of the model to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ModelId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.Model Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "modelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "modelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
                     });
             }
 
@@ -1912,10 +2321,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Page token, returned by a previous call, identifying the result set</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>List of fields to return (comma-separated). If unspecified, all fields are returned</summary>
             [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SelectedFields { get; set; }
@@ -1923,6 +2328,10 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Zero-based index of the starting row to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> StartIndex { get; set; }
+
+            /// <summary>Page token, returned by a previous call, identifying the result set</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1985,15 +2394,6 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "selectedFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "selectedFields",
@@ -2006,6 +2406,15 @@ namespace Google.Apis.Bigquery.v2
                     "startIndex", new Google.Apis.Discovery.Parameter
                     {
                         Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2345,13 +2754,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2396,18 +2805,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2626,6 +3035,49 @@ namespace Google.Apis.Bigquery.v2
 namespace Google.Apis.Bigquery.v2.Data
 {    
 
+    /// <summary>Aggregate metrics for classification models. For multi-class models, the metrics are either macro-
+    /// averaged: metrics are calculated for each label and then an unweighted average is taken of those values or
+    /// micro-averaged: the metric is calculated globally by counting the total number of correctly predicted
+    /// rows.</summary>
+    public class AggregateClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Accuracy is the fraction of predictions given the correct label. For multiclass this is a micro-
+        /// averaged metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
+        public virtual System.Nullable<double> Accuracy { get; set; } 
+
+        /// <summary>The F1 score is an average of recall and precision. For multiclass this is a macro-averaged
+        /// metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<double> F1Score { get; set; } 
+
+        /// <summary>Logarithmic Loss. For multiclass this is a macro-averaged metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLoss")]
+        public virtual System.Nullable<double> LogLoss { get; set; } 
+
+        /// <summary>Precision is the fraction of actual positive predictions that had positive actual labels. For
+        /// multiclass this is a macro-averaged metric treating each class as a binary classifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<double> Precision { get; set; } 
+
+        /// <summary>Recall is the fraction of actual positive labels that were given a positive prediction. For
+        /// multiclass this is a macro-averaged metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<double> Recall { get; set; } 
+
+        /// <summary>Area Under a ROC Curve. For multiclass this is a macro-averaged metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rocAuc")]
+        public virtual System.Nullable<double> RocAuc { get; set; } 
+
+        /// <summary>Threshold at which the metrics are computed. For binary classification models this is the positive
+        /// class threshold. For multi-class classfication models this is the confidence threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<double> Threshold { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class BigQueryModelTraining : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only, Beta] Index of current ML training iteration. Updated during create model query job
@@ -2750,6 +3202,56 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Evaluation metrics for binary classification models.</summary>
+    public class BinaryClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregate classification metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateClassificationMetrics")]
+        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; } 
+
+        /// <summary>Binary confusion matrix at multiple thresholds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryConfusionMatrixList")]
+        public virtual System.Collections.Generic.IList<BinaryConfusionMatrix> BinaryConfusionMatrixList { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Confusion matrix for binary classification models.</summary>
+    public class BinaryConfusionMatrix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of false samples predicted as false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegatives")]
+        public virtual System.Nullable<long> FalseNegatives { get; set; } 
+
+        /// <summary>Number of false samples predicted as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositives")]
+        public virtual System.Nullable<long> FalsePositives { get; set; } 
+
+        /// <summary>Threshold value used when computing each of the following metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positiveClassThreshold")]
+        public virtual System.Nullable<double> PositiveClassThreshold { get; set; } 
+
+        /// <summary>Aggregate precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<double> Precision { get; set; } 
+
+        /// <summary>Aggregate recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<double> Recall { get; set; } 
+
+        /// <summary>Number of true samples predicted as false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trueNegatives")]
+        public virtual System.Nullable<long> TrueNegatives { get; set; } 
+
+        /// <summary>Number of true samples predicted as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositives")]
+        public virtual System.Nullable<long> TruePositives { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class BqmlIterationResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only, Beta] Time taken to run the training iteration in milliseconds.</summary>
@@ -2858,6 +3360,25 @@ namespace Google.Apis.Bigquery.v2.Data
         }
     }    
 
+    /// <summary>Information about a single cluster for clustering model.</summary>
+    public class ClusterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Centroid id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("centroidId")]
+        public virtual System.Nullable<long> CentroidId { get; set; } 
+
+        /// <summary>Cluster radius, the average distance from centroid to each point assigned to the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterRadius")]
+        public virtual System.Nullable<double> ClusterRadius { get; set; } 
+
+        /// <summary>Cluster size, the total number of points assigned to the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterSize")]
+        public virtual System.Nullable<long> ClusterSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Clustering : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated,
@@ -2865,6 +3386,36 @@ namespace Google.Apis.Bigquery.v2.Data
         /// specify is important. The order of the specified columns determines the sort order of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<string> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Evaluation metrics for clustering models.</summary>
+    public class ClusteringMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Davies-Bouldin index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daviesBouldinIndex")]
+        public virtual System.Nullable<double> DaviesBouldinIndex { get; set; } 
+
+        /// <summary>Mean of squared distances between each sample to its cluster centroid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredDistance")]
+        public virtual System.Nullable<double> MeanSquaredDistance { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Confusion matrix for multi-class classification models.</summary>
+    public class ConfusionMatrix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence threshold used when computing the entries of the confusion matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
+        public virtual System.Nullable<double> ConfidenceThreshold { get; set; } 
+
+        /// <summary>One row per actual label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3155,6 +3706,22 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A single entry in the confusion matrix.</summary>
+    public class Entry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of items being predicted as this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
+        public virtual System.Nullable<long> ItemCount { get; set; } 
+
+        /// <summary>The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number
+        /// of items under the confidence threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predictedLabel")]
+        public virtual string PredictedLabel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ErrorProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information. This property is internal to Google and should not be used.</summary>
@@ -3172,6 +3739,30 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>A short error code that summarizes the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Evaluation metrics of a model. These are either computed on all training data or just the eval data
+    /// based on whether eval data was used during training.</summary>
+    public class EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Populated for binary classification models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryClassificationMetrics")]
+        public virtual BinaryClassificationMetrics BinaryClassificationMetrics { get; set; } 
+
+        /// <summary>[Beta] Populated for clustering models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusteringMetrics")]
+        public virtual ClusteringMetrics ClusteringMetrics { get; set; } 
+
+        /// <summary>Populated for multi-class classification models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
+        public virtual MultiClassClassificationMetrics MultiClassClassificationMetrics { get; set; } 
+
+        /// <summary>Populated for regression models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regressionMetrics")]
+        public virtual RegressionMetrics RegressionMetrics { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3479,6 +4070,37 @@ namespace Google.Apis.Bigquery.v2.Data
         /// extract column names for the detected schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a single iteration of the training run.</summary>
+    public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Beta] Information about top clusters for clustering models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterInfos")]
+        public virtual System.Collections.Generic.IList<ClusterInfo> ClusterInfos { get; set; } 
+
+        /// <summary>Time taken to run the iteration in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
+        public virtual System.Nullable<long> DurationMs { get; set; } 
+
+        /// <summary>Loss computed on the eval data at the end of iteration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
+        public virtual System.Nullable<double> EvalLoss { get; set; } 
+
+        /// <summary>Index of the iteration, 0 based.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; } 
+
+        /// <summary>Learn rate used for this iteration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
+        public virtual System.Nullable<double> LearnRate { get; set; } 
+
+        /// <summary>Loss computed on the training data at the end of iteration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
+        public virtual System.Nullable<double> TrainingLoss { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4326,6 +4948,34 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Models in the requested dataset. Only the following fields are populated: model_reference,
+        /// model_type, creation_time, last_modified_time and labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<Model> Models { get; set; } 
+
+        /// <summary>A token to request the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>BigQuery-specific metadata about a location. This will be set on
+    /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
+    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers
+        /// that need the legacy “US” and “EU” locations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
+        public virtual string LegacyLocationId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class MaterializedViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] [TrustedTester] The time when this materialized view was last modified, in
@@ -4339,6 +4989,71 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class Model : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when this model was created, in millisecs since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual System.Nullable<long> CreationTime { get; set; } 
+
+        /// <summary>[Optional] A user-friendly description of this model. @mutable bigquery.models.patch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Output only. A hash of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Optional] The time when this model expires, in milliseconds since the epoch. If not present, the
+        /// model will persist indefinitely. Expired models will be deleted and their storage reclaimed.  The
+        /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
+        /// on newly created models. @mutable bigquery.models.patch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual System.Nullable<long> ExpirationTime { get; set; } 
+
+        /// <summary>Output only. Input feature columns that were used to train this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureColumns")]
+        public virtual System.Collections.Generic.IList<StandardSqlField> FeatureColumns { get; set; } 
+
+        /// <summary>[Optional] A descriptive name for this model. @mutable bigquery.models.patch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
+        public virtual string FriendlyName { get; set; } 
+
+        /// <summary>Output only. Label columns that were used to train this model. The output of the model will have a
+        /// “predicted_” prefix to these columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelColumns")]
+        public virtual System.Collections.Generic.IList<StandardSqlField> LabelColumns { get; set; } 
+
+        /// <summary>[Optional] The labels associated with this model. You can use these to organize and group your
+        /// models. Label keys and values can be no longer than 63 characters, can only contain lowercase letters,
+        /// numeric characters, underscores and dashes. International characters are allowed. Label values are optional.
+        /// Label keys must start with a letter and each label in the list must have a different key. @mutable
+        /// bigquery.models.patch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Output only. The time when this model was last modified, in millisecs since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+
+        /// <summary>Output only. The geographic location where the model resides. This value is inherited from the
+        /// dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>Required. Unique identifier for this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
+        public virtual ModelReference ModelReference { get; set; } 
+
+        /// <summary>Output only. Type of the model resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; } 
+
+        /// <summary>Output only. Information for all training runs in increasing order of start_time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
+        public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; } 
+
     }    
 
     public class ModelDefinition : Google.Apis.Requests.IDirectResponseSchema
@@ -4374,6 +5089,41 @@ namespace Google.Apis.Bigquery.v2.Data
             public virtual string ModelType { get; set; } 
 
         }
+    }    
+
+    /// <summary>Id path of a model.</summary>
+    public class ModelReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] The ID of the dataset containing this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>[Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; } 
+
+        /// <summary>[Required] The ID of the project containing this model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Evaluation metrics for multi-class classification models.</summary>
+    public class MultiClassClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregate classification metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateClassificationMetrics")]
+        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; } 
+
+        /// <summary>Confusion matrix at different thresholds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confusionMatrixList")]
+        public virtual System.Collections.Generic.IList<ConfusionMatrix> ConfusionMatrixList { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
@@ -4700,6 +5450,33 @@ namespace Google.Apis.Bigquery.v2.Data
         }
     }    
 
+    /// <summary>Evaluation metrics for regression models.</summary>
+    public class RegressionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mean absolute error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meanAbsoluteError")]
+        public virtual System.Nullable<double> MeanAbsoluteError { get; set; } 
+
+        /// <summary>Mean squared error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredError")]
+        public virtual System.Nullable<double> MeanSquaredError { get; set; } 
+
+        /// <summary>Mean squared log error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredLogError")]
+        public virtual System.Nullable<double> MeanSquaredLogError { get; set; } 
+
+        /// <summary>Median absolute error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medianAbsoluteError")]
+        public virtual System.Nullable<double> MedianAbsoluteError { get; set; } 
+
+        /// <summary>R^2 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rSquared")]
+        public virtual System.Nullable<double> RSquared { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Required] The ID of the dataset containing this routine.</summary>
@@ -4714,6 +5491,69 @@ namespace Google.Apis.Bigquery.v2.Data
         /// underscores (_). The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineId")]
         public virtual string RoutineId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single row in the confusion matrix.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original label of this row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualLabel")]
+        public virtual string ActualLabel { get; set; } 
+
+        /// <summary>Info describing predicted label distribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<Entry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY:
+    /// {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x",
+    /// type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}</summary>
+    public class StandardSqlDataType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the array's elements, if type_kind = "ARRAY".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayElementType")]
+        public virtual StandardSqlDataType ArrayElementType { get; set; } 
+
+        /// <summary>The fields of this struct, in order, if type_kind = "STRUCT".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structType")]
+        public virtual StandardSqlStructType StructType { get; set; } 
+
+        /// <summary>Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64",
+        /// "DATE", "ARRAY").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeKind")]
+        public virtual string TypeKind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A field or a column.</summary>
+    public class StandardSqlField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of this field. Can be absent for struct fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION
+        /// statement can omit the return type; in this case the output parameter does not have this "type"
+        /// field).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual StandardSqlDataType Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class StandardSqlStructType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<StandardSqlField> Fields { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5179,6 +6019,112 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] The only type supported is DAY, which will generate one partition per day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column to split data with. This column won't be used as a feature. 1. When data_split_method is
+        /// CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the
+        /// false are training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from
+        /// smallest to largest) in the corresponding column are used as training data, and the rest are eval data. It
+        /// respects the order in Orderable data types: https://cloud.google.com/bigquery/docs/reference/standard-sql
+        /// /data-types#data-type-properties</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSplitColumn")]
+        public virtual string DataSplitColumn { get; set; } 
+
+        /// <summary>The fraction of evaluation data over the whole input data. The rest of data will be used as
+        /// training data. The format should be double. Accurate to two decimal places. Default value is 0.2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSplitEvalFraction")]
+        public virtual System.Nullable<double> DataSplitEvalFraction { get; set; } 
+
+        /// <summary>The data split type for training and evaluation, e.g. RANDOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSplitMethod")]
+        public virtual string DataSplitMethod { get; set; } 
+
+        /// <summary>[Beta] Distance type for clustering models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceType")]
+        public virtual string DistanceType { get; set; } 
+
+        /// <summary>Whether to stop early when the loss doesn't improve significantly any more (compared to
+        /// min_relative_progress).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
+        public virtual System.Nullable<bool> EarlyStop { get; set; } 
+
+        /// <summary>Specifies the initial learning rate for line search to start at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialLearnRate")]
+        public virtual System.Nullable<double> InitialLearnRate { get; set; } 
+
+        /// <summary>Name of input label columns in training data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputLabelColumns")]
+        public virtual System.Collections.Generic.IList<string> InputLabelColumns { get; set; } 
+
+        /// <summary>L1 regularization coefficient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l1Regularization")]
+        public virtual System.Nullable<double> L1Regularization { get; set; } 
+
+        /// <summary>L2 regularization coefficient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l2Regularization")]
+        public virtual System.Nullable<double> L2Regularization { get; set; } 
+
+        /// <summary>Weights associated with each label class, for rebalancing the training data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelClassWeights")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<double>> LabelClassWeights { get; set; } 
+
+        /// <summary>Learning rate in training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
+        public virtual System.Nullable<double> LearnRate { get; set; } 
+
+        /// <summary>The strategy to determine learning rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learnRateStrategy")]
+        public virtual string LearnRateStrategy { get; set; } 
+
+        /// <summary>Type of loss function used during training run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lossType")]
+        public virtual string LossType { get; set; } 
+
+        /// <summary>The maximum number of iterations in training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
+        public virtual System.Nullable<long> MaxIterations { get; set; } 
+
+        /// <summary>When early_stop is true, stops training when accuracy improvement is less than
+        /// 'min_relative_progress'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRelativeProgress")]
+        public virtual System.Nullable<double> MinRelativeProgress { get; set; } 
+
+        /// <summary>[Beta] Number of clusters for clustering models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numClusters")]
+        public virtual System.Nullable<long> NumClusters { get; set; } 
+
+        /// <summary>Whether to train a model from the last checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
+        public virtual System.Nullable<bool> WarmStart { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a single training query run for the model.</summary>
+    public class TrainingRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
+        public virtual EvaluationMetrics EvaluationMetrics { get; set; } 
+
+        /// <summary>Output of each iteration run, results.size() <= max_iterations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; } 
+
+        /// <summary>The start time of this training run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Options that were used for this training run, includes user specified and default options that were
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
+        public virtual TrainingOptions TrainingOptions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

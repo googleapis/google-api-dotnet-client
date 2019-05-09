@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20190129 (1489)
+ *      <tr><th>API Rev<td>20190507 (1587)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>
  *              https://developers.google.com/speed/docs/insights/v5/get-started</a>
@@ -555,6 +555,10 @@ namespace Google.Apis.Pagespeedonline.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeError")]
         public virtual LighthouseResultV5.RuntimeErrorData RuntimeError { get; set; } 
 
+        /// <summary>The Stack Pack advice strings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackPacks")]
+        public virtual System.Collections.Generic.IList<LighthouseResultV5.StackPacksData> StackPacks { get; set; } 
+
         /// <summary>Timing information for this LHR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual LighthouseResultV5.TimingData Timing { get; set; } 
@@ -729,6 +733,26 @@ namespace Google.Apis.Pagespeedonline.v5.Data
             /// <summary>A human readable message explaining the error code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
             public virtual string Message { get; set; } 
+
+        }    
+
+        public class StackPacksData
+        {
+            /// <summary>The stack pack advice strings.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+            public virtual System.Collections.Generic.IDictionary<string,string> Descriptions { get; set; } 
+
+            /// <summary>The stack pack icon data uri.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("iconDataURL")]
+            public virtual string IconDataURL { get; set; } 
+
+            /// <summary>The stack pack id.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id { get; set; } 
+
+            /// <summary>The stack pack title.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("title")]
+            public virtual string Title { get; set; } 
 
         }    
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190506 (1586)
+ *      <tr><th>API Rev<td>20190508 (1588)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4248,6 +4248,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Details for an outcome with a FAILURE outcome summary.</summary>
     public class FailureDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the failure was severe because the system (app) under test crashed.</summary>
@@ -4425,6 +4426,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Details for an outcome with an INCONCLUSIVE outcome summary.</summary>
     public class InconclusiveDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the end user aborted the test execution before a pass or fail could be determined. For example,
@@ -4876,6 +4878,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Details for an outcome with a SKIPPED outcome summary.</summary>
     public class SkippedDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the App doesn't support the specific API level.</summary>
@@ -5173,6 +5176,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Details for an outcome with a SUCCESS outcome summary.</summary>
     public class SuccessDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If a native process other than the app crashed.</summary>

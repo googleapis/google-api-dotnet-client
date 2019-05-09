@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/JSdC-UfJ951wIJmUl2rid2MnUfw\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Ta6I-MdyzU28jP7YoMs8WuXC-dg\"",
  "discoveryVersion": "v1",
  "id": "pagespeedonline:v5",
  "name": "pagespeedonline",
  "version": "v5",
- "revision": "20190129",
+ "revision": "20190507",
  "title": "PageSpeed Insights API",
  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
  "ownerDomain": "google.com",
@@ -367,6 +367,35 @@
       "message": {
        "type": "string",
        "description": "A human readable message explaining the error code."
+      }
+     }
+    },
+    "stackPacks": {
+     "type": "array",
+     "description": "The Stack Pack advice strings.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "descriptions": {
+        "type": "object",
+        "description": "The stack pack advice strings.",
+        "additionalProperties": {
+         "type": "string",
+         "description": "The specific stack pack description."
+        }
+       },
+       "iconDataURL": {
+        "type": "string",
+        "description": "The stack pack icon data uri."
+       },
+       "id": {
+        "type": "string",
+        "description": "The stack pack id."
+       },
+       "title": {
+        "type": "string",
+        "description": "The stack pack title."
+       }
       }
      }
     },
