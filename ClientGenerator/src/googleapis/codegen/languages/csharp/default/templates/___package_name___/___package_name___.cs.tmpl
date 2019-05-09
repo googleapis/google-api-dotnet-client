@@ -89,7 +89,11 @@ public override string Name
 /// <summary>Gets the service base URI.</summary>
 public override string BaseUri
 {
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
     get { return BaseUriOverride ?? "{{ api.rootUrl }}{{ api.servicePath }}"; }
+#else
+    get { return "{{ api.rootUrl }}{{ api.servicePath }}"; }
+#endif
 }
 
 /// <summary>Gets the service base path.</summary>
