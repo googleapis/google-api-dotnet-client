@@ -21,6 +21,11 @@
     <Compile Include="..\..\Generated\Google.Apis.Translate.v2\Google.Apis.Translate.v2.cs" Link="Apis\Services\Google.Apis.Translate.v2.cs" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <!-- Hack to force Google.Apis.Translate.v2 to compile as we want :) -->
+    <DefineConstants>NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
