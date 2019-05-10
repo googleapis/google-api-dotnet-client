@@ -20,6 +20,7 @@ using Google.Apis.Json;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
+using Google.Apis.Translate.v2;
 using Google.Apis.Util;
 using Newtonsoft.Json;
 using System;
@@ -203,6 +204,18 @@ namespace Google.Apis.Tests.Apis.Services
                 Assert.Equal("Required", error.Message);
                 Assert.Equal(1, error.Errors.Count);
             }
+        }
+
+        [Theory]
+        [InlineData(null, "https://translation.googleapis.com/language/translate/")]
+        [InlineData("https://alternative-uri", "https://alternative-uri")]
+        public void InitializerBaseUriIsUsedByGeneratedServices(string initializerUri, string expectedServiceUri)
+        {
+            var service = new TranslateService(new BaseClientService.Initializer
+            {
+                BaseUri = initializerUri
+            });
+            Assert.Equal(expectedServiceUri, service.BaseUri);
         }
 
         /// <summary>
