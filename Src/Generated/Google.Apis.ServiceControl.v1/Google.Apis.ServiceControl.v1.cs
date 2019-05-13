@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190509 (1589)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -998,6 +998,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
 
+        /// <summary>Unimplemented. The current service rollout id used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceRolloutId")]
+        public virtual string ServiceRolloutId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1741,6 +1745,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>Unimplemented. The current service rollout id used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceRolloutId")]
+        public virtual string ServiceRolloutId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

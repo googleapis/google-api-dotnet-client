@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.StreetViewPublish.v1 Client Library</Title>
-    <Version>1.40.0.1587</Version>
+    <Version>1.40.0.1589</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

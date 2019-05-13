@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/api/'>Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190507 (1587)
+ *      <tr><th>API Rev<td>20190509 (1589)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/api/'>
  *              https://developers.google.com/apps-script/api/</a>
@@ -748,41 +748,6 @@ namespace Google.Apis.Script.v1
             }
 
 
-            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
-            /// value of `nextPageToken` from a previous response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of returned processes per page of results. Defaults to 50.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional field used to limit returned processes to those that completed on or before the given
-            /// timestamp.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.endTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ScriptProcessFilterEndTime { get; set; }
-
-            /// <summary>Optional field used to limit returned processes to those having one of the specified user
-            /// access levels.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevels { get; set; }
-
-            /// <summary>Optional field used to limit returned processes to those having one of the specified user
-            /// access levels.</summary>
-            public enum ScriptProcessFilterUserAccessLevelsEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
-                USERACCESSLEVELUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("NONE")]
-                NONE,
-                [Google.Apis.Util.StringValueAttribute("READ")]
-                READ,
-                [Google.Apis.Util.StringValueAttribute("WRITE")]
-                WRITE,
-                [Google.Apis.Util.StringValueAttribute("OWNER")]
-                OWNER,
-            }
-
             /// <summary>Optional field used to limit returned processes to those having one of the specified process
             /// statuses.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
@@ -812,15 +777,15 @@ namespace Google.Apis.Script.v1
                 DELAYED,
             }
 
-            /// <summary>Optional field used to limit returned processes to those originating from a script function
-            /// with the given function name.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.functionName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ScriptProcessFilterFunctionName { get; set; }
-
             /// <summary>Optional field used to limit returned processes to those that were started on or after the
             /// given timestamp.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ScriptProcessFilterStartTime { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those originating from a script function
+            /// with the given function name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.functionName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ScriptProcessFilterFunctionName { get; set; }
 
             /// <summary>Optional field used to limit returned processes to those originating from projects with a
             /// specific deployment ID.</summary>
@@ -862,6 +827,41 @@ namespace Google.Apis.Script.v1
                 BATCHTASK,
             }
 
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of `nextPageToken` from a previous response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of returned processes per page of results. Defaults to 50.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those that completed on or before the given
+            /// timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.endTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ScriptProcessFilterEndTime { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            public enum ScriptProcessFilterUserAccessLevelsEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
+                USERACCESSLEVELUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("NONE")]
+                NONE,
+                [Google.Apis.Util.StringValueAttribute("READ")]
+                READ,
+                [Google.Apis.Util.StringValueAttribute("WRITE")]
+                WRITE,
+                [Google.Apis.Util.StringValueAttribute("OWNER")]
+                OWNER,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -886,6 +886,60 @@ namespace Google.Apis.Script.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "scriptProcessFilter.statuses", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.statuses",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.functionName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.functionName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.deploymentId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.types", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.types",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -917,60 +971,6 @@ namespace Google.Apis.Script.v1
                     "scriptProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
                     {
                         Name = "scriptProcessFilter.userAccessLevels",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.statuses", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.statuses",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.functionName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.functionName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.deploymentId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "scriptProcessFilter.types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "scriptProcessFilter.types",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1881,6 +1881,10 @@ namespace Google.Apis.Script.v1
             [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ScriptId { get; private set; }
 
+            /// <summary>Optional field indicating a specific deployment to retrieve metrics from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("metricsFilter.deploymentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MetricsFilterDeploymentId { get; set; }
+
             /// <summary>Required field indicating what granularity of metrics are returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("metricsGranularity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<MetricsGranularityEnum> MetricsGranularity { get; set; }
@@ -1895,10 +1899,6 @@ namespace Google.Apis.Script.v1
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
             }
-
-            /// <summary>Optional field indicating a specific deployment to retrieve metrics from.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("metricsFilter.deploymentId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string MetricsFilterDeploymentId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1934,18 +1934,18 @@ namespace Google.Apis.Script.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "metricsGranularity", new Google.Apis.Discovery.Parameter
+                    "metricsFilter.deploymentId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "metricsGranularity",
+                        Name = "metricsFilter.deploymentId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "metricsFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                    "metricsGranularity", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "metricsFilter.deploymentId",
+                        Name = "metricsGranularity",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2246,6 +2246,17 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>An entry point specification for web apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
         public virtual GoogleAppsScriptTypeWebAppEntryPoint WebApp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for executing or debugging a function in an Apps Script project.</summary>
+    public class ExecuteStreamResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of the execution. TODO (johnlattin): Add debugging and logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual ScriptExecutionResult Result { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2578,6 +2589,18 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`ListValue` is a wrapper around a repeated field of values. Based on LustValue at:
+    /// google3/apps/maestro/api/struct.proto?q=message%5c%20ListValue</summary>
+    public class ListValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Repeated field of dynamically typed values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response with the list of the versions for the specified script project.</summary>
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2703,6 +2726,19 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The result of an execution Based on ScriptExecutionResult at:
+    /// google3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%20ScriptExecutionResult</summary>
+    public class ScriptExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned value of the execution. TODO (johnlattin): Add HtmlResponse TODO (johnlattin): Add
+        /// ExceptionResponse TODO (johlnattin): Add TextResponse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
+        public virtual Value ReturnValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A stack trace through the script that shows where the execution failed.</summary>
     public class ScriptStackTraceElement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2741,12 +2777,68 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`Struct` represents a structured data value, consisting of fields which map to dynamically typed
+    /// values. Based on Struct at: google3/apps/maestro/api/struct.proto?q=message%5c%20Struct</summary>
+    public class Struct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unordered map of dynamically typed values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request with deployment information to update an existing deployment.</summary>
     public class UpdateDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The deployment configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
         public virtual DeploymentConfig DeploymentConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`Value` represents a dynamically typed value which is the outcome of an executed script Based on Value
+    /// at: google3/apps/maestro/api/struct.proto?q=message%5c%20Value</summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; } 
+
+        /// <summary>Represents raw byte values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
+        public virtual string BytesValue { get; set; } 
+
+        /// <summary>Represents a date in ms since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
+        public virtual System.Nullable<long> DateValue { get; set; } 
+
+        /// <summary>Represents a repeated `Value`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listValue")]
+        public virtual ListValue ListValue { get; set; } 
+
+        /// <summary>Represents a null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
+        public virtual string NullValue { get; set; } 
+
+        /// <summary>Represents a double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; } 
+
+        /// <summary>Represents a structured proto value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protoValue")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ProtoValue { get; set; } 
+
+        /// <summary>Represents a string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        /// <summary>Represents a structured value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structValue")]
+        public virtual Struct StructValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
