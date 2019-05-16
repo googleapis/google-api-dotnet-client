@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190427 (1577)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -443,6 +443,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. A filter for matching the requested operations. The supported formats of filter are:
             /// To query for specific function: project:*,location:*,function:* To query for all of the latest
             /// operations for a project: project:*,latest:true</summary>
@@ -456,10 +460,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -486,6 +486,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -507,15 +516,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

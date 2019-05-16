@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190501 (1581)
+ *      <tr><th>API Rev<td>20190506 (1586)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -1522,13 +1522,13 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results returned by the server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1564,18 +1564,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2167,6 +2167,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -2174,10 +2178,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2210,6 +2210,15 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
@@ -2222,15 +2231,6 @@ namespace Google.Apis.AndroidManagement.v1
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3581,8 +3581,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the name should have the format of
-        /// operations/some/unique/name.</summary>
+        /// If you use the default HTTP mapping, the name should be a resource name ending with
+        /// operations/{unique_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

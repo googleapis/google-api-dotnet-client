@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/QtjhOzVspxdYDcV-neBlaStEry0\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/kwai7B3cC4eEEbSxYFHS0BuBYIc\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20190415",
+ "revision": "20190510",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -138,6 +138,10 @@
      "description": "This is always sql#backupConfiguration.",
      "default": "sql#backupConfiguration"
     },
+    "location": {
+     "type": "string",
+     "description": "The location of the backup."
+    },
     "replicationLogArchivingEnabled": {
      "type": "boolean",
      "description": "Reserved for future use."
@@ -184,6 +188,10 @@
      "type": "string",
      "description": "This is always sql#backupRun.",
      "default": "sql#backupRun"
+    },
+    "location": {
+     "type": "string",
+     "description": "The location of the backup."
     },
     "selfLink": {
      "type": "string",

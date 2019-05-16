@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190503 (1583)
+ *      <tr><th>API Rev<td>20190511 (1591)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2732,6 +2732,14 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
                 /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
@@ -2768,26 +2776,21 @@ namespace Google.Apis.DLP.v2
                 /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
                 /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
                 /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
-                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
+                /// `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
+                /// time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for
+                /// risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time
+                /// the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=`
+                /// or `!=`.
                 ///
                 /// Examples:
                 ///
                 /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
                 /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
+                /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\"
                 ///
                 /// The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2823,6 +2826,24 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2844,24 +2865,6 @@ namespace Google.Apis.DLP.v2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6882,7 +6885,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Publish the results of a DlpJob to a pub sub channel. Compatible with: Inspect, Risk</summary>
+    /// <summary>Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single
+    /// field, `DlpJobName`, which is equal to the finished job's
+    /// [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk</summary>
     public class GooglePrivacyDlpV2PublishToPubSub : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to

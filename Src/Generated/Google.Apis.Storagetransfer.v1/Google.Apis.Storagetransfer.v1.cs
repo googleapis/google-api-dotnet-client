@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190507 (1587)
+ *      <tr><th>API Rev<td>20190513 (1593)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -364,8 +364,8 @@ namespace Google.Apis.Storagetransfer.v1
         /// Google Cloud Platform Console project. Users should add this service account to the Google Cloud Storage
         /// bucket ACLs to grant access to Storage Transfer Service. This service account is created and owned by
         /// Storage Transfer Service and can only be used by Storage Transfer Service.</summary>
-        /// <param name="projectId">The ID of the Google Cloud Platform Console project that the Google service account is
-        /// associated with. Required.</param>
+        /// <param name="projectId">Required. The ID of the Google Cloud Platform Console project that the Google service
+        /// account is associated with.</param>
         public virtual GetRequest Get(string projectId)
         {
             return new GetRequest(service, projectId);
@@ -387,8 +387,8 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The ID of the Google Cloud Platform Console project that the Google service account is
-            /// associated with. Required.</summary>
+            /// <summary>Required. The ID of the Google Cloud Platform Console project that the Google service account
+            /// is associated with.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -500,7 +500,7 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Gets a transfer job.</summary>
-        /// <param name="jobName">The job to get. Required.</param>
+        /// <param name="jobName">Required. The job to get.</param>
         public virtual GetRequest Get(string jobName)
         {
             return new GetRequest(service, jobName);
@@ -518,11 +518,11 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The job to get. Required.</summary>
+            /// <summary>Required. The job to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
-            /// <summary>The ID of the Google Cloud Platform Console project that owns the job. Required.</summary>
+            /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
@@ -589,6 +589,15 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
+            /// <summary>Required. A list of query parameters specified as JSON text in the form of:
+            /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
+            /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
+            /// their values must be specified with array notation. `project_id` is required. `job_names` and
+            /// `job_statuses` are optional.  The valid values for `job_statuses` are case-insensitive: `ENABLED`,
+            /// `DISABLED`, and `DELETED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -596,14 +605,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
-            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
-            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
-            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
-            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -630,6 +631,15 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -647,15 +657,6 @@ namespace Google.Apis.Storagetransfer.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -663,7 +664,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
         /// running already. Updating the scheduling of a job is not allowed.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="jobName">The name of job to update. Required.</param>
+        /// <param name="jobName">Required. The name of job to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.UpdateTransferJobRequest body, string jobName)
         {
             return new PatchRequest(service, body, jobName);
@@ -683,7 +684,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The name of job to update. Required.</summary>
+            /// <summary>Required. The name of job to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
@@ -939,7 +940,7 @@ namespace Google.Apis.Storagetransfer.v1
         /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
         /// name includes the operations collection id, however overriding users must ensure the name binding is the
         /// parent resource, without the operations collection id.</summary>
-        /// <param name="name">The value `transferOperations`.</param>
+        /// <param name="name">Required. The value `transferOperations`.</param>
         public virtual ListRequest List(string name)
         {
             return new ListRequest(service, name);
@@ -964,25 +965,27 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The value `transferOperations`.</summary>
+            /// <summary>Required. The value `transferOperations`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
-            /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
-            /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
-            /// `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array
-            /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
+            /// <summary>Required. A list of query parameters specified as JSON text in the form of:
+            /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
+            /// "operation_names":["opid1","opid2",...], "transfer_statuses":["status1","status2",...]}. Since
+            /// `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified
+            /// with array notation. `project_id` is required. `job_names`, `operation_names`, and `transfer_statuses`
+            /// are optional. The valid values for `transfer_statuses` are case-insensitive: `IN_PROGRESS`, `PAUSED`,
+            /// `SUCCESS`, `FAILED`, and `ABORTED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1018,6 +1021,15 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1035,22 +1047,13 @@ namespace Google.Apis.Storagetransfer.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
 
         /// <summary>Pauses a transfer operation.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the transfer operation. Required.</param>
+        /// <param name="name">Required. The name of the transfer operation.</param>
         public virtual PauseRequest Pause(Google.Apis.Storagetransfer.v1.Data.PauseTransferOperationRequest body, string name)
         {
             return new PauseRequest(service, body, name);
@@ -1069,7 +1072,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The name of the transfer operation. Required.</summary>
+            /// <summary>Required. The name of the transfer operation.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1118,7 +1121,7 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Resumes a transfer operation that is paused.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the transfer operation. Required.</param>
+        /// <param name="name">Required. The name of the transfer operation.</param>
         public virtual ResumeRequest Resume(Google.Apis.Storagetransfer.v1.Data.ResumeTransferOperationRequest body, string name)
         {
             return new ResumeRequest(service, body, name);
@@ -1137,7 +1140,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The name of the transfer operation. Required.</summary>
+            /// <summary>Required. The name of the transfer operation.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1193,11 +1196,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// security-credentials.html)).</summary>
     public class AwsAccessKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>AWS access key ID. Required.</summary>
+        /// <summary>Required. AWS access key ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessKeyId")]
         public virtual string AccessKeyId { get; set; } 
 
-        /// <summary>AWS secret access key. This field is not returned in RPC responses. Required.</summary>
+        /// <summary>Required. AWS secret access key. This field is not returned in RPC responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretAccessKey")]
         public virtual string SecretAccessKey { get; set; } 
 
@@ -1209,13 +1212,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// name is the S3 object's key name.</summary>
     public class AwsS3Data : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must
-        /// be granted to the access ID of the AWS access key. Required.</summary>
+        /// <summary>Required. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the
+        /// bucket must be granted to the access ID of the AWS access key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAccessKey")]
         public virtual AwsAccessKey AwsAccessKey { get; set; } 
 
-        /// <summary>S3 Bucket name (see [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-
-        /// bucket-get-location-example.html)). Required.</summary>
+        /// <summary>Required. S3 Bucket name (see [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev
+        /// /create-bucket-get-location-example.html)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; } 
 
@@ -1270,8 +1273,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
         public virtual System.Collections.Generic.IList<string> ErrorDetails { get; set; } 
 
-        /// <summary>A URL that refers to the target (a data source, a data sink, or an object) with which the error is
-        /// associated. Required.</summary>
+        /// <summary>Required. A URL that refers to the target (a data source, a data sink, or an object) with which the
+        /// error is associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1286,7 +1289,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual string ErrorCode { get; set; } 
 
-        /// <summary>Count of this type of error. Required.</summary>
+        /// <summary>Required. Count of this type of error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
         public virtual System.Nullable<long> ErrorCount { get; set; } 
 
@@ -1305,8 +1308,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// the object is updated.</summary>
     public class GcsData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage bucket name (see [Bucket Name
-        /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)). Required.</summary>
+        /// <summary>Required. Google Cloud Storage bucket name (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; } 
 
@@ -1317,7 +1320,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Google service account</summary>
     public class GoogleServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.</summary>
+        /// <summary>Email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
         public virtual string AccountEmail { get; set; } 
 
@@ -1360,8 +1363,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// * [ObjectConditions](#ObjectConditions) have no effect when filtering objects to transfer.</summary>
     public class HttpData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL that points to the file that stores the object list entries. This file must allow public
-        /// access.  Currently, only URLs with HTTP and HTTPS schemes are supported. Required.</summary>
+        /// <summary>Required. The URL that points to the file that stores the object list entries. This file must allow
+        /// public access.  Currently, only URLs with HTTP and HTTPS schemes are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
         public virtual string ListUrl { get; set; } 
 
@@ -1517,8 +1520,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndDate")]
         public virtual Date ScheduleEndDate { get; set; } 
 
-        /// <summary>The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past,
-        /// the transfer will run for the first time on the following day. Required.</summary>
+        /// <summary>Required. The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in
+        /// the past, the transfer will run for the first time on the following day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartDate")]
         public virtual Date ScheduleStartDate { get; set; } 
 
@@ -1770,7 +1773,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The ID of the Google Cloud Platform Project that owns the operation. Required.</summary>
+        /// <summary>The ID of the Google Cloud Platform Project that owns the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -1786,7 +1789,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transferJobName")]
         public virtual string TransferJobName { get; set; } 
 
-        /// <summary>Transfer specification. Required.</summary>
+        /// <summary>Transfer specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferSpec")]
         public virtual TransferSpec TransferSpec { get; set; } 
 
@@ -1853,13 +1856,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to UpdateTransferJob.</summary>
     public class UpdateTransferJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the Google Cloud Platform Console project that owns the job. Required.</summary>
+        /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The job to update. `transferJob` is expected to specify only three fields: `description`,
+        /// <summary>Required. The job to update. `transferJob` is expected to specify only three fields: `description`,
         /// `transferSpec`, and `status`.  An UpdateTransferJobRequest that specifies other fields will be rejected with
-        /// an error `INVALID_ARGUMENT`. Required.</summary>
+        /// an error `INVALID_ARGUMENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; } 
 

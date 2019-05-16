@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190503 (1583)
+ *      <tr><th>API Rev<td>20190513 (1593)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5051,29 +5051,15 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual System.Nullable<bool> Acknowledged { get; set; }
 
             /// <summary>The maximum number of orders to return in the response, used for paging. The default value is
-            /// 25 orders per page, and the maximum allowed value is 250 orders per page. Known issue: All List calls
-            /// will return all Orders without limit regardless of the value of this field.</summary>
+            /// 25 orders per page, and the maximum allowed value is 250 orders per page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>The ordering of the returned list. The only supported value are placedDate desc and placedDate
-            /// asc for now, which returns orders sorted by placement date. "placedDate desc" stands for listing orders
-            /// by placement date, from oldest to most recent. "placedDate asc" stands for listing orders by placement
-            /// date, from most recent to oldest. In future releases we'll support other sorting criteria.</summary>
+            /// <summary>Order results by placement date in descending or ascending order.
+            ///
+            /// Acceptable values are: - placedDateAsc - placedDateDesc</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
-
-            /// <summary>The ordering of the returned list. The only supported value are placedDate desc and placedDate
-            /// asc for now, which returns orders sorted by placement date. "placedDate desc" stands for listing orders
-            /// by placement date, from oldest to most recent. "placedDate asc" stands for listing orders by placement
-            /// date, from most recent to oldest. In future releases we'll support other sorting criteria.</summary>
-            public enum OrderByEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("placedDate asc")]
-                PlacedDateAsc,
-                [Google.Apis.Util.StringValueAttribute("placedDate desc")]
-                PlacedDateDesc,
-            }
+            public virtual string OrderBy { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -5089,14 +5075,14 @@ namespace Google.Apis.ShoppingContent.v2_1
 
             /// <summary>Obtains orders that match any of the specified statuses. Multiple values can be specified with
             /// comma separation. Additionally, please note that active is a shortcut for pendingShipment and
-            /// partiallyShipped, and completed is a shortcut for shipped , partiallyDelivered, delivered,
+            /// partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered,
             /// partiallyReturned, returned, and canceled.</summary>
             [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
 
             /// <summary>Obtains orders that match any of the specified statuses. Multiple values can be specified with
             /// comma separation. Additionally, please note that active is a shortcut for pendingShipment and
-            /// partiallyShipped, and completed is a shortcut for shipped , partiallyDelivered, delivered,
+            /// partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered,
             /// partiallyReturned, returned, and canceled.</summary>
             public enum StatusesEnum
             {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190415 (1565)
+ *      <tr><th>API Rev<td>20190510 (1590)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4297,6 +4297,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The location of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
         /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationLogArchivingEnabled")]
         public virtual System.Nullable<bool> ReplicationLogArchivingEnabled { get; set; } 
@@ -4371,6 +4375,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#backupRun.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The location of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

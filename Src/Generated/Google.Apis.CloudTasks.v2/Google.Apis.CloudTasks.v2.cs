@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190420 (1570)
+ *      <tr><th>API Rev<td>20190513 (1593)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -748,11 +748,12 @@ namespace Google.Apis.CloudTasks.v2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        /// <summary>Maximum page size.
                         ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use next_page_token in the
-                        /// response to determine if more tasks exist.</summary>
+                        /// Fewer tasks than requested might be returned, even if more tasks exist; use next_page_token
+                        /// in the response to determine if more tasks exist.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1278,6 +1279,14 @@ namespace Google.Apis.CloudTasks.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use the next_page_token in the
+                    /// response to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1298,14 +1307,6 @@ namespace Google.Apis.CloudTasks.v2
                     /// pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use the next_page_token in the
-                    /// response to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1341,6 +1342,15 @@ namespace Google.Apis.CloudTasks.v2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1353,15 +1363,6 @@ namespace Google.Apis.CloudTasks.v2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2081,8 +2082,6 @@ namespace Google.Apis.CloudTasks.v2.Data
     ///
     /// The message defines the HTTP request that is sent to an App Engine app when the task is dispatched.
     ///
-    /// This proto can only be used for tasks in a queue which has app_engine_http_queue set.
-    ///
     /// Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs
     /// /admin-api/access-control) Google IAM permission for the project and the following scope:
     ///
@@ -2113,9 +2112,12 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// follow redirects.
     ///
     /// The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` -
-    /// `299`]. `503` is considered an App Engine system error instead of an application error. Requests returning error
-    /// `503` will be retried regardless of retry configuration and not counted against retry counts. Any other response
-    /// code or a failure to receive a response before the deadline is a failed attempt.</summary>
+    /// `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not
+    /// receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503`
+    /// (Service Unavailable) is considered an App Engine system error instead of an application error and will cause
+    /// Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of
+    /// task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control
+    /// to throttle the queue.</summary>
     public class AppEngineHttpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Task-level setting for App Engine routing.

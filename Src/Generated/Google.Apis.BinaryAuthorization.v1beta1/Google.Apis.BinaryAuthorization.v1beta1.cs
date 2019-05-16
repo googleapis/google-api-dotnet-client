@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190503 (1583)
+ *      <tr><th>API Rev<td>20190511 (1591)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -1187,8 +1187,11 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             }
         }
 
-        /// <summary>Gets the policy for this project. Returns a default policy if the project does not have
-        /// one.</summary>
+        /// <summary>A policy specifies the attestors that must attest to a container image, before the project is
+        /// allowed to deploy that image. There is at most one policy per project. All image admission requests are
+        /// permitted if a project has no policy.
+        ///
+        /// Gets the policy for this project. Returns a default policy if the project does not have one.</summary>
         /// <param name="name">Required. The resource name of the policy to retrieve, in the format
         /// `projects/policy`.</param>
         public virtual GetPolicyRequest GetPolicy(string name)
@@ -1196,8 +1199,11 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             return new GetPolicyRequest(service, name);
         }
 
-        /// <summary>Gets the policy for this project. Returns a default policy if the project does not have
-        /// one.</summary>
+        /// <summary>A policy specifies the attestors that must attest to a container image, before the project is
+        /// allowed to deploy that image. There is at most one policy per project. All image admission requests are
+        /// permitted if a project has no policy.
+        ///
+        /// Gets the policy for this project. Returns a default policy if the project does not have one.</summary>
         public class GetPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new GetPolicy request.</summary>

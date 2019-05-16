@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190506 (1586)
+ *      <tr><th>API Rev<td>20190514 (1594)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1044,13 +1044,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
-                    /// default language is used. [Many languages](https://cloud.google.com/dialogflow-
-                    /// enterprise/docs/reference/language) are supported. Note: languages must be enabled in the agent
-                    /// before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1059,6 +1052,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
+                    /// default language is used. [Many languages](https://cloud.google.com/dialogflow-
+                    /// enterprise/docs/reference/language) are supported. Note: languages must be enabled in the agent
+                    /// before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1094,15 +1094,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1115,6 +1106,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1557,15 +1557,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
-                                /// <summary>Optional. The next_page_token value returned from a previous list
-                                /// request.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string PageToken { get; set; }
-
                                 /// <summary>Optional. The maximum number of items to return in a single page. By
                                 /// default 100 and at most 1000.</summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>Optional. The next_page_token value returned from a previous list
+                                /// request.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
 
 
                                 ///<summary>Gets the method name.</summary>
@@ -1601,18 +1601,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                             Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
                                         });
                                     RequestParameters.Add(
-                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        "pageSize", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageToken",
+                                            Name = "pageSize",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
                                             Pattern = null,
                                         });
                                     RequestParameters.Add(
-                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        "pageToken", new Google.Apis.Discovery.Parameter
                                         {
-                                            Name = "pageSize",
+                                            Name = "pageToken",
                                             IsRequired = false,
                                             ParameterType = "query",
                                             DefaultValue = null,
@@ -2759,6 +2759,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -2778,15 +2787,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2822,24 +2822,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2852,6 +2834,24 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3032,6 +3032,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Creates a new document.
                     ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
                     /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The knoweldge base to create a document for. Format:
@@ -3042,6 +3045,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Creates a new document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     ///
                     /// Operation </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
@@ -3106,6 +3112,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Deletes the specified document.
                     ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
                     /// Operation </summary>
                     /// <param name="name">The name of the document to delete. Format: `projects//knowledgeBases//documents/`.</param>
                     public virtual DeleteRequest Delete(string name)
@@ -3114,6 +3123,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Deletes the specified document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
                     ///
                     /// Operation </summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
@@ -3169,7 +3181,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     }
 
-                    /// <summary>Retrieves the specified document.</summary>
+                    /// <summary>Retrieves the specified document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.</summary>
                     /// <param name="name">Required. The name of the document to retrieve. Format
                     /// `projects//knowledgeBases//documents/`.</param>
                     public virtual GetRequest Get(string name)
@@ -3177,7 +3192,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Retrieves the specified document.</summary>
+                    /// <summary>Retrieves the specified document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.</summary>
                     public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Document>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3231,7 +3249,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     }
 
-                    /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                    /// <summary>Returns the list of all documents of the knowledge base.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.</summary>
                     /// <param name="parent">Required. The knowledge base to list all documents for. Format:
                     /// `projects//knowledgeBases/`.</param>
                     public virtual ListRequest List(string parent)
@@ -3239,7 +3260,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                    /// <summary>Returns the list of all documents of the knowledge base.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.</summary>
                     public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListDocumentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3321,7 +3345,12 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>Updates the specified document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
+                    /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The document resource name. The name must be empty when creating a document. Format:
                     /// `projects//knowledgeBases//documents/`.</param>
@@ -3330,7 +3359,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <summary>Updates the specified document.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
+                    /// Operation </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3409,7 +3443,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Reloads the specified document from its specified source, content_uri or content. The
                     /// previously loaded content of the document will be deleted. Note: Even when the content of the
                     /// document has not changed, there still may be side effects because of internal implementation
-                    /// changes. Operation </summary>
+                    /// changes.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
+                    /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The name of the document to reload. Format: `projects//knowledgeBases//documents/`</param>
                     public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ReloadDocumentRequest body, string name)
@@ -3420,7 +3459,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Reloads the specified document from its specified source, content_uri or content. The
                     /// previously loaded content of the document will be deleted. Note: Even when the content of the
                     /// document has not changed, there still may be side effects because of internal implementation
-                    /// changes. Operation </summary>
+                    /// changes.
+                    ///
+                    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`.
+                    ///
+                    /// Operation </summary>
                     public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Reload request.</summary>
@@ -3482,7 +3526,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
                 }
 
-                /// <summary>Creates a knowledge base.</summary>
+                /// <summary>Creates a knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The project to create a knowledge base for. Format: `projects/`.</param>
                 public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase body, string parent)
@@ -3490,7 +3537,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a knowledge base.</summary>
+                /// <summary>Creates a knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3550,7 +3600,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Deletes the specified knowledge base.</summary>
+                /// <summary>Deletes the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 /// <param name="name">Required. The name of the knowledge base to delete. Format:
                 /// `projects//knowledgeBases/`.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -3558,7 +3611,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the specified knowledge base.</summary>
+                /// <summary>Deletes the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3626,7 +3682,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Retrieves the specified knowledge base.</summary>
+                /// <summary>Retrieves the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 /// <param name="name">Required. The name of the knowledge base to retrieve. Format
                 /// `projects//knowledgeBases/`.</param>
                 public virtual GetRequest Get(string name)
@@ -3634,7 +3693,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Retrieves the specified knowledge base.</summary>
+                /// <summary>Retrieves the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3688,14 +3750,20 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+                /// <summary>Returns the list of all knowledge bases of the specified agent.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 /// <param name="parent">Required. The project to list of knowledge bases for. Format: `projects/`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+                /// <summary>Returns the list of all knowledge bases of the specified agent.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3775,7 +3843,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Updates the specified knowledge base.</summary>
+                /// <summary>Updates the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The knowledge base resource name. The name must be empty when creating a knowledge base. Format:
                 /// `projects//knowledgeBases/`.</param>
@@ -3784,7 +3855,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified knowledge base.</summary>
+                /// <summary>Updates the specified knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+                /// `projects.knowledgeBases`.</summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5332,6 +5406,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Creates a new document.
                 ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
                 /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The knoweldge base to create a document for. Format:
@@ -5342,6 +5419,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Creates a new document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
                 ///
                 /// Operation </summary>
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
@@ -5406,6 +5486,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes the specified document.
                 ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
                 /// Operation </summary>
                 /// <param name="name">The name of the document to delete. Format: `projects//knowledgeBases//documents/`.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -5414,6 +5497,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Deletes the specified document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
                 ///
                 /// Operation </summary>
                 public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
@@ -5469,7 +5555,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Retrieves the specified document.</summary>
+                /// <summary>Retrieves the specified document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.</summary>
                 /// <param name="name">Required. The name of the document to retrieve. Format
                 /// `projects//knowledgeBases//documents/`.</param>
                 public virtual GetRequest Get(string name)
@@ -5477,7 +5566,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Retrieves the specified document.</summary>
+                /// <summary>Retrieves the specified document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.</summary>
                 public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Document>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5531,7 +5623,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                /// <summary>Returns the list of all documents of the knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.</summary>
                 /// <param name="parent">Required. The knowledge base to list all documents for. Format:
                 /// `projects//knowledgeBases/`.</param>
                 public virtual ListRequest List(string parent)
@@ -5539,7 +5634,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                /// <summary>Returns the list of all documents of the knowledge base.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.</summary>
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListDocumentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5620,7 +5718,12 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 }
 
-                /// <summary>Updates the specified document. Operation </summary>
+                /// <summary>Updates the specified document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The document resource name. The name must be empty when creating a document. Format:
                 /// `projects//knowledgeBases//documents/`.</param>
@@ -5629,7 +5732,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified document. Operation </summary>
+                /// <summary>Updates the specified document.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
+                /// Operation </summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5707,7 +5815,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Reloads the specified document from its specified source, content_uri or content. The
                 /// previously loaded content of the document will be deleted. Note: Even when the content of the
                 /// document has not changed, there still may be side effects because of internal implementation
-                /// changes. Operation </summary>
+                /// changes.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the document to reload. Format: `projects//knowledgeBases//documents/`</param>
                 public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ReloadDocumentRequest body, string name)
@@ -5718,7 +5831,12 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Reloads the specified document from its specified source, content_uri or content. The
                 /// previously loaded content of the document will be deleted. Note: Even when the content of the
                 /// document has not changed, there still may be side effects because of internal implementation
-                /// changes. Operation </summary>
+                /// changes.
+                ///
+                /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                /// `projects.knowledgeBases.documents`.
+                ///
+                /// Operation </summary>
                 public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Reload request.</summary>
@@ -5780,7 +5898,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
             }
 
-            /// <summary>Creates a knowledge base.</summary>
+            /// <summary>Creates a knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project to create a knowledge base for. Format: `projects/`.</param>
             public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase body, string parent)
@@ -5788,7 +5909,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a knowledge base.</summary>
+            /// <summary>Creates a knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -5848,7 +5972,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             }
 
-            /// <summary>Deletes the specified knowledge base.</summary>
+            /// <summary>Deletes the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             /// <param name="name">Required. The name of the knowledge base to delete. Format:
             /// `projects//knowledgeBases/`.</param>
             public virtual DeleteRequest Delete(string name)
@@ -5856,7 +5983,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes the specified knowledge base.</summary>
+            /// <summary>Deletes the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -5924,7 +6054,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             }
 
-            /// <summary>Retrieves the specified knowledge base.</summary>
+            /// <summary>Retrieves the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             /// <param name="name">Required. The name of the knowledge base to retrieve. Format
             /// `projects//knowledgeBases/`.</param>
             public virtual GetRequest Get(string name)
@@ -5932,7 +6065,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Retrieves the specified knowledge base.</summary>
+            /// <summary>Retrieves the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -5986,14 +6122,20 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             }
 
-            /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+            /// <summary>Returns the list of all knowledge bases of the specified agent.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             /// <param name="parent">Required. The project to list of knowledge bases for. Format: `projects/`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+            /// <summary>Returns the list of all knowledge bases of the specified agent.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -6073,7 +6215,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             }
 
-            /// <summary>Updates the specified knowledge base.</summary>
+            /// <summary>Updates the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The knowledge base resource name. The name must be empty when creating a knowledge base. Format:
             /// `projects//knowledgeBases/`.</param>
@@ -6082,7 +6227,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the specified knowledge base.</summary>
+            /// <summary>Updates the specified knowledge base.
+            ///
+            /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
+            /// `projects.knowledgeBases`.</summary>
             public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1KnowledgeBase>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6470,8 +6618,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Optional. The list of platforms for which the first response will be taken from among the messages
-        /// assigned to the DEFAULT_PLATFORM.</summary>
+        /// <summary>Optional. The list of platforms for which the first responses will be copied from the messages in
+        /// PLATFORM_UNSPECIFIED (i.e. default platform).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultResponsePlatforms")]
         public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; } 
 
@@ -7580,8 +7728,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     /// <summary>A document resource.
     ///
-    /// Note: resource `projects.agent.knowledgeBases.documents` is deprecated, please use
-    /// `projects.knowledgeBases.documents` instead.</summary>
+    /// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+    /// `projects.knowledgeBases.documents`.</summary>
     public class GoogleCloudDialogflowV2beta1Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge
@@ -7826,8 +7974,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Optional. The list of platforms for which the first response will be taken from among the messages
-        /// assigned to the DEFAULT_PLATFORM.</summary>
+        /// <summary>Optional. The list of platforms for which the first responses will be copied from the messages in
+        /// PLATFORM_UNSPECIFIED (i.e. default platform).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultResponsePlatforms")]
         public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; } 
 
@@ -8537,8 +8685,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     /// <summary>Represents knowledge base resource.
     ///
-    /// Note: resource `projects.agent.knowledgeBases` is deprecated, please use `projects.knowledgeBases`
-    /// instead.</summary>
+    /// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeBase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise,

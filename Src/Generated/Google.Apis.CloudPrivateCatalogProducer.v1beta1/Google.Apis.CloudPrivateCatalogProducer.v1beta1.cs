@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://sites.google.com/corp/google.com/cloudprivatecatalog'>Cloud Private Catalog Producer API</a>
+ *          <td><a href='https://cloud.google.com/private-catalog/'>Cloud Private Catalog Producer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190501 (1581)
+ *      <tr><th>API Rev<td>20190511 (1591)
  *      <tr><th>API Docs
- *          <td><a href='https://sites.google.com/corp/google.com/cloudprivatecatalog'>
- *              https://sites.google.com/corp/google.com/cloudprivatecatalog</a>
+ *          <td><a href='https://cloud.google.com/private-catalog/'>
+ *              https://cloud.google.com/private-catalog/</a>
  *      <tr><th>Discovery Name<td>cloudprivatecatalogproducer
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud Private Catalog Producer API can be found at
- * <a href='https://sites.google.com/corp/google.com/cloudprivatecatalog'>https://sites.google.com/corp/google.com/cloudprivatecatalog</a>.
+ * <a href='https://cloud.google.com/private-catalog/'>https://cloud.google.com/private-catalog/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -1886,10 +1886,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             }
 
 
-            /// <summary>The resource name of the parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>A pagination token returned from a previous call to ListCatalogs that indicates where this
             /// listing should continue from. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1898,6 +1894,10 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             /// <summary>The maximum number of catalogs to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The resource name of the parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1924,15 +1924,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1945,6 +1936,15 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3103,8 +3103,8 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190418 (1568)
+ *      <tr><th>API Rev<td>20190423 (1573)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6970,7 +6970,8 @@ namespace Google.Apis.Container.v1.Data
         public virtual NodeConfig NodeConfig { get; set; } 
 
         /// <summary>[Output only] The size of the address space on each node for hosting containers. This is
-        /// provisioned from within the `container_ipv4_cidr` range.</summary>
+        /// provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in
+        /// route-based network mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrSize")]
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; } 
 

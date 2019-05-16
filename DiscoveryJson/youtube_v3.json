@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/06yl1qgwTEJKU1qLabeylcKjwVE\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/iJCWgcHgub352FxdGhLwKx-bej4\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190422",
+ "revision": "20190513",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -746,11 +746,9 @@
      "enum": [
       "dash",
       "hls",
-      "rtmp",
-      "webrtc"
+      "rtmp"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""

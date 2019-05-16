@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190514 (1594)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -766,8 +766,8 @@ namespace Google.Apis.CloudShell.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

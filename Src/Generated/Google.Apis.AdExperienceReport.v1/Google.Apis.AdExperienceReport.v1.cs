@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190506 (1586)
+ *      <tr><th>API Rev<td>20190513 (1593)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>

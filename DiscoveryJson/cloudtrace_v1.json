@@ -1,44 +1,33 @@
 {
+  "canonicalName": "Cloud Trace",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/trace.readonly": {
+          "description": "Read Trace data for a project or application"
+        },
+        "https://www.googleapis.com/auth/trace.append": {
+          "description": "Write Trace data for a project or application"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://cloudtrace.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "cloudtrace",
+  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Stackdriver Trace API",
   "ownerName": "Google",
   "resources": {
     "projects": {
-      "methods": {
-        "patchTraces": {
-          "request": {
-            "$ref": "Traces"
-          },
-          "description": "Sends new traces to Stackdriver Trace or updates existing traces. If the ID\nof a trace that you send matches that of an existing trace, any fields\nin the existing trace and its spans are overwritten by the provided values,\nand any new fields provided are merged with the existing trace data. If the\nID does not match, a new trace is created.",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "projectId"
-          ],
-          "httpMethod": "PATCH",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/trace.append"
-          ],
-          "parameters": {
-            "projectId": {
-              "description": "ID of the Cloud project where the trace data is stored.",
-              "required": true,
-              "type": "string",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/projects/{projectId}/traces",
-          "path": "v1/projects/{projectId}/traces",
-          "id": "cloudtrace.projects.patchTraces"
-        }
-      },
       "resources": {
         "traces": {
           "methods": {
             "list": {
-              "description": "Returns of a list of traces that match the specified filter conditions.",
               "response": {
                 "$ref": "ListTracesResponse"
               },
@@ -48,26 +37,26 @@
               "httpMethod": "GET",
               "parameters": {
                 "pageSize": {
-                  "description": "Maximum number of traces to return. If not specified or \u003c= 0, the\nimplementation selects a reasonable value.  The implementation may\nreturn fewer traces than the requested page size. Optional.",
-                  "format": "int32",
                   "type": "integer",
-                  "location": "query"
+                  "location": "query",
+                  "description": "Maximum number of traces to return. If not specified or \u003c= 0, the\nimplementation selects a reasonable value.  The implementation may\nreturn fewer traces than the requested page size. Optional.",
+                  "format": "int32"
                 },
                 "view": {
+                  "description": "Type of data returned for traces in the list. Optional. Default is\n`MINIMAL`.",
+                  "type": "string",
                   "location": "query",
                   "enum": [
                     "VIEW_TYPE_UNSPECIFIED",
                     "MINIMAL",
                     "ROOTSPAN",
                     "COMPLETE"
-                  ],
-                  "description": "Type of data returned for traces in the list. Optional. Default is\n`MINIMAL`.",
-                  "type": "string"
+                  ]
                 },
                 "orderBy": {
-                  "location": "query",
                   "description": "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n*   `trace_id`\n*   `name` (`name` field of root span in the trace)\n*   `duration` (difference between `end_time` and `start_time` fields of\n     the root span)\n*   `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "projectId": {
                   "description": "ID of the Cloud project where the trace data is stored.",
@@ -86,14 +75,14 @@
                   "format": "google-datetime",
                   "type": "string"
                 },
-                "startTime": {
+                "pageToken": {
                   "location": "query",
-                  "description": "Start of the time interval (inclusive) during which the trace data was\ncollected from the application.",
-                  "format": "google-datetime",
+                  "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
                   "type": "string"
                 },
-                "pageToken": {
-                  "description": "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional.",
+                "startTime": {
+                  "description": "Start of the time interval (inclusive) during which the trace data was\ncollected from the application.",
+                  "format": "google-datetime",
                   "type": "string",
                   "location": "query"
                 }
@@ -104,10 +93,10 @@
               ],
               "flatPath": "v1/projects/{projectId}/traces",
               "path": "v1/projects/{projectId}/traces",
-              "id": "cloudtrace.projects.traces.list"
+              "id": "cloudtrace.projects.traces.list",
+              "description": "Returns of a list of traces that match the specified filter conditions."
             },
             "get": {
-              "description": "Gets a single trace by its ID.",
               "response": {
                 "$ref": "Trace"
               },
@@ -116,43 +105,100 @@
                 "traceId"
               ],
               "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/trace.readonly"
-              ],
               "parameters": {
-                "traceId": {
-                  "description": "ID of the trace to return.",
+                "projectId": {
+                  "description": "ID of the Cloud project where the trace data is stored.",
                   "required": true,
                   "type": "string",
                   "location": "path"
                 },
-                "projectId": {
+                "traceId": {
                   "location": "path",
-                  "description": "ID of the Cloud project where the trace data is stored.",
+                  "description": "ID of the trace to return.",
                   "required": true,
                   "type": "string"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/trace.readonly"
+              ],
               "flatPath": "v1/projects/{projectId}/traces/{traceId}",
               "path": "v1/projects/{projectId}/traces/{traceId}",
-              "id": "cloudtrace.projects.traces.get"
+              "id": "cloudtrace.projects.traces.get",
+              "description": "Gets a single trace by its ID."
             }
           }
+        }
+      },
+      "methods": {
+        "patchTraces": {
+          "parameters": {
+            "projectId": {
+              "description": "ID of the Cloud project where the trace data is stored.",
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/trace.append"
+          ],
+          "flatPath": "v1/projects/{projectId}/traces",
+          "path": "v1/projects/{projectId}/traces",
+          "id": "cloudtrace.projects.patchTraces",
+          "description": "Sends new traces to Stackdriver Trace or updates existing traces. If the ID\nof a trace that you send matches that of an existing trace, any fields\nin the existing trace and its spans are overwritten by the provided values,\nand any new fields provided are merged with the existing trace data. If the\nID does not match, a new trace is created.",
+          "request": {
+            "$ref": "Traces"
+          },
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "projectId"
+          ],
+          "httpMethod": "PATCH"
         }
       }
     }
   },
   "parameters": {
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "access_token": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
     },
     "$.xgafv": {
       "description": "V1 error format.",
@@ -168,18 +214,16 @@
       ]
     },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -191,40 +235,16 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
       "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
+      "description": "Data format for response.",
+      "default": "json"
     }
   },
   "version": "v1",
   "baseUrl": "https://cloudtrace.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Trace API directly. If you are looking to instrument your application for Stackdriver Trace, we recommend using OpenCensus.\n",
   "servicePath": "",
+  "description": "Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Trace API directly. If you are looking to instrument your application for Stackdriver Trace, we recommend using OpenCensus.\n",
+  "kind": "discovery#restDescription",
   "basePath": "",
   "id": "cloudtrace:v1",
   "documentationLink": "https://cloud.google.com/trace",
@@ -232,36 +252,36 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Traces": {
-      "description": "List of new or updated traces.",
-      "type": "object",
-      "properties": {
-        "traces": {
-          "description": "List of traces.",
-          "type": "array",
-          "items": {
-            "$ref": "Trace"
-          }
-        }
-      },
-      "id": "Traces"
-    },
     "TraceSpan": {
-      "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace.",
       "type": "object",
       "properties": {
+        "parentSpanId": {
+          "description": "ID of the parent span, if any. Optional.",
+          "format": "uint64",
+          "type": "string"
+        },
+        "endTime": {
+          "description": "End time of the span in nanoseconds from the UNIX epoch.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Start time of the span in nanoseconds from the UNIX epoch.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "kind": {
-          "enum": [
-            "SPAN_KIND_UNSPECIFIED",
-            "RPC_SERVER",
-            "RPC_CLIENT"
-          ],
           "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span.",
           "type": "string",
           "enumDescriptions": [
             "Unspecified.",
             "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
             "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."
+          ],
+          "enum": [
+            "SPAN_KIND_UNSPECIFIED",
+            "RPC_SERVER",
+            "RPC_CLIENT"
           ]
         },
         "labels": {
@@ -279,24 +299,10 @@
           "description": "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace. For example, `2205310701640571284`.",
           "format": "uint64",
           "type": "string"
-        },
-        "parentSpanId": {
-          "description": "ID of the parent span, if any. Optional.",
-          "format": "uint64",
-          "type": "string"
-        },
-        "endTime": {
-          "description": "End time of the span in nanoseconds from the UNIX epoch.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "startTime": {
-          "description": "Start time of the span in nanoseconds from the UNIX epoch.",
-          "format": "google-datetime",
-          "type": "string"
         }
       },
-      "id": "TraceSpan"
+      "id": "TraceSpan",
+      "description": "A span represents a single timed event within a trace. Spans can be nested\nand form a trace tree. Often, a trace contains a root span that describes the\nend-to-end latency of an operation and, optionally, one or more subspans for\nits suboperations. Spans do not need to be contiguous. There may be gaps\nbetween spans in a trace."
     },
     "ListTracesResponse": {
       "description": "The response message for the `ListTraces` method.",
@@ -326,48 +332,42 @@
       "description": "A trace describes how long it takes for an application to perform an\noperation. It consists of a set of spans, each of which represent a single\ntimed event within the operation.",
       "type": "object",
       "properties": {
-        "traceId": {
-          "description": "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string. For example,\n`382d4f4c6b7bb2f4a972559d9085001d`.",
-          "type": "string"
-        },
         "projectId": {
           "description": "Project ID of the Cloud project where the trace data is stored.",
           "type": "string"
         },
         "spans": {
-          "description": "Collection of spans in the trace.",
           "type": "array",
           "items": {
             "$ref": "TraceSpan"
-          }
+          },
+          "description": "Collection of spans in the trace."
+        },
+        "traceId": {
+          "type": "string",
+          "description": "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string. For example,\n`382d4f4c6b7bb2f4a972559d9085001d`."
         }
       },
       "id": "Trace"
+    },
+    "Traces": {
+      "description": "List of new or updated traces.",
+      "type": "object",
+      "properties": {
+        "traces": {
+          "description": "List of traces.",
+          "type": "array",
+          "items": {
+            "$ref": "Trace"
+          }
+        }
+      },
+      "id": "Traces"
     }
   },
   "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "canonicalName": "Cloud Trace",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/trace.readonly": {
-          "description": "Read Trace data for a project or application"
-        },
-        "https://www.googleapis.com/auth/trace.append": {
-          "description": "Write Trace data for a project or application"
-        },
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://cloudtrace.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "cloudtrace",
-  "batchPath": "batch"
+  }
 }

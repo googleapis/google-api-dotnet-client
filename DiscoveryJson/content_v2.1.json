@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/Hlo2XoRCVhQBqZtATZWP110nVQU\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/jqePbIodVf2BtUKP8NhT41qx4FU\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190503",
+ "revision": "20190513",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -8078,7 +8078,7 @@
       },
       "maxResults": {
        "type": "integer",
-       "description": "The maximum number of orders to return in the response, used for paging. The default value is 25 orders per page, and the maximum allowed value is 250 orders per page.\nKnown issue: All List calls will return all Orders without limit regardless of the value of this field.",
+       "description": "The maximum number of orders to return in the response, used for paging. The default value is 25 orders per page, and the maximum allowed value is 250 orders per page.",
        "format": "uint32",
        "location": "query"
       },
@@ -8091,15 +8091,7 @@
       },
       "orderBy": {
        "type": "string",
-       "description": "The ordering of the returned list. The only supported value are placedDate desc and placedDate asc for now, which returns orders sorted by placement date. \"placedDate desc\" stands for listing orders by placement date, from oldest to most recent. \"placedDate asc\" stands for listing orders by placement date, from most recent to oldest. In future releases we'll support other sorting criteria.",
-       "enum": [
-        "placedDate asc",
-        "placedDate desc"
-       ],
-       "enumDescriptions": [
-        "",
-        ""
-       ],
+       "description": "Order results by placement date in descending or ascending order.\n\nAcceptable values are:\n- placedDateAsc\n- placedDateDesc",
        "location": "query"
       },
       "pageToken": {
@@ -8119,7 +8111,7 @@
       },
       "statuses": {
        "type": "string",
-       "description": "Obtains orders that match any of the specified statuses. Multiple values can be specified with comma separation. Additionally, please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped , partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
+       "description": "Obtains orders that match any of the specified statuses. Multiple values can be specified with comma separation. Additionally, please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
        "enum": [
         "active",
         "canceled",
