@@ -1,47 +1,23 @@
 {
-  "basePath": "",
-  "id": "indexing:v3",
-  "documentationLink": "https://developers.google.com/search/apis/indexing-api/",
-  "revision": "20190509",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "UrlNotificationMetadata": {
-      "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string",
-          "description": "URL to which this metadata refers."
-        },
-        "latestRemove": {
-          "$ref": "UrlNotification",
-          "description": "Latest notification received with type `URL_REMOVED`."
-        },
-        "latestUpdate": {
-          "$ref": "UrlNotification",
-          "description": "Latest notification received with type `URL_UPDATED`."
-        }
-      },
-      "id": "UrlNotificationMetadata"
-    },
     "UrlNotification": {
-      "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
       "type": "object",
       "properties": {
         "type": {
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "The given URL (Web document) has been updated.",
-            "The given URL (Web document) has been deleted."
-          ],
           "enum": [
             "URL_NOTIFICATION_TYPE_UNSPECIFIED",
             "URL_UPDATED",
             "URL_DELETED"
           ],
-          "description": "The URL life cycle event that Google is being notified about."
+          "description": "The URL life cycle event that Google is being notified about.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified.",
+            "The given URL (Web document) has been updated.",
+            "The given URL (Web document) has been deleted."
+          ]
         },
         "url": {
           "description": "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google.",
@@ -53,10 +29,10 @@
           "type": "string"
         }
       },
-      "id": "UrlNotification"
+      "id": "UrlNotification",
+      "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document."
     },
     "PublishUrlNotificationResponse": {
-      "description": "Output for PublishUrlNotification",
       "type": "object",
       "properties": {
         "urlNotificationMetadata": {
@@ -64,13 +40,33 @@
           "description": "Description of the notification events received for this URL."
         }
       },
-      "id": "PublishUrlNotificationResponse"
+      "id": "PublishUrlNotificationResponse",
+      "description": "Output for PublishUrlNotification"
+    },
+    "UrlNotificationMetadata": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "description": "URL to which this metadata refers.",
+          "type": "string"
+        },
+        "latestRemove": {
+          "$ref": "UrlNotification",
+          "description": "Latest notification received with type `URL_REMOVED`."
+        },
+        "latestUpdate": {
+          "$ref": "UrlNotification",
+          "description": "Latest notification received with type `URL_UPDATED`."
+        }
+      },
+      "id": "UrlNotificationMetadata",
+      "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL."
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Indexing",
   "auth": {
@@ -93,13 +89,6 @@
     "urlNotifications": {
       "methods": {
         "publish": {
-          "flatPath": "v3/urlNotifications:publish",
-          "path": "v3/urlNotifications:publish",
-          "id": "indexing.urlNotifications.publish",
-          "request": {
-            "$ref": "UrlNotification"
-          },
-          "description": "Notifies that a URL has been updated or deleted.",
           "response": {
             "$ref": "PublishUrlNotificationResponse"
           },
@@ -108,7 +97,14 @@
           "scopes": [
             "https://www.googleapis.com/auth/indexing"
           ],
-          "parameters": {}
+          "parameters": {},
+          "flatPath": "v3/urlNotifications:publish",
+          "path": "v3/urlNotifications:publish",
+          "id": "indexing.urlNotifications.publish",
+          "request": {
+            "$ref": "UrlNotification"
+          },
+          "description": "Notifies that a URL has been updated or deleted."
         },
         "getMetadata": {
           "response": {
@@ -135,13 +131,40 @@
     }
   },
   "parameters": {
-    "alt": {
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
       "type": "string",
       "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
+        "v1 error format",
+        "v2 error format"
       ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "alt": {
       "location": "query",
       "description": "Data format for response.",
       "default": "json",
@@ -149,6 +172,12 @@
         "json",
         "media",
         "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ]
     },
     "key": {
@@ -176,44 +205,15 @@
       "type": "string",
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
     }
   },
   "version": "v3",
   "baseUrl": "https://indexing.googleapis.com/",
   "servicePath": "",
   "description": "Notifies Google when your web pages change.",
-  "kind": "discovery#restDescription"
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "id": "indexing:v3",
+  "documentationLink": "https://developers.google.com/search/apis/indexing-api/",
+  "revision": "20190509"
 }

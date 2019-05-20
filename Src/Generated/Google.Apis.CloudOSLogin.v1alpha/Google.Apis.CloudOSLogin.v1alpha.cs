@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190503 (1583)
+ *      <tr><th>API Rev<td>20190516 (1596)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>
  *              https://cloud.google.com/compute/docs/oslogin/</a>
@@ -733,6 +733,14 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The project ID of the Google Cloud Platform project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
+            /// <summary>A system ID for filtering the results of the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SystemId { get; set; }
+
             /// <summary>The type of operating system associated with the account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operatingSystemType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OperatingSystemTypeEnum> OperatingSystemType { get; set; }
@@ -747,14 +755,6 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
                 WINDOWS,
             }
-
-            /// <summary>The project ID of the Google Cloud Platform project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
-            /// <summary>A system ID for filtering the results of the request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SystemId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -790,15 +790,6 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                         Pattern = @"^users/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "operatingSystemType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "operatingSystemType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -811,6 +802,15 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                     "systemId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "systemId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "operatingSystemType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "operatingSystemType",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

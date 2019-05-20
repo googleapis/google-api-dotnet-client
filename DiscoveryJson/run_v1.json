@@ -1,129 +1,4 @@
 {
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Run API",
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "get": {
-              "description": "Gets information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "path": "v1/{+name}",
-              "id": "run.projects.locations.get"
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://run.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
-  "servicePath": "",
-  "basePath": "",
-  "id": "run:v1",
-  "documentationLink": "https://cloud.google.com/run/",
-  "revision": "20190514",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -131,6 +6,10 @@
       "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
+        "name": {
+          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
+        },
         "locationId": {
           "description": "The canonical id for this location. For example: `\"us-east1\"`.",
           "type": "string"
@@ -148,25 +27,21 @@
           "type": "object"
         },
         "labels": {
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string"
+          },
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object"
         }
       },
       "id": "Location"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
   "canonicalName": "Cloud Run",
   "auth": {
     "oauth2": {
@@ -179,5 +54,130 @@
   },
   "rootUrl": "https://run.googleapis.com/",
   "ownerDomain": "google.com",
-  "name": "run"
+  "name": "run",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Run API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "get": {
+              "response": {
+                "$ref": "Location"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "path": "v1/{+name}",
+              "id": "run.projects.locations.get",
+              "description": "Gets information about a location."
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://run.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
+  "servicePath": "",
+  "basePath": "",
+  "revision": "20190515",
+  "documentationLink": "https://cloud.google.com/run/",
+  "id": "run:v1"
 }

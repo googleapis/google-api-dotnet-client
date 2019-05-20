@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190513 (1593)
+ *      <tr><th>API Rev<td>20190514 (1594)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2785,9 +2785,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
         }
 
-        /// <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
-        /// on top of an HTTP POST method. For details of the request and response format, see the **guide to the
-        /// [predict request format](/ml-engine/docs/v1/predict-request)**.</summary>
+        /// <summary>Performs prediction on the data in the request. AI Platform implements a custom `predict` verb on
+        /// top of an HTTP POST method. For details of the request and response format, see the **guide to the [predict
+        /// request format](/ml-engine/docs/v1/predict-request)**.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The resource name of a model or a version.
         ///
@@ -2797,9 +2797,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             return new PredictRequest(service, body, name);
         }
 
-        /// <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
-        /// on top of an HTTP POST method. For details of the request and response format, see the **guide to the
-        /// [predict request format](/ml-engine/docs/v1/predict-request)**.</summary>
+        /// <summary>Performs prediction on the data in the request. AI Platform implements a custom `predict` verb on
+        /// top of an HTTP POST method. For details of the request and response format, see the **guide to the [predict
+        /// request format](/ml-engine/docs/v1/predict-request)**.</summary>
         public class PredictRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
@@ -2972,7 +2972,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
-        /// <summary>Cloud ML Engine runtime version on which the built-in algorithm was trained.</summary>
+        /// <summary>AI Platform runtime version on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -3080,8 +3080,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Represents a set of hyperparameters to optimize.</summary>
     public class GoogleCloudMlV1HyperparameterSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default
-        /// CloudML Engine hyperparameter tuning algorithm if unspecified.</summary>
+        /// <summary>Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI
+        /// Platform hyperparameter tuning algorithm if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; } 
 
@@ -3103,7 +3103,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string HyperparameterMetricTag { get; set; } 
 
         /// <summary>Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning
-        /// job. You can specify this field to override the default failing criteria for Cloud ML Engine hyperparameter
+        /// job. You can specify this field to override the default failing criteria for AI Platform hyperparameter
         /// tuning jobs.
         ///
         /// Defaults to zero, which means the service decides when a hyperparameter job should fail.</summary>
@@ -3322,11 +3322,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. If true, enables logging of stderr and stdout streams for online prediction in
-        /// Stackdriver Logging. These can be more verbose than the standard access logs (see
-        /// `online_prediction_logging`) and thus can incur higher cost. However, they are helpful for debugging. Note
-        /// that since Stackdriver logs may incur a cost, particularly if the total QPS in your project is high, be sure
-        /// to estimate your costs before enabling this flag.
+        /// <summary>Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Stackdriver
+        /// Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can
+        /// incur higher cost. However, they are helpful for debugging. Note that [Stackdriver logs may incur a
+        /// cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate
+        /// your costs before enabling this option.
         ///
         /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionConsoleLogging")]
@@ -3334,17 +3334,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
 
         /// <summary>Optional. If true, online prediction access logs are sent to StackDriver Logging. These logs are
         /// like standard server access logs, containing information like timestamp and latency for each request. Note
-        /// that Stackdriver logs may incur a cost, particular if the total QPS in your project is high.
+        /// that [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if your project receives
+        /// prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this
+        /// option.
         ///
         /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
         public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
 
         /// <summary>Optional. The list of regions where the model is going to be deployed. Currently only one region
-        /// per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for ML Engine
-        /// services. Note: *   No matter where a model is deployed, it can always be accessed by users from anywhere,
-        /// both for online and batch prediction. *   The region for a batch prediction job is set by the region field
-        /// when submitting the batch prediction job and does not take its value from this field.</summary>
+        /// per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI
+        /// Platform services. Note: *   No matter where a model is deployed, it can always be accessed by users from
+        /// anywhere, both for online and batch prediction. *   The region for a batch prediction job is set by the
+        /// region field when submitting the batch prediction job and does not take its value from this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
 
@@ -3484,14 +3486,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string OutputPath { get; set; } 
 
         /// <summary>Required. The Google Compute Engine region to run the prediction job in. See the available regions
-        /// for ML Engine services.</summary>
+        /// for AI Platform services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Optional. The Cloud ML Engine runtime version to use for this batch prediction. If not set, Cloud
-        /// ML Engine will pick the runtime version used during the CreateVersion request for this model version, or
-        /// choose the latest stable version when model version information is not available such as when the model is
-        /// specified by uri.</summary>
+        /// <summary>Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform
+        /// will pick the runtime version used during the CreateVersion request for this model version, or choose the
+        /// latest stable version when model version information is not available such as when the model is specified by
+        /// uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -3692,9 +3694,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If
-        /// `parameterServerConfig.imageUri` has not been set, Cloud ML Engine uses the value of
-        /// `masterConfig.imageUri`. Learn more about [configuring custom containers](/ml-engine/docs/distributed-
-        /// training-containers).</summary>
+        /// `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`.
+        /// Learn more about [configuring custom containers](/ml-engine/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; } 
 
@@ -3713,7 +3714,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// The supported values are the same as those described in the entry for `master_type`.
         ///
         /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
-        /// must be Cloud ML Engine machine types or both must be Compute Engine machine types.
+        /// must be AI Platform machine types or both must be Compute Engine machine types.
         ///
         /// This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than
         /// zero.</summary>
@@ -3731,13 +3732,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string PythonVersion { get; set; } 
 
         /// <summary>Required. The Google Compute Engine region to run the training job in. See the available regions
-        /// for ML Engine services.</summary>
+        /// for AI Platform services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Optional. The Cloud ML Engine runtime version to use for training. If not set, Cloud ML Engine uses
-        /// the default stable version, 1.0. For more information, see the runtime version list and how to manage
-        /// runtime versions.</summary>
+        /// <summary>Optional. The AI Platform runtime version to use for training. If not set, AI Platform uses the
+        /// default stable version, 1.0. For more information, see the runtime version list and how to manage runtime
+        /// versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -3753,8 +3754,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// /using-gpus#compute-engine-machine-types-with-gpu)
         ///
         /// Set `workerConfig.imageUri` only if you build a custom image for your worker. If `workerConfig.imageUri` has
-        /// not been set, Cloud ML Engine uses the value of `masterConfig.imageUri`. Learn more about [configuring
-        /// custom containers](/ml-engine/docs/distributed-training-containers).</summary>
+        /// not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom
+        /// containers](/ml-engine/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
 
@@ -3773,7 +3774,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// The supported values are the same as those described in the entry for `masterType`.
         ///
         /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
-        /// must be Cloud ML Engine machine types or both must be Compute Engine machine types.
+        /// must be AI Platform machine types or both must be Compute Engine machine types.
         ///
         /// If you use `cloud_tpu` for this value, see special instructions for [configuring a custom TPU machine](/ml-
         /// engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
@@ -3823,8 +3824,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     ///
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
     /// multiple versions. You can get information about all of the versions of a given model by calling
-    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list). Next ID:
-    /// 30</summary>
+    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
@@ -3837,8 +3837,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Required. The Google Cloud Storage location of the trained model used to create the version. See
-        /// the [guide to model deployment](/ml-engine/docs/tensorflow/deploying-models) for more information.
+        /// <summary>Required. The Cloud Storage location of the trained model used to create the version. See the
+        /// [guide to model deployment](/ml-engine/docs/tensorflow/deploying-models) for more information.
         ///
         /// When passing Version to [projects.models.versions.create](/ml-
         /// engine/reference/rest/v1/projects.models.versions/create) the model service uses the specified location as
@@ -3863,10 +3863,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Optional. The machine learning framework Cloud ML Engine uses to train this version of the model.
-        /// Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, Cloud ML Engine
-        /// will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or
-        /// `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater.</summary>
+        /// <summary>Optional. The machine learning framework AI Platform uses to train this version of the model. Valid
+        /// values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will
+        /// analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you
+        /// must also set the runtime version of the model to 1.4 or greater.
+        ///
+        /// Do **not** specify a framework if you're deploying a [custom prediction routine](/ml-engine/docs/tensorflow
+        /// /custom-prediction-routines).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
         public virtual string Framework { get; set; } 
 
@@ -3918,38 +3921,56 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. The Google Cloud Storage location of the packages for custom prediction and any
-        /// additional dependencies.</summary>
+        /// <summary>Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-
+        /// engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-
+        /// engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
+        ///
+        /// For a custom prediction routine, one of these packages must contain your Predictor class (see
+        /// [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your
+        /// Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version
+        /// ](/ml-engine/docs/tensorflow/runtime-version-list).
+        ///
+        /// If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or
+        /// greater.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
         public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
 
-        /// <summary>class PredictionClass(object): A Model performs predictions on a given list of instances.
+        /// <summary>Optional. The fully qualified name (module_name.class_name) of a class that implements the
+        /// Predictor interface described in this reference field. The module containing this class should be included
+        /// in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris).
         ///
-        /// The input instances are the raw values sent by the user. It is the responsibility of a Model to translate
-        /// these instances into actual predictions.
+        /// Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-
+        /// engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set
+        /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
         ///
-        /// The input instances and the output use python data types. The input instances have been decoded prior to
-        /// being passed to the predict method. The output, which should use python data types is encoded after being
-        /// returned from the predict method.
+        /// The following code sample provides the Predictor interface:
         ///
-        /// def predict(self, instances, **kwargs): Returns predictions for the provided instances.
+        /// ```py class Predictor(object): Interface for constructing custom predictors.
         ///
-        /// Instances are the decoded values from the request. Clients need not worry about decoding json nor base64
-        /// decoding.
+        /// def predict(self, instances, **kwargs): Performs custom prediction.
         ///
-        /// Args: instances: A list of instances, as described in the API. **kwargs: Additional keyword arguments, will
-        /// be passed into the client's predict method.
+        /// Instances are the decoded values from the request. They have already been deserialized from JSON.
         ///
-        /// Returns: A list of outputs containing the prediction results.
+        /// Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as
+        /// additional fields on the predict request body.
         ///
-        /// @classmethod def from_path(cls, model_path): Creates a model using the given model path.
+        /// Returns: A list of outputs containing the prediction results. This list must be JSON serializable.
         ///
-        /// Path is useful, e.g., to load files from the exported directory containing the model.
+        /// raise NotImplementedError()
         ///
-        /// Args: model_path: The local directory that contains the exported model file along with any additional files
+        /// @classmethod def from_path(cls, model_dir): Creates an instance of Predictor using the given path.
+        ///
+        /// Loading of the predictor should be done in this method.
+        ///
+        /// Args: model_dir: The local directory that contains the exported model file along with any additional files
         /// uploaded when creating the version resource.
         ///
-        /// Returns: An instance implementing this Model class. </summary>
+        /// Returns: An instance implementing this Predictor class.
+        ///
+        /// raise NotImplementedError() ```
+        ///
+        /// Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-
+        /// prediction-routines).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionClass")]
         public virtual string PredictionClass { get; set; } 
 
@@ -3959,10 +3980,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
-        /// <summary>Optional. The Cloud ML Engine runtime version to use for this deployment. If not set, Cloud ML
-        /// Engine uses the default stable version, 1.0. For more information, see the [runtime version list](/ml-
-        /// engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-
-        /// engine/docs/versioning).</summary>
+        /// <summary>Optional. The AI Platform runtime version to use for this deployment. If not set, AI Platform uses
+        /// the default stable version, 1.0. For more information, see the [runtime version list](/ml-engine/docs
+        /// /runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -4193,8 +4213,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

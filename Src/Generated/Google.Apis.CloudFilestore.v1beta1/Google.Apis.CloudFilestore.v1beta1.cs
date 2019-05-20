@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190516 (1596)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -629,6 +629,14 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The next_page_token value to use if there are additional results to retrieve for this
                     /// list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -637,14 +645,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
-
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>List filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -680,24 +680,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -710,6 +692,24 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1070,6 +1070,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1077,10 +1081,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1116,6 +1116,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1128,15 +1137,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1230,6 +1230,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1237,10 +1241,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1276,6 +1276,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1288,15 +1297,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1351,17 +1351,20 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// Example Instance in JSON, where consumer-project=snapchat, producer-project=cloud-sql:
     ///
     /// ```json Instance: { "name": "projects/snapchat/locations/us-east1/instances/prod-instance", "create_time": {
-    /// "seconds": 1526406431, }, "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_version": "cloud-
-    /// sql-09-28-2018", "maintenance_policy_names": { "UpdatePolicy": "projects/snapchat/locations/us-
-    /// east1/maintenancePolicies/prod-update-policy", } "rollout_metadata": { "projects/cloud-
-    /// sql/locations/global/rolloutTypes/software_update": { "release": "projects/cloud-sql/locations/global/releases
-    /// /cloud-sql-09-28-2018", "rollout": "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-canary",
-    /// } "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": { "release": "projects/cloud-
-    /// sql/locations/global/releases/cloud-sql-09-20-repair", "rollout": "projects/cloud-sql/locations/us-
-    /// east1/rollouts/cloud-sql-09-20-repair-100-percent", } } "tenant_project_id": "cloud-sql-test-tenant",
-    /// "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", }, "provisioned_resources": [
-    /// { "resource-type": "compute-instance", "resource-url": "https://www.googleapis.com/compute/v1/projects/cloud-
-    /// sql/zones/us-east1-b/instances/vm-1", } ], } ```</summary>
+    /// "seconds": 1526406431, }, "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_versions": {
+    /// "software_update": "cloud-sql-09-28-2018", }, "maintenance_policy_names": { "UpdatePolicy":
+    /// "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy", } "rollout_metadata": { "projects
+    /// /cloud-sql/locations/global/rolloutTypes/software_update": { "release": "projects/cloud-
+    /// sql/locations/global/releases/cloud-sql-09-28-2018", "rollout": "projects/cloud-sql/locations/us-east1/rollouts
+    /// /cloud-sql-09-28-2018-canary", }, "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": {
+    /// "release": "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair", "rollout": "projects/cloud-
+    /// sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-100-percent", } } "tenant_project_id": "cloud-sql-test-
+    /// tenant", "producer_metadata": { "cloud-sql-tier": "basic", "cloud-sql-instance-size": "1G", },
+    /// "provisioned_resources": [ { "resource-type": "compute-instance", "resource-url":
+    /// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1", } ],
+    /// "maintenance_schedules": { "csa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
+    /// 1535406431, }, }, "ncsa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
+    /// 1535406431, }, } } } ```</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Timestamp when the resource was created.</summary>
@@ -1375,10 +1378,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
-        /// type. For complete details of MaintenancePolicy, please refer to //depot/google3/google/cloud/saasaccelerato
-        /// r/maintenancepolicy/api/v1/maintenance_policy_resources.proto</summary>
+        /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string,string> MaintenancePolicyNames { get; set; } 
+
+        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
+        /// schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
+        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
 
         /// <summary>Unique name of the resource. It uses the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
@@ -1424,6 +1431,41 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. Timestamp when the resource was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance schedule which is exposed to customer and potentially end user, indicating published
+    /// upcoming future maintenance schedule</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The scheduled end time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The scheduled start time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Node information for custom per-node SLO implementations. SSA does not support per-node SLO, but
+    /// producers can populate per-node information in SloMetadata for custom precomputations. SSA Eligibility Exporter
+    /// will emit per-node metric based on this information.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>By default node is eligible if instance is eligible. But individual node might be excluded from SLO
+        /// by adding entry here. For semantic see SloMetadata.exclusions. If both instance and node level exclusions
+        /// are present for time period, the node level's reason will be reported by Eligibility Exporter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+
+        /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual string NodeId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1538,6 +1580,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// the service SLO configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+
+        /// <summary>Optional: list of nodes. Some producers need to use per-node metadata to calculate SLO. This field
+        /// allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter
+        /// and published in the form of per node metric to Monarch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; } 
 
         /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
         /// specified in the service SLO configuration.
@@ -1732,8 +1780,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
