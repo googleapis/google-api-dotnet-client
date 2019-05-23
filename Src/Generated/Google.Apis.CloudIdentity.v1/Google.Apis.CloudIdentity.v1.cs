@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190514 (1594)
+ *      <tr><th>API Rev<td>20190519 (1599)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -614,10 +614,6 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
                 /// view.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -637,6 +633,10 @@ namespace Google.Apis.CloudIdentity.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
+
+                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -672,15 +672,6 @@ namespace Google.Apis.CloudIdentity.v1
                             Pattern = @"^groups/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -693,6 +684,15 @@ namespace Google.Apis.CloudIdentity.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -997,10 +997,6 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
-            /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1024,6 +1020,10 @@ namespace Google.Apis.CloudIdentity.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1050,15 +1050,6 @@ namespace Google.Apis.CloudIdentity.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1080,6 +1071,15 @@ namespace Google.Apis.CloudIdentity.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1108,6 +1108,11 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
+            /// <summary>The ID of the entity within the given namespace. The ID must be unique within its
+            /// namespace.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupKeyId { get; set; }
+
             /// <summary>Namespaces provide isolation for IDs, so an ID only needs to be unique within its namespace.
             ///
             /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
@@ -1115,11 +1120,6 @@ namespace Google.Apis.CloudIdentity.v1
             /// `identity_source_id`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
-
-            /// <summary>The ID of the entity within the given namespace. The ID must be unique within its
-            /// namespace.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string GroupKeyId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1146,18 +1146,18 @@ namespace Google.Apis.CloudIdentity.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
+                    "groupKey.id", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.namespace",
+                        Name = "groupKey.id",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "groupKey.id", new Google.Apis.Discovery.Parameter
+                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.id",
+                        Name = "groupKey.namespace",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

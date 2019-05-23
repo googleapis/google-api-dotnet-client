@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190517 (1597)
+ *      <tr><th>API Rev<td>20190519 (1599)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -720,12 +720,6 @@ namespace Google.Apis.CloudTalentSolution.v3
 
                 /// <summary>Optional.
                 ///
-                /// The starting indicator from which to return results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
                 /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number
                 /// is provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -741,6 +735,12 @@ namespace Google.Apis.CloudTalentSolution.v3
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requireOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequireOpenJobs { get; set; }
+
+                /// <summary>Optional.
+                ///
+                /// The starting indicator from which to return results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -776,15 +776,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -797,6 +788,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "requireOpenJobs", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requireOpenJobs",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1243,6 +1243,17 @@ namespace Google.Apis.CloudTalentSolution.v3
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional.
+                ///
+                /// The maximum number of jobs to be returned per page of results.
+                ///
+                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
+                /// the maximum allowed page size is 100.
+                ///
+                /// Default is 100 if empty or a number < 1 is specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Required.
                 ///
                 /// The filter string specifies the jobs to be enumerated.
@@ -1291,17 +1302,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional.
-                ///
-                /// The maximum number of jobs to be returned per page of results.
-                ///
-                /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise,
-                /// the maximum allowed page size is 100.
-                ///
-                /// Default is 100 if empty or a number < 1 is specified.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1336,6 +1336,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1357,15 +1366,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190514 (1594)
+ *      <tr><th>API Rev<td>20190521 (1601)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2484,6 +2484,21 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// <summary>The number of warnings reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWarnings")]
         public virtual System.Nullable<ulong> NumWarnings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The internal status of the command result.</summary>
+    public class GoogleDevtoolsRemotebuildbotCommandStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
