@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190502 (1582)
+ *      <tr><th>API Rev<td>20190524 (1604)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -739,6 +739,10 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>The maximum number of items to return.
                     ///
                     /// If not specified, a default value of 1000 will be used by the service. Regardless of the
@@ -747,10 +751,6 @@ namespace Google.Apis.CloudRedis.v1
                     /// queried.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -786,18 +786,18 @@ namespace Google.Apis.CloudRedis.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1169,10 +1169,6 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1180,6 +1176,10 @@ namespace Google.Apis.CloudRedis.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1215,15 +1215,6 @@ namespace Google.Apis.CloudRedis.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1236,6 +1227,15 @@ namespace Google.Apis.CloudRedis.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1716,8 +1716,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

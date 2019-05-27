@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/SiyDGiQi7XSzcQpJUr6shynVK0s\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/DTmHY5YcSH4XeouavtxWfeZiT6M\"",
  "discoveryVersion": "v1",
  "id": "tagmanager:v2",
  "name": "tagmanager",
  "canonicalName": "Tag Manager",
  "version": "v2",
- "revision": "20190220",
+ "revision": "20190516",
  "title": "Tag Manager API",
  "description": "Accesses Tag Manager accounts and containers.",
  "ownerDomain": "google.com",
@@ -255,8 +255,10 @@
       "language",
       "newHistoryFragment",
       "newHistoryState",
+      "newHistoryUrl",
       "oldHistoryFragment",
       "oldHistoryState",
+      "oldHistoryUrl",
       "osVersion",
       "pageHostname",
       "pagePath",
@@ -279,6 +281,8 @@
       "videoVisible"
      ],
      "enumDescriptions": [
+      "",
+      "",
       "",
       "",
       "",
@@ -1163,6 +1167,23 @@
     }
    }
   },
+  "ListTemplatesResponse": {
+   "id": "ListTemplatesResponse",
+   "type": "object",
+   "properties": {
+    "nextPageToken": {
+     "type": "string",
+     "description": "Continuation token for fetching the next page of results."
+    },
+    "template": {
+     "type": "array",
+     "description": "All GTM Custom Templates of a GTM Container.",
+     "items": {
+      "$ref": "CustomTemplate"
+     }
+    }
+   }
+  },
   "ListTriggersResponse": {
    "id": "ListTriggersResponse",
    "type": "object",
@@ -1292,16 +1313,18 @@
     },
     "type": {
      "type": "string",
-     "description": "The parameter type. Valid values are: \n- boolean: The value represents a boolean, represented as 'true' or 'false' \n- integer: The value represents a 64-bit signed integer value, in base 10 \n- list: A list of parameters should be specified \n- map: A map of parameters should be specified \n- template: The value represents any text; this can include variable references (even variable references that might return non-string types)",
+     "description": "The parameter type. Valid values are: \n- boolean: The value represents a boolean, represented as 'true' or 'false' \n- integer: The value represents a 64-bit signed integer value, in base 10 \n- list: A list of parameters should be specified \n- map: A map of parameters should be specified \n- template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n- trigger_reference: The value represents a trigger, represented as the trigger id",
      "enum": [
       "boolean",
       "integer",
       "list",
       "map",
       "template",
+      "triggerReference",
       "typeUnspecified"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -1390,6 +1413,17 @@
     "tag": {
      "$ref": "Tag",
      "description": "Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version."
+    }
+   }
+  },
+  "RevertTemplateResponse": {
+   "id": "RevertTemplateResponse",
+   "type": "object",
+   "description": "The result of reverting a template in a workspace.",
+   "properties": {
+    "template": {
+     "$ref": "CustomTemplate",
+     "description": "Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version."
     }
    }
   },
@@ -1804,10 +1838,12 @@
       "pageview",
       "scrollDepth",
       "timer",
+      "triggerGroup",
       "windowLoaded",
       "youTubeVideo"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -3181,8 +3217,10 @@
               "language",
               "newHistoryFragment",
               "newHistoryState",
+              "newHistoryUrl",
               "oldHistoryFragment",
               "oldHistoryState",
+              "oldHistoryUrl",
               "osVersion",
               "pageHostname",
               "pagePath",
@@ -3205,6 +3243,8 @@
               "videoVisible"
              ],
              "enumDescriptions": [
+              "",
+              "",
               "",
               "",
               "",
@@ -3420,8 +3460,10 @@
               "language",
               "newHistoryFragment",
               "newHistoryState",
+              "newHistoryUrl",
               "oldHistoryFragment",
               "oldHistoryState",
+              "oldHistoryUrl",
               "osVersion",
               "pageHostname",
               "pagePath",
@@ -3444,6 +3486,8 @@
               "videoVisible"
              ],
              "enumDescriptions": [
+              "",
+              "",
               "",
               "",
               "",
@@ -3685,8 +3729,10 @@
               "language",
               "newHistoryFragment",
               "newHistoryState",
+              "newHistoryUrl",
               "oldHistoryFragment",
               "oldHistoryState",
+              "oldHistoryUrl",
               "osVersion",
               "pageHostname",
               "pagePath",
@@ -3709,6 +3755,8 @@
               "videoVisible"
              ],
              "enumDescriptions": [
+              "",
+              "",
               "",
               "",
               "",
@@ -4215,6 +4263,168 @@
            },
            "response": {
             "$ref": "Tag"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          }
+         }
+        },
+        "templates": {
+         "methods": {
+          "create": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.create",
+           "path": "{+parent}/templates",
+           "httpMethod": "POST",
+           "description": "Creates a GTM Custom Template.",
+           "parameters": {
+            "parent": {
+             "type": "string",
+             "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "parent"
+           ],
+           "request": {
+            "$ref": "CustomTemplate"
+           },
+           "response": {
+            "$ref": "CustomTemplate"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "delete": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.delete",
+           "path": "{+path}",
+           "httpMethod": "DELETE",
+           "description": "Deletes a GTM Template.",
+           "parameters": {
+            "path": {
+             "type": "string",
+             "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "get": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.get",
+           "path": "{+path}",
+           "httpMethod": "GET",
+           "description": "Gets a GTM Template.",
+           "parameters": {
+            "path": {
+             "type": "string",
+             "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "response": {
+            "$ref": "CustomTemplate"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+           ]
+          },
+          "list": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.list",
+           "path": "{+parent}/templates",
+           "httpMethod": "GET",
+           "description": "Lists all GTM Templates of a GTM container workspace.",
+           "parameters": {
+            "pageToken": {
+             "type": "string",
+             "description": "Continuation token for fetching the next page of results.",
+             "location": "query"
+            },
+            "parent": {
+             "type": "string",
+             "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "parent"
+           ],
+           "response": {
+            "$ref": "ListTemplatesResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers",
+            "https://www.googleapis.com/auth/tagmanager.readonly"
+           ]
+          },
+          "revert": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.revert",
+           "path": "{+path}:revert",
+           "httpMethod": "POST",
+           "description": "Reverts changes to a GTM Template in a GTM Workspace.",
+           "parameters": {
+            "fingerprint": {
+             "type": "string",
+             "description": "When provided, this fingerprint must match the fingerprint of the template in storage.",
+             "location": "query"
+            },
+            "path": {
+             "type": "string",
+             "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "response": {
+            "$ref": "RevertTemplateResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/tagmanager.edit.containers"
+           ]
+          },
+          "update": {
+           "id": "tagmanager.accounts.containers.workspaces.templates.update",
+           "path": "{+path}",
+           "httpMethod": "PUT",
+           "description": "Updates a GTM Template.",
+           "parameters": {
+            "fingerprint": {
+             "type": "string",
+             "description": "When provided, this fingerprint must match the fingerprint of the templates in storage.",
+             "location": "query"
+            },
+            "path": {
+             "type": "string",
+             "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "path"
+           ],
+           "request": {
+            "$ref": "CustomTemplate"
+           },
+           "response": {
+            "$ref": "CustomTemplate"
            },
            "scopes": [
             "https://www.googleapis.com/auth/tagmanager.edit.containers"

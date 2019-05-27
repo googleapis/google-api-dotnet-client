@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190220 (1511)
+ *      <tr><th>API Rev<td>20190516 (1596)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>
  *              https://developers.google.com/tag-manager/api/v2/</a>
@@ -1492,6 +1492,7 @@ namespace Google.Apis.TagManager.v2
                     builtInVariables = new BuiltInVariablesResource(service);
                     folders = new FoldersResource(service);
                     tags = new TagsResource(service);
+                    templates = new TemplatesResource(service);
                     triggers = new TriggersResource(service);
                     variables = new VariablesResource(service);
                     zones = new ZonesResource(service);
@@ -1716,10 +1717,14 @@ namespace Google.Apis.TagManager.v2
                             NewHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
                             NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
                             OldHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
                             OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
                             OsVersion,
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
@@ -2002,10 +2007,14 @@ namespace Google.Apis.TagManager.v2
                             NewHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
                             NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
                             OldHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
                             OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
                             OsVersion,
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
@@ -2363,10 +2372,14 @@ namespace Google.Apis.TagManager.v2
                             NewHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
                             NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
                             OldHistoryFragment,
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
                             OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
                             OsVersion,
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
@@ -3496,6 +3509,459 @@ namespace Google.Apis.TagManager.v2
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.TagManager.v2.Data.Tag Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "update"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "PUT"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fingerprint", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fingerprint",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly TemplatesResource templates;
+
+                /// <summary>Gets the Templates resource.</summary>
+                public virtual TemplatesResource Templates
+                {
+                    get { return templates; }
+                }
+
+                /// <summary>The "templates" collection of methods.</summary>
+                public class TemplatesResource
+                {
+                    private const string Resource = "templates";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TemplatesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a GTM Custom Template.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</param>
+                    public virtual CreateRequest Create(Google.Apis.TagManager.v2.Data.CustomTemplate body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a GTM Custom Template.</summary>
+                    public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.CustomTemplate>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.CustomTemplate body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.CustomTemplate Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+parent}/templates"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a GTM Template.</summary>
+                    /// <param name="path">GTM Custom Template's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}</param>
+                    public virtual DeleteRequest Delete(string path)
+                    {
+                        return new DeleteRequest(service, path);
+                    }
+
+                    /// <summary>Deletes a GTM Template.</summary>
+                    public class DeleteRequest : TagManagerBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/
+                        /// {container_id}/workspaces/{workspace_id}/templates/{template_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets a GTM Template.</summary>
+                    /// <param name="path">GTM Custom Template's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}</param>
+                    public virtual GetRequest Get(string path)
+                    {
+                        return new GetRequest(service, path);
+                    }
+
+                    /// <summary>Gets a GTM Template.</summary>
+                    public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.CustomTemplate>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/
+                        /// {container_id}/workspaces/{workspace_id}/templates/{template_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists all GTM Templates of a GTM container workspace.</summary>
+                    /// <param name="parent">GTM Workspace's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all GTM Templates of a GTM container workspace.</summary>
+                    public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.ListTemplatesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Workspace's API relative path. Example:
+                        /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+parent}/templates"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Reverts changes to a GTM Template in a GTM Workspace.</summary>
+                    /// <param name="path">GTM Custom Template's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}</param>
+                    public virtual RevertRequest Revert(string path)
+                    {
+                        return new RevertRequest(service, path);
+                    }
+
+                    /// <summary>Reverts changes to a GTM Template in a GTM Workspace.</summary>
+                    public class RevertRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.RevertTemplateResponse>
+                    {
+                        /// <summary>Constructs a new Revert request.</summary>
+                        public RevertRequest(Google.Apis.Services.IClientService service, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/
+                        /// {container_id}/workspaces/{workspace_id}/templates/{template_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>When provided, this fingerprint must match the fingerprint of the template in
+                        /// storage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "revert"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{+path}:revert"; }
+                        }
+
+                        /// <summary>Initializes Revert parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "path", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "path",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fingerprint", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fingerprint",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates a GTM Template.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="path">GTM Custom Template's API relative path. Example:
+                    /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}</param>
+                    public virtual UpdateRequest Update(Google.Apis.TagManager.v2.Data.CustomTemplate body, string path)
+                    {
+                        return new UpdateRequest(service, body, path);
+                    }
+
+                    /// <summary>Updates a GTM Template.</summary>
+                    public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.CustomTemplate>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.TagManager.v2.Data.CustomTemplate body, string path)
+                            : base(service)
+                        {
+                            Path = path;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/
+                        /// {container_id}/workspaces/{workspace_id}/templates/{template_id}</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Path { get; private set; }
+
+                        /// <summary>When provided, this fingerprint must match the fingerprint of the templates in
+                        /// storage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fingerprint { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.TagManager.v2.Data.CustomTemplate Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -7199,6 +7665,20 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListTemplatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>All GTM Custom Templates of a GTM Container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual System.Collections.Generic.IList<CustomTemplate> Template { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>List triggers response.</summary>
     public class ListTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7311,7 +7791,7 @@ namespace Google.Apis.TagManager.v2.Data
         /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
         /// of parameters should be specified - map: A map of parameters should be specified - template: The value
         /// represents any text; this can include variable references (even variable references that might return non-
-        /// string types)</summary>
+        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -7390,6 +7870,19 @@ namespace Google.Apis.TagManager.v2.Data
         /// operation. If no tag is present, that means the tag was deleted in the latest container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual Tag Tag { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of reverting a template in a workspace.</summary>
+    public class RevertTemplateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Template as it appears in the latest container version since the last workspace synchronization
+        /// operation. If no template is present, that means the template was deleted in the latest container
+        /// version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual CustomTemplate Template { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

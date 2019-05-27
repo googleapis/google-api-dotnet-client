@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190514 (1594)
+ *      <tr><th>API Rev<td>20190520 (1600)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1041,13 +1041,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
-                    /// default language is used. [Many languages](https://cloud.google.com/dialogflow-
-                    /// enterprise/docs/reference/language) are supported. Note: languages must be enabled in the agent
-                    /// before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1056,6 +1049,13 @@ namespace Google.Apis.Dialogflow.v2
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
+                    /// default language is used. [Many languages](https://cloud.google.com/dialogflow-
+                    /// enterprise/docs/reference/language) are supported. Note: languages must be enabled in the agent
+                    /// before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1091,15 +1091,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1112,6 +1103,15 @@ namespace Google.Apis.Dialogflow.v2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4704,9 +4704,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
-        /// required parameter values have been collected. - `true` if all required parameter values have been
-        /// collected, or if the matched intent doesn't contain any required parameters.</summary>
+        /// <summary>This field is set to:
+        ///
+        /// - `false` if the matched intent has required parameters and not all of the required parameter values have
+        /// been collected. - `true` if all required parameter values have been collected, or if the matched intent
+        /// doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
 
@@ -4750,10 +4752,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
-        /// <summary>The original conversational query text: - If natural language text was provided as input,
-        /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
-        /// `query_text` contains the speech recognition result. If speech recognizer produced multiple alternatives, a
-        /// particular one is picked. - If an event was provided as input, `query_text` is not set.</summary>
+        /// <summary>The original conversational query text:
+        ///
+        /// - If natural language text was provided as input, `query_text` contains a copy of the input. - If natural
+        /// language speech audio was provided as input, `query_text` contains the speech recognition result. If speech
+        /// recognizer produced multiple alternatives, a particular one is picked. - If automatic spell correction is
+        /// enabled, `query_text` will contain the corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; } 
 
@@ -5951,9 +5955,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
-        /// required parameter values have been collected. - `true` if all required parameter values have been
-        /// collected, or if the matched intent doesn't contain any required parameters.</summary>
+        /// <summary>This field is set to:
+        ///
+        /// - `false` if the matched intent has required parameters and not all of the required parameter values have
+        /// been collected. - `true` if all required parameter values have been collected, or if the matched intent
+        /// doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
 
@@ -6002,10 +6008,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
 
-        /// <summary>The original conversational query text: - If natural language text was provided as input,
-        /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
-        /// `query_text` contains the speech recognition result. If speech recognizer produced multiple alternatives, a
-        /// particular one is picked. - If an event was provided as input, `query_text` is not set.</summary>
+        /// <summary>The original conversational query text:
+        ///
+        /// - If natural language text was provided as input, `query_text` contains a copy of the input. - If natural
+        /// language speech audio was provided as input, `query_text` contains the speech recognition result. If speech
+        /// recognizer produced multiple alternatives, a particular one is picked. - If automatic spell correction is
+        /// enabled, `query_text` will contain the corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
         public virtual string QueryText { get; set; } 
 

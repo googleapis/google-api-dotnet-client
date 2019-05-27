@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20190428 (1578)
+ *      <tr><th>API Rev<td>20190521 (1601)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
@@ -1368,9 +1368,17 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
                 public virtual System.Nullable<long> IntValue { get; set; } 
 
+                /// <summary>Nested value of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("messageValue")]
+                public virtual ParametersData.MessageValueData MessageValue { get; set; } 
+
                 /// <summary>Multi-int value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
                 public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; } 
+
+                /// <summary>Nested values of the parameter.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("multiMessageValue")]
+                public virtual System.Collections.Generic.IList<ParametersData.MultiMessageValueData> MultiMessageValue { get; set; } 
 
                 /// <summary>Multi-string value of the parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
@@ -1384,6 +1392,24 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
                 public virtual string Value { get; set; } 
 
+                
+
+                /// <summary>Nested value of the parameter.</summary>
+                public class MessageValueData
+                {
+                    /// <summary>Looping to get parameter values.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; } 
+
+                }    
+
+                public class MultiMessageValueData
+                {
+                    /// <summary>Parameter value.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+                    public virtual System.Collections.Generic.IList<NestedParameter> Parameter { get; set; } 
+
+                }
             }
         }    
 
@@ -1469,6 +1495,41 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>The type of delivery mechanism used for this channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a parameter used in various reports.</summary>
+    public class NestedParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; } 
+
+        /// <summary>Integral value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; } 
+
+        /// <summary>Multiple boolean values of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiBoolValue")]
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> MultiBoolValue { get; set; } 
+
+        /// <summary>Multiple integral values of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiIntValue")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> MultiIntValue { get; set; } 
+
+        /// <summary>Multiple string values of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiValue")]
+        public virtual System.Collections.Generic.IList<string> MultiValue { get; set; } 
+
+        /// <summary>The name of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>String value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

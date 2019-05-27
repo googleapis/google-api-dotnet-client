@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190220 (1511)
+ *      <tr><th>API Rev<td>20190516 (1596)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>
  *              https://developers.google.com/tag-manager/api/v1/</a>
@@ -5459,7 +5459,7 @@ namespace Google.Apis.TagManager.v1.Data
         /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
         /// of parameters should be specified - map: A map of parameters should be specified - template: The value
         /// represents any text; this can include variable references (even variable references that might return non-
-        /// string types)</summary>
+        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

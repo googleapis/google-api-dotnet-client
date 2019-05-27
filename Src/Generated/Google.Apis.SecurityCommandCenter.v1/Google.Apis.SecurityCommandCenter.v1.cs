@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190521 (1601)
+ *      <tr><th>API Rev<td>20190522 (1602)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -462,23 +462,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional.
-                ///
-                /// A field mask to specify the ListAssetsResult fields to be listed in the response. An empty field
-                /// mask will list all fields.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FieldMask { get; set; }
-
-                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
-                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
-                /// maximum is 1000.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Expression that defines what fields and order to use for sorting. The string value should
                 /// follow SQL syntax: comma separated list of fields. For example:
                 /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
@@ -553,6 +536,23 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>Optional.
+                ///
+                /// A field mask to specify the ListAssetsResult fields to be listed in the response. An empty field
+                /// mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
+                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
+                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -587,33 +587,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "fieldMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -644,6 +617,33 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1091,10 +1091,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1102,6 +1098,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1137,15 +1137,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/operations$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1158,6 +1149,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3426,10 +3426,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>The source's display name. A source's display name must be unique amongst its siblings, for
-        /// example, two sources with the same parent can't share the same display name. The display name must start and
-        /// end with a letter or digit, may contain letters, digits, spaces, hyphens, and underscores, and can be no
-        /// longer than 32 characters. This is captured by the regular expression: [\p{L}\p{N}]({\p{L}\p{N}_-
-        /// ]{0,30}[\p{L}\p{N}])?.</summary>
+        /// example, two sources with the same parent can't share the same display name. The display name must have a
+        /// length between 1 and 64 characters (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 

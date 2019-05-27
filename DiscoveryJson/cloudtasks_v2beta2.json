@@ -1,699 +1,13 @@
 {
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Tasks API",
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "list": {
-              "flatPath": "v2beta2/projects/{projectsId}/locations",
-              "id": "cloudtasks.projects.locations.list",
-              "path": "v2beta2/{+name}/locations",
-              "description": "Lists information about the supported locations for this service.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "The standard list page token.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The standard list page size.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              }
-            },
-            "get": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}",
-              "path": "v2beta2/{+name}",
-              "id": "cloudtasks.projects.locations.get",
-              "description": "Gets information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            }
-          },
-          "resources": {
-            "queues": {
-              "methods": {
-                "list": {
-                  "response": {
-                    "$ref": "ListQueuesResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "Required.\n\nThe location name.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "`filter` can be used to specify a subset of queues. Any Queue\nfield can be used as a filter and several operators as supported.\nFor example: `\u003c=, \u003c, \u003e=, \u003e, !=, =, :`. The filter syntax is the same as\ndescribed in\n[Stackdriver's Advanced Logs\nFilters](https://cloud.google.com/logging/docs/view/advanced_filters).\n\nSample filter \"app_engine_http_target: *\".\n\nNote that using filters might cause fewer queues than the\nrequested_page size to be returned.",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "A token identifying the page of results to return.\n\nTo request the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned\nfrom the previous call to ListQueues\nmethod. It is an error to switch the value of the\nfilter while iterating through pages.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Requested page size.\n\nThe maximum page size is 9800. If unspecified, the page size will\nbe the maximum. Fewer queues than requested might be returned,\neven if more queues exist; use the\nnext_page_token in the\nresponse to determine if more queues exist.",
-                      "format": "int32",
-                      "type": "integer"
-                    }
-                  },
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues",
-                  "path": "v2beta2/{+parent}/queues",
-                  "id": "cloudtasks.projects.locations.queues.list",
-                  "description": "Lists queues.\n\nQueues are returned in lexicographical order."
-                },
-                "setIamPolicy": {
-                  "request": {
-                    "$ref": "SetIamPolicyRequest"
-                  },
-                  "description": "Sets the access control policy for a Queue. Replaces any existing\npolicy.\n\nNote: The Cloud Console does not check queue-level IAM permissions yet.\nProject-level permissions are required to use the Cloud Console.\n\nAuthorization requires the following\n[Google IAM](https://cloud.google.com/iam) permission on the specified\nresource parent:\n\n* `cloudtasks.queues.setIamPolicy`",
-                  "response": {
-                    "$ref": "Policy"
-                  },
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:setIamPolicy",
-                  "path": "v2beta2/{+resource}:setIamPolicy",
-                  "id": "cloudtasks.projects.locations.queues.setIamPolicy"
-                },
-                "create": {
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "parent": {
-                      "description": "Required.\n\nThe location name in which the queue will be created.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`\n\nThe list of allowed locations can be obtained by calling Cloud\nTasks' implementation of\nListLocations.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues",
-                  "path": "v2beta2/{+parent}/queues",
-                  "id": "cloudtasks.projects.locations.queues.create",
-                  "description": "Creates a queue.\n\nQueues created with this method allow tasks to live for a maximum of 31\ndays. After a task is 31 days old, the task will be deleted regardless of whether\nit was dispatched or not.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
-                  "request": {
-                    "$ref": "Queue"
-                  }
-                },
-                "resume": {
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "name": {
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:resume",
-                  "path": "v2beta2/{+name}:resume",
-                  "id": "cloudtasks.projects.locations.queues.resume",
-                  "description": "Resume a queue.\n\nThis method resumes a queue after it has been\nPAUSED or\nDISABLED. The state of a queue is stored\nin the queue's state; after calling this method it\nwill be set to RUNNING.\n\nWARNING: Resuming many high-QPS queues at the same time can\nlead to target overloading. If you are resuming high-QPS\nqueues, follow the 500/50/5 pattern described in\n[Managing Cloud Tasks Scaling\nRisks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).",
-                  "request": {
-                    "$ref": "ResumeQueueRequest"
-                  }
-                },
-                "getIamPolicy": {
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:getIamPolicy",
-                  "id": "cloudtasks.projects.locations.queues.getIamPolicy",
-                  "path": "v2beta2/{+resource}:getIamPolicy",
-                  "description": "Gets the access control policy for a Queue.\nReturns an empty policy if the resource exists and does not have a policy\nset.\n\nAuthorization requires the following\n[Google IAM](https://cloud.google.com/iam) permission on the specified\nresource parent:\n\n* `cloudtasks.queues.getIamPolicy`",
-                  "request": {
-                    "$ref": "GetIamPolicyRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "response": {
-                    "$ref": "Policy"
-                  },
-                  "parameters": {
-                    "resource": {
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "patch": {
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                      "location": "path",
-                      "description": "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters."
-                    },
-                    "updateMask": {
-                      "location": "query",
-                      "description": "A mask used to specify which fields of the queue are being updated.\n\nIf empty, then all fields will be updated.",
-                      "format": "google-fieldmask",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
-                  "path": "v2beta2/{+name}",
-                  "id": "cloudtasks.projects.locations.queues.patch",
-                  "description": "Updates a queue.\n\nThis method creates the queue if it does not exist and updates\nthe queue if it does exist.\n\nQueues created with this method allow tasks to live for a maximum of 31\ndays. After a task is 31 days old, the task will be deleted regardless of whether\nit was dispatched or not.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
-                  "request": {
-                    "$ref": "Queue"
-                  }
-                },
-                "get": {
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required.\n\nThe resource name of the queue. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
-                  "path": "v2beta2/{+name}",
-                  "id": "cloudtasks.projects.locations.queues.get",
-                  "description": "Gets a queue."
-                },
-                "purge": {
-                  "path": "v2beta2/{+name}:purge",
-                  "id": "cloudtasks.projects.locations.queues.purge",
-                  "request": {
-                    "$ref": "PurgeQueueRequest"
-                  },
-                  "description": "Purges a queue by deleting all of its tasks.\n\nAll tasks created before this method is called are permanently deleted.\n\nPurge operations can take up to one minute to take effect. Tasks\nmight be dispatched before the purge takes effect. A purge is irreversible.",
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:purge"
-                },
-                "testIamPermissions": {
-                  "response": {
-                    "$ref": "TestIamPermissionsResponse"
-                  },
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:testIamPermissions",
-                  "path": "v2beta2/{+resource}:testIamPermissions",
-                  "id": "cloudtasks.projects.locations.queues.testIamPermissions",
-                  "request": {
-                    "$ref": "TestIamPermissionsRequest"
-                  },
-                  "description": "Returns permissions that a caller has on a Queue.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."
-                },
-                "pause": {
-                  "description": "Pauses the queue.\n\nIf a queue is paused then the system will stop dispatching tasks\nuntil the queue is resumed via\nResumeQueue. Tasks can still be added\nwhen the queue is paused. A queue is paused if its\nstate is PAUSED.",
-                  "request": {
-                    "$ref": "PauseQueueRequest"
-                  },
-                  "response": {
-                    "$ref": "Queue"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                      "location": "path",
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:pause",
-                  "path": "v2beta2/{+name}:pause",
-                  "id": "cloudtasks.projects.locations.queues.pause"
-                },
-                "delete": {
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
-                  "path": "v2beta2/{+name}",
-                  "id": "cloudtasks.projects.locations.queues.delete",
-                  "description": "Deletes a queue.\n\nThis command will delete the queue even if it has tasks in it.\n\nNote: If you delete a queue, a queue with the same name can't be created\nfor 7 days.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method."
-                }
-              },
-              "resources": {
-                "tasks": {
-                  "methods": {
-                    "delete": {
-                      "path": "v2beta2/{+name}",
-                      "id": "cloudtasks.projects.locations.queues.tasks.delete",
-                      "description": "Deletes a task.\n\nA task can be deleted if it is scheduled or dispatched. A task\ncannot be deleted if it has completed successfully or permanently\nfailed.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "DELETE",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}"
-                    },
-                    "list": {
-                      "response": {
-                        "$ref": "ListTasksResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "responseView": {
-                          "type": "string",
-                          "location": "query",
-                          "enum": [
-                            "VIEW_UNSPECIFIED",
-                            "BASIC",
-                            "FULL"
-                          ],
-                          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."
-                        },
-                        "pageToken": {
-                          "location": "query",
-                          "description": "A token identifying the page of results to return.\n\nTo request the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned\nfrom the previous call to ListTasks\nmethod.\n\nThe page token is valid for only 2 hours.",
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "description": "Maximum page size.\n\nFewer tasks than requested might be returned, even if more tasks exist; use\nnext_page_token in the response to\ndetermine if more tasks exist.\n\nThe maximum page size is 1000. If unspecified, the page size will be the\nmaximum.",
-                          "format": "int32",
-                          "type": "integer"
-                        },
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks",
-                      "path": "v2beta2/{+parent}/tasks",
-                      "id": "cloudtasks.projects.locations.queues.tasks.list",
-                      "description": "Lists the tasks in a queue.\n\nBy default, only the BASIC view is retrieved\ndue to performance considerations;\nresponse_view controls the\nsubset of information which is returned.\n\nThe tasks may be returned in any order. The ordering may change at any\ntime."
-                    },
-                    "create": {
-                      "path": "v2beta2/{+parent}/tasks",
-                      "id": "cloudtasks.projects.locations.queues.tasks.create",
-                      "request": {
-                        "$ref": "CreateTaskRequest"
-                      },
-                      "description": "Creates a task and adds it to a queue.\n\nTasks cannot be updated after creation; there is no UpdateTask command.\n\n* For App Engine queues, the maximum task size is\n  100KB.\n* For pull queues, the maximum task size is 1MB.",
-                      "response": {
-                        "$ref": "Task"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\nThe queue must already exist.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks"
-                    },
-                    "cancelLease": {
-                      "description": "Cancel a pull task's lease.\n\nThe worker can use this method to cancel a task's lease by\nsetting its schedule_time to now. This will\nmake the task available to be leased to the next caller of\nLeaseTasks.",
-                      "request": {
-                        "$ref": "CancelLeaseRequest"
-                      },
-                      "response": {
-                        "$ref": "Task"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:cancelLease",
-                      "path": "v2beta2/{+name}:cancelLease",
-                      "id": "cloudtasks.projects.locations.queues.tasks.cancelLease"
-                    },
-                    "run": {
-                      "description": "Forces a task to run now.\n\nWhen this method is called, Cloud Tasks will dispatch the task, even if\nthe task is already running, the queue has reached its RateLimits or\nis PAUSED.\n\nThis command is meant to be used for manual debugging. For\nexample, RunTask can be used to retry a failed\ntask after a fix has been made or to manually force a task to be\ndispatched now.\n\nThe dispatched task is returned. That is, the task that is returned\ncontains the status after the task is dispatched but\nbefore the task is received by its target.\n\nIf Cloud Tasks receives a successful response from the task's\ntarget, then the task will be deleted; otherwise the task's\nschedule_time will be reset to the time that\nRunTask was called plus the retry delay specified\nin the queue's RetryConfig.\n\nRunTask returns\nNOT_FOUND when it is called on a\ntask that has already succeeded or permanently failed.\n\nRunTask cannot be called on a\npull task.",
-                      "request": {
-                        "$ref": "RunTaskRequest"
-                      },
-                      "httpMethod": "POST",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Task"
-                      },
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:run",
-                      "id": "cloudtasks.projects.locations.queues.tasks.run",
-                      "path": "v2beta2/{+name}:run"
-                    },
-                    "acknowledge": {
-                      "path": "v2beta2/{+name}:acknowledge",
-                      "id": "cloudtasks.projects.locations.queues.tasks.acknowledge",
-                      "request": {
-                        "$ref": "AcknowledgeTaskRequest"
-                      },
-                      "description": "Acknowledges a pull task.\n\nThe worker, that is, the entity that\nleased this task must call this method\nto indicate that the work associated with the task has finished.\n\nThe worker must acknowledge a task within the\nlease_duration or the lease\nwill expire and the task will become available to be leased\nagain. After the task is acknowledged, it will not be returned\nby a later LeaseTasks,\nGetTask, or\nListTasks.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:acknowledge"
-                    },
-                    "renewLease": {
-                      "request": {
-                        "$ref": "RenewLeaseRequest"
-                      },
-                      "description": "Renew the current lease of a pull task.\n\nThe worker can use this method to extend the lease by a new\nduration, starting from now. The new task lease will be\nreturned in the task's schedule_time.",
-                      "response": {
-                        "$ref": "Task"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:renewLease",
-                      "path": "v2beta2/{+name}:renewLease",
-                      "id": "cloudtasks.projects.locations.queues.tasks.renewLease"
-                    },
-                    "get": {
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "Task"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
-                          "location": "path"
-                        },
-                        "responseView": {
-                          "location": "query",
-                          "enum": [
-                            "VIEW_UNSPECIFIED",
-                            "BASIC",
-                            "FULL"
-                          ],
-                          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}",
-                      "id": "cloudtasks.projects.locations.queues.tasks.get",
-                      "path": "v2beta2/{+name}",
-                      "description": "Gets a task."
-                    },
-                    "lease": {
-                      "response": {
-                        "$ref": "LeaseTasksResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
-                          "location": "path",
-                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks:lease",
-                      "path": "v2beta2/{+parent}/tasks:lease",
-                      "id": "cloudtasks.projects.locations.queues.tasks.lease",
-                      "request": {
-                        "$ref": "LeaseTasksRequest"
-                      },
-                      "description": "Leases tasks from a pull queue for\nlease_duration.\n\nThis method is invoked by the worker to obtain a lease. The\nworker must acknowledge the task via\nAcknowledgeTask after they have\nperformed the work associated with the task.\n\nThe payload is intended to store data that\nthe worker needs to perform the work associated with the task. To\nreturn the payloads in the response, set\nresponse_view to\nFULL.\n\nA maximum of 10 qps of LeaseTasks\nrequests are allowed per\nqueue. RESOURCE_EXHAUSTED\nis returned when this limit is\nexceeded. RESOURCE_EXHAUSTED\nis also returned when\nmax_tasks_dispatched_per_second\nis exceeded."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "parameters": {
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
+      "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
     "$.xgafv": {
@@ -710,14 +24,14 @@
       "type": "string"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "callback": {
+      "type": "string",
       "location": "query",
-      "description": "JSONP",
-      "type": "string"
+      "description": "JSONP"
     },
     "alt": {
       "enum": [
@@ -736,9 +50,9 @@
       "default": "json"
     },
     "key": {
-      "type": "string",
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "access_token": {
       "location": "query",
@@ -764,278 +78,24 @@
   },
   "version": "v2beta2",
   "baseUrl": "https://cloudtasks.googleapis.com/",
-  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "Manages the execution of large numbers of distributed requests.",
+  "servicePath": "",
   "basePath": "",
-  "revision": "20190513",
-  "documentationLink": "https://cloud.google.com/tasks/",
   "id": "cloudtasks:v2beta2",
+  "documentationLink": "https://cloud.google.com/tasks/",
+  "revision": "20190513",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
-        }
-      },
-      "id": "SetIamPolicyRequest"
-    },
-    "AppEngineRouting": {
-      "description": "App Engine Routing.\n\nDefines routing characteristics specific to App Engine - service, version,\nand instance.\n\nFor more information about services, versions, and instances see\n[An Overview of App\nEngine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),\n[Microservices Architecture on Google App\nEngine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
-      "type": "object",
-      "properties": {
-        "service": {
-          "description": "App service.\n\nBy default, the task is sent to the service which is the default\nservice when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string.",
-          "type": "string"
-        },
-        "instance": {
-          "type": "string",
-          "description": "App instance.\n\nBy default, the task is sent to an instance which is available when\nthe task is attempted.\n\nRequests can only be sent to a specific instance if\n[manual scaling is used in App Engine\nStandard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).\nApp Engine Flex does not support instances. For more information, see\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed)."
-        },
-        "version": {
-          "description": "App version.\n\nBy default, the task is sent to the version which is the default\nversion when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string.",
-          "type": "string"
-        },
-        "host": {
-          "description": "Output only. The host that the task is sent to.\n\nFor more information, see\n[How Requests are\nRouted](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).\n\nThe host is constructed as:\n\n\n* `host = [application_domain_name]`\u003c/br\u003e\n  `| [service] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [version] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [version_dot_service]+ '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_service] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_version] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_version_dot_service] + '.' + [application_domain_name]`\n\n* `application_domain_name` = The domain name of the app, for\n  example \u003capp-id\u003e.appspot.com, which is associated with the\n  queue's project ID. Some tasks which were created using the App Engine\n  SDK use a custom domain name.\n\n* `service =` service\n\n* `version =` version\n\n* `version_dot_service =`\n  version `+ '.' +`\n  service\n\n* `instance =` instance\n\n* `instance_dot_service =`\n  instance `+ '.' +`\n  service\n\n* `instance_dot_version =`\n  instance `+ '.' +`\n  version\n\n* `instance_dot_version_dot_service =`\n  instance `+ '.' +`\n  version `+ '.' +`\n  service\n\nIf service is empty, then the task will be sent\nto the service which is the default service when the task is attempted.\n\nIf version is empty, then the task will be sent\nto the version which is the default version when the task is attempted.\n\nIf instance is empty, then the task\nwill be sent to an instance which is available when the task is\nattempted.\n\nIf service,\nversion, or\ninstance is invalid, then the task\nwill be sent to the default version of the default service when\nthe task is attempted.",
-          "type": "string"
-        }
-      },
-      "id": "AppEngineRouting"
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "AppEngineHttpTarget": {
-      "id": "AppEngineHttpTarget",
-      "description": "App Engine HTTP target.\n\nThe task will be delivered to the App Engine application hostname\nspecified by its AppEngineHttpTarget and AppEngineHttpRequest.\nThe documentation for AppEngineHttpRequest explains how the\ntask's host URL is constructed.\n\nUsing AppEngineHttpTarget requires\n[`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)\nGoogle IAM permission for the project\nand the following scope:\n\n`https://www.googleapis.com/auth/cloud-platform`",
-      "type": "object",
-      "properties": {
-        "appEngineRoutingOverride": {
-          "description": "Overrides for the\ntask-level app_engine_routing.\n\nIf set, `app_engine_routing_override` is used for all tasks in\nthe queue, no matter what the setting is for the\ntask-level app_engine_routing.",
-          "$ref": "AppEngineRouting"
-        }
-      }
-    },
-    "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string"
-        },
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."
-        },
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation."
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object"
-        }
-      },
-      "id": "Location"
-    },
-    "LeaseTasksRequest": {
-      "properties": {
-        "responseView": {
-          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Defaults to BASIC.",
-            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
-            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
-          ],
-          "enum": [
-            "VIEW_UNSPECIFIED",
-            "BASIC",
-            "FULL"
-          ]
-        },
-        "filter": {
-          "description": "`filter` can be used to specify a subset of tasks to lease.\n\nWhen `filter` is set to `tag=\u003cmy-tag\u003e` then the\nresponse will contain only tasks whose\ntag is equal to `\u003cmy-tag\u003e`. `\u003cmy-tag\u003e` must be\nless than 500 characters.\n\nWhen `filter` is set to `tag_function=oldest_tag()`, only tasks which have\nthe same tag as the task with the oldest\nschedule_time will be returned.\n\nGrammar Syntax:\n\n* `filter = \"tag=\" tag | \"tag_function=\" function`\n\n* `tag = string`\n\n* `function = \"oldest_tag()\"`\n\nThe `oldest_tag()` function returns tasks which have the same tag as the\noldest task (ordered by schedule time).\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. Tag which\naren't UTF-8 encoded can't be used in the\nfilter and the task's\ntag will be displayed as empty in Cloud Tasks.",
-          "type": "string"
-        },
-        "maxTasks": {
-          "description": "The maximum number of tasks to lease.\n\nThe system will make a best effort to return as close to as\n`max_tasks` as possible.\n\nThe largest that `max_tasks` can be is 1000.\n\nThe maximum total size of a lease tasks response is\n32 MB. If the sum of all task sizes requested reaches this limit,\nfewer tasks than requested are returned.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "leaseDuration": {
-          "description": "\nAfter the worker has successfully finished the work associated\nwith the task, the worker must call via\nAcknowledgeTask before the\nschedule_time. Otherwise the task will be\nreturned to a later LeaseTasks call so\nthat another worker can retry it.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second.",
-          "format": "google-duration",
-          "type": "string"
-        }
-      },
-      "id": "LeaseTasksRequest",
-      "description": "Request message for leasing tasks using LeaseTasks.",
-      "type": "object"
-    },
-    "AcknowledgeTaskRequest": {
-      "description": "Request message for acknowledging a task using\nAcknowledgeTask.",
-      "type": "object",
-      "properties": {
-        "scheduleTime": {
-          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "AcknowledgeTaskRequest"
-    },
-    "ListQueuesResponse": {
-      "id": "ListQueuesResponse",
-      "description": "Response message for ListQueues.",
-      "type": "object",
-      "properties": {
-        "queues": {
-          "description": "The list of queues.",
-          "type": "array",
-          "items": {
-            "$ref": "Queue"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "A token to retrieve next page of results.\n\nTo return the next page of results, call\nListQueues with this value as the\npage_token.\n\nIf the next_page_token is empty, there are no more results.\n\nThe page token is valid for only 2 hours."
-        }
-      }
-    },
-    "TestIamPermissionsRequest": {
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
-      "properties": {
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "id": "ListLocationsResponse"
-    },
-    "Policy": {
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-      "type": "object",
-      "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "description": "Deprecated.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          }
-        }
-      },
-      "id": "Policy"
-    },
-    "CancelLeaseRequest": {
-      "description": "Request message for canceling a lease using\nCancelLease.",
-      "type": "object",
-      "properties": {
-        "scheduleTime": {
-          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "responseView": {
-          "enumDescriptions": [
-            "Unspecified. Defaults to BASIC.",
-            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
-            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
-          ],
-          "enum": [
-            "VIEW_UNSPECIFIED",
-            "BASIC",
-            "FULL"
-          ],
-          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
-          "type": "string"
-        }
-      },
-      "id": "CancelLeaseRequest"
-    },
-    "AttemptStatus": {
-      "description": "The status of a task attempt.",
-      "type": "object",
-      "properties": {
-        "responseTime": {
-          "type": "string",
-          "description": "Output only. The time that this attempt response was received.\n\n`response_time` will be truncated to the nearest microsecond.",
-          "format": "google-datetime"
-        },
-        "responseStatus": {
-          "description": "Output only. The response from the target for this attempt.\n\nIf the task has not been attempted or the task is currently running\nthen the response status is unset.",
-          "$ref": "Status"
-        },
-        "scheduleTime": {
-          "description": "Output only. The time that this attempt was scheduled.\n\n`schedule_time` will be truncated to the nearest microsecond.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "dispatchTime": {
-          "description": "Output only. The time that this attempt was dispatched.\n\n`dispatch_time` will be truncated to the nearest microsecond.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "AttemptStatus"
-    },
     "RateLimits": {
-      "description": "Rate limits.\n\nThis message determines the maximum rate that tasks can be dispatched by a\nqueue, regardless of whether the dispatch is a first task attempt or a retry.\n\nNote: The debugging command, RunTask, will run a task\neven if the queue has reached its RateLimits.",
       "type": "object",
       "properties": {
+        "maxTasksDispatchedPerSecond": {
+          "description": "The maximum rate at which tasks are dispatched from this queue.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n* For App Engine queues, the maximum allowed value\n  is 500.\n* This field is output only   for pull queues. In addition to the\n  `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of\n  LeaseTasks requests are allowed per pull queue.\n\n\nThis field has the same meaning as\n[rate in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).",
+          "format": "double",
+          "type": "number"
+        },
         "maxBurstSize": {
           "description": "Output only. The max burst size.\n\nMax burst size limits how fast tasks in queue are processed when\nmany tasks are in the queue and the rate is high. This field\nallows the queue to have a high rate so processing starts shortly\nafter a task is enqueued, but still limits resource usage when\nmany tasks are enqueued in a short period of time.\n\nThe [token bucket](https://wikipedia.org/wiki/Token_Bucket)\nalgorithm is used to control the rate of task dispatches. Each\nqueue has a token bucket that holds tokens, up to the maximum\nspecified by `max_burst_size`. Each time a task is dispatched, a\ntoken is removed from the bucket. Tasks will be dispatched until\nthe queue's bucket runs out of tokens. The bucket will be\ncontinuously refilled with new tokens based on\nmax_tasks_dispatched_per_second.\n\nCloud Tasks will pick the value of `max_burst_size` based on the\nvalue of\nmax_tasks_dispatched_per_second.\n\nFor App Engine queues that were created or updated using\n`queue.yaml/xml`, `max_burst_size` is equal to\n[bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size).\nSince `max_burst_size` is output only, if\nUpdateQueue is called on a queue\ncreated by `queue.yaml/xml`, `max_burst_size` will be reset based\non the value of\nmax_tasks_dispatched_per_second,\nregardless of whether\nmax_tasks_dispatched_per_second\nis updated.\n",
           "format": "int32",
@@ -1045,34 +105,51 @@
           "description": "The maximum number of concurrent tasks that Cloud Tasks allows\nto be dispatched for this queue. After this threshold has been\nreached, Cloud Tasks stops dispatching tasks until the number of\nconcurrent requests decreases.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n\nThe maximum allowed value is 5,000.\n\nThis field is output only for\npull queues and always -1, which indicates no limit. No other\nqueue types can have `max_concurrent_tasks` set to -1.\n\n\nThis field has the same meaning as\n[max_concurrent_requests in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).",
           "format": "int32",
           "type": "integer"
-        },
-        "maxTasksDispatchedPerSecond": {
-          "type": "number",
-          "description": "The maximum rate at which tasks are dispatched from this queue.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\n* For App Engine queues, the maximum allowed value\n  is 500.\n* This field is output only   for pull queues. In addition to the\n  `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of\n  LeaseTasks requests are allowed per pull queue.\n\n\nThis field has the same meaning as\n[rate in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).",
-          "format": "double"
         }
       },
-      "id": "RateLimits"
+      "id": "RateLimits",
+      "description": "Rate limits.\n\nThis message determines the maximum rate that tasks can be dispatched by a\nqueue, regardless of whether the dispatch is a first task attempt or a retry.\n\nNote: The debugging command, RunTask, will run a task\neven if the queue has reached its RateLimits."
     },
     "PurgeQueueRequest": {
+      "id": "PurgeQueueRequest",
       "description": "Request message for PurgeQueue.",
       "type": "object",
-      "properties": {},
-      "id": "PurgeQueueRequest"
+      "properties": {}
     },
     "PauseQueueRequest": {
-      "id": "PauseQueueRequest",
       "description": "Request message for PauseQueue.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "PauseQueueRequest"
+    },
+    "RunTaskRequest": {
+      "id": "RunTaskRequest",
+      "description": "Request message for forcing a task to run now using\nRunTask.",
+      "type": "object",
+      "properties": {
+        "responseView": {
+          "enumDescriptions": [
+            "Unspecified. Defaults to BASIC.",
+            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
+            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
+          ],
+          "enum": [
+            "VIEW_UNSPECIFIED",
+            "BASIC",
+            "FULL"
+          ],
+          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
+          "type": "string"
+        }
+      }
     },
     "Task": {
       "description": "A unit of scheduled work.",
       "type": "object",
       "properties": {
         "appEngineHttpRequest": {
-          "description": "App Engine HTTP request that is sent to the task's target. Can\nbe set only if\napp_engine_http_target is set\non the queue.\n\nAn App Engine task is a task that has AppEngineHttpRequest set.",
-          "$ref": "AppEngineHttpRequest"
+          "$ref": "AppEngineHttpRequest",
+          "description": "App Engine HTTP request that is sent to the task's target. Can\nbe set only if\napp_engine_http_target is set\non the queue.\n\nAn App Engine task is a task that has AppEngineHttpRequest set."
         },
         "view": {
           "enum": [
@@ -1088,23 +165,23 @@
             "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
           ]
         },
-        "pullMessage": {
-          "description": "LeaseTasks to process the task. Can be\nset only if pull_target is set on the queue.\n\nA pull task is a task that has PullMessage set.",
-          "$ref": "PullMessage"
+        "createTime": {
+          "type": "string",
+          "description": "Output only. The time that the task was created.\n\n`create_time` will be truncated to the nearest second.",
+          "format": "google-datetime"
         },
         "scheduleTime": {
           "description": "The time when the task is scheduled to be attempted.\n\nFor App Engine queues, this is when the task will be attempted or retried.\n\nFor pull queues, this is the time when the task is available to\nbe leased; if a task is currently leased, this is the time when\nthe current lease expires, that is, the time that the task was\nleased plus the lease_duration.\n\n`schedule_time` will be truncated to the nearest microsecond.",
           "format": "google-datetime",
           "type": "string"
         },
-        "createTime": {
-          "description": "Output only. The time that the task was created.\n\n`create_time` will be truncated to the nearest second.",
-          "format": "google-datetime",
-          "type": "string"
+        "pullMessage": {
+          "$ref": "PullMessage",
+          "description": "LeaseTasks to process the task. Can be\nset only if pull_target is set on the queue.\n\nA pull task is a task that has PullMessage set."
         },
         "status": {
-          "description": "Output only. The task status.",
-          "$ref": "TaskStatus"
+          "$ref": "TaskStatus",
+          "description": "Output only. The task status."
         },
         "name": {
           "description": "Optionally caller-specified in CreateTask.\n\nThe task name.\n\nThe task name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the task's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.\n* `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n  hyphens (-), or underscores (_). The maximum length is 500 characters.",
@@ -1113,29 +190,34 @@
       },
       "id": "Task"
     },
-    "RunTaskRequest": {
+    "Status": {
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+      "type": "object",
       "properties": {
-        "responseView": {
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Defaults to BASIC.",
-            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
-            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
-          ],
-          "enum": [
-            "VIEW_UNSPECIFIED",
-            "BASIC",
-            "FULL"
-          ],
-          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "any",
+              "description": "Properties of the object. Contains field @type with type URL."
+            }
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
         }
       },
-      "id": "RunTaskRequest",
-      "description": "Request message for forcing a task to run now using\nRunTask.",
-      "type": "object"
+      "id": "Status"
     },
     "PullMessage": {
-      "id": "PullMessage",
       "description": "The pull message contains data that can be used by the caller of\nLeaseTasks to process the task.\n\nThis proto can only be used for tasks in a queue which has\npull_target set.",
       "type": "object",
       "properties": {
@@ -1145,43 +227,20 @@
           "type": "string"
         },
         "tag": {
-          "description": "The task's tag.\n\nTags allow similar tasks to be processed in a batch. If you label\ntasks with a tag, your worker can\nlease tasks with the same tag using\nfilter. For example, if you want to\naggregate the events associated with a specific user once a day,\nyou could tag tasks with the user ID.\n\nThe task's tag can only be set when the\ntask is created.\n\nThe tag must be less than 500 characters.\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8\nencoded, the tag will be empty when the task is returned by Cloud Tasks.",
-          "type": "string"
+          "type": "string",
+          "description": "The task's tag.\n\nTags allow similar tasks to be processed in a batch. If you label\ntasks with a tag, your worker can\nlease tasks with the same tag using\nfilter. For example, if you want to\naggregate the events associated with a specific user once a day,\nyou could tag tasks with the user ID.\n\nThe task's tag can only be set when the\ntask is created.\n\nThe tag must be less than 500 characters.\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8\nencoded, the tag will be empty when the task is returned by Cloud Tasks."
         }
-      }
-    },
-    "Status": {
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error\nmessage, and error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
-      "type": "object",
-      "properties": {
-        "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-          "type": "array",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          }
-        },
-        "code": {
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        }
-      }
+      },
+      "id": "PullMessage"
     },
     "Binding": {
-      "id": "Binding",
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
+        "condition": {
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
@@ -1190,26 +249,18 @@
           }
         },
         "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        },
-        "condition": {
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
-          "$ref": "Expr"
+          "type": "string",
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."
         }
-      }
+      },
+      "id": "Binding"
     },
     "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
-        "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        },
         "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
+          "type": "string",
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."
         },
         "title": {
           "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
@@ -1218,20 +269,18 @@
         "location": {
           "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
           "type": "string"
+        },
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
         }
       },
-      "id": "Expr"
+      "id": "Expr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
     },
     "RenewLeaseRequest": {
-      "id": "RenewLeaseRequest",
-      "description": "Request message for renewing a lease using\nRenewLease.",
       "type": "object",
       "properties": {
-        "scheduleTime": {
-          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "leaseDuration": {
           "type": "string",
           "description": "Required.\n\nThe desired new lease duration, starting from now.\n\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second.",
@@ -1250,8 +299,15 @@
             "BASIC",
             "FULL"
           ]
+        },
+        "scheduleTime": {
+          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
+          "format": "google-datetime",
+          "type": "string"
         }
-      }
+      },
+      "id": "RenewLeaseRequest",
+      "description": "Request message for renewing a lease using\nRenewLease."
     },
     "TaskStatus": {
       "description": "Status of the task.",
@@ -1279,9 +335,28 @@
       "id": "TaskStatus"
     },
     "AppEngineHttpRequest": {
-      "description": "App Engine HTTP request.\n\nThe message defines the HTTP request that is sent to an App Engine app when\nthe task is dispatched.\n\nThis proto can only be used for tasks in a queue which has\napp_engine_http_target set.\n\nUsing AppEngineHttpRequest requires\n[`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)\nGoogle IAM permission for the project\nand the following scope:\n\n`https://www.googleapis.com/auth/cloud-platform`\n\nThe task will be delivered to the App Engine app which belongs to the same\nproject as the queue. For more information, see\n[How Requests are\nRouted](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand how routing is affected by\n[dispatch\nfiles](https://cloud.google.com/appengine/docs/python/config/dispatchref).\nTraffic is encrypted during transport and never leaves Google datacenters.\nBecause this traffic is carried over a communication mechanism internal to\nGoogle, you cannot explicitly set the protocol (for example, HTTP or HTTPS).\nThe request to the handler, however, will appear to have used the HTTP\nprotocol.\n\nThe AppEngineRouting used to construct the URL that the task is\ndelivered to can be set at the queue-level or task-level:\n\n* If set,\n   app_engine_routing_override\n   is used for all tasks in the queue, no matter what the setting\n   is for the\n   task-level app_engine_routing.\n\n\nThe `url` that the task will be sent to is:\n\n* `url =` host `+`\n  relative_url\n\nTasks can be dispatched to secure app handlers, unsecure app handlers, and\nURIs restricted with\n[`login:\nadmin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).\nBecause tasks are not run as any user, they cannot be dispatched to URIs\nrestricted with\n[`login:\nrequired`](https://cloud.google.com/appengine/docs/standard/python/config/appref)\nTask dispatches also do not follow redirects.\n\nThe task attempt has succeeded if the app's request handler returns an HTTP\nresponse code in the range [`200` - `299`]. The task attempt has failed if\nthe app's handler returns a non-2xx response code or Cloud Tasks does\nnot receive response before the deadline. Failed\ntasks will be retried according to the\nretry configuration. `503` (Service Unavailable) is\nconsidered an App Engine system error instead of an application error and\nwill cause Cloud Tasks' traffic congestion control to temporarily throttle\nthe queue's dispatches. Unlike other types of task targets, a `429` (Too Many\nRequests) response from an app handler does not cause traffic congestion\ncontrol to throttle the queue.",
       "type": "object",
       "properties": {
+        "payload": {
+          "description": "Payload.\n\nThe payload will be sent as the HTTP message body. A message\nbody, and thus a payload, is allowed only if the HTTP method is\nPOST or PUT. It is an error to set a data payload on a task with\nan incompatible HttpMethod.",
+          "format": "byte",
+          "type": "string"
+        },
+        "relativeUrl": {
+          "type": "string",
+          "description": "The relative URL.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path and query string arguments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters."
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\nRepeated headers are not supported but a header value can contain commas.\n\nCloud Tasks sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Tasks will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n\nIf the task has a payload, Cloud\nTasks sets the following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explicitly\n  setting `Content-Type` to a particular media type when the\n  task is created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Tasks. This value is\n  output only.   It cannot be changed.\n\nThe headers below cannot be set or overridden:\n\n* `Host`\n* `X-Google-*`\n* `X-AppEngine-*`\n\nIn addition, Cloud Tasks sets some headers when the task is dispatched,\nsuch as headers containing information about the task; see\n[request\nheaders](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).\nThese headers are set only when the task is dispatched, so they are not\nvisible when the task is returned in a Cloud Tasks response.\n\nAlthough there is no specific limit for the maximum number of headers or\nthe size, there is a limit on the maximum size of the Task. For more\ninformation, see the CreateTask documentation."
+        },
+        "appEngineRouting": {
+          "description": "Task-level setting for App Engine routing.\n\nIf set,\napp_engine_routing_override\nis used for all tasks in the queue, no matter what the setting is for the\ntask-level app_engine_routing.",
+          "$ref": "AppEngineRouting"
+        },
         "httpMethod": {
           "enumDescriptions": [
             "HTTP method unspecified",
@@ -1301,32 +376,12 @@
           ],
           "description": "The HTTP method to use for the request. The default is POST.\n\nThe app's request handler for the task's target URL must be able to handle\nHTTP requests with this http_method, otherwise the task attempt will fail\nwith error code 405 (Method Not Allowed). See\n[Writing a push task request\nhandler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)\nand the documentation for the request handlers in the language your app is\nwritten in e.g.\n[Python Request\nHandler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass).",
           "type": "string"
-        },
-        "payload": {
-          "type": "string",
-          "description": "Payload.\n\nThe payload will be sent as the HTTP message body. A message\nbody, and thus a payload, is allowed only if the HTTP method is\nPOST or PUT. It is an error to set a data payload on a task with\nan incompatible HttpMethod.",
-          "format": "byte"
-        },
-        "relativeUrl": {
-          "description": "The relative URL.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path and query string arguments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters.",
-          "type": "string"
-        },
-        "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "HTTP request headers.\n\nThis map contains the header field names and values.\nHeaders can be set when the\ntask is created.\nRepeated headers are not supported but a header value can contain commas.\n\nCloud Tasks sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Tasks will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n\nIf the task has a payload, Cloud\nTasks sets the following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explicitly\n  setting `Content-Type` to a particular media type when the\n  task is created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Tasks. This value is\n  output only.   It cannot be changed.\n\nThe headers below cannot be set or overridden:\n\n* `Host`\n* `X-Google-*`\n* `X-AppEngine-*`\n\nIn addition, Cloud Tasks sets some headers when the task is dispatched,\nsuch as headers containing information about the task; see\n[request\nheaders](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).\nThese headers are set only when the task is dispatched, so they are not\nvisible when the task is returned in a Cloud Tasks response.\n\nAlthough there is no specific limit for the maximum number of headers or\nthe size, there is a limit on the maximum size of the Task. For more\ninformation, see the CreateTask documentation.",
-          "type": "object"
-        },
-        "appEngineRouting": {
-          "$ref": "AppEngineRouting",
-          "description": "Task-level setting for App Engine routing.\n\nIf set,\napp_engine_routing_override\nis used for all tasks in the queue, no matter what the setting is for the\ntask-level app_engine_routing."
         }
       },
-      "id": "AppEngineHttpRequest"
+      "id": "AppEngineHttpRequest",
+      "description": "App Engine HTTP request.\n\nThe message defines the HTTP request that is sent to an App Engine app when\nthe task is dispatched.\n\nThis proto can only be used for tasks in a queue which has\napp_engine_http_target set.\n\nUsing AppEngineHttpRequest requires\n[`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)\nGoogle IAM permission for the project\nand the following scope:\n\n`https://www.googleapis.com/auth/cloud-platform`\n\nThe task will be delivered to the App Engine app which belongs to the same\nproject as the queue. For more information, see\n[How Requests are\nRouted](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand how routing is affected by\n[dispatch\nfiles](https://cloud.google.com/appengine/docs/python/config/dispatchref).\nTraffic is encrypted during transport and never leaves Google datacenters.\nBecause this traffic is carried over a communication mechanism internal to\nGoogle, you cannot explicitly set the protocol (for example, HTTP or HTTPS).\nThe request to the handler, however, will appear to have used the HTTP\nprotocol.\n\nThe AppEngineRouting used to construct the URL that the task is\ndelivered to can be set at the queue-level or task-level:\n\n* If set,\n   app_engine_routing_override\n   is used for all tasks in the queue, no matter what the setting\n   is for the\n   task-level app_engine_routing.\n\n\nThe `url` that the task will be sent to is:\n\n* `url =` host `+`\n  relative_url\n\nTasks can be dispatched to secure app handlers, unsecure app handlers, and\nURIs restricted with\n[`login:\nadmin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).\nBecause tasks are not run as any user, they cannot be dispatched to URIs\nrestricted with\n[`login:\nrequired`](https://cloud.google.com/appengine/docs/standard/python/config/appref)\nTask dispatches also do not follow redirects.\n\nThe task attempt has succeeded if the app's request handler returns an HTTP\nresponse code in the range [`200` - `299`]. The task attempt has failed if\nthe app's handler returns a non-2xx response code or Cloud Tasks does\nnot receive response before the deadline. Failed\ntasks will be retried according to the\nretry configuration. `503` (Service Unavailable) is\nconsidered an App Engine system error instead of an application error and\nwill cause Cloud Tasks' traffic congestion control to temporarily throttle\nthe queue's dispatches. Unlike other types of task targets, a `429` (Too Many\nRequests) response from an app handler does not cause traffic congestion\ncontrol to throttle the queue."
     },
     "TestIamPermissionsResponse": {
-      "id": "TestIamPermissionsResponse",
       "description": "Response message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
@@ -1337,7 +392,8 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "TestIamPermissionsResponse"
     },
     "GetIamPolicyRequest": {
       "description": "Request message for `GetIamPolicy` method.",
@@ -1346,40 +402,40 @@
       "id": "GetIamPolicyRequest"
     },
     "RetryConfig": {
-      "description": "Retry config.\n\nThese settings determine how a failed task attempt is retried.",
       "type": "object",
       "properties": {
-        "maxAttempts": {
-          "type": "integer",
-          "description": "The maximum number of attempts for a task.\n\nCloud Tasks will attempt the task `max_attempts` times (that\nis, if the first attempt fails, then there will be\n`max_attempts - 1` retries).  Must be \u003e 0.",
-          "format": "int32"
-        },
-        "maxDoublings": {
-          "description": "The time between retries will double `max_doublings` times.\n\nA task's retry interval starts at\nmin_backoff, then doubles\n`max_doublings` times, then increases linearly, and finally\nretries retries at intervals of\nmax_backoff up to\nmax_attempts times.\n\nFor example, if min_backoff is 10s,\nmax_backoff is 300s, and\n`max_doublings` is 3, then the a task will first be retried in\n10s. The retry interval will double three times, and then\nincrease linearly by 2^3 * 10s.  Finally, the task will retry at\nintervals of max_backoff until the\ntask has been attempted max_attempts\ntimes. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s,\n240s, 300s, 300s, ....\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\nThis field has the same meaning as\n[max_doublings in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
-          "format": "int32",
-          "type": "integer"
-        },
-        "unlimitedAttempts": {
-          "description": "If true, then the number of attempts is unlimited.",
-          "type": "boolean"
-        },
         "minBackoff": {
           "description": "A task will be scheduled for retry between\nmin_backoff and\nmax_backoff duration after it fails,\nif the queue's RetryConfig specifies that the task should be\nretried.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\n`min_backoff` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[min_backoff_seconds in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
           "format": "google-duration",
           "type": "string"
         },
         "maxBackoff": {
+          "type": "string",
           "description": "A task will be scheduled for retry between\nmin_backoff and\nmax_backoff duration after it fails,\nif the queue's RetryConfig specifies that the task should be\nretried.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\n`max_backoff` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[max_backoff_seconds in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
+          "format": "google-duration"
+        },
+        "maxRetryDuration": {
+          "description": "If positive, `max_retry_duration` specifies the time limit for\nretrying a failed task, measured from when the task was first\nattempted. Once `max_retry_duration` time has passed *and* the\ntask has been attempted max_attempts\ntimes, no further attempts will be made and the task will be\ndeleted.\n\nIf zero, then the task age is unlimited.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\n`max_retry_duration` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[task_age_limit in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
           "format": "google-duration",
           "type": "string"
         },
-        "maxRetryDuration": {
-          "type": "string",
-          "description": "If positive, `max_retry_duration` specifies the time limit for\nretrying a failed task, measured from when the task was first\nattempted. Once `max_retry_duration` time has passed *and* the\ntask has been attempted max_attempts\ntimes, no further attempts will be made and the task will be\ndeleted.\n\nIf zero, then the task age is unlimited.\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\n`max_retry_duration` will be truncated to the nearest second.\n\nThis field has the same meaning as\n[task_age_limit in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
-          "format": "google-duration"
+        "maxDoublings": {
+          "type": "integer",
+          "description": "The time between retries will double `max_doublings` times.\n\nA task's retry interval starts at\nmin_backoff, then doubles\n`max_doublings` times, then increases linearly, and finally\nretries retries at intervals of\nmax_backoff up to\nmax_attempts times.\n\nFor example, if min_backoff is 10s,\nmax_backoff is 300s, and\n`max_doublings` is 3, then the a task will first be retried in\n10s. The retry interval will double three times, and then\nincrease linearly by 2^3 * 10s.  Finally, the task will retry at\nintervals of max_backoff until the\ntask has been attempted max_attempts\ntimes. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s,\n240s, 300s, 300s, ....\n\nIf unspecified when the queue is created, Cloud Tasks will pick the\ndefault.\n\nThis field is output only for pull queues.\n\n\nThis field has the same meaning as\n[max_doublings in\nqueue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).",
+          "format": "int32"
+        },
+        "maxAttempts": {
+          "type": "integer",
+          "description": "The maximum number of attempts for a task.\n\nCloud Tasks will attempt the task `max_attempts` times (that\nis, if the first attempt fails, then there will be\n`max_attempts - 1` retries).  Must be \u003e 0.",
+          "format": "int32"
+        },
+        "unlimitedAttempts": {
+          "description": "If true, then the number of attempts is unlimited.",
+          "type": "boolean"
         }
       },
-      "id": "RetryConfig"
+      "id": "RetryConfig",
+      "description": "Retry config.\n\nThese settings determine how a failed task attempt is retried."
     },
     "PullTarget": {
       "description": "Pull target.",
@@ -1388,12 +444,13 @@
       "id": "PullTarget"
     },
     "ResumeQueueRequest": {
-      "description": "Request message for ResumeQueue.",
       "type": "object",
       "properties": {},
-      "id": "ResumeQueueRequest"
+      "id": "ResumeQueueRequest",
+      "description": "Request message for ResumeQueue."
     },
     "ListTasksResponse": {
+      "description": "Response message for listing tasks using ListTasks.",
       "type": "object",
       "properties": {
         "tasks": {
@@ -1408,8 +465,32 @@
           "type": "string"
         }
       },
-      "id": "ListTasksResponse",
-      "description": "Response message for listing tasks using ListTasks."
+      "id": "ListTasksResponse"
+    },
+    "CreateTaskRequest": {
+      "description": "Request message for CreateTask.",
+      "type": "object",
+      "properties": {
+        "responseView": {
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. Defaults to BASIC.",
+            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
+            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
+          ],
+          "enum": [
+            "VIEW_UNSPECIFIED",
+            "BASIC",
+            "FULL"
+          ],
+          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."
+        },
+        "task": {
+          "$ref": "Task",
+          "description": "Required.\n\nThe task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or completed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or completed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or completed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."
+        }
+      },
+      "id": "CreateTaskRequest"
     },
     "LeaseTasksResponse": {
       "description": "Response message for leasing tasks using LeaseTasks.",
@@ -1425,42 +506,10 @@
       },
       "id": "LeaseTasksResponse"
     },
-    "CreateTaskRequest": {
-      "id": "CreateTaskRequest",
-      "description": "Request message for CreateTask.",
-      "type": "object",
-      "properties": {
-        "responseView": {
-          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Defaults to BASIC.",
-            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
-            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
-          ],
-          "enum": [
-            "VIEW_UNSPECIFIED",
-            "BASIC",
-            "FULL"
-          ]
-        },
-        "task": {
-          "$ref": "Task",
-          "description": "Required.\n\nThe task to add.\n\nTask names have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.\nThe user can optionally specify a task name. If a\nname is not specified then the system will generate a random\nunique task id, which will be set in the task returned in the\nresponse.\n\nIf schedule_time is not set or is in the\npast then Cloud Tasks will set it to the current time.\n\nTask De-duplication:\n\nExplicitly specifying a task ID enables task de-duplication.  If\na task's ID is identical to that of an existing task or a task\nthat was deleted or completed recently then the call will fail\nwith ALREADY_EXISTS.\nIf the task's queue was created using Cloud Tasks, then another task with\nthe same name can't be created for ~1hour after the original task was\ndeleted or completed. If the task's queue was created using queue.yaml or\nqueue.xml, then another task with the same name can't be created\nfor ~9days after the original task was deleted or completed.\n\nBecause there is an extra lookup cost to identify duplicate task\nnames, these CreateTask calls have significantly\nincreased latency. Using hashed strings for the task id or for\nthe prefix of the task id is recommended. Choosing task ids that\nare sequential or have sequential prefixes, for example using a\ntimestamp, causes an increase in latency and error rates in all\ntask commands. The infrastructure relies on an approximately\nuniform distribution of task ids to store and serve tasks\nefficiently."
-        }
-      }
-    },
     "Queue": {
+      "description": "A queue is a container of related tasks. Queues are configured to manage\nhow those tasks are dispatched. Configurable properties include rate limits,\nretry options, target types, and others.",
       "type": "object",
       "properties": {
-        "rateLimits": {
-          "$ref": "RateLimits",
-          "description": "Rate limits for task dispatches.\n\nrate_limits and\nretry_config are related because they both\ncontrol task attempts however they control how tasks are\nattempted in different ways:\n\n* rate_limits controls the total rate of\n  dispatches from a queue (i.e. all traffic dispatched from the\n  queue, regardless of whether the dispatch is from a first\n  attempt or a retry).\n* retry_config controls what happens to\n  particular a task after its first attempt fails. That is,\n  retry_config controls task retries (the\n  second attempt, third attempt, etc)."
-        },
-        "pullTarget": {
-          "description": "Pull target.\n\nA pull queue is a queue that has a PullTarget.",
-          "$ref": "PullTarget"
-        },
         "appEngineHttpTarget": {
           "$ref": "AppEngineHttpTarget",
           "description": "App Engine HTTP target.\n\nAn App Engine queue is a queue that has an AppEngineHttpTarget."
@@ -1470,7 +519,12 @@
           "format": "google-datetime",
           "type": "string"
         },
+        "retryConfig": {
+          "$ref": "RetryConfig",
+          "description": "Settings that determine the retry behavior.\n\n* For tasks created using Cloud Tasks: the queue-level retry settings\n  apply to all tasks in the queue that were created using Cloud Tasks.\n  Retry settings cannot be set on individual tasks.\n* For tasks created using the App Engine SDK: the queue-level retry\n  settings apply to all tasks in the queue which do not have retry settings\n  explicitly set on the task and were created by the App Engine SDK. See\n  [App Engine\n  documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks)."
+        },
         "state": {
+          "type": "string",
           "enumDescriptions": [
             "Unspecified state.",
             "The queue is running. Tasks can be dispatched.\n\nIf the queue was created using Cloud Tasks and the queue has\nhad no activity (method calls or task dispatches) for 30 days,\nthe queue may take a few minutes to re-activate. Some method\ncalls may return NOT_FOUND and\ntasks may not be dispatched for a few minutes until the queue\nhas been re-activated.",
@@ -1483,27 +537,287 @@
             "PAUSED",
             "DISABLED"
           ],
-          "description": "Output only. The state of the queue.\n\n`state` can only be changed by called\nPauseQueue,\nResumeQueue, or uploading\n[queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).\nUpdateQueue cannot be used to change `state`.",
-          "type": "string"
-        },
-        "retryConfig": {
-          "$ref": "RetryConfig",
-          "description": "Settings that determine the retry behavior.\n\n* For tasks created using Cloud Tasks: the queue-level retry settings\n  apply to all tasks in the queue that were created using Cloud Tasks.\n  Retry settings cannot be set on individual tasks.\n* For tasks created using the App Engine SDK: the queue-level retry\n  settings apply to all tasks in the queue which do not have retry settings\n  explicitly set on the task and were created by the App Engine SDK. See\n  [App Engine\n  documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks)."
+          "description": "Output only. The state of the queue.\n\n`state` can only be changed by called\nPauseQueue,\nResumeQueue, or uploading\n[queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).\nUpdateQueue cannot be used to change `state`."
         },
         "name": {
-          "type": "string",
-          "description": "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters."
+          "description": "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.",
+          "type": "string"
+        },
+        "rateLimits": {
+          "description": "Rate limits for task dispatches.\n\nrate_limits and\nretry_config are related because they both\ncontrol task attempts however they control how tasks are\nattempted in different ways:\n\n* rate_limits controls the total rate of\n  dispatches from a queue (i.e. all traffic dispatched from the\n  queue, regardless of whether the dispatch is from a first\n  attempt or a retry).\n* retry_config controls what happens to\n  particular a task after its first attempt fails. That is,\n  retry_config controls task retries (the\n  second attempt, third attempt, etc).",
+          "$ref": "RateLimits"
+        },
+        "pullTarget": {
+          "$ref": "PullTarget",
+          "description": "Pull target.\n\nA pull queue is a queue that has a PullTarget."
         }
       },
-      "id": "Queue",
-      "description": "A queue is a container of related tasks. Queues are configured to manage\nhow those tasks are dispatched. Configurable properties include rate limits,\nretry options, target types, and others."
+      "id": "Queue"
+    },
+    "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
+      "properties": {
+        "policy": {
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+        }
+      },
+      "id": "SetIamPolicyRequest"
+    },
+    "AppEngineRouting": {
+      "description": "App Engine Routing.\n\nDefines routing characteristics specific to App Engine - service, version,\nand instance.\n\nFor more information about services, versions, and instances see\n[An Overview of App\nEngine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),\n[Microservices Architecture on Google App\nEngine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
+      "type": "object",
+      "properties": {
+        "version": {
+          "description": "App version.\n\nBy default, the task is sent to the version which is the default\nversion when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string.",
+          "type": "string"
+        },
+        "host": {
+          "description": "Output only. The host that the task is sent to.\n\nFor more information, see\n[How Requests are\nRouted](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).\n\nThe host is constructed as:\n\n\n* `host = [application_domain_name]`\u003c/br\u003e\n  `| [service] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [version] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [version_dot_service]+ '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_service] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_version] + '.' + [application_domain_name]`\u003c/br\u003e\n  `| [instance_dot_version_dot_service] + '.' + [application_domain_name]`\n\n* `application_domain_name` = The domain name of the app, for\n  example \u003capp-id\u003e.appspot.com, which is associated with the\n  queue's project ID. Some tasks which were created using the App Engine\n  SDK use a custom domain name.\n\n* `service =` service\n\n* `version =` version\n\n* `version_dot_service =`\n  version `+ '.' +`\n  service\n\n* `instance =` instance\n\n* `instance_dot_service =`\n  instance `+ '.' +`\n  service\n\n* `instance_dot_version =`\n  instance `+ '.' +`\n  version\n\n* `instance_dot_version_dot_service =`\n  instance `+ '.' +`\n  version `+ '.' +`\n  service\n\nIf service is empty, then the task will be sent\nto the service which is the default service when the task is attempted.\n\nIf version is empty, then the task will be sent\nto the version which is the default version when the task is attempted.\n\nIf instance is empty, then the task\nwill be sent to an instance which is available when the task is\nattempted.\n\nIf service,\nversion, or\ninstance is invalid, then the task\nwill be sent to the default version of the default service when\nthe task is attempted.",
+          "type": "string"
+        },
+        "service": {
+          "description": "App service.\n\nBy default, the task is sent to the service which is the default\nservice when the task is attempted.\n\nFor some queues or tasks which were created using the App Engine\nTask Queue API, host is not parsable\ninto service,\nversion, and\ninstance. For example, some tasks\nwhich were created using the App Engine SDK use a custom domain\nname; custom domains are not parsed by Cloud Tasks. If\nhost is not parsable, then\nservice,\nversion, and\ninstance are the empty string.",
+          "type": "string"
+        },
+        "instance": {
+          "description": "App instance.\n\nBy default, the task is sent to an instance which is available when\nthe task is attempted.\n\nRequests can only be sent to a specific instance if\n[manual scaling is used in App Engine\nStandard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).\nApp Engine Flex does not support instances. For more information, see\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
+          "type": "string"
+        }
+      },
+      "id": "AppEngineRouting"
+    },
+    "Empty": {
+      "type": "object",
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+    },
+    "AppEngineHttpTarget": {
+      "type": "object",
+      "properties": {
+        "appEngineRoutingOverride": {
+          "$ref": "AppEngineRouting",
+          "description": "Overrides for the\ntask-level app_engine_routing.\n\nIf set, `app_engine_routing_override` is used for all tasks in\nthe queue, no matter what the setting is for the\ntask-level app_engine_routing."
+        }
+      },
+      "id": "AppEngineHttpTarget",
+      "description": "App Engine HTTP target.\n\nThe task will be delivered to the App Engine application hostname\nspecified by its AppEngineHttpTarget and AppEngineHttpRequest.\nThe documentation for AppEngineHttpRequest explains how the\ntask's host URL is constructed.\n\nUsing AppEngineHttpTarget requires\n[`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)\nGoogle IAM permission for the project\nand the following scope:\n\n`https://www.googleapis.com/auth/cloud-platform`"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object"
+        },
+        "name": {
+          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
+        },
+        "locationId": {
+          "type": "string",
+          "description": "The canonical id for this location. For example: `\"us-east1\"`."
+        },
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object"
+        }
+      },
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location."
+    },
+    "LeaseTasksRequest": {
+      "id": "LeaseTasksRequest",
+      "description": "Request message for leasing tasks using LeaseTasks.",
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string",
+          "description": "`filter` can be used to specify a subset of tasks to lease.\n\nWhen `filter` is set to `tag=\u003cmy-tag\u003e` then the\nresponse will contain only tasks whose\ntag is equal to `\u003cmy-tag\u003e`. `\u003cmy-tag\u003e` must be\nless than 500 characters.\n\nWhen `filter` is set to `tag_function=oldest_tag()`, only tasks which have\nthe same tag as the task with the oldest\nschedule_time will be returned.\n\nGrammar Syntax:\n\n* `filter = \"tag=\" tag | \"tag_function=\" function`\n\n* `tag = string`\n\n* `function = \"oldest_tag()\"`\n\nThe `oldest_tag()` function returns tasks which have the same tag as the\noldest task (ordered by schedule time).\n\nSDK compatibility: Although the SDK allows tags to be either\nstring or\n[bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),\nonly UTF-8 encoded tags can be used in Cloud Tasks. Tag which\naren't UTF-8 encoded can't be used in the\nfilter and the task's\ntag will be displayed as empty in Cloud Tasks."
+        },
+        "maxTasks": {
+          "description": "The maximum number of tasks to lease.\n\nThe system will make a best effort to return as close to as\n`max_tasks` as possible.\n\nThe largest that `max_tasks` can be is 1000.\n\nThe maximum total size of a lease tasks response is\n32 MB. If the sum of all task sizes requested reaches this limit,\nfewer tasks than requested are returned.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "leaseDuration": {
+          "type": "string",
+          "description": "\nAfter the worker has successfully finished the work associated\nwith the task, the worker must call via\nAcknowledgeTask before the\nschedule_time. Otherwise the task will be\nreturned to a later LeaseTasks call so\nthat another worker can retry it.\n\nThe maximum lease duration is 1 week.\n`lease_duration` will be truncated to the nearest second.",
+          "format": "google-duration"
+        },
+        "responseView": {
+          "enumDescriptions": [
+            "Unspecified. Defaults to BASIC.",
+            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
+            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
+          ],
+          "enum": [
+            "VIEW_UNSPECIFIED",
+            "BASIC",
+            "FULL"
+          ],
+          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
+          "type": "string"
+        }
+      }
+    },
+    "AcknowledgeTaskRequest": {
+      "type": "object",
+      "properties": {
+        "scheduleTime": {
+          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "AcknowledgeTaskRequest",
+      "description": "Request message for acknowledging a task using\nAcknowledgeTask."
+    },
+    "ListQueuesResponse": {
+      "description": "Response message for ListQueues.",
+      "type": "object",
+      "properties": {
+        "queues": {
+          "type": "array",
+          "items": {
+            "$ref": "Queue"
+          },
+          "description": "The list of queues."
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\n\nTo return the next page of results, call\nListQueues with this value as the\npage_token.\n\nIf the next_page_token is empty, there are no more results.\n\nThe page token is valid for only 2 hours.",
+          "type": "string"
+        }
+      },
+      "id": "ListQueuesResponse"
+    },
+    "TestIamPermissionsRequest": {
+      "id": "TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Policy": {
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "type": "object",
+      "properties": {
+        "etag": {
+          "type": "string",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
+          "format": "byte"
+        },
+        "version": {
+          "description": "Deprecated.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+          "type": "array",
+          "items": {
+            "$ref": "Binding"
+          }
+        }
+      },
+      "id": "Policy"
+    },
+    "ListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "locations": {
+          "description": "A list of locations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          }
+        }
+      },
+      "id": "ListLocationsResponse"
+    },
+    "CancelLeaseRequest": {
+      "description": "Request message for canceling a lease using\nCancelLease.",
+      "type": "object",
+      "properties": {
+        "responseView": {
+          "enum": [
+            "VIEW_UNSPECIFIED",
+            "BASIC",
+            "FULL"
+          ],
+          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. Defaults to BASIC.",
+            "The basic view omits fields which can be large or can contain\nsensitive data.\n\nThis view does not include the\n(payload in AppEngineHttpRequest and\npayload in PullMessage). These payloads are\ndesirable to return only when needed, because they can be large\nand because of the sensitivity of the data that you choose to\nstore in it.",
+            "All information is returned.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Queue resource."
+          ]
+        },
+        "scheduleTime": {
+          "description": "Required.\n\nThe task's current schedule time, available in the\nschedule_time returned by\nLeaseTasks response or\nRenewLease response. This restriction is\nto ensure that your worker currently holds the lease.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "CancelLeaseRequest"
+    },
+    "AttemptStatus": {
+      "description": "The status of a task attempt.",
+      "type": "object",
+      "properties": {
+        "dispatchTime": {
+          "description": "Output only. The time that this attempt was dispatched.\n\n`dispatch_time` will be truncated to the nearest microsecond.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "responseTime": {
+          "description": "Output only. The time that this attempt response was received.\n\n`response_time` will be truncated to the nearest microsecond.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "responseStatus": {
+          "$ref": "Status",
+          "description": "Output only. The response from the target for this attempt.\n\nIf the task has not been attempted or the task is currently running\nthen the response status is unset."
+        },
+        "scheduleTime": {
+          "description": "Output only. The time that this attempt was scheduled.\n\n`schedule_time` will be truncated to the nearest microsecond.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "AttemptStatus"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
+  "protocol": "rest",
   "canonicalName": "Cloud Tasks",
   "auth": {
     "oauth2": {
@@ -1517,5 +831,691 @@
   "rootUrl": "https://cloudtasks.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "cloudtasks",
-  "batchPath": "batch"
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Tasks API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "list": {
+              "description": "Lists information about the supported locations for this service.",
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "filter": {
+                  "description": "The standard list filter.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "name": {
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "The standard list page token.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v2beta2/projects/{projectsId}/locations",
+              "path": "v2beta2/{+name}/locations",
+              "id": "cloudtasks.projects.locations.list"
+            },
+            "get": {
+              "id": "cloudtasks.projects.locations.get",
+              "path": "v2beta2/{+name}",
+              "description": "Gets information about a location.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "Location"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}"
+            }
+          },
+          "resources": {
+            "queues": {
+              "methods": {
+                "list": {
+                  "response": {
+                    "$ref": "ListQueuesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required.\n\nThe location name.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "`filter` can be used to specify a subset of queues. Any Queue\nfield can be used as a filter and several operators as supported.\nFor example: `\u003c=, \u003c, \u003e=, \u003e, !=, =, :`. The filter syntax is the same as\ndescribed in\n[Stackdriver's Advanced Logs\nFilters](https://cloud.google.com/logging/docs/view/advanced_filters).\n\nSample filter \"app_engine_http_target: *\".\n\nNote that using filters might cause fewer queues than the\nrequested_page size to be returned.",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "A token identifying the page of results to return.\n\nTo request the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned\nfrom the previous call to ListQueues\nmethod. It is an error to switch the value of the\nfilter while iterating through pages.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "Requested page size.\n\nThe maximum page size is 9800. If unspecified, the page size will\nbe the maximum. Fewer queues than requested might be returned,\neven if more queues exist; use the\nnext_page_token in the\nresponse to determine if more queues exist.",
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues",
+                  "path": "v2beta2/{+parent}/queues",
+                  "id": "cloudtasks.projects.locations.queues.list",
+                  "description": "Lists queues.\n\nQueues are returned in lexicographical order."
+                },
+                "create": {
+                  "description": "Creates a queue.\n\nQueues created with this method allow tasks to live for a maximum of 31\ndays. After a task is 31 days old, the task will be deleted regardless of whether\nit was dispatched or not.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
+                  "request": {
+                    "$ref": "Queue"
+                  },
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required.\n\nThe location name in which the queue will be created.\nFor example: `projects/PROJECT_ID/locations/LOCATION_ID`\n\nThe list of allowed locations can be obtained by calling Cloud\nTasks' implementation of\nListLocations.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues",
+                  "path": "v2beta2/{+parent}/queues",
+                  "id": "cloudtasks.projects.locations.queues.create"
+                },
+                "setIamPolicy": {
+                  "description": "Sets the access control policy for a Queue. Replaces any existing\npolicy.\n\nNote: The Cloud Console does not check queue-level IAM permissions yet.\nProject-level permissions are required to use the Cloud Console.\n\nAuthorization requires the following\n[Google IAM](https://cloud.google.com/iam) permission on the specified\nresource parent:\n\n* `cloudtasks.queues.setIamPolicy`",
+                  "request": {
+                    "$ref": "SetIamPolicyRequest"
+                  },
+                  "response": {
+                    "$ref": "Policy"
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "resource": {
+                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:setIamPolicy",
+                  "path": "v2beta2/{+resource}:setIamPolicy",
+                  "id": "cloudtasks.projects.locations.queues.setIamPolicy"
+                },
+                "resume": {
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:resume",
+                  "path": "v2beta2/{+name}:resume",
+                  "id": "cloudtasks.projects.locations.queues.resume",
+                  "description": "Resume a queue.\n\nThis method resumes a queue after it has been\nPAUSED or\nDISABLED. The state of a queue is stored\nin the queue's state; after calling this method it\nwill be set to RUNNING.\n\nWARNING: Resuming many high-QPS queues at the same time can\nlead to target overloading. If you are resuming high-QPS\nqueues, follow the 500/50/5 pattern described in\n[Managing Cloud Tasks Scaling\nRisks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).",
+                  "request": {
+                    "$ref": "ResumeQueueRequest"
+                  },
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path",
+                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "getIamPolicy": {
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:getIamPolicy",
+                  "path": "v2beta2/{+resource}:getIamPolicy",
+                  "id": "cloudtasks.projects.locations.queues.getIamPolicy",
+                  "description": "Gets the access control policy for a Queue.\nReturns an empty policy if the resource exists and does not have a policy\nset.\n\nAuthorization requires the following\n[Google IAM](https://cloud.google.com/iam) permission on the specified\nresource parent:\n\n* `cloudtasks.queues.getIamPolicy`",
+                  "request": {
+                    "$ref": "GetIamPolicyRequest"
+                  },
+                  "response": {
+                    "$ref": "Policy"
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "resource": {
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "Required.\n\nThe resource name of the queue. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
+                  "path": "v2beta2/{+name}",
+                  "id": "cloudtasks.projects.locations.queues.get",
+                  "description": "Gets a queue.",
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET"
+                },
+                "patch": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "updateMask": {
+                      "description": "A mask used to specify which fields of the queue are being updated.\n\nIf empty, then all fields will be updated.",
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "name": {
+                      "description": "Caller-specified and required in CreateQueue,\nafter which it becomes output only.\n\nThe queue name.\n\nThe queue name must have the following format:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the queue's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or\n  hyphens (-). The maximum length is 100 characters.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
+                  "path": "v2beta2/{+name}",
+                  "id": "cloudtasks.projects.locations.queues.patch",
+                  "request": {
+                    "$ref": "Queue"
+                  },
+                  "description": "Updates a queue.\n\nThis method creates the queue if it does not exist and updates\nthe queue if it does exist.\n\nQueues created with this method allow tasks to live for a maximum of 31\ndays. After a task is 31 days old, the task will be deleted regardless of whether\nit was dispatched or not.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH"
+                },
+                "purge": {
+                  "description": "Purges a queue by deleting all of its tasks.\n\nAll tasks created before this method is called are permanently deleted.\n\nPurge operations can take up to one minute to take effect. Tasks\nmight be dispatched before the purge takes effect. A purge is irreversible.",
+                  "request": {
+                    "$ref": "PurgeQueueRequest"
+                  },
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:purge",
+                  "id": "cloudtasks.projects.locations.queues.purge",
+                  "path": "v2beta2/{+name}:purge"
+                },
+                "testIamPermissions": {
+                  "id": "cloudtasks.projects.locations.queues.testIamPermissions",
+                  "path": "v2beta2/{+resource}:testIamPermissions",
+                  "description": "Returns permissions that a caller has on a Queue.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
+                  "request": {
+                    "$ref": "TestIamPermissionsRequest"
+                  },
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "response": {
+                    "$ref": "TestIamPermissionsResponse"
+                  },
+                  "parameters": {
+                    "resource": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:testIamPermissions"
+                },
+                "pause": {
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}:pause",
+                  "path": "v2beta2/{+name}:pause",
+                  "id": "cloudtasks.projects.locations.queues.pause",
+                  "request": {
+                    "$ref": "PauseQueueRequest"
+                  },
+                  "description": "Pauses the queue.\n\nIf a queue is paused then the system will stop dispatching tasks\nuntil the queue is resumed via\nResumeQueue. Tasks can still be added\nwhen the queue is paused. A queue is paused if its\nstate is PAUSED.",
+                  "response": {
+                    "$ref": "Queue"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path",
+                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`"
+                    }
+                  }
+                },
+                "delete": {
+                  "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}",
+                  "path": "v2beta2/{+name}",
+                  "id": "cloudtasks.projects.locations.queues.delete",
+                  "description": "Deletes a queue.\n\nThis command will delete the queue even if it has tasks in it.\n\nNote: If you delete a queue, a queue with the same name can't be created\nfor 7 days.\n\nWARNING: Using this method may have unintended side effects if you are\nusing an App Engine `queue.yaml` or `queue.xml` file to manage your queues.\nRead\n[Overview of Queue Management and\nqueue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using\nthis method.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                }
+              },
+              "resources": {
+                "tasks": {
+                  "methods": {
+                    "create": {
+                      "path": "v2beta2/{+parent}/tasks",
+                      "id": "cloudtasks.projects.locations.queues.tasks.create",
+                      "description": "Creates a task and adds it to a queue.\n\nTasks cannot be updated after creation; there is no UpdateTask command.\n\n* For App Engine queues, the maximum task size is\n  100KB.\n* For pull queues, the maximum task size is 1MB.",
+                      "request": {
+                        "$ref": "CreateTaskRequest"
+                      },
+                      "response": {
+                        "$ref": "Task"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`\n\nThe queue must already exist."
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks"
+                    },
+                    "run": {
+                      "path": "v2beta2/{+name}:run",
+                      "id": "cloudtasks.projects.locations.queues.tasks.run",
+                      "request": {
+                        "$ref": "RunTaskRequest"
+                      },
+                      "description": "Forces a task to run now.\n\nWhen this method is called, Cloud Tasks will dispatch the task, even if\nthe task is already running, the queue has reached its RateLimits or\nis PAUSED.\n\nThis command is meant to be used for manual debugging. For\nexample, RunTask can be used to retry a failed\ntask after a fix has been made or to manually force a task to be\ndispatched now.\n\nThe dispatched task is returned. That is, the task that is returned\ncontains the status after the task is dispatched but\nbefore the task is received by its target.\n\nIf Cloud Tasks receives a successful response from the task's\ntarget, then the task will be deleted; otherwise the task's\nschedule_time will be reset to the time that\nRunTask was called plus the retry delay specified\nin the queue's RetryConfig.\n\nRunTask returns\nNOT_FOUND when it is called on a\ntask that has already succeeded or permanently failed.\n\nRunTask cannot be called on a\npull task.",
+                      "response": {
+                        "$ref": "Task"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`"
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:run"
+                    },
+                    "cancelLease": {
+                      "description": "Cancel a pull task's lease.\n\nThe worker can use this method to cancel a task's lease by\nsetting its schedule_time to now. This will\nmake the task available to be leased to the next caller of\nLeaseTasks.",
+                      "request": {
+                        "$ref": "CancelLeaseRequest"
+                      },
+                      "response": {
+                        "$ref": "Task"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "name": {
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:cancelLease",
+                      "path": "v2beta2/{+name}:cancelLease",
+                      "id": "cloudtasks.projects.locations.queues.tasks.cancelLease"
+                    },
+                    "acknowledge": {
+                      "id": "cloudtasks.projects.locations.queues.tasks.acknowledge",
+                      "path": "v2beta2/{+name}:acknowledge",
+                      "request": {
+                        "$ref": "AcknowledgeTaskRequest"
+                      },
+                      "description": "Acknowledges a pull task.\n\nThe worker, that is, the entity that\nleased this task must call this method\nto indicate that the work associated with the task has finished.\n\nThe worker must acknowledge a task within the\nlease_duration or the lease\nwill expire and the task will become available to be leased\nagain. After the task is acknowledged, it will not be returned\nby a later LeaseTasks,\nGetTask, or\nListTasks.",
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$"
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:acknowledge"
+                    },
+                    "renewLease": {
+                      "request": {
+                        "$ref": "RenewLeaseRequest"
+                      },
+                      "description": "Renew the current lease of a pull task.\n\nThe worker can use this method to extend the lease by a new\nduration, starting from now. The new task lease will be\nreturned in the task's schedule_time.",
+                      "response": {
+                        "$ref": "Task"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`"
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}:renewLease",
+                      "path": "v2beta2/{+name}:renewLease",
+                      "id": "cloudtasks.projects.locations.queues.tasks.renewLease"
+                    },
+                    "get": {
+                      "description": "Gets a task.",
+                      "response": {
+                        "$ref": "Task"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`"
+                        },
+                        "responseView": {
+                          "type": "string",
+                          "location": "query",
+                          "enum": [
+                            "VIEW_UNSPECIFIED",
+                            "BASIC",
+                            "FULL"
+                          ],
+                          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}",
+                      "path": "v2beta2/{+name}",
+                      "id": "cloudtasks.projects.locations.queues.tasks.get"
+                    },
+                    "lease": {
+                      "response": {
+                        "$ref": "LeaseTasksResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`"
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks:lease",
+                      "path": "v2beta2/{+parent}/tasks:lease",
+                      "id": "cloudtasks.projects.locations.queues.tasks.lease",
+                      "request": {
+                        "$ref": "LeaseTasksRequest"
+                      },
+                      "description": "Leases tasks from a pull queue for\nlease_duration.\n\nThis method is invoked by the worker to obtain a lease. The\nworker must acknowledge the task via\nAcknowledgeTask after they have\nperformed the work associated with the task.\n\nThe payload is intended to store data that\nthe worker needs to perform the work associated with the task. To\nreturn the payloads in the response, set\nresponse_view to\nFULL.\n\nA maximum of 10 qps of LeaseTasks\nrequests are allowed per\nqueue. RESOURCE_EXHAUSTED\nis returned when this limit is\nexceeded. RESOURCE_EXHAUSTED\nis also returned when\nmax_tasks_dispatched_per_second\nis exceeded."
+                    },
+                    "delete": {
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$",
+                          "location": "path",
+                          "description": "Required.\n\nThe task name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks/{tasksId}",
+                      "path": "v2beta2/{+name}",
+                      "id": "cloudtasks.projects.locations.queues.tasks.delete",
+                      "description": "Deletes a task.\n\nA task can be deleted if it is scheduled or dispatched. A task\ncannot be deleted if it has completed successfully or permanently\nfailed."
+                    },
+                    "list": {
+                      "description": "Lists the tasks in a queue.\n\nBy default, only the BASIC view is retrieved\ndue to performance considerations;\nresponse_view controls the\nsubset of information which is returned.\n\nThe tasks may be returned in any order. The ordering may change at any\ntime.",
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "ListTasksResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "parameters": {
+                        "responseView": {
+                          "type": "string",
+                          "location": "query",
+                          "enum": [
+                            "VIEW_UNSPECIFIED",
+                            "BASIC",
+                            "FULL"
+                          ],
+                          "description": "The response_view specifies which subset of the Task will be\nreturned.\n\nBy default response_view is BASIC; not all\ninformation is retrieved by default because some data, such as\npayloads, might be desirable to return only when needed because\nof its large size or because of the sensitivity of data that it\ncontains.\n\nAuthorization for FULL requires\n`cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)\npermission on the Task resource."
+                        },
+                        "pageToken": {
+                          "location": "query",
+                          "description": "A token identifying the page of results to return.\n\nTo request the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned\nfrom the previous call to ListTasks\nmethod.\n\nThe page token is valid for only 2 hours.",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "location": "query",
+                          "description": "Maximum page size.\n\nFewer tasks than requested might be returned, even if more tasks exist; use\nnext_page_token in the response to\ndetermine if more tasks exist.\n\nThe maximum page size is 1000. If unspecified, the page size will be the\nmaximum.",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "parent": {
+                          "description": "Required.\n\nThe queue name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta2/projects/{projectsId}/locations/{locationsId}/queues/{queuesId}/tasks",
+                      "id": "cloudtasks.projects.locations.queues.tasks.list",
+                      "path": "v2beta2/{+parent}/tasks"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

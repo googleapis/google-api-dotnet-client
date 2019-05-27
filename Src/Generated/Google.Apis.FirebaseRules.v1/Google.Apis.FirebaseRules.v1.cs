@@ -1172,12 +1172,6 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
-                /// service may choose to load less than `page_size` due to the size of the output. To traverse all of
-                /// the releases, caller should iterate until the `page_token` is empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
                 ///
                 /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
@@ -1190,6 +1184,12 @@ namespace Google.Apis.FirebaseRules.v1
                 /// <summary>Next page token for loading the next batch of `Ruleset` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
+                /// service may choose to load less than `page_size` due to the size of the output. To traverse all of
+                /// the releases, caller should iterate until the `page_token` is empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1225,15 +1225,6 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1246,6 +1237,15 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

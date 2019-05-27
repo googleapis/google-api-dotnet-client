@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190522 (1602)
+ *      <tr><th>API Rev<td>20190524 (1604)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -560,6 +560,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.</summary>
     public class ApnsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options for features provided by the FCM SDK for iOS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
+        public virtual ApnsFcmOptions FcmOptions { get; set; } 
+
         /// <summary>HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request
         /// headers](https://goo.gl/C6Yhia) for supported headers, e.g. "apns-priority": "10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
@@ -571,6 +575,13 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for features provided by the FCM SDK for iOS.</summary>
+    public class ApnsFcmOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

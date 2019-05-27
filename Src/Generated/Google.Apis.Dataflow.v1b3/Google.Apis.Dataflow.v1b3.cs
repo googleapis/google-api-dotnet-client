@@ -1005,23 +1005,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The kind of filter to use.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                /// <summary>The kind of filter to use.</summary>
-                public enum FilterEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
-                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
-                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
-                }
-
                 /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
                 /// endpoints) that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
@@ -1052,6 +1035,23 @@ namespace Google.Apis.Dataflow.v1b3
                     JOBVIEWALL,
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
+                }
+
+                /// <summary>The kind of filter to use.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                /// <summary>The kind of filter to use.</summary>
+                public enum FilterEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ALL")]
+                    ALL,
+                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
+                    TERMINATED,
+                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                    ACTIVE,
                 }
 
 
@@ -1088,15 +1088,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1127,6 +1118,15 @@ namespace Google.Apis.Dataflow.v1b3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1169,15 +1169,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
-                /// <summary>Deprecated. This field is now in the Job message.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ReplaceJobId { get; set; }
-
                 /// <summary>The level of information requested in response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1194,6 +1185,15 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
+
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
+                /// <summary>Deprecated. This field is now in the Job message.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ReplaceJobId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1235,6 +1235,15 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1247,15 +1256,6 @@ namespace Google.Apis.Dataflow.v1b3
                         "replaceJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "replaceJobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1535,6 +1535,28 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The kind of filter to use.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                /// <summary>The kind of filter to use.</summary>
+                public enum FilterEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ALL")]
+                    ALL,
+                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
+                    TERMINATED,
+                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                    ACTIVE,
+                }
+
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>Set this to the 'next_page_token' field of a previous response to request additional
                 /// results in a long list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1561,28 +1583,6 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
-                /// <summary>The kind of filter to use.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                /// <summary>The kind of filter to use.</summary>
-                public enum FilterEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
-                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
-                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
-                }
-
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1618,6 +1618,24 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1639,24 +1657,6 @@ namespace Google.Apis.Dataflow.v1b3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2215,15 +2215,15 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object EndTime { get; set; }
 
-                        /// <summary>If specified, return only messages with timestamps >= start_time. The default is
-                        /// the job creation time (i.e. beginning of messages).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object StartTime { get; set; }
-
                         /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
                         /// call. This will cause the next page of results to be returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>If specified, return only messages with timestamps >= start_time. The default is
+                        /// the job creation time (i.e. beginning of messages).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object StartTime { get; set; }
 
                         /// <summary>If specified, determines the maximum number of messages to return.  If unspecified,
                         /// the service may choose an appropriate default, or may return an arbitrarily large number of
@@ -2313,18 +2313,18 @@ namespace Google.Apis.Dataflow.v1b3
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "startTime", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "startTime",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "startTime", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "startTime",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4454,13 +4454,13 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The location to list snapshots in.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
                 /// <summary>If specified, list snapshots created from this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string JobId { get; set; }
+
+                /// <summary>The location to list snapshots in.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4496,18 +4496,18 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
+                        "jobId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "location",
+                            Name = "jobId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
+                        "location", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "jobId",
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4878,13 +4878,13 @@ namespace Google.Apis.Dataflow.v1b3
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
-            /// <summary>The ID of the snapshot.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SnapshotId { get; set; }
-
             /// <summary>The location that contains this snapshot.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
+
+            /// <summary>The ID of the snapshot.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SnapshotId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4920,18 +4920,18 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "snapshotId", new Google.Apis.Discovery.Parameter
+                    "location", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "snapshotId",
+                        Name = "location",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
+                    "snapshotId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "location",
+                        Name = "snapshotId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
