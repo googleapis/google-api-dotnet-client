@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/private-catalog/'>Cloud Private Catalog Producer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190519 (1599)
+ *      <tr><th>API Rev<td>20190526 (1606)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/private-catalog/'>
  *              https://cloud.google.com/private-catalog/</a>
@@ -1886,10 +1886,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             }
 
 
-            /// <summary>The resource name of the parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>A pagination token returned from a previous call to ListCatalogs that indicates where this
             /// listing should continue from. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1898,6 +1894,10 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             /// <summary>The maximum number of catalogs to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The resource name of the parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1924,15 +1924,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1945,6 +1936,15 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2499,6 +2499,10 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             }
 
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -2510,10 +2514,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2540,6 +2540,15 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2561,15 +2570,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

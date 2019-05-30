@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190519 (1599)
+ *      <tr><th>API Rev<td>20190526 (1606)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2732,6 +2732,19 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
+                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// insignificant.
+                ///
+                /// Example: `name asc, end_time asc, create_time desc`
+                ///
+                /// Supported fields are:
+                ///
+                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
+                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TypeEnum> Type { get; set; }
@@ -2779,19 +2792,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, end_time asc, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
-                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2826,6 +2826,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
@@ -2856,15 +2865,6 @@ namespace Google.Apis.DLP.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6557,6 +6557,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Summary statistics of a custom dictionary.</summary>
+    public class GooglePrivacyDlpV2LargeCustomDictionaryStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Approximate number of distinct phrases in the dictionary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approxNumPhrases")]
+        public virtual System.Nullable<long> ApproxNumPhrases { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Message for specifying an adjustment to the likelihood of a finding as part of a detection
     /// rule.</summary>
     public class GooglePrivacyDlpV2LikelihoodAdjustment : Google.Apis.Requests.IDirectResponseSchema
@@ -7372,6 +7383,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Statistics for a StoredInfoType.</summary>
+    public class GooglePrivacyDlpV2StoredInfoTypeStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>StoredInfoType where findings are defined by a dictionary of phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("largeCustomDictionary")]
+        public virtual GooglePrivacyDlpV2LargeCustomDictionaryStats LargeCustomDictionary { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Version of a StoredInfoType, including the configuration used to build it, create timestamp, and
     /// current state.</summary>
     public class GooglePrivacyDlpV2StoredInfoTypeVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -7399,6 +7421,10 @@ namespace Google.Apis.DLP.v2.Data
         /// creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>Statistics about this storedInfoType version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GooglePrivacyDlpV2StoredInfoTypeStats Stats { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20190509 (1589)
+ *      <tr><th>API Rev<td>20190527 (1607)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1630,8 +1630,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudVisionV1p1beta1GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -1832,8 +1832,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
@@ -2941,8 +2942,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudVisionV1p2beta1GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -3158,8 +3159,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
@@ -3215,7 +3217,10 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         public virtual string Filter { get; set; } 
 
         /// <summary>The list of product categories to search in. Currently, we only consider the first category, and
-        /// either "homegoods", "apparel", or "toys" should be specified.</summary>
+        /// either "homegoods-v2", "apparel-v2", or "toys-v2" should be specified. The legacy categories "homegoods",
+        /// "apparel", and "toys" are still supported but will be deprecated. For new products, please use
+        /// "homegoods-v2", "apparel-v2", or "toys-v2" for better product search accuracy. It is recommended to migrate
+        /// existing products to these categories as well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
         public virtual System.Collections.Generic.IList<string> ProductCategories { get; set; } 
 
@@ -4090,8 +4095,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudVisionV1p3beta1GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -4292,8 +4297,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
@@ -5238,8 +5244,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudVisionV1p4beta1GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -5440,8 +5446,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
@@ -6401,8 +6408,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudVisionV1p5beta1GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -6646,8 +6653,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]
@@ -7208,8 +7216,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsSource GcsSource { get; set; } 
 
-        /// <summary>The type of the file. Currently only "application/pdf" and "image/tiff" are supported. Wildcards
-        /// are not supported.</summary>
+        /// <summary>The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported.
+        /// Wildcards are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -7495,8 +7503,9 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The category for the product identified by the reference image. This should be either "homegoods",
-        /// "apparel", or "toys".
+        /// <summary>The category for the product identified by the reference image. This should be either
+        /// "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories "homegoods", "apparel", and "toys" are
+        /// still supported, but these should not be used for new products.
         ///
         /// This field is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategory")]

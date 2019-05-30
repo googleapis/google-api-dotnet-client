@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/jqePbIodVf2BtUKP8NhT41qx4FU\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/EiQvOfWXNZl6Gyiq-W0yDN3qLHY\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190513",
+ "revision": "20190524",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -2260,7 +2260,7 @@
     },
     "deliveryDetails": {
      "$ref": "OrderDeliveryDetails",
-     "description": "The details for the delivery."
+     "description": "Delivery details for shipments."
     },
     "id": {
      "type": "string",

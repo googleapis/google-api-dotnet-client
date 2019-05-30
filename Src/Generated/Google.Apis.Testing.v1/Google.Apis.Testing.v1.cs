@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190430 (1580)
+ *      <tr><th>API Rev<td>20190529 (1609)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1357,11 +1357,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>A single device file description.</summary>
     public class DeviceFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A reference to an opaque binary blob file</summary>
+        /// <summary>A reference to an opaque binary blob file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obbFile")]
         public virtual ObbFile ObbFile { get; set; } 
 
-        /// <summary>A reference to a regular file</summary>
+        /// <summary>A reference to a regular file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regularFile")]
         public virtual RegularFile RegularFile { get; set; } 
 
@@ -1457,8 +1457,8 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Enables automatic Google account login. If set, the service will automatically generate a Google test
-    /// account and add it to the device, before executing the test. Note that test accounts might be reused. Many
+    /// <summary>Enables automatic Google account login. If set, the service automatically generates a Google test
+    /// account and adds it to the device, before executing the test. Note that test accounts might be reused. Many
     /// applications show their full set of functionalities when an account is present on the device. Logging into the
     /// device with these generated accounts allows testing more functionalities.</summary>
     public class GoogleAuto : Google.Apis.Requests.IDirectResponseSchema
@@ -1608,7 +1608,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of how to set up an iOS device prior to a test.</summary>
+    /// <summary>A description of how to set up an iOS device prior to running the test.</summary>
     public class IosTestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
@@ -1817,6 +1817,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorage")]
         public virtual GoogleCloudStorage GoogleCloudStorage { get; set; } 
 
+        /// <summary>Output only. URL to the results in the Firebase Web Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsUrl")]
+        public virtual string ResultsUrl { get; set; } 
+
         /// <summary>Output only. The tool results execution that results are written to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsExecution")]
         public virtual ToolResultsExecution ToolResultsExecution { get; set; } 
@@ -1857,9 +1861,11 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Message for specifying the start activities to crawl.</summary>
     public class RoboStartingIntent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An intent that starts the main launcher activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launcherActivity")]
         public virtual LauncherActivityIntent LauncherActivity { get; set; } 
 
+        /// <summary>An intent that starts an activity with specific details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startActivity")]
         public virtual StartActivityIntent StartActivity { get; set; } 
 
@@ -1932,14 +1938,14 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies a single test to be executed in a single environment.</summary>
+    /// <summary>A single test executed in a single environment.</summary>
     public class TestExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. How the host machine(s) are configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; } 
 
-        /// <summary>Output only. Unique id set by the backend.</summary>
+        /// <summary>Output only. Unique id set by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -1975,15 +1981,15 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A group of one or more TestExecutions, built by taking a product of values over a pre-defined set of
-    /// axes.</summary>
+    /// <summary>TestMatrix captures all details about a test. It contains the environment configuration, test
+    /// specification, test executions and overall state and outcome.</summary>
     public class TestMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Information about the client which invoked the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
         public virtual ClientInfo ClientInfo { get; set; } 
 
-        /// <summary>Required. How the host machine(s) are configured.</summary>
+        /// <summary>Required. The devices the tests are being executed on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; } 
 
@@ -1999,6 +2005,11 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("invalidMatrixDetails")]
         public virtual string InvalidMatrixDetails { get; set; } 
 
+        /// <summary>Output Only. The overall outcome of the test. Only set when the test matrix state is
+        /// FINISHED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcomeSummary")]
+        public virtual string OutcomeSummary { get; set; } 
+
         /// <summary>The cloud project that owns the test matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
@@ -2007,7 +2018,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resultStorage")]
         public virtual ResultStorage ResultStorage { get; set; } 
 
-        /// <summary>Output only. Indicates the current progress of the test matrix (e.g., FINISHED).</summary>
+        /// <summary>Output only. Indicates the current progress of the test matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -2084,11 +2095,11 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidTestLoop")]
         public virtual AndroidTestLoop AndroidTestLoop { get; set; } 
 
-        /// <summary>Disables performance metrics recording; may reduce test latency.</summary>
+        /// <summary>Disables performance metrics recording. May reduce test latency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePerformanceMetrics")]
         public virtual System.Nullable<bool> DisablePerformanceMetrics { get; set; } 
 
-        /// <summary>Disables video recording; may reduce test latency.</summary>
+        /// <summary>Disables video recording. May reduce test latency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableVideoRecording")]
         public virtual System.Nullable<bool> DisableVideoRecording { get; set; } 
 

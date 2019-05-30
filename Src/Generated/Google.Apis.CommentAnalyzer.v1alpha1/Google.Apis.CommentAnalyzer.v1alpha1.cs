@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://conversationai.github.io/'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190519 (1599)
+ *      <tr><th>API Rev<td>20190526 (1606)
  *      <tr><th>API Docs
  *          <td><a href='https://conversationai.github.io/'>
  *              https://conversationai.github.io/</a>
@@ -524,14 +524,14 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientToken")]
         public virtual string ClientToken { get; set; } 
 
-        /// <summary>Contains the language as detected from the text content.  If no language was specified in the
-        /// request, the first (the most likely) language is used to select an appropriate model.  Sorted in order of
-        /// likelihood.</summary>
+        /// <summary>Contains the languages detected from the text content, sorted in order of likelihood.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
         public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; } 
 
-        /// <summary>The language(s) requested by the client, as specified in the request. If the request did not
-        /// specify any language, this will be empty and the detected_languages field will be populated.</summary>
+        /// <summary>The language(s) used by CommentAnalyzer service to choose which Model to use when analyzing the
+        /// comment. Might better be called "effective_languages". The logic used to make the choice is as follows: if
+        /// Request.languages.empty() effective_languages = detected_languages else effective_languages =
+        /// Request.languages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 

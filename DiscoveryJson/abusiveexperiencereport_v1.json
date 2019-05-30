@@ -1,15 +1,16 @@
 {
   "servicePath": "",
-  "kind": "discovery#restDescription",
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20190520",
-  "documentationLink": "https://developers.google.com/abusive-experience-report/",
   "id": "abusiveexperiencereport:v1",
+  "documentationLink": "https://developers.google.com/abusive-experience-report/",
+  "revision": "20190528",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "ViolatingSitesResponse": {
+      "id": "ViolatingSitesResponse",
       "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
@@ -20,8 +21,7 @@
             "$ref": "SiteSummaryResponse"
           }
         }
-      },
-      "id": "ViolatingSitesResponse"
+      }
     },
     "SiteSummaryResponse": {
       "id": "SiteSummaryResponse",
@@ -29,8 +29,6 @@
       "type": "object",
       "properties": {
         "filterStatus": {
-          "description": "The abusive experience enforcement status of the site.",
-          "type": "string",
           "enumDescriptions": [
             "N/A.",
             "Ad filtering is on.",
@@ -44,7 +42,9 @@
             "OFF",
             "PAUSED",
             "PENDING"
-          ]
+          ],
+          "description": "The abusive experience enforcement status of the site.",
+          "type": "string"
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -54,18 +54,16 @@
           "description": "A link that leads to a full abusive experience report.",
           "type": "string"
         },
+        "reviewedSite": {
+          "description": "The name of the site reviewed.",
+          "type": "string"
+        },
         "lastChangeTime": {
           "description": "The last time that the site changed status.",
           "format": "google-datetime",
           "type": "string"
         },
-        "reviewedSite": {
-          "description": "The name of the site reviewed.",
-          "type": "string"
-        },
         "abusiveStatus": {
-          "description": "The status of the site reviewed for the abusive experiences.",
-          "type": "string",
           "enumDescriptions": [
             "Not reviewed.",
             "Passing.",
@@ -75,7 +73,9 @@
             "UNKNOWN",
             "PASSING",
             "FAILING"
-          ]
+          ],
+          "description": "The status of the site reviewed for the abusive experiences.",
+          "type": "string"
         },
         "enforcementTime": {
           "description": "The date on which enforcement begins.",
@@ -111,32 +111,33 @@
     "violatingSites": {
       "methods": {
         "list": {
-          "path": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list",
           "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+          "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "GET",
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
-          "flatPath": "v1/violatingSites"
+          "flatPath": "v1/violatingSites",
+          "id": "abusiveexperiencereport.violatingSites.list",
+          "path": "v1/violatingSites"
         }
       }
     },
     "sites": {
       "methods": {
         "get": {
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "name"
-          ],
+          "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
@@ -150,39 +151,23 @@
             }
           },
           "flatPath": "v1/sites/{sitesId}",
-          "id": "abusiveexperiencereport.sites.get",
           "path": "v1/{+name}",
-          "description": "Gets a summary of the abusive experience rating of a site."
+          "id": "abusiveexperiencereport.sites.get"
         }
       }
     }
   },
   "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
+      "default": "true",
+      "location": "query"
     },
     "fields": {
       "location": "query",
@@ -200,9 +185,9 @@
       "type": "string"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "$.xgafv": {
       "description": "V1 error format.",
@@ -218,6 +203,7 @@
       ]
     },
     "alt": {
+      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -230,7 +216,21 @@
         "json",
         "media",
         "proto"
-      ],
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     }
   },

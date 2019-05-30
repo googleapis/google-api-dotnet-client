@@ -1670,6 +1670,14 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
             /// <summary>Deprecated. Use language_codes instead.
             ///
             /// Optional.
@@ -1763,14 +1771,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1803,6 +1803,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
@@ -1853,15 +1862,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

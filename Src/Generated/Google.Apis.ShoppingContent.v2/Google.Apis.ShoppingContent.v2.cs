@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190513 (1593)
+ *      <tr><th>API Rev<td>20190524 (1604)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -11557,7 +11557,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual OrderCustomer Customer { get; set; } 
 
-        /// <summary>The details for the delivery.</summary>
+        /// <summary>Delivery details for shipments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
         public virtual OrderDeliveryDetails DeliveryDetails { get; set; } 
 

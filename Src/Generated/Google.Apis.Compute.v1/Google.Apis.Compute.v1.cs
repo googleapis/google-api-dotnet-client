@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190403 (1553)
+ *      <tr><th>API Rev<td>20190416 (1566)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -141,9 +141,9 @@ namespace Google.Apis.Compute.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/compute/v1/projects/"; }
+            get { return BaseUriOverride ?? "https://compute.googleapis.com/compute/v1/projects/"; }
         #else
-            get { return "https://www.googleapis.com/compute/v1/projects/"; }
+            get { return "https://compute.googleapis.com/compute/v1/projects/"; }
         #endif
         }
 
@@ -157,7 +157,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/compute/v1"; }
+            get { return "https://compute.googleapis.com/batch/compute/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -5378,7 +5378,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-
+            /// <summary>Application consistent snapshot (ie. VSS).</summary>
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 

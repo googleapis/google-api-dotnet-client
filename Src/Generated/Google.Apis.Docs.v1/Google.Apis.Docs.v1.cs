@@ -3412,12 +3412,10 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A border around a table cell.
-    ///
-    /// Table cell borders cannot be transparent. To hide a table cell border, make its width 0.</summary>
+    /// <summary>A border around a table cell.</summary>
     public class TableCellBorder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border. This color cannot be transparent.</summary>
+        /// <summary>The color of the border.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OptionalColor Color { get; set; } 
 

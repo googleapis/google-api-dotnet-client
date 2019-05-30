@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/FcIdq7K0sVtzHMLqHzM5hbg05bw\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/naur_LQRDyUWAPDc7IN2l1_gd28\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20190403",
+ "revision": "20190416",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -16,9 +16,9 @@
  },
  "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
  "protocol": "rest",
- "baseUrl": "https://www.googleapis.com/compute/beta/projects/",
+ "baseUrl": "https://compute.googleapis.com/compute/beta/projects/",
  "basePath": "/compute/beta/projects/",
- "rootUrl": "https://www.googleapis.com/",
+ "rootUrl": "https://compute.googleapis.com/",
  "servicePath": "compute/beta/projects/",
  "batchPath": "batch/compute/beta",
  "parameters": {
@@ -25762,6 +25762,7 @@
       },
       "guestFlush": {
        "type": "boolean",
+       "description": "Application consistent snapshot (ie. VSS).",
        "location": "query"
       },
       "project": {
