@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190524 (1604)
+ *      <tr><th>API Rev<td>20190531 (1611)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -563,6 +563,88 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
+                /// <summary>Export Redis instance data into a Redis RDB format file in GCS.
+                ///
+                /// Redis will continue serving during this operation.
+                ///
+                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// DeleteOperation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
+                /// region.</param>
+                public virtual ExportRequest Export(Google.Apis.CloudRedis.v1.Data.ExportInstanceRequest body, string name)
+                {
+                    return new ExportRequest(service, body, name);
+                }
+
+                /// <summary>Export Redis instance data into a Redis RDB format file in GCS.
+                ///
+                /// Redis will continue serving during this operation.
+                ///
+                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// DeleteOperation.</summary>
+                public class ExportRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Export request.</summary>
+                    public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.ExportInstanceRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.ExportInstanceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "export"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:export"; }
+                    }
+
+                    /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
                 /// tier Cloud Memorystore for Redis instance.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -684,6 +766,90 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Import a Redis RDB snapshot file from GCS into a Redis instance.
+                ///
+                /// Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation.
+                /// When complete, the instance will contain only data from the imported file.
+                ///
+                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// DeleteOperation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
+                /// region.</param>
+                public virtual ImportRequest Import(Google.Apis.CloudRedis.v1.Data.ImportInstanceRequest body, string name)
+                {
+                    return new ImportRequest(service, body, name);
+                }
+
+                /// <summary>Import a Redis RDB snapshot file from GCS into a Redis instance.
+                ///
+                /// Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation.
+                /// When complete, the instance will contain only data from the imported file.
+                ///
+                /// The returned operation is automatically deleted after a few hours, so there is no need to call
+                /// DeleteOperation.</summary>
+                public class ImportRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.ImportInstanceRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.ImportInstanceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "import"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}:import"; }
+                    }
+
+                    /// <summary>Initializes Import parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1423,6 +1589,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for Export.</summary>
+    public class ExportInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specify data to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for Failover.</summary>
     public class FailoverInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1430,6 +1607,29 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// protection mode will be LIMITED_DATA_LOSS by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionMode")]
         public virtual string DataProtectionMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The GCS location for the output content</summary>
+    public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Data destination URI (e.g. 'gs://my_bucket/my_object'). Existing files will be
+        /// overwritten.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The GCS location for the input content</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Source data URI. (e.g. 'gs://my_bucket/my_object').</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1493,6 +1693,28 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for Import.</summary>
+    public class ImportInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specify data to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
+        public virtual InputConfig InputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The input content</summary>
+    public class InputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage location where input content is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Google Cloud Redis instance.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1552,6 +1774,12 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud
+        /// Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be
+        /// checked before each import/export operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistenceIamIdentity")]
+        public virtual string PersistenceIamIdentity { get; set; } 
 
         /// <summary>Output only. The port number of the exposed Redis endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
@@ -1728,6 +1956,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The output content</summary>
+    public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage destination for output content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

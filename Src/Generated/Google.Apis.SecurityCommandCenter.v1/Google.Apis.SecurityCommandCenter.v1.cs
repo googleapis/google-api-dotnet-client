@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190526 (1606)
+ *      <tr><th>API Rev<td>20190530 (1610)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -760,18 +760,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
-                /// time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
                 /// <summary>The FieldMask to use when updating the security marks resource.
                 ///
                 /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
                 /// replaced.  Individual marks can be updated using "marks.".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -813,18 +813,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/assets/[^/]+/securityMarks$",
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1091,6 +1091,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1098,10 +1102,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1137,6 +1137,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1149,15 +1158,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1415,35 +1415,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Expression that defines the filter to apply across findings. The expression is a list
-                    /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are
-                    /// supported, and `OR` has higher precedence than `AND`.
-                    ///
-                    /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate
-                    /// negation. Examples include:
-                    ///
-                    /// * name * source_properties.a_property * security_marks.marks.marka
-                    ///
-                    /// The supported operators are:
-                    ///
-                    /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-                    /// matching, for strings.
-                    ///
-                    /// The supported value types are:
-                    ///
-                    /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and
-                    /// `false` without quotes.
-                    ///
-                    /// The following field and operator combinations are supported:
-                    ///
-                    /// name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
-                    /// external_uri: `=`, `:` event_time: `>`, `<`, `>=`, `<=` security_marks: `=`, `:`
-                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-                    ///
-                    /// For example, `source_properties.size = 100` is a valid filter string.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional.
                     ///
                     /// A field mask to specify the Finding fields to be listed in the response. An empty field mask
@@ -1503,6 +1474,35 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CompareDuration { get; set; }
 
+                    /// <summary>Expression that defines the filter to apply across findings. The expression is a list
+                    /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are
+                    /// supported, and `OR` has higher precedence than `AND`.
+                    ///
+                    /// Restrictions have the form `  ` and may have a `-` character in front of them to indicate
+                    /// negation. Examples include:
+                    ///
+                    /// * name * source_properties.a_property * security_marks.marks.marka
+                    ///
+                    /// The supported operators are:
+                    ///
+                    /// * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
+                    /// matching, for strings.
+                    ///
+                    /// The supported value types are:
+                    ///
+                    /// * string literals in quotes. * integer literals without quotes. * boolean literals `true` and
+                    /// `false` without quotes.
+                    ///
+                    /// The following field and operator combinations are supported:
+                    ///
+                    /// name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
+                    /// external_uri: `=`, `:` event_time: `>`, `<`, `>=`, `<=` security_marks: `=`, `:`
+                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
+                    ///
+                    /// For example, `source_properties.size = 100` is a valid filter string.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1535,15 +1535,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "fieldMask", new Google.Apis.Discovery.Parameter
@@ -1594,6 +1585,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             "compareDuration", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "compareDuration",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2763,7 +2763,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual object CreateTime { get; set; } 
 
         /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
-        /// would capture the time the open firewall was detected.</summary>
+        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
+        /// detector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 
@@ -3442,48 +3443,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>

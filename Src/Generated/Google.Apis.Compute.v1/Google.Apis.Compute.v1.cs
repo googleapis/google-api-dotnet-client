@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190416 (1566)
+ *      <tr><th>API Rev<td>20190528 (1608)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -141,9 +141,9 @@ namespace Google.Apis.Compute.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://compute.googleapis.com/compute/v1/projects/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/compute/v1/projects/"; }
         #else
-            get { return "https://compute.googleapis.com/compute/v1/projects/"; }
+            get { return "https://www.googleapis.com/compute/v1/projects/"; }
         #endif
         }
 
@@ -157,7 +157,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://compute.googleapis.com/batch/compute/v1"; }
+            get { return "https://www.googleapis.com/batch/compute/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -5378,7 +5378,9 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-            /// <summary>Application consistent snapshot (ie. VSS).</summary>
+            /// <summary>[Input Only] Specifies to create an application consistent snapshot by informing the OS to
+            /// prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow
+            /// Copy Service (VSS).</summary>
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
@@ -49190,6 +49192,20 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
+        /// <summary>The source snapshot to create this disk. When creating a new instance, one of
+        /// initializeParams.sourceSnapshot or disks.source is required except for local SSD.
+        ///
+        /// To create a disk with a snapshot that you created, specify the snapshot name in the following format:
+        /// global/snapshots/my-backup
+        ///
+        /// If the source snapshot is deleted later, this field will not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceSnapshotEncryptionKey { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -50783,7 +50799,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Encrypts the disk using a customer-supplied encryption key.
         ///
         /// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk
-        /// later (e.g. to create a disk snapshot or an image, or to attach the disk to a virtual machine).
+        /// later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the
+        /// disk to a virtual machine).
         ///
         /// Customer-supplied encryption keys do not protect access to metadata of the disk.
         ///
@@ -50933,12 +50950,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>URL of the disk type resource describing which disk type to use to create the disk. Provide this
-        /// when creating the disk. For example: project/zones/zone/diskTypes/pd-standard or pd-ssd</summary>
+        /// when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
         /// <summary>[Output Only] Links to the users of the disk (attached instances) in form:
-        /// project/zones/zone/instances/instance</summary>
+        /// projects/project/zones/zone/instances/instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
         public virtual System.Collections.Generic.IList<string> Users { get; set; } 
 
@@ -53057,8 +53074,8 @@ namespace Google.Apis.Compute.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("containerType")]
             public virtual string ContainerType { get; set; } 
 
-            /// <summary>An optional SHA1 checksum of the disk image before unpackaging provided by the client when the
-            /// disk image is created.</summary>
+            /// <summary>[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before
+            /// unpackaging provided by the client when the disk image is created.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("sha1Checksum")]
             public virtual string Sha1Checksum { get; set; } 
 
@@ -54877,7 +54894,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
         public virtual System.Collections.Generic.IList<string> InterconnectAttachments { get; set; } 
 
-        /// <summary>Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "DEDICATED"</summary>
+        /// <summary>Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed
+        /// interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection
+        /// with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectType")]
         public virtual string InterconnectType { get; set; } 
 
@@ -54885,8 +54904,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Type of link requested. This field indicates speed of each of the links in the bundle, not the
-        /// entire bundle.</summary>
+        /// <summary>Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A
+        /// 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this
+        /// field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -54909,7 +54929,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nocContactEmail")]
         public virtual string NocContactEmail { get; set; } 
 
-        /// <summary>[Output Only] The current status of whether or not this Interconnect is functional.</summary>
+        /// <summary>[Output Only] The current status of this Interconnect's functionality, which can take one of the
+        /// following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
+        /// be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No
+        /// attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is
+        /// undergoing internal maintenance. No attachments may be provisioned or updated on this
+        /// Interconnect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
@@ -54931,7 +54956,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The current state of whether or not this Interconnect is functional.</summary>
+        /// <summary>[Output Only] The current state of Interconnect functionality, which can take one of the following
+        /// values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on
+        /// this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be
+        /// provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance.
+        /// No attachments may be provisioned or updated on this Interconnect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -54948,9 +54977,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
 
-        /// <summary>Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to update
-        /// the customer's provisioned bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and
-        /// DEDICATED.</summary>
+        /// <summary>Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED,
+        /// the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the
+        /// interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and
+        /// DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M:
+        /// 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G:
+        /// 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
         public virtual string Bandwidth { get; set; } 
 
@@ -54980,11 +55012,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Desired availability domain for the attachment. Only available for type PARTNER, at creation time.
-        /// For improved reliability, customers should configure a pair of attachments with one per availability domain.
-        /// The selected availability domain will be provided to the Partner via the pairing key so that the provisioned
-        /// circuit will lie in the specified domain. If not specified, the value will default to
-        /// AVAILABILITY_DOMAIN_ANY.</summary>
+        /// <summary>Desired availability domain for the attachment. Only available for type PARTNER, at creation time,
+        /// and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 -
+        /// AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per
+        /// availability domain. The selected availability domain will be provided to the Partner via the pairing key,
+        /// so that the provisioned circuit will lie in the specified domain. If not specified, the value will default
+        /// to AVAILABILITY_DOMAIN_ANY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edgeAvailabilityDomain")]
         public virtual string EdgeAvailabilityDomain { get; set; } 
 
@@ -55016,8 +55049,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The current status of whether or not this interconnect attachment is
-        /// functional.</summary>
+        /// <summary>[Output Only] The current status of whether or not this interconnect attachment is functional,
+        /// which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to
+        /// use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
@@ -55027,8 +55061,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
         public virtual string PairingKey { get; set; } 
 
-        /// <summary>Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they configured BGP
-        /// on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for
+        /// <summary>Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of
+        /// the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for
         /// DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAsn")]
         public virtual System.Nullable<long> PartnerAsn { get; set; } 
@@ -55059,10 +55093,24 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The current state of this attachment's functionality.</summary>
+        /// <summary>[Output Only] The current state of this attachment's functionality. Enum values ACTIVE and
+        /// UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while
+        /// enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and
+        /// PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The
+        /// attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet,
+        /// because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been
+        /// configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of
+        /// provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A
+        /// PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The
+        /// attachment was deleted externally and is no longer functional. This could be because the associated
+        /// Interconnect was removed, or because the other side of a Partner attachment was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>The type of interconnect attachment this is, which can take one of the following values: -
+        /// DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect,
+        /// created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the
+        /// partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -55234,7 +55282,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerName")]
         public virtual string PartnerName { get; set; } 
 
-        /// <summary>URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep-link to
+        /// <summary>URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep link to
         /// the specific resource on the Partner portal. This value may be validated to match approved Partner
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portalUrl")]
@@ -55378,6 +55426,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("neighborSystemId")]
         public virtual string NeighborSystemId { get; set; } 
 
+        /// <summary>The state of a LACP link, which can take one of the following values: - ACTIVE: The link is
+        /// configured and active within the bundle. - DETACHED: The link is not configured within the bundle. This
+        /// means that the rest of the object should be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -55531,7 +55582,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; } 
 
-        /// <summary>[Output Only] Continent for this location.</summary>
+        /// <summary>[Output Only] Continent for this location, which can take one of the following values: - AFRICA -
+        /// ASIA_PAC - EUROPE - NORTH_AMERICA - SOUTH_AMERICA</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continent")]
         public virtual string Continent { get; set; } 
 
@@ -55579,9 +55631,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of this InterconnectLocation. If the status is AVAILABLE, new
-        /// Interconnects may be provisioned in this InterconnectLocation. Otherwise, no new Interconnects may be
-        /// provisioned.</summary>
+        /// <summary>[Output Only] The status of this InterconnectLocation, which can take one of the following values:
+        /// - CLOSED: The InterconnectLocation is closed and is unavailable for provisioning new Interconnects. -
+        /// AVAILABLE: The InterconnectLocation is available for provisioning new Interconnects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -55699,8 +55751,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; } 
 
-        /// <summary>Form this outage is expected to take. Note that the "IT_" versions of this enum have been
-        /// deprecated in favor of the unprefixed values.</summary>
+        /// <summary>Form this outage is expected to take, which can take one of the following values: - OUTAGE: The
+        /// Interconnect may be completely out of service for some or all of the specified window. - PARTIAL_OUTAGE:
+        /// Some circuits comprising the Interconnect as a whole should remain up, but with reduced bandwidth. Note that
+        /// the versions of this enum prefixed with "IT_" have been deprecated in favor of the unprefixed
+        /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
         public virtual string IssueType { get; set; } 
 
@@ -55708,8 +55763,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The party that generated this notification. Note that "NSRC_GOOGLE" has been deprecated in favor of
-        /// "GOOGLE"</summary>
+        /// <summary>The party that generated this notification, which can take the following value: - GOOGLE: this
+        /// notification as generated by Google. Note that the value of NSRC_GOOGLE has been deprecated in favor of
+        /// GOOGLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -55717,8 +55773,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; } 
 
-        /// <summary>State of this notification. Note that the "NS_" versions of this enum have been deprecated in favor
-        /// of the unprefixed values.</summary>
+        /// <summary>State of this notification, which can take one of the following values: - ACTIVE: This outage
+        /// notification is active. The event could be in the past, present, or future. See start_time and end_time for
+        /// scheduling. - CANCELLED: The outage associated with this notification was cancelled before the outage was
+        /// due to start. Note that the versions of this enum prefixed with "NS_" have been deprecated in favor of the
+        /// unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -55997,11 +56056,7 @@ namespace Google.Apis.Compute.v1.Data
     public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.
-        ///
-        /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy
-        /// the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists
-        /// because there is active work being done to support it (b/115874152).</summary>
+        /// the LocalIAM implementation, for now.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
         public virtual string LogMode { get; set; } 
 
@@ -59616,8 +59671,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bgp")]
         public virtual RouterBgp Bgp { get; set; } 
 
-        /// <summary>BGP information that needs to be configured into the routing stack to establish the BGP peering. It
-        /// must specify peer ASN and either interface name, IP, or peer IP. Please refer to RFC4273.</summary>
+        /// <summary>BGP information that must be configured into the routing stack to establish BGP peering. This
+        /// information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please
+        /// refer to RFC4273.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bgpPeers")]
         public virtual System.Collections.Generic.IList<RouterBgpPeer> BgpPeers { get; set; } 
 
@@ -59635,8 +59691,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP
-        /// address and IP address range (e.g. ipRange), or both.</summary>
+        /// <summary>Router interfaces. Each interface requires either one linked resource, (for example,
+        /// linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
         public virtual System.Collections.Generic.IList<RouterInterface> Interfaces { get; set; } 
 
@@ -59652,7 +59708,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A list of Nat services created in this router.</summary>
+        /// <summary>A list of NAT services created in this router.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nats")]
         public virtual System.Collections.Generic.IList<RouterNat> Nats { get; set; } 
 
@@ -59762,7 +59818,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RouterBgp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>User-specified flag to indicate which mode to use for advertisement.</summary>
+        /// <summary>User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or
+        /// CUSTOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
         public virtual string AdvertiseMode { get; set; } 
 
@@ -59795,22 +59852,24 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
         public virtual string AdvertiseMode { get; set; } 
 
-        /// <summary>User-specified list of prefix groups to advertise in custom mode. This field can only be populated
-        /// if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These groups
-        /// will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom
-        /// groups.</summary>
+        /// <summary>User-specified list of prefix groups to advertise in custom mode, which can take one of the
+        /// following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. -
+        /// ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of
+        /// the router's VPC network. Note that this field can only be populated if advertise_mode is CUSTOM and
+        /// overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to
+        /// any specified prefixes. Leave this field blank to advertise no custom groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedGroups")]
         public virtual System.Collections.Generic.IList<string> AdvertisedGroups { get; set; } 
 
         /// <summary>User-specified list of individual IP ranges to advertise in custom mode. This field can only be
-        /// populated if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These
-        /// IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no
+        /// populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message).
+        /// These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no
         /// custom IP ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedIpRanges")]
         public virtual System.Collections.Generic.IList<RouterAdvertisedIpRange> AdvertisedIpRanges { get; set; } 
 
-        /// <summary>The priority of routes advertised to this BGP peer. In the case where there is more than one
-        /// matching route of maximum length, the routes with lowest priority value win.</summary>
+        /// <summary>The priority of routes advertised to this BGP peer. Where there is more than one matching route of
+        /// maximum length, the routes with the lowest priority value win.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutePriority")]
         public virtual System.Nullable<long> AdvertisedRoutePriority { get; set; } 
 
@@ -59822,10 +59881,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
-        /// <summary>[Output Only] The resource that configures and manages this BGP peer. MANAGED_BY_USER is the
-        /// default value and can be managed by you or other users; MANAGED_BY_ATTACHMENT is a BGP peer that is
+        /// <summary>[Output Only] The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the
+        /// default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is
         /// configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER.
-        /// Google will automatically create, update, and delete this type of BGP peer when the PARTNER
+        /// Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER
         /// InterconnectAttachment is created, updated, or deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -59834,12 +59893,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Peer BGP Autonomous System Number (ASN). For VPN use case, this value can be different for every
-        /// tunnel.</summary>
+        /// <summary>Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAsn")]
         public virtual System.Nullable<long> PeerAsn { get; set; } 
 
-        /// <summary>IP address of the BGP interface outside Google cloud. Only IPv4 is supported.</summary>
+        /// <summary>IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
         public virtual string PeerIpAddress { get; set; } 
 
@@ -59849,27 +59907,27 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RouterInterface : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IP address and range of the interface. The IP range must be in the RFC3927 link-local IP space. The
-        /// value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it
-        /// represents the IP address of the interface.</summary>
+        /// <summary>IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address
+        /// space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the
+        /// address as it represents the IP address of the interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipRange")]
         public virtual string IpRange { get; set; } 
 
-        /// <summary>URI of the linked interconnect attachment. It must be in the same region as the router. Each
-        /// interface can have at most one linked resource and it could either be a VPN Tunnel or an interconnect
+        /// <summary>URI of the linked Interconnect attachment. It must be in the same region as the router. Each
+        /// interface can have one linked resource, which can be either be a VPN tunnel or an Interconnect
         /// attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedInterconnectAttachment")]
         public virtual string LinkedInterconnectAttachment { get; set; } 
 
-        /// <summary>URI of the linked VPN tunnel. It must be in the same region as the router. Each interface can have
-        /// at most one linked resource and it could either be a VPN Tunnel or an interconnect attachment.</summary>
+        /// <summary>URI of the linked VPN tunnel, which must be in the same region as the router. Each interface can
+        /// have one linked resource, which can be either a VPN tunnel or an Interconnect attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
         public virtual string LinkedVpnTunnel { get; set; } 
 
-        /// <summary>[Output Only] The resource that configures and manages this interface. MANAGED_BY_USER is the
-        /// default value and can be managed by you or other users; MANAGED_BY_ATTACHMENT is an interface that is
-        /// configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER.
-        /// Google will automatically create, update, and delete this type of interface when the PARTNER
+        /// <summary>[Output Only] The resource that configures and manages this interface. - MANAGED_BY_USER is the
+        /// default value and can be managed directly by users. - MANAGED_BY_ATTACHMENT is an interface that is
+        /// configured and managed by Cloud Interconnect, specifically, by an InterconnectAttachment of type PARTNER.
+        /// Google automatically creates, updates, and deletes this type of interface when the PARTNER
         /// InterconnectAttachment is created, updated, or deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
@@ -59965,9 +60023,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
         public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
 
+        /// <summary>Configure logging on this NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual RouterNatLogConfig LogConfig { get; set; } 
+
         /// <summary>Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of
-        /// ports is allocated to a VM. This gets rounded up to the nearest power of 2. Eg. if the value of this field
-        /// is 50, at least 64 ports will be allocated to a VM.</summary>
+        /// ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this
+        /// field is 50, at least 64 ports are allocated to a VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minPortsPerVm")]
         public virtual System.Nullable<int> MinPortsPerVm { get; set; } 
 
@@ -59976,18 +60038,25 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be empty.</summary>
+        /// <summary>Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses
+        /// only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service
+        /// fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any
+        /// Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("natIpAllocateOption")]
         public virtual string NatIpAllocateOption { get; set; } 
 
-        /// <summary>A list of URLs of the IP resources used for this Nat service. These IPs must be valid static
-        /// external IP addresses assigned to the project. max_length is subject to change post alpha.</summary>
+        /// <summary>A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid
+        /// static external IP addresses assigned to the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("natIps")]
         public virtual System.Collections.Generic.IList<string> NatIps { get; set; } 
 
-        /// <summary>Specify the Nat option. If this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router
-        /// for this network in this region.</summary>
+        /// <summary>Specify the Nat option, which can take one of the following values: -
+        /// ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. -
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat.
+        /// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below)
+        /// The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains
+        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+        /// Router.Nat section in any Router for this network in this region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSubnetworkIpRangesToNat")]
         public virtual string SourceSubnetworkIpRangesToNat { get; set; } 
 
@@ -60012,10 +60081,26 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration of logging on a NAT.</summary>
+    public class RouterNatLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether or not to export logs. This is false by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>Specifies the desired filtering of logs on this NAT. If unspecified, logs are exported for all
+        /// connections handled by this NAT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines the IP ranges that want to use NAT for a subnetwork.</summary>
     public class RouterNatSubnetworkToNat : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URL for the subnetwork resource to use NAT.</summary>
+        /// <summary>URL for the subnetwork resource that will use NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -60024,8 +60109,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeNames")]
         public virtual System.Collections.Generic.IList<string> SecondaryIpRangeNames { get; set; } 
 
-        /// <summary>Specify the options for NAT ranges in the Subnetwork. All usages of single value are valid except
-        /// NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE",
+        /// <summary>Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid
+        /// except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE",
         /// "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIpRangesToNat")]
         public virtual System.Collections.Generic.IList<string> SourceIpRangesToNat { get; set; } 
@@ -60738,10 +60823,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Encrypts the snapshot using a customer-supplied encryption key.
         ///
         /// After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the
-        /// image later For example, you must provide the encryption key when you create a disk from the encrypted
+        /// snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted
         /// snapshot in a future request.
         ///
-        /// Customer-supplied encryption keys do not protect access to metadata of the disk.
+        /// Customer-supplied encryption keys do not protect access to metadata of the snapshot.
         ///
         /// If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted
         /// using an automatically generated key and you do not need to provide a key to use the snapshot
