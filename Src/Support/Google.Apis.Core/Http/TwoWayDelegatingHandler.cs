@@ -46,15 +46,9 @@ namespace Google.Apis.Http
             if (disposing && !disposed)
             {
                 disposed = true;
-                try
-                {
-                    base.Dispose();
-                }
-                finally
-                {
-                    _alternativeHandler.Dispose();
-                }
+                _alternativeHandler.Dispose();
             }
+            base.Dispose(disposing);
         }
 
         /// <summary>
