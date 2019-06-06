@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190522 (1602)
+ *      <tr><th>API Rev<td>20190530 (1610)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -406,6 +406,99 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
+
+        /// <summary>Uploads a report containing any changes in app states on the device since the last report was
+        /// generated. You can call this method up to 3 times every 24 hours for a given device.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The ID of the device.</param>
+        public virtual ForceReportUploadRequest ForceReportUpload(string enterpriseId, string userId, string deviceId)
+        {
+            return new ForceReportUploadRequest(service, enterpriseId, userId, deviceId);
+        }
+
+        /// <summary>Uploads a report containing any changes in app states on the device since the last report was
+        /// generated. You can call this method up to 3 times every 24 hours for a given device.</summary>
+        public class ForceReportUploadRequest : AndroidEnterpriseBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new ForceReportUpload request.</summary>
+            public ForceReportUploadRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "forceReportUpload"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload"; }
+            }
+
+            /// <summary>Initializes ForceReportUpload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
 
         /// <summary>Retrieves the details of a device.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -8201,6 +8294,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>List of states set by the app.</summary>
+    public class AppState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of keyed app states. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyedAppState")]
+        public virtual System.Collections.Generic.IList<KeyedAppState> KeyedAppState { get; set; } 
+
+        /// <summary>The package name of the app. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An event generated when a new version of an app is uploaded to Google Play. Notifications are sent for
     /// new public versions only: alpha, beta, or canary versions do not generate this event. To fetch up-to-date
     /// version history for an app, use Products.Get on the EMM API.</summary>
@@ -8375,6 +8483,46 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The policy enforced on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; } 
+
+        /// <summary>The device report updated with the latest app states.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("report")]
+        public virtual DeviceReport Report { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Device report updated with the latest app states for managed apps on the device.</summary>
+    public class DeviceReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of app states set by managed apps on the device. App states are defined by the app's
+        /// developers. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appState")]
+        public virtual System.Collections.Generic.IList<AppState> AppState { get; set; } 
+
+        /// <summary>The timestamp of the last report update in milliseconds since epoch. This field will always be
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
+        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An event generated when an updated device report is available.</summary>
+    public class DeviceReportUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Android ID of the device. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; } 
+
+        /// <summary>The device report updated with the latest app states. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("report")]
+        public virtual DeviceReport Report { get; set; } 
+
+        /// <summary>The ID of the user. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8740,6 +8888,39 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a keyed app state containing a key, timestamp, severity level, optional description, and
+    /// optional data.</summary>
+    public class KeyedAppState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional field intended for machine-readable data. For example, a number or JSON object. To
+        /// prevent XSS, we recommend removing any HTML from the data before displaying it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>Key indicating what the app is providing a state for. The content of the key is set by the app's
+        /// developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will
+        /// always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Free-form, human-readable message describing the app state. For example, an error message. To
+        /// prevent XSS, we recommend removing any HTML from the message before displaying it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>Severity of the app state. This field will always be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
+
+        /// <summary>Timestamp of when the app set the state in milliseconds since epoch. This field will always be
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateTimestampMillis")]
+        public virtual System.Nullable<long> StateTimestampMillis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A localized string with its locale.</summary>
     public class LocalizedText : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8992,6 +9173,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appUpdateEvent")]
         public virtual AppUpdateEvent AppUpdateEvent { get; set; } 
 
+        /// <summary>Notifications about device report updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceReportUpdateEvent")]
+        public virtual DeviceReportUpdateEvent DeviceReportUpdateEvent { get; set; } 
+
         /// <summary>The ID of the enterprise for which the notification is sent. This will always be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseId")]
         public virtual string EnterpriseId { get; set; } 
@@ -9104,6 +9289,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// enables auto updates only when the device is connected to wifi.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
         public virtual string AutoUpdatePolicy { get; set; } 
+
+        /// <summary>Whether the device reports app states to the EMM. The default value is
+        /// "deviceReportDisabled".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceReportPolicy")]
+        public virtual string DeviceReportPolicy { get; set; } 
 
         /// <summary>The maintenance window defining when apps running in the foreground should be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]

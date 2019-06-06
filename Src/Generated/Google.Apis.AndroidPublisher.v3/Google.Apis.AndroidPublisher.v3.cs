@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190528 (1608)
+ *      <tr><th>API Rev<td>20190604 (1615)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7577,6 +7577,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>A SubscriptionPurchase resource indicates the status of a user's subscription purchase.</summary>
     public class SubscriptionPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The acknowledgement state of the subscription product. Possible values are: - Yet to be
+        /// acknowledged - Acknowledged</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
+        public virtual System.Nullable<int> AcknowledgementState { get; set; } 
+
         /// <summary>Whether the subscription will automatically be renewed when it reaches its current expiry
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]

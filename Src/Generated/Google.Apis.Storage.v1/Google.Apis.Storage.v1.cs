@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190430 (1580)
+ *      <tr><th>API Rev<td>20190523 (1603)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -8752,11 +8752,6 @@ namespace Google.Apis.Storage.v1.Data
         /// context of the containing message determines which well-known feature set of CEL is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
-
-        /// <summary>The kind of item this is. For storage, this is always storage#expr. This field is ignored on
-        /// input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
 
         /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>

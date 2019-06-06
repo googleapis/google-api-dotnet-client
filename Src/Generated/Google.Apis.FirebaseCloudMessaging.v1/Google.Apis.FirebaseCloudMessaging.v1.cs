@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190531 (1611)
+ *      <tr><th>API Rev<td>20190605 (1616)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -457,6 +457,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
 
+        /// <summary>Options for features provided by the FCM SDK for Android.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
+        public virtual AndroidFcmOptions FcmOptions { get; set; } 
+
         /// <summary>Notification to send to android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
         public virtual AndroidNotification Notification { get; set; } 
@@ -480,6 +484,17 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// "3.000000001s". The ttl will be rounded down to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for features provided by the FCM SDK for Android.</summary>
+    public class AndroidFcmOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
+        public virtual string AnalyticsLabel { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -582,6 +597,21 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>Options for features provided by the FCM SDK for iOS.</summary>
     public class ApnsFcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
+        public virtual string AnalyticsLabel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Platform independent options for features provided by the FCM SDKs.</summary>
+    public class FcmOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
+        public virtual string AnalyticsLabel { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -605,6 +635,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Input only. Arbitrary key/value payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+
+        /// <summary>Input only. Template for FCM SDK feature options to use across all platforms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
+        public virtual FcmOptions FcmOptions { get; set; } 
 
         /// <summary>Output Only. The identifier of the message sent, in the format of
         /// `projects/messages/{message_id}`.</summary>

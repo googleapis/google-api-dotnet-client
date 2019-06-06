@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/u7_bWlcw_L5n3GNIVRmTiIWmSMA\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/XCj5XS8gg6RZpfYMWcRBa-b3UUE\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190528",
+ "revision": "20190604",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -946,6 +946,11 @@
    "type": "object",
    "description": "A SubscriptionPurchase resource indicates the status of a user's subscription purchase.",
    "properties": {
+    "acknowledgementState": {
+     "type": "integer",
+     "description": "The acknowledgement state of the subscription product. Possible values are:  \n- Yet to be acknowledged \n- Acknowledged",
+     "format": "int32"
+    },
     "autoRenewing": {
      "type": "boolean",
      "description": "Whether the subscription will automatically be renewed when it reaches its current expiry time."

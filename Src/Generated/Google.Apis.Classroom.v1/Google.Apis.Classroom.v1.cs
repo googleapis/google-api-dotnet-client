@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190528 (1608)
+ *      <tr><th>API Rev<td>20190531 (1611)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -1136,25 +1136,6 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Restriction on the `state` of announcements returned. If this argument is left unspecified,
-                /// the default value is `PUBLISHED`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("announcementStates", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<AnnouncementStatesEnum> AnnouncementStates { get; set; }
-
-                /// <summary>Restriction on the `state` of announcements returned. If this argument is left unspecified,
-                /// the default value is `PUBLISHED`.</summary>
-                public enum AnnouncementStatesEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("ANNOUNCEMENT_STATE_UNSPECIFIED")]
-                    ANNOUNCEMENTSTATEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
-                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                    DRAFT,
-                    [Google.Apis.Util.StringValueAttribute("DELETED")]
-                    DELETED,
-                }
-
                 /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
                 /// direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and
                 /// `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`,
@@ -1175,6 +1156,25 @@ namespace Google.Apis.Classroom.v1
                 /// The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Restriction on the `state` of announcements returned. If this argument is left unspecified,
+                /// the default value is `PUBLISHED`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("announcementStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AnnouncementStatesEnum> AnnouncementStates { get; set; }
+
+                /// <summary>Restriction on the `state` of announcements returned. If this argument is left unspecified,
+                /// the default value is `PUBLISHED`.</summary>
+                public enum AnnouncementStatesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("ANNOUNCEMENT_STATE_UNSPECIFIED")]
+                    ANNOUNCEMENTSTATEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
+                    PUBLISHED,
+                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
+                    DRAFT,
+                    [Google.Apis.Util.StringValueAttribute("DELETED")]
+                    DELETED,
+                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1210,15 +1210,6 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "announcementStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "announcementStates",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -1240,6 +1231,15 @@ namespace Google.Apis.Classroom.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "announcementStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "announcementStates",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1674,6 +1674,25 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("late", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<LateEnum> Late { get; set; }
+
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    public enum LateEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
+                        LATEVALUESUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
+                        LATEONLY,
+                        [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
+                        NOTLATEONLY,
+                    }
+
                     /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent
                     /// page of results should be returned.
                     ///
@@ -1719,25 +1738,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string UserId { get; set; }
 
-                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
-                    /// the requested value. If unspecified, submissions are returned regardless of `late`
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("late", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<LateEnum> Late { get; set; }
-
-                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
-                    /// the requested value. If unspecified, submissions are returned regardless of `late`
-                    /// value.</summary>
-                    public enum LateEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
-                        LATEVALUESUNSPECIFIED,
-                        [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
-                        LATEONLY,
-                        [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
-                        NOTLATEONLY,
-                    }
-
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1781,6 +1781,15 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "late", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "late",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1811,15 +1820,6 @@ namespace Google.Apis.Classroom.v1
                             "userId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "userId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "late", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "late",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4760,6 +4760,14 @@ namespace Google.Apis.Classroom.v1
             }
 
 
+            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
+            /// identifier can be one of the following:
+            ///
+            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</summary>
+            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StudentId { get; set; }
+
             /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
             /// results should be returned.
             ///
@@ -4805,14 +4813,6 @@ namespace Google.Apis.Classroom.v1
                 SUSPENDED,
             }
 
-            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
-            /// identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
-            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string StudentId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4837,6 +4837,15 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "studentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "studentId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -4868,15 +4877,6 @@ namespace Google.Apis.Classroom.v1
                     "courseStates", new Google.Apis.Discovery.Parameter
                     {
                         Name = "courseStates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "studentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "studentId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

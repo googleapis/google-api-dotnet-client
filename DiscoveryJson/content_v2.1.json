@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/EiQvOfWXNZl6Gyiq-W0yDN3qLHY\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/jbCPNvl4QbL1NbUHBeaCm32fvYA\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190524",
+ "revision": "20190531",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -6056,6 +6056,13 @@
       "required": [
        "content.orders.createtestorder"
       ]
+     }
+    },
+    "fees": {
+     "type": "array",
+     "description": "Fees for the item. Optional.",
+     "items": {
+      "$ref": "OrderLineItemProductFee"
      }
     },
     "gtin": {

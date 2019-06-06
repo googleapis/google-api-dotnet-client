@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190524 (1604)
+ *      <tr><th>API Rev<td>20190531 (1611)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -15594,6 +15594,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Fees for the item. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fees")]
+        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; } 
 
         /// <summary>Global Trade Item Number (GTIN) of the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]

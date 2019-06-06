@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190529 (1609)
+ *      <tr><th>API Rev<td>20190530 (1610)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -3412,10 +3412,14 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A border around a table cell.</summary>
+    /// <summary>A border around a table cell.
+    ///
+    /// Table cell borders cannot be transparent. To hide a table cell border, make its width 0.</summary>
     public class TableCellBorder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border.</summary>
+        /// <summary>The color of the border.
+        ///
+        /// This color cannot be transparent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OptionalColor Color { get; set; } 
 

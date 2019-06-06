@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/w57CZ0x9oJt3kGngX1k2nFDHOf4\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/GOyaohosJtPtOLAbitwIhilRmds\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20190522",
+ "revision": "20190530",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -310,6 +310,24 @@
     }
    }
   },
+  "AppState": {
+   "id": "AppState",
+   "type": "object",
+   "description": "List of states set by the app.",
+   "properties": {
+    "keyedAppState": {
+     "type": "array",
+     "description": "List of keyed app states. This field will always be present.",
+     "items": {
+      "$ref": "KeyedAppState"
+     }
+    },
+    "packageName": {
+     "type": "string",
+     "description": "The package name of the app. This field will always be present."
+    }
+   }
+  },
   "AppUpdateEvent": {
    "id": "AppUpdateEvent",
    "type": "object",
@@ -474,6 +492,48 @@
     "policy": {
      "$ref": "Policy",
      "description": "The policy enforced on the device."
+    },
+    "report": {
+     "$ref": "DeviceReport",
+     "description": "The device report updated with the latest app states."
+    }
+   }
+  },
+  "DeviceReport": {
+   "id": "DeviceReport",
+   "type": "object",
+   "description": "Device report updated with the latest app states for managed apps on the device.",
+   "properties": {
+    "appState": {
+     "type": "array",
+     "description": "List of app states set by managed apps on the device. App states are defined by the app's developers. This field will always be present.",
+     "items": {
+      "$ref": "AppState"
+     }
+    },
+    "lastUpdatedTimestampMillis": {
+     "type": "string",
+     "description": "The timestamp of the last report update in milliseconds since epoch. This field will always be present.",
+     "format": "int64"
+    }
+   }
+  },
+  "DeviceReportUpdateEvent": {
+   "id": "DeviceReportUpdateEvent",
+   "type": "object",
+   "description": "An event generated when an updated device report is available.",
+   "properties": {
+    "deviceId": {
+     "type": "string",
+     "description": "The Android ID of the device. This field will always be present."
+    },
+    "report": {
+     "$ref": "DeviceReport",
+     "description": "The device report updated with the latest app states. This field will always be present."
+    },
+    "userId": {
+     "type": "string",
+     "description": "The ID of the user. This field will always be present."
     }
    }
   },
@@ -778,6 +838,34 @@
     }
    }
   },
+  "KeyedAppState": {
+   "id": "KeyedAppState",
+   "type": "object",
+   "description": "Represents a keyed app state containing a key, timestamp, severity level, optional description, and optional data.",
+   "properties": {
+    "data": {
+     "type": "string",
+     "description": "Additional field intended for machine-readable data. For example, a number or JSON object. To prevent XSS, we recommend removing any HTML from the data before displaying it."
+    },
+    "key": {
+     "type": "string",
+     "description": "Key indicating what the app is providing a state for. The content of the key is set by the app's developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will always be present."
+    },
+    "message": {
+     "type": "string",
+     "description": "Free-form, human-readable message describing the app state. For example, an error message. To prevent XSS, we recommend removing any HTML from the message before displaying it."
+    },
+    "severity": {
+     "type": "string",
+     "description": "Severity of the app state. This field will always be present."
+    },
+    "stateTimestampMillis": {
+     "type": "string",
+     "description": "Timestamp of when the app set the state in milliseconds since epoch. This field will always be present.",
+     "format": "int64"
+    }
+   }
+  },
   "LocalizedText": {
    "id": "LocalizedText",
    "type": "object",
@@ -1043,6 +1131,10 @@
      "$ref": "AppUpdateEvent",
      "description": "Notifications about app updates."
     },
+    "deviceReportUpdateEvent": {
+     "$ref": "DeviceReportUpdateEvent",
+     "description": "Notifications about device report updates."
+    },
     "enterpriseId": {
      "type": "string",
      "description": "The ID of the enterprise for which the notification is sent. This will always be present."
@@ -1151,6 +1243,10 @@
     "autoUpdatePolicy": {
      "type": "string",
      "description": "The auto-update policy for apps installed on the device. \"choiceToTheUser\" allows the device's user to configure the app update policy. \"always\" enables auto updates. \"never\" disables auto updates. \"wifiOnly\" enables auto updates only when the device is connected to wifi."
+    },
+    "deviceReportPolicy": {
+     "type": "string",
+     "description": "Whether the device reports app states to the EMM. The default value is \"deviceReportDisabled\"."
     },
     "maintenanceWindow": {
      "$ref": "MaintenanceWindow",
@@ -1927,6 +2023,40 @@
  "resources": {
   "devices": {
    "methods": {
+    "forceReportUpload": {
+     "id": "androidenterprise.devices.forceReportUpload",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload",
+     "httpMethod": "POST",
+     "description": "Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
     "get": {
      "id": "androidenterprise.devices.get",
      "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",

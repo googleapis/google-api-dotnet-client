@@ -1,4 +1,23 @@
 {
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform.read-only": {
+          "description": "View your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/firebase": {
+          "description": "View and administer all your Firebase data and settings"
+        },
+        "https://www.googleapis.com/auth/firebase.readonly": {
+          "description": "View all your Firebase data and settings"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://firebasehosting.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "firebasehosting",
   "batchPath": "batch",
@@ -9,6 +28,9 @@
     "sites": {
       "methods": {
         "getConfig": {
+          "path": "v1beta1/{+name}",
+          "id": "firebasehosting.sites.getConfig",
+          "description": "Gets the Hosting metadata for a specific site.",
           "response": {
             "$ref": "SiteConfig"
           },
@@ -24,23 +46,23 @@
           ],
           "parameters": {
             "name": {
-              "description": "Required. The site for which to get the SiteConfig, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/config\u003c/code\u003e",
               "required": true,
               "type": "string",
               "pattern": "^sites/[^/]+/config$",
-              "location": "path"
+              "location": "path",
+              "description": "Required. The site for which to get the SiteConfig, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/config\u003c/code\u003e"
             }
           },
-          "flatPath": "v1beta1/sites/{sitesId}/config",
-          "path": "v1beta1/{+name}",
-          "id": "firebasehosting.sites.getConfig",
-          "description": "Gets the Hosting metadata for a specific site."
+          "flatPath": "v1beta1/sites/{sitesId}/config"
         },
         "updateConfig": {
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/firebase"
+          "httpMethod": "PATCH",
+          "parameterOrder": [
+            "name"
           ],
+          "response": {
+            "$ref": "SiteConfig"
+          },
           "parameters": {
             "updateMask": {
               "location": "query",
@@ -49,51 +71,114 @@
               "type": "string"
             },
             "name": {
+              "required": true,
+              "type": "string",
               "pattern": "^sites/[^/]+/config$",
               "location": "path",
-              "description": "Required. The site for which to update the SiteConfig, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/config\u003c/code\u003e",
-              "required": true,
-              "type": "string"
+              "description": "Required. The site for which to update the SiteConfig, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/config\u003c/code\u003e"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/firebase"
+          ],
           "flatPath": "v1beta1/sites/{sitesId}/config",
-          "path": "v1beta1/{+name}",
           "id": "firebasehosting.sites.updateConfig",
+          "path": "v1beta1/{+name}",
+          "description": "Sets the Hosting metadata for a specific site.",
           "request": {
             "$ref": "SiteConfig"
-          },
-          "description": "Sets the Hosting metadata for a specific site.",
-          "response": {
-            "$ref": "SiteConfig"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "PATCH"
+          }
         }
       },
       "resources": {
-        "releases": {
+        "domains": {
           "methods": {
-            "list": {
+            "create": {
+              "response": {
+                "$ref": "Domain"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
               "parameters": {
                 "parent": {
+                  "required": true,
+                  "type": "string",
                   "pattern": "^sites/[^/]+$",
                   "location": "path",
-                  "description": "Required. The parent for which to list files, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
+                  "description": "Required. The parent to create the domain association for, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "flatPath": "v1beta1/sites/{sitesId}/domains",
+              "path": "v1beta1/{+parent}/domains",
+              "id": "firebasehosting.sites.domains.create",
+              "description": "Creates a domain mapping on the specified site.",
+              "request": {
+                "$ref": "Domain"
+              }
+            },
+            "delete": {
+              "httpMethod": "DELETE",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the domain association to delete.",
                   "required": true,
-                  "type": "string"
-                },
+                  "type": "string",
+                  "pattern": "^sites/[^/]+/domains/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}",
+              "id": "firebasehosting.sites.domains.delete",
+              "path": "v1beta1/{+name}",
+              "description": "Deletes the existing domain mapping on the specified site."
+            },
+            "list": {
+              "flatPath": "v1beta1/sites/{sitesId}/domains",
+              "id": "firebasehosting.sites.domains.list",
+              "path": "v1beta1/{+parent}/domains",
+              "description": "Lists the domains for the specified site.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ListDomainsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
                 "pageToken": {
                   "description": "The next_page_token from a previous request, if provided.",
                   "type": "string",
                   "location": "query"
                 },
                 "pageSize": {
-                  "location": "query",
-                  "description": "The page size to return. Defaults to 100.",
+                  "description": "The page size to return. Defaults to 50.",
                   "format": "int32",
-                  "type": "integer"
+                  "type": "integer",
+                  "location": "query"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "Required. The parent for which to list domains, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^sites/[^/]+$"
                 }
               },
               "scopes": [
@@ -101,20 +186,111 @@
                 "https://www.googleapis.com/auth/cloud-platform.read-only",
                 "https://www.googleapis.com/auth/firebase",
                 "https://www.googleapis.com/auth/firebase.readonly"
+              ]
+            },
+            "get": {
+              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}",
+              "path": "v1beta1/{+name}",
+              "id": "firebasehosting.sites.domains.get",
+              "description": "Gets a domain mapping on the specified site.",
+              "response": {
+                "$ref": "Domain"
+              },
+              "parameterOrder": [
+                "name"
               ],
-              "flatPath": "v1beta1/sites/{sitesId}/releases",
-              "id": "firebasehosting.sites.releases.list",
-              "path": "v1beta1/{+parent}/releases",
-              "description": "Lists the releases that have been created on the specified site.",
               "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the domain configuration to get.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^sites/[^/]+/domains/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/firebase",
+                "https://www.googleapis.com/auth/firebase.readonly"
+              ]
+            },
+            "update": {
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Required. The name of the domain association to update or create, if an\nassociation doesn't already exist.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^sites/[^/]+/domains/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}",
+              "path": "v1beta1/{+name}",
+              "id": "firebasehosting.sites.domains.update",
+              "description": "Updates the specified domain mapping, creating the mapping as if it does\nnot exist.",
+              "request": {
+                "$ref": "Domain"
+              },
+              "response": {
+                "$ref": "Domain"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PUT"
+            }
+          }
+        },
+        "releases": {
+          "methods": {
+            "list": {
+              "flatPath": "v1beta1/sites/{sitesId}/releases",
+              "path": "v1beta1/{+parent}/releases",
+              "id": "firebasehosting.sites.releases.list",
+              "description": "Lists the releases that have been created on the specified site.",
+              "response": {
+                "$ref": "ListReleasesResponse"
+              },
               "parameterOrder": [
                 "parent"
               ],
-              "response": {
-                "$ref": "ListReleasesResponse"
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/firebase",
+                "https://www.googleapis.com/auth/firebase.readonly"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "The next_page_token from a previous request, if provided."
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The page size to return. Defaults to 100.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "description": "Required. The parent for which to list files, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^sites/[^/]+$",
+                  "location": "path"
+                }
               }
             },
             "create": {
+              "path": "v1beta1/{+parent}/releases",
+              "id": "firebasehosting.sites.releases.create",
               "request": {
                 "$ref": "Release"
               },
@@ -131,67 +307,36 @@
                 "https://www.googleapis.com/auth/firebase"
               ],
               "parameters": {
+                "versionName": {
+                  "location": "query",
+                  "description": "The unique identifier for a version, in the format:\n\u003ccode\u003e/sites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e\nThe \u003cvar\u003esite-name\u003c/var\u003e in this version identifier must match the\n\u003cvar\u003esite-name\u003c/var\u003e in the `parent` parameter.\n\u003cbr\u003e\n\u003cbr\u003eThis query parameter must be empty if the `type` field in the\nrequest body is `SITE_DISABLE`.",
+                  "type": "string"
+                },
                 "parent": {
                   "pattern": "^sites/[^/]+$",
                   "location": "path",
                   "description": "The site that the release belongs to, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
                   "required": true,
                   "type": "string"
-                },
-                "versionName": {
-                  "description": "The unique identifier for a version, in the format:\n\u003ccode\u003e/sites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e\nThe \u003cvar\u003esite-name\u003c/var\u003e in this version identifier must match the\n\u003cvar\u003esite-name\u003c/var\u003e in the `parent` parameter.\n\u003cbr\u003e\n\u003cbr\u003eThis query parameter must be empty if the `type` field in the\nrequest body is `SITE_DISABLE`.",
-                  "type": "string",
-                  "location": "query"
                 }
               },
-              "flatPath": "v1beta1/sites/{sitesId}/releases",
-              "path": "v1beta1/{+parent}/releases",
-              "id": "firebasehosting.sites.releases.create"
+              "flatPath": "v1beta1/sites/{sitesId}/releases"
             }
           }
         },
         "versions": {
           "methods": {
-            "delete": {
-              "description": "Deletes the specified version.",
-              "httpMethod": "DELETE",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Required. The name of the version to be deleted, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+/versions/[^/]+$",
-                  "location": "path"
-                }
-              },
+            "patch": {
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/firebase"
               ],
-              "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}",
-              "id": "firebasehosting.sites.versions.delete",
-              "path": "v1beta1/{+name}"
-            },
-            "patch": {
-              "response": {
-                "$ref": "Version"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
               "parameters": {
                 "updateMask": {
-                  "description": "A set of field names from your [version](../sites.versions) that you want\nto update.\n\u003cbr\u003eA field will be overwritten if, and only if, it's in the mask.\n\u003cbr\u003eIf a mask is not provided then a default mask of only\n[`status`](../sites.versions#Version.FIELDS.status) will be used.",
-                  "format": "google-fieldmask",
                   "type": "string",
-                  "location": "query"
+                  "location": "query",
+                  "description": "A set of field names from your [version](../sites.versions) that you want\nto update.\n\u003cbr\u003eA field will be overwritten if, and only if, it's in the mask.\n\u003cbr\u003eIf a mask is not provided then a default mask of only\n[`status`](../sites.versions#Version.FIELDS.status) will be used.",
+                  "format": "google-fieldmask"
                 },
                 "name": {
                   "description": "The unique identifier for a version, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint.",
@@ -201,15 +346,18 @@
                   "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/firebase"
-              ],
               "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}",
-              "path": "v1beta1/{+name}",
               "id": "firebasehosting.sites.versions.patch",
-              "description": "Updates the specified metadata for a version. Note that this method will\nfail with `FAILED_PRECONDITION` in the event of an invalid state\ntransition. The only valid transition for a version is currently from a\n`CREATED` status to a `FINALIZED` status.\nUse [`DeleteVersion`](../sites.versions/delete) to set the status of a\nversion to `DELETED`.",
+              "path": "v1beta1/{+name}",
               "request": {
+                "$ref": "Version"
+              },
+              "description": "Updates the specified metadata for a version. Note that this method will\nfail with `FAILED_PRECONDITION` in the event of an invalid state\ntransition. The only valid transition for a version is currently from a\n`CREATED` status to a `FINALIZED` status.\nUse [`DeleteVersion`](../sites.versions/delete) to set the status of a\nversion to `DELETED`.",
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
                 "$ref": "Version"
               }
             },
@@ -221,37 +369,37 @@
                 "parent"
               ],
               "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
               "parameters": {
+                "parent": {
+                  "pattern": "^sites/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The parent to create the version for, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
+                  "required": true,
+                  "type": "string"
+                },
                 "sizeBytes": {
+                  "type": "string",
                   "location": "query",
                   "description": "The self-reported size of the version. This value is used for a pre-emptive\nquota check for legacy version uploads.",
-                  "format": "int64",
-                  "type": "string"
+                  "format": "int64"
                 },
                 "versionId": {
                   "location": "query",
                   "description": "A unique id for the new version. This is only specified for legacy version\ncreations.",
                   "type": "string"
-                },
-                "parent": {
-                  "description": "Required. The parent to create the version for, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+$",
-                  "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/firebase"
-              ],
               "flatPath": "v1beta1/sites/{sitesId}/versions",
               "path": "v1beta1/{+parent}/versions",
               "id": "firebasehosting.sites.versions.create",
-              "description": "Creates a new version for a site.",
               "request": {
                 "$ref": "Version"
-              }
+              },
+              "description": "Creates a new version for a site."
             },
             "populateFiles": {
               "scopes": [
@@ -268,40 +416,62 @@
                 }
               },
               "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}:populateFiles",
-              "path": "v1beta1/{+parent}:populateFiles",
               "id": "firebasehosting.sites.versions.populateFiles",
+              "path": "v1beta1/{+parent}:populateFiles",
               "request": {
                 "$ref": "PopulateVersionFilesRequest"
               },
               "description": "Adds content files to a version.",
-              "response": {
-                "$ref": "PopulateVersionFilesResponse"
-              },
+              "httpMethod": "POST",
               "parameterOrder": [
                 "parent"
               ],
-              "httpMethod": "POST"
+              "response": {
+                "$ref": "PopulateVersionFilesResponse"
+              }
+            },
+            "delete": {
+              "path": "v1beta1/{+name}",
+              "id": "firebasehosting.sites.versions.delete",
+              "description": "Deletes the specified version.",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the version to be deleted, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^sites/[^/]+/versions/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}"
             }
           },
           "resources": {
             "files": {
               "methods": {
                 "list": {
-                  "path": "v1beta1/{+parent}/files",
-                  "id": "firebasehosting.sites.versions.files.list",
-                  "description": "Lists the remaining files to be uploaded for the specified version.",
-                  "response": {
-                    "$ref": "ListVersionFilesResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only",
+                    "https://www.googleapis.com/auth/firebase",
+                    "https://www.googleapis.com/auth/firebase.readonly"
                   ],
-                  "httpMethod": "GET",
                   "parameters": {
                     "pageToken": {
+                      "type": "string",
                       "location": "query",
-                      "description": "The next_page_token from a previous request, if provided. This will be the\nencoded version of a firebase.hosting.proto.metadata.ListFilesPageToken.",
-                      "type": "string"
+                      "description": "The next_page_token from a previous request, if provided. This will be the\nencoded version of a firebase.hosting.proto.metadata.ListFilesPageToken."
                     },
                     "pageSize": {
                       "location": "query",
@@ -327,169 +497,18 @@
                       ]
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only",
-                    "https://www.googleapis.com/auth/firebase",
-                    "https://www.googleapis.com/auth/firebase.readonly"
+                  "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}/files",
+                  "path": "v1beta1/{+parent}/files",
+                  "id": "firebasehosting.sites.versions.files.list",
+                  "description": "Lists the remaining files to be uploaded for the specified version.",
+                  "response": {
+                    "$ref": "ListVersionFilesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
                   ],
-                  "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}/files"
+                  "httpMethod": "GET"
                 }
-              }
-            }
-          }
-        },
-        "domains": {
-          "methods": {
-            "delete": {
-              "description": "Deletes the existing domain mapping on the specified site.",
-              "httpMethod": "DELETE",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "pattern": "^sites/[^/]+/domains/[^/]+$",
-                  "location": "path",
-                  "description": "Required. The name of the domain association to delete.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/firebase"
-              ],
-              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}",
-              "id": "firebasehosting.sites.domains.delete",
-              "path": "v1beta1/{+name}"
-            },
-            "list": {
-              "response": {
-                "$ref": "ListDomainsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "parent": {
-                  "description": "Required. The parent for which to list domains, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+$",
-                  "location": "path"
-                },
-                "pageToken": {
-                  "description": "The next_page_token from a previous request, if provided.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The page size to return. Defaults to 50.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                "https://www.googleapis.com/auth/firebase",
-                "https://www.googleapis.com/auth/firebase.readonly"
-              ],
-              "flatPath": "v1beta1/sites/{sitesId}/domains",
-              "path": "v1beta1/{+parent}/domains",
-              "id": "firebasehosting.sites.domains.list",
-              "description": "Lists the domains for the specified site."
-            },
-            "get": {
-              "path": "v1beta1/{+name}",
-              "id": "firebasehosting.sites.domains.get",
-              "description": "Gets a domain mapping on the specified site.",
-              "response": {
-                "$ref": "Domain"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "Required. The name of the domain configuration to get.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+/domains/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only",
-                "https://www.googleapis.com/auth/firebase",
-                "https://www.googleapis.com/auth/firebase.readonly"
-              ],
-              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}"
-            },
-            "update": {
-              "path": "v1beta1/{+name}",
-              "id": "firebasehosting.sites.domains.update",
-              "description": "Updates the specified domain mapping, creating the mapping as if it does\nnot exist.",
-              "request": {
-                "$ref": "Domain"
-              },
-              "response": {
-                "$ref": "Domain"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PUT",
-              "parameters": {
-                "name": {
-                  "description": "Required. The name of the domain association to update or create, if an\nassociation doesn't already exist.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+/domains/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/firebase"
-              ],
-              "flatPath": "v1beta1/sites/{sitesId}/domains/{domainsId}"
-            },
-            "create": {
-              "parameters": {
-                "parent": {
-                  "description": "Required. The parent to create the domain association for, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e\u003c/code\u003e",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^sites/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/firebase"
-              ],
-              "flatPath": "v1beta1/sites/{sitesId}/domains",
-              "id": "firebasehosting.sites.domains.create",
-              "path": "v1beta1/{+parent}/domains",
-              "description": "Creates a domain mapping on the specified site.",
-              "request": {
-                "$ref": "Domain"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "Domain"
               }
             }
           }
@@ -498,51 +517,26 @@
     }
   },
   "parameters": {
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
     "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
       "default": "true",
-      "location": "query"
-    },
-    "fields": {
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
+      "description": "Returns response with indentations and line breaks."
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
-    "callback": {
+    "uploadType": {
+      "type": "string",
       "location": "query",
-      "description": "JSONP",
-      "type": "string"
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "description": "V1 error format.",
@@ -557,12 +551,17 @@
         "2"
       ]
     },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -571,21 +570,413 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     }
   },
   "version": "v1beta1",
   "baseUrl": "https://firebasehosting.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.",
   "servicePath": "",
+  "description": "The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20190515",
-  "id": "firebasehosting:v1beta1",
   "documentationLink": "https://firebase.google.com/docs/hosting/",
+  "id": "firebasehosting:v1beta1",
+  "revision": "20190604",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "DomainRedirect": {
+      "id": "DomainRedirect",
+      "description": "Defines the behavior of a domain-level redirect. Domain redirects preserve\nthe path of the redirect but replace the requested domain with the one\nspecified in the redirect configuration.",
+      "type": "object",
+      "properties": {
+        "domainName": {
+          "description": "Required. The domain name to redirect to.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Required. The redirect status code.",
+          "type": "string",
+          "enumDescriptions": [
+            "The default redirect type; should not be intentionlly used.",
+            "The redirect will respond with an HTTP status code of\n`301 Moved Permanently`."
+          ],
+          "enum": [
+            "REDIRECT_TYPE_UNSPECIFIED",
+            "MOVED_PERMANENTLY"
+          ]
+        }
+      }
+    },
+    "CloudRunRewrite": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "description": "Optional. User-provided region where the Cloud Run service is hosted.\u003cbr\u003e\nDefaults to `us-central1` if not supplied.",
+          "type": "string"
+        },
+        "serviceId": {
+          "description": "Required. User-defined ID of the Cloud Run service.",
+          "type": "string"
+        }
+      },
+      "id": "CloudRunRewrite",
+      "description": "A configured rewrite that directs requests to a Cloud Run service. If the\nCloud Run service does not exist when setting or updating your Firebase\nHosting configuration, then the request fails. Any errors from the Cloud Run\nservice are passed to the end user (for example, if you delete a service, any\nrequests directed to that service receive a `404` error)."
+    },
+    "ListVersionFilesResponse": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "description": "The list path/hashes in the specified version.",
+          "type": "array",
+          "items": {
+            "$ref": "VersionFile"
+          }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "The pagination token, if more results exist."
+        }
+      },
+      "id": "ListVersionFilesResponse"
+    },
+    "CertDnsChallenge": {
+      "type": "object",
+      "properties": {
+        "domainName": {
+          "description": "The domain name upon which the DNS challenge must be satisfied.",
+          "type": "string"
+        },
+        "token": {
+          "type": "string",
+          "description": "The value that must be present as a TXT record on the domain name to\nsatisfy the challenge."
+        }
+      },
+      "id": "CertDnsChallenge",
+      "description": "Represents a DNS certificate challenge."
+    },
+    "ListDomainsResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The pagination token, if more results exist.",
+          "type": "string"
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "$ref": "Domain"
+          },
+          "description": "The list of domains, if any exist."
+        }
+      },
+      "id": "ListDomainsResponse"
+    },
+    "CertHttpChallenge": {
+      "description": "Represents an HTTP certificate challenge.",
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "The token to serve at the specified URL path to satisfy the certificate\nchallenge."
+        },
+        "path": {
+          "type": "string",
+          "description": "The URL path on which to serve the specified token to satisfy the\ncertificate challenge."
+        }
+      },
+      "id": "CertHttpChallenge"
+    },
+    "Version": {
+      "description": "A `Version` is the collection of configuration and\n[static files](sites.versions.files) that determine how a site is displayed.",
+      "type": "object",
+      "properties": {
+        "createUser": {
+          "$ref": "ActingUser",
+          "description": "Output only. Identifies the user who created the version."
+        },
+        "fileCount": {
+          "type": "string",
+          "description": "Output only. The total number of files associated with the version.\n\u003cbr\u003eThis value is calculated after a version is `FINALIZED`.",
+          "format": "int64"
+        },
+        "deleteUser": {
+          "description": "Output only. Identifies the user who `DELETED` the version.",
+          "$ref": "ActingUser"
+        },
+        "deleteTime": {
+          "description": "Output only. The time at which the version was `DELETED`.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "finalizeUser": {
+          "$ref": "ActingUser",
+          "description": "Output only. Identifies the user who `FINALIZED` the version."
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The labels used for extra metadata and/or filtering.",
+          "type": "object"
+        },
+        "createTime": {
+          "description": "Output only. The time at which the version was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "versionBytes": {
+          "description": "Output only. The total stored bytesize of the version.\n\u003cbr\u003eThis value is calculated after a version is `FINALIZED`.",
+          "format": "int64",
+          "type": "string"
+        },
+        "finalizeTime": {
+          "description": "Output only. The time at which the version was `FINALIZED`.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enumDescriptions": [
+            "The default status; should not be intentionally used.",
+            "The version has been created, and content is currently being added to the\nversion.",
+            "All content has been added to the version, and the version can no longer be\nchanged.",
+            "The version has been deleted.",
+            "The version was not updated to `FINALIZED` within 12&nbsp;hours and was\nautomatically deleted.",
+            "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion."
+          ],
+          "enum": [
+            "VERSION_STATUS_UNSPECIFIED",
+            "CREATED",
+            "FINALIZED",
+            "DELETED",
+            "ABANDONED",
+            "EXPIRED"
+          ],
+          "description": "The deploy status of a version.\n\u003cbr\u003e\n\u003cbr\u003eFor a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n\u003cbr\u003e\n\u003cbr\u003eNote that if you leave the version in the `CREATED` state for more\nthan 12&nbsp;hours, the system will automatically mark the version as\n`ABANDONED`.\n\u003cbr\u003e\n\u003cbr\u003eYou can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint."
+        },
+        "config": {
+          "$ref": "ServingConfig",
+          "description": "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."
+        },
+        "name": {
+          "description": "The unique identifier for a version, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint.",
+          "type": "string"
+        }
+      },
+      "id": "Version"
+    },
+    "ListReleasesResponse": {
+      "type": "object",
+      "properties": {
+        "releases": {
+          "description": "The list of hashes of files that still need to be uploaded, if any exist.",
+          "type": "array",
+          "items": {
+            "$ref": "Release"
+          }
+        },
+        "nextPageToken": {
+          "description": "If there are additional releases remaining beyond the ones in this\nresponse, then supply this token in the next\n[`list`](../sites.versions.files/list) call to continue with the next set\nof releases.",
+          "type": "string"
+        }
+      },
+      "id": "ListReleasesResponse"
+    },
+    "SiteConfig": {
+      "description": "A `SiteConfig` contains metadata associated with a specific site that\ncontrols Firebase Hosting serving behavior",
+      "type": "object",
+      "properties": {
+        "maxVersions": {
+          "description": "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "id": "SiteConfig"
+    },
+    "Redirect": {
+      "type": "object",
+      "properties": {
+        "glob": {
+          "description": "Required. The user-supplied\n[glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
+          "type": "string"
+        },
+        "statusCode": {
+          "description": "Required. The status HTTP code to return in the response. It must be a\nvalid 3xx status code.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "location": {
+          "description": "Required. The value to put in the HTTP location header of the response.\n\u003cbr\u003eThe location can contain capture group values from the pattern using\na `:` prefix to identify the segment and an optional `*` to capture the\nrest of the URL.\nFor example:\n\u003ccode\u003e\"glob\": \"/:capture*\",\n\u003cbr\u003e\"statusCode\": 301,\n\u003cbr\u003e\"location\": \"https://example.com/foo/:capture\"\u003c/code\u003e",
+          "type": "string"
+        }
+      },
+      "id": "Redirect",
+      "description": "A [`redirect`](/docs/hosting/full-config#redirects) represents the\nconfiguration for returning an HTTP redirect response given a matching\nrequest URL path."
+    },
+    "Release": {
+      "description": "A `Release` is a particular\n[collection of configurations and files](sites.versions)\nthat is set to be public at a particular time.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "The deploy description when the release was created. The value can be up to\n512&nbsp;characters.",
+          "type": "string"
+        },
+        "releaseUser": {
+          "$ref": "ActingUser",
+          "description": "Output only. Identifies the user who created the release."
+        },
+        "releaseTime": {
+          "description": "Output only. The time at which the version is set to be public.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "name": {
+          "description": "Output only. The unique identifier for the release, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/releases/\u003cvar\u003ereleaseID\u003c/var\u003e\u003c/code\u003e\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Explains the reason for the release.\n\u003cbr\u003eSpecify a value for this field only when creating a `SITE_DISABLE`\ntype release.",
+          "type": "string",
+          "enumDescriptions": [
+            "An unspecified type. Indicates that a version was released.\n\u003cbr\u003eThis is the default value when no other `type` is explicitly\nspecified.",
+            "A version was uploaded to Firebase Hosting and released.",
+            "The release points back to a previously deployed version.",
+            "The release prevents the site from serving content. Firebase Hosting acts\nas if the site never existed."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "DEPLOY",
+            "ROLLBACK",
+            "SITE_DISABLE"
+          ]
+        },
+        "version": {
+          "$ref": "Version",
+          "description": "Output only.  The configuration and content that was released."
+        }
+      },
+      "id": "Release"
+    },
+    "Rewrite": {
+      "type": "object",
+      "properties": {
+        "function": {
+          "type": "string",
+          "description": "The function to proxy requests to. Must match the exported function\nname exactly."
+        },
+        "dynamicLinks": {
+          "description": "The request will be forwarded to Firebase Dynamic Links.",
+          "type": "boolean"
+        },
+        "run": {
+          "$ref": "CloudRunRewrite",
+          "description": "The request will be forwarded to Cloud Run."
+        },
+        "glob": {
+          "type": "string",
+          "description": "Required. The user-supplied\n[glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path."
+        },
+        "path": {
+          "description": "The URL path to rewrite the request to.",
+          "type": "string"
+        }
+      },
+      "id": "Rewrite",
+      "description": "A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal\ncontent rewrite on the version. If the pattern matches, the request will be\nhandled as if it were to the destination path specified in the\nconfiguration."
+    },
+    "PopulateVersionFilesRequest": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "A set of file paths to the hashes corresponding to assets that should be\nadded to the version. Note that a file path to an empty hash will remove\nthe path from the version. Calculate a hash by Gzipping the file then\ntaking the SHA256 hash of the newly compressed file."
+        }
+      },
+      "id": "PopulateVersionFilesRequest"
+    },
+    "ServingConfig": {
+      "type": "object",
+      "properties": {
+        "cleanUrls": {
+          "description": "Defines whether to drop the file extension from uploaded files.",
+          "type": "boolean"
+        },
+        "trailingSlashBehavior": {
+          "enum": [
+            "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED",
+            "ADD",
+            "REMOVE"
+          ],
+          "description": "Defines how to handle a trailing slash in the URL path.",
+          "type": "string",
+          "enumDescriptions": [
+            "No behavior is specified.\n\u003cbr\u003eFiles are served at their exact location only, and trailing slashes\nare only added to directory indexes.",
+            "Trailing slashes are _added_ to directory indexes as well as to any URL\npath not ending in a file extension.",
+            "Trailing slashes are _removed_ from directory indexes as well as from any\nURL path not ending in a file extension."
+          ]
+        },
+        "rewrites": {
+          "description": "A list of rewrites that will act as if the service were given the\ndestination URL.",
+          "type": "array",
+          "items": {
+            "$ref": "Rewrite"
+          }
+        },
+        "redirects": {
+          "type": "array",
+          "items": {
+            "$ref": "Redirect"
+          },
+          "description": "A list of globs that will cause the response to redirect to another\nlocation."
+        },
+        "headers": {
+          "description": "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob.",
+          "type": "array",
+          "items": {
+            "$ref": "Header"
+          }
+        },
+        "appAssociation": {
+          "description": "How to handle well known App Association files.",
+          "type": "string",
+          "enumDescriptions": [
+            "The app association files will be automattically created from the apps\nthat exist in the Firebase project.",
+            "No special handling of the app association files will occur, these paths\nwill result in a 404 unless caught with a Rewrite."
+          ],
+          "enum": [
+            "AUTO",
+            "NONE"
+          ]
+        }
+      },
+      "id": "ServingConfig",
+      "description": "The configuration for how incoming requests to a site should be routed and\nprocessed before serving content. The patterns are matched and applied\naccording to a specific\n[priority order](/docs/hosting/full-config#hosting_priority_order)."
+    },
     "Empty": {
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
@@ -593,7 +984,6 @@
       "id": "Empty"
     },
     "Domain": {
-      "id": "Domain",
       "description": "The intended behavior and status information of a domain.",
       "type": "object",
       "properties": {
@@ -602,7 +992,6 @@
           "description": "If set, the domain should redirect with the provided parameters."
         },
         "status": {
-          "description": "Output only. Additional status of the domain association.",
           "type": "string",
           "enumDescriptions": [
             "Unspecified domain association status.",
@@ -617,7 +1006,8 @@
             "DOMAIN_ACTIVE",
             "DOMAIN_VERIFICATION_REQUIRED",
             "DOMAIN_VERIFICATION_LOST"
-          ]
+          ],
+          "description": "Output only. Additional status of the domain association."
         },
         "site": {
           "description": "Required. The site name of the association.",
@@ -628,23 +1018,24 @@
           "type": "string"
         },
         "updateTime": {
+          "type": "string",
           "description": "Output only. The time at which the domain was last updated.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "provisioning": {
           "$ref": "DomainProvisioning",
           "description": "Output only. Information about the provisioning of certificates and the\nhealth of the DNS resolution for the domain."
         }
-      }
+      },
+      "id": "Domain"
     },
     "VersionFile": {
       "description": "A static content file that is part of a version.",
       "type": "object",
       "properties": {
         "hash": {
-          "description": "The SHA256 content hash of the file.",
-          "type": "string"
+          "type": "string",
+          "description": "The SHA256 content hash of the file."
         },
         "path": {
           "description": "The URI at which the file's content should display.",
@@ -667,71 +1058,23 @@
       },
       "id": "VersionFile"
     },
-    "PopulateVersionFilesResponse": {
-      "type": "object",
-      "properties": {
-        "uploadRequiredHashes": {
-          "description": "The content hashes of the specified files that need to be uploaded to the\nspecified endpoint.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "uploadUrl": {
-          "description": "The URL to which the files should be uploaded, in the format:\n\u003cbr\u003e\"https://upload-firebasehosting.googleapis.com/upload/sites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e/files\".\n\u003cbr\u003ePerform a multipart `POST` of the Gzipped file contents to the URL\nusing a forward slash and the hash of the file appended to the end.",
-          "type": "string"
-        }
-      },
-      "id": "PopulateVersionFilesResponse"
-    },
     "DomainProvisioning": {
       "id": "DomainProvisioning",
       "description": "The current certificate provisioning status information for a domain.",
       "type": "object",
       "properties": {
-        "dnsStatus": {
-          "enumDescriptions": [
-            "Unspecified DNS status.",
-            "No DNS records have been specified for this domain yet.",
-            "None of the required DNS records have been detected on the domain.",
-            "Some of the required DNS records were detected, but not all of them. No\nextra (non-required) DNS records were detected.",
-            "All required DNS records were detected. No extra (non-required) DNS records\nwere detected.",
-            "The domain has at least one of the required DNS records, and it has at\nleast one extra (non-required) DNS record."
-          ],
-          "enum": [
-            "DNS_STATUS_UNSPECIFIED",
-            "DNS_PENDING",
-            "DNS_MISSING",
-            "DNS_PARTIAL_MATCH",
-            "DNS_MATCH",
-            "DNS_EXTRANEOUS_MATCH"
-          ],
-          "description": "The DNS record match status as of the last DNS fetch.",
-          "type": "string"
-        },
-        "certChallengeHttp": {
-          "$ref": "CertHttpChallenge",
-          "description": "The HTTP challenge for generating a certificate."
-        },
-        "dnsFetchTime": {
-          "description": "The time at which the last DNS fetch occurred.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "certChallengeDns": {
           "$ref": "CertDnsChallenge",
           "description": "The DNS challenge for generating a certificate."
         },
+        "certChallengeDiscoveredTxt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch."
+        },
         "certStatus": {
-          "enumDescriptions": [
-            "Unspecified certificate provisioning status.",
-            "Waiting for certificate challenge to be created.",
-            "Waiting for certificate challenge to be met.",
-            "Certificate challenge met; attempting to acquire/propagate certificate.",
-            "Certificate obtained; propagating to the CDN.",
-            "Certificate provisioned and deployed across the CDN.",
-            "Certificate provisioning failed in a non-recoverable manner."
-          ],
           "enum": [
             "CERT_STATUS_UNSPECIFIED",
             "CERT_PENDING",
@@ -742,51 +1085,98 @@
             "CERT_ERROR"
           ],
           "description": "The certificate provisioning status; updated when Firebase Hosting\nprovisions an SSL certificate for the domain.",
-          "type": "string"
-        },
-        "certChallengeDiscoveredTxt": {
-          "description": "The TXT records (for the certificate challenge) that were found at the last\nDNS fetch.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified certificate provisioning status.",
+            "Waiting for certificate challenge to be created.",
+            "Waiting for certificate challenge to be met.",
+            "Certificate challenge met; attempting to acquire/propagate certificate.",
+            "Certificate obtained; propagating to the CDN.",
+            "Certificate provisioned and deployed across the CDN.",
+            "Certificate provisioning failed in a non-recoverable manner."
+          ]
         },
         "discoveredIps": {
-          "description": "The IPs found at the last DNS fetch.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "The IPs found at the last DNS fetch."
         },
         "expectedIps": {
-          "description": "The list of IPs to which the domain is expected to resolve.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "The list of IPs to which the domain is expected to resolve."
+        },
+        "dnsStatus": {
+          "enum": [
+            "DNS_STATUS_UNSPECIFIED",
+            "DNS_PENDING",
+            "DNS_MISSING",
+            "DNS_PARTIAL_MATCH",
+            "DNS_MATCH",
+            "DNS_EXTRANEOUS_MATCH"
+          ],
+          "description": "The DNS record match status as of the last DNS fetch.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified DNS status.",
+            "No DNS records have been specified for this domain yet.",
+            "None of the required DNS records have been detected on the domain.",
+            "Some of the required DNS records were detected, but not all of them. No\nextra (non-required) DNS records were detected.",
+            "All required DNS records were detected. No extra (non-required) DNS records\nwere detected.",
+            "The domain has at least one of the required DNS records, and it has at\nleast one extra (non-required) DNS record."
+          ]
+        },
+        "certChallengeHttp": {
+          "description": "The HTTP challenge for generating a certificate.",
+          "$ref": "CertHttpChallenge"
+        },
+        "dnsFetchTime": {
+          "type": "string",
+          "description": "The time at which the last DNS fetch occurred.",
+          "format": "google-datetime"
         }
       }
+    },
+    "PopulateVersionFilesResponse": {
+      "type": "object",
+      "properties": {
+        "uploadRequiredHashes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The content hashes of the specified files that need to be uploaded to the\nspecified endpoint."
+        },
+        "uploadUrl": {
+          "description": "The URL to which the files should be uploaded, in the format:\n\u003cbr\u003e\"https://upload-firebasehosting.googleapis.com/upload/sites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e/files\".\n\u003cbr\u003ePerform a multipart `POST` of the Gzipped file contents to the URL\nusing a forward slash and the hash of the file appended to the end.",
+          "type": "string"
+        }
+      },
+      "id": "PopulateVersionFilesResponse"
     },
     "Header": {
       "description": "A [`header`](/docs/hosting/full-config#headers) defines custom headers to\nadd to a response should the request URL path match the pattern.",
       "type": "object",
       "properties": {
-        "headers": {
-          "description": "Required. The additional headers to add to the response.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
         "glob": {
           "description": "Required. The user-supplied\n[glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
           "type": "string"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Required. The additional headers to add to the response."
         }
       },
       "id": "Header"
     },
     "ActingUser": {
-      "id": "ActingUser",
       "description": "Contains metadata about the user who performed an action, such as creating\na release or finalizing a version.",
       "type": "object",
       "properties": {
@@ -798,404 +1188,14 @@
           "description": "A profile image URL for the user. May not be present if the user has\nchanged their email address or deleted their account.",
           "type": "string"
         }
-      }
-    },
-    "DomainRedirect": {
-      "id": "DomainRedirect",
-      "description": "Defines the behavior of a domain-level redirect. Domain redirects preserve\nthe path of the redirect but replace the requested domain with the one\nspecified in the redirect configuration.",
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "Required. The redirect status code.",
-          "type": "string",
-          "enumDescriptions": [
-            "The default redirect type; should not be intentionlly used.",
-            "The redirect will respond with an HTTP status code of\n`301 Moved Permanently`."
-          ],
-          "enum": [
-            "REDIRECT_TYPE_UNSPECIFIED",
-            "MOVED_PERMANENTLY"
-          ]
-        },
-        "domainName": {
-          "description": "Required. The domain name to redirect to.",
-          "type": "string"
-        }
-      }
-    },
-    "CloudRunRewrite": {
-      "id": "CloudRunRewrite",
-      "description": "A configured rewrite that directs requests to a Cloud Run service. If the\nCloud Run service does not exist when setting or updating your Firebase\nHosting configuration, then the request fails. Any errors from the Cloud Run\nservice are passed to the end user (for example, if you delete a service, any\nrequests directed to that service receive a `404` error).",
-      "type": "object",
-      "properties": {
-        "region": {
-          "description": "Optional. User-provided region where the Cloud Run service is hosted.\u003cbr\u003e\nDefaults to `us-central1` if not supplied.",
-          "type": "string"
-        },
-        "serviceId": {
-          "description": "Required. User-defined ID of the Cloud Run service.",
-          "type": "string"
-        }
-      }
-    },
-    "ListVersionFilesResponse": {
-      "type": "object",
-      "properties": {
-        "files": {
-          "description": "The list path/hashes in the specified version.",
-          "type": "array",
-          "items": {
-            "$ref": "VersionFile"
-          }
-        },
-        "nextPageToken": {
-          "description": "The pagination token, if more results exist.",
-          "type": "string"
-        }
       },
-      "id": "ListVersionFilesResponse"
-    },
-    "CertDnsChallenge": {
-      "id": "CertDnsChallenge",
-      "description": "Represents a DNS certificate challenge.",
-      "type": "object",
-      "properties": {
-        "token": {
-          "description": "The value that must be present as a TXT record on the domain name to\nsatisfy the challenge.",
-          "type": "string"
-        },
-        "domainName": {
-          "description": "The domain name upon which the DNS challenge must be satisfied.",
-          "type": "string"
-        }
-      }
-    },
-    "Version": {
-      "description": "A `Version` is the collection of configuration and\n[static files](sites.versions.files) that determine how a site is displayed.",
-      "type": "object",
-      "properties": {
-        "versionBytes": {
-          "description": "Output only. The total stored bytesize of the version.\n\u003cbr\u003eThis value is calculated after a version is `FINALIZED`.",
-          "format": "int64",
-          "type": "string"
-        },
-        "status": {
-          "enumDescriptions": [
-            "The default status; should not be intentionally used.",
-            "The version has been created, and content is currently being added to the\nversion.",
-            "All content has been added to the version, and the version can no longer be\nchanged.",
-            "The version has been deleted.",
-            "The version was not updated to `FINALIZED` within 12&nbsp;hours and was\nautomatically deleted.",
-            "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion."
-          ],
-          "enum": [
-            "VERSION_STATUS_UNSPECIFIED",
-            "CREATED",
-            "FINALIZED",
-            "DELETED",
-            "ABANDONED",
-            "EXPIRED"
-          ],
-          "description": "The deploy status of a version.\n\u003cbr\u003e\n\u003cbr\u003eFor a successful deploy, call the\n[`CreateVersion`](sites.versions/create) endpoint to make a new version\n(`CREATED` status),\n[upload all desired files](sites.versions/populateFiles) to the version,\nthen [update](sites.versions/patch) the version to the `FINALIZED` status.\n\u003cbr\u003e\n\u003cbr\u003eNote that if you leave the version in the `CREATED` state for more\nthan 12&nbsp;hours, the system will automatically mark the version as\n`ABANDONED`.\n\u003cbr\u003e\n\u003cbr\u003eYou can also change the status of a version to `DELETED` by calling the\n[`DeleteVersion`](sites.versions/delete) endpoint.",
-          "type": "string"
-        },
-        "finalizeTime": {
-          "description": "Output only. The time at which the version was `FINALIZED`.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "config": {
-          "$ref": "ServingConfig",
-          "description": "The configuration for the behavior of the site. This configuration exists\nin the [`firebase.json`](/docs/cli/#the_firebasejson_file) file."
-        },
-        "name": {
-          "description": "The unique identifier for a version, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/versions/\u003cvar\u003eversionID\u003c/var\u003e\u003c/code\u003e\nThis name is provided in the response body when you call the\n[`CreateVersion`](../sites.versions/create) endpoint.",
-          "type": "string"
-        },
-        "createUser": {
-          "description": "Output only. Identifies the user who created the version.",
-          "$ref": "ActingUser"
-        },
-        "fileCount": {
-          "description": "Output only. The total number of files associated with the version.\n\u003cbr\u003eThis value is calculated after a version is `FINALIZED`.",
-          "format": "int64",
-          "type": "string"
-        },
-        "deleteUser": {
-          "$ref": "ActingUser",
-          "description": "Output only. Identifies the user who `DELETED` the version."
-        },
-        "deleteTime": {
-          "description": "Output only. The time at which the version was `DELETED`.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "finalizeUser": {
-          "$ref": "ActingUser",
-          "description": "Output only. Identifies the user who `FINALIZED` the version."
-        },
-        "labels": {
-          "description": "The labels used for extra metadata and/or filtering.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "createTime": {
-          "description": "Output only. The time at which the version was created.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "Version"
-    },
-    "CertHttpChallenge": {
-      "description": "Represents an HTTP certificate challenge.",
-      "type": "object",
-      "properties": {
-        "token": {
-          "description": "The token to serve at the specified URL path to satisfy the certificate\nchallenge.",
-          "type": "string"
-        },
-        "path": {
-          "description": "The URL path on which to serve the specified token to satisfy the\ncertificate challenge.",
-          "type": "string"
-        }
-      },
-      "id": "CertHttpChallenge"
-    },
-    "ListDomainsResponse": {
-      "id": "ListDomainsResponse",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The pagination token, if more results exist.",
-          "type": "string"
-        },
-        "domains": {
-          "description": "The list of domains, if any exist.",
-          "type": "array",
-          "items": {
-            "$ref": "Domain"
-          }
-        }
-      }
-    },
-    "SiteConfig": {
-      "id": "SiteConfig",
-      "description": "A `SiteConfig` contains metadata associated with a specific site that\ncontrols Firebase Hosting serving behavior",
-      "type": "object",
-      "properties": {
-        "maxVersions": {
-          "description": "The number of FINALIZED versions that will be held for a site before\nautomatic deletion. When a new version is deployed, content for versions\nin storage in excess of this number will be deleted, and will no longer be\nbilled for storage usage. Oldest versions will be deleted first; sites are\ncreated with an unlimited number of max_versions by default.",
-          "format": "int64",
-          "type": "string"
-        }
-      }
-    },
-    "ListReleasesResponse": {
-      "id": "ListReleasesResponse",
-      "type": "object",
-      "properties": {
-        "releases": {
-          "description": "The list of hashes of files that still need to be uploaded, if any exist.",
-          "type": "array",
-          "items": {
-            "$ref": "Release"
-          }
-        },
-        "nextPageToken": {
-          "description": "If there are additional releases remaining beyond the ones in this\nresponse, then supply this token in the next\n[`list`](../sites.versions.files/list) call to continue with the next set\nof releases.",
-          "type": "string"
-        }
-      }
-    },
-    "Redirect": {
-      "id": "Redirect",
-      "description": "A [`redirect`](/docs/hosting/full-config#redirects) represents the\nconfiguration for returning an HTTP redirect response given a matching\nrequest URL path.",
-      "type": "object",
-      "properties": {
-        "statusCode": {
-          "description": "Required. The status HTTP code to return in the response. It must be a\nvalid 3xx status code.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "location": {
-          "description": "Required. The value to put in the HTTP location header of the response.\n\u003cbr\u003eThe location can contain capture group values from the pattern using\na `:` prefix to identify the segment and an optional `*` to capture the\nrest of the URL.\nFor example:\n\u003ccode\u003e\"glob\": \"/:capture*\",\n\u003cbr\u003e\"statusCode\": 301,\n\u003cbr\u003e\"location\": \"https://example.com/foo/:capture\"\u003c/code\u003e",
-          "type": "string"
-        },
-        "glob": {
-          "description": "Required. The user-supplied\n[glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
-          "type": "string"
-        }
-      }
-    },
-    "Release": {
-      "description": "A `Release` is a particular\n[collection of configurations and files](sites.versions)\nthat is set to be public at a particular time.",
-      "type": "object",
-      "properties": {
-        "version": {
-          "description": "Output only.  The configuration and content that was released.",
-          "$ref": "Version"
-        },
-        "message": {
-          "description": "The deploy description when the release was created. The value can be up to\n512&nbsp;characters.",
-          "type": "string"
-        },
-        "releaseUser": {
-          "description": "Output only. Identifies the user who created the release.",
-          "$ref": "ActingUser"
-        },
-        "releaseTime": {
-          "description": "Output only. The time at which the version is set to be public.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "name": {
-          "description": "Output only. The unique identifier for the release, in the format:\n\u003ccode\u003esites/\u003cvar\u003esite-name\u003c/var\u003e/releases/\u003cvar\u003ereleaseID\u003c/var\u003e\u003c/code\u003e\nThis name is provided in the response body when you call the\n[`CreateRelease`](sites.releases/create) endpoint.",
-          "type": "string"
-        },
-        "type": {
-          "enumDescriptions": [
-            "An unspecified type. Indicates that a version was released.\n\u003cbr\u003eThis is the default value when no other `type` is explicitly\nspecified.",
-            "A version was uploaded to Firebase Hosting and released.",
-            "The release points back to a previously deployed version.",
-            "The release prevents the site from serving content. Firebase Hosting acts\nas if the site never existed."
-          ],
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "DEPLOY",
-            "ROLLBACK",
-            "SITE_DISABLE"
-          ],
-          "description": "Explains the reason for the release.\n\u003cbr\u003eSpecify a value for this field only when creating a `SITE_DISABLE`\ntype release.",
-          "type": "string"
-        }
-      },
-      "id": "Release"
-    },
-    "Rewrite": {
-      "description": "A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal\ncontent rewrite on the version. If the pattern matches, the request will be\nhandled as if it were to the destination path specified in the\nconfiguration.",
-      "type": "object",
-      "properties": {
-        "dynamicLinks": {
-          "description": "The request will be forwarded to Firebase Dynamic Links.",
-          "type": "boolean"
-        },
-        "run": {
-          "description": "The request will be forwarded to Cloud Run.",
-          "$ref": "CloudRunRewrite"
-        },
-        "glob": {
-          "description": "Required. The user-supplied\n[glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
-          "type": "string"
-        },
-        "path": {
-          "description": "The URL path to rewrite the request to.",
-          "type": "string"
-        },
-        "function": {
-          "description": "The function to proxy requests to. Must match the exported function\nname exactly.",
-          "type": "string"
-        }
-      },
-      "id": "Rewrite"
-    },
-    "PopulateVersionFilesRequest": {
-      "id": "PopulateVersionFilesRequest",
-      "type": "object",
-      "properties": {
-        "files": {
-          "description": "A set of file paths to the hashes corresponding to assets that should be\nadded to the version. Note that a file path to an empty hash will remove\nthe path from the version. Calculate a hash by Gzipping the file then\ntaking the SHA256 hash of the newly compressed file.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ServingConfig": {
-      "description": "The configuration for how incoming requests to a site should be routed and\nprocessed before serving content. The patterns are matched and applied\naccording to a specific\n[priority order](/docs/hosting/full-config#hosting_priority_order).",
-      "type": "object",
-      "properties": {
-        "redirects": {
-          "description": "A list of globs that will cause the response to redirect to another\nlocation.",
-          "type": "array",
-          "items": {
-            "$ref": "Redirect"
-          }
-        },
-        "headers": {
-          "description": "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob.",
-          "type": "array",
-          "items": {
-            "$ref": "Header"
-          }
-        },
-        "appAssociation": {
-          "enumDescriptions": [
-            "The app association files will be automattically created from the apps\nthat exist in the Firebase project.",
-            "No special handling of the app association files will occur, these paths\nwill result in a 404 unless caught with a Rewrite."
-          ],
-          "enum": [
-            "AUTO",
-            "NONE"
-          ],
-          "description": "How to handle well known App Association files.",
-          "type": "string"
-        },
-        "cleanUrls": {
-          "description": "Defines whether to drop the file extension from uploaded files.",
-          "type": "boolean"
-        },
-        "trailingSlashBehavior": {
-          "enumDescriptions": [
-            "No behavior is specified.\n\u003cbr\u003eFiles are served at their exact location only, and trailing slashes\nare only added to directory indexes.",
-            "Trailing slashes are _added_ to directory indexes as well as to any URL\npath not ending in a file extension.",
-            "Trailing slashes are _removed_ from directory indexes as well as from any\nURL path not ending in a file extension."
-          ],
-          "enum": [
-            "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED",
-            "ADD",
-            "REMOVE"
-          ],
-          "description": "Defines how to handle a trailing slash in the URL path.",
-          "type": "string"
-        },
-        "rewrites": {
-          "description": "A list of rewrites that will act as if the service were given the\ndestination URL.",
-          "type": "array",
-          "items": {
-            "$ref": "Rewrite"
-          }
-        }
-      },
-      "id": "ServingConfig"
+      "id": "ActingUser"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "canonicalName": "Firebase Hosting",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/firebase": {
-          "description": "View and administer all your Firebase data and settings"
-        },
-        "https://www.googleapis.com/auth/firebase.readonly": {
-          "description": "View all your Firebase data and settings"
-        },
-        "https://www.googleapis.com/auth/cloud-platform.read-only": {
-          "description": "View your data across Google Cloud Platform services"
-        },
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://firebasehosting.googleapis.com/"
+  "canonicalName": "Firebase Hosting"
 }
