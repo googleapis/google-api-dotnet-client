@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20190514 (1594)
+ *      <tr><th>API Rev<td>20190606 (1617)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -858,13 +858,13 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-
-            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> ValidationToken { get; set; }
-
             /// <summary>The operation to retrieve controller configuration for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OperationId { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> ValidationToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -891,18 +891,18 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "validationToken", new Google.Apis.Discovery.Parameter
+                    "operationId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "validationToken",
+                        Name = "operationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "operationId", new Google.Apis.Discovery.Parameter
+                    "validationToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "operationId",
+                        Name = "validationToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -933,11 +933,6 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
-            /// in the project, up to `pageSize`, will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string NamePrefix { get; set; }
-
             /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
             /// of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -951,6 +946,11 @@ namespace Google.Apis.Genomics.v1alpha2
             /// project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
+
+            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
+            /// in the project, up to `pageSize`, will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NamePrefix { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -977,15 +977,6 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "namePrefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "namePrefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1007,6 +998,15 @@ namespace Google.Apis.Genomics.v1alpha2
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "namePrefix", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "namePrefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1924,48 +1924,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>

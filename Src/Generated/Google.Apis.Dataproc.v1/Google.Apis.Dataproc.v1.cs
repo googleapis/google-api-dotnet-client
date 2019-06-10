@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190511 (1591)
+ *      <tr><th>API Rev<td>20190523 (1603)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -3075,6 +3075,10 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
                     /// named cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
@@ -3110,10 +3114,6 @@ namespace Google.Apis.Dataproc.v1
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3158,6 +3158,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
@@ -3188,15 +3197,6 @@ namespace Google.Apis.Dataproc.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4642,14 +4642,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4685,18 +4685,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5075,6 +5075,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
         public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; } 
+
+        /// <summary>Optional. Security settings for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityConfig")]
+        public virtual SecurityConfig SecurityConfig { get; set; } 
 
         /// <summary>Optional. The config settings for software inside the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
@@ -5702,6 +5706,81 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies Kerberos related configuration.</summary>
+    public class KerberosConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust
+        /// relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustAdminServer")]
+        public virtual string CrossRealmTrustAdminServer { get; set; } 
+
+        /// <summary>Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust
+        /// relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustKdc")]
+        public virtual string CrossRealmTrustKdc { get; set; } 
+
+        /// <summary>Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross
+        /// realm trust.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustRealm")]
+        public virtual string CrossRealmTrustRealm { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the
+        /// on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRealmTrustSharedPasswordUri")]
+        public virtual string CrossRealmTrustSharedPasswordUri { get; set; } 
+
+        /// <summary>Optional. Flag to indicate whether to Kerberize the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableKerberos")]
+        public virtual System.Nullable<bool> EnableKerberos { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC
+        /// database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kdcDbKeyUri")]
+        public virtual string KdcDbKeyUri { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided key. For the self-signed certificate, this password is generated by Dataproc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyPasswordUri")]
+        public virtual string KeyPasswordUri { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided keystore. For the self-signed certificate, this password is generated by Dataproc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keystorePasswordUri")]
+        public virtual string KeystorePasswordUri { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided,
+        /// Dataproc will provide a self-signed certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
+        public virtual string KeystoreUri { get; set; } 
+
+        /// <summary>Required. The uri of the KMS key used to encrypt various sensitive files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyUri")]
+        public virtual string KmsKeyUri { get; set; } 
+
+        /// <summary>Required. The Cloud Storage URI of a KMS encrypted file containing the root principal
+        /// password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootPrincipalPasswordUri")]
+        public virtual string RootPrincipalPasswordUri { get; set; } 
+
+        /// <summary>Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies
+        /// 0, then default value 10 will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tgtLifetimeHours")]
+        public virtual System.Nullable<int> TgtLifetimeHours { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user
+        /// provided truststore. For the self-signed certificate, this password is generated by Dataproc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truststorePasswordUri")]
+        public virtual string TruststorePasswordUri { get; set; } 
+
+        /// <summary>Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided,
+        /// Dataproc will provide a self-signed certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truststoreUri")]
+        public virtual string TruststoreUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6078,6 +6157,17 @@ namespace Google.Apis.Dataproc.v1.Data
         /// regex in its entirety (substring matches are not sufficient).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
         public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Security related configuration, including Kerberos.</summary>
+    public class SecurityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Kerberos related configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kerberosConfig")]
+        public virtual KerberosConfig KerberosConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

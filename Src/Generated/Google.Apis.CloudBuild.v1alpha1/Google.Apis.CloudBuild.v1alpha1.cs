@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190531 (1611)
+ *      <tr><th>API Rev<td>20190606 (1617)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>

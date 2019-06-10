@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190520 (1600)
+ *      <tr><th>API Rev<td>20190601 (1612)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1417,6 +1417,13 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [Many
+                    /// languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language) are
+                    /// supported. Note: languages must be enabled in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1429,13 +1436,6 @@ namespace Google.Apis.Dialogflow.v2
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [Many
-                    /// languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language) are
-                    /// supported. Note: languages must be enabled in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1477,18 +1477,18 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1681,15 +1681,6 @@ namespace Google.Apis.Dialogflow.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1709,6 +1700,15 @@ namespace Google.Apis.Dialogflow.v2
                     /// in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1744,24 +1744,6 @@ namespace Google.Apis.Dialogflow.v2
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
@@ -1774,6 +1756,24 @@ namespace Google.Apis.Dialogflow.v2
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3909,9 +3909,11 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelVariant")]
         public virtual string ModelVariant { get; set; } 
 
-        /// <summary>Optional. The collection of phrase hints which are used to boost accuracy of speech recognition.
-        /// Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
-        /// for more details.</summary>
+        /// <summary>Optional. A list of strings containing words and phrases that the speech recognizer should
+        /// recognize with higher likelihood.
+        ///
+        /// See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for
+        /// more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
         public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; } 
 
@@ -6203,48 +6205,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
