@@ -119,6 +119,7 @@ namespace Google.Apis.Auth.OAuth2
                     try
                     {
                         var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+                        httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
                         var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
                         if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
                             && headerValues.Contains(GoogleMetadataHeader))
