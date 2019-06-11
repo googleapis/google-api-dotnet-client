@@ -1,6 +1,4 @@
 {
-  "ownerDomain": "google.com",
-  "name": "factchecktools",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Fact Check Tools API",
@@ -17,9 +15,6 @@
             "name"
           ],
           "httpMethod": "DELETE",
-          "scopes": [
-            "https://www.googleapis.com/auth/userinfo.email"
-          ],
           "parameters": {
             "name": {
               "description": "The name of the resource to delete, in the form of `pages/{page_id}`.",
@@ -29,18 +24,24 @@
               "location": "path"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ],
           "flatPath": "v1alpha1/pages/{pagesId}",
           "path": "v1alpha1/{+name}",
           "id": "factchecktools.pages.delete"
         },
         "get": {
-          "response": {
-            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
-          },
+          "httpMethod": "GET",
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET",
+          "response": {
+            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ],
           "parameters": {
             "name": {
               "description": "The name of the resource to get, in the form of `pages/{page_id}`.",
@@ -50,30 +51,33 @@
               "location": "path"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/userinfo.email"
-          ],
           "flatPath": "v1alpha1/pages/{pagesId}",
-          "path": "v1alpha1/{+name}",
           "id": "factchecktools.pages.get",
+          "path": "v1alpha1/{+name}",
           "description": "Get all `ClaimReview` markup on a page."
         },
         "list": {
+          "httpMethod": "GET",
           "response": {
             "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse"
           },
           "parameterOrder": [],
-          "httpMethod": "GET",
           "parameters": {
+            "offset": {
+              "location": "query",
+              "description": "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset, and if the request is not for a specific URL. For example, 0\nmeans to return results starting from the first matching result, and 10\nmeans to return from the 11th result.",
+              "format": "int32",
+              "type": "integer"
+            },
             "pageToken": {
               "description": "The pagination token. You may provide the `next_page_token` returned from a\nprevious List request, if any, in order to get the next page. All other\nfields must have the same values as in the previous request.",
               "type": "string",
               "location": "query"
             },
             "organization": {
+              "description": "The organization for which we want to fetch markups for. For instance,\n\"site.com\". Cannot be specified along with an URL.",
               "type": "string",
-              "location": "query",
-              "description": "The organization for which we want to fetch markups for. For instance,\n\"site.com\". Cannot be specified along with an URL."
+              "location": "query"
             },
             "pageSize": {
               "description": "The pagination size. We will return up to that many results. Defaults to\n10 if not set. Has no effect if a URL is requested.",
@@ -85,106 +89,84 @@
               "description": "The URL from which to get `ClaimReview` markup. There will be at most one\nresult. If markup is associated with a more canonical version of the URL\nprovided, we will return that URL instead. Cannot be specified along with\nan organization.",
               "type": "string",
               "location": "query"
-            },
-            "offset": {
-              "location": "query",
-              "description": "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset, and if the request is not for a specific URL. For example, 0\nmeans to return results starting from the first matching result, and 10\nmeans to return from the 11th result.",
-              "format": "int32",
-              "type": "integer"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/userinfo.email"
           ],
           "flatPath": "v1alpha1/pages",
-          "path": "v1alpha1/pages",
           "id": "factchecktools.pages.list",
+          "path": "v1alpha1/pages",
           "description": "List the `ClaimReview` markup pages for a specific URL or for an\norganization."
         },
         "update": {
-          "path": "v1alpha1/{+name}",
-          "id": "factchecktools.pages.update",
           "request": {
             "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
           },
           "description": "Update for all `ClaimReview` markup on a page\n\nNote that this is a full update. To retain the existing `ClaimReview`\nmarkup on a page, first perform a Get operation, then modify the returned\nmarkup, and finally call Update with the entire `ClaimReview` markup as the\nbody.",
-          "response": {
-            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
-          },
+          "httpMethod": "PUT",
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "PUT",
+          "response": {
+            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
+          },
           "scopes": [
             "https://www.googleapis.com/auth/userinfo.email"
           ],
           "parameters": {
             "name": {
+              "location": "path",
               "description": "The name of this `ClaimReview` markup page resource, in the form of\n`pages/{page_id}`. Except for update requests, this field is output-only\nand should not be set by the user.",
               "required": true,
               "type": "string",
-              "pattern": "^pages/[^/]+$",
-              "location": "path"
+              "pattern": "^pages/[^/]+$"
             }
           },
-          "flatPath": "v1alpha1/pages/{pagesId}"
+          "flatPath": "v1alpha1/pages/{pagesId}",
+          "id": "factchecktools.pages.update",
+          "path": "v1alpha1/{+name}"
         },
         "create": {
-          "scopes": [
-            "https://www.googleapis.com/auth/userinfo.email"
-          ],
-          "parameters": {},
-          "flatPath": "v1alpha1/pages",
-          "path": "v1alpha1/pages",
-          "id": "factchecktools.pages.create",
-          "request": {
-            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
-          },
-          "description": "Create `ClaimReview` markup on a page.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST"
+          "parameters": {},
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ],
+          "flatPath": "v1alpha1/pages",
+          "id": "factchecktools.pages.create",
+          "path": "v1alpha1/pages",
+          "description": "Create `ClaimReview` markup on a page.",
+          "request": {
+            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
+          }
         }
       }
     },
     "claims": {
       "methods": {
         "search": {
+          "description": "Search through fact-checked claims.",
           "response": {
             "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
           "parameters": {
-            "maxAgeDays": {
-              "type": "integer",
-              "location": "query",
-              "description": "The maximum age of the returned search results, in days.\nAge is determined by either claim date or review date, whichever is newer.",
-              "format": "int32"
-            },
-            "offset": {
-              "description": "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset. For example, 0 means to return results starting from the first\nmatching result, and 10 means to return from the 11th result.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The pagination token. You may provide the `next_page_token` returned from a\nprevious List request, if any, in order to get the next page. All other\nfields must have the same values as in the previous request.",
-              "type": "string"
-            },
-            "reviewPublisherSiteFilter": {
-              "type": "string",
-              "location": "query",
-              "description": "The review publisher site to filter results by, e.g. nytimes.com."
-            },
             "pageSize": {
               "description": "The pagination size. We will return up to that many results. Defaults to\n10 if not set.",
               "format": "int32",
               "type": "integer",
               "location": "query"
+            },
+            "reviewPublisherSiteFilter": {
+              "location": "query",
+              "description": "The review publisher site to filter results by, e.g. nytimes.com.",
+              "type": "string"
             },
             "query": {
               "description": "Textual query string. Required unless `review_publisher_site_filter` is\nspecified.",
@@ -192,38 +174,49 @@
               "location": "query"
             },
             "languageCode": {
-              "type": "string",
               "location": "query",
-              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". Can be used to\nrestrict results by language, though we do not currently consider the\nregion."
+              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". Can be used to\nrestrict results by language, though we do not currently consider the\nregion.",
+              "type": "string"
+            },
+            "maxAgeDays": {
+              "description": "The maximum age of the returned search results, in days.\nAge is determined by either claim date or review date, whichever is newer.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "offset": {
+              "location": "query",
+              "description": "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset. For example, 0 means to return results starting from the first\nmatching result, and 10 means to return from the 11th result.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "pageToken": {
+              "description": "The pagination token. You may provide the `next_page_token` returned from a\nprevious List request, if any, in order to get the next page. All other\nfields must have the same values as in the previous request.",
+              "type": "string",
+              "location": "query"
             }
           },
           "flatPath": "v1alpha1/claims:search",
           "path": "v1alpha1/claims:search",
-          "id": "factchecktools.claims.search",
-          "description": "Search through fact-checked claims."
+          "id": "factchecktools.claims.search"
         }
       }
     }
   },
   "parameters": {
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
       "location": "query"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -232,9 +225,22 @@
       "type": "string",
       "location": "query"
     },
-    "callback": {
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
-      "description": "JSONP",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
       "type": "string"
     },
     "oauth_token": {
@@ -242,18 +248,10 @@
       "type": "string",
       "location": "query"
     },
-    "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
     },
     "alt": {
       "type": "string",
@@ -272,14 +270,14 @@
       ]
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     }
   },
   "version": "v1alpha1",
@@ -290,7 +288,7 @@
   "basePath": "",
   "id": "factchecktools:v1alpha1",
   "documentationLink": "https://developers.google.com/fact-check/tools/api/",
-  "revision": "20190606",
+  "revision": "20190608",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -298,9 +296,14 @@
       "description": "Information about the claim rating.",
       "type": "object",
       "properties": {
+        "ratingValue": {
+          "description": "A numeric rating of this claim, in the range worstRating — bestRating\ninclusive.\u003cbr\u003e\nCorresponds to `ClaimReview.reviewRating.ratingValue`.",
+          "format": "int32",
+          "type": "integer"
+        },
         "textualRating": {
-          "type": "string",
-          "description": "The truthfulness rating as a human-readible short word or phrase.\u003cbr\u003e\nCorresponds to `ClaimReview.reviewRating.alternateName`."
+          "description": "The truthfulness rating as a human-readible short word or phrase.\u003cbr\u003e\nCorresponds to `ClaimReview.reviewRating.alternateName`.",
+          "type": "string"
         },
         "bestRating": {
           "description": "For numeric ratings, the best value possible in the scale from worst to\nbest.\u003cbr\u003e\nCorresponds to `ClaimReview.reviewRating.bestRating`.",
@@ -315,39 +318,29 @@
         "imageUrl": {
           "description": "Corresponds to `ClaimReview.reviewRating.image`.",
           "type": "string"
-        },
-        "ratingValue": {
-          "description": "A numeric rating of this claim, in the range worstRating — bestRating\ninclusive.\u003cbr\u003e\nCorresponds to `ClaimReview.reviewRating.ratingValue`.",
-          "format": "int32",
-          "type": "integer"
         }
       },
       "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating"
     },
     "GoogleFactcheckingFactchecktoolsV1alpha1Publisher": {
-      "id": "GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
       "description": "Information about the publisher.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "The name of this publisher. For instance, \"Awesome Fact Checks\".",
-          "type": "string"
-        },
         "site": {
           "description": "Host-level site name, without the protocol or \"www\" prefix. For instance,\n\"awesomefactchecks.com\". This value of this field is based purely on the\nclaim review URL.",
           "type": "string"
+        },
+        "name": {
+          "description": "The name of this publisher. For instance, \"Awesome Fact Checks\".",
+          "type": "string"
         }
-      }
+      },
+      "id": "GoogleFactcheckingFactchecktoolsV1alpha1Publisher"
     },
     "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage": {
+      "description": "Holds one or more instances of `ClaimReview` markup for a webpage.",
+      "type": "object",
       "properties": {
-        "claimReviewMarkups": {
-          "description": "A list of individual claim reviews for this page.\nEach item in the list corresponds to one `ClaimReview` element.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup"
-          }
-        },
         "claimReviewAuthor": {
           "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
           "description": "Info about the author of this claim review.\nSimilar to the above, semantically these are page-level fields, and each\n`ClaimReview` on this page will contain the same values."
@@ -367,11 +360,16 @@
         "publishDate": {
           "description": "The date when the fact check was published.\nSimilar to the URL, semantically this is a page-level field, and each\n`ClaimReview` on this page will contain the same value.\u003cbr\u003e\nCorresponds to `ClaimReview.datePublished`",
           "type": "string"
+        },
+        "claimReviewMarkups": {
+          "description": "A list of individual claim reviews for this page.\nEach item in the list corresponds to one `ClaimReview` element.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup"
+          }
         }
       },
-      "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
-      "description": "Holds one or more instances of `ClaimReview` markup for a webpage.",
-      "type": "object"
+      "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage"
     },
     "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor": {
       "description": "Information about the claim author.",
@@ -397,18 +395,20 @@
       "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor"
     },
     "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup": {
+      "description": "Fields for an individual `ClaimReview` element.\nExcept for sub-messages that group fields together, each of these fields\ncorrespond those in https://schema.org/ClaimReview. We list the precise\nmapping for each field.",
+      "type": "object",
       "properties": {
-        "rating": {
-          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating",
-          "description": "Info about the rating of this claim review."
-        },
         "claimAuthor": {
           "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor",
           "description": "Info about the author of this claim."
         },
+        "rating": {
+          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating",
+          "description": "Info about the rating of this claim review."
+        },
         "url": {
-          "type": "string",
-          "description": "This field is optional, and will default to the page URL. We provide this\nfield to allow you the override the default value, but the only permitted\noverride is the page URL plus an optional anchor link (\"page jump\").\u003cbr\u003e\nCorresponds to `ClaimReview.url`"
+          "description": "This field is optional, and will default to the page URL. We provide this\nfield to allow you the override the default value, but the only permitted\noverride is the page URL plus an optional anchor link (\"page jump\").\u003cbr\u003e\nCorresponds to `ClaimReview.url`",
+          "type": "string"
         },
         "claimAppearances": {
           "description": "A list of links to works in which this claim appears, aside from the one\nspecified in `claim_first_appearance`.\u003cbr\u003e\nCorresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.",
@@ -434,9 +434,7 @@
           "type": "string"
         }
       },
-      "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
-      "description": "Fields for an individual `ClaimReview` element.\nExcept for sub-messages that group fields together, each of these fields\ncorrespond those in https://schema.org/ClaimReview. We list the precise\nmapping for each field.",
-      "type": "object"
+      "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup"
     },
     "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor": {
       "description": "Information about the claim review author.",
@@ -457,11 +455,6 @@
       "description": "Information about the claim.",
       "type": "object",
       "properties": {
-        "claimDate": {
-          "description": "The date that the claim was made.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "claimReview": {
           "description": "One or more reviews of this claim (namely, a fact-checking article).",
           "type": "array",
@@ -475,6 +468,11 @@
         },
         "text": {
           "description": "The claim text. For instance, \"Crime has doubled in the last 2 years.\"",
+          "type": "string"
+        },
+        "claimDate": {
+          "description": "The date that the claim was made.",
+          "format": "google-datetime",
           "type": "string"
         }
       },
@@ -518,6 +516,24 @@
       },
       "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview"
     },
+    "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse": {
+      "description": "Response from searching fact-checked claims.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults.",
+          "type": "string"
+        },
+        "claims": {
+          "description": "The list of claims and all of their associated information.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1Claim"
+          }
+        }
+      },
+      "id": "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse"
+    },
     "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse": {
       "description": "Response from listing `ClaimReview` markup.",
       "type": "object",
@@ -535,24 +551,6 @@
         }
       },
       "id": "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse"
-    },
-    "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse": {
-      "properties": {
-        "claims": {
-          "description": "The list of claims and all of their associated information.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1Claim"
-          }
-        },
-        "nextPageToken": {
-          "description": "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse",
-      "description": "Response from searching fact-checked claims.",
-      "type": "object"
     }
   },
   "protocol": "rest",
@@ -570,5 +568,7 @@
       }
     }
   },
-  "rootUrl": "https://factchecktools.googleapis.com/"
+  "rootUrl": "https://factchecktools.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "factchecktools"
 }

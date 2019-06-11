@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/kwai7B3cC4eEEbSxYFHS0BuBYIc\"",
+ "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/LRkkAS7hoxkBOrIOmm_GjUTQ6v8\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20190510",
+ "revision": "20190607",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -1011,7 +1011,7 @@
     },
     "type": {
      "type": "string",
-     "description": "The type of this IP address. A PRIMARY address is an address that can accept incoming connections. An OUTGOING address is the source address of connections originating from the instance, if supported."
+     "description": "The type of this IP address. A PRIMARY address is a public address that can accept incoming connections. A PRIVATE address is a private address that can accept incoming connections. An OUTGOING address is the source address of connections originating from the instance, if supported."
     }
    }
   },
@@ -1306,6 +1306,10 @@
      "type": "string",
      "description": "This is always sql#restoreBackupContext.",
      "default": "sql#restoreBackupContext"
+    },
+    "project": {
+     "type": "string",
+     "description": "The full project ID of the source instance."
     }
    }
   },
