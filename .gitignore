@@ -28,3 +28,6 @@ testrunner/*
 
 # Ignore the generated Generated.sln solution file
 Generated.sln
+
+# Docfx output
+site

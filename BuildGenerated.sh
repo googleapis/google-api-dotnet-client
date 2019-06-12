@@ -2,6 +2,8 @@
 
 set -e
 
+source DocfxFunctions.sh
+
 # "nuget restore" fails if local package source directories don't exist.
 mkdir -p NuPkgs/Support
 
@@ -44,21 +46,25 @@ while [[ $# -gt 0 ]]; do
       SKIPGENERATE=TRUE
       SKIPBUILD=TRUE
       SKIPPACK=TRUE
+      SKIPDOCFX=TRUE
       ;;
     --onlygenerate)
       SKIPDOWNLOAD=TRUE
       SKIPBUILD=TRUE
       SKIPPACK=TRUE
+      SKIPDOCFX=TRUE
       ;;
     --onlybuild)
       SKIPDOWNLOAD=TRUE
       SKIPGENERATE=TRUE
       SKIPPACK=TRUE
+      SKIPDOCFX=TRUE
       ;;
     --onlypack)
       SKIPDOWNLOAD=TRUE
       SKIPGENERATE=TRUE
       SKIPBUILD=TRUE
+      SKIPDOCFX=TRUE
       ;;
     *)
       echo ERROR: Invalid argument to BuildGenerated.sh: \'$key\'
@@ -111,4 +117,12 @@ if [ -z ${SKIPPACK+x} ]; then
   echo Deleting existing \'$NUPKG_DIR\' directory...
   rm -rf $NUPKG_DIR
   dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-restore --no-build --output $NUPKG_DIR
+fi
+
+if [ -z ${SKIPDOCFX+x} ]; then
+  install_docfx
+  for docfxfile in $CODE_GENERATION_DIR/*/docfx.json; do
+    $DOCFX metadata -f $docfxfile
+    $DOCFX build $docfxfile
+  done
 fi

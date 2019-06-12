@@ -1,0 +1,43 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "Google.Apis/Google.Apis.csproj",
+            "Google.Apis.Auth/Google.Apis.Auth.csproj",
+            "Google.Apis.Auth.AspNetCore/Google.Apis.Auth.AspNetCore.csproj",
+            "Google.Apis.Auth.Mvc/Google.Apis.Auth.Mvc.csproj",
+            "Google.Apis.Auth.PlatformServices/Google.Apis.Auth.PlatformServices.csproj",
+            "Google.Apis.Core/Google.Apis.Core.csproj"
+          ],
+        },
+      ],
+      "dest": "obj/api",
+      "properties": {
+        "TargetFramework": "netstandard2.0"
+      }
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": "*.yml",
+        "src": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [
+          "*.md",
+          "toc.yml"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "Google API support libraries",
+      "_disableContribution": true,
+      "_appFooter": " "
+    },
+    "dest": "site"
+  }
+}

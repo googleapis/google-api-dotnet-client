@@ -1,0 +1,22 @@
+{
+  "metadata": [{
+    "src": [{
+      "files": ["{{ api.module.name }}.csproj"]
+    }],
+    "dest": "obj/api",
+    "properties": { "TargetFramework": "netstandard2.0" }
+  }],
+  "build": {
+    "content": [{
+      "files": "*.yml",
+      "src": "obj/api",
+      "dest": "api"
+    }],
+    "globalMetadata": {
+      "_appTitle": "{{ api.module.name }}",
+      "_disableContribution": true,
+      "_appFooter": " "
+    },
+    "dest": "site"
+  }
+}
