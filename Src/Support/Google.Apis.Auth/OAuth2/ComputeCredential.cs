@@ -92,6 +92,19 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
+        /// <inheritdoc/>
+        public override async Task<TokenResponse> CreateOidcTokenAsync(string targetAudience, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Create and send the HTTP request to compute server token URL.
+            // TODO: Somehow use the existing token URL and replace "token" with "identity"?
+            // TODO: Handle the query parameter better?
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.ComputeOidcTokenUrl + targetAudience);
+            httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
+            var response = await HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            var token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
+            return token;
+        }
+
         #endregion
 
         /// <summary>

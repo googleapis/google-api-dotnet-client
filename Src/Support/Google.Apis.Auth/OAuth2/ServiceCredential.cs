@@ -212,5 +212,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns><c>true</c> if a new token was received successfully.</returns>
         public abstract Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken);
+
+        /// <summary>
+        /// Gets an OIDC token using the identity from this credential.
+        /// </summary>
+        /// <param name="targetAudience">The target audience for the token.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>An OIDC token.</returns>
+        public abstract Task<TokenResponse> CreateOidcTokenAsync(string targetAudience, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -236,13 +236,8 @@ namespace Google.Apis.Auth.OAuth2
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Gets an OIDC token using the identity from this credential.
-        /// </summary>
-        /// <param name="targetAudience">The target audience for the token.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>An OIDC token.</returns>
-        public Task<TokenResponse> CreateOidcTokenAsync(string targetAudience, CancellationToken cancellationToken = default(CancellationToken))
+        /// <inheritdoc/>
+        public override Task<TokenResponse> CreateOidcTokenAsync(string targetAudience, CancellationToken cancellationToken = default(CancellationToken))
         {
             // TODO: Validate that targetAudience is non-null?
             var nowUtc = Clock.UtcNow;
