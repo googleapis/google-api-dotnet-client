@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
+using Google.Apis.Auth.OAuth2.Responses;
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0
 using RsaKey = System.Security.Cryptography.RSA;
@@ -233,6 +234,36 @@ namespace Google.Apis.Auth.OAuth2
                 return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
             }
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets an OIDC token using the identity from this credential.
+        /// </summary>
+        /// <param name="targetAudience">The target audience for the token.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>An OIDC token.</returns>
+        public Task<TokenResponse> CreateOidcTokenAsync(string targetAudience, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // TODO: Validate that targetAudience is non-null?
+            var nowUtc = Clock.UtcNow;
+            // TODO: Is this correct?
+            var expiryUtc = nowUtc + JwtLifetime;
+
+            var payload = new JsonWebSignature.Payload
+            {
+                Issuer = Id,
+                Audience = TokenServerUrl,
+                IssuedAtTimeSeconds = (long) (nowUtc - UnixEpoch).TotalSeconds,
+                ExpirationTimeSeconds = (long) (expiryUtc - UnixEpoch).TotalSeconds,
+                TargetAudience = targetAudience,
+            };
+
+            var request = new GoogleAssertionTokenRequest()
+            {
+                Assertion = CreateAssertionFromPayload(payload)
+            };
+
+            return request.ExecuteAsync(HttpClient, TokenServerUrl, cancellationToken, Clock);
         }
 
         private class JwtCacheEntry

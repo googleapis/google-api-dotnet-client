@@ -68,6 +68,12 @@ namespace Google.Apis.Auth
             public object Audience { get; set; }
 
             /// <summary>
+            /// FIXME.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("target_audience")]
+            public string TargetAudience { get; set; }
+
+            /// <summary>
             /// Gets or sets expiration time claim that identifies the expiration time (in seconds) on or after which 
             /// the token MUST NOT be accepted for processing or <c>null</c>.
             /// </summary>
